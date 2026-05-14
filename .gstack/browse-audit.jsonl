@@ -1,0 +1,13 @@
+{"ts":"2026-05-13T13:45:38.493Z","cmd":"goto","args":"http://localhost:5173","origin":"http://localhost:5173/","durationMs":274,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T13:45:38.675Z","cmd":"scroll","args":"#contact","origin":"http://localhost:5173/","durationMs":46,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T13:45:39.070Z","cmd":"screenshot","args":"/tmp/contact-section.png --selector #contact","origin":"http://localhost:5173/","durationMs":345,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T13:45:49.527Z","cmd":"js","args":"document.getElementById('contact').scrollIntoView({behavior: 'instant', block: 'center'})","origin":"http://localhost:5173/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T13:45:50.834Z","cmd":"screenshot","args":"/tmp/contact-full.png --selector #contact","origin":"http://localhost:5173/","durationMs":233,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T13:48:37.269Z","cmd":"screenshot","args":"/tmp/fullpage.png","origin":"http://localhost:5173/","durationMs":900,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T13:51:33.138Z","cmd":"goto","args":"http://localhost:5173","origin":"http://localhost:5173/","durationMs":104,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T13:51:35.168Z","cmd":"screenshot","args":"/tmp/fullpage2.png","origin":"http://localhost:5173/","durationMs":985,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T14:12:35.532Z","cmd":"goto","args":"http://localhost:5173","origin":"http://localhost:5173/","durationMs":106,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T14:12:39.520Z","cmd":"screenshot","args":"/tmp/hero-new.png","origin":"http://localhost:5173/","durationMs":209,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T14:12:54.043Z","cmd":"viewport","args":"1440x900","origin":"http://localhost:5173/","durationMs":10,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T14:12:54.324Z","cmd":"screenshot","args":"/tmp/hero-desktop.png","origin":"http://localhost:5173/","durationMs":241,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-13T14:13:06.100Z","cmd":"screenshot","args":"/tmp/hero-crop.png --clip 700,60,740,620","origin":"http://localhost:5173/","durationMs":100,"status":"ok","hasCookies":false,"mode":"launched"}
