@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Section Divider Options — Five Fingers</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #ff8714;
+    --navy:   #000032;
+    --bg:     #fafaf8;
+    --white:  #ffffff;
+  }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: #f0efed;
+    color: var(--navy);
+    direction: rtl;
+  }
+
+  .page-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 36px 48px 28px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .page-header h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+  }
+  .page-header p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 32px 48px 64px;
+  }
+
+  .option-block {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,0,50,0.07);
+  }
+
+  .option-meta {
+    padding: 20px 28px 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    border-bottom: 1px solid rgba(0,0,50,0.06);
+  }
+  .option-meta .num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    background: rgba(255,135,20,0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .option-meta h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy);
+  }
+  .option-meta p {
+    font-size: 0.82rem;
+    color: rgba(0,0,50,0.4);
+    margin-right: auto;
+  }
+
+  /* Fake section blocks */
+  .section-stub {
+    padding: 20px 28px;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .section-stub .s-tag {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--orange);
+  }
+  .section-stub .s-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+  .section-stub .s-body {
+    font-size: 0.82rem;
+    color: rgba(0,0,50,0.45);
+    line-height: 1.6;
+  }
+
+  /* ──────────────────────────────────────────
+     A: Single orange rule, full width, 2px
+  ────────────────────────────────────────── */
+  .div-a {
+    height: 2px;
+    background: var(--orange);
+  }
+
+  /* ──────────────────────────────────────────
+     B: Spotlight — gradient fade in/out
+  ────────────────────────────────────────── */
+  .div-b {
+    height: 32px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+  }
+  .div-b::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: linear-gradient(
+      to left,
+      transparent 0%,
+      transparent 8%,
+      var(--orange) 30%,
+      var(--orange) 70%,
+      transparent 92%,
+      transparent 100%
+    );
+  }
+
+  /* ──────────────────────────────────────────
+     C: Triple rule — thick orange + thin navy
+  ────────────────────────────────────────── */
+  .div-c {
+    height: 32px;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+  }
+  .div-c .thick { height: 3px; background: var(--orange); }
+  .div-c .thin  { height: 1px; background: var(--navy); opacity: 0.15; }
+
+  /* ──────────────────────────────────────────
+     D: EKG heartbeat (static, fully drawn)
+  ────────────────────────────────────────── */
+  .div-d {
+    height: 48px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+  }
+  .div-d svg {
+    width: 100%;
+    height: 36px;
+  }
+  .ekg-static {
+    fill: none;
+    stroke: var(--orange);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.85;
+  }
+
+  /* ──────────────────────────────────────────
+     E: Branded text rule — "◆ חמש אצבעות ◆"
+  ────────────────────────────────────────── */
+  .div-e {
+    height: 32px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+  }
+  .div-e .side {
+    flex: 1;
+    height: 1px;
+    background: var(--orange);
+    opacity: 0.45;
+  }
+  .div-e .mid {
+    padding: 0 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    white-space: nowrap;
+  }
+
+  /* ──────────────────────────────────────────
+     F: Dashed line — uniform rhythm
+  ────────────────────────────────────────── */
+  .div-f {
+    height: 32px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+  }
+  .div-f svg { width: 100%; height: 2px; }
+  .dash-static {
+    stroke: var(--orange);
+    stroke-width: 2;
+    stroke-linecap: round;
+    fill: none;
+    stroke-dasharray: 6 10;
+    opacity: 0.7;
+  }
+
+  /* ──────────────────────────────────────────
+     G: Section stamp — numbered badge on rule
+  ────────────────────────────────────────── */
+  .div-g {
+    height: 40px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .div-g .rule {
+    position: absolute;
+    inset: 0 0;
+    top: 50%;
+    height: 1px;
+    background: var(--navy);
+    opacity: 0.1;
+  }
+  .div-g .badge {
+    position: relative;
+    z-index: 1;
+    background: var(--bg);
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .div-g .badge-num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 0.7rem;
+    color: #fff;
+    background: var(--orange);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+  .div-g .badge-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: 0.35;
+  }
+
+  /* ──────────────────────────────────────────
+     H: Orange band — thick full-bleed stripe
+  ────────────────────────────────────────── */
+  .div-h {
+    height: 4px;
+    background: linear-gradient(to left, var(--navy), var(--orange) 40%, var(--orange) 60%, var(--navy));
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Section Divider Options</h1>
+  <p>בחרו את הסגנון המתאים</p>
+</div>
+
+<div class="options-grid">
+
+  <!-- A -->
+  <div class="option-block">
+    <div class="option-meta">
+      <span class="num">A</span>
+      <h2>Solid Rule</h2>
+      <p>קו כתום אחיד, 2px — כי מינימליסטי זה גם עוצמתי</p>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תחומי פעילות</span>
+      <div class="s-title">הכירו את התכניות שלנו</div>
+      <div class="s-body">תיאור הסקשן הקודם לדוגמה.</div>
+    </div>
+    <div class="div-a"></div>
+    <div class="section-stub">
+      <span class="s-tag">תוכן חמש</span>
+      <div class="s-title">האזינו, צפו וקראו</div>
+      <div class="s-body">תיאור הסקשן הבא לדוגמה.</div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="option-block">
+    <div class="option-meta">
+      <span class="num">B</span>
+      <h2>Spotlight Rule</h2>
+      <p>קו שנדלק במרכז ודועך לכיוון הקצוות</p>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תחומי פעילות</span>
+      <div class="s-title">הכירו את התכניות שלנו</div>
+      <div class="s-body">תיאור הסקשן הקודם לדוגמה.</div>
+    </div>
+    <div class="div-b"></div>
+    <div class="section-stub">
+      <span class="s-tag">תוכן חמש</span>
+      <div class="s-title">האזינו, צפו וקראו</div>
+      <div class="s-body">תיאור הסקשן הבא לדוגמה.</div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="option-block">
+    <div class="option-meta">
+      <span class="num">C</span>
+      <h2>Triple Rule</h2>
+      <p>שני קווים: עבה כתום ודק כהה — סגנון עיתוני</p>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תחומי פעילות</span>
+      <div class="s-title">הכירו את התכניות שלנו</div>
+      <div class="s-body">תיאור הסקשן הקודם לדוגמה.</div>
+    </div>
+    <div class="div-c">
+      <div class="thick"></div>
+      <div class="thin"></div>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תוכן חמש</span>
+      <div class="s-title">האזינו, צפו וקראו</div>
+      <div class="s-body">תיאור הסקשן הבא לדוגמה.</div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="option-block">
+    <div class="option-meta">
+      <span class="num">D</span>
+      <h2>EKG Line</h2>
+      <p>קו SVG שטוח עם ספייק חד במרכז — מרמז על פעימה</p>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תחומי פעילות</span>
+      <div class="s-title">הכירו את התכניות שלנו</div>
+      <div class="s-body">תיאור הסקשן הקודם לדוגמה.</div>
+    </div>
+    <div class="div-d">
+      <svg viewBox="0 0 1000 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="ekg-static"
+          d="M0,18 L380,18 L420,18 L435,4 L450,32 L465,8 L480,26 L495,18 L530,18 L1000,18"
+        />
+      </svg>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תוכן חמש</span>
+      <div class="s-title">האזינו, צפו וקראו</div>
+      <div class="s-body">תיאור הסקשן הבא לדוגמה.</div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <div class="option-block">
+    <div class="option-meta">
+      <span class="num">E</span>
+      <h2>Branded Text Rule</h2>
+      <p>שם התנועה שובר קו אופקי — סגנון מגזין</p>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תחומי פעילות</span>
+      <div class="s-title">הכירו את התכניות שלנו</div>
+      <div class="s-body">תיאור הסקשן הקודם לדוגמה.</div>
+    </div>
+    <div class="div-e">
+      <div class="side"></div>
+      <div class="mid">◆ &nbsp; חמש אצבעות &nbsp; ◆</div>
+      <div class="side"></div>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תוכן חמש</span>
+      <div class="s-title">האזינו, צפו וקראו</div>
+      <div class="s-body">תיאור הסקשן הבא לדוגמה.</div>
+    </div>
+  </div>
+
+  <!-- F -->
+  <div class="option-block">
+    <div class="option-meta">
+      <span class="num">F</span>
+      <h2>Dashed Rule</h2>
+      <p>קו מקווקו — עדין ולא דומיננטי</p>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תחומי פעילות</span>
+      <div class="s-title">הכירו את התכניות שלנו</div>
+      <div class="s-body">תיאור הסקשן הקודם לדוגמה.</div>
+    </div>
+    <div class="div-f">
+      <svg viewBox="0 0 1000 2" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <line class="dash-static" x1="0" y1="1" x2="1000" y2="1" />
+      </svg>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תוכן חמש</span>
+      <div class="s-title">האזינו, צפו וקראו</div>
+      <div class="s-body">תיאור הסקשן הבא לדוגמה.</div>
+    </div>
+  </div>
+
+  <!-- G -->
+  <div class="option-block">
+    <div class="option-meta">
+      <span class="num">G</span>
+      <h2>Section Stamp</h2>
+      <p>תג ממוספר עם שם הסקשן הבא — מוסיף עומק ניווטי</p>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תחומי פעילות</span>
+      <div class="s-title">הכירו את התכניות שלנו</div>
+      <div class="s-body">תיאור הסקשן הקודם לדוגמה.</div>
+    </div>
+    <div class="div-g">
+      <div class="rule"></div>
+      <div class="badge">
+        <div class="badge-num">03</div>
+        <div class="badge-text">תוכן חמש</div>
+      </div>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תוכן חמש</span>
+      <div class="s-title">האזינו, צפו וקראו</div>
+      <div class="s-body">תיאור הסקשן הבא לדוגמה.</div>
+    </div>
+  </div>
+
+  <!-- H -->
+  <div class="option-block">
+    <div class="option-meta">
+      <span class="num">H</span>
+      <h2>Gradient Band</h2>
+      <p>פס עבה שמתחיל כהה ומסתיים כהה עם כתום במרכז</p>
+    </div>
+    <div class="section-stub">
+      <span class="s-tag">תחומי פעילות</span>
+      <div class="s-title">הכירו את התכניות שלנו</div>
+      <div class="s-body">תיאור הסקשן הקודם לדוגמה.</div>
+    </div>
+    <div class="div-h"></div>
+    <div class="section-stub">
+      <span class="s-tag">תוכן חמש</span>
+      <div class="s-title">האזינו, צפו וקראו</div>
+      <div class="s-body">תיאור הסקשן הבא לדוגמה.</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

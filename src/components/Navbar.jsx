@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { label: 'עמיר מנחם', href: '#amir' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ onContactOpen }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -50,7 +50,7 @@ export default function Navbar() {
         </div>
 
         {/* CTA */}
-        <MagneticButton className="ms-2 me-1 bg-[#ff8714] text-white px-5 py-2 rounded-full text-sm font-bold">
+        <MagneticButton onClick={onContactOpen} className="ms-2 me-1 bg-[#ff8714] text-white px-5 py-2 rounded-full text-sm font-bold">
           יצירת קשר
         </MagneticButton>
       </nav>
@@ -93,7 +93,10 @@ export default function Navbar() {
                 {label}
               </a>
             ))}
-            <button className="w-full mt-4 bg-[#ff8714] text-white py-3.5 rounded-xl font-bold text-base">
+            <button
+              onClick={() => { setMenuOpen(false); onContactOpen() }}
+              className="w-full mt-4 bg-[#ff8714] text-white py-3.5 rounded-xl font-bold text-base"
+            >
               יצירת קשר
             </button>
           </div>
@@ -104,7 +107,7 @@ export default function Navbar() {
 }
 
 /* Magnetic button with sliding overlay */
-function MagneticButton({ children, className }) {
+function MagneticButton({ children, className, onClick }) {
   const onEnter = (e) => { e.currentTarget.style.transform = 'scale(1.04)' }
   const onLeave = (e) => { e.currentTarget.style.transform = 'scale(1)' }
 
@@ -114,6 +117,7 @@ function MagneticButton({ children, className }) {
       style={{ transition: 'transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
+      onClick={onClick}
     >
       <span className="absolute inset-0 bg-white/25 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full" />
       <span className="relative">{children}</span>

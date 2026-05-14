@@ -39,6 +39,17 @@ export default function WhoWeAre() {
       <div className="pointer-events-none absolute bottom-[-10%] left-[20%] w-[70vw] h-[50vh] rounded-full bg-[#ff8714]/14 blur-[160px]" />
       <div className="pointer-events-none absolute top-[-10%] right-[-5%] w-[40vw] h-[60vh] rounded-full bg-[#ff8714]/8 blur-[140px]" />
 
+      {/* ── Halftone dot grid ── */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #000032 1.2px, transparent 1.2px)',
+          backgroundSize: '22px 22px',
+          opacity: 0.04,
+        }}
+      />
+
+
       {/* ── Full-bleed two-column layout ── */}
       <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_2.2fr] gap-0 md:min-h-[100dvh]">
 

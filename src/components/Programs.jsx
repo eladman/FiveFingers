@@ -28,7 +28,7 @@ const PROGRAMS = [
     badge: 'גילאי 18+',
     description:
       'תכנית ההמשך, מטרתה יצירת המשכיות לתהליך החינוכי. התכנית מותאמת לשינויים בחייהם של צעירים ומכווינה להשפעה חינוכית וחברתית על ידי תפיסת עמדות מפתח בחברה הישראלית.',
-    imageSrc: '/our_product_pics/yoav.jpg',
+    imageSrc: '/our_product_pics/yoav_pic.jpg',
   },
   {
     id: 'collab',
@@ -83,6 +83,36 @@ export default function Programs() {
       {/* ── Atmospheric glows ── */}
       <div className="pointer-events-none absolute top-[-5%] right-[-5%] w-[40vw] h-[50vh] rounded-full bg-[#ff8714]/8 blur-[140px]" />
       <div className="pointer-events-none absolute bottom-[20%] left-[10%] w-[50vw] h-[40vh] rounded-full bg-[#ff8714]/10 blur-[160px]" />
+
+      {/* ── Halftone dot grid ── */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #000032 1.2px, transparent 1.2px)',
+          backgroundSize: '22px 22px',
+          opacity: 0.04,
+        }}
+      />
+
+      {/* ── Hand watermark ── */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <img
+          src="/logo.png"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            left: '-3%',
+            top: '50%',
+            transform: 'translateY(-50%) rotate(-12deg) scaleX(-1)',
+            width: '44%',
+            maxWidth: '440px',
+            opacity: 0.05,
+            filter: 'grayscale(1)',
+            userSelect: 'none',
+          }}
+        />
+      </div>
 
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
 
