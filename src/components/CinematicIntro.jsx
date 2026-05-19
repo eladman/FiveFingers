@@ -156,7 +156,7 @@ export default function CinematicIntro({ onComplete }) {
         <h1 className="leading-none mb-0" style={{ lineHeight: 1 }}>
           {/* Word 1 */}
           <span
-            className="intro-word-1 block font-inter font-black text-white tracking-tight"
+            className="intro-word-1 block font-ragmarom text-white tracking-tight"
             style={{
               fontSize: 'clamp(4.5rem, 14vw, 13rem)',
               textShadow: '0 4px 32px rgba(0,0,0,0.95), 0 0 60px rgba(0,0,0,0.8)',
@@ -168,7 +168,7 @@ export default function CinematicIntro({ onComplete }) {
 
           {/* Word 2 */}
           <span
-            className="intro-word-2 block font-inter font-black text-white tracking-tight"
+            className="intro-word-2 block font-ragmarom text-white tracking-tight"
             style={{
               fontSize: 'clamp(4.5rem, 14vw, 13rem)',
               textShadow: '0 4px 32px rgba(0,0,0,0.95), 0 0 60px rgba(0,0,0,0.8)',
@@ -193,7 +193,7 @@ export default function CinematicIntro({ onComplete }) {
 
         {/* Subtitle */}
         <p
-          className="intro-subtitle font-frank italic text-[#ff8714] mt-5 md:mt-7"
+          className="intro-subtitle font-ragmarom text-[#ff8714] mt-5 md:mt-7"
           style={{
             fontSize: 'clamp(1.5rem, 4.5vw, 4.5rem)',
             textShadow: '0 2px 20px rgba(0,0,0,0.9)',

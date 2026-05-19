@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Custom fonts ──────────────────────────────────────────── */
+@font-face {
+  font-family: 'RagMarom';
+  src: url('/fonts/rag-marom-2.1.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ─── Global noise overlay ─────────────────────────────────── */
 body::after {
   content: '';
@@ -96,6 +105,7 @@ a:hover {
 }
 
 /* ─── Utility classes ───────────────────────────────────────── */
-.font-inter  { font-family: 'Inter', sans-serif; }
-.font-frank  { font-family: 'Frank Ruhl Libre', serif; }
-.font-heebo  { font-family: 'Heebo', sans-serif; }
+.font-inter    { font-family: 'Inter', sans-serif; }
+.font-frank    { font-family: 'Frank Ruhl Libre', serif; }
+.font-heebo    { font-family: 'Heebo', sans-serif; }
+.font-ragmarom { font-family: 'RagMarom', sans-serif; }

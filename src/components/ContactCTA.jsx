@@ -39,10 +39,10 @@ export default function ContactCTA() {
         </p>
 
         {/* Headline */}
-        <h2 className="contact-el text-[#0d1b4b] font-bold text-5xl md:text-7xl leading-tight mb-6">
+        <h2 className="contact-el text-[#0d1b4b] font-ragmarom text-5xl md:text-7xl leading-tight mb-6">
           מוכנים לצעד
           <br />
-          <span className="font-frank italic text-[#ff8714]">הבא?</span>
+          <span className="font-ragmarom text-[#ff8714]">הבא?</span>
         </h2>
 
         {/* Sub */}

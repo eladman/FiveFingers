@@ -119,13 +119,13 @@ export default function Programs() {
         {/* ── Section heading ── */}
         <div className="text-center pt-24 pb-16">
           <h2
-            className="prog-section-heading font-inter font-extrabold text-[#000032] leading-none tracking-tight"
+            className="prog-section-heading font-heebo font-extrabold text-[#000032] leading-none tracking-tight"
             style={{ fontSize: 'clamp(2.4rem, 4.5vw, 5rem)' }}
           >
             תחומי פעילות
           </h2>
           <p
-            className="prog-section-heading font-frank italic text-[#ff8714] mt-3 leading-snug"
+            className="prog-section-heading font-heebo text-[#ff8714] mt-3 leading-snug"
             style={{ fontSize: 'clamp(1.2rem, 2vw, 2.2rem)' }}
           >
             הכירו את התכניות שלנו
@@ -192,7 +192,7 @@ export default function Programs() {
                 <div className={`prog-animate ${textOrder} flex flex-col gap-5 ${textAlign}`}>
                   {/* Title */}
                   <h3
-                    className="font-inter font-extrabold text-[#000032] leading-[0.95] tracking-tight"
+                    className="font-heebo font-extrabold text-[#000032] leading-[0.95] tracking-tight"
                     style={{ fontSize: 'clamp(2.4rem, 4vw, 5rem)' }}
                   >
                     {prog.title}
@@ -200,7 +200,7 @@ export default function Programs() {
 
                   {/* Badge */}
                   <p
-                    className="font-frank italic text-[#ff8714] leading-none"
+                    className="font-heebo text-[#ff8714] leading-none"
                     style={{ fontSize: 'clamp(1.1rem, 1.6vw, 1.6rem)' }}
                   >
                     {prog.badge}
@@ -218,7 +218,7 @@ export default function Programs() {
                   <div>
                     <a
                       href={`#${prog.id}`}
-                      className="inline-block font-inter font-bold text-white bg-[#ff8714] px-8 py-3.5 rounded-xl text-base hover:bg-[#e07610] transition-colors duration-200"
+                      className="inline-block font-heebo font-bold text-white bg-[#ff8714] px-8 py-3.5 rounded-xl text-base hover:bg-[#e07610] transition-colors duration-200"
                     >
                       למידע נוסף
                     </a>

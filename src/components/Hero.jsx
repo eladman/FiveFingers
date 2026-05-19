@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ChevronLeft } from 'lucide-react'
 
@@ -30,7 +30,7 @@ function SplitText({ children, wordClass }) {
 
 export default function Hero({ onComplete }) {
   const ref = useRef(null)
-  const [current, setCurrent] = useState(0)
+  const imgRefs = useRef([])
   const onCompleteRef = useRef(onComplete)
   onCompleteRef.current = onComplete
 
@@ -90,7 +90,15 @@ export default function Hero({ onComplete }) {
   }, []) // run once on mount only
 
   useEffect(() => {
-    const id = setInterval(() => setCurrent(i => (i + 1) % IMAGES.length), 5000)
+    let current = 0
+    const imgs = imgRefs.current
+    if (!imgs.length) return
+    const id = setInterval(() => {
+      const prev = current
+      current = (current + 1) % imgs.length
+      imgs[prev].style.opacity = '0'
+      imgs[current].style.opacity = '1'
+    }, 5000)
     return () => clearInterval(id)
   }, [])
 
@@ -105,12 +113,14 @@ export default function Hero({ onComplete }) {
         {IMAGES.map((src, i) => (
           <img
             key={src}
+            ref={el => imgRefs.current[i] = el}
             src={src}
             alt=""
             className="absolute inset-0 w-full h-full object-cover"
             style={{
-              opacity: i === current ? 1 : 0,
+              opacity: i === 0 ? 1 : 0,
               transition: 'opacity 1.2s ease-in-out',
+              willChange: 'opacity',
             }}
             loading={i === 0 ? 'eager' : 'lazy'}
           />
@@ -130,8 +140,9 @@ export default function Hero({ onComplete }) {
       <div className="relative z-10 w-full max-w-6xl mx-auto px-8 md:px-16 text-center select-none">
         {/* Main headline — single line */}
         <h1
-          className="mb-0 flex items-center justify-center gap-[0.25em] font-inter font-black text-white tracking-tight"
+          className="mb-0 flex items-center justify-center gap-[0.25em] text-white tracking-tight"
           style={{
+            fontFamily: "'RagMarom', sans-serif",
             fontSize: 'clamp(3rem, 9vw, 9.5rem)',
             lineHeight: 0.95,
             textShadow: '0 4px 32px rgba(0,0,0,0.95), 0 0 60px rgba(0,0,0,0.8)',
@@ -153,8 +164,9 @@ export default function Hero({ onComplete }) {
 
         {/* Subtitle */}
         <p
-          className="hero-subtitle font-frank italic text-[#ff8714] mt-5 md:mt-7"
+          className="hero-subtitle text-[#ff8714] mt-5 md:mt-7"
           style={{
+            fontFamily: "'RagMarom', sans-serif",
             fontSize: 'clamp(1.6rem, 4.5vw, 4.5rem)',
             textShadow: '0 2px 20px rgba(0,0,0,0.9)',
           }}

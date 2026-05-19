@@ -103,13 +103,13 @@ export default function FiveContent() {
         {/* ── Section heading ── */}
         <div className="text-center pt-24 pb-16">
           <h2
-            className="fcontent-heading font-inter font-extrabold text-[#000032] leading-none tracking-tight"
+            className="fcontent-heading font-ragmarom text-[#000032] leading-none tracking-tight"
             style={{ fontSize: 'clamp(2.4rem, 4.5vw, 5rem)' }}
           >
             תוכן חמש
           </h2>
           <p
-            className="fcontent-heading font-frank italic text-[#ff8714] mt-3 leading-snug"
+            className="fcontent-heading font-ragmarom text-[#ff8714] mt-3 leading-snug"
             style={{ fontSize: 'clamp(1.2rem, 2vw, 2.2rem)' }}
           >
             האזינו, צפו וקראו
@@ -126,7 +126,7 @@ export default function FiveContent() {
             <div className="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-[#000032]/8">
               <SpotifyIcon size={24} />
               <h3
-                className="font-inter font-bold text-[#000032]"
+                className="font-heebo font-bold text-[#000032]"
                 style={{ fontSize: 'clamp(1rem, 1.3vw, 1.2rem)' }}
               >
                 פודקאסט חמש אצבעות
@@ -170,7 +170,7 @@ export default function FiveContent() {
             {/* Card body */}
             <div className="flex flex-col gap-3 p-5 bg-[#fafaf8] group-hover:bg-[#0d1b4b] transition-colors duration-300 flex-1">
               <h3
-                className="font-inter font-bold text-[#000032] group-hover:text-white transition-colors duration-300"
+                className="font-heebo font-bold text-[#000032] group-hover:text-white transition-colors duration-300"
                 style={{ fontSize: 'clamp(1rem, 1.3vw, 1.25rem)' }}
               >
                 כתבה ב-Ynet
@@ -178,7 +178,7 @@ export default function FiveContent() {
               <p className="font-heebo text-[#000032]/60 group-hover:text-white/60 leading-relaxed transition-colors duration-300 text-sm">
                 קראו על תנועת חמש אצבעות וההשפעה שלנו על הנוער הישראלי.
               </p>
-              <span className="mt-auto inline-block font-inter font-bold text-white bg-[#ff8714] px-5 py-2 rounded-xl text-sm self-start">
+              <span className="mt-auto inline-block font-heebo font-bold text-white bg-[#ff8714] px-5 py-2 rounded-xl text-sm self-start">
                 לקריאת הכתבה &larr;
               </span>
             </div>
@@ -205,7 +205,7 @@ export default function FiveContent() {
               />
               <div className="relative flex flex-col items-center gap-3">
                 <YouTubeIcon size={56} />
-                <span className="font-inter font-bold text-white/80 tracking-wide text-sm">
+                <span className="font-heebo font-bold text-white/80 tracking-wide text-sm">
                   Five Fingers Israel
                 </span>
               </div>
@@ -213,7 +213,7 @@ export default function FiveContent() {
             {/* Card body */}
             <div className="flex flex-col gap-3 p-5 bg-[#fafaf8] group-hover:bg-[#0d1b4b] transition-colors duration-300 flex-1">
               <h3
-                className="font-inter font-bold text-[#000032] group-hover:text-white transition-colors duration-300"
+                className="font-heebo font-bold text-[#000032] group-hover:text-white transition-colors duration-300"
                 style={{ fontSize: 'clamp(1rem, 1.3vw, 1.25rem)' }}
               >
                 ערוץ חמש ביוטיוב
@@ -221,7 +221,7 @@ export default function FiveContent() {
               <p className="font-heebo text-[#000032]/60 group-hover:text-white/60 leading-relaxed transition-colors duration-300 text-sm">
                 צפו בסרטוני תנועת חמש אצבעות — תכניות, אירועים ורגעים שמגדירים את הדרך.
               </p>
-              <span className="mt-auto inline-block font-inter font-bold text-white bg-[#ff8714] px-5 py-2 rounded-xl text-sm self-start">
+              <span className="mt-auto inline-block font-heebo font-bold text-white bg-[#ff8714] px-5 py-2 rounded-xl text-sm self-start">
                 לערוץ שלנו &larr;
               </span>
             </div>

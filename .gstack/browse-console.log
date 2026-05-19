@@ -1,0 +1,56 @@
+[2026-05-19T09:39:24.983Z] [debug] [vite] connecting...
+[2026-05-19T09:39:25.006Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-05-19T09:39:25.122Z] [debug] [vite] connected.
+[2026-05-19T09:41:57.504Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-05-19T09:46:05.648Z] [debug] [vite] connecting...
+[2026-05-19T09:46:05.653Z] [debug] [vite] connected.
+[2026-05-19T09:46:05.663Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-05-19T09:46:06.370Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-05-19T09:47:04.708Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
+[2026-05-19T09:47:04.708Z] [debug] [vite] hot updated: /src/index.css
+[2026-05-19T09:47:09.276Z] [debug] [vite] hot updated: /src/App.jsx
+[2026-05-19T09:47:09.276Z] [debug] [vite] hot updated: /src/index.css
+[2026-05-19T09:47:15.219Z] [debug] [vite] connecting...
+[2026-05-19T09:47:15.221Z] [debug] [vite] connected.
+[2026-05-19T09:47:15.227Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-05-19T09:47:16.555Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-05-19T09:47:27.046Z] [debug] [vite] connecting...
+[2026-05-19T09:47:27.048Z] [debug] [vite] connected.
+[2026-05-19T09:47:27.052Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-05-19T09:47:28.610Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-05-19T09:49:01.501Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
+[2026-05-19T09:49:01.501Z] [debug] [vite] hot updated: /src/index.css
+[2026-05-19T09:49:05.622Z] [debug] [vite] connecting...
+[2026-05-19T09:49:05.623Z] [debug] [vite] connected.
+[2026-05-19T09:49:05.647Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-05-19T09:49:07.113Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-05-19T09:51:28.953Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
+[2026-05-19T09:51:28.953Z] [debug] [vite] hot updated: /src/index.css
+[2026-05-19T09:51:35.833Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
+[2026-05-19T09:51:35.833Z] [debug] [vite] hot updated: /src/index.css
+[2026-05-19T09:51:41.029Z] [debug] [vite] connecting...
+[2026-05-19T09:51:41.034Z] [debug] [vite] connected.
+[2026-05-19T09:51:41.036Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-05-19T09:51:42.705Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-05-19T09:52:12.537Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
+[2026-05-19T09:52:12.537Z] [debug] [vite] hot updated: /src/index.css
+[2026-05-19T09:52:17.355Z] [debug] [vite] hot updated: /src/App.jsx
+[2026-05-19T09:52:17.355Z] [debug] [vite] hot updated: /src/index.css
+[2026-05-19T09:52:20.448Z] [debug] [vite] connecting...
+[2026-05-19T09:52:20.451Z] [debug] [vite] connected.
+[2026-05-19T09:52:20.453Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-05-19T09:52:21.974Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-05-19T09:54:37.712Z] [debug] [vite] hot updated: /src/components/Navbar.jsx
+[2026-05-19T09:54:37.713Z] [debug] [vite] hot updated: /src/index.css
+[2026-05-19T10:03:32.275Z] [debug] [vite] connecting...
+[2026-05-19T10:03:32.277Z] [debug] [vite] connected.
+[2026-05-19T10:03:32.308Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-05-19T10:03:33.904Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-05-19T10:05:41.366Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
+[2026-05-19T10:05:41.366Z] [debug] [vite] hot updated: /src/index.css
+[2026-05-19T10:17:52.790Z] [debug] [vite] connecting...
+[2026-05-19T10:17:52.793Z] [debug] [vite] connected.
+[2026-05-19T10:17:52.830Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-05-19T10:17:55.152Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-05-19T10:21:06.027Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
+[2026-05-19T10:21:06.027Z] [debug] [vite] hot updated: /src/index.css

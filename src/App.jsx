@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import WhoWeAre from './components/WhoWeAre'
+import ManInArena from './components/ManInArena'
 import Programs from './components/Programs'
 import FiveContent from './components/FiveContent'
 import Footer from './components/Footer'
@@ -22,6 +23,8 @@ export default function App() {
         <Hero onComplete={() => setNavReady(true)} />
         <SectionDivider fromColor="#111111" toColor="#fafaf8" />
         <WhoWeAre />
+        <SectionDivider fromColor="#fafaf8" toColor="#fafaf8" />
+        <ManInArena />
         <SectionDivider fromColor="#fafaf8" toColor="#fafaf8" reverse />
         <Programs />
         <SectionDivider fromColor="#fafaf8" toColor="#ffffff" />

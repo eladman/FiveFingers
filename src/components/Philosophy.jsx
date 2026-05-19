@@ -85,7 +85,7 @@ export default function Philosophy() {
         </p>
 
         {/* Bold statement */}
-        <div className="text-3xl md:text-5xl lg:text-6xl font-frank italic leading-tight text-white overflow-hidden">
+        <div className="text-3xl md:text-5xl lg:text-6xl font-heebo leading-tight text-white overflow-hidden">
           {BOLD_PREFIX.split(' ').map((word, i) => (
             <span key={i} className="phil-word inline-block ms-3">
               {word}

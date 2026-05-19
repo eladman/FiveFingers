@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
     "gsap": "^3.12.5",
     "lucide-react": "^0.400.0",
     "react": "^19.0.0",

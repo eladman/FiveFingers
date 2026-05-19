@@ -379,10 +379,10 @@ export default function Features() {
             <p className="features-eyebrow font-mono text-[#ff8714] text-xs tracking-widest uppercase mb-4">
               מה אנחנו מפתחים
             </p>
-            <h2 className="features-headline text-white font-bold text-5xl md:text-7xl leading-[1.05] tracking-tight">
+            <h2 className="features-headline text-white font-ragmarom text-5xl md:text-7xl leading-[1.05] tracking-tight">
               שלושה מעגלי
               <br />
-              <span className="font-frank italic text-[#ff8714]">צמיחה.</span>
+              <span className="font-ragmarom text-[#ff8714]">צמיחה.</span>
             </h2>
           </div>
 

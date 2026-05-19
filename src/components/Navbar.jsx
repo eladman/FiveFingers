@@ -3,11 +3,11 @@ import { Menu, X } from 'lucide-react'
 import logo from '../assets/logo.png'
 
 const NAV_LINKS = [
-  { label: 'מסך הבית', href: '#home' },
   { label: 'ליבה', href: '#liabah' },
   { label: 'אקדמיה', href: '#academy' },
-  { label: 'שת"פ', href: '#collabs' },
+  { label: 'פרויקטים', href: '#collabs' },
   { label: 'בוגרים', href: '#alumni' },
+  { label: 'צוות', href: '#team' },
   { label: 'עמיר מנחם', href: '#amir' },
 ]
 

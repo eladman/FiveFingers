@@ -154,10 +154,10 @@ export default function Protocol() {
         <p className="font-mono text-[#ff8714] text-xs tracking-widest uppercase mb-3">
           המתודולוגיה שלנו
         </p>
-        <h2 className="text-white font-bold text-4xl md:text-5xl leading-tight">
+        <h2 className="text-white font-ragmarom text-4xl md:text-5xl leading-tight">
           שלוש אבני
           <br />
-          <span className="font-frank italic text-[#ff8714]">הבניין.</span>
+          <span className="font-ragmarom text-[#ff8714]">הבניין.</span>
         </h2>
       </div>
 
@@ -177,7 +177,7 @@ export default function Protocol() {
             <span className="font-mono text-[#ff8714] text-sm tracking-[0.3em]">{step.num}</span>
 
             {/* Title */}
-            <h3 className="text-white font-frank italic text-6xl md:text-8xl mt-3 mb-6 leading-none">
+            <h3 className="text-white font-ragmarom text-6xl md:text-8xl mt-3 mb-6 leading-none">
               {step.title}
             </h3>
 
