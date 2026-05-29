@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>האדם בזירה — Layout Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Frank+Ruhl+Libre:wght@400;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'RagMarom';
+      src: url('/fonts/rag-marom-2.1.otf') format('opentype');
+      font-display: swap;
+    }
+
+    :root {
+      --orange: #ff8714;
+      --navy: #000032;
+      --cream: #fafaf8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: #0a0a1a;
+      direction: rtl;
+    }
+
+    /* ── Fixed nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(0, 0, 25, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,135,20,0.18);
+      padding: 0 32px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-left: auto;
+    }
+    .nav a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      padding: 5px 14px;
+      border-radius: 100px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .nav a:hover { color: rgba(255,255,255,0.85); border-color: rgba(255,135,20,0.35); }
+    .nav a.active { color: #fff; background: rgba(255,135,20,0.12); border-color: rgba(255,135,20,0.5); }
+
+    /* ── Section wrapper ── */
+    .variant {
+      position: relative;
+      min-height: 100vh;
+      background: var(--cream);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Halftone dot grid — same as site */
+    .variant::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #000032 1.2px, transparent 1.2px);
+      background-size: 22px 22px;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
+    /* Variant badge */
+    .badge {
+      position: absolute;
+      top: 80px;
+      left: 32px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      opacity: 0.5;
+      z-index: 10;
+    }
+
+    /* Orange divider between sections */
+    .sep {
+      height: 2px;
+      background: linear-gradient(to left, transparent 0%, var(--orange) 30%, var(--orange) 70%, transparent 100%);
+      opacity: 0.25;
+    }
+
+    /* ── Shared text atoms ── */
+    .t-label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .t-title {
+      font-family: 'RagMarom', 'Frank Ruhl Libre', serif;
+      color: var(--navy);
+      line-height: 0.9;
+    }
+    .t-quote {
+      font-family: 'Heebo', sans-serif;
+      color: var(--navy);
+      line-height: 1.75;
+    }
+    .t-attr {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(0,0,50,0.38);
+      letter-spacing: 0.02em;
+    }
+    .t-body {
+      font-family: 'Heebo', sans-serif;
+      color: rgba(0,0,50,0.52);
+      line-height: 1.8;
+      font-size: clamp(0.88rem, 1vw, 1rem);
+    }
+    .t-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+    .t-hrule {
+      height: 1px;
+      background: rgba(0,0,50,0.09);
+      flex-shrink: 0;
+    }
+
+
+    /* ══════════════════════════════════════
+       V1 — CENTERED  (refined current)
+    ══════════════════════════════════════ */
+    #v1 .wrap {
+      position: relative; z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 140px 48px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 28px;
+    }
+    #v1 .t-title { font-size: clamp(4rem, 7vw, 8rem); }
+    #v1 .rule-row {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    #v1 .rule-row .t-hrule { flex: 1; }
+    #v1 .t-quote { font-size: clamp(1.1rem, 1.7vw, 1.9rem); max-width: 600px; }
+
+
+    /* ══════════════════════════════════════
+       V2 — ASYMMETRIC SPLIT
+    ══════════════════════════════════════ */
+    #v2 { align-items: stretch; }
+    #v2 .wrap {
+      position: relative; z-index: 1;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      min-height: 100vh;
+    }
+    /* Right column — meta */
+    #v2 .meta {
+      padding: 130px 52px 80px 40px;
+      border-left: 1px solid rgba(0,0,50,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    #v2 .meta-top { display: flex; flex-direction: column; gap: 22px; }
+    #v2 .t-title { font-size: clamp(2.8rem, 3.8vw, 5rem); }
+    /* Left column — quote */
+    #v2 .qcol {
+      padding: 130px 64px 80px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+    #v2 .big-mark {
+      font-family: 'RagMarom', 'Frank Ruhl Libre', serif;
+      font-size: clamp(6rem, 10vw, 12rem);
+      color: var(--orange);
+      opacity: 0.10;
+      line-height: 0.7;
+      display: block;
+      margin-bottom: -8px;
+    }
+    #v2 .t-quote { font-size: clamp(1.15rem, 1.7vw, 2rem); }
+
+
+    /* ══════════════════════════════════════
+       V3 — TYPOGRAPHIC SCALE POEM
+    ══════════════════════════════════════ */
+    #v3 .wrap {
+      position: relative; z-index: 1;
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 140px 64px 100px;
+    }
+    #v3 .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      gap: 32px;
+    }
+    #v3 .t-title { font-size: clamp(2.4rem, 3.6vw, 4.5rem); }
+    #v3 .attr-block { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+
+    #v3 .lines { border-top: 2px solid rgba(0,0,50,0.07); }
+    #v3 .line-row {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(0,0,50,0.06);
+    }
+    #v3 .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      opacity: 0.5;
+      flex-shrink: 0;
+      margin-bottom: 2px;
+    }
+    #v3 .ltext { font-family: 'Heebo', sans-serif; color: var(--navy); flex: 1; }
+    #v3 .ltext.xl { font-size: clamp(1.6rem, 3vw, 3.8rem); font-weight: 700; line-height: 1.1; }
+    #v3 .ltext.lg { font-size: clamp(1.2rem, 2vw, 2.5rem); font-weight: 400; line-height: 1.2; }
+    #v3 .ltext.md { font-size: clamp(1rem, 1.4vw, 1.8rem); font-weight: 300; line-height: 1.35; }
+    #v3 .ltext.sm { font-size: clamp(0.9rem, 1.1vw, 1.3rem); font-weight: 300; line-height: 1.45; color: rgba(0,0,50,0.7); }
+
+    #v3 .bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 44px;
+      gap: 40px;
+    }
+    #v3 .t-body { max-width: 440px; }
+
+
+    /* ══════════════════════════════════════
+       V4 — FRAMED INSCRIPTION
+    ══════════════════════════════════════ */
+    #v4 .wrap {
+      position: relative; z-index: 1;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 140px 48px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 28px;
+    }
+    #v4 .t-title { font-size: clamp(3rem, 5.5vw, 6.5rem); }
+
+    #v4 .frame {
+      position: relative;
+      width: 100%;
+      border: 1px solid rgba(0,0,50,0.14);
+      padding: 52px 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    /* Four corner ornaments */
+    #v4 .frame .c { position: absolute; width: 14px; height: 14px; border-color: var(--orange); border-style: solid; opacity: 0.55; }
+    #v4 .frame .c.tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+    #v4 .frame .c.tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    #v4 .frame .c.br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+    #v4 .frame .c.bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+
+    #v4 .t-quote { font-size: clamp(1.05rem, 1.5vw, 1.65rem); }
+
+
+    /* ══════════════════════════════════════
+       V5 — FULL-BLEED QUOTE
+    ══════════════════════════════════════ */
+    #v5 .wrap {
+      position: relative; z-index: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 140px 64px 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    #v5 .eyebrow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 52px;
+    }
+    #v5 .t-title-sm {
+      font-family: 'RagMarom', 'Frank Ruhl Libre', serif;
+      color: var(--navy);
+      font-size: clamp(1.6rem, 2.5vw, 3rem);
+      line-height: 1;
+      opacity: 0.35;
+    }
+    /* The quote lines are HUGE */
+    #v5 .giant-line {
+      font-family: 'RagMarom', 'Frank Ruhl Libre', serif;
+      color: var(--navy);
+      display: block;
+      line-height: 0.95;
+      transition: color 0.3s;
+    }
+    #v5 .giant-line:hover { color: var(--orange); }
+    #v5 .gl1 { font-size: clamp(3.2rem, 7vw, 9rem);  border-top: 1px solid rgba(0,0,50,0.08); padding-top: 18px; }
+    #v5 .gl2 { font-size: clamp(2.4rem, 5.5vw, 7rem); padding-top: 10px; }
+    #v5 .gl3 { font-size: clamp(1.8rem, 4vw, 5rem); padding-top: 8px; color: rgba(0,0,50,0.6); }
+    #v5 .gl4 { font-size: clamp(1.2rem, 2.5vw, 3.2rem); padding-top: 6px; color: rgba(0,0,50,0.35); padding-bottom: 18px; border-bottom: 1px solid rgba(0,0,50,0.08); }
+
+    #v5 .foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 40px;
+      gap: 48px;
+    }
+    #v5 .t-body { max-width: 480px; }
+
+
+    /* ══════════════════════════════════════
+       V6 — RIGHT GRAVITY
+       Everything anchors right, quote cascades down right-aligned
+    ══════════════════════════════════════ */
+    #v6 .wrap {
+      position: relative; z-index: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 64px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: right;
+      gap: 0;
+    }
+    #v6 .header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    #v6 .header .t-rule { margin-right: 0; }
+    #v6 .gl {
+      font-family: 'RagMarom', 'Frank Ruhl Libre', serif;
+      color: var(--navy);
+      display: block;
+      line-height: 0.95;
+      text-align: right;
+      width: 100%;
+      /* subtle left notch — visual anchor */
+      padding-left: 20px;
+      border-left: 2px solid transparent;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    #v6 .gl:hover { border-left-color: var(--orange); }
+    #v6 .gl.a { font-size: clamp(3rem, 7vw, 9rem);   border-top: 1px solid rgba(0,0,50,0.08); padding-top: 16px; }
+    #v6 .gl.b { font-size: clamp(2.2rem, 5vw, 6.5rem); padding-top: 8px; }
+    #v6 .gl.c { font-size: clamp(1.6rem, 3.5vw, 4.8rem); padding-top: 6px; color: rgba(0,0,50,0.6); }
+    #v6 .gl.d { font-size: clamp(1.1rem, 2.2vw, 3rem); padding-top: 5px; color: rgba(0,0,50,0.35); padding-bottom: 16px; border-bottom: 1px solid rgba(0,0,50,0.08); }
+    #v6 .foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      margin-top: 36px;
+      gap: 48px;
+    }
+    #v6 .t-body { max-width: 440px; text-align: right; }
+
+
+    /* ══════════════════════════════════════
+       V7 — GHOST TITLE
+       Enormous ghosted "האדם בזירה" as background layer
+    ══════════════════════════════════════ */
+    #v7 { overflow: hidden; }
+    #v7 .ghost {
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translateY(-50%);
+      font-family: 'RagMarom', 'Frank Ruhl Libre', serif;
+      font-size: clamp(10rem, 20vw, 26rem);
+      color: var(--navy);
+      opacity: 0.052;
+      white-space: nowrap;
+      pointer-events: none;
+      line-height: 1;
+      z-index: 0;
+      user-select: none;
+    }
+    #v7 .wrap {
+      position: relative; z-index: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 130px 64px 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    #v7 .top {
+      display: flex;
+      justify-content: flex-end;  /* push to right */
+      margin-bottom: 56px;
+    }
+    #v7 .top-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    /* Re-use #v5 giant-line sizing */
+    #v7 .giant-line {
+      font-family: 'RagMarom', 'Frank Ruhl Libre', serif;
+      color: var(--navy);
+      display: block;
+      line-height: 0.95;
+      transition: color 0.3s;
+    }
+    #v7 .giant-line:hover { color: var(--orange); }
+    #v7 .gl1 { font-size: clamp(3.2rem, 7vw, 9rem);  border-top: 1px solid rgba(0,0,50,0.08); padding-top: 18px; }
+    #v7 .gl2 { font-size: clamp(2.4rem, 5.5vw, 7rem); padding-top: 10px; }
+    #v7 .gl3 { font-size: clamp(1.8rem, 4vw, 5rem); padding-top: 8px; color: rgba(0,0,50,0.6); }
+    #v7 .gl4 { font-size: clamp(1.2rem, 2.5vw, 3.2rem); padding-top: 6px; color: rgba(0,0,50,0.35); padding-bottom: 18px; border-bottom: 1px solid rgba(0,0,50,0.08); }
+    #v7 .foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 40px;
+      gap: 48px;
+    }
+    #v7 .t-body { max-width: 480px; }
+
+
+    /* ══════════════════════════════════════
+       V8 — TWO-COLUMN: QUOTE LEFT / TITLE RIGHT
+    ══════════════════════════════════════ */
+    #v8 { align-items: stretch; }
+    #v8 .wrap {
+      position: relative; z-index: 1;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      min-height: 100vh;
+    }
+    /* LEFT col — the cascading big quote */
+    #v8 .qside {
+      padding: 120px 60px 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+    }
+    #v8 .qside .gl {
+      font-family: 'RagMarom', 'Frank Ruhl Libre', serif;
+      color: var(--navy);
+      display: block;
+      line-height: 0.95;
+      transition: color 0.3s;
+    }
+    #v8 .qside .gl:hover { color: var(--orange); }
+    #v8 .qside .gl.a { font-size: clamp(2.8rem, 6vw, 7.5rem); border-top: 1px solid rgba(0,0,50,0.08); padding-top: 14px; }
+    #v8 .qside .gl.b { font-size: clamp(2rem, 4.5vw, 5.5rem); padding-top: 8px; }
+    #v8 .qside .gl.c { font-size: clamp(1.5rem, 3.2vw, 4rem); padding-top: 6px; color: rgba(0,0,50,0.6); }
+    #v8 .qside .gl.d { font-size: clamp(1rem, 2vw, 2.6rem); padding-top: 5px; color: rgba(0,0,50,0.35); padding-bottom: 14px; border-bottom: 1px solid rgba(0,0,50,0.08); }
+    #v8 .qside .attr-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    /* RIGHT col — title + meta, all right-aligned */
+    #v8 .tside {
+      border-right: 1px solid rgba(0,0,50,0.08);
+      padding: 120px 40px 80px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      text-align: right;
+    }
+    #v8 .tside-top {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+    }
+    #v8 .tside .big-title {
+      font-family: 'RagMarom', 'Frank Ruhl Libre', serif;
+      font-size: clamp(2.4rem, 3.5vw, 4.2rem);
+      color: var(--navy);
+      line-height: 0.9;
+      text-align: right;
+    }
+    #v8 .tside .t-body { font-size: 0.85rem; text-align: right; line-height: 1.75; }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#v1">① מרכזי</a>
+  <a href="#v2">② מפוצל</a>
+  <a href="#v3">③ שירה טיפוגרפית</a>
+  <a href="#v4">④ לוחית</a>
+  <a href="#v5">⑤ ציטוט ענק</a>
+  <a href="#v6">⑥ ימין כבידה</a>
+  <a href="#v7">⑦ כותרת רפאים</a>
+  <a href="#v8">⑧ עמודות</a>
+  <span class="nav-label">האדם בזירה — layout variants</span>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════
+     V1 — CENTERED  (clean, refined current approach)
+══════════════════════════════════════════════════ -->
+<section class="variant" id="v1">
+  <span class="badge">01 — מרכזי</span>
+  <div class="wrap">
+
+    <span class="t-label">האמונה שלנו</span>
+
+    <h2 class="t-title">האדם בזירה</h2>
+
+    <!-- meander + rules -->
+    <div class="rule-row">
+      <div class="t-hrule"></div>
+      <svg width="108" height="12" viewBox="0 0 120 12" fill="none" style="flex-shrink:0;opacity:.42">
+        <path d="M0 6H8V2H16V10H24V2H28 M32 6H40V2H48V10H56V2H60 M64 6H72V2H80V10H88V2H92 M96 6H104V2H112V10H120V2H120"
+              stroke="#ff8714" stroke-width="1.5" stroke-linecap="square"/>
+      </svg>
+      <div class="t-hrule"></div>
+    </div>
+
+    <p class="t-quote">
+      ״השבח לאדם בזירה, זה שפניו מכוסים באבק, זיעה ודם.<br>
+      זה שאינו מפסיק לשאוף ולנסות.<br>
+      זה שמנסה, שעושה, שיודע התלהבות, מחויבות וחתירה למטרה.״
+    </p>
+
+    <p class="t-attr">— תיאודור רוזוולט, 1910</p>
+
+    <div class="t-rule"></div>
+
+    <p class="t-body" style="max-width:520px;text-align:center">
+      זו האמונה שמנחה אותנו בחמש אצבעות.<br>
+      אנחנו לא מגדלים/ות צופים/ות מהצד — אנחנו מגדלים/ות אנשים/ות שנכנסים/ות לזירה.
+    </p>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ══════════════════════════════════════════════════
+     V2 — ASYMMETRIC SPLIT  (meta right / quote left)
+══════════════════════════════════════════════════ -->
+<section class="variant" id="v2">
+  <span class="badge">02 — מפוצל</span>
+  <div class="wrap">
+
+    <!-- Right: title + meta -->
+    <div class="meta">
+      <div class="meta-top">
+        <span class="t-label">האמונה שלנו</span>
+        <h2 class="t-title">האדם<br>בזירה</h2>
+        <div class="t-rule"></div>
+      </div>
+      <p class="t-body">
+        זו האמונה שמנחה אותנו בחמש אצבעות.<br>
+        אנחנו לא מגדלים/ות צופים/ות מהצד — אנחנו מגדלים/ות אנשים/ות שנכנסים/ות לזירה.<br>
+        שנוטלים/ות אחריות, שפועלים/ות, ושמשאירים/ות טביעת רגל.
+      </p>
+    </div>
+
+    <!-- Left: big quote -->
+    <div class="qcol">
+      <span class="big-mark">❝</span>
+      <p class="t-quote">
+        השבח לאדם בזירה, זה שפניו מכוסים באבק, זיעה ודם.
+        זה שאינו מפסיק לשאוף ולנסות.
+        זה שמנסה, שעושה, שיודע התלהבות, מחויבות וחתירה למטרה.
+      </p>
+      <p class="t-attr">— תיאודור רוזוולט, 1910</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ══════════════════════════════════════════════════
+     V3 — TYPOGRAPHIC SCALE POEM
+══════════════════════════════════════════════════ -->
+<section class="variant" id="v3">
+  <span class="badge">03 — שירה טיפוגרפית</span>
+  <div class="wrap">
+
+    <div class="top-row">
+      <h2 class="t-title">האדם בזירה</h2>
+      <div class="attr-block">
+        <span class="t-label">האמונה שלנו</span>
+        <div class="t-rule"></div>
+      </div>
+    </div>
+
+    <div class="lines">
+      <div class="line-row">
+        <span class="dot"></span>
+        <span class="ltext xl">השבח לאדם בזירה,</span>
+      </div>
+      <div class="line-row">
+        <span class="dot" style="opacity:.35"></span>
+        <span class="ltext lg">זה שפניו מכוסים באבק, זיעה ודם.</span>
+      </div>
+      <div class="line-row">
+        <span class="dot" style="opacity:.25"></span>
+        <span class="ltext md">זה שאינו מפסיק לשאוף ולנסות.</span>
+      </div>
+      <div class="line-row">
+        <span class="dot" style="opacity:.15"></span>
+        <span class="ltext sm">זה שמנסה, שעושה, שיודע התלהבות, מחויבות וחתירה למטרה.</span>
+      </div>
+    </div>
+
+    <div class="bottom-row">
+      <p class="t-body">
+        זו האמונה שמנחה אותנו בחמש אצבעות.<br>
+        אנחנו לא מגדלים/ות צופים/ות מהצד — אנחנו מגדלים/ות אנשים/ות שנכנסים/ות לזירה.
+      </p>
+      <p class="t-attr">— תיאודור רוזוולט, 1910</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ══════════════════════════════════════════════════
+     V4 — FRAMED INSCRIPTION / PLAQUE
+══════════════════════════════════════════════════ -->
+<section class="variant" id="v4">
+  <span class="badge">04 — לוחית</span>
+  <div class="wrap">
+
+    <span class="t-label">האמונה שלנו</span>
+    <h2 class="t-title">האדם בזירה</h2>
+
+    <div class="frame">
+      <div class="c tr"></div>
+      <div class="c tl"></div>
+      <div class="c br"></div>
+      <div class="c bl"></div>
+
+      <p class="t-quote">
+        ״השבח לאדם בזירה, זה שפניו מכוסים באבק, זיעה ודם.<br>
+        זה שאינו מפסיק לשאוף ולנסות.<br>
+        זה שמנסה, שעושה, שיודע התלהבות, מחויבות וחתירה למטרה.״
+      </p>
+      <p class="t-attr">— תיאודור רוזוולט, 1910</p>
+    </div>
+
+    <div class="t-rule"></div>
+
+    <p class="t-body" style="max-width:500px;text-align:center">
+      זו האמונה שמנחה אותנו בחמש אצבעות.<br>
+      אנחנו לא מגדלים/ות צופים/ות מהצד — אנחנו מגדלים/ות אנשים/ות שנכנסים/ות לזירה.
+    </p>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ══════════════════════════════════════════════════
+     V5 — FULL-BLEED QUOTE  (cinematic, large type)
+══════════════════════════════════════════════════ -->
+<section class="variant" id="v5">
+  <span class="badge">05 — ציטוט ענק</span>
+  <div class="wrap">
+
+    <div class="eyebrow">
+      <span class="t-label">האמונה שלנו</span>
+      <span class="t-title-sm">האדם בזירה</span>
+    </div>
+
+    <span class="giant-line gl1">״השבח לאדם בזירה,</span>
+    <span class="giant-line gl2">זה שפניו מכוסים באבק, זיעה ודם.</span>
+    <span class="giant-line gl3">זה שאינו מפסיק לשאוף ולנסות.</span>
+    <span class="giant-line gl4">זה שמנסה, שעושה...״</span>
+
+    <div class="foot">
+      <p class="t-body">
+        זו האמונה שמנחה אותנו בחמש אצבעות.<br>
+        אנחנו לא מגדלים/ות צופים/ות מהצד — אנחנו מגדלים/ות אנשים/ות שנכנסים/ות לזירה.<br>
+        שנוטלים/ות אחריות, שפועלים/ות, ושמשאירים/ות טביעת רגל.
+      </p>
+      <p class="t-attr" style="white-space:nowrap;padding-top:4px">— תיאודור רוזוולט, 1910</p>
+    </div>
+
+  </div>
+</section>
+
+
+<div class="sep"></div>
+
+
+<!-- ══════════════════════════════════════════════════
+     V6 — RIGHT GRAVITY
+     Label + title right-anchored; quote lines cascade right-aligned
+══════════════════════════════════════════════════ -->
+<section class="variant" id="v6">
+  <span class="badge">06 — ימין כבידה</span>
+  <div class="wrap">
+
+    <div class="header">
+      <span class="t-label">האמונה שלנו</span>
+      <h2 style="font-family:'RagMarom','Frank Ruhl Libre',serif;font-size:clamp(2.2rem,3.8vw,4.8rem);color:var(--navy);line-height:0.9;text-align:right">האדם בזירה</h2>
+      <div class="t-rule"></div>
+    </div>
+
+    <span class="gl a">״השבח לאדם בזירה,</span>
+    <span class="gl b">זה שפניו מכוסים באבק, זיעה ודם.</span>
+    <span class="gl c">זה שאינו מפסיק לשאוף ולנסות.</span>
+    <span class="gl d">זה שמנסה, שעושה, שיודע התלהבות, מחויבות וחתירה למטרה.״</span>
+
+    <div class="foot">
+      <p class="t-attr">— תיאודור רוזוולט, 1910</p>
+      <p class="t-body">
+        זו האמונה שמנחה אותנו בחמש אצבעות.<br>
+        אנחנו לא מגדלים/ות צופים/ות מהצד — אנחנו מגדלים/ות אנשים/ות שנכנסים/ות לזירה.<br>
+        שנוטלים/ות אחריות, שפועלים/ות, ושמשאירים/ות טביעת רגל.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ══════════════════════════════════════════════════
+     V7 — GHOST TITLE
+     "האדם בזירה" enormous + ghosted behind everything;
+     label top-right; same cascading quote
+══════════════════════════════════════════════════ -->
+<section class="variant" id="v7">
+  <span class="badge">07 — כותרת רפאים</span>
+  <!-- Ghost title layer -->
+  <span class="ghost" aria-hidden="true">האדם בזירה</span>
+
+  <div class="wrap">
+
+    <div class="top">
+      <div class="top-block">
+        <span class="t-label">האמונה שלנו</span>
+        <div class="t-rule" style="align-self:flex-end"></div>
+      </div>
+    </div>
+
+    <span class="giant-line gl1">״השבח לאדם בזירה,</span>
+    <span class="giant-line gl2">זה שפניו מכוסים באבק, זיעה ודם.</span>
+    <span class="giant-line gl3">זה שאינו מפסיק לשאוף ולנסות.</span>
+    <span class="giant-line gl4">זה שמנסה, שעושה, שיודע התלהבות...״</span>
+
+    <div class="foot">
+      <p class="t-body">
+        זו האמונה שמנחה אותנו בחמש אצבעות.<br>
+        אנחנו לא מגדלים/ות צופים/ות מהצד — אנחנו מגדלים/ות אנשים/ות שנכנסים/ות לזירה.<br>
+        שנוטלים/ות אחריות, שפועלים/ות, ושמשאירים/ות טביעת רגל.
+      </p>
+      <p class="t-attr" style="white-space:nowrap;padding-top:4px">— תיאודור רוזוולט, 1910</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ══════════════════════════════════════════════════
+     V8 — TWO COLUMNS: Quote left / Title+belief right
+══════════════════════════════════════════════════ -->
+<section class="variant" id="v8">
+  <span class="badge">08 — עמודות</span>
+  <div class="wrap">
+
+    <!-- Left: cascading quote -->
+    <div class="qside">
+      <span class="gl a">״השבח לאדם בזירה,</span>
+      <span class="gl b">זה שפניו מכוסים באבק, זיעה ודם.</span>
+      <span class="gl c">זה שאינו מפסיק לשאוף ולנסות.</span>
+      <span class="gl d">זה שמנסה, שעושה, שיודע התלהבות...״</span>
+      <div class="attr-row">
+        <div class="t-rule" style="width:32px"></div>
+        <p class="t-attr">— תיאודור רוזוולט, 1910</p>
+      </div>
+    </div>
+
+    <!-- Right: title + belief -->
+    <div class="tside">
+      <div class="tside-top">
+        <span class="t-label">האמונה שלנו</span>
+        <h2 class="big-title">האדם<br>בזירה</h2>
+        <div class="t-rule"></div>
+      </div>
+      <p class="t-body">
+        זו האמונה שמנחה אותנו בחמש אצבעות.<br>
+        אנחנו לא מגדלים/ות צופים/ות מהצד — אנחנו מגדלים/ות אנשים/ות שנכנסים/ות לזירה.<br>
+        שנוטלים/ות אחריות, שפועלים/ות, ושמשאירים/ות טביעת רגל.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+  // Highlight nav on scroll
+  const sections = document.querySelectorAll('.variant[id]')
+  const links    = document.querySelectorAll('.nav a')
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'))
+        const a = document.querySelector(`.nav a[href="#${e.target.id}"]`)
+        if (a) a.classList.add('active')
+      }
+    })
+  }, { threshold: 0.5 })
+
+  sections.forEach(s => io.observe(s))
+</script>
+</body>
+</html>

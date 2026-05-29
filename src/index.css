@@ -109,3 +109,80 @@ a:hover {
 .font-frank    { font-family: 'Frank Ruhl Libre', serif; }
 .font-heebo    { font-family: 'Heebo', sans-serif; }
 .font-ragmarom { font-family: 'RagMarom', sans-serif; }
+
+/* ─── Accessibility Widget — Global Overrides ──────────────── */
+/* Scoped to #root so the portal-based widget stays unaffected  */
+
+/* Line height */
+.a11y-line-height #root * { line-height: 1.8 !important; }
+
+/* Letter spacing */
+.a11y-letter-spacing #root * { letter-spacing: 0.12em !important; }
+
+/* Readable font */
+.a11y-readable-font #root * { font-family: Arial, Helvetica, sans-serif !important; }
+
+/* High contrast */
+html.a11y-high-contrast { background: #000 !important; }
+html.a11y-high-contrast #root * {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+html.a11y-high-contrast #root a { color: #ff0 !important; }
+html.a11y-high-contrast #root img { filter: contrast(1.2); }
+
+/* Invert colors */
+html.a11y-invert #root { filter: invert(1) hue-rotate(180deg); }
+html.a11y-invert #root img,
+html.a11y-invert #root video { filter: invert(1) hue-rotate(180deg); }
+
+/* Grayscale */
+html.a11y-grayscale #root { filter: grayscale(1); }
+
+/* Light background */
+html.a11y-light-bg { background: #fff !important; }
+html.a11y-light-bg #root * {
+  background-color: #fff !important;
+  color: #111 !important;
+}
+html.a11y-light-bg #root a { color: #1565C0 !important; }
+
+/* Highlight links */
+.a11y-highlight-links #root a {
+  text-decoration: underline !important;
+  font-weight: bold !important;
+  border-bottom: 2px solid currentColor !important;
+}
+
+/* Focus highlight */
+.a11y-focus-highlight *:focus {
+  outline: 3px solid #FFD600 !important;
+  outline-offset: 3px !important;
+}
+
+/* Stop animations */
+.a11y-stop-animations #root *,
+.a11y-stop-animations #root *::before,
+.a11y-stop-animations #root *::after {
+  animation: none !important;
+  transition: none !important;
+}
+html.a11y-stop-animations body::after {
+  animation: none !important;
+}
+
+/* Highlight headings — right border for RTL */
+.a11y-highlight-headings #root h1,
+.a11y-highlight-headings #root h2,
+.a11y-highlight-headings #root h3,
+.a11y-highlight-headings #root h4 {
+  border-right: 4px solid #1565C0 !important;
+  padding-right: 8px !important;
+}
+
+/* Big cursor */
+html.a11y-big-cursor,
+html.a11y-big-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M8 4l28 20H20l8 16-4 2-8-16-8 8z' fill='%23000' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") 4 4, auto !important;
+}

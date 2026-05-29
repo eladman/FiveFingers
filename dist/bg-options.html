@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Background Options — Five Fingers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Heebo:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #111;
+    color: #000032;
+  }
+
+  /* ─── Shared section chrome ─── */
+  .demo-section {
+    position: relative;
+    width: 100%;
+    min-height: 480px;
+    background: #fafaf8;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,50,.08);
+  }
+  .demo-section.bg-white { background: #ffffff; }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #ff8714;
+  }
+  .title {
+    font-size: clamp(2.4rem, 4vw, 4rem);
+    font-weight: 900;
+    color: #000032;
+    line-height: .95;
+    letter-spacing: -.02em;
+  }
+  .subtitle {
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-style: italic;
+    color: #ff8714;
+    font-family: 'Heebo', sans-serif;
+  }
+  .body {
+    font-family: 'Heebo', sans-serif;
+    font-size: clamp(.95rem, 1.1vw, 1.1rem);
+    color: rgba(0,0,50,.65);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+  .cta {
+    display: inline-block;
+    font-weight: 700;
+    color: #fff;
+    background: #ff8714;
+    padding: 14px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1rem;
+    width: fit-content;
+  }
+  .divider { width: 56px; height: 4px; border-radius: 99px; background: #ff8714; }
+
+  /* ─── Nav strip ─── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #000032;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    border-bottom: 2px solid #ff8714;
+  }
+  .nav a {
+    display: block;
+    color: rgba(255,255,255,.7);
+    text-decoration: none;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    white-space: nowrap;
+    transition: color .2s, background .2s;
+  }
+  .nav a:hover { color: #ff8714; background: rgba(255,135,20,.08); }
+
+  /* ─── Section header bar ─── */
+  .section-id {
+    position: absolute;
+    top: 0; left: 0;
+    background: #000032;
+    color: #fff;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    z-index: 20;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 8px;
+  }
+
+  /* ══════════════════════════════════════════════
+     OPTION A — Halftone dot grid
+  ══════════════════════════════════════════════ */
+  #optionA .bg-layer {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, #000032 1.2px, transparent 1.2px);
+    background-size: 22px 22px;
+    opacity: .055;
+  }
+
+  /* ══════════════════════════════════════════════
+     OPTION B — Stadium arc lines
+  ══════════════════════════════════════════════ */
+  #optionB .bg-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  #optionB .bg-layer svg {
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 120%;
+    height: 120%;
+  }
+
+  /* ══════════════════════════════════════════════
+     OPTION C — Hand watermark
+  ══════════════════════════════════════════════ */
+  #optionC .bg-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  #optionC .bg-layer img {
+    position: absolute;
+    left: -4%;
+    bottom: -10%;
+    width: 52%;
+    max-width: 480px;
+    opacity: .055;
+    filter: grayscale(1);
+    transform: rotate(-8deg) scaleX(-1);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ══════════════════════════════════════════════
+     OPTION D — Topographic contours
+  ══════════════════════════════════════════════ */
+  #optionD .bg-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  #optionD .bg-layer svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ══════════════════════════════════════════════
+     OPTION E — Diagonal cross-hatch
+  ══════════════════════════════════════════════ */
+  #optionE .bg-layer {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 18px,
+        rgba(0,0,50,.045) 18px,
+        rgba(0,0,50,.045) 19px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 18px,
+        rgba(0,0,50,.032) 18px,
+        rgba(0,0,50,.032) 19px
+      );
+  }
+
+  /* ══════════════════════════════════════════════
+     OPTION F — A+C combo (recommended)
+  ══════════════════════════════════════════════ */
+  #optionF .bg-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, #000032 1.2px, transparent 1.2px);
+    background-size: 22px 22px;
+    opacity: .04;
+  }
+  #optionF .bg-hand {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  #optionF .bg-hand img {
+    position: absolute;
+    left: -4%;
+    bottom: -10%;
+    width: 52%;
+    max-width: 480px;
+    opacity: .06;
+    filter: grayscale(1);
+    transform: rotate(-8deg) scaleX(-1);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ─── Comparison banner ─── */
+  .banner {
+    background: #000032;
+    color: #fff;
+    text-align: center;
+    padding: 32px 40px;
+    font-family: 'Heebo', sans-serif;
+  }
+  .banner h1 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ff8714;
+    margin-bottom: 8px;
+  }
+  .banner p { font-size: .95rem; color: rgba(255,255,255,.65); }
+</style>
+</head>
+<body>
+
+<!-- ─── Top banner ─── -->
+<div class="banner">
+  <h1>Background Options — Five Fingers</h1>
+  <p>השוו בין האפשרויות השונות לרקע הסקציות הלבנות. גללו למטה לראות כל אפשרות עם תוכן אמיתי.</p>
+</div>
+
+<!-- ─── Sticky nav ─── -->
+<nav class="nav">
+  <a href="#optionA">A · Halftone</a>
+  <a href="#optionB">B · Stadium Arcs</a>
+  <a href="#optionC">C · Hand Watermark</a>
+  <a href="#optionD">D · Topographic</a>
+  <a href="#optionE">E · Cross-hatch</a>
+  <a href="#optionF">F · A+C Combo ★</a>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     OPTION A — Halftone dot grid
+══════════════════════════════════════════════ -->
+<section class="demo-section" id="optionA">
+  <div class="section-id">A · Halftone dot grid</div>
+  <div class="bg-layer"></div>
+  <!-- soft glow stays in all options for realism -->
+  <div style="pointer-events:none;position:absolute;top:-5%;right:-5%;width:40vw;height:50vh;border-radius:9999px;background:rgba(255,135,20,.08);filter:blur(140px);"></div>
+  <div class="content">
+    <span class="label">תחומי פעילות</span>
+    <h2 class="title">קבוצות הנוער</h2>
+    <p class="subtitle">גילאי 12–18</p>
+    <div class="divider"></div>
+    <p class="body">מיועדת לבני ובנות נוער מכיתה ז׳ עד י״ב. תכנית הבסיס של התנועה המהווה את יסודות השיטה הפיזית מנטלית. התכנית בונה ומעצבת היבטי חוסן, הרגלים ויכולות עבודה בצוות.</p>
+    <a class="cta" href="#">למידע נוסף</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     OPTION B — Stadium arc lines
+══════════════════════════════════════════════ -->
+<section class="demo-section bg-white" id="optionB">
+  <div class="section-id">B · Stadium arc lines</div>
+  <div class="bg-layer">
+    <!-- Concentric arcs from bottom-right corner -->
+    <svg viewBox="0 0 1000 500" preserveAspectRatio="xMaxYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#000032" stroke-width="1" opacity="0.07">
+        <path d="M1000,500 A100,100 0 0,0 900,400" />
+        <path d="M1000,500 A180,180 0 0,0 820,320" />
+        <path d="M1000,500 A260,260 0 0,0 740,240" />
+        <path d="M1000,500 A340,340 0 0,0 660,160" />
+        <path d="M1000,500 A420,420 0 0,0 580,80" />
+        <path d="M1000,500 A500,500 0 0,0 500,0" />
+        <path d="M1000,500 A580,580 0 0,0 420,-80" />
+        <path d="M1000,500 A660,660 0 0,0 340,-160" />
+        <path d="M1000,500 A740,740 0 0,0 260,-240" />
+        <path d="M1000,500 A820,820 0 0,0 180,-320" />
+        <path d="M1000,500 A900,900 0 0,0 100,-400" />
+        <path d="M1000,500 A980,980 0 0,0 20,-480" />
+      </g>
+    </svg>
+  </div>
+  <div style="pointer-events:none;position:absolute;bottom:-10%;left:20%;width:70vw;height:50vh;border-radius:9999px;background:rgba(255,135,20,.1);filter:blur(160px);"></div>
+  <div class="content">
+    <span class="label">מי אנחנו</span>
+    <h2 class="title">האדם בזירה</h2>
+    <p class="subtitle">הכירו את התנועה</p>
+    <div class="divider"></div>
+    <p class="body">חזון של חברה מבוססת אמון — אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת, ולבסוף בין כלל הגורמים בחברה הישראלית.</p>
+    <a class="cta" href="#">הצטרפו אלינו</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     OPTION C — Hand watermark
+══════════════════════════════════════════════ -->
+<section class="demo-section" id="optionC">
+  <div class="section-id">C · Hand watermark</div>
+  <div class="bg-layer">
+    <img src="/logo.png" alt="" />
+  </div>
+  <div style="pointer-events:none;position:absolute;top:-10%;right:-5%;width:40vw;height:60vh;border-radius:9999px;background:rgba(255,135,20,.08);filter:blur(140px);"></div>
+  <div class="content">
+    <span class="label">תכנית הבסיס</span>
+    <h2 class="title">הליבה</h2>
+    <p class="subtitle">חמש אצבעות — זהות וערכים</p>
+    <div class="divider"></div>
+    <p class="body">מחויבות למצוינות ערכית. לא מה שנגיד עליכם/ן — אלא מה שתעשו/ן. הזירה מחכה לאנשים שבוחרים להיכנס אליה.</p>
+    <a class="cta" href="#">גלו עוד</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     OPTION D — Topographic contours
+══════════════════════════════════════════════ -->
+<section class="demo-section bg-white" id="optionD">
+  <div class="section-id">D · Topographic contours</div>
+  <div class="bg-layer">
+    <svg viewBox="0 0 1440 480" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#000032" stroke-width="1.1" opacity="0.07" fill="none">
+        <!-- Organic contour lines sweeping across the section -->
+        <path d="M-40,420 C80,380 200,280 340,260 C480,240 560,320 700,300 C840,280 920,180 1060,160 C1200,140 1320,220 1480,200" />
+        <path d="M-40,370 C80,330 200,230 360,210 C520,190 600,280 740,255 C880,230 960,130 1100,110 C1240,90 1360,175 1480,150" />
+        <path d="M-40,320 C90,275 220,175 380,155 C540,135 620,230 770,205 C920,180 1000,75  1150,55  C1300,35  1400,120 1480,100" />
+        <path d="M-40,270 C100,220 240,118 400,98  C560,78  640,180 800,152 C960,124 1040,22  1200,5   C1360,-12 1440,72  1480,50" />
+        <path d="M-40,460 C90,430 220,340 380,325 C540,310 620,390 780,368 C940,346 1020,248 1180,230 C1340,212 1420,296 1480,275" />
+        <path d="M-40,490 C100,465 250,390 420,378 C590,366 670,438 840,418 C1010,398 1090,305 1260,290 C1430,275 1480,345 1480,345" />
+        <!-- A few crossing lines for depth -->
+        <path d="M700,-20 C680,60 650,160 640,260 C630,360 620,440 610,500" />
+        <path d="M820,-20 C800,60 770,160 760,260 C750,360 740,440 730,500" />
+        <path d="M560,-20 C540,60 510,160 500,260 C490,360 480,440 470,500" />
+      </g>
+    </svg>
+  </div>
+  <div style="pointer-events:none;position:absolute;bottom:-10%;left:20%;width:70vw;height:50vh;border-radius:9999px;background:rgba(255,135,20,.08);filter:blur(160px);"></div>
+  <div class="content">
+    <span class="label">המסע שלנו</span>
+    <h2 class="title">לטפס גבוה יותר</h2>
+    <p class="subtitle">מצוינות דרך אתגר</p>
+    <div class="divider"></div>
+    <p class="body">כל עלייה מתחילה בצעד אחד. התהליך החינוכי של חמש אצבעות בנוי על שלושה מעגלי צמיחה — כשירות, שייכות, והשפעה.</p>
+    <a class="cta" href="#">קראו עוד</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     OPTION E — Diagonal cross-hatch
+══════════════════════════════════════════════ -->
+<section class="demo-section" id="optionE">
+  <div class="section-id">E · Diagonal cross-hatch</div>
+  <div class="bg-layer"></div>
+  <div style="pointer-events:none;position:absolute;top:-5%;right:-5%;width:40vw;height:50vh;border-radius:9999px;background:rgba(255,135,20,.09);filter:blur(140px);"></div>
+  <div class="content">
+    <span class="label">קהילת הבוגרים</span>
+    <h2 class="title">בוגרים</h2>
+    <p class="subtitle">גילאי 18+</p>
+    <div class="divider"></div>
+    <p class="body">תכנית ההמשך, מטרתה יצירת המשכיות לתהליך החינוכי. התכנית מכווינה להשפעה חינוכית וחברתית על ידי תפיסת עמדות מפתח בחברה הישראלית.</p>
+    <a class="cta" href="#">הצטרפו לקהילה</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     OPTION F — A+C Combo (recommended)
+══════════════════════════════════════════════ -->
+<section class="demo-section bg-white" id="optionF">
+  <div class="section-id">F · A+C Combo ★ Recommended</div>
+  <div class="bg-dots"></div>
+  <div class="bg-hand">
+    <img src="/logo.png" alt="" />
+  </div>
+  <div style="pointer-events:none;position:absolute;top:-5%;left:-5%;width:40vw;height:50vh;border-radius:9999px;background:rgba(255,135,20,.08);filter:blur(140px);"></div>
+  <div style="pointer-events:none;position:absolute;bottom:10%;right:5%;width:45vw;height:40vh;border-radius:9999px;background:rgba(255,135,20,.06);filter:blur(160px);"></div>
+  <div class="content">
+    <span class="label">תוכן חמש</span>
+    <h2 class="title">האזינו, צפו וקראו</h2>
+    <p class="subtitle">פודקאסט · יוטיוב · כתבות</p>
+    <div class="divider"></div>
+    <p class="body">שילוב של רקע נקודות עדין עם טביעת יד גדולה ועמומה — ברנד הוא הטקסטורה. תת-מודע, אבל מחזק את הזהות בכל סקציה.</p>
+    <a class="cta" href="#">לכל התוכן</a>
+  </div>
+</section>
+
+<!-- ─── Bottom spacer ─── -->
+<div class="banner" style="padding:24px 40px;">
+  <p style="color:rgba(255,255,255,.5);font-size:.8rem;">פתחו את הקובץ ישירות מ: <code style="color:#ff8714;">public/bg-options.html</code></p>
+</div>
+
+</body>
+</html>
