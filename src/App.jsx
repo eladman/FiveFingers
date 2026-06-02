@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import WhoWeAre from './components/WhoWeAre'
@@ -9,28 +9,63 @@ import Footer from './components/Footer'
 import SectionDivider from './components/SectionDivider'
 import ContactModal from './components/ContactModal'
 import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
+import LiabahPage from './pages/LiabahPage'
 
 export default function App() {
   const [navReady, setNavReady] = useState(false)
   const [contactOpen, setContactOpen] = useState(false)
+  const [contactProduct, setContactProduct] = useState('')
+  const [view, setView] = useState(() => (window.location.hash === '#liabah' ? 'liabah' : 'home'))
+
+  // Hash-based routing: #liabah → dedicated page, anything else → homepage.
+  useEffect(() => {
+    const onHashChange = () => {
+      const next = window.location.hash === '#liabah' ? 'liabah' : 'home'
+      setView((prev) => {
+        if (next === 'liabah' && prev !== 'liabah') window.scrollTo(0, 0)
+        if (next === 'home' && prev !== 'home') setNavReady(true)
+        return next
+      })
+    }
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+
+  // The Liabah page renders its own Navbar immediately (no Hero intro to gate it).
+  const isLiabah = view === 'liabah'
+  const navVisible = isLiabah || navReady
+
+  const openContact = (product = '') => {
+    setContactProduct(product)
+    setContactOpen(true)
+  }
 
   return (
     <div className="antialiased">
-      <div style={{ opacity: navReady ? 1 : 0, transition: 'opacity 0.7s ease' }}>
-        <Navbar onContactOpen={() => setContactOpen(true)} />
+      <div style={{ opacity: navVisible ? 1 : 0, transition: 'opacity 0.7s ease' }}>
+        <Navbar onContactOpen={() => openContact()} />
       </div>
-      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
-      <main>
-        <Hero onComplete={() => setNavReady(true)} />
-        <SectionDivider fromColor="#111111" toColor="#fafaf8" />
-        <WhoWeAre />
-        <SectionDivider fromColor="#fafaf8" toColor="#fafaf8" />
-        <ManInArena />
-        <SectionDivider fromColor="#fafaf8" toColor="#fafaf8" reverse />
-        <Programs />
-        <SectionDivider fromColor="#fafaf8" toColor="#ffffff" />
-        <FiveContent />
-      </main>
+      <ContactModal
+        isOpen={contactOpen}
+        onClose={() => setContactOpen(false)}
+        defaultProduct={contactProduct}
+      />
+
+      {isLiabah ? (
+        <LiabahPage onContactOpen={openContact} />
+      ) : (
+        <main>
+          <Hero onComplete={() => setNavReady(true)} />
+          <SectionDivider fromColor="#111111" toColor="#fafaf8" />
+          <WhoWeAre />
+          <SectionDivider fromColor="#fafaf8" toColor="#fafaf8" />
+          <ManInArena />
+          <SectionDivider fromColor="#fafaf8" toColor="#fafaf8" reverse />
+          <Programs />
+          <SectionDivider fromColor="#fafaf8" toColor="#ffffff" />
+          <FiveContent />
+        </main>
+      )}
       <Footer />
 
       {/* Floating WhatsApp button */}
