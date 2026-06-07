@@ -1,183 +1,35 @@
-[2026-05-19T09:39:24.983Z] [debug] [vite] connecting...
-[2026-05-19T09:39:25.006Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-05-19T09:39:25.122Z] [debug] [vite] connected.
-[2026-05-19T09:41:57.504Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
-[2026-05-19T09:46:05.648Z] [debug] [vite] connecting...
-[2026-05-19T09:46:05.653Z] [debug] [vite] connected.
-[2026-05-19T09:46:05.663Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-05-19T09:46:06.370Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
-[2026-05-19T09:47:04.708Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
-[2026-05-19T09:47:04.708Z] [debug] [vite] hot updated: /src/index.css
-[2026-05-19T09:47:09.276Z] [debug] [vite] hot updated: /src/App.jsx
-[2026-05-19T09:47:09.276Z] [debug] [vite] hot updated: /src/index.css
-[2026-05-19T09:47:15.219Z] [debug] [vite] connecting...
-[2026-05-19T09:47:15.221Z] [debug] [vite] connected.
-[2026-05-19T09:47:15.227Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-05-19T09:47:16.555Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
-[2026-05-19T09:47:27.046Z] [debug] [vite] connecting...
-[2026-05-19T09:47:27.048Z] [debug] [vite] connected.
-[2026-05-19T09:47:27.052Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-05-19T09:47:28.610Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
-[2026-05-19T09:49:01.501Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
-[2026-05-19T09:49:01.501Z] [debug] [vite] hot updated: /src/index.css
-[2026-05-19T09:49:05.622Z] [debug] [vite] connecting...
-[2026-05-19T09:49:05.623Z] [debug] [vite] connected.
-[2026-05-19T09:49:05.647Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-05-19T09:49:07.113Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
-[2026-05-19T09:51:28.953Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
-[2026-05-19T09:51:28.953Z] [debug] [vite] hot updated: /src/index.css
-[2026-05-19T09:51:35.833Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
-[2026-05-19T09:51:35.833Z] [debug] [vite] hot updated: /src/index.css
-[2026-05-19T09:51:41.029Z] [debug] [vite] connecting...
-[2026-05-19T09:51:41.034Z] [debug] [vite] connected.
-[2026-05-19T09:51:41.036Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-05-19T09:51:42.705Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
-[2026-05-19T09:52:12.537Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
-[2026-05-19T09:52:12.537Z] [debug] [vite] hot updated: /src/index.css
-[2026-05-19T09:52:17.355Z] [debug] [vite] hot updated: /src/App.jsx
-[2026-05-19T09:52:17.355Z] [debug] [vite] hot updated: /src/index.css
-[2026-05-19T09:52:20.448Z] [debug] [vite] connecting...
-[2026-05-19T09:52:20.451Z] [debug] [vite] connected.
-[2026-05-19T09:52:20.453Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-05-19T09:52:21.974Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
-[2026-05-19T09:54:37.712Z] [debug] [vite] hot updated: /src/components/Navbar.jsx
-[2026-05-19T09:54:37.713Z] [debug] [vite] hot updated: /src/index.css
-[2026-05-19T10:03:32.275Z] [debug] [vite] connecting...
-[2026-05-19T10:03:32.277Z] [debug] [vite] connected.
-[2026-05-19T10:03:32.308Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-05-19T10:03:33.904Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
-[2026-05-19T10:05:41.366Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
-[2026-05-19T10:05:41.366Z] [debug] [vite] hot updated: /src/index.css
-[2026-05-19T10:17:52.790Z] [debug] [vite] connecting...
-[2026-05-19T10:17:52.793Z] [debug] [vite] connected.
-[2026-05-19T10:17:52.830Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-05-19T10:17:55.152Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
-[2026-05-19T10:21:06.027Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
-[2026-05-19T10:21:06.027Z] [debug] [vite] hot updated: /src/index.css
-[2026-05-19T10:27:48.667Z] [log] [vite] server connection lost. Polling for restart...
-[2026-05-19T10:27:48.668Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:27:49.669Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:27:50.671Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:27:51.674Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:27:52.677Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:27:53.680Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:27:54.698Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:27:55.707Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:27:56.752Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:27:57.784Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:27:58.913Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:28:00.144Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:28:01.769Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:29:34.182Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:29:36.219Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:29:38.315Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:29:41.525Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:29:45.503Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:29:47.607Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:29:52.916Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:29:55.743Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:29:59.300Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:04.621Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:08.122Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:11.985Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:16.872Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:20.680Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:24.281Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:29.584Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:32.062Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:37.297Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:39.868Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:44.170Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:48.855Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:52.297Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:54.445Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:56.751Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:30:59.560Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:03.493Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:05.789Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:08.472Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:12.064Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:15.072Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:18.662Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:19.665Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:20.668Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:21.670Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:22.673Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:23.686Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:24.690Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:25.702Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:26.720Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:27.747Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:28.784Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:29.892Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:30.976Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:32.543Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:33.938Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:36.755Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:42.663Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:47.264Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:51.351Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:31:56.926Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:00.926Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:05.731Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:10.584Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:14.242Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:17.801Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:19.920Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:25.634Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:31.036Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:35.888Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:39.661Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:42.529Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:45.288Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:47.509Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:50.568Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:52.740Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:55.218Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:32:59.451Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:03.639Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:06.767Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:10.050Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:12.342Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:15.701Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:21.337Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:25.146Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:29.225Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:31.713Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:37.641Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:40.078Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:45.621Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:48.471Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:50.791Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:33:54.218Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:00.225Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:04.962Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:09.929Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:13.763Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:18.033Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:22.352Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:26.971Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:29.913Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:35.473Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:39.588Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:44.038Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:47.213Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:50.396Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:52.771Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:34:55.531Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:01.489Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:04.721Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:09.517Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:14.481Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:17.595Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:23.049Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:26.921Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:29.801Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:34.885Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:38.596Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:43.746Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:48.046Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:51.504Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:35:57.066Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:36:01.510Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
-[2026-05-19T10:36:05.224Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-06-02T14:08:08.492Z] [debug] [vite] connecting...
+[2026-06-02T14:08:08.519Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-06-02T14:08:08.673Z] [debug] [vite] connected.
+[2026-06-02T14:08:19.314Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-06-02T14:08:38.980Z] [debug] [vite] connecting...
+[2026-06-02T14:08:38.986Z] [debug] [vite] connected.
+[2026-06-02T14:08:39.008Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-06-02T14:09:27.666Z] [debug] [vite] connecting...
+[2026-06-02T14:09:27.670Z] [debug] [vite] connected.
+[2026-06-02T14:09:27.681Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-06-02T14:10:28.863Z] [debug] [vite] connecting...
+[2026-06-02T14:10:28.881Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-06-02T14:10:28.999Z] [debug] [vite] connected.
+[2026-06-02T14:10:39.851Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-02T14:10:39.851Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-02T14:14:28.230Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-02T14:14:28.230Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-02T14:30:25.107Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-02T14:30:25.107Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-02T14:32:25.364Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-02T14:32:25.364Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-02T14:32:30.820Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-02T14:32:30.820Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-02T14:32:34.899Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-02T14:32:34.899Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-02T14:32:44.543Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-02T14:32:44.543Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-02T14:32:51.544Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-02T14:32:51.544Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-02T14:33:56.178Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-02T14:33:56.178Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-02T14:34:01.237Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-02T14:34:01.237Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-02T14:35:55.844Z] [debug] [vite] hot updated: /src/App.jsx
+[2026-06-02T14:35:55.844Z] [debug] [vite] hot updated: /src/index.css

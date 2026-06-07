@@ -11,21 +11,21 @@ const PRODUCT_TYPES = [
 
 const INITIAL_FORM = { name: '', phone: '', email: '', productType: '' }
 
-export default function ContactModal({ isOpen, onClose }) {
+export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
   const [form, setForm] = useState(INITIAL_FORM)
   const [submitted, setSubmitted] = useState(false)
   const overlayRef = useRef(null)
 
   useEffect(() => {
     if (isOpen) {
-      setForm(INITIAL_FORM)
+      setForm({ ...INITIAL_FORM, productType: defaultProduct })
       setSubmitted(false)
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
     }
     return () => { document.body.style.overflow = '' }
-  }, [isOpen])
+  }, [isOpen, defaultProduct])
 
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose() }
