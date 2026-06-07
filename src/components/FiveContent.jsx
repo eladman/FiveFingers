@@ -56,6 +56,11 @@ export default function FiveContent() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      if (reduced) {
+        gsap.set('.fcontent-heading, .fcontent-item', { opacity: 1, y: 0 })
+        return
+      }
       gsap.fromTo(
         '.fcontent-heading',
         { y: 50, opacity: 0 },
@@ -101,20 +106,29 @@ export default function FiveContent() {
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
 
         {/* ── Section heading ── */}
-        <div className="text-center pt-24 pb-16">
+        <div className="text-center pt-20 md:pt-28 pb-12 md:pb-16">
+          <p
+            className="fcontent-heading font-heebo font-semibold text-[#b35600] mb-3"
+            style={{ fontSize: 'clamp(0.7rem, 0.9vw, 0.85rem)', letterSpacing: '0.22em' }}
+          >
+            מדיה
+          </p>
           <h2
-            className="fcontent-heading font-ragmarom text-[#000032] leading-none tracking-tight"
-            style={{ fontSize: 'clamp(2.4rem, 4.5vw, 5rem)' }}
+            className="fcontent-heading font-ragmarom text-[#000032] leading-[0.95] tracking-tight"
+            style={{ fontSize: 'clamp(2.8rem, 5vw, 5.5rem)' }}
           >
             תוכן חמש
           </h2>
           <p
-            className="fcontent-heading font-ragmarom text-[#ff8714] mt-3 leading-snug"
-            style={{ fontSize: 'clamp(1.2rem, 2vw, 2.2rem)' }}
+            className="fcontent-heading font-heebo text-[#b35600] mt-4 leading-snug mx-auto max-w-2xl"
+            style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.7rem)' }}
           >
             האזינו, צפו וקראו
           </p>
-          <div className="fcontent-heading mt-5 mx-auto w-14 h-1 rounded-full bg-[#ff8714]" />
+          <div
+            className="fcontent-heading mt-6 mx-auto h-1 rounded-full bg-[#ff8714]"
+            style={{ width: 'clamp(3.5rem, 7vw, 6rem)' }}
+          />
         </div>
 
         {/* ── Content grid — 3 equal columns ── */}

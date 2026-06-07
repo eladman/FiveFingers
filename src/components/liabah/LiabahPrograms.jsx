@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ImageIcon } from 'lucide-react'
 import { programsByAge } from '../../data/liabahData'
-import { SectionBg, SectionHeading } from './shared'
+import { SectionBg, SectionHeading, PrimaryButton } from './shared'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -14,16 +14,36 @@ export default function LiabahPrograms({ onRegister }) {
   const ref = useRef(null)
 
   useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
     const ctx = gsap.context(() => {
+      const heading = ref.current.querySelectorAll('.lp-heading')
+      const rows = ref.current.querySelectorAll('.lp-row')
+
+      if (reduced) {
+        gsap.set([...heading, ...ref.current.querySelectorAll('.lp-animate')], { opacity: 1, y: 0 })
+        return
+      }
+
       gsap.fromTo('.lp-heading', { y: 50, opacity: 0 }, {
         y: 0, opacity: 1, stagger: 0.1, duration: 1.2, ease: 'power3.out',
         scrollTrigger: { trigger: ref.current, start: 'top 80%' },
       })
-      ref.current.querySelectorAll('.lp-row').forEach((row) => {
+
+      rows.forEach((row) => {
         gsap.fromTo(row.querySelectorAll('.lp-animate'), { y: 60, opacity: 0 }, {
           y: 0, opacity: 1, stagger: 0.1, duration: 1.2, ease: 'power3.out',
           scrollTrigger: { trigger: row, start: 'top 80%' },
         })
+
+        // Subtle image parallax
+        const img = row.querySelector('.lp-parallax')
+        if (img) {
+          gsap.fromTo(img, { yPercent: -6 }, {
+            yPercent: 6, ease: 'none',
+            scrollTrigger: { trigger: row, start: 'top bottom', end: 'bottom top', scrub: true },
+          })
+        }
       })
     }, ref)
     return () => ctx.revert()
@@ -39,7 +59,7 @@ export default function LiabahPrograms({ onRegister }) {
       <SectionBg watermark={false} />
 
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
-        <SectionHeading title="תכניות לפי גילאים" subtitle="מסלול שמתאים לכל שלב" animateClass="lp-heading" />
+        <SectionHeading eyebrow="המסלולים" title="תכניות לפי גילאים" subtitle="מסלול שמתאים לכל שלב" animateClass="lp-heading" />
 
         <div className="flex flex-col">
           {programsByAge.map((prog, i) => {
@@ -59,21 +79,30 @@ export default function LiabahPrograms({ onRegister }) {
                 {/* Image */}
                 <div className={`lp-animate ${imageOrder}`}>
                   <div className="relative">
+                    {/* Offset accent shape — solid behind a real image, soft tint when empty */}
                     <div
-                      className="absolute bg-[#ff8714]"
+                      className={prog.imageSrc ? 'absolute bg-[#ff8714]' : 'absolute bg-[#ff8714]/15'}
                       style={{
                         inset: 0,
                         clipPath: clip,
                         transform: isEven ? 'translate(14px, 14px)' : 'translate(-14px, 14px)',
                       }}
                     />
-                    <div className="relative aspect-[4/3] overflow-hidden" style={{ clipPath: clip }}>
+                    <div
+                      className="relative aspect-[4/3] overflow-hidden"
+                      style={{ clipPath: clip }}
+                    >
                       {prog.imageSrc ? (
-                        <img src={prog.imageSrc} alt={prog.title} className="absolute inset-0 w-full h-full object-cover" />
+                        <img
+                          src={prog.imageSrc}
+                          alt={prog.title}
+                          className="lp-parallax absolute inset-x-0 w-full object-cover"
+                          style={{ top: '-10%', height: '120%' }}
+                        />
                       ) : (
-                        <div className="absolute inset-0 bg-[#000032]/[0.07] flex flex-col items-center justify-center gap-3">
+                        <div className="absolute inset-0 bg-[#fafaf8] border border-[#000032]/10 flex flex-col items-center justify-center gap-3">
                           <ImageIcon size={32} className="text-[#000032]/20" strokeWidth={1.5} />
-                          <span className="font-heebo text-[#000032]/25 text-sm">תמונה בקרוב</span>
+                          <span className="font-heebo text-[#000032]/30 text-sm">תמונה בקרוב</span>
                         </div>
                       )}
                     </div>
@@ -88,19 +117,14 @@ export default function LiabahPrograms({ onRegister }) {
                   >
                     {prog.title}
                   </h3>
-                  <p className="font-heebo text-[#ff8714] leading-none" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.5rem)' }}>
+                  <span className="self-start inline-flex items-center rounded-full bg-[#ff8714]/10 text-[#b35600] font-heebo font-semibold px-4 py-1.5" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1.1rem)' }}>
                     {prog.ages}
-                  </p>
+                  </span>
                   <p className="font-heebo text-[#000032]/65 leading-relaxed" style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)' }}>
                     {prog.description}
                   </p>
                   <div>
-                    <button
-                      onClick={onRegister}
-                      className="inline-block font-heebo font-bold text-white bg-[#ff8714] px-8 py-3.5 rounded-xl text-base hover:bg-[#e07610] transition-colors duration-200"
-                    >
-                      הרשמה לקבוצה
-                    </button>
+                    <PrimaryButton onClick={onRegister}>הרשמה לקבוצה</PrimaryButton>
                   </div>
                 </div>
               </div>

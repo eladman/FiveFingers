@@ -1,27 +1,29 @@
-import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useState } from 'react'
 import { Play, ImageIcon } from 'lucide-react'
 import { hero, essence } from '../../data/liabahData'
 import { SectionBg, SectionHeading } from './shared'
-
-gsap.registerPlugin(ScrollTrigger)
+import useReveal from '../../hooks/useReveal'
+import usePrefersReducedMotion from '../../hooks/usePrefersReducedMotion'
 
 // ─── 3D Stage Carousel ───────────────────────────────────────────────────────
 function StagesCarousel({ stages }) {
+  const reduced = usePrefersReducedMotion()
   const [active, setActive] = useState(1) // center card starts at index 1
   const [paused, setPaused] = useState(false)
+  const n = stages.length
+
+  const goTo = (i) => setActive(((i % n) + n) % n)
+  const next = () => setActive((a) => (a + 1) % n)
+  const prev = () => setActive((a) => (a - 1 + n) % n)
 
   useEffect(() => {
-    if (paused) return
-    const id = setInterval(() => {
-      setActive(prev => (prev + 1) % stages.length)
-    }, 3000)
+    if (paused || reduced) return
+    const id = setInterval(next, 5000)
     return () => clearInterval(id)
-  }, [paused, stages.length])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paused, reduced, n])
 
   const getCardStyle = (i) => {
-    const n = stages.length
     // offset: 0=center, 1=left-side (next in RTL), n-1=right-side (prev in RTL)
     const offset = ((i - active) % n + n) % n
 
@@ -32,7 +34,7 @@ function StagesCarousel({ stages }) {
         zIndex: 10,
         pointerEvents: 'none',
         boxShadow:
-          '0 24px 64px -12px rgba(0,0,50,0.18), 0 10px 28px -6px rgba(255,135,20,0.13)',
+          '0 28px 70px -14px rgba(0,0,50,0.22), 0 12px 30px -6px rgba(255,135,20,0.16)',
         background: 'linear-gradient(150deg, #ffffff 0%, #fff7ee 100%)',
       }
     }
@@ -43,7 +45,7 @@ function StagesCarousel({ stages }) {
 
     return {
       transform: `translateX(calc(-50% + ${xPx}px)) translateZ(-110px) scale(0.86)`,
-      opacity: 0.72,
+      opacity: 0.6,
       zIndex: 5,
       pointerEvents: 'auto',
       cursor: 'pointer',
@@ -53,24 +55,39 @@ function StagesCarousel({ stages }) {
   }
 
   return (
-    <div className="w-full pb-4">
-      {/* Carousel stage */}
+    <div
+      className="w-full pb-4 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8714] focus-visible:ring-offset-4 focus-visible:ring-offset-[#fafaf8]"
+      tabIndex={0}
+      role="group"
+      aria-label="שלבי התהליך"
+      onKeyDown={(e) => {
+        // RTL: ArrowLeft advances, ArrowRight goes back
+        if (e.key === 'ArrowLeft') { e.preventDefault(); next() }
+        if (e.key === 'ArrowRight') { e.preventDefault(); prev() }
+      }}
+    >
+      {/* Carousel stage — edge mask lets side cards fade out instead of clipping */}
       <div
-        className="relative mx-auto"
-        style={{ perspective: '1400px', height: '420px', maxWidth: '900px' }}
+        className="relative mx-auto h-[320px] md:h-[400px]"
+        style={{
+          perspective: '1400px',
+          maxWidth: '900px',
+          WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%)',
+          maskImage: 'linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%)',
+        }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
         {stages.map((s, i) => {
-          const isActive = ((i - active + stages.length) % stages.length) === 0
+          const isActive = ((i - active + n) % n) === 0
           const cardStyle = getCardStyle(i)
 
           return (
             <div
               key={s.num}
-              onClick={() => { if (!isActive) setActive(i) }}
+              onClick={() => { if (!isActive) goTo(i) }}
               dir="rtl"
-              className="absolute top-0 left-1/2 w-[300px] md:w-[340px] rounded-2xl px-10 py-9"
+              className="absolute top-0 left-1/2 w-[300px] md:w-[340px] rounded-2xl px-10 py-9 border border-[#000032]/[0.06]"
               style={{
                 ...cardStyle,
                 transition: 'all 0.52s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -81,7 +98,7 @@ function StagesCarousel({ stages }) {
               }}
             >
               {/* Step number */}
-              <span className="block font-heebo text-[0.6rem] font-bold tracking-[0.28em] text-[#ff8714] mb-5">
+              <span className="block font-heebo text-[0.6rem] font-bold tracking-[0.28em] text-[#b35600] mb-5">
                 {s.num}
               </span>
 
@@ -95,16 +112,15 @@ function StagesCarousel({ stages }) {
 
               {/* Orange accent bar */}
               <div
-                className={`h-[3px] rounded-full mb-4 transition-all duration-500 self-end ${
+                className={`h-[3px] rounded-full mb-4 transition-all duration-500 ${
                   isActive ? 'w-10 bg-[#ff8714]' : 'w-5 bg-[#ff8714]/40'
                 }`}
-                style={{ marginRight: 0 }}
               />
 
               {/* Description */}
               <p
                 className={`font-heebo leading-relaxed transition-colors duration-500 ${
-                  isActive ? 'text-[#000032]/68' : 'text-[#000032]/45'
+                  isActive ? 'text-[#000032]/70' : 'text-[#000032]/45'
                 }`}
                 style={{ fontSize: '0.9rem' }}
               >
@@ -119,32 +135,17 @@ function StagesCarousel({ stages }) {
           )
         })}
       </div>
-
     </div>
   )
 }
 
 // ─── Main Section ─────────────────────────────────────────────────────────────
 export default function LiabahEssence() {
-  const ref = useRef(null)
+  const ref = useReveal({ selector: '.es-animate', y: 50, stagger: 0.1, duration: 1.2, start: 'top 78%' })
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.es-animate',
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.1,
-          duration: 1.2,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: ref.current, start: 'top 78%' },
-        }
-      )
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  // Pull the first sentence out as a lead, the rest as supporting copy.
+  const [leadSentence, ...restParts] = essence.paragraph.split('. ')
+  const restText = restParts.join('. ')
 
   return (
     <section
@@ -157,6 +158,7 @@ export default function LiabahEssence() {
 
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
         <SectionHeading
+          eyebrow="התנועה"
           title={essence.heading}
           subtitle={essence.subheading}
           animateClass="es-animate"
@@ -164,13 +166,21 @@ export default function LiabahEssence() {
 
         {/* Intro row: paragraph (right) + video (left) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center pb-16">
-          {/* Right column in RTL: text */}
-          <p
-            className="es-animate font-heebo text-[#000032]/70 leading-relaxed"
-            style={{ fontSize: 'clamp(1.05rem, 1.4vw, 1.3rem)' }}
-          >
-            {essence.paragraph}
-          </p>
+          {/* Right column in RTL: lead sentence + supporting copy */}
+          <div className="es-animate">
+            <p
+              className="font-heebo text-[#000032] font-medium leading-relaxed mb-4"
+              style={{ fontSize: 'clamp(1.2rem, 1.7vw, 1.55rem)' }}
+            >
+              {leadSentence}.
+            </p>
+            <p
+              className="font-heebo text-[#000032]/65 leading-relaxed"
+              style={{ fontSize: 'clamp(1rem, 1.25vw, 1.2rem)' }}
+            >
+              {restText}
+            </p>
+          </div>
 
           {/* Left column in RTL: video */}
           <div className="es-animate">
@@ -198,7 +208,7 @@ export default function LiabahEssence() {
                   )}
                   <div className="absolute inset-0 bg-black/35" />
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                    <div className="flex items-center justify-center w-18 h-18 rounded-full bg-[#ff8714] shadow-lg shadow-[#ff8714]/40"
+                    <div className="flex items-center justify-center rounded-full bg-[#ff8714] shadow-lg shadow-[#ff8714]/40"
                       style={{ width: '4.5rem', height: '4.5rem' }}>
                       <Play size={26} className="text-white ms-1" fill="white" />
                     </div>
@@ -231,7 +241,7 @@ export default function LiabahEssence() {
           {essence.pillars.map((p) => (
             <div
               key={p.title}
-              className="es-animate group flex flex-col rounded-2xl overflow-hidden bg-white shadow-sm border border-[#000032]/8 hover:shadow-xl hover:border-[#ff8714]/25 transition-all duration-300"
+              className="es-animate group flex flex-col rounded-2xl overflow-hidden bg-white shadow-sm border border-[#000032]/8 hover:shadow-xl hover:shadow-[#000032]/10 hover:border-[#ff8714]/30 hover:-translate-y-1.5 transition-all duration-300"
             >
               {/* Image */}
               <div className="relative aspect-[4/3] overflow-hidden bg-[#000032]/[0.06]">
@@ -258,7 +268,7 @@ export default function LiabahEssence() {
                 >
                   {p.title}
                 </h4>
-                <div className="w-8 h-[3px] rounded-full bg-[#ff8714] mr-auto" style={{ marginRight: 0 }} />
+                <div className="w-8 h-[3px] rounded-full bg-[#ff8714]" />
                 <p className="font-heebo text-[#000032]/65 leading-relaxed" style={{ fontSize: '0.92rem' }}>
                   {p.text}
                 </p>

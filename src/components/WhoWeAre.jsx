@@ -1,32 +1,7 @@
-import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import useReveal from '../hooks/useReveal'
 
 export default function WhoWeAre() {
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.wwa-el',
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.12,
-          duration: 1.4,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: ref.current,
-            start: 'top 70%',
-          },
-        }
-      )
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  const ref = useReveal({ selector: '.wwa-el', y: 60, stagger: 0.12, duration: 1.4, start: 'top 70%' })
 
   return (
     <section
@@ -65,7 +40,7 @@ export default function WhoWeAre() {
               מי אנחנו
             </h2>
             <p
-              className="font-ragmarom text-[#ff8714] mt-3 leading-snug"
+              className="font-ragmarom text-[#b35600] mt-3 leading-snug"
               style={{ fontSize: 'clamp(1.4rem, 2.2vw, 2.4rem)' }}
             >
               הכירו את התנועה
@@ -77,7 +52,7 @@ export default function WhoWeAre() {
 
           {/* Vision */}
           <div className="wwa-el flex flex-col gap-3">
-            <span className="font-heebo font-bold text-[#ff8714] text-xs tracking-[0.22em] uppercase">
+            <span className="font-heebo font-bold text-[#b35600] text-xs tracking-[0.22em] uppercase">
               חזון
             </span>
             <h3
@@ -96,7 +71,7 @@ export default function WhoWeAre() {
 
           {/* Mission */}
           <div className="wwa-el flex flex-col gap-3">
-            <span className="font-heebo font-bold text-[#ff8714] text-xs tracking-[0.22em] uppercase">
+            <span className="font-heebo font-bold text-[#b35600] text-xs tracking-[0.22em] uppercase">
               המשימה שלנו
             </span>
             <h3

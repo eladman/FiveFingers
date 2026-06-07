@@ -1,32 +1,7 @@
-import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import useReveal from '../hooks/useReveal'
 
 export default function ManInArena() {
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.mia-el',
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.12,
-          duration: 1.4,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: ref.current,
-            start: 'top 70%',
-          },
-        }
-      )
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  const ref = useReveal({ selector: '.mia-el', y: 60, stagger: 0.12, duration: 1.4, start: 'top 70%' })
 
   return (
     <section
@@ -50,7 +25,7 @@ export default function ManInArena() {
 
         {/* Header — label + title + rule, anchored right (items-start = right in RTL) */}
         <div className="mia-el flex flex-col items-start gap-2.5 mb-10">
-          <span className="font-inter font-bold text-[#ff8714] text-xs tracking-[0.22em] uppercase">
+          <span className="font-inter font-bold text-[#b35600] text-xs tracking-[0.22em] uppercase">
             האמונה שלנו
           </span>
           <h2
@@ -67,28 +42,28 @@ export default function ManInArena() {
 
         {/* Cascading quote lines */}
         <span
-          className="mia-el block w-full text-right font-ragmarom text-[#000032] hover:text-[#ff8714] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-[#000032] hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
           style={{ fontSize: 'clamp(3rem, 7vw, 9rem)', paddingTop: '16px' }}
         >
           ״השבח לאדם בזירה,
         </span>
 
         <span
-          className="mia-el block w-full text-right font-ragmarom text-[#000032] hover:text-[#ff8714] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-[#000032] hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
           style={{ fontSize: 'clamp(2.2rem, 5vw, 6.5rem)', paddingTop: '8px' }}
         >
           זה שפניו מכוסים באבק, זיעה ודם.
         </span>
 
         <span
-          className="mia-el block w-full text-right font-ragmarom text-[#000032]/60 hover:text-[#ff8714] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-[#000032]/60 hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
           style={{ fontSize: 'clamp(1.6rem, 3.5vw, 4.8rem)', paddingTop: '6px' }}
         >
           זה שאינו מפסיק לשאוף ולנסות.
         </span>
 
         <span
-          className="mia-el block w-full text-right font-ragmarom text-[#000032]/35 hover:text-[#ff8714] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-[#000032]/35 hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
           style={{
             fontSize: 'clamp(1.1rem, 2.2vw, 3rem)',
             paddingTop: '5px',

@@ -1,25 +1,11 @@
-import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { User } from 'lucide-react'
 import { coaches } from '../../data/liabahData'
 import { SectionBg, SectionHeading } from './shared'
-
-gsap.registerPlugin(ScrollTrigger)
+import useReveal from '../../hooks/useReveal'
 
 /** The coaches grid — photo + name + one-line bio. */
 export default function LiabahCoaches() {
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo('.lc-animate', { y: 50, opacity: 0 }, {
-        y: 0, opacity: 1, stagger: 0.1, duration: 1.1, ease: 'power3.out',
-        scrollTrigger: { trigger: ref.current, start: 'top 80%' },
-      })
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  const ref = useReveal({ selector: '.lc-animate', y: 50, stagger: 0.1, duration: 1.1, start: 'top 80%' })
 
   return (
     <section
@@ -31,27 +17,45 @@ export default function LiabahCoaches() {
       <SectionBg />
 
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
-        <SectionHeading title="המאמנים והמאמנות" subtitle="הדמויות שמובילות את הדרך" animateClass="lc-animate" />
+        <SectionHeading eyebrow="הצוות" title="המאמנים והמאמנות" subtitle="הדמויות שמובילות את הדרך" animateClass="lc-animate" />
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 pb-24">
-          {coaches.map((coach) => (
-            <div key={coach.id} className="lc-animate text-center">
-              {/* Photo / placeholder */}
-              <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-[#000032]/[0.06] mb-4">
-                {coach.imageSrc ? (
-                  <img src={coach.imageSrc} alt={coach.name} className="absolute inset-0 w-full h-full object-cover" />
+          {coaches.map((coach) => {
+            const isPlaceholder = !coach.imageSrc && coach.name === 'שם המאמן/ת'
+            return (
+              <div key={coach.id} className="lc-animate group text-center">
+                {/* Photo / placeholder */}
+                <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-[#000032]/[0.04] border border-[#000032]/8 mb-4 shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:shadow-[#000032]/10 group-hover:-translate-y-1.5">
+                  {coach.imageSrc ? (
+                    <>
+                      <img
+                        src={coach.imageSrc}
+                        alt={coach.name}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#000032]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                      <div className="flex items-center justify-center w-14 h-14 rounded-full bg-[#ff8714]/10">
+                        <User size={28} className="text-[#ff8714]" strokeWidth={1.5} />
+                      </div>
+                      <span className="font-heebo text-[#000032]/35 text-xs">בקרוב</span>
+                    </div>
+                  )}
+                </div>
+                {isPlaceholder ? (
+                  <p className="font-heebo text-[#000032]/45 text-sm">מאמן/ת בקרוב</p>
                 ) : (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                    <User size={36} className="text-[#000032]/20" strokeWidth={1.5} />
-                    <span className="font-heebo text-[#000032]/25 text-xs">תמונה בקרוב</span>
-                  </div>
+                  <>
+                    <h3 className="font-heebo font-bold text-[#000032] text-lg">{coach.name}</h3>
+                    <p className="font-heebo text-[#b35600] text-sm mt-0.5">{coach.role}</p>
+                    <p className="font-heebo text-[#000032]/60 text-sm leading-relaxed mt-2">{coach.bio}</p>
+                  </>
                 )}
               </div>
-              <h3 className="font-heebo font-bold text-[#000032] text-lg">{coach.name}</h3>
-              <p className="font-heebo text-[#ff8714] text-sm mt-0.5">{coach.role}</p>
-              <p className="font-heebo text-[#000032]/60 text-sm leading-relaxed mt-2">{coach.bio}</p>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

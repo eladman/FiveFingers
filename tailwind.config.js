@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         orange: '#ff8714',
+        'orange-ink': '#b35600', // contrast-safe orange for text on light backgrounds (AA)
         navy: '#000032',
       },
       fontFamily: {

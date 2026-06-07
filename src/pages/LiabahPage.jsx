@@ -1,4 +1,4 @@
-import SectionDivider from '../components/SectionDivider'
+import SoftDivider from '../components/SoftDivider'
 import LiabahHero from '../components/liabah/LiabahHero'
 import LiabahEssence from '../components/liabah/LiabahEssence'
 import LiabahStats from '../components/liabah/LiabahStats'
@@ -21,25 +21,25 @@ export default function LiabahPage({ onContactOpen }) {
   return (
     <main>
       <LiabahHero onRegister={onRegister} />
-      <SectionDivider fromColor="#0a0a0f" toColor="#fafaf8" />
+      <SoftDivider fromColor="#0a0a0f" toColor="#fafaf8" />
       <LiabahEssence />
-      <SectionDivider fromColor="#fafaf8" toColor="#000032" reverse />
+      <SoftDivider fromColor="#fafaf8" toColor="#000032" blend={false} />
       <LiabahStats />
-      <SectionDivider fromColor="#000032" toColor="#ffffff" />
+      <SoftDivider fromColor="#000032" toColor="#ffffff" blend={false} />
       <LiabahPrograms onRegister={onRegister} />
-      <SectionDivider fromColor="#ffffff" toColor="#fafaf8" reverse />
+      <SoftDivider fromColor="#ffffff" toColor="#fafaf8" />
       <LiabahYear />
-      <SectionDivider fromColor="#fafaf8" toColor="#ffffff" />
+      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
       <LiabahTraining />
-      <SectionDivider fromColor="#ffffff" toColor="#fafaf8" reverse />
+      <SoftDivider fromColor="#ffffff" toColor="#fafaf8" />
       <LiabahCoaches />
-      <SectionDivider fromColor="#fafaf8" toColor="#ffffff" />
+      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
       <LiabahMap />
-      <SectionDivider fromColor="#ffffff" toColor="#fafaf8" reverse />
+      <SoftDivider fromColor="#ffffff" toColor="#fafaf8" />
       <LiabahGallery />
-      <SectionDivider fromColor="#fafaf8" toColor="#ffffff" />
+      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
       <LiabahFAQ />
-      <SectionDivider fromColor="#ffffff" toColor="#000032" reverse />
+      <SoftDivider fromColor="#ffffff" toColor="#000032" blend={false} />
       <LiabahCTA onRegister={onRegister} />
     </main>
   )

@@ -1,28 +1,57 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { MapPin, Clock } from 'lucide-react'
 import { locations } from '../../data/liabahData'
 import { ISRAEL_PATH, VIEWBOX_W, VIEWBOX_H, project } from '../../data/israelOutline'
 import { SectionBg, SectionHeading } from './shared'
 
+gsap.registerPlugin(ScrollTrigger)
+
 export default function LiabahMap() {
+  const ref = useRef(null)
   const [active, setActive] = useState(null)
+
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const root = ref.current
+
+    const ctx = gsap.context(() => {
+      if (reduced) {
+        gsap.set('.lm-animate, .lm-pin', { opacity: 1, y: 0, scale: 1 })
+        return
+      }
+
+      gsap.fromTo('.lm-animate', { y: 50, opacity: 0 }, {
+        y: 0, opacity: 1, stagger: 0.1, duration: 1.1, ease: 'power3.out',
+        scrollTrigger: { trigger: root, start: 'top 80%' },
+      })
+
+      gsap.fromTo('.lm-pin', { y: -16, opacity: 0, scale: 0.5 }, {
+        y: 0, opacity: 1, scale: 1, stagger: 0.08, duration: 0.5, ease: 'back.out(2)',
+        scrollTrigger: { trigger: '.lm-map', start: 'top 78%' },
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
 
   return (
     <section
       id="liabah-map"
+      ref={ref}
       dir="rtl"
       className="relative w-full overflow-hidden bg-[#ffffff]"
     >
       <SectionBg watermark={false} />
 
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
-        <SectionHeading title="איפה אנחנו פועלים" subtitle="קבוצות ליבה ברחבי הארץ" />
+        <SectionHeading eyebrow="פריסה ארצית" title="איפה אנחנו פועלים" subtitle="קבוצות ליבה ברחבי הארץ" animateClass="lm-animate" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pb-24">
           {/* Map */}
-          <div className="order-2 lg:order-1 flex justify-center">
+          <div className="lm-animate order-2 lg:order-1 flex justify-center">
             <div
-              className="relative w-[230px] sm:w-[300px]"
+              className="lm-map relative w-[260px] sm:w-[340px] lg:w-[400px]"
               style={{ aspectRatio: `${VIEWBOX_W} / ${VIEWBOX_H}` }}
             >
               <svg
@@ -53,16 +82,24 @@ export default function LiabahMap() {
                     onFocus={() => setActive(loc.id)}
                     onBlur={() => setActive(null)}
                     aria-label={`${loc.region} · ${loc.city}`}
-                    className="absolute"
+                    className="lm-pin absolute rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8714] focus-visible:ring-offset-2"
                     style={{
                       left: `${(x / VIEWBOX_W) * 100}%`,
                       top: `${(y / VIEWBOX_H) * 100}%`,
                       transform: 'translate(-50%, -100%)',
                     }}
                   >
+                    {/* Pulse ring on active */}
+                    {isActive && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute left-1/2 bottom-0 w-5 h-5 rounded-full bg-[#ff8714]/40"
+                        style={{ transform: 'translate(-50%, 50%)', animation: 'pulseRing 1.4s ease-out infinite' }}
+                      />
+                    )}
                     <MapPin
                       size={isActive ? 30 : 22}
-                      className="text-[#ff8714] drop-shadow transition-all duration-200"
+                      className="relative text-[#ff8714] drop-shadow transition-all duration-200"
                       fill={isActive ? '#ff8714' : '#ffffff'}
                       strokeWidth={2}
                     />
@@ -81,12 +118,12 @@ export default function LiabahMap() {
                   key={loc.id}
                   onMouseEnter={() => setActive(loc.id)}
                   onMouseLeave={() => setActive(null)}
-                  className={`rounded-xl border p-4 transition-all duration-200 ${
-                    isActive ? 'border-[#ff8714] bg-[#ff8714]/[0.04] shadow-sm' : 'border-[#000032]/8 bg-white'
+                  className={`lm-animate rounded-xl border p-4 transition-all duration-200 ${
+                    isActive ? 'border-[#ff8714] bg-[#ff8714]/[0.05] shadow-sm -translate-y-0.5' : 'border-[#000032]/8 bg-white'
                   }`}
                 >
                   <div className="flex items-center gap-2">
-                    <MapPin size={18} className="text-[#ff8714] shrink-0" />
+                    <MapPin size={18} className="text-[#b35600] shrink-0" />
                     <h3 className="font-heebo font-bold text-[#000032]">{loc.region}</h3>
                     <span className="font-heebo text-[#000032]/50 text-sm">· {loc.city}</span>
                   </div>
@@ -97,7 +134,7 @@ export default function LiabahMap() {
                 </div>
               )
             })}
-            <p className="font-heebo text-[#000032]/45 text-sm mt-2">
+            <p className="lm-animate font-heebo text-[#000032]/45 text-sm mt-2">
               לא מצאתם קבוצה באזורכם? השאירו פרטים ונעדכן אתכם בפתיחת קבוצה קרובה.
             </p>
           </div>

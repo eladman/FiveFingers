@@ -6,7 +6,7 @@ import ManInArena from './components/ManInArena'
 import Programs from './components/Programs'
 import FiveContent from './components/FiveContent'
 import Footer from './components/Footer'
-import SectionDivider from './components/SectionDivider'
+import SoftDivider from './components/SoftDivider'
 import ContactModal from './components/ContactModal'
 import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
 import LiabahPage from './pages/LiabahPage'
@@ -56,13 +56,13 @@ export default function App() {
       ) : (
         <main>
           <Hero onComplete={() => setNavReady(true)} />
-          <SectionDivider fromColor="#111111" toColor="#fafaf8" />
+          <SoftDivider fromColor="#0a0a0f" toColor="#fafaf8" />
           <WhoWeAre />
-          <SectionDivider fromColor="#fafaf8" toColor="#fafaf8" />
+          <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
           <ManInArena />
-          <SectionDivider fromColor="#fafaf8" toColor="#fafaf8" reverse />
+          <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
           <Programs />
-          <SectionDivider fromColor="#fafaf8" toColor="#ffffff" />
+          <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
           <FiveContent />
         </main>
       )}

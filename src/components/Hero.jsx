@@ -90,14 +90,20 @@ export default function Hero({ onComplete }) {
   }, []) // run once on mount only
 
   useEffect(() => {
-    let current = 0
     const imgs = imgRefs.current
     if (!imgs.length) return
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) return // static first image, no slideshow/Ken Burns
+
+    imgs[0].classList.add('ken-burns')
+    let current = 0
     const id = setInterval(() => {
       const prev = current
       current = (current + 1) % imgs.length
       imgs[prev].style.opacity = '0'
+      imgs[prev].classList.remove('ken-burns')
       imgs[current].style.opacity = '1'
+      imgs[current].classList.add('ken-burns')
     }, 5000)
     return () => clearInterval(id)
   }, [])
@@ -119,8 +125,8 @@ export default function Hero({ onComplete }) {
             className="absolute inset-0 w-full h-full object-cover"
             style={{
               opacity: i === 0 ? 1 : 0,
-              transition: 'opacity 1.2s ease-in-out',
-              willChange: 'opacity',
+              transition: 'opacity 1.2s ease-in-out, transform 1.2s ease-out',
+              willChange: 'opacity, transform',
             }}
             loading={i === 0 ? 'eager' : 'lazy'}
           />
@@ -187,7 +193,7 @@ export default function Hero({ onComplete }) {
 
           <a
             href="#features"
-            className="hero-cta flex items-center gap-2 text-white/70 hover:text-white active:text-white px-7 py-3.5 rounded-full text-base border border-white/20 hover:border-white/50 active:border-white/50 active:scale-[0.97] transition-all duration-300"
+            className="hero-cta flex items-center gap-2 text-white/70 hover:text-white active:text-white px-7 py-3.5 rounded-full text-base border border-white/20 hover:border-white/50 active:border-white/50 active:scale-[0.97] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/30"
           >
             גלו עוד
           </a>
@@ -211,7 +217,7 @@ function MagneticCTA({ children, icon, primary, href, className }) {
   return (
     <a
       href={href}
-      className={`${className ?? ''} group relative overflow-hidden flex items-center gap-2.5 px-8 py-3.5 rounded-full text-base font-bold transition-all duration-300 active:scale-[0.97] ${
+      className={`${className ?? ''} group relative overflow-hidden flex items-center gap-2.5 px-8 py-3.5 rounded-full text-base font-bold transition-all duration-300 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 ${
         primary ? 'bg-[#ff8714] text-white' : 'bg-white/10 text-white border border-white/20'
       }`}
       style={{ transition: 'transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}

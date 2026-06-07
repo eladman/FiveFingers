@@ -1,35 +1,170 @@
-[2026-06-02T14:08:08.492Z] [debug] [vite] connecting...
-[2026-06-02T14:08:08.519Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-06-02T14:08:08.673Z] [debug] [vite] connected.
-[2026-06-02T14:08:19.314Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
-[2026-06-02T14:08:38.980Z] [debug] [vite] connecting...
-[2026-06-02T14:08:38.986Z] [debug] [vite] connected.
-[2026-06-02T14:08:39.008Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-06-02T14:09:27.666Z] [debug] [vite] connecting...
-[2026-06-02T14:09:27.670Z] [debug] [vite] connected.
-[2026-06-02T14:09:27.681Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-06-02T14:10:28.863Z] [debug] [vite] connecting...
-[2026-06-02T14:10:28.881Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-06-02T14:10:28.999Z] [debug] [vite] connected.
-[2026-06-02T14:10:39.851Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
-[2026-06-02T14:10:39.851Z] [debug] [vite] hot updated: /src/index.css
-[2026-06-02T14:14:28.230Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
-[2026-06-02T14:14:28.230Z] [debug] [vite] hot updated: /src/index.css
-[2026-06-02T14:30:25.107Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
-[2026-06-02T14:30:25.107Z] [debug] [vite] hot updated: /src/index.css
-[2026-06-02T14:32:25.364Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
-[2026-06-02T14:32:25.364Z] [debug] [vite] hot updated: /src/index.css
-[2026-06-02T14:32:30.820Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
-[2026-06-02T14:32:30.820Z] [debug] [vite] hot updated: /src/index.css
-[2026-06-02T14:32:34.899Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
-[2026-06-02T14:32:34.899Z] [debug] [vite] hot updated: /src/index.css
-[2026-06-02T14:32:44.543Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
-[2026-06-02T14:32:44.543Z] [debug] [vite] hot updated: /src/index.css
-[2026-06-02T14:32:51.544Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
-[2026-06-02T14:32:51.544Z] [debug] [vite] hot updated: /src/index.css
-[2026-06-02T14:33:56.178Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
-[2026-06-02T14:33:56.178Z] [debug] [vite] hot updated: /src/index.css
-[2026-06-02T14:34:01.237Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
-[2026-06-02T14:34:01.237Z] [debug] [vite] hot updated: /src/index.css
-[2026-06-02T14:35:55.844Z] [debug] [vite] hot updated: /src/App.jsx
-[2026-06-02T14:35:55.844Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:20:49.194Z] [debug] [vite] connecting...
+[2026-06-07T12:20:49.231Z] [debug] [vite] connected.
+[2026-06-07T12:20:49.602Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-06-07T12:22:20.285Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-06-07T12:28:31.143Z] [debug] [vite] hot updated: /src/components/liabah/LiabahStats.jsx
+[2026-06-07T12:28:31.143Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:28:38.907Z] [debug] [vite] hot updated: /src/components/liabah/LiabahStats.jsx
+[2026-06-07T12:28:38.907Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:28:45.280Z] [debug] [vite] hot updated: /src/components/liabah/LiabahHero.jsx
+[2026-06-07T12:28:45.280Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:28:54.757Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T12:28:54.757Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:31:52.526Z] [debug] [vite] hot updated: /src/components/liabah/LiabahStats.jsx
+[2026-06-07T12:31:52.526Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:34:15.383Z] [debug] [vite] hot updated: /src/components/liabah/LiabahStats.jsx
+[2026-06-07T12:34:15.383Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:36:27.308Z] [debug] [vite] hot updated: /src/components/liabah/LiabahDivider.jsx
+[2026-06-07T12:36:27.308Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:36:39.514Z] [debug] [vite] hot updated: /src/pages/LiabahPage.jsx
+[2026-06-07T12:36:39.514Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:36:44.426Z] [debug] [vite] hot updated: /src/pages/LiabahPage.jsx
+[2026-06-07T12:36:44.427Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:51:15.519Z] [debug] [vite] connecting...
+[2026-06-07T12:51:15.534Z] [debug] [vite] connected.
+[2026-06-07T12:51:15.539Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-06-07T12:51:34.247Z] [debug] [vite] hot updated: /src/components/liabah/shared.jsx
+[2026-06-07T12:51:34.247Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:51:40.286Z] [debug] [vite] hot updated: /src/components/liabah/shared.jsx
+[2026-06-07T12:51:40.286Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:51:52.508Z] [debug] [vite] hot updated: /src/components/liabah/LiabahHero.jsx
+[2026-06-07T12:51:52.508Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:52:37.958Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T12:52:37.958Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:52:48.228Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T12:52:48.228Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:53:17.674Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T12:53:17.674Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:53:26.217Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T12:53:26.217Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:53:31.982Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T12:53:31.982Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:53:38.271Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T12:53:38.271Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:53:46.839Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T12:53:46.839Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:54:19.409Z] [debug] [vite] hot updated: /src/components/liabah/LiabahStats.jsx
+[2026-06-07T12:54:19.409Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:54:32.118Z] [debug] [vite] hot updated: /src/components/liabah/LiabahPrograms.jsx
+[2026-06-07T12:54:32.118Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:54:43.804Z] [debug] [vite] hot updated: /src/components/liabah/LiabahPrograms.jsx
+[2026-06-07T12:54:43.804Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:54:50.349Z] [debug] [vite] hot updated: /src/components/liabah/LiabahPrograms.jsx
+[2026-06-07T12:54:50.349Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:54:57.472Z] [debug] [vite] hot updated: /src/components/liabah/LiabahYear.jsx
+[2026-06-07T12:54:57.472Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:55:03.153Z] [debug] [vite] hot updated: /src/components/liabah/LiabahYear.jsx
+[2026-06-07T12:55:03.153Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:55:08.904Z] [debug] [vite] hot updated: /src/components/liabah/LiabahTraining.jsx
+[2026-06-07T12:55:08.904Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:55:48.748Z] [debug] [vite] hot updated: /src/components/liabah/LiabahCoaches.jsx
+[2026-06-07T12:55:48.748Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:56:06.245Z] [debug] [vite] hot updated: /src/components/liabah/LiabahMap.jsx
+[2026-06-07T12:56:06.245Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:56:12.177Z] [debug] [vite] hot updated: /src/components/liabah/LiabahMap.jsx
+[2026-06-07T12:56:12.177Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:56:19.737Z] [debug] [vite] hot updated: /src/components/liabah/LiabahMap.jsx
+[2026-06-07T12:56:19.737Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:56:25.744Z] [debug] [vite] hot updated: /src/components/liabah/LiabahMap.jsx
+[2026-06-07T12:56:25.744Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:56:34.584Z] [debug] [vite] hot updated: /src/components/liabah/LiabahGallery.jsx
+[2026-06-07T12:56:34.584Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:56:40.611Z] [debug] [vite] hot updated: /src/components/liabah/LiabahGallery.jsx
+[2026-06-07T12:56:40.611Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:56:48.170Z] [debug] [vite] hot updated: /src/components/liabah/LiabahGallery.jsx
+[2026-06-07T12:56:48.170Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:56:55.476Z] [debug] [vite] hot updated: /src/components/liabah/LiabahGallery.jsx
+[2026-06-07T12:56:55.476Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:57:04.629Z] [debug] [vite] hot updated: /src/components/liabah/LiabahFAQ.jsx
+[2026-06-07T12:57:04.629Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:57:12.794Z] [debug] [vite] hot updated: /src/components/liabah/LiabahFAQ.jsx
+[2026-06-07T12:57:12.794Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:57:26.284Z] [debug] [vite] hot updated: /src/components/liabah/LiabahCTA.jsx
+[2026-06-07T12:57:26.284Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:57:31.973Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T12:57:31.973Z] [debug] [vite] hot updated: /src/components/liabah/LiabahStats.jsx
+[2026-06-07T12:57:31.974Z] [debug] [vite] hot updated: /src/components/liabah/LiabahTraining.jsx
+[2026-06-07T12:57:31.974Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T12:57:31.974Z] [debug] [vite] hot updated: /src/components/liabah/LiabahCoaches.jsx
+[2026-06-07T12:57:31.974Z] [debug] [vite] hot updated: /src/components/liabah/LiabahCTA.jsx
+[2026-06-07T12:57:31.974Z] [debug] [vite] hot updated: /src/components/liabah/LiabahGallery.jsx
+[2026-06-07T12:57:31.974Z] [debug] [vite] hot updated: /src/components/liabah/LiabahFAQ.jsx
+[2026-06-07T12:57:42.529Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T12:57:42.529Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:00:00.156Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-06-07T13:04:20.064Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T13:04:20.064Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:04:27.747Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-06-07T13:04:27.747Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:10:07.566Z] [debug] [vite] hot updated: /src/pages/LiabahPage.jsx
+[2026-06-07T13:10:07.566Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:10:07.601Z] [warning] %s
+
+%s
+ An error occurred in the <LiabahPage> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[2026-06-07T13:10:14.209Z] [debug] [vite] hot updated: /src/pages/LiabahPage.jsx
+[2026-06-07T13:10:14.209Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:10:32.460Z] [debug] [vite] hot updated: /src/App.jsx
+[2026-06-07T13:10:32.460Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:10:40.004Z] [debug] [vite] hot updated: /src/App.jsx
+[2026-06-07T13:10:40.004Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:10:45.433Z] [error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-06-07T13:10:45.434Z] [error] [vite] Failed to reload /src/components/liabah/LiabahDivider.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2026-06-07T13:10:45.474Z] [debug] [vite] hot updated: /src/components/liabah/LiabahDivider.jsx
+[2026-06-07T13:10:45.475Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:10:45.476Z] [error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-06-07T13:10:45.477Z] [error] [vite] Failed to reload /src/components/SectionDivider.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2026-06-07T13:10:45.477Z] [debug] [vite] hot updated: /src/components/SectionDivider.jsx
+[2026-06-07T13:10:45.477Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:10:59.679Z] [debug] [vite] hot updated: /src/components/WhoWeAre.jsx
+[2026-06-07T13:10:59.679Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:11:04.976Z] [debug] [vite] hot updated: /src/components/WhoWeAre.jsx
+[2026-06-07T13:11:04.976Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:11:14.474Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
+[2026-06-07T13:11:14.474Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:11:22.018Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
+[2026-06-07T13:11:22.018Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:11:59.089Z] [debug] [vite] hot updated: /src/components/Programs.jsx
+[2026-06-07T13:11:59.089Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:12:05.698Z] [debug] [vite] hot updated: /src/components/Programs.jsx
+[2026-06-07T13:12:05.698Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:12:27.085Z] [debug] [vite] hot updated: /src/components/Programs.jsx
+[2026-06-07T13:12:27.085Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:12:51.340Z] [debug] [vite] hot updated: /src/components/FiveContent.jsx
+[2026-06-07T13:12:51.340Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:13:21.968Z] [debug] [vite] hot updated: /src/components/Hero.jsx
+[2026-06-07T13:13:21.968Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:13:32.158Z] [debug] [vite] hot updated: /src/components/Hero.jsx
+[2026-06-07T13:13:32.158Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:13:39.645Z] [debug] [vite] hot updated: /src/components/Hero.jsx
+[2026-06-07T13:13:39.645Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:13:46.895Z] [debug] [vite] hot updated: /src/components/Hero.jsx
+[2026-06-07T13:13:46.895Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:14:10.156Z] [debug] [vite] hot updated: /src/components/WhoWeAre.jsx
+[2026-06-07T13:14:10.156Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:14:18.787Z] [debug] [vite] hot updated: /src/components/ManInArena.jsx
+[2026-06-07T13:14:18.791Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:14:33.297Z] [debug] [vite] hot updated: /src/components/Programs.jsx
+[2026-06-07T13:14:33.297Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:14:38.901Z] [debug] [vite] hot updated: /src/components/FiveContent.jsx
+[2026-06-07T13:14:38.901Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:14:57.074Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-06-07T13:21:06.628Z] [error] [vite] ReferenceError: require is not defined
+    at forwardRefField (http://localhost:5177/src/components/ContactModal.jsx?t=1780838466364:787:3)
+    at http://localhost:5177/src/components/ContactModal.jsx?t=1780838466364:555:23
+[2026-06-07T13:21:06.628Z] [error] [vite] Failed to reload /src/components/ContactModal.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2026-06-07T13:21:06.628Z] [debug] [vite] hot updated: /src/components/ContactModal.jsx
+[2026-06-07T13:21:06.628Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:21:11.636Z] [error] [vite] ReferenceError: require is not defined
+    at forwardRefField (http://localhost:5177/src/components/ContactModal.jsx?t=1780838471573:787:3)
+    at http://localhost:5177/src/components/ContactModal.jsx?t=1780838471573:555:23
+[2026-06-07T13:21:11.636Z] [error] [vite] Failed to reload /src/components/ContactModal.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2026-06-07T13:21:11.636Z] [debug] [vite] hot updated: /src/components/ContactModal.jsx
+[2026-06-07T13:21:11.636Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:21:19.207Z] [debug] [vite] hot updated: /src/components/ContactModal.jsx
+[2026-06-07T13:21:19.208Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:21:20.204Z] [debug] [vite] hot updated: /src/components/ContactModal.jsx
+[2026-06-07T13:21:20.204Z] [debug] [vite] hot updated: /src/index.css
+[2026-06-07T13:22:09.441Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-06-07T13:23:36.485Z] [log] Contact form submission: {name: דניאל/ה כהן, phone: 052-1234567, email: daniel@mail.com, productType: קבוצות הנוער}
