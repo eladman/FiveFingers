@@ -42,7 +42,7 @@ export default function LiabahGallery() {
       id="liabah-gallery"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-[#fafaf8]"
+      className="relative w-full overflow-hidden bg-surface"
     >
       <SectionBg flip />
 
@@ -57,9 +57,9 @@ export default function LiabahGallery() {
               <button
                 key={img.id}
                 onClick={() => shotIndex >= 0 && setIndex(shotIndex)}
-                className={`lg-animate group relative overflow-hidden rounded-xl bg-[#000032]/[0.06] h-full ${span} ${
+                className={`lg-animate group relative overflow-hidden rounded-xl bg-navy/[0.06] h-full ${span} ${
                   img.src
-                    ? 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8714] focus-visible:ring-offset-2'
+                    ? 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2'
                     : 'cursor-default'
                 }`}
               >
@@ -70,12 +70,12 @@ export default function LiabahGallery() {
                       alt={img.alt}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-[#000032]/0 group-hover:bg-[#000032]/15 transition-colors duration-300" />
+                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/15 transition-colors duration-300" />
                   </>
                 ) : (
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                    <ImageIcon size={28} className="text-[#000032]/20" strokeWidth={1.5} />
-                    <span className="font-heebo text-[#000032]/25 text-xs">תמונה בקרוב</span>
+                    <ImageIcon size={28} className="text-navy/20" strokeWidth={1.5} />
+                    <span className="font-heebo text-navy/25 text-xs">תמונה בקרוב</span>
                   </div>
                 )}
               </button>

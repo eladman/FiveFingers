@@ -82,7 +82,7 @@ export default function LiabahMap() {
                     onFocus={() => setActive(loc.id)}
                     onBlur={() => setActive(null)}
                     aria-label={`${loc.region} · ${loc.city}`}
-                    className="lm-pin absolute rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8714] focus-visible:ring-offset-2"
+                    className="lm-pin absolute rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
                     style={{
                       left: `${(x / VIEWBOX_W) * 100}%`,
                       top: `${(y / VIEWBOX_H) * 100}%`,
@@ -93,13 +93,13 @@ export default function LiabahMap() {
                     {isActive && (
                       <span
                         aria-hidden="true"
-                        className="absolute left-1/2 bottom-0 w-5 h-5 rounded-full bg-[#ff8714]/40"
+                        className="absolute left-1/2 bottom-0 w-5 h-5 rounded-full bg-orange/40"
                         style={{ transform: 'translate(-50%, 50%)', animation: 'pulseRing 1.4s ease-out infinite' }}
                       />
                     )}
                     <MapPin
                       size={isActive ? 30 : 22}
-                      className="relative text-[#ff8714] drop-shadow transition-all duration-200"
+                      className="relative text-orange drop-shadow transition-all duration-200"
                       fill={isActive ? '#ff8714' : '#ffffff'}
                       strokeWidth={2}
                     />
@@ -119,22 +119,22 @@ export default function LiabahMap() {
                   onMouseEnter={() => setActive(loc.id)}
                   onMouseLeave={() => setActive(null)}
                   className={`lm-animate rounded-xl border p-4 transition-all duration-200 ${
-                    isActive ? 'border-[#ff8714] bg-[#ff8714]/[0.05] shadow-sm -translate-y-0.5' : 'border-[#000032]/8 bg-white'
+                    isActive ? 'border-orange bg-orange/[0.05] shadow-sm -translate-y-0.5' : 'border-navy/8 bg-white'
                   }`}
                 >
                   <div className="flex items-center gap-2">
                     <MapPin size={18} className="text-[#b35600] shrink-0" />
-                    <h3 className="font-heebo font-bold text-[#000032]">{loc.region}</h3>
-                    <span className="font-heebo text-[#000032]/50 text-sm">· {loc.city}</span>
+                    <h3 className="font-heebo font-bold text-navy">{loc.region}</h3>
+                    <span className="font-heebo text-navy/50 text-sm">· {loc.city}</span>
                   </div>
                   <div className="flex items-center gap-2 mt-2 pr-1">
-                    <Clock size={15} className="text-[#000032]/40 shrink-0" />
-                    <span className="font-heebo text-[#000032]/60 text-sm">{loc.hours}</span>
+                    <Clock size={15} className="text-navy/40 shrink-0" />
+                    <span className="font-heebo text-navy/60 text-sm">{loc.hours}</span>
                   </div>
                 </div>
               )
             })}
-            <p className="lm-animate font-heebo text-[#000032]/45 text-sm mt-2">
+            <p className="lm-animate font-heebo text-navy/45 text-sm mt-2">
               לא מצאתם קבוצה באזורכם? השאירו פרטים ונעדכן אתכם בפתיחת קבוצה קרובה.
             </p>
           </div>

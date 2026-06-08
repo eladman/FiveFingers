@@ -10,6 +10,7 @@ import SoftDivider from './components/SoftDivider'
 import ContactModal from './components/ContactModal'
 import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
 import LiabahPage from './pages/LiabahPage'
+import { WHATSAPP_HREF } from './data/contact'
 
 export default function App() {
   const [navReady, setNavReady] = useState(false)
@@ -66,11 +67,11 @@ export default function App() {
           <FiveContent />
         </main>
       )}
-      <Footer />
+      <Footer onContactOpen={() => openContact()} />
 
       {/* Floating WhatsApp button */}
       <a
-        href="https://wa.me/972556855850"
+        href={WHATSAPP_HREF}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="שלחו לנו הודעה בוואטסאפ"
@@ -86,16 +87,16 @@ export default function App() {
           height: '60px',
           borderRadius: '50%',
           backgroundColor: '#25D366',
-          boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
+          boxShadow: 'var(--shadow-md)',
           transition: 'transform 0.2s ease, box-shadow 0.2s ease',
         }}
         onMouseEnter={e => {
           e.currentTarget.style.transform = 'scale(1.1)'
-          e.currentTarget.style.boxShadow = '0 6px 24px rgba(0,0,0,0.32)'
+          e.currentTarget.style.boxShadow = 'var(--shadow-lg)'
         }}
         onMouseLeave={e => {
           e.currentTarget.style.transform = 'scale(1)'
-          e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.25)'
+          e.currentTarget.style.boxShadow = 'var(--shadow-md)'
         }}
       >
         <svg viewBox="0 0 32 32" width="32" height="32" fill="white" xmlns="http://www.w3.org/2000/svg">

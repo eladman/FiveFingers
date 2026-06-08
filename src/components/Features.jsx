@@ -118,13 +118,13 @@ function BelongingCard() {
       {/* Header */}
       <div className="mb-7">
         <div className="flex items-center justify-between">
-          <span className="font-mono text-[#ff8714] text-xs tracking-widest uppercase">02</span>
+          <span className="font-mono text-orange text-xs tracking-widest uppercase">02</span>
           <span className="flex items-center gap-1.5 text-xs text-gray-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ff8714] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-orange animate-pulse" />
             זרם חי
           </span>
         </div>
-        <h3 className="text-[#000032] font-bold text-2xl mt-2">שייכות</h3>
+        <h3 className="text-navy font-bold text-2xl mt-2">שייכות</h3>
         <p className="text-gray-400 text-sm mt-1 leading-snug">
           תחושת חיבור עמוק לקבוצה ולמטרה
         </p>
@@ -133,14 +133,14 @@ function BelongingCard() {
       {/* Typewriter display */}
       <div className="flex-1 flex flex-col justify-center gap-5">
         <div
-          className="rounded-2xl p-5 font-mono text-[#000032] text-base leading-relaxed min-h-[80px] flex items-center"
+          className="rounded-2xl p-5 font-mono text-navy text-base leading-relaxed min-h-[80px] flex items-center"
           style={{
             background: '#f8f9fa',
             border: '1px solid #f0f0f0',
           }}
         >
           <span>{displayed}</span>
-          <span className="text-[#ff8714] animate-pulse ms-0.5 font-light">|</span>
+          <span className="text-orange animate-pulse ms-0.5 font-light">|</span>
         </div>
 
         {/* Progress bar dots */}
@@ -228,7 +228,7 @@ function ImpactCard() {
     >
       {/* Header */}
       <div className="mb-7">
-        <span className="font-mono text-[#ff8714] text-xs tracking-widest uppercase">03</span>
+        <span className="font-mono text-orange text-xs tracking-widest uppercase">03</span>
         <h3 className="text-white font-bold text-2xl mt-2">השפעה</h3>
         <p className="text-white/45 text-sm mt-1 leading-snug">
           פעולה אקטיבית שמשנה מציאות מדי שבוע
@@ -376,13 +376,13 @@ export default function Features() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
 
           <div>
-            <p className="features-eyebrow font-mono text-[#ff8714] text-xs tracking-widest uppercase mb-4">
+            <p className="features-eyebrow font-mono text-orange text-xs tracking-widest uppercase mb-4">
               מה אנחנו מפתחים
             </p>
             <h2 className="features-headline text-white font-ragmarom text-5xl md:text-7xl leading-[1.05] tracking-tight">
               שלושה מעגלי
               <br />
-              <span className="font-ragmarom text-[#ff8714]">צמיחה.</span>
+              <span className="font-ragmarom text-orange">צמיחה.</span>
             </h2>
           </div>
 

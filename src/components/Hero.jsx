@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ChevronLeft } from 'lucide-react'
+import Button from './ui/Button'
 
 const IMAGES = [
   '/Hero-Pics/214A0011.jpg',
@@ -132,14 +133,14 @@ export default function Hero({ onComplete }) {
           />
         ))}
         {/* Warm-tone color grade */}
-        <div className="absolute inset-0 bg-[#ff8714]/10 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
         {/* Dark scrim for text legibility */}
         <div className="absolute inset-0 bg-black/50" />
         {/* Multi-layer gradient for depth */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute bottom-0 inset-x-0 h-1/5 bg-gradient-to-t from-black/65 to-transparent" />
         {/* Subtle orange warmth at the very bottom */}
-        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-[#ff8714]/8 to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-orange/8 to-transparent" />
       </div>
 
       {/* ── Content ── */}
@@ -160,7 +161,7 @@ export default function Hero({ onComplete }) {
 
         {/* Orange accent line */}
         <div
-          className="hero-accent mx-auto mt-5 md:mt-7 rounded-full bg-[#ff8714]"
+          className="hero-accent mx-auto mt-5 md:mt-7 rounded-full bg-orange"
           style={{
             height: '3px',
             width: 'clamp(8rem, 22vw, 22rem)',
@@ -170,7 +171,7 @@ export default function Hero({ onComplete }) {
 
         {/* Subtitle */}
         <p
-          className="hero-subtitle text-[#ff8714] mt-5 md:mt-7"
+          className="hero-subtitle text-orange mt-5 md:mt-7"
           style={{
             fontFamily: "'RagMarom', sans-serif",
             fontSize: 'clamp(1.6rem, 4.5vw, 4.5rem)',
@@ -182,21 +183,13 @@ export default function Hero({ onComplete }) {
 
         {/* CTA buttons */}
         <div className="flex flex-wrap gap-4 justify-center mt-10 md:mt-14">
-          <MagneticCTA
-            className="hero-cta"
-            primary
-            href="#contact"
-            icon={<ChevronLeft size={18} className="shrink-0" />}
-          >
+          <Button variant="primary" href="#contact" icon={ChevronLeft} className="hero-cta">
             הצטרפו אלינו
-          </MagneticCTA>
+          </Button>
 
-          <a
-            href="#features"
-            className="hero-cta flex items-center gap-2 text-white/70 hover:text-white active:text-white px-7 py-3.5 rounded-full text-base border border-white/20 hover:border-white/50 active:border-white/50 active:scale-[0.97] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/30"
-          >
+          <Button variant="ghost" href="#features" className="hero-cta">
             גלו עוד
-          </a>
+          </Button>
         </div>
       </div>
 
@@ -210,23 +203,3 @@ export default function Hero({ onComplete }) {
   )
 }
 
-function MagneticCTA({ children, icon, primary, href, className }) {
-  const onEnter = (e) => { e.currentTarget.style.transform = 'scale(1.04)' }
-  const onLeave = (e) => { e.currentTarget.style.transform = 'scale(1)' }
-
-  return (
-    <a
-      href={href}
-      className={`${className ?? ''} group relative overflow-hidden flex items-center gap-2.5 px-8 py-3.5 rounded-full text-base font-bold transition-all duration-300 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 ${
-        primary ? 'bg-[#ff8714] text-white' : 'bg-white/10 text-white border border-white/20'
-      }`}
-      style={{ transition: 'transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
-      onMouseEnter={onEnter}
-      onMouseLeave={onLeave}
-    >
-      <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full" />
-      <span className="relative">{children}</span>
-      {icon && <span className="relative">{icon}</span>}
-    </a>
-  )
-}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import logo from '../assets/logo.png'
+import Button from './ui/Button'
 
 const NAV_LINKS = [
   { label: 'ליבה', href: '#liabah' },
@@ -14,11 +15,19 @@ const NAV_LINKS = [
 export default function Navbar({ onContactOpen }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeHash, setActiveHash] = useState(
+    typeof window !== 'undefined' ? window.location.hash || '#home' : '#home'
+  )
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
+    const onHashChange = () => setActiveHash(window.location.hash || '#home')
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('hashchange', onHashChange)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('hashchange', onHashChange)
+    }
   }, [])
 
   return (
@@ -38,21 +47,27 @@ export default function Navbar({ onContactOpen }) {
 
         {/* Links */}
         <div className="flex items-center gap-0.5">
-          {NAV_LINKS.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              className="px-3 py-1.5 text-sm transition-colors duration-200 rounded-full whitespace-nowrap text-white/70 hover:text-white hover:bg-white/10"
-            >
-              {label}
-            </a>
-          ))}
+          {NAV_LINKS.map(({ label, href }) => {
+            const active = activeHash === href
+            return (
+              <a
+                key={label}
+                href={href}
+                aria-current={active ? 'page' : undefined}
+                className={`px-3 py-1.5 text-sm transition-colors duration-200 rounded-full whitespace-nowrap ${
+                  active ? 'text-white bg-white/10 font-semibold' : 'text-white/70 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                {label}
+              </a>
+            )
+          })}
         </div>
 
         {/* CTA */}
-        <MagneticButton onClick={onContactOpen} className="ms-2 me-1 bg-[#ff8714] text-white px-5 py-2 rounded-full text-sm font-bold">
+        <Button variant="primary" size="sm" onClick={onContactOpen} className="ms-2 me-1">
           יצירת קשר
-        </MagneticButton>
+        </Button>
       </nav>
 
       {/* ── Mobile Navbar ── */}
@@ -83,19 +98,25 @@ export default function Navbar({ onContactOpen }) {
           }`}
         >
           <div className="p-4">
-            {NAV_LINKS.map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                onClick={() => setMenuOpen(false)}
-                className="block py-3.5 text-white/60 hover:text-white border-b border-white/8 last:border-0 text-lg font-medium transition-colors"
-              >
-                {label}
-              </a>
-            ))}
+            {NAV_LINKS.map(({ label, href }) => {
+              const active = activeHash === href
+              return (
+                <a
+                  key={label}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  aria-current={active ? 'page' : undefined}
+                  className={`block py-3.5 border-b border-white/8 last:border-0 text-lg font-medium transition-colors ${
+                    active ? 'text-orange' : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {label}
+                </a>
+              )
+            })}
             <button
               onClick={() => { setMenuOpen(false); onContactOpen() }}
-              className="w-full mt-4 bg-[#ff8714] text-white py-3.5 rounded-xl font-bold text-base"
+              className="w-full mt-4 bg-orange text-white py-3.5 rounded-xl font-bold text-base"
             >
               יצירת קשר
             </button>
@@ -103,24 +124,5 @@ export default function Navbar({ onContactOpen }) {
         </div>
       </nav>
     </>
-  )
-}
-
-/* Magnetic button with sliding overlay */
-function MagneticButton({ children, className, onClick }) {
-  const onEnter = (e) => { e.currentTarget.style.transform = 'scale(1.04)' }
-  const onLeave = (e) => { e.currentTarget.style.transform = 'scale(1)' }
-
-  return (
-    <button
-      className={`group relative overflow-hidden transition-all duration-300 whitespace-nowrap ${className}`}
-      style={{ transition: 'transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
-      onMouseEnter={onEnter}
-      onMouseLeave={onLeave}
-      onClick={onClick}
-    >
-      <span className="absolute inset-0 bg-white/25 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full" />
-      <span className="relative">{children}</span>
-    </button>
   )
 }

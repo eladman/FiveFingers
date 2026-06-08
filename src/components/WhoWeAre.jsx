@@ -8,11 +8,11 @@ export default function WhoWeAre() {
       id="who-we-are"
       ref={ref}
       dir="rtl"
-      className="relative w-full min-h-[100dvh] overflow-hidden flex items-center bg-[#fafaf8]"
+      className="relative w-full min-h-[100dvh] overflow-hidden flex items-center bg-surface"
     >
       {/* ── Atmospheric glows ── */}
-      <div className="pointer-events-none absolute bottom-[-10%] left-[20%] w-[70vw] h-[50vh] rounded-full bg-[#ff8714]/14 blur-[160px]" />
-      <div className="pointer-events-none absolute top-[-10%] right-[-5%] w-[40vw] h-[60vh] rounded-full bg-[#ff8714]/8 blur-[140px]" />
+      <div className="pointer-events-none absolute bottom-[-10%] left-[20%] w-[70vw] h-[50vh] rounded-full bg-orange/14 blur-[160px]" />
+      <div className="pointer-events-none absolute top-[-10%] right-[-5%] w-[40vw] h-[60vh] rounded-full bg-orange/8 blur-[140px]" />
 
       {/* ── Halftone dot grid ── */}
       <div
@@ -29,12 +29,12 @@ export default function WhoWeAre() {
       <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_2.2fr] gap-0 md:min-h-[100dvh]">
 
         {/* ── Text column — right ── */}
-        <div className="flex flex-col justify-start gap-10 px-6 sm:px-10 md:px-14 lg:px-20 pt-24 pb-20 border-b md:border-b-0 md:border-l border-[#000032]/8">
+        <div className="flex flex-col justify-start gap-10 px-6 sm:px-10 md:px-14 lg:px-20 pt-24 pb-20 border-b md:border-b-0 md:border-l border-navy/8">
 
           {/* Main heading */}
           <div className="wwa-el">
             <h2
-              className="font-ragmarom text-[#000032] leading-[0.92] tracking-tight"
+              className="font-ragmarom text-navy leading-[0.92] tracking-tight"
               style={{ fontSize: 'clamp(2.4rem, 4.2vw, 4.8rem)' }}
             >
               מי אנחנו
@@ -48,7 +48,7 @@ export default function WhoWeAre() {
           </div>
 
           {/* Divider */}
-          <div className="wwa-el w-full h-px bg-[#000032]/10" />
+          <div className="wwa-el w-full h-px bg-navy/10" />
 
           {/* Vision */}
           <div className="wwa-el flex flex-col gap-3">
@@ -56,13 +56,13 @@ export default function WhoWeAre() {
               חזון
             </span>
             <h3
-              className="font-heebo font-bold text-[#000032] leading-tight"
+              className="font-heebo font-bold text-navy leading-tight"
               style={{ fontSize: 'clamp(1.3rem, 1.8vw, 1.9rem)' }}
             >
               חברה מבוססת אמון
             </h3>
             <p
-              className="font-heebo text-[#000032]/65 leading-relaxed"
+              className="font-heebo text-navy/65 leading-relaxed"
               style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}
             >
               אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת ולבסוף בין כלל הגורמים בחברה הישראלית.
@@ -75,13 +75,13 @@ export default function WhoWeAre() {
               המשימה שלנו
             </span>
             <h3
-              className="font-heebo font-bold text-[#000032] leading-tight"
+              className="font-heebo font-bold text-navy leading-tight"
               style={{ fontSize: 'clamp(1.3rem, 1.8vw, 1.9rem)' }}
             >
               מימוש פוטנציאל
             </h3>
             <p
-              className="font-heebo text-[#000032]/65 leading-relaxed"
+              className="font-heebo text-navy/65 leading-relaxed"
               style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}
             >
               לבנות אנשים חזקים ואכפתיים שישפיעו על החברה הישראלית.

@@ -56,7 +56,7 @@ function StagesCarousel({ stages }) {
 
   return (
     <div
-      className="w-full pb-4 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8714] focus-visible:ring-offset-4 focus-visible:ring-offset-[#fafaf8]"
+      className="w-full pb-4 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 focus-visible:ring-offset-surface"
       tabIndex={0}
       role="group"
       aria-label="שלבי התהליך"
@@ -87,7 +87,7 @@ function StagesCarousel({ stages }) {
               key={s.num}
               onClick={() => { if (!isActive) goTo(i) }}
               dir="rtl"
-              className="absolute top-0 left-1/2 w-[300px] md:w-[340px] rounded-2xl px-10 py-9 border border-[#000032]/[0.06]"
+              className="absolute top-0 left-1/2 w-[300px] md:w-[340px] rounded-2xl px-10 py-9 border border-navy/[0.06]"
               style={{
                 ...cardStyle,
                 transition: 'all 0.52s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -104,7 +104,7 @@ function StagesCarousel({ stages }) {
 
               {/* Title */}
               <h3
-                className="font-heebo font-black text-[#000032] leading-[0.9] mb-4 tracking-tight"
+                className="font-heebo font-black text-navy leading-[0.9] mb-4 tracking-tight"
                 style={{ fontSize: 'clamp(2.6rem, 4.5vw, 3.6rem)' }}
               >
                 {s.title}
@@ -113,14 +113,14 @@ function StagesCarousel({ stages }) {
               {/* Orange accent bar */}
               <div
                 className={`h-[3px] rounded-full mb-4 transition-all duration-500 ${
-                  isActive ? 'w-10 bg-[#ff8714]' : 'w-5 bg-[#ff8714]/40'
+                  isActive ? 'w-10 bg-orange' : 'w-5 bg-orange/40'
                 }`}
               />
 
               {/* Description */}
               <p
                 className={`font-heebo leading-relaxed transition-colors duration-500 ${
-                  isActive ? 'text-[#000032]/70' : 'text-[#000032]/45'
+                  isActive ? 'text-navy/70' : 'text-navy/45'
                 }`}
                 style={{ fontSize: '0.9rem' }}
               >
@@ -152,7 +152,7 @@ export default function LiabahEssence() {
       id="liabah-essence"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-[#fafaf8]"
+      className="relative w-full overflow-hidden bg-surface"
     >
       <SectionBg />
 
@@ -169,13 +169,13 @@ export default function LiabahEssence() {
           {/* Right column in RTL: lead sentence + supporting copy */}
           <div className="es-animate">
             <p
-              className="font-heebo text-[#000032] font-medium leading-relaxed mb-4"
+              className="font-heebo text-navy font-medium leading-relaxed mb-4"
               style={{ fontSize: 'clamp(1.2rem, 1.7vw, 1.55rem)' }}
             >
               {leadSentence}.
             </p>
             <p
-              className="font-heebo text-[#000032]/65 leading-relaxed"
+              className="font-heebo text-navy/65 leading-relaxed"
               style={{ fontSize: 'clamp(1rem, 1.25vw, 1.2rem)' }}
             >
               {restText}
@@ -185,7 +185,7 @@ export default function LiabahEssence() {
           {/* Left column in RTL: video */}
           <div className="es-animate">
             <div
-              className="relative w-full overflow-hidden rounded-2xl border border-[#000032]/10 shadow-xl shadow-[#000032]/10"
+              className="relative w-full overflow-hidden rounded-2xl border border-navy/10 shadow-xl shadow-navy/10"
               style={{ aspectRatio: '16 / 9', background: '#000' }}
             >
               {hero.videoUrl ? (
@@ -208,7 +208,7 @@ export default function LiabahEssence() {
                   )}
                   <div className="absolute inset-0 bg-black/35" />
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                    <div className="flex items-center justify-center rounded-full bg-[#ff8714] shadow-lg shadow-[#ff8714]/40"
+                    <div className="flex items-center justify-center rounded-full bg-orange shadow-lg shadow-orange/40"
                       style={{ width: '4.5rem', height: '4.5rem' }}>
                       <Play size={26} className="text-white ms-1" fill="white" />
                     </div>
@@ -228,12 +228,12 @@ export default function LiabahEssence() {
         {/* Method pillars — image cards */}
         <div className="es-animate text-center mb-12">
           <h3
-            className="font-heebo font-extrabold text-[#000032]"
+            className="font-heebo font-extrabold text-navy"
             style={{ fontSize: 'clamp(1.6rem, 2.6vw, 2.4rem)' }}
           >
             השיטה שלנו
           </h3>
-          <p className="font-heebo text-[#000032]/55 mt-3" style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)' }}>
+          <p className="font-heebo text-navy/55 mt-3" style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)' }}>
             שלושה עמודי תווך שעובדים יחד
           </p>
         </div>
@@ -241,10 +241,10 @@ export default function LiabahEssence() {
           {essence.pillars.map((p) => (
             <div
               key={p.title}
-              className="es-animate group flex flex-col rounded-2xl overflow-hidden bg-white shadow-sm border border-[#000032]/8 hover:shadow-xl hover:shadow-[#000032]/10 hover:border-[#ff8714]/30 hover:-translate-y-1.5 transition-all duration-300"
+              className="es-animate group flex flex-col rounded-2xl overflow-hidden bg-white shadow-sm border border-navy/8 hover:shadow-xl hover:shadow-navy/10 hover:border-orange/30 hover:-translate-y-1.5 transition-all duration-300"
             >
               {/* Image */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#000032]/[0.06]">
+              <div className="relative aspect-[4/3] overflow-hidden bg-navy/[0.06]">
                 {p.imageSrc ? (
                   <img
                     src={p.imageSrc}
@@ -254,8 +254,8 @@ export default function LiabahEssence() {
                   />
                 ) : (
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                    <ImageIcon size={28} className="text-[#000032]/20" strokeWidth={1.5} />
-                    <span className="font-heebo text-[#000032]/25 text-sm">תמונה בקרוב</span>
+                    <ImageIcon size={28} className="text-navy/20" strokeWidth={1.5} />
+                    <span className="font-heebo text-navy/25 text-sm">תמונה בקרוב</span>
                   </div>
                 )}
               </div>
@@ -263,13 +263,13 @@ export default function LiabahEssence() {
               {/* Text */}
               <div className="flex flex-col gap-3 p-6 text-right flex-1">
                 <h4
-                  className="font-heebo font-extrabold text-[#000032] leading-tight"
+                  className="font-heebo font-extrabold text-navy leading-tight"
                   style={{ fontSize: 'clamp(1.3rem, 1.8vw, 1.6rem)' }}
                 >
                   {p.title}
                 </h4>
-                <div className="w-8 h-[3px] rounded-full bg-[#ff8714]" />
-                <p className="font-heebo text-[#000032]/65 leading-relaxed" style={{ fontSize: '0.92rem' }}>
+                <div className="w-8 h-[3px] rounded-full bg-orange" />
+                <p className="font-heebo text-navy/65 leading-relaxed" style={{ fontSize: '0.92rem' }}>
                   {p.text}
                 </p>
               </div>

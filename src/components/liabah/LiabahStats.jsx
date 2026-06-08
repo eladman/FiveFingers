@@ -10,15 +10,15 @@ export default function LiabahStats() {
       id="liabah-stats"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-[#000032] text-white"
+      className="relative w-full overflow-hidden bg-navy text-white"
     >
       {/* Subtle glow accent */}
-      <div className="pointer-events-none absolute top-[-30%] right-[10%] w-[40vw] h-[60vh] rounded-full bg-[#ff8714]/10 blur-[160px]" />
+      <div className="pointer-events-none absolute top-[-30%] right-[10%] w-[40vw] h-[60vh] rounded-full bg-orange/10 blur-[160px]" />
 
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-24">
         <div className="text-center mb-12 md:mb-16">
           <p
-            className="stat-item font-heebo font-semibold text-[#ff8714] mb-3"
+            className="stat-item font-heebo font-semibold text-orange mb-3"
             style={{ fontSize: 'clamp(0.7rem, 0.9vw, 0.85rem)', letterSpacing: '0.22em' }}
           >
             במספרים
@@ -48,7 +48,7 @@ function StatItem({ value, suffix, label }) {
       className="stat-item relative text-center lg:border-s lg:border-white/10 lg:first:border-s-0 lg:px-2"
     >
       <div
-        className="font-heebo font-extrabold text-[#ff8714] leading-none tracking-tight"
+        className="font-heebo font-extrabold text-orange leading-none tracking-tight"
         style={{ fontSize: 'clamp(2.8rem, 5.2vw, 4.8rem)' }}
       >
         {n.toLocaleString('he-IL')}{suffix}

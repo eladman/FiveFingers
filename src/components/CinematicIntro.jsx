@@ -128,7 +128,7 @@ export default function CinematicIntro({ onComplete }) {
       />
 
       {/* Scrim layers (match Hero.jsx) */}
-      <div className="absolute inset-0 bg-[#ff8714]/10 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
       <div className="absolute inset-0 bg-black/55" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
@@ -181,7 +181,7 @@ export default function CinematicIntro({ onComplete }) {
 
         {/* Orange accent line */}
         <div
-          className="intro-accent mx-auto mt-5 md:mt-7 rounded-full bg-[#ff8714]"
+          className="intro-accent mx-auto mt-5 md:mt-7 rounded-full bg-orange"
           style={{
             height: '3px',
             width: 'clamp(8rem, 22vw, 22rem)',
@@ -193,7 +193,7 @@ export default function CinematicIntro({ onComplete }) {
 
         {/* Subtitle */}
         <p
-          className="intro-subtitle font-ragmarom text-[#ff8714] mt-5 md:mt-7"
+          className="intro-subtitle font-ragmarom text-orange mt-5 md:mt-7"
           style={{
             fontSize: 'clamp(1.5rem, 4.5vw, 4.5rem)',
             textShadow: '0 2px 20px rgba(0,0,0,0.9)',

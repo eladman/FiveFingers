@@ -56,7 +56,7 @@ export default function LiabahYear() {
       id="liabah-year"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-[#fafaf8]"
+      className="relative w-full overflow-hidden bg-surface"
     >
       <SectionBg flip />
 
@@ -66,10 +66,10 @@ export default function LiabahYear() {
         {/* Timeline — vertical line on the right (RTL) */}
         <div className="ly-list relative pb-24 pr-6 md:pr-10">
           {/* Background track */}
-          <div className="absolute top-2 bottom-24 right-[7px] md:right-[11px] w-0.5 bg-[#000032]/10" />
+          <div className="absolute top-2 bottom-24 right-[7px] md:right-[11px] w-0.5 bg-navy/10" />
           {/* Progress fill */}
           <div
-            className="ly-progress absolute top-2 bottom-24 right-[7px] md:right-[11px] w-0.5 bg-[#ff8714]"
+            className="ly-progress absolute top-2 bottom-24 right-[7px] md:right-[11px] w-0.5 bg-orange"
             style={{ transformOrigin: 'top', transform: 'scaleY(0)' }}
           />
 
@@ -77,16 +77,16 @@ export default function LiabahYear() {
             {yearTimeline.map((item) => (
               <div key={item.period} className="ly-item relative">
                 {/* Node */}
-                <div className="absolute right-[-1.5rem] md:right-[-2.5rem] top-1.5 w-4 h-4 md:w-6 md:h-6 rounded-full border-2 border-[#ff8714]/50 bg-[#fafaf8] ring-4 ring-[#fafaf8] overflow-hidden">
+                <div className="absolute right-[-1.5rem] md:right-[-2.5rem] top-1.5 w-4 h-4 md:w-6 md:h-6 rounded-full border-2 border-orange/50 bg-surface ring-4 ring-surface overflow-hidden">
                   <span
-                    className="ly-fill block w-full h-full rounded-full bg-[#ff8714]"
+                    className="ly-fill block w-full h-full rounded-full bg-orange"
                     style={{ transform: 'scale(0)' }}
                   />
                 </div>
                 <div className="text-right">
                   <span className="font-heebo text-[#b35600] font-bold text-sm md:text-base">{item.period}</span>
-                  <h3 className="font-heebo font-extrabold text-[#000032] text-xl md:text-2xl mt-1">{item.title}</h3>
-                  <p className="font-heebo text-[#000032]/65 leading-relaxed mt-2 max-w-xl">{item.text}</p>
+                  <h3 className="font-heebo font-extrabold text-navy text-xl md:text-2xl mt-1">{item.title}</h3>
+                  <p className="font-heebo text-navy/65 leading-relaxed mt-2 max-w-xl">{item.text}</p>
                 </div>
               </div>
             ))}

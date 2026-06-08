@@ -8,7 +8,7 @@ export default function ManInArena() {
       id="belief"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-[#fafaf8]"
+      className="relative w-full overflow-hidden bg-surface"
     >
       {/* ── Halftone dot grid ── */}
       <div
@@ -29,41 +29,41 @@ export default function ManInArena() {
             האמונה שלנו
           </span>
           <h2
-            className="font-ragmarom text-[#000032] leading-[0.9] tracking-tight"
+            className="font-ragmarom text-navy leading-[0.9] tracking-tight"
             style={{ fontSize: 'clamp(2.2rem, 3.8vw, 4.8rem)' }}
           >
             האדם בזירה
           </h2>
-          <div className="w-12 h-px bg-[#ff8714]" />
+          <div className="w-12 h-px bg-orange" />
         </div>
 
         {/* Full-width rule above quote */}
-        <div className="mia-el w-full h-px bg-[#000032]/8" />
+        <div className="mia-el w-full h-px bg-navy/8" />
 
         {/* Cascading quote lines */}
         <span
-          className="mia-el block w-full text-right font-ragmarom text-[#000032] hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-navy hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-orange transition-colors duration-300 cursor-default"
           style={{ fontSize: 'clamp(3rem, 7vw, 9rem)', paddingTop: '16px' }}
         >
           ״השבח לאדם בזירה,
         </span>
 
         <span
-          className="mia-el block w-full text-right font-ragmarom text-[#000032] hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-navy hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-orange transition-colors duration-300 cursor-default"
           style={{ fontSize: 'clamp(2.2rem, 5vw, 6.5rem)', paddingTop: '8px' }}
         >
           זה שפניו מכוסים באבק, זיעה ודם.
         </span>
 
         <span
-          className="mia-el block w-full text-right font-ragmarom text-[#000032]/60 hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-navy/60 hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-orange transition-colors duration-300 cursor-default"
           style={{ fontSize: 'clamp(1.6rem, 3.5vw, 4.8rem)', paddingTop: '6px' }}
         >
           זה שאינו מפסיק לשאוף ולנסות.
         </span>
 
         <span
-          className="mia-el block w-full text-right font-ragmarom text-[#000032]/35 hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-[#ff8714] transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-navy/35 hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-orange transition-colors duration-300 cursor-default"
           style={{
             fontSize: 'clamp(1.1rem, 2.2vw, 3rem)',
             paddingTop: '5px',
@@ -78,13 +78,13 @@ export default function ManInArena() {
         <div className="mia-el w-full flex flex-col-reverse md:flex-row justify-between items-start mt-9 gap-5 md:gap-12">
           {/* Second in RTL row = visual left */}
           <p
-            className="font-heebo text-[#000032]/55 leading-[1.8] md:max-w-md text-right"
+            className="font-heebo text-navy/55 leading-[1.8] md:max-w-md text-right"
             style={{ fontSize: 'clamp(0.88rem, 1vw, 1rem)' }}
           >
             אנחנו בחמש אצבעות מאמינים שתפקידנו הוא להיכנס לזירה הישראלית ולהשפיע על המציאות, לכך אנחנו מחנכים גם את דור העתיד. להיות אנשים שלא מסתכלים מהצד, אלא פועלים למען שינוי ויצירת חברה טובה יותר במדינת ישראל
           </p>
           {/* First in RTL row = visual right */}
-          <p className="font-inter text-[#000032]/38 text-sm whitespace-nowrap">
+          <p className="font-inter text-navy/38 text-sm whitespace-nowrap">
             — תיאודור רוזוולט, 1910
           </p>
         </div>

@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design tokens ─────────────────────────────────────────── */
+/* Single source of truth. Tailwind utilities mirror these (see   */
+/* tailwind.config.js); inline JS styles read them via var().     */
+:root {
+  /* Brand */
+  --orange: #ff8714;
+  --orange-ink: #b35600;     /* AA-safe orange text on light */
+  --navy: #000032;
+  --bg: #ffffff;
+  --surface: #fafaf8;        /* warm off-white */
+  --surface-2: #f7f5f2;
+
+  /* Hairlines / soft fills */
+  --line: rgba(0, 0, 50, 0.08);
+  --fill-soft: rgba(0, 0, 50, 0.04);
+  --orange-soft: rgba(255, 135, 20, 0.10);
+
+  /* Elevation scale */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 30, 0.06), 0 2px 8px rgba(0, 0, 30, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 30, 0.10);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 30, 0.14);
+  --shadow-xl: 0 40px 100px rgba(0, 0, 30, 0.18);
+  --shadow-focus: 0 0 0 3px rgba(255, 135, 20, 0.35);
+
+  /* Radius scale */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-2xl: 32px;
+  --r-pill: 999px;
+
+  /* Motion */
+  --ease-brand: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --t-fast: 180ms;
+  --t-base: 240ms;
+}
+
 /* ─── Custom fonts ──────────────────────────────────────────── */
 @font-face {
   font-family: 'RagMarom';
@@ -18,9 +56,9 @@ body::after {
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.03;
+  opacity: 0.018;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 50;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -51,13 +89,12 @@ body {
   direction: rtl;
 }
 
-/* ─── Interactive lift on links ─────────────────────────────── */
+/* ─── Links ─────────────────────────────────────────────────── */
+/* Hover lift is applied deliberately at the component layer       */
+/* (buttons/cards), not globally — a blanket transform on every    */
+/* link caused baseline jitter in nav/footer/body copy.            */
 a {
-  transition: transform 200ms ease, color 200ms ease;
-  display: inline-block;
-}
-a:hover {
-  transform: translateY(-1px);
+  transition: color 200ms ease;
 }
 
 /* ─── Keyframe animations ───────────────────────────────────── */

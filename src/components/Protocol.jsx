@@ -151,13 +151,13 @@ export default function Protocol() {
     <section ref={containerRef}>
       {/* Section header (not pinned — scrolls normally) */}
       <div className="py-20 md:py-28 px-8 text-center" style={{ background: 'linear-gradient(180deg, #1a2f6b 0%, #0d1b4b 100%)' }}>
-        <p className="font-mono text-[#ff8714] text-xs tracking-widest uppercase mb-3">
+        <p className="font-mono text-orange text-xs tracking-widest uppercase mb-3">
           המתודולוגיה שלנו
         </p>
         <h2 className="text-white font-ragmarom text-4xl md:text-5xl leading-tight">
           שלוש אבני
           <br />
-          <span className="font-ragmarom text-[#ff8714]">הבניין.</span>
+          <span className="font-ragmarom text-orange">הבניין.</span>
         </h2>
       </div>
 
@@ -174,7 +174,7 @@ export default function Protocol() {
             </div>
 
             {/* Step number */}
-            <span className="font-mono text-[#ff8714] text-sm tracking-[0.3em]">{step.num}</span>
+            <span className="font-mono text-orange text-sm tracking-[0.3em]">{step.num}</span>
 
             {/* Title */}
             <h3 className="text-white font-ragmarom text-6xl md:text-8xl mt-3 mb-6 leading-none">
@@ -186,9 +186,9 @@ export default function Protocol() {
 
             {/* Decorative divider */}
             <div className="flex items-center justify-center gap-3 mt-10">
-              <div className="w-12 h-px bg-[#ff8714]/30" />
-              <div className="w-2 h-2 rounded-full bg-[#ff8714]/50" />
-              <div className="w-12 h-px bg-[#ff8714]/30" />
+              <div className="w-12 h-px bg-orange/30" />
+              <div className="w-2 h-2 rounded-full bg-orange/50" />
+              <div className="w-12 h-px bg-orange/30" />
             </div>
           </div>
         </div>

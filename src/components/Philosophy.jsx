@@ -71,7 +71,7 @@ export default function Philosophy() {
       </div>
 
       {/* Top accent line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-[#ff8714]/60" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-orange/60" />
 
       {/* ── Content ── */}
       <div className="relative z-10 max-w-4xl mx-auto px-8 md:px-16 text-center">
@@ -92,7 +92,7 @@ export default function Philosophy() {
             </span>
           ))}
           {'  '}
-          <span className="phil-word inline-block ms-3 text-[#ff8714]">
+          <span className="phil-word inline-block ms-3 text-orange">
             {BOLD_HIGHLIGHT}
           </span>
           {'  '}
@@ -108,7 +108,7 @@ export default function Philosophy() {
           {TAGS.map((tag) => (
             <span
               key={tag}
-              className="phil-tag font-mono text-[#ff8714]/55 text-xs tracking-[0.2em] uppercase border border-[#ff8714]/20 px-5 py-2.5 rounded-full"
+              className="phil-tag font-mono text-orange/55 text-xs tracking-[0.2em] uppercase border border-orange/20 px-5 py-2.5 rounded-full"
             >
               {tag}
             </span>
@@ -117,7 +117,7 @@ export default function Philosophy() {
       </div>
 
       {/* Bottom accent line */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-t from-transparent to-[#ff8714]/60" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-t from-transparent to-orange/60" />
     </section>
   )
 }

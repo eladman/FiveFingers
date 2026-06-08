@@ -12,7 +12,7 @@ export default function LiabahCoaches() {
       id="liabah-coaches"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-[#fafaf8]"
+      className="relative w-full overflow-hidden bg-surface"
     >
       <SectionBg />
 
@@ -25,7 +25,7 @@ export default function LiabahCoaches() {
             return (
               <div key={coach.id} className="lc-animate group text-center">
                 {/* Photo / placeholder */}
-                <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-[#000032]/[0.04] border border-[#000032]/8 mb-4 shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:shadow-[#000032]/10 group-hover:-translate-y-1.5">
+                <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-navy/[0.04] border border-navy/8 mb-4 shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:shadow-navy/10 group-hover:-translate-y-1.5">
                   {coach.imageSrc ? (
                     <>
                       <img
@@ -33,24 +33,24 @@ export default function LiabahCoaches() {
                         alt={coach.name}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#000032]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </>
                   ) : (
                     <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                      <div className="flex items-center justify-center w-14 h-14 rounded-full bg-[#ff8714]/10">
-                        <User size={28} className="text-[#ff8714]" strokeWidth={1.5} />
+                      <div className="flex items-center justify-center w-14 h-14 rounded-full bg-orange/10">
+                        <User size={28} className="text-orange" strokeWidth={1.5} />
                       </div>
-                      <span className="font-heebo text-[#000032]/35 text-xs">בקרוב</span>
+                      <span className="font-heebo text-navy/35 text-xs">בקרוב</span>
                     </div>
                   )}
                 </div>
                 {isPlaceholder ? (
-                  <p className="font-heebo text-[#000032]/45 text-sm">מאמן/ת בקרוב</p>
+                  <p className="font-heebo text-navy/45 text-sm">מאמן/ת בקרוב</p>
                 ) : (
                   <>
-                    <h3 className="font-heebo font-bold text-[#000032] text-lg">{coach.name}</h3>
+                    <h3 className="font-heebo font-bold text-navy text-lg">{coach.name}</h3>
                     <p className="font-heebo text-[#b35600] text-sm mt-0.5">{coach.role}</p>
-                    <p className="font-heebo text-[#000032]/60 text-sm leading-relaxed mt-2">{coach.bio}</p>
+                    <p className="font-heebo text-navy/60 text-sm leading-relaxed mt-2">{coach.bio}</p>
                   </>
                 )}
               </div>

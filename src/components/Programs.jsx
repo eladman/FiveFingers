@@ -83,11 +83,11 @@ export default function Programs() {
       id="programs"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-[#fafaf8]"
+      className="relative w-full overflow-hidden bg-surface"
     >
       {/* ── Atmospheric glows ── */}
-      <div className="pointer-events-none absolute top-[-5%] right-[-5%] w-[40vw] h-[50vh] rounded-full bg-[#ff8714]/8 blur-[140px]" />
-      <div className="pointer-events-none absolute bottom-[20%] left-[10%] w-[50vw] h-[40vh] rounded-full bg-[#ff8714]/10 blur-[160px]" />
+      <div className="pointer-events-none absolute top-[-5%] right-[-5%] w-[40vw] h-[50vh] rounded-full bg-orange/8 blur-[140px]" />
+      <div className="pointer-events-none absolute bottom-[20%] left-[10%] w-[50vw] h-[40vh] rounded-full bg-orange/10 blur-[160px]" />
 
       {/* ── Halftone dot grid ── */}
       <div
@@ -130,7 +130,7 @@ export default function Programs() {
             התכניות
           </p>
           <h2
-            className="prog-section-heading font-ragmarom text-[#000032] leading-[0.95] tracking-tight"
+            className="prog-section-heading font-ragmarom text-navy leading-[0.95] tracking-tight"
             style={{ fontSize: 'clamp(2.8rem, 5vw, 5.5rem)' }}
           >
             תחומי פעילות
@@ -142,7 +142,7 @@ export default function Programs() {
             הכירו את התכניות שלנו
           </p>
           <div
-            className="prog-section-heading mt-6 mx-auto h-1 rounded-full bg-[#ff8714]"
+            className="prog-section-heading mt-6 mx-auto h-1 rounded-full bg-orange"
             style={{ width: 'clamp(3.5rem, 7vw, 6rem)' }}
           />
         </div>
@@ -164,7 +164,7 @@ export default function Programs() {
               <div
                 key={prog.id}
                 className={`prog-row grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center py-16 md:py-20 ${
-                  !isLast ? 'border-b border-[#000032]/8' : 'pb-24'
+                  !isLast ? 'border-b border-navy/8' : 'pb-24'
                 }`}
               >
                 {/* ── Image column ── */}
@@ -172,7 +172,7 @@ export default function Programs() {
                   <div className="relative">
                     {/* Orange backing frame — offset behind */}
                     <div
-                      className="absolute bg-[#ff8714]"
+                      className="absolute bg-orange"
                       style={{
                         inset: 0,
                         clipPath: clip,
@@ -193,9 +193,9 @@ export default function Programs() {
                           className="absolute inset-0 w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="absolute inset-0 bg-[#000032]/[0.07] flex flex-col items-center justify-center gap-3">
-                          <ImageIcon size={32} className="text-[#000032]/20" strokeWidth={1.5} />
-                          <span className="font-heebo text-[#000032]/25 text-sm">תמונה בקרוב</span>
+                        <div className="absolute inset-0 bg-navy/[0.07] flex flex-col items-center justify-center gap-3">
+                          <ImageIcon size={32} className="text-navy/20" strokeWidth={1.5} />
+                          <span className="font-heebo text-navy/25 text-sm">תמונה בקרוב</span>
                         </div>
                       )}
                     </div>
@@ -206,7 +206,7 @@ export default function Programs() {
                 <div className={`prog-animate ${textOrder} flex flex-col gap-5 ${textAlign}`}>
                   {/* Title */}
                   <h3
-                    className="font-heebo font-extrabold text-[#000032] leading-[0.95] tracking-tight"
+                    className="font-heebo font-extrabold text-navy leading-[0.95] tracking-tight"
                     style={{ fontSize: 'clamp(2.4rem, 4vw, 5rem)' }}
                   >
                     {prog.title}
@@ -214,7 +214,7 @@ export default function Programs() {
 
                   {/* Badge */}
                   <span
-                    className="self-start inline-flex items-center rounded-full bg-[#ff8714]/10 text-[#b35600] font-heebo font-semibold px-4 py-1.5"
+                    className="self-start inline-flex items-center rounded-full bg-orange/10 text-[#b35600] font-heebo font-semibold px-4 py-1.5"
                     style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1.1rem)' }}
                   >
                     {prog.badge}
@@ -222,7 +222,7 @@ export default function Programs() {
 
                   {/* Description */}
                   <p
-                    className="font-heebo text-[#000032]/65 leading-relaxed"
+                    className="font-heebo text-navy/65 leading-relaxed"
                     style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)' }}
                   >
                     {prog.description}
@@ -232,7 +232,7 @@ export default function Programs() {
                   <div>
                     <a
                       href={`#${prog.id}`}
-                      className="group relative overflow-hidden inline-flex items-center justify-center gap-2.5 bg-[#ff8714] text-white font-bold px-8 py-3.5 rounded-full text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8714] focus-visible:ring-offset-2"
+                      className="group relative overflow-hidden inline-flex items-center justify-center gap-2.5 bg-orange text-white font-bold px-8 py-3.5 rounded-full text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
                       style={{ transition: 'transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
                       onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.04)' }}
                       onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)' }}

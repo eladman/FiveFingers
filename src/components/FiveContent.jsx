@@ -89,8 +89,8 @@ export default function FiveContent() {
       className="relative w-full overflow-hidden bg-white"
     >
       {/* ── Atmospheric glows ── */}
-      <div className="pointer-events-none absolute top-[-5%] left-[-5%] w-[40vw] h-[50vh] rounded-full bg-[#ff8714]/8 blur-[140px]" />
-      <div className="pointer-events-none absolute bottom-[10%] right-[5%] w-[45vw] h-[40vh] rounded-full bg-[#ff8714]/6 blur-[160px]" />
+      <div className="pointer-events-none absolute top-[-5%] left-[-5%] w-[40vw] h-[50vh] rounded-full bg-orange/8 blur-[140px]" />
+      <div className="pointer-events-none absolute bottom-[10%] right-[5%] w-[45vw] h-[40vh] rounded-full bg-orange/6 blur-[160px]" />
 
       {/* ── Halftone dot grid ── */}
       <div
@@ -114,7 +114,7 @@ export default function FiveContent() {
             מדיה
           </p>
           <h2
-            className="fcontent-heading font-ragmarom text-[#000032] leading-[0.95] tracking-tight"
+            className="fcontent-heading font-ragmarom text-navy leading-[0.95] tracking-tight"
             style={{ fontSize: 'clamp(2.8rem, 5vw, 5.5rem)' }}
           >
             תוכן חמש
@@ -126,7 +126,7 @@ export default function FiveContent() {
             האזינו, צפו וקראו
           </p>
           <div
-            className="fcontent-heading mt-6 mx-auto h-1 rounded-full bg-[#ff8714]"
+            className="fcontent-heading mt-6 mx-auto h-1 rounded-full bg-orange"
             style={{ width: 'clamp(3.5rem, 7vw, 6rem)' }}
           />
         </div>
@@ -135,12 +135,12 @@ export default function FiveContent() {
         <div className="fcontent-grid grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch pb-24">
 
           {/* ── Spotify podcast card ── */}
-          <div className="fcontent-item flex flex-col rounded-2xl overflow-hidden border border-[#000032]/8 bg-[#fafaf8]">
+          <div className="fcontent-item flex flex-col rounded-2xl overflow-hidden border border-navy/8 bg-surface">
             {/* Card header */}
-            <div className="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-[#000032]/8">
+            <div className="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-navy/8">
               <SpotifyIcon size={24} />
               <h3
-                className="font-heebo font-bold text-[#000032]"
+                className="font-heebo font-bold text-navy"
                 style={{ fontSize: 'clamp(1rem, 1.3vw, 1.2rem)' }}
               >
                 פודקאסט חמש אצבעות
@@ -148,7 +148,7 @@ export default function FiveContent() {
             </div>
             {/* Embed fills remaining height */}
             <div className="flex-1 p-4 flex flex-col gap-3">
-              <p className="font-heebo text-[#000032]/60 leading-relaxed text-sm">
+              <p className="font-heebo text-navy/60 leading-relaxed text-sm">
                 האזינו לפרק האחרון של הפודקאסט שלנו — שיחות מעמיקות על חינוך, מנהיגות ערכית ואנשים שנכנסים לזירה.
               </p>
               <iframe
@@ -168,7 +168,7 @@ export default function FiveContent() {
             href="https://www.ynet.co.il/activism/article/sjuqy53fkg"
             target="_blank"
             rel="noopener noreferrer"
-            className="fcontent-item group flex flex-col rounded-2xl overflow-hidden border border-[#000032]/8 hover:shadow-xl transition-shadow duration-300"
+            className="fcontent-item group flex flex-col rounded-2xl overflow-hidden border border-navy/8 hover:shadow-xl transition-shadow duration-300"
           >
             {/* Cover image */}
             <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16/9' }}>
@@ -182,17 +182,17 @@ export default function FiveContent() {
               </div>
             </div>
             {/* Card body */}
-            <div className="flex flex-col gap-3 p-5 bg-[#fafaf8] group-hover:bg-[#0d1b4b] transition-colors duration-300 flex-1">
+            <div className="flex flex-col gap-3 p-5 bg-surface group-hover:bg-[#0d1b4b] transition-colors duration-300 flex-1">
               <h3
-                className="font-heebo font-bold text-[#000032] group-hover:text-white transition-colors duration-300"
+                className="font-heebo font-bold text-navy group-hover:text-white transition-colors duration-300"
                 style={{ fontSize: 'clamp(1rem, 1.3vw, 1.25rem)' }}
               >
                 כתבה ב-Ynet
               </h3>
-              <p className="font-heebo text-[#000032]/60 group-hover:text-white/60 leading-relaxed transition-colors duration-300 text-sm">
+              <p className="font-heebo text-navy/60 group-hover:text-white/60 leading-relaxed transition-colors duration-300 text-sm">
                 קראו על תנועת חמש אצבעות וההשפעה שלנו על הנוער הישראלי.
               </p>
-              <span className="mt-auto inline-block font-heebo font-bold text-white bg-[#ff8714] px-5 py-2 rounded-xl text-sm self-start">
+              <span className="mt-auto inline-block font-heebo font-bold text-white bg-orange px-5 py-2 rounded-xl text-sm self-start">
                 לקריאת הכתבה &larr;
               </span>
             </div>
@@ -203,7 +203,7 @@ export default function FiveContent() {
             href="https://www.youtube.com/@Five_Fingers_Israel"
             target="_blank"
             rel="noopener noreferrer"
-            className="fcontent-item group flex flex-col rounded-2xl overflow-hidden border border-[#000032]/8 hover:shadow-xl transition-shadow duration-300"
+            className="fcontent-item group flex flex-col rounded-2xl overflow-hidden border border-navy/8 hover:shadow-xl transition-shadow duration-300"
           >
             {/* YouTube branded cover */}
             <div
@@ -225,17 +225,17 @@ export default function FiveContent() {
               </div>
             </div>
             {/* Card body */}
-            <div className="flex flex-col gap-3 p-5 bg-[#fafaf8] group-hover:bg-[#0d1b4b] transition-colors duration-300 flex-1">
+            <div className="flex flex-col gap-3 p-5 bg-surface group-hover:bg-[#0d1b4b] transition-colors duration-300 flex-1">
               <h3
-                className="font-heebo font-bold text-[#000032] group-hover:text-white transition-colors duration-300"
+                className="font-heebo font-bold text-navy group-hover:text-white transition-colors duration-300"
                 style={{ fontSize: 'clamp(1rem, 1.3vw, 1.25rem)' }}
               >
                 ערוץ חמש ביוטיוב
               </h3>
-              <p className="font-heebo text-[#000032]/60 group-hover:text-white/60 leading-relaxed transition-colors duration-300 text-sm">
+              <p className="font-heebo text-navy/60 group-hover:text-white/60 leading-relaxed transition-colors duration-300 text-sm">
                 צפו בסרטוני תנועת חמש אצבעות — תכניות, אירועים ורגעים שמגדירים את הדרך.
               </p>
-              <span className="mt-auto inline-block font-heebo font-bold text-white bg-[#ff8714] px-5 py-2 rounded-xl text-sm self-start">
+              <span className="mt-auto inline-block font-heebo font-bold text-white bg-orange px-5 py-2 rounded-xl text-sm self-start">
                 לערוץ שלנו &larr;
               </span>
             </div>

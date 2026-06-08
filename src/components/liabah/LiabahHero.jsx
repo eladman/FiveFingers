@@ -68,11 +68,11 @@ export default function LiabahHero({ onRegister }) {
             loading={i === 0 ? 'eager' : 'lazy'}
           />
         ))}
-        <div className="absolute inset-0 bg-[#ff8714]/10 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/30" />
         <div className="absolute bottom-0 inset-x-0 h-1/4 bg-gradient-to-t from-black/75 to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-[#ff8714]/10 to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-orange/10 to-transparent" />
       </div>
 
       {/* Headline block — vertically centered */}
@@ -89,7 +89,7 @@ export default function LiabahHero({ onRegister }) {
               {hero.title}
             </h1>
             <div
-              className="lh-accent mx-auto mt-6 rounded-full bg-[#ff8714]"
+              className="lh-accent mx-auto mt-6 rounded-full bg-orange"
               style={{ height: '3px', width: 'clamp(7rem, 18vw, 18rem)', transformOrigin: 'center' }}
             />
             <p

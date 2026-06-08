@@ -27,13 +27,13 @@ export default function LiabahTraining() {
             return (
               <div
                 key={item.title}
-                className="lt-animate group rounded-2xl border border-[#000032]/8 bg-white p-7 text-right shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#000032]/10 hover:border-[#ff8714]/30 hover:-translate-y-1.5"
+                className="lt-animate group rounded-2xl border border-navy/8 bg-white p-7 text-right shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-navy/10 hover:border-orange/30 hover:-translate-y-1.5"
               >
-                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#ff8714]/10 mb-5 transition-colors duration-300 group-hover:bg-[#ff8714]">
-                  <Icon size={26} className="text-[#ff8714] transition-colors duration-300 group-hover:text-white" strokeWidth={1.75} />
+                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-orange/10 mb-5 transition-colors duration-300 group-hover:bg-orange">
+                  <Icon size={26} className="text-orange transition-colors duration-300 group-hover:text-white" strokeWidth={1.75} />
                 </div>
-                <h3 className="font-heebo font-bold text-[#000032] text-xl mb-2">{item.title}</h3>
-                <p className="font-heebo text-[#000032]/65 leading-relaxed">{item.text}</p>
+                <h3 className="font-heebo font-bold text-navy text-xl mb-2">{item.title}</h3>
+                <p className="font-heebo text-navy/65 leading-relaxed">{item.text}</p>
               </div>
             )
           })}

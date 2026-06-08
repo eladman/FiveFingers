@@ -34,7 +34,7 @@ export default function ContactCTA() {
     <section id="contact" ref={ref} className="py-32 md:py-40 bg-white px-8 md:px-16">
       <div className="max-w-4xl mx-auto text-center">
         {/* Label */}
-        <p className="contact-el font-mono text-[#ff8714] text-xs tracking-widest uppercase mb-5">
+        <p className="contact-el font-mono text-orange text-xs tracking-widest uppercase mb-5">
           בואו נדבר
         </p>
 
@@ -42,7 +42,7 @@ export default function ContactCTA() {
         <h2 className="contact-el text-[#0d1b4b] font-ragmarom text-5xl md:text-7xl leading-tight mb-6">
           מוכנים לצעד
           <br />
-          <span className="font-ragmarom text-[#ff8714]">הבא?</span>
+          <span className="font-ragmarom text-orange">הבא?</span>
         </h2>
 
         {/* Sub */}
@@ -66,7 +66,7 @@ export default function ContactCTA() {
             >
               <Icon
                 size={22}
-                className="text-[#ff8714] group-hover:text-[#ff8714] transition-colors"
+                className="text-orange group-hover:text-orange transition-colors"
               />
               <p className="text-gray-400 group-hover:text-white/50 text-xs transition-colors">{label}</p>
               <p className="text-[#0d1b4b] group-hover:text-white font-semibold text-sm transition-colors">
@@ -88,7 +88,7 @@ function MagneticBtn({ children, primary }) {
     <button
       className={`group relative overflow-hidden px-10 py-4 rounded-full text-lg font-bold transition-all duration-300 ${
         primary
-          ? 'bg-[#ff8714] text-white'
+          ? 'bg-orange text-white'
           : 'bg-[#0d1b4b] text-white'
       }`}
       style={{ transition: 'transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}

@@ -73,7 +73,7 @@ export default function LiabahPrograms({ onRegister }) {
               <div
                 key={prog.id}
                 className={`lp-row grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center py-16 md:py-20 ${
-                  !isLast ? 'border-b border-[#000032]/8' : 'pb-24'
+                  !isLast ? 'border-b border-navy/8' : 'pb-24'
                 }`}
               >
                 {/* Image */}
@@ -81,7 +81,7 @@ export default function LiabahPrograms({ onRegister }) {
                   <div className="relative">
                     {/* Offset accent shape — solid behind a real image, soft tint when empty */}
                     <div
-                      className={prog.imageSrc ? 'absolute bg-[#ff8714]' : 'absolute bg-[#ff8714]/15'}
+                      className={prog.imageSrc ? 'absolute bg-orange' : 'absolute bg-orange/15'}
                       style={{
                         inset: 0,
                         clipPath: clip,
@@ -100,9 +100,9 @@ export default function LiabahPrograms({ onRegister }) {
                           style={{ top: '-10%', height: '120%' }}
                         />
                       ) : (
-                        <div className="absolute inset-0 bg-[#fafaf8] border border-[#000032]/10 flex flex-col items-center justify-center gap-3">
-                          <ImageIcon size={32} className="text-[#000032]/20" strokeWidth={1.5} />
-                          <span className="font-heebo text-[#000032]/30 text-sm">תמונה בקרוב</span>
+                        <div className="absolute inset-0 bg-surface border border-navy/10 flex flex-col items-center justify-center gap-3">
+                          <ImageIcon size={32} className="text-navy/20" strokeWidth={1.5} />
+                          <span className="font-heebo text-navy/30 text-sm">תמונה בקרוב</span>
                         </div>
                       )}
                     </div>
@@ -112,15 +112,15 @@ export default function LiabahPrograms({ onRegister }) {
                 {/* Text */}
                 <div className={`lp-animate ${textOrder} flex flex-col gap-5 text-right`}>
                   <h3
-                    className="font-heebo font-extrabold text-[#000032] leading-[0.95] tracking-tight"
+                    className="font-heebo font-extrabold text-navy leading-[0.95] tracking-tight"
                     style={{ fontSize: 'clamp(2.2rem, 3.6vw, 4rem)' }}
                   >
                     {prog.title}
                   </h3>
-                  <span className="self-start inline-flex items-center rounded-full bg-[#ff8714]/10 text-[#b35600] font-heebo font-semibold px-4 py-1.5" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1.1rem)' }}>
+                  <span className="self-start inline-flex items-center rounded-full bg-orange/10 text-[#b35600] font-heebo font-semibold px-4 py-1.5" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1.1rem)' }}>
                     {prog.ages}
                   </span>
-                  <p className="font-heebo text-[#000032]/65 leading-relaxed" style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)' }}>
+                  <p className="font-heebo text-navy/65 leading-relaxed" style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)' }}>
                     {prog.description}
                   </p>
                   <div>

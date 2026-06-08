@@ -1,12 +1,30 @@
 import logo from '../assets/logo.png'
 
+// Each link resolves to a real destination: an on-page section anchor,
+// the dedicated ליבה route, or the contact modal (action: 'contact').
+// No dead "#" links are shipped.
 const FOOTER_NAV = {
-  תנועה: ['ליבה', 'אקדמיה', 'שת"פ', 'בוגרים'],
-  אודות: ['עמיר מנחם', 'ערכים', 'חזון', 'היסטוריה'],
-  הצטרף: ['הרשמה', 'מתנדבים', 'תרומות', 'שאלות נפוצות'],
+  תנועה: [
+    { label: 'ליבה', href: '#liabah' },
+    { label: 'אקדמיה', href: '#programs' },
+    { label: 'שת"פ', href: '#programs' },
+    { label: 'בוגרים', href: '#programs' },
+  ],
+  אודות: [
+    { label: 'עמיר מנחם', href: '#who-we-are' },
+    { label: 'ערכים', href: '#belief' },
+    { label: 'חזון', href: '#who-we-are' },
+    { label: 'מה אנחנו', href: '#who-we-are' },
+  ],
+  הצטרף: [
+    { label: 'הרשמה', action: 'contact' },
+    { label: 'מתנדבים', action: 'contact' },
+    { label: 'תרומות', action: 'contact' },
+    { label: 'יצירת קשר', action: 'contact' },
+  ],
 }
 
-export default function Footer() {
+export default function Footer({ onContactOpen }) {
   return (
     <footer className="rounded-t-[4rem] pt-16 md:pt-20 pb-10 px-8 md:px-16" style={{ background: 'linear-gradient(180deg, #111111 0%, #0a0a0a 50%, #060606 100%)' }}>
       <div className="max-w-7xl mx-auto">
@@ -32,16 +50,26 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(FOOTER_NAV).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-[#ff8714] font-semibold text-sm mb-5 tracking-wide">{category}</h4>
+              <h4 className="text-orange font-semibold text-sm mb-5 tracking-wide">{category}</h4>
               <ul className="space-y-3.5">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="text-white/40 hover:text-white/80 text-sm transition-colors duration-200"
-                    >
-                      {link}
-                    </a>
+                  <li key={link.label}>
+                    {link.action === 'contact' ? (
+                      <button
+                        type="button"
+                        onClick={onContactOpen}
+                        className="text-white/40 hover:text-white/80 text-sm transition-colors duration-200 text-right"
+                      >
+                        {link.label}
+                      </button>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-white/40 hover:text-white/80 text-sm transition-colors duration-200"
+                      >
+                        {link.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -50,14 +78,12 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-5">
-          <p className="text-white/25 text-sm">
+        {/* NOTE: legal links (תנאי שימוש / מדיניות פרטיות) were removed until real
+            pages exist — re-add here once those routes/pages are created. */}
+        <div className="border-t border-white/10 pt-8 flex items-center justify-center">
+          <p className="text-white/25 text-sm text-center">
             © {new Date().getFullYear()} תנועת חמש אצבעות — אמיר מנחם ויורם מנחם. כל הזכויות שמורות.
           </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-white/25 hover:text-white/55 text-xs transition-colors">תנאי שימוש</a>
-            <a href="#" className="text-white/25 hover:text-white/55 text-xs transition-colors">מדיניות פרטיות</a>
-          </div>
         </div>
       </div>
     </footer>

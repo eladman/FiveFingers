@@ -11,14 +11,14 @@ export default function LiabahCTA({ onRegister }) {
       id="liabah-cta"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-[#000032] text-white"
+      className="relative w-full overflow-hidden bg-navy text-white"
     >
-      <div className="pointer-events-none absolute top-[-20%] left-[10%] w-[40vw] h-[50vh] rounded-full bg-[#ff8714]/15 blur-[150px]" />
-      <div className="pointer-events-none absolute bottom-[-20%] right-[10%] w-[36vw] h-[44vh] rounded-full bg-[#ff8714]/10 blur-[150px]" />
+      <div className="pointer-events-none absolute top-[-20%] left-[10%] w-[40vw] h-[50vh] rounded-full bg-orange/15 blur-[150px]" />
+      <div className="pointer-events-none absolute bottom-[-20%] right-[10%] w-[36vw] h-[44vh] rounded-full bg-orange/10 blur-[150px]" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-12 text-center py-24 md:py-28">
         <p
-          className="cta-animate font-heebo font-semibold text-[#ff8714] mb-3"
+          className="cta-animate font-heebo font-semibold text-orange mb-3"
           style={{ fontSize: 'clamp(0.7rem, 0.9vw, 0.85rem)', letterSpacing: '0.22em' }}
         >
           הצטרפות
@@ -54,9 +54,9 @@ function ContactCard({ icon: Icon, label, value, href }) {
       href={href}
       target={href.startsWith('http') ? '_blank' : undefined}
       rel="noopener noreferrer"
-      className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-200 hover:bg-white/[0.08] hover:border-[#ff8714]/40 hover:-translate-y-0.5"
+      className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-200 hover:bg-white/[0.08] hover:border-orange/40 hover:-translate-y-0.5"
     >
-      <Icon size={22} className="text-[#ff8714]" />
+      <Icon size={22} className="text-orange" />
       <span className="font-heebo text-white/55 text-sm">{label}</span>
       <span className="font-heebo text-white font-medium text-sm" dir="ltr">{value}</span>
     </a>

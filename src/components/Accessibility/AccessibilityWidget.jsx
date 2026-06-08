@@ -229,18 +229,18 @@ export default function AccessibilityWidget() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
+          boxShadow: 'var(--shadow-md)',
           transition: 'transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease',
         }}
         onMouseEnter={e => {
           e.currentTarget.style.transform = 'scale(1.05)'
           e.currentTarget.style.backgroundColor = '#0D47A1'
-          e.currentTarget.style.boxShadow = '0 6px 24px rgba(0,0,0,0.32)'
+          e.currentTarget.style.boxShadow = 'var(--shadow-lg)'
         }}
         onMouseLeave={e => {
           e.currentTarget.style.transform = 'scale(1)'
           e.currentTarget.style.backgroundColor = '#1565C0'
-          e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.25)'
+          e.currentTarget.style.boxShadow = 'var(--shadow-md)'
         }}
         onFocus={e => { e.currentTarget.style.outline = '3px solid #FFD600'; e.currentTarget.style.outlineOffset = '3px' }}
         onBlur={e => { e.currentTarget.style.outline = 'none' }}
@@ -265,7 +265,7 @@ export default function AccessibilityWidget() {
           overflowY: 'auto',
           backgroundColor: '#fff',
           borderRadius: '16px',
-          boxShadow: '0 12px 40px rgba(0,0,0,0.2)',
+          boxShadow: 'var(--shadow-lg)',
           fontFamily: "'Heebo', Arial, sans-serif",
           fontSize: '16px',
           lineHeight: '1.5',

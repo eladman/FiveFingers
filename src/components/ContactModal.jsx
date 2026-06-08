@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, forwardRef } from 'react'
 import { X, Phone, Mail, Check, Loader2, ArrowLeft } from 'lucide-react'
+import { WHATSAPP_HREF, PHONE_HREF, EMAIL, EMAIL_HREF, PHONE_DISPLAY } from '../data/contact'
 
 const PRODUCT_TYPES = [
   'קבוצות הנוער',
@@ -8,13 +9,6 @@ const PRODUCT_TYPES = [
   'יואב',
   'קשר עם עמיר',
 ]
-
-// Quick-contact channels shown on the brand panel.
-// Single source of truth: the phone button reuses the WhatsApp number.
-const WHATSAPP = '972500000000' // international format (972 = IL)
-const EMAIL = 'info@fivefingers.co.il'
-// Israeli local display: 9725XXXXXXXX → 05X-XXX-XXXX
-const PHONE_DISPLAY = `0${WHATSAPP.slice(3, 5)}-${WHATSAPP.slice(5, 8)}-${WHATSAPP.slice(8)}`
 
 const INITIAL_FORM = { name: '', phone: '', email: '', productType: '' }
 
@@ -127,7 +121,7 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
               <SuccessState onClose={onClose} name={form.name} />
             ) : (
               <>
-                <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#ff8714] mb-2">
+                <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-orange mb-2">
                   טופס הצטרפות
                 </p>
                 <h2 className="font-ragmarom text-[#0d1b4b] mb-1.5" style={{ fontSize: '2rem', lineHeight: 1.1 }}>
@@ -218,9 +212,9 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
 
 function BrandPanel() {
   const channels = [
-    { Icon: WhatsAppIcon, label: 'וואטסאפ', value: 'שלחו הודעה', href: `https://wa.me/${WHATSAPP}` },
-    { Icon: Phone, label: 'טלפון', value: PHONE_DISPLAY, href: `tel:+${WHATSAPP}` },
-    { Icon: Mail, label: 'מייל', value: EMAIL, href: `mailto:${EMAIL}` },
+    { Icon: WhatsAppIcon, label: 'וואטסאפ', value: 'שלחו הודעה', href: WHATSAPP_HREF },
+    { Icon: Phone, label: 'טלפון', value: PHONE_DISPLAY, href: PHONE_HREF },
+    { Icon: Mail, label: 'מייל', value: EMAIL, href: EMAIL_HREF },
   ]
 
   return (
@@ -240,13 +234,13 @@ function BrandPanel() {
       />
 
       <div className="relative z-10 flex flex-col h-full">
-        <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#ff8714] mb-4">
+        <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-orange mb-4">
           בואו נדבר
         </p>
         <h3 className="font-ragmarom text-white leading-[1.05] mb-4" style={{ fontSize: '2.6rem' }}>
           מוכנים
           <br />
-          לצעד <span className="text-[#ff8714]">הבא?</span>
+          לצעד <span className="text-orange">הבא?</span>
         </h3>
         <p className="text-white/55 text-sm leading-relaxed mb-8 max-w-[260px]">
           צעירים/ות, הורים או ארגון — בכל דרך שתבחרו, אנחנו כאן בשבילכם.
@@ -269,7 +263,7 @@ function BrandPanel() {
                 className="flex items-center justify-center rounded-xl shrink-0 transition-colors"
                 style={{ width: '38px', height: '38px', background: 'rgba(255,135,20,0.16)' }}
               >
-                <Icon size={17} className="text-[#ff8714]" strokeWidth={2} />
+                <Icon size={17} className="text-orange" strokeWidth={2} />
               </span>
               <span className="flex flex-col">
                 <span className="text-[11px] text-white/45">{label}</span>
@@ -331,7 +325,7 @@ const GlowField = forwardRef(function GlowField(
   return (
     <div>
       <label htmlFor={id} className="block text-sm font-semibold mb-2" style={{ color: '#3a3f4b' }}>
-        {label}{required && <span className="text-[#ff8714]"> *</span>}
+        {label}{required && <span className="text-orange"> *</span>}
       </label>
       <input
         ref={ref}
