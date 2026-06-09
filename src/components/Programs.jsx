@@ -13,6 +13,8 @@ const PROGRAMS = [
     description:
       'מיועדת לבני נוער מכיתה ז׳ עד י״ב. תכנית הבסיס של התנועה המהווה את יסודות השיטה הפיזית מנטלית. התכנית בונה ומעצבת היבטי חוסן, הרגלים, יכולות עבודה בצוות וכלים למנהיגות רבים בקרב בני ובנות נוער.',
     imageSrc: '/our_product_pics/core_pic.jpg',
+    ctaHref: '#liabah',
+    ctaLabel: 'לדף הליבה',
   },
   {
     id: 'academy',
@@ -20,7 +22,7 @@ const PROGRAMS = [
     badge: 'קדם צבא',
     description:
       'מטרתה של המכינה לחנך ולעצב דור שבוחר להיכנס לזירה ולהשפיע על מציאות חיינו. דור המבוסס על מאפייני הזהות של תנועת חמש אצבעות ועל מיומנויות רלוונטיות שרכש בתהליך החינוכי.',
-    // imageSrc: '/programs/academy.jpg'
+    ctaContact: true,
   },
   {
     id: 'alumni',
@@ -29,6 +31,7 @@ const PROGRAMS = [
     description:
       'תכנית ההמשך, מטרתה יצירת המשכיות לתהליך החינוכי. התכנית מותאמת לשינויים בחייהם של צעירים ומכווינה להשפעה חינוכית וחברתית על ידי תפיסת עמדות מפתח בחברה הישראלית.',
     imageSrc: '/our_product_pics/yoav_pic.jpg',
+    ctaContact: true,
   },
   {
     id: 'collab',
@@ -37,6 +40,7 @@ const PROGRAMS = [
     description:
       'סיוע לארגונים, צוותים, יחידות וספורטאים להגיע להישגים יחד, דרך התאמת שיטת ״חמש אצבעות״ לצרכים והמטרות המשתנות בכל גוף ומייצרת תהליך של מימוש פוטנציאל ספציפי וארגוני.',
     imageSrc: '/our_product_pics/collab_pic.jpg',
+    ctaContact: true,
   },
 ]
 
@@ -45,7 +49,7 @@ const PROGRAMS = [
 const CLIP_EVEN = 'polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%)'
 const CLIP_ODD  = 'polygon(0% 0%, 94% 0%, 100% 100%, 6% 100%)'
 
-export default function Programs() {
+export default function Programs({ onContactOpen }) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -123,24 +127,12 @@ export default function Programs() {
 
         {/* ── Section heading ── */}
         <div className="text-center pt-20 md:pt-28 pb-12 md:pb-16">
-          <p
-            className="prog-section-heading font-heebo font-semibold text-[#b35600] mb-3"
-            style={{ fontSize: 'clamp(0.7rem, 0.9vw, 0.85rem)', letterSpacing: '0.22em' }}
-          >
-            התכניות
-          </p>
           <h2
             className="prog-section-heading font-ragmarom text-navy leading-[0.95] tracking-tight"
             style={{ fontSize: 'clamp(2.8rem, 5vw, 5.5rem)' }}
           >
             תחומי פעילות
           </h2>
-          <p
-            className="prog-section-heading font-heebo text-[#b35600] mt-4 leading-snug mx-auto max-w-2xl"
-            style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.7rem)' }}
-          >
-            הכירו את התכניות שלנו
-          </p>
           <div
             className="prog-section-heading mt-6 mx-auto h-1 rounded-full bg-orange"
             style={{ width: 'clamp(3.5rem, 7vw, 6rem)' }}
@@ -214,7 +206,7 @@ export default function Programs() {
 
                   {/* Badge */}
                   <span
-                    className="self-start inline-flex items-center rounded-full bg-orange/10 text-[#b35600] font-heebo font-semibold px-4 py-1.5"
+                    className="self-start inline-flex items-center rounded-full bg-orange/10 text-[#ff8714] font-heebo font-semibold px-4 py-1.5"
                     style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1.1rem)' }}
                   >
                     {prog.badge}
@@ -230,16 +222,30 @@ export default function Programs() {
 
                   {/* CTA */}
                   <div>
-                    <a
-                      href={`#${prog.id}`}
-                      className="group relative overflow-hidden inline-flex items-center justify-center gap-2.5 bg-orange text-white font-bold px-8 py-3.5 rounded-full text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
-                      style={{ transition: 'transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
-                      onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.04)' }}
-                      onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)' }}
-                    >
-                      <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full" />
-                      <span className="relative">למידע נוסף</span>
-                    </a>
+                    {prog.ctaHref ? (
+                      <a
+                        href={prog.ctaHref}
+                        className="group relative overflow-hidden inline-flex items-center justify-center gap-2.5 bg-orange text-white font-bold px-8 py-3.5 rounded-full text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+                        style={{ transition: 'transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
+                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.04)' }}
+                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)' }}
+                      >
+                        <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full" />
+                        <span className="relative">{prog.ctaLabel || 'למידע נוסף'}</span>
+                      </a>
+                    ) : prog.ctaContact ? (
+                      <button
+                        type="button"
+                        onClick={() => onContactOpen?.(prog.title)}
+                        className="group relative overflow-hidden inline-flex items-center justify-center gap-2.5 bg-orange text-white font-bold px-8 py-3.5 rounded-full text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+                        style={{ transition: 'transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
+                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.04)' }}
+                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)' }}
+                      >
+                        <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full" />
+                        <span className="relative">יצירת קשר</span>
+                      </button>
+                    ) : null}
                   </div>
                 </div>
 

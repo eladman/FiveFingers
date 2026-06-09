@@ -84,7 +84,7 @@ export default function LiabahYear() {
                   />
                 </div>
                 <div className="text-right">
-                  <span className="font-heebo text-[#b35600] font-bold text-sm md:text-base">{item.period}</span>
+                  <span className="font-heebo text-[#ff8714] font-bold text-sm md:text-base">{item.period}</span>
                   <h3 className="font-heebo font-extrabold text-navy text-xl md:text-2xl mt-1">{item.title}</h3>
                   <p className="font-heebo text-navy/65 leading-relaxed mt-2 max-w-xl">{item.text}</p>
                 </div>

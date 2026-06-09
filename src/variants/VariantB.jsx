@@ -123,7 +123,7 @@ export default function VariantB() {
               fontFamily: 'JetBrains Mono, monospace',
               fontSize: '0.62rem', letterSpacing: '0.25em',
               color: 'rgba(240,232,213,0.3)',
-            }}>3,000+ חניכים ברחבי ישראל</span>
+            }}>2,500+חניכים ברחבי ישראל</span>
           </div>
         </div>
 

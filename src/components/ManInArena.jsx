@@ -23,11 +23,8 @@ export default function ManInArena() {
       {/* ── Content ── */}
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-8 sm:px-12 md:px-16 py-28 md:py-32 flex flex-col items-start">
 
-        {/* Header — label + title + rule, anchored right (items-start = right in RTL) */}
+        {/* Header — title + rule, no eyebrow — heading is iconic enough */}
         <div className="mia-el flex flex-col items-start gap-2.5 mb-10">
-          <span className="font-inter font-bold text-[#b35600] text-xs tracking-[0.22em] uppercase">
-            האמונה שלנו
-          </span>
           <h2
             className="font-ragmarom text-navy leading-[0.9] tracking-tight"
             style={{ fontSize: 'clamp(2.2rem, 3.8vw, 4.8rem)' }}
@@ -42,28 +39,28 @@ export default function ManInArena() {
 
         {/* Cascading quote lines */}
         <span
-          className="mia-el block w-full text-right font-ragmarom text-navy hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-orange transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-navy hover:text-[#ff8714] leading-[0.95] transition-colors duration-300 cursor-default"
           style={{ fontSize: 'clamp(3rem, 7vw, 9rem)', paddingTop: '16px' }}
         >
           ״השבח לאדם בזירה,
         </span>
 
         <span
-          className="mia-el block w-full text-right font-ragmarom text-navy hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-orange transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-navy hover:text-[#ff8714] leading-[0.95] transition-colors duration-300 cursor-default"
           style={{ fontSize: 'clamp(2.2rem, 5vw, 6.5rem)', paddingTop: '8px' }}
         >
           זה שפניו מכוסים באבק, זיעה ודם.
         </span>
 
         <span
-          className="mia-el block w-full text-right font-ragmarom text-navy/60 hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-orange transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-navy/60 hover:text-[#ff8714] leading-[0.95] transition-colors duration-300 cursor-default"
           style={{ fontSize: 'clamp(1.6rem, 3.5vw, 4.8rem)', paddingTop: '6px' }}
         >
           זה שאינו מפסיק לשאוף ולנסות.
         </span>
 
         <span
-          className="mia-el block w-full text-right font-ragmarom text-navy/35 hover:text-[#b35600] leading-[0.95] pl-5 border-l-2 border-transparent hover:border-orange transition-colors duration-300 cursor-default"
+          className="mia-el block w-full text-right font-ragmarom text-navy/35 hover:text-[#ff8714] leading-[0.95] transition-colors duration-300 cursor-default"
           style={{
             fontSize: 'clamp(1.1rem, 2.2vw, 3rem)',
             paddingTop: '5px',

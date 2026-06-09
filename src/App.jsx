@@ -62,7 +62,7 @@ export default function App() {
           <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
           <ManInArena />
           <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
-          <Programs />
+          <Programs onContactOpen={openContact} />
           <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
           <FiveContent />
         </main>

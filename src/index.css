@@ -8,7 +8,7 @@
 :root {
   /* Brand */
   --orange: #ff8714;
-  --orange-ink: #b35600;     /* AA-safe orange text on light */
+  --orange-ink: #ff8714;     /* AA-safe orange text on light */
   --navy: #000032;
   --bg: #ffffff;
   --surface: #fafaf8;        /* warm off-white */

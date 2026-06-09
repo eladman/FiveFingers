@@ -189,7 +189,7 @@ export default function VariantA() {
             fontFamily: 'JetBrains Mono, monospace',
             fontSize: '0.62rem', letterSpacing: '0.25em',
             color: '#000', textTransform: 'uppercase',
-          }}>3,000+ · חניכים ברחבי ישראל</span>
+          }}>2,500+· חניכים ברחבי ישראל</span>
         </div>
       </section>
 

@@ -6,12 +6,15 @@ import useReveal from '../../hooks/useReveal'
 
 // Bento spans (desktop): a big lead tile, then a varied rhythm.
 const SPANS = [
-  'md:col-span-2 md:row-span-2',
-  '',
-  '',
-  'md:col-span-2',
-  'md:col-span-2',
-  'md:col-span-2',
+  'md:col-span-2 md:row-span-2', // big lead — cols 1–2, rows 1–2
+  '',                            // col 3, row 1
+  '',                            // col 4, row 1
+  'md:col-span-2',               // cols 3–4, row 2
+  'md:col-span-2',               // cols 1–2, row 3
+  'md:col-span-2',               // cols 3–4, row 3
+  'md:col-span-2',               // cols 1–2, row 4
+  '',                            // col 3, row 4
+  '',                            // col 4, row 4
 ]
 
 export default function LiabahGallery() {
@@ -47,7 +50,7 @@ export default function LiabahGallery() {
       <SectionBg flip />
 
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
-        <SectionHeading eyebrow="מהשטח" title="גלריה" subtitle="רגעים מהשטח" animateClass="lg-animate" />
+        <SectionHeading eyebrow="מהשטח" title="גלריה" animateClass="lg-animate" />
 
         <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] md:auto-rows-[190px] gap-3 md:gap-4 pb-24">
           {gallery.map((img, i) => {

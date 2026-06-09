@@ -117,7 +117,7 @@ export default function LiabahPrograms({ onRegister }) {
                   >
                     {prog.title}
                   </h3>
-                  <span className="self-start inline-flex items-center rounded-full bg-orange/10 text-[#b35600] font-heebo font-semibold px-4 py-1.5" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1.1rem)' }}>
+                  <span className="self-start inline-flex items-center rounded-full bg-orange/10 text-[#ff8714] font-heebo font-semibold px-4 py-1.5" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1.1rem)' }}>
                     {prog.ages}
                   </span>
                   <p className="font-heebo text-navy/65 leading-relaxed" style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)' }}>

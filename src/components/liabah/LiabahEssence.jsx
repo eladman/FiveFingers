@@ -98,7 +98,7 @@ function StagesCarousel({ stages }) {
               }}
             >
               {/* Step number */}
-              <span className="block font-heebo text-[0.6rem] font-bold tracking-[0.28em] text-[#b35600] mb-5">
+              <span className="block font-heebo text-[0.6rem] font-bold tracking-[0.28em] text-[#ff8714] mb-5">
                 {s.num}
               </span>
 

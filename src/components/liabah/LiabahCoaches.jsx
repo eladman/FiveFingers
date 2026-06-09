@@ -19,7 +19,7 @@ export default function LiabahCoaches() {
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
         <SectionHeading eyebrow="הצוות" title="המאמנים והמאמנות" subtitle="הדמויות שמובילות את הדרך" animateClass="lc-animate" />
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 pb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 pb-24 max-w-3xl mx-auto">
           {coaches.map((coach) => {
             const isPlaceholder = !coach.imageSrc && coach.name === 'שם המאמן/ת'
             return (
@@ -49,7 +49,7 @@ export default function LiabahCoaches() {
                 ) : (
                   <>
                     <h3 className="font-heebo font-bold text-navy text-lg">{coach.name}</h3>
-                    <p className="font-heebo text-[#b35600] text-sm mt-0.5">{coach.role}</p>
+                    <p className="font-heebo text-[#ff8714] text-sm mt-0.5">{coach.role}</p>
                     <p className="font-heebo text-navy/60 text-sm leading-relaxed mt-2">{coach.bio}</p>
                   </>
                 )}

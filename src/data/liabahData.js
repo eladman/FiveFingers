@@ -64,11 +64,11 @@ export const essence = {
 // ── Stats (נתונים) ─────────────────────────────────────────────────────────────
 // `value` is the number to count up to; `suffix` appended after (e.g. '+').
 export const stats = [
-  { value: 3000, suffix: '+', label: 'מתאמנים ומתאמנות פעילים' }, // TODO: confirm
-  { value: 80,   suffix: '',  label: 'קבוצות פעילות' },           // TODO: confirm
-  { value: 12,   suffix: '',  label: 'אזורים בארץ' },             // TODO: confirm
-  { value: 120,  suffix: '',  label: 'מאמנים ומאמנות' },          // TODO: confirm
-  { value: 1500, suffix: '+', label: 'בוגרים ובוגרות' },          // TODO: confirm
+  { value: 2500, suffix: '+', label: 'מתאמנים ומתאמנות פעילים' },
+  { value: 67,   suffix: '',  label: 'קבוצות פעילות' },
+  { value: 18,   suffix: '',  label: 'אזורים בארץ' },
+  { value: 60,   suffix: '',  label: 'מאמנים ומאמנות' },
+  { value: 3000, suffix: '+', label: 'בוגרים ובוגרות' },
 ]
 
 // ── Programs by age (תכניות לפי גילאים) ────────────────────────────────────────
@@ -118,34 +118,111 @@ export const trainingItems = [
 
 // ── Coaches (מאמנים) ───────────────────────────────────────────────────────────
 export const coaches = [
-  { id: 'c1', name: 'שם המאמן/ת', role: 'מאמן/ת ראשי/ת', bio: 'משפט קצר על הרקע והדרך.', imageSrc: '' }, // TODO
-  { id: 'c2', name: 'שם המאמן/ת', role: 'מאמן/ת',         bio: 'משפט קצר על הרקע והדרך.', imageSrc: '' }, // TODO
-  { id: 'c3', name: 'שם המאמן/ת', role: 'מאמן/ת',         bio: 'משפט קצר על הרקע והדרך.', imageSrc: '' }, // TODO
-  { id: 'c4', name: 'שם המאמן/ת', role: 'מאמן/ת',         bio: 'משפט קצר על הרקע והדרך.', imageSrc: '' }, // TODO
+  { id: 'c1', name: 'רועי רוט',    role: 'מנהל בייס מרכז',  bio: '', imageSrc: '/coachs/roi.JPG' },
+  { id: 'c2', name: 'עמית מירן',    role: 'מנהלת בייס שרון', bio: '', imageSrc: '/coachs/amit.JPG' },
+  { id: 'c3', name: 'גיא טרנטו',   role: 'מנהל בייס צפון',  bio: '', imageSrc: '/coachs/taranto.JPG' },
 ]
 
 // ── Locations + map (מיקומים ומפה) ────────────────────────────────────────────
-// `lng`/`lat` are the real geographic coordinates of each group's city. They are
+// `lng`/`lat` are the real geographic coordinates of each city. They are
 // projected onto the Israel outline automatically (see src/data/israelOutline.js),
 // so pins always land in the right place — just edit the coordinates.
+//   city  — city name (shown on the map, list, and detail panel)
+//   days  — workout days for the city's groups (from teams.csv)
+//   teams — the group names that run in the city (shown in the detail panel)
+//   manager — optional מנהל/ת אזור object { name, role, image, bio }; null → hidden
+// Generated from teams.csv — edit team names / days there and keep this in sync.
 export const locations = [
-  { id: 'north',  region: 'צפון',      city: 'חיפה והקריות',    hours: 'ימים א׳, ד׳ · 17:00–19:00', lng: 34.989, lat: 32.794 }, // TODO
-  { id: 'haifa',  region: 'חוף הכרמל', city: 'זכרון יעקב',      hours: 'ימים ב׳, ה׳ · 17:30–19:30', lng: 34.954, lat: 32.572 }, // TODO
-  { id: 'center', region: 'מרכז',      city: 'תל אביב והשרון',  hours: 'ימים א׳, ג׳ · 18:00–20:00', lng: 34.782, lat: 32.085 }, // TODO
-  { id: 'jeru',   region: 'ירושלים',   city: 'ירושלים',        hours: 'ימים ב׳, ד׳ · 17:00–19:00', lng: 35.214, lat: 31.768 }, // TODO
-  { id: 'shfela', region: 'שפלה',      city: 'מודיעין ובית שמש', hours: 'ימים א׳, ה׳ · 17:30–19:30', lng: 34.990, lat: 31.820 }, // TODO
-  { id: 'south',  region: 'דרום',      city: 'באר שבע',        hours: 'ימים ב׳, ה׳ · 17:00–19:00', lng: 34.791, lat: 31.252 }, // TODO
+  {
+    id: 'tel-aviv', city: 'תל אביב', days: 'ראשון ורביעי', lng: 34.7818, lat: 32.0853, manager: null,
+    teams: ['תל אביב ילדים (ו-ח)', 'תל אביב נערים (ט-י)', 'תל אביב נוער בנים (י-יב)', 'תל אביב נוער בנות (י-יב)'],
+  },
+  {
+    id: 'tel-mond', city: 'תל מונד', days: 'ראשון ורביעי', lng: 34.917, lat: 32.250, manager: null,
+    teams: ['תל מונד ילדים (ז-ט)', 'תל מונד נוער בנים (י-יב)'],
+  },
+  {
+    id: 'raanana', city: 'רעננה', days: 'ראשון ורביעי', lng: 34.8707, lat: 32.1847, manager: null,
+    teams: ['רעננה ילדים (ו-ז)', 'רעננה נערים (ח-ט)', 'רעננה נערות (ח-ט)', 'רעננה נוער בנים (י-יב)', 'רעננה נוער בנות (י-יב)'],
+  },
+  {
+    id: 'ramat-yishai', city: 'רמת ישי', days: 'ראשון ורביעי', lng: 35.170, lat: 32.7035, manager: null,
+    teams: ['רמת ישי ג-ד', 'רמת ישי ה-ו'],
+  },
+  {
+    id: 'kiryat-ono', city: 'קרית אונו', days: 'שני וחמישי', lng: 34.855, lat: 32.0556, manager: null,
+    teams: ['קרית אונו נערים (ז-ט)', 'קרית אונו נוער בנים (י-יב)', 'קרית אונו בנות (י-יב)'],
+  },
+  {
+    id: 'kiryat-tivon', city: 'קריית טבעון', days: 'ראשון ורביעי', lng: 35.1236, lat: 32.7197, manager: null,
+    teams: ['קריית טבעון ילדים (ז-ט)', 'קריית טבעון נוער בנים (י-יב)', 'קריית טבעון בנות (י-יב)'],
+  },
+  {
+    id: 'petah-tikva', city: 'פתח תקווה', days: 'ראשון ורביעי', lng: 34.8878, lat: 32.0840, manager: null,
+    teams: ['פתח תקווה בנים (י-יב)'],
+  },
+  {
+    id: 'emek-yizrael', city: 'עמק יזרעאל', days: 'שני וחמישי', lng: 35.290, lat: 32.620, manager: null,
+    teams: ['עמק יזרעאל ילדים (ז-ט)', 'עמק יזרעאל ילדות (ז׳-ט׳)', 'עמק יזרעאל נערים (י)', 'עמק יזרעאל נוער בנים (יא-יב)', 'עמק יזרעאל נוער בנות (י-יב)'],
+  },
+  {
+    id: 'emek-hefer-west', city: 'עמק חפר מערב', days: 'ראשון ורביעי', lng: 34.875, lat: 32.390, manager: null,
+    teams: ['עמק חפר מערב ילדים (ז-ח)', 'עמק חפר נערים (ט-י)', 'עמק חפר בנים (יא-יב)', 'עמק חפר בנות (י-יב)'],
+  },
+  {
+    id: 'emek-hefer-east', city: 'עמק חפר מזרח', days: 'שני וחמישי', lng: 34.990, lat: 32.370, manager: null,
+    teams: ['עמק חפר מזרח ילדים (ז-ט)', 'עמק חפר מזרח נוער בנים', 'עמק חפר מזרח נוער בנות (י׳-י״ב)'],
+  },
+  {
+    id: 'kfar-saba', city: 'כפר סבא', days: 'ראשון ורביעי', lng: 34.907, lat: 32.175, manager: null,
+    teams: ['כפר סבא ילדים (ז-ח)', 'כפר סבא נערים (ט-י)', 'כפר סבא נערות (ט)', 'כפר סבא נוער בנים (יא-יב)', 'כפר סבא נוער בנות (י-יב)'],
+  },
+  {
+    id: 'kfar-yona', city: 'כפר יונה', days: 'ראשון ורביעי', lng: 34.933, lat: 32.317, manager: null,
+    teams: ['כפר יונה ילדים (ו-ז)', 'כפר יונה נערים (ח-ט)', 'כפר יונה נוער בנים', 'כפר יונה נוער בנות'],
+  },
+  {
+    id: 'kochav-yair', city: 'כוכב יאיר', days: 'ראשון ורביעי', lng: 35.005, lat: 32.225, manager: null,
+    teams: ['כוכב יאיר ילדים (ז-ח)', 'כוכב יאיר נערים (ט-י)', 'כוכב יאיר נערות (ט-י)', 'כוכב יאיר נוער בנים (יא-יב)', 'כוכב יאיר בנות (יא-יב)'],
+  },
+  {
+    id: 'jerusalem', city: 'ירושלים', days: 'שני וחמישי', lng: 35.2137, lat: 31.7683, manager: null,
+    teams: ['ירושלים בנים (י-יב)'],
+  },
+  {
+    id: 'zichron', city: 'זכרון יעקב', days: 'שני וחמישי', lng: 34.954, lat: 32.572, manager: null,
+    teams: ['זכרון יעקב ילדים (ו-ז)', 'זכרון יעקב חטיבות (ח-ט)', 'זכרון יעקב נוער בנים (י-יב)', 'זכרון יעקב נוער בנות (י-יב)'],
+  },
+  {
+    id: 'herzliya', city: 'הרצליה', days: 'שני וחמישי', lng: 34.844, lat: 32.166, manager: null,
+    teams: ['הרצליה יסודי', 'הרצליה ילדים (ו-ז)', 'הרצליה נערים (ח-ט)', 'הרצליה נוער בנים (י-יב)', 'הרצליה נוער בנות (י-יב)'],
+  },
+  {
+    id: 'hod-hasharon', city: 'הוד השרון', days: 'שני וחמישי', lng: 34.889, lat: 32.150, manager: null,
+    teams: ['הוד השרון ילדים (ז-ח)', 'הוד השרון נערים (ט-י)', 'הוד השרון נוער בנים (יא-יב)', 'הוד השרון נוער בנות (י-יב)'],
+  },
+  {
+    id: 'givat-shmuel', city: 'גבעת שמואל', days: 'שני וחמישי', lng: 34.848, lat: 32.077, manager: null,
+    teams: ['גבעת שמואל ילדים (ו-ז)', 'גבעת שמואל נערים (ח-ט)', 'גבעת שמואל נוער בנים (י-יב)'],
+  },
+  {
+    id: 'even-yehuda', city: 'אבן יהודה', days: 'שני וחמישי', lng: 34.888, lat: 32.270, manager: null,
+    teams: ['אבן יהודה ילדים', 'אבן יהודה נערים', 'אבן יהודה נוער בנים (יא-יב)', 'אבן יהודה נוער בנות (י-יב)'],
+  },
 ]
 
 // ── Gallery (גלריה) ────────────────────────────────────────────────────────────
 // Add image paths to show real photos; empty strings render placeholders.
 export const gallery = [
-  { id: 'g1', src: '', alt: 'פעילות ליבה' }, // TODO
-  { id: 'g2', src: '', alt: 'פעילות ליבה' }, // TODO
-  { id: 'g3', src: '', alt: 'פעילות ליבה' }, // TODO
-  { id: 'g4', src: '', alt: 'פעילות ליבה' }, // TODO
-  { id: 'g5', src: '', alt: 'פעילות ליבה' }, // TODO
-  { id: 'g6', src: '', alt: 'פעילות ליבה' }, // TODO
+  { id: 'g1', src: '/liba_pics/214A0223.jpg', alt: 'פעילות ליבה' },
+  { id: 'g2', src: '/liba_pics/214A9628.jpg', alt: 'פעילות ליבה' },
+  { id: 'g3', src: '/liba_pics/214A9700.jpg', alt: 'פעילות ליבה' },
+  { id: 'g4', src: '/liba_pics/214A0052.jpg', alt: 'פעילות ליבה' },
+  { id: 'g5', src: '/liba_pics/214A1343.jpg', alt: 'פעילות ליבה' },
+  { id: 'g6', src: '/liba_pics/214A0405-2.jpg', alt: 'פעילות ליבה' },
+  { id: 'g7', src: '/liba_pics/214A1552.jpg', alt: 'פעילות ליבה' },
+  { id: 'g8', src: '/liba_pics/214A0362.jpg', alt: 'פעילות ליבה' },
+  { id: 'g9', src: '/liba_pics/214A0005.jpg', alt: 'פעילות ליבה' },
 ]
 
 // ── FAQ (שאלות נפוצות) ─────────────────────────────────────────────────────────

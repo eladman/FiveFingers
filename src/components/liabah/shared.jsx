@@ -57,7 +57,7 @@ export function SectionHeading({ eyebrow, title, subtitle, animateClass = '' }) 
     <div className="text-center pt-20 md:pt-28 pb-12 md:pb-16">
       {eyebrow && (
         <p
-          className={`${animateClass} font-heebo font-semibold text-[#b35600] mb-3`}
+          className={`${animateClass} font-heebo font-semibold text-[#ff8714] mb-3`}
           style={{ fontSize: 'clamp(0.7rem, 0.9vw, 0.85rem)', letterSpacing: '0.22em' }}
         >
           {eyebrow}
@@ -71,7 +71,7 @@ export function SectionHeading({ eyebrow, title, subtitle, animateClass = '' }) 
       </h2>
       {subtitle && (
         <p
-          className={`${animateClass} font-heebo text-[#b35600] mt-4 leading-snug mx-auto max-w-2xl`}
+          className={`${animateClass} font-heebo text-[#ff8714] mt-4 leading-snug mx-auto max-w-2xl`}
           style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.7rem)' }}
         >
           {subtitle}

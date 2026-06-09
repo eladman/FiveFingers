@@ -19,7 +19,7 @@ export default function LiabahFAQ() {
       <SectionBg watermark={false} />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-12 lg:px-20">
-        <SectionHeading eyebrow="כל השאלות" title="שאלות נפוצות" subtitle="כל מה שחשוב לדעת" animateClass="fq-animate" />
+        <SectionHeading eyebrow="שאלות נפוצות" title="כל מה שחשוב לדעת" animateClass="fq-animate" />
 
         <div className="flex flex-col gap-3 pb-24">
           {faq.map((item) => {
@@ -41,7 +41,7 @@ export default function LiabahFAQ() {
                   <span className="font-heebo font-bold text-navy text-base md:text-lg">{item.q}</span>
                   <ChevronDown
                     size={20}
-                    className={`text-[#b35600] shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    className={`text-[#ff8714] shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
                   />
                 </button>
                 <div

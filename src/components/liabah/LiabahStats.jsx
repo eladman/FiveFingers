@@ -45,11 +45,11 @@ function StatItem({ value, suffix, label }) {
   return (
     <div
       ref={ref}
-      className="stat-item relative text-center lg:border-s lg:border-white/10 lg:first:border-s-0 lg:px-2"
+      className="stat-item relative text-center lg:border-s lg:border-white/10 lg:first:border-s-0 lg:px-3"
     >
       <div
-        className="font-heebo font-extrabold text-orange leading-none tracking-tight"
-        style={{ fontSize: 'clamp(2.8rem, 5.2vw, 4.8rem)' }}
+        className="font-heebo font-extrabold text-orange leading-none tracking-tight whitespace-nowrap"
+        style={{ fontSize: 'clamp(2.4rem, 4vw, 3.6rem)' }}
       >
         {n.toLocaleString('he-IL')}{suffix}
       </div>
