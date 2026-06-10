@@ -8,6 +8,62 @@ import { SectionBg, SectionHeading } from './shared'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const REGIONS = ['מרכז', 'שרון', 'צפון']
+
+// ─── Mobile region-tabs + city list ──────────────────────────────────────────
+function MobileLocations({ onSelect }) {
+  const [activeRegion, setActiveRegion] = useState('מרכז')
+  const cities = locations.filter((l) => l.region === activeRegion)
+
+  return (
+    <div className="pb-16">
+      {/* Region tabs */}
+      <div className="flex gap-2 mb-5">
+        {REGIONS.map((r) => (
+          <button
+            key={r}
+            onClick={() => setActiveRegion(r)}
+            className={`flex-1 py-2.5 rounded-xl font-heebo font-bold text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange ${
+              activeRegion === r
+                ? 'bg-orange text-white shadow-md shadow-orange/30'
+                : 'bg-white border border-navy/10 text-navy/60 hover:border-orange/40'
+            }`}
+          >
+            {r}
+          </button>
+        ))}
+      </div>
+
+      {/* Cities in active region */}
+      <div className="flex flex-col gap-2">
+        {cities.map((loc) => (
+          <button
+            key={loc.id}
+            type="button"
+            onClick={() => onSelect(loc.id)}
+            className="text-right rounded-xl border border-navy/8 bg-white p-4 transition-all duration-200 hover:border-orange/40 hover:bg-orange/[0.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
+          >
+            <div className="flex items-center gap-2">
+              <MapPin size={16} className="text-orange shrink-0" />
+              <h3 className="font-heebo font-bold text-navy">{loc.city}</h3>
+              <span className="font-heebo text-navy/40 text-xs">· {loc.teams.length} קבוצות</span>
+              <ChevronLeft size={16} className="mr-auto shrink-0 text-navy/25" />
+            </div>
+            <div className="flex items-center gap-2 mt-1.5 pr-1">
+              <Clock size={13} className="text-navy/40 shrink-0" />
+              <span className="font-heebo text-navy/55 text-sm">{loc.days}</span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      <p className="font-heebo text-navy/45 text-sm mt-4">
+        לא מצאתם קבוצה באזורכם? השאירו פרטים ונעדכן אתכם בפתיחת קבוצה קרובה.
+      </p>
+    </div>
+  )
+}
+
 /** Drop the leading city name from a team name for a cleaner per-city label. */
 function teamLabel(name, city) {
   const stripped = name.startsWith(city) ? name.slice(city.length).trim() : name
@@ -64,7 +120,13 @@ export default function LiabahMap() {
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
         <SectionHeading eyebrow="פריסה ארצית" title="איפה אנחנו פועלים" animateClass="lm-animate" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pb-24">
+        {/* Mobile: region tabs — no map */}
+        <div className="sm:hidden">
+          <MobileLocations onSelect={setSelected} />
+        </div>
+
+        {/* sm+: original map + list layout */}
+        <div className="hidden sm:grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pb-24">
           {/* Map */}
           <div className="lm-animate order-2 lg:order-1 flex justify-center lg:sticky lg:top-24 self-start">
             <div

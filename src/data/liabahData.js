@@ -7,8 +7,8 @@
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
 export const hero = {
-  eyebrow: 'ארגון הליבה',
-  title: 'ליבה',
+  eyebrow: 'הליבה',
+  title: 'קבוצות הנוער',
   // 1–2 short, punchy sentences — the "cool to belong to" hook.
   subtitle: 'המקום שבו בני ובנות נוער הופכים לאנשים שבוחרים להיכנס לזירה.',
   // Main intro video. Leave videoUrl empty ('') to show the placeholder.
@@ -134,79 +134,79 @@ export const coaches = [
 // Generated from teams.csv — edit team names / days there and keep this in sync.
 export const locations = [
   {
-    id: 'tel-aviv', city: 'תל אביב', days: 'ראשון ורביעי', lng: 34.7818, lat: 32.0853, manager: null,
+    id: 'tel-aviv', city: 'תל אביב', region: 'מרכז', days: 'ראשון ורביעי', lng: 34.7818, lat: 32.0853, manager: null,
     teams: ['תל אביב ילדים (ו-ח)', 'תל אביב נערים (ט-י)', 'תל אביב נוער בנים (י-יב)', 'תל אביב נוער בנות (י-יב)'],
   },
   {
-    id: 'tel-mond', city: 'תל מונד', days: 'ראשון ורביעי', lng: 34.917, lat: 32.250, manager: null,
+    id: 'tel-mond', city: 'תל מונד', region: 'שרון', days: 'ראשון ורביעי', lng: 34.917, lat: 32.250, manager: null,
     teams: ['תל מונד ילדים (ז-ט)', 'תל מונד נוער בנים (י-יב)'],
   },
   {
-    id: 'raanana', city: 'רעננה', days: 'ראשון ורביעי', lng: 34.8707, lat: 32.1847, manager: null,
+    id: 'raanana', city: 'רעננה', region: 'שרון', days: 'ראשון ורביעי', lng: 34.8707, lat: 32.1847, manager: null,
     teams: ['רעננה ילדים (ו-ז)', 'רעננה נערים (ח-ט)', 'רעננה נערות (ח-ט)', 'רעננה נוער בנים (י-יב)', 'רעננה נוער בנות (י-יב)'],
   },
   {
-    id: 'ramat-yishai', city: 'רמת ישי', days: 'ראשון ורביעי', lng: 35.170, lat: 32.7035, manager: null,
+    id: 'ramat-yishai', city: 'רמת ישי', region: 'צפון', days: 'ראשון ורביעי', lng: 35.170, lat: 32.7035, manager: null,
     teams: ['רמת ישי ג-ד', 'רמת ישי ה-ו'],
   },
   {
-    id: 'kiryat-ono', city: 'קרית אונו', days: 'שני וחמישי', lng: 34.855, lat: 32.0556, manager: null,
+    id: 'kiryat-ono', city: 'קרית אונו', region: 'מרכז', days: 'שני וחמישי', lng: 34.855, lat: 32.0556, manager: null,
     teams: ['קרית אונו נערים (ז-ט)', 'קרית אונו נוער בנים (י-יב)', 'קרית אונו בנות (י-יב)'],
   },
   {
-    id: 'kiryat-tivon', city: 'קריית טבעון', days: 'ראשון ורביעי', lng: 35.1236, lat: 32.7197, manager: null,
+    id: 'kiryat-tivon', city: 'קריית טבעון', region: 'צפון', days: 'ראשון ורביעי', lng: 35.1236, lat: 32.7197, manager: null,
     teams: ['קריית טבעון ילדים (ז-ט)', 'קריית טבעון נוער בנים (י-יב)', 'קריית טבעון בנות (י-יב)'],
   },
   {
-    id: 'petah-tikva', city: 'פתח תקווה', days: 'ראשון ורביעי', lng: 34.8878, lat: 32.0840, manager: null,
+    id: 'petah-tikva', city: 'פתח תקווה', region: 'מרכז', days: 'ראשון ורביעי', lng: 34.8878, lat: 32.0840, manager: null,
     teams: ['פתח תקווה בנים (י-יב)'],
   },
   {
-    id: 'emek-yizrael', city: 'עמק יזרעאל', days: 'שני וחמישי', lng: 35.290, lat: 32.620, manager: null,
+    id: 'emek-yizrael', city: 'עמק יזרעאל', region: 'צפון', days: 'שני וחמישי', lng: 35.290, lat: 32.620, manager: null,
     teams: ['עמק יזרעאל ילדים (ז-ט)', 'עמק יזרעאל ילדות (ז׳-ט׳)', 'עמק יזרעאל נערים (י)', 'עמק יזרעאל נוער בנים (יא-יב)', 'עמק יזרעאל נוער בנות (י-יב)'],
   },
   {
-    id: 'emek-hefer-west', city: 'עמק חפר מערב', days: 'ראשון ורביעי', lng: 34.875, lat: 32.390, manager: null,
+    id: 'emek-hefer-west', city: 'עמק חפר מערב', region: 'שרון', days: 'ראשון ורביעי', lng: 34.875, lat: 32.390, manager: null,
     teams: ['עמק חפר מערב ילדים (ז-ח)', 'עמק חפר נערים (ט-י)', 'עמק חפר בנים (יא-יב)', 'עמק חפר בנות (י-יב)'],
   },
   {
-    id: 'emek-hefer-east', city: 'עמק חפר מזרח', days: 'שני וחמישי', lng: 34.990, lat: 32.370, manager: null,
+    id: 'emek-hefer-east', city: 'עמק חפר מזרח', region: 'שרון', days: 'שני וחמישי', lng: 34.990, lat: 32.370, manager: null,
     teams: ['עמק חפר מזרח ילדים (ז-ט)', 'עמק חפר מזרח נוער בנים', 'עמק חפר מזרח נוער בנות (י׳-י״ב)'],
   },
   {
-    id: 'kfar-saba', city: 'כפר סבא', days: 'ראשון ורביעי', lng: 34.907, lat: 32.175, manager: null,
+    id: 'kfar-saba', city: 'כפר סבא', region: 'שרון', days: 'ראשון ורביעי', lng: 34.907, lat: 32.175, manager: null,
     teams: ['כפר סבא ילדים (ז-ח)', 'כפר סבא נערים (ט-י)', 'כפר סבא נערות (ט)', 'כפר סבא נוער בנים (יא-יב)', 'כפר סבא נוער בנות (י-יב)'],
   },
   {
-    id: 'kfar-yona', city: 'כפר יונה', days: 'ראשון ורביעי', lng: 34.933, lat: 32.317, manager: null,
+    id: 'kfar-yona', city: 'כפר יונה', region: 'שרון', days: 'ראשון ורביעי', lng: 34.933, lat: 32.317, manager: null,
     teams: ['כפר יונה ילדים (ו-ז)', 'כפר יונה נערים (ח-ט)', 'כפר יונה נוער בנים', 'כפר יונה נוער בנות'],
   },
   {
-    id: 'kochav-yair', city: 'כוכב יאיר', days: 'ראשון ורביעי', lng: 35.005, lat: 32.225, manager: null,
+    id: 'kochav-yair', city: 'כוכב יאיר', region: 'שרון', days: 'ראשון ורביעי', lng: 35.005, lat: 32.225, manager: null,
     teams: ['כוכב יאיר ילדים (ז-ח)', 'כוכב יאיר נערים (ט-י)', 'כוכב יאיר נערות (ט-י)', 'כוכב יאיר נוער בנים (יא-יב)', 'כוכב יאיר בנות (יא-יב)'],
   },
   {
-    id: 'jerusalem', city: 'ירושלים', days: 'שני וחמישי', lng: 35.2137, lat: 31.7683, manager: null,
+    id: 'jerusalem', city: 'ירושלים', region: 'מרכז', days: 'שני וחמישי', lng: 35.2137, lat: 31.7683, manager: null,
     teams: ['ירושלים בנים (י-יב)'],
   },
   {
-    id: 'zichron', city: 'זכרון יעקב', days: 'שני וחמישי', lng: 34.954, lat: 32.572, manager: null,
+    id: 'zichron', city: 'זכרון יעקב', region: 'צפון', days: 'שני וחמישי', lng: 34.954, lat: 32.572, manager: null,
     teams: ['זכרון יעקב ילדים (ו-ז)', 'זכרון יעקב חטיבות (ח-ט)', 'זכרון יעקב נוער בנים (י-יב)', 'זכרון יעקב נוער בנות (י-יב)'],
   },
   {
-    id: 'herzliya', city: 'הרצליה', days: 'שני וחמישי', lng: 34.844, lat: 32.166, manager: null,
+    id: 'herzliya', city: 'הרצליה', region: 'שרון', days: 'שני וחמישי', lng: 34.844, lat: 32.166, manager: null,
     teams: ['הרצליה יסודי', 'הרצליה ילדים (ו-ז)', 'הרצליה נערים (ח-ט)', 'הרצליה נוער בנים (י-יב)', 'הרצליה נוער בנות (י-יב)'],
   },
   {
-    id: 'hod-hasharon', city: 'הוד השרון', days: 'שני וחמישי', lng: 34.889, lat: 32.150, manager: null,
+    id: 'hod-hasharon', city: 'הוד השרון', region: 'שרון', days: 'שני וחמישי', lng: 34.889, lat: 32.150, manager: null,
     teams: ['הוד השרון ילדים (ז-ח)', 'הוד השרון נערים (ט-י)', 'הוד השרון נוער בנים (יא-יב)', 'הוד השרון נוער בנות (י-יב)'],
   },
   {
-    id: 'givat-shmuel', city: 'גבעת שמואל', days: 'שני וחמישי', lng: 34.848, lat: 32.077, manager: null,
+    id: 'givat-shmuel', city: 'גבעת שמואל', region: 'מרכז', days: 'שני וחמישי', lng: 34.848, lat: 32.077, manager: null,
     teams: ['גבעת שמואל ילדים (ו-ז)', 'גבעת שמואל נערים (ח-ט)', 'גבעת שמואל נוער בנים (י-יב)'],
   },
   {
-    id: 'even-yehuda', city: 'אבן יהודה', days: 'שני וחמישי', lng: 34.888, lat: 32.270, manager: null,
+    id: 'even-yehuda', city: 'אבן יהודה', region: 'שרון', days: 'שני וחמישי', lng: 34.888, lat: 32.270, manager: null,
     teams: ['אבן יהודה ילדים', 'אבן יהודה נערים', 'אבן יהודה נוער בנים (יא-יב)', 'אבן יהודה נוער בנות (י-יב)'],
   },
 ]

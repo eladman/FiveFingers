@@ -4,9 +4,9 @@ import logo from '../assets/logo.png'
 import Button from './ui/Button'
 
 const NAV_LINKS = [
-  { label: 'ליבה', href: '#liabah' },
-  { label: 'אקדמיה', href: '#academy' },
-  { label: 'פרויקטים', href: '#collabs' },
+  { label: 'קבוצות הנוער', href: '#liabah' },
+  { label: 'מכינה', href: '#academy' },
+  { label: 'שיתופי פעולה', href: '#collabs' },
   { label: 'בוגרים', href: '#alumni' },
   { label: 'צוות', href: '#team' },
   { label: 'עמיר מנחם', href: '#amir' },

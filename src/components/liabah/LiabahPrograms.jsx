@@ -21,7 +21,7 @@ export default function LiabahPrograms({ onRegister }) {
       const rows = ref.current.querySelectorAll('.lp-row')
 
       if (reduced) {
-        gsap.set([...heading, ...ref.current.querySelectorAll('.lp-animate')], { opacity: 1, y: 0 })
+        gsap.set([...heading, ...ref.current.querySelectorAll('.lp-animate, .lp-card')], { opacity: 1, y: 0 })
         return
       }
 
@@ -45,6 +45,14 @@ export default function LiabahPrograms({ onRegister }) {
           })
         }
       })
+
+      // Mobile compact cards — gentle fade-up per card
+      ref.current.querySelectorAll('.lp-card').forEach((card) => {
+        gsap.fromTo(card, { y: 40, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+          scrollTrigger: { trigger: card, start: 'top 88%' },
+        })
+      })
     }, ref)
     return () => ctx.revert()
   }, [])
@@ -61,7 +69,58 @@ export default function LiabahPrograms({ onRegister }) {
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
         <SectionHeading eyebrow="המסלולים" title="תכניות לפי גילאים" subtitle="מסלול שמתאים לכל שלב" animateClass="lp-heading" />
 
-        <div className="flex flex-col">
+        {/* ── Mobile: compact stacked cards (title + ages overlaid on a short banner) ── */}
+        <div className="md:hidden flex flex-col gap-4 pb-12">
+          {programsByAge.map((prog) => (
+            <article
+              key={prog.id}
+              className="lp-card relative overflow-hidden rounded-xl border border-navy/10 bg-white shadow-[0_4px_16px_-8px_rgba(0,0,50,0.16)]"
+            >
+              {/* Banner — real photo, or a branded orange gradient until one is added */}
+              <div className="relative aspect-[21/9] overflow-hidden">
+                {prog.imageSrc ? (
+                  <img
+                    src={prog.imageSrc}
+                    alt={prog.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#ff8714] to-[#e0750f]">
+                    <div
+                      className="absolute inset-0 opacity-[0.18]"
+                      style={{
+                        backgroundImage: 'radial-gradient(circle, #ffffff 1.4px, transparent 1.4px)',
+                        backgroundSize: '18px 18px',
+                      }}
+                    />
+                  </div>
+                )}
+                {/* Legibility scrim under the title */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#000032]/80 via-[#000032]/20 to-transparent" />
+                {/* Title + ages, overlaid bottom-right */}
+                <div className="absolute inset-x-0 bottom-0 p-3 text-right">
+                  <h3 className="font-heebo font-extrabold text-white leading-tight text-[1.3rem]">
+                    {prog.title}
+                  </h3>
+                  <span className="inline-block font-heebo font-medium text-white/80 text-xs">
+                    {prog.ages}
+                  </span>
+                </div>
+              </div>
+
+              {/* Body */}
+              <div className="px-3 py-3 flex flex-col gap-3 text-right">
+                <p className="font-heebo text-navy/65 text-[0.85rem] leading-relaxed">
+                  {prog.description}
+                </p>
+                <PrimaryButton onClick={onRegister} size="sm" className="w-full">הרשמה לקבוצה</PrimaryButton>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* ── Desktop: alternating angled-clip rows ── */}
+        <div className="hidden md:flex md:flex-col">
           {programsByAge.map((prog, i) => {
             const isEven = i % 2 === 0
             const clip = isEven ? CLIP_EVEN : CLIP_ODD
@@ -72,7 +131,7 @@ export default function LiabahPrograms({ onRegister }) {
             return (
               <div
                 key={prog.id}
-                className={`lp-row grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center py-16 md:py-20 ${
+                className={`lp-row grid md:grid-cols-2 gap-10 md:gap-16 items-center py-16 md:py-20 ${
                   !isLast ? 'border-b border-navy/8' : 'pb-24'
                 }`}
               >
