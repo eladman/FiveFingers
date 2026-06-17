@@ -5,6 +5,8 @@ import { WHATSAPP_HREF, PHONE_HREF, EMAIL, EMAIL_HREF, PHONE_DISPLAY } from '../
 const PRODUCT_TYPES = [
   'קבוצות הנוער',
   'מכינה',
+  'Boost',
+  'כרמל',
   'שיתוף פעולה',
   'יואב',
   'קשר עם עמיר',

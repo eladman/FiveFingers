@@ -79,7 +79,7 @@ export const programsByAge = [
     ages: 'גילאי 10–12 · כיתות ה׳–ו׳',
     description:
       'הצעד הראשון בעולם הליבה — היכרות עם השיטה דרך משחק, תנועה ואתגר מותאם גיל, בקבוצה תומכת.', // TODO
-    imageSrc: '', // TODO: '/our_product_pics/...'
+    imageSrc: '/plans_pics/kids_liba.jpg',
   },
   {
     id: 'middle',
@@ -95,7 +95,7 @@ export const programsByAge = [
     ages: 'גילאי 15–18 · כיתות י׳–י״ב',
     description:
       'העמקת המנהיגות והאחריות האישית, הכנה לקראת השירות המשמעותי ולחיים של השפעה.', // TODO
-    imageSrc: '', // TODO
+    imageSrc: '/plans_pics/high_schools. .jpg',
   },
 ]
 

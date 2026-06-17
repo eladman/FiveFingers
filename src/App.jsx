@@ -10,20 +10,30 @@ import SoftDivider from './components/SoftDivider'
 import ContactModal from './components/ContactModal'
 import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
 import LiabahPage from './pages/LiabahPage'
+import AcademyPage from './pages/AcademyPage'
 import { WHATSAPP_HREF } from './data/contact'
+
+// Maps the URL hash to a top-level view. Prefix match so in-page anchors
+// (e.g. #academy-essence from the hero "גלו עוד") keep the dedicated page
+// mounted instead of bouncing back home. New dedicated pages go here.
+function resolveView(hash) {
+  if (hash.startsWith('#liabah')) return 'liabah'
+  if (hash.startsWith('#academy')) return 'academy'
+  return 'home'
+}
 
 export default function App() {
   const [navReady, setNavReady] = useState(false)
   const [contactOpen, setContactOpen] = useState(false)
   const [contactProduct, setContactProduct] = useState('')
-  const [view, setView] = useState(() => (window.location.hash === '#liabah' ? 'liabah' : 'home'))
+  const [view, setView] = useState(() => resolveView(window.location.hash))
 
-  // Hash-based routing: #liabah → dedicated page, anything else → homepage.
+  // Hash-based routing: #liabah / #academy → dedicated page, anything else → homepage.
   useEffect(() => {
     const onHashChange = () => {
-      const next = window.location.hash === '#liabah' ? 'liabah' : 'home'
+      const next = resolveView(window.location.hash)
       setView((prev) => {
-        if (next === 'liabah' && prev !== 'liabah') window.scrollTo(0, 0)
+        if (next !== 'home' && prev !== next) window.scrollTo(0, 0)
         if (next === 'home' && prev !== 'home') setNavReady(true)
         return next
       })
@@ -32,9 +42,9 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
-  // The Liabah page renders its own Navbar immediately (no Hero intro to gate it).
-  const isLiabah = view === 'liabah'
-  const navVisible = isLiabah || navReady
+  // Dedicated pages render their own Navbar immediately (no Hero intro to gate it).
+  const isDedicatedPage = view === 'liabah' || view === 'academy'
+  const navVisible = isDedicatedPage || navReady
 
   const openContact = (product = '') => {
     setContactProduct(product)
@@ -52,8 +62,10 @@ export default function App() {
         defaultProduct={contactProduct}
       />
 
-      {isLiabah ? (
+      {view === 'liabah' ? (
         <LiabahPage onContactOpen={openContact} />
+      ) : view === 'academy' ? (
+        <AcademyPage onContactOpen={openContact} />
       ) : (
         <main>
           <Hero onComplete={() => setNavReady(true)} />
