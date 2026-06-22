@@ -12,12 +12,14 @@ import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
 import LiabahPage from './pages/LiabahPage'
 import AcademyPage from './pages/AcademyPage'
 import CollaborationsPage from './pages/CollaborationsPage'
+import HeroConcepts from './HeroConcepts'
 import { WHATSAPP_HREF } from './data/contact'
 
 // Maps the URL hash to a top-level view. Prefix match so in-page anchors
 // (e.g. #academy-essence from the hero "גלו עוד") keep the dedicated page
 // mounted instead of bouncing back home. New dedicated pages go here.
 function resolveView(hash) {
+  if (hash.startsWith('#hero-concepts')) return 'concepts'
   if (hash.startsWith('#liabah')) return 'liabah'
   if (hash.startsWith('#academy')) return 'academy'
   if (hash.startsWith('#collabs')) return 'collabs'
@@ -51,6 +53,11 @@ export default function App() {
   const openContact = (product = '') => {
     setContactProduct(product)
     setContactOpen(true)
+  }
+
+  // Standalone design preview — its own switcher chrome, no site navbar/footer.
+  if (view === 'concepts') {
+    return <HeroConcepts />
   }
 
   return (

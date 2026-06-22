@@ -5,13 +5,17 @@ import { hero } from '../../data/liabahData'
 import usePrefersReducedMotion from '../../hooks/usePrefersReducedMotion'
 import { PrimaryButton } from './shared'
 
+/**
+ * Editorial Split — a clean vertical split: a full-height photo panel beside a
+ * solid navy panel that holds the headline. Magazine-cover composure, distinct
+ * from the homepage's centered fullscreen slideshow.
+ */
+
 const IMAGES = [
-  '/Hero-Pics/214A0011.jpg',
   '/Hero-Pics/214A0027.jpg',
-  '/Hero-Pics/214A0034.jpg',
   '/Hero-Pics/214A0088.jpg',
   '/Hero-Pics/214A0114.jpg',
-  '/Hero-Pics/214A0511.jpg',
+  '/Hero-Pics/214A0011.jpg',
   '/Hero-Pics/_14A9355.jpg',
 ]
 
@@ -20,27 +24,26 @@ export default function LiabahHero({ onRegister }) {
   const reduced = usePrefersReducedMotion()
   const [current, setCurrent] = useState(0)
 
-  // Intro reveal sequence
+  // Intro reveal — text slides in from the side, accent rule wipes out.
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline()
-      tl.fromTo('.lh-eyebrow', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1)
-        .fromTo('.lh-title', { y: 40, opacity: 0, filter: 'blur(10px)' }, { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.8, ease: 'power3.out' }, '-=0.2')
-        .fromTo('.lh-accent', { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.35, ease: 'power2.inOut' }, '-=0.2')
-        .fromTo('.lh-sub', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' }, '-=0.05')
-        .fromTo('.lh-cta', { y: 14, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.08, duration: 0.4, ease: 'power2.out' }, '-=0.05')
-        .fromTo('.lh-chrome', { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.1')
+      if (reduced) {
+        gsap.set('.lh-text', { opacity: 1, x: 0 })
+        gsap.set('.lh-accent', { scaleX: 1, opacity: 1 })
+        return
+      }
+      gsap.fromTo('.lh-text', { opacity: 0, x: 28 },
+        { opacity: 1, x: 0, stagger: 0.12, duration: 0.9, ease: 'expo.out', delay: 0.2 })
+      gsap.fromTo('.lh-accent', { scaleX: 0, opacity: 0 },
+        { scaleX: 1, opacity: 1, duration: 1, ease: 'expo.out', delay: 0.5 })
     }, ref)
     return () => ctx.revert()
-  }, [])
+  }, [reduced])
 
-  // Auto-advancing slideshow (paused under reduced-motion). Re-runs on `current`
-  // so a manual dot click also resets the timer.
+  // Auto-advancing slideshow (paused under reduced-motion).
   useEffect(() => {
     if (reduced) return
-    const id = setInterval(() => {
-      setCurrent((c) => (c + 1) % IMAGES.length)
-    }, 5000)
+    const id = setInterval(() => setCurrent((c) => (c + 1) % IMAGES.length), 5000)
     return () => clearInterval(id)
   }, [reduced, current])
 
@@ -49,10 +52,70 @@ export default function LiabahHero({ onRegister }) {
       id="liabah-top"
       ref={ref}
       dir="rtl"
-      className="relative w-full min-h-dvh overflow-hidden text-white flex flex-col"
+      className="relative w-full min-h-dvh overflow-hidden flex flex-col-reverse md:flex-row"
+      style={{ background: '#000032' }}
     >
-      {/* Background slideshow with Ken Burns on the active slide */}
-      <div className="absolute inset-0">
+      {/* ── NAVY TEXT PANEL ── */}
+      <div
+        className="relative flex flex-col justify-center text-white"
+        style={{ flex: '0 0 44%', padding: 'clamp(2.5rem, 6vw, 4.5rem)' }}
+      >
+        <p
+          className="lh-text font-mono"
+          style={{
+            color: 'rgba(255,135,20,0.9)',
+            fontSize: 'clamp(0.62rem, 1vw, 0.74rem)',
+            letterSpacing: '0.3em',
+          }}
+        >
+          {hero.eyebrow}
+        </p>
+
+        <h1
+          className="lh-text"
+          style={{
+            margin: '1.1rem 0 0',
+            fontFamily: "'RagMarom', sans-serif",
+            fontSize: 'clamp(2.8rem, 5.5vw, 5.4rem)',
+            lineHeight: 1.02,
+          }}
+        >
+          {hero.title}
+        </h1>
+
+        <div
+          className="lh-accent rounded-full bg-orange"
+          style={{
+            height: '3px', width: 'clamp(5rem, 12vw, 9rem)',
+            transformOrigin: 'right', margin: 'clamp(1.4rem, 3vh, 2.2rem) 0',
+          }}
+        />
+
+        <p
+          className="lh-text font-heebo"
+          style={{
+            margin: 0, color: 'rgba(255,255,255,0.78)',
+            fontSize: 'clamp(1.05rem, 1.7vw, 1.4rem)', lineHeight: 1.6, maxWidth: '34ch',
+          }}
+        >
+          {hero.subtitle}
+        </p>
+
+        <div className="lh-text flex flex-wrap items-center gap-4" style={{ marginTop: 'clamp(1.6rem, 3.5vh, 2.6rem)' }}>
+          <PrimaryButton onClick={onRegister} icon={ChevronLeft}>
+            {hero.primaryCta}
+          </PrimaryButton>
+          <a
+            href="#liabah-essence"
+            className="flex items-center text-white/75 hover:text-white px-6 py-3.5 rounded-full text-base border border-white/25 hover:border-white/55 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+          >
+            גלו עוד
+          </a>
+        </div>
+      </div>
+
+      {/* ── PHOTO PANEL ── */}
+      <div className="relative overflow-hidden" style={{ flex: '1 1 56%', minHeight: '40vh' }}>
         {IMAGES.map((src, i) => (
           <img
             key={src}
@@ -61,64 +124,48 @@ export default function LiabahHero({ onRegister }) {
             className={`absolute inset-0 w-full h-full object-cover ${i === current && !reduced ? 'ken-burns' : ''}`}
             style={{
               opacity: i === current ? 1 : 0,
-              transition: 'opacity 1.2s ease-in-out, transform 1.2s ease-out',
+              transition: 'opacity 1.3s ease-in-out, transform 1.2s ease-out',
               willChange: 'opacity, transform',
-              objectPosition: 'center 30%',
+              objectPosition: 'center 25%',
             }}
             loading={i === 0 ? 'eager' : 'lazy'}
           />
         ))}
-        <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/30" />
-        <div className="absolute bottom-0 inset-x-0 h-1/4 bg-gradient-to-t from-black/75 to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-orange/10 to-transparent" />
-      </div>
-
-      {/* Headline block — vertically centered */}
-      <div className="relative z-10 flex-1 flex items-center">
-        <div className="w-full max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20 pt-28 md:pt-32 pb-36">
-          <div className="text-center">
-            <p className="lh-eyebrow font-heebo text-white/55 tracking-[0.3em] text-sm md:text-base mb-4">
-              {hero.eyebrow}
-            </p>
-            <h1
-              className="lh-title leading-none tracking-tight"
-              style={{ fontFamily: "'RagMarom', sans-serif", fontSize: 'clamp(4rem, 13vw, 13rem)' }}
-            >
-              {hero.title}
-            </h1>
-            <div
-              className="lh-accent mx-auto mt-6 rounded-full bg-orange"
-              style={{ height: '3px', width: 'clamp(7rem, 18vw, 18rem)', transformOrigin: 'center' }}
+        {/* soft seam shadow toward the navy panel */}
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, rgba(0,0,50,0.4), transparent 22%)' }}
+        />
+        {/* bottom fade into navy so the whole hero meets the section seam cleanly */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 pointer-events-none"
+          style={{ height: '30%', background: 'linear-gradient(to top, #000032 0%, rgba(0,0,50,0) 100%)' }}
+        />
+        {/* slide dots */}
+        <div className="absolute bottom-6 left-6 flex gap-1.5">
+          {IMAGES.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`תמונה ${i + 1}`}
+              onClick={() => setCurrent(i)}
+              className="rounded-sm transition-all duration-300"
+              style={{
+                width: i === current ? '20px' : '6px', height: '3px',
+                background: i === current ? '#ff8714' : 'rgba(255,255,255,0.45)',
+              }}
             />
-            <p
-              className="lh-sub font-heebo text-white/85 mt-7 mx-auto max-w-2xl leading-snug"
-              style={{ fontSize: 'clamp(1.1rem, 2.2vw, 1.8rem)' }}
-            >
-              {hero.subtitle}
-            </p>
-
-            <div className="flex flex-wrap gap-4 justify-center mt-9">
-              <PrimaryButton onClick={onRegister} icon={ChevronLeft} className="lh-cta">
-                {hero.primaryCta}
-              </PrimaryButton>
-              <a
-                href="#liabah-essence"
-                className="lh-cta flex items-center text-white/75 hover:text-white px-7 py-3.5 rounded-full text-base border border-white/25 hover:border-white/55 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/30"
-              >
-                גלו עוד
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Scroll-down cue */}
+      {/* scroll-down cue */}
       <a
         href="#liabah-essence"
         aria-label="גלילה למטה"
-        className="lh-chrome scroll-indicator absolute left-1/2 bottom-4 z-10 text-white/60 hover:text-white transition-colors"
+        className="scroll-indicator absolute left-1/2 bottom-4 z-10 text-white/55 hover:text-white transition-colors"
+        style={{ transform: 'translateX(-50%)' }}
       >
         <ChevronDown size={26} />
       </a>
