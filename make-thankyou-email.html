@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+  Five Fingers (חמש אצבעות) — Thank-you email for the Make.com automation.
+  Paste this whole file into the HTML body of your Make "Send an Email" module.
+
+  MERGE TAGS — replace these with Make mappings from the webhook:
+    {{name}}         → submitter's full name
+    {{productType}}  → the program they chose (may be empty)
+
+  IMAGES — email clients need absolute URLs. Replace LOGO_URL below with your
+  live logo, e.g. https://fivefingers.co.il/logo.png
+-->
+<html dir="rtl" lang="he" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>תודה שבחרתם בגדוּלה</title>
+  <!--[if mso]>
+  <style type="text/css">
+    body, table, td { font-family: Arial, sans-serif !important; }
+  </style>
+  <![endif]-->
+</head>
+<body style="margin:0; padding:0; background-color:#f3f4f7; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
+
+  <!-- Preheader (hidden preview text) -->
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0; font-size:1px; line-height:1px; color:#f3f4f7;">
+    קיבלנו את הפרטים שלכם. ברוכים הבאים לזירה. 🔥
+  </div>
+
+  <table dir="rtl" role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f3f4f7; direction:rtl;">
+    <tr>
+      <td align="center" style="padding:32px 16px; direction:rtl;">
+
+        <!-- Card -->
+        <table dir="rtl" role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:20px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,50,0.08); direction:rtl;">
+
+          <!-- Hero band -->
+          <tr>
+            <td align="center" style="background-color:#000032; background-image:linear-gradient(135deg,#000032 0%,#1a1a52 100%); padding:44px 32px 40px 32px;">
+              <!-- Logo -->
+              <img src="LOGO_URL" width="78" height="78" alt="חמש אצבעות" style="display:block; width:78px; height:auto; margin:0 auto 20px auto; border:0; outline:none; text-decoration:none;">
+              <p style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; letter-spacing:3px; color:#ff8714; text-transform:uppercase;">חמש אצבעות</p>
+              <h1 style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:30px; line-height:1.25; color:#ffffff; font-weight:800;">תודה שבחרתם בגדוּלה 🔥</h1>
+            </td>
+          </tr>
+
+          <!-- Orange accent rule -->
+          <tr>
+            <td style="height:5px; background-color:#ff8714; font-size:0; line-height:0;">&nbsp;</td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td dir="rtl" style="padding:40px 40px 24px 40px; font-family:Arial,Helvetica,sans-serif; text-align:right; direction:rtl;">
+
+              <p style="margin:0 0 18px 0; font-size:20px; line-height:1.4; color:#000032; font-weight:700;">
+                היי {{name}},
+              </p>
+
+              <p style="margin:0 0 18px 0; font-size:16px; line-height:1.75; color:#444a57;">
+                קיבלנו את הפרטים שלכם — וזה כבר אומר משהו עליכם. עשיתם את הצעד הראשון,
+                והצעד הראשון הוא תמיד הכי קשה.
+              </p>
+
+              <p style="margin:0 0 26px 0; font-size:16px; line-height:1.75; color:#444a57;">
+                אנחנו תנועת <strong style="color:#000032;">חמש אצבעות</strong> — תנועה חינוכית-חברתית
+                שמפתחת צעירים וצעירות דרך חוויות מאתגרות, קבוצה חזקה ומאמן שמאמין בכם.
+                המטרה שלנו פשוטה: לעזור לכם להפוך ל<strong style="color:#ff8714;">"אדם שבזירה"</strong> —
+                מי שפועל כדי לשנות את המציאות לטובה.
+              </p>
+
+              <!-- Chosen program chip (shown when productType exists) -->
+              <table dir="rtl" role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 26px 0; direction:rtl;">
+                <tr>
+                  <td style="background-color:#fff3e6; border:1px solid #ffd9b0; border-radius:12px; padding:14px 20px; font-family:Arial,Helvetica,sans-serif; text-align:right;">
+                    <span style="font-size:13px; color:#9aa0ad;">התעניינתם ב־</span><br>
+                    <span style="font-size:17px; color:#ff8714; font-weight:800;">{{productType}}</span>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin:0 0 8px 0; font-size:16px; line-height:1.75; color:#444a57;">
+                <strong style="color:#000032;">מה עכשיו?</strong> נחזור אליכם תוך 24 שעות עם כל הפרטים.
+                בינתיים — אתם מוזמנים לדבר איתנו ישירות:
+              </p>
+
+              <!-- CTA buttons -->
+              <table dir="rtl" role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:22px 0 6px 0; direction:rtl;">
+                <tr>
+                  <td style="border-radius:30px; background-color:#25D366;">
+                    <a href="https://wa.me/972556855850" target="_blank" style="display:inline-block; padding:13px 30px; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; text-decoration:none; border-radius:30px;">
+                      וואטסאפ 💬
+                    </a>
+                  </td>
+                  <td style="width:12px; font-size:0; line-height:0;">&nbsp;</td>
+                  <td style="border-radius:30px; background-color:#ff8714;">
+                    <a href="https://fivefingers.co.il" target="_blank" style="display:inline-block; padding:13px 30px; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; text-decoration:none; border-radius:30px;">
+                      לאתר שלנו
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Sign-off -->
+          <tr>
+            <td dir="rtl" style="padding:8px 40px 36px 40px; font-family:Arial,Helvetica,sans-serif; text-align:right; direction:rtl;">
+              <p style="margin:0; font-size:16px; line-height:1.7; color:#444a57;">
+                נתראה בזירה,<br>
+                <strong style="color:#000032;">צוות חמש אצבעות</strong>
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td dir="rtl" style="background-color:#000032; padding:26px 40px; font-family:Arial,Helvetica,sans-serif; text-align:center; direction:rtl;">
+              <p style="margin:0 0 8px 0; font-size:13px; line-height:1.7; color:#c9cbe0;">
+                <a href="mailto:info@fivefingers.co.il" style="color:#ff8714; text-decoration:none;">info@fivefingers.co.il</a>
+                &nbsp;•&nbsp;
+                <a href="tel:+972556855850" style="color:#ff8714; text-decoration:none;">055-685-5850</a>
+              </p>
+              <p style="margin:0; font-size:11px; line-height:1.6; color:#7a7d99;">
+                תנועת חמש אצבעות · מצוינות ערכית · נוסדה ב־2014
+              </p>
+            </td>
+          </tr>
+
+        </table>
+        <!-- /Card -->
+
+        <p style="margin:18px 0 0 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#b3b8c2;">
+          קיבלתם את המייל הזה כי השארתם פרטים באתר חמש אצבעות.
+        </p>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+
+# Local env files (keep secrets/webhooks out of git)
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+.DS_Store

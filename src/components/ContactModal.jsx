@@ -47,13 +47,42 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (status === 'loading') return
     setStatus('loading')
-    console.log('Contact form submission:', form)
-    // Simulate async send so the user gets real submit feedback.
-    setTimeout(() => setStatus('success'), 900)
+
+    // Payload sent to the Make.com webhook that fires the thank-you automation.
+    const payload = {
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      productType: form.productType,
+      submittedAt: new Date().toISOString(),
+      source: 'fivefingers-website',
+      pageUrl: window.location.href,
+    }
+
+    const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL
+
+    try {
+      if (webhookUrl) {
+        const res = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+        if (!res.ok) throw new Error(`Webhook responded ${res.status}`)
+      } else {
+        // No webhook configured yet — keep the simulated send for local dev.
+        console.warn('VITE_MAKE_WEBHOOK_URL not set — skipping Make webhook.', payload)
+        await new Promise((r) => setTimeout(r, 900))
+      }
+      setStatus('success')
+    } catch (err) {
+      console.error('Contact form submission failed:', err)
+      setStatus('error')
+    }
   }
 
   return (
@@ -175,6 +204,12 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
                       required
                     />
                   </div>
+
+                  {status === 'error' && (
+                    <p className="text-center text-sm" style={{ color: '#d23a3a' }}>
+                      משהו השתבש בשליחה. נסו שוב, או דברו איתנו בוואטסאפ 🙏
+                    </p>
+                  )}
 
                   <SubmitButton loading={status === 'loading'} />
 
