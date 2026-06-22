@@ -11,6 +11,7 @@ import ContactModal from './components/ContactModal'
 import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
 import LiabahPage from './pages/LiabahPage'
 import AcademyPage from './pages/AcademyPage'
+import CollaborationsPage from './pages/CollaborationsPage'
 import { WHATSAPP_HREF } from './data/contact'
 
 // Maps the URL hash to a top-level view. Prefix match so in-page anchors
@@ -19,6 +20,7 @@ import { WHATSAPP_HREF } from './data/contact'
 function resolveView(hash) {
   if (hash.startsWith('#liabah')) return 'liabah'
   if (hash.startsWith('#academy')) return 'academy'
+  if (hash.startsWith('#collabs')) return 'collabs'
   return 'home'
 }
 
@@ -43,7 +45,7 @@ export default function App() {
   }, [])
 
   // Dedicated pages render their own Navbar immediately (no Hero intro to gate it).
-  const isDedicatedPage = view === 'liabah' || view === 'academy'
+  const isDedicatedPage = view === 'liabah' || view === 'academy' || view === 'collabs'
   const navVisible = isDedicatedPage || navReady
 
   const openContact = (product = '') => {
@@ -66,6 +68,8 @@ export default function App() {
         <LiabahPage onContactOpen={openContact} />
       ) : view === 'academy' ? (
         <AcademyPage onContactOpen={openContact} />
+      ) : view === 'collabs' ? (
+        <CollaborationsPage onContactOpen={openContact} />
       ) : (
         <main>
           <Hero onComplete={() => setNavReady(true)} />

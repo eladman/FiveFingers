@@ -1,0 +1,45 @@
+import CollabsHero from '../components/collabs/CollabsHero'
+import CollabsStats from '../components/collabs/CollabsStats'
+import CollabsIntro from '../components/collabs/CollabsIntro'
+import CollabsProcess from '../components/collabs/CollabsProcess'
+import CollabsContentWorlds from '../components/collabs/CollabsContentWorlds'
+import CollabsFormats from '../components/collabs/CollabsFormats'
+import CollabsTeam from '../components/collabs/CollabsTeam'
+import CollabsPartners from '../components/collabs/CollabsPartners'
+import CollabsCTA from '../components/collabs/CollabsCTA'
+import SoftDivider from '../components/SoftDivider'
+
+/**
+ * The שיתופי פעולה (Collaborations) page — "קמפוס חמש אצבעות / בית תוכן והכשרות",
+ * the movement's B2B offering for organizations, teams, units and athletes.
+ *
+ * Content is drawn from the "5 Fingers Catalog" PDF. Uses the rich ליבה visual
+ * language (dark slideshow hero, navy stat band, SoftDividers, GSAP reveals).
+ *
+ * `onContactOpen` opens the shared ContactModal; section CTAs tag it 'שיתופי פעולה'.
+ */
+export default function CollaborationsPage({ onContactOpen }) {
+  const onRegister = () => onContactOpen?.('שיתופי פעולה')
+
+  return (
+    <main className="bg-surface">
+      <CollabsHero onRegister={onRegister} />
+      <SoftDivider fromColor="#000000" toColor="#000032" blend={false} />
+      <CollabsStats />
+      <SoftDivider fromColor="#000032" toColor="#fafaf8" blend={false} />
+      <CollabsIntro />
+      <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
+      <CollabsProcess />
+      <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
+      <CollabsContentWorlds />
+      <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
+      <CollabsFormats onRegister={onRegister} />
+      <SoftDivider fromColor="#fafaf8" toColor="#000032" blend={false} />
+      <CollabsTeam />
+      <SoftDivider fromColor="#000032" toColor="#fafaf8" blend={false} />
+      <CollabsPartners />
+      <SoftDivider fromColor="#fafaf8" toColor="#000032" blend={false} />
+      <CollabsCTA onRegister={onRegister} />
+    </main>
+  )
+}
