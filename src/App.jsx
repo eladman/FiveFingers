@@ -82,9 +82,9 @@ export default function App() {
           <Hero onComplete={() => setNavReady(true)} />
           <SoftDivider fromColor="#0a0a0f" toColor="#fafaf8" />
           <WhoWeAre />
-          <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
+          <SoftDivider fromColor="#fafaf8" toColor="#0a0a0f" />
           <ManInArena />
-          <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
+          <SoftDivider fromColor="#0a0a0f" toColor="#fafaf8" />
           <Programs onContactOpen={openContact} />
           <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
           <FiveContent />
