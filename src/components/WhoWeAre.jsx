@@ -33,18 +33,12 @@ export default function WhoWeAre() {
         {/* ── Heading ── */}
         <div className="order-1 md:order-none md:col-start-1 md:row-start-1 md:border-l border-navy/8 px-6 sm:px-10 md:px-14 lg:px-20 pt-24 md:pt-16 lg:pt-24 pb-2 md:pb-6">
           <div className="wwa-el">
-            <h2
-              className="font-ragmarom text-navy leading-[0.92] tracking-tight"
-              style={{ fontSize: 'clamp(2.6rem, 4.2vw, 4.8rem)' }}
-            >
+            <h2 className="ds-section-title text-navy">
               מי אנחנו
             </h2>
             <div className="flex items-center gap-3 mt-3">
               <span className="h-px w-9 bg-orange shrink-0" />
-              <p
-                className="font-ragmarom text-[#ff8714] leading-snug"
-                style={{ fontSize: 'clamp(1.35rem, 2.2vw, 2.4rem)' }}
-              >
+              <p className="ds-section-subtitle text-[#ff8714]">
                 הכירו את התנועה
               </p>
             </div>
@@ -76,13 +70,10 @@ export default function WhoWeAre() {
             <div className="flex flex-col gap-8">
               {/* Vision */}
               <div className="flex flex-col gap-2">
-                <span className="font-heebo font-bold text-orange-ink text-[0.7rem] tracking-[0.24em] uppercase">
+                <span className="ds-eyebrow text-orange-ink">
                   חזון
                 </span>
-                <h3
-                  className="font-heebo font-bold text-navy leading-tight"
-                  style={{ fontSize: 'clamp(1.45rem, 1.8vw, 1.9rem)' }}
-                >
+                <h3 className="ds-card-title text-navy">
                   חברה מבוססת אמון
                 </h3>
                 <p
@@ -98,13 +89,10 @@ export default function WhoWeAre() {
 
               {/* Mission */}
               <div className="flex flex-col gap-2">
-                <span className="font-heebo font-bold text-orange-ink text-[0.7rem] tracking-[0.24em] uppercase">
+                <span className="ds-eyebrow text-orange-ink">
                   המשימה שלנו
                 </span>
-                <h3
-                  className="font-heebo font-bold text-navy leading-tight"
-                  style={{ fontSize: 'clamp(1.45rem, 1.8vw, 1.9rem)' }}
-                >
+                <h3 className="ds-card-title text-navy">
                   מימוש פוטנציאל
                 </h3>
                 <p

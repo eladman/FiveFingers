@@ -83,8 +83,8 @@ export default function ManInArena() {
         {/* Header — title + rule, no eyebrow — heading is iconic enough */}
         <div className="mia-el flex flex-col items-start gap-2.5 mb-10">
           <h2
-            className="font-ragmarom text-white leading-[0.9] tracking-tight"
-            style={{ fontSize: 'clamp(2.2rem, 3.8vw, 4.8rem)', textShadow: '0 2px 24px rgba(0,0,0,0.7)' }}
+            className="ds-section-title text-white"
+            style={{ textShadow: '0 2px 24px rgba(0,0,0,0.7)' }}
           >
             האדם בזירה
           </h2>

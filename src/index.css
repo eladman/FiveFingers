@@ -162,6 +162,47 @@ a {
 .font-heebo    { font-family: 'Heebo', sans-serif; }
 .font-ragmarom { font-family: 'RagMarom', sans-serif; }
 
+/* ─── Typography system — section headings ─────────────────── */
+/* Canonical type scale for every section title / subtitle on the */
+/* site. Use these classes instead of ad-hoc inline `fontSize` so  */
+/* headings stay consistent across sections. They set family +     */
+/* size + line-height + tracking only; set color per section       */
+/* alongside (navy on light, white on dark, orange for accents).   */
+
+/* Eyebrow — small uppercase kicker above a section title */
+.ds-eyebrow {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.72rem, 0.9vw, 0.85rem);
+  line-height: 1.2;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Section title — primary h2, one scale across every section */
+.ds-section-title {
+  font-family: 'RagMarom', sans-serif;
+  font-size: clamp(2.8rem, 5vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+/* Section subtitle — supporting lead directly under the title */
+.ds-section-subtitle {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 1.9vw, 1.9rem);
+  line-height: 1.35;
+}
+
+/* Card / block heading — h3 inside section content */
+.ds-card-title {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.45rem, 1.8vw, 1.9rem);
+  line-height: 1.2;
+}
+
 /* ─── Accessibility Widget — Global Overrides ──────────────── */
 /* Scoped to #root so the portal-based widget stays unaffected  */
 

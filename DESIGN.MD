@@ -66,25 +66,48 @@ RagMarom is loaded from `/fonts/rag-marom-2.1.otf` via `@font-face` in `index.cs
 Inter, Frank Ruhl Libre, Heebo, and JetBrains Mono are loaded via Google Fonts in `index.html`.  
 Tailwind aliases are defined in `tailwind.config.js`.
 
-### Type scale — headings
+### Type scale — section headings (canonical classes)
 
-Use `clamp()` for all headings so they scale fluidly. Never hardcode a single px/rem for h1/h2.
+Section titles, subtitles, eyebrows, and block headings are standardized as
+**utility classes in `index.css`** — the single source of truth. Apply the
+class and set color alongside; **never** hardcode `fontSize` on these roles.
+The class owns family + size + line-height + tracking; you own the color.
+
+| Role | Class | Value (baked into the class) |
+|---|---|---|
+| Eyebrow — kicker above a title | `.ds-eyebrow` | `clamp(0.72rem, 0.9vw, 0.85rem)`, Heebo 600, `0.22em`, uppercase |
+| Section title — every section h2 | `.ds-section-title` | `clamp(2.8rem, 5vw, 5.5rem)`, RagMarom, lh `0.95`, tracking `-0.02em` |
+| Section subtitle — lead under title | `.ds-section-subtitle` | `clamp(1.2rem, 1.9vw, 1.9rem)`, Heebo 500, lh `1.35` |
+| Card / block title — h3 in content | `.ds-card-title` | `clamp(1.45rem, 1.8vw, 1.9rem)`, Heebo 700, lh `1.2` |
+
+```jsx
+{/* Light section */}
+<p className="ds-eyebrow text-orange-ink">תווית</p>
+<h2 className="ds-section-title text-navy">כותרת הסקשן</h2>
+<p className="ds-section-subtitle text-[#ff8714]">כותרת משנה</p>
+
+{/* Dark section — add the text-shadow inline (see Text shadows) */}
+<h2 className="ds-section-title text-white" style={{ textShadow: '...' }}>כותרת</h2>
+```
+
+All four home-page sections (WhoWeAre, ManInArena, Programs, FiveContent) use
+this exact scale — `2.8→5.5rem` titles, Heebo orange subtitles. Don't
+reintroduce one-off section-title sizes.
+
+### Type scale — other headings
+
+Use `clamp()` for these too. Never hardcode a single px/rem.
 
 | Level | `clamp()` value | Style |
 |---|---|---|
 | H1 — hero (main site) | `clamp(3rem, 9vw, 9.5rem)` | `font-ragmarom text-white tracking-tight leading-none` |
 | H1 — cinematic intro | `clamp(4.5rem, 14vw, 13rem)` | `font-ragmarom text-white leading-none` |
 | H1 — Liabah hero | `clamp(4rem, 13vw, 13rem)` | `font-ragmarom text-white leading-none` |
-| H2 — section title | `clamp(2.4rem, 4.2vw, 4.8rem)` | `font-ragmarom text-navy tracking-tight leading-[0.92]` |
-| H2 — features/programs bold | `clamp(2.8rem, 5vw, 5.5rem)` | `font-ragmarom text-white leading-[0.95]` |
-| H2 — italic subtitle | `clamp(1.4rem, 2.2vw, 2.4rem)` | `font-frank italic text-orange leading-snug` |
-| H3 — card/block title | `clamp(1.3rem, 1.8vw, 1.9rem)` | `font-inter font-bold text-navy leading-tight` |
-| H3 — program title | `clamp(2.4rem, 4vw, 5rem)` | `font-ragmarom text-navy leading-[0.95]` |
+| H3 — program title (program name) | `clamp(2.4rem, 4vw, 5rem)` | `font-heebo font-extrabold text-navy leading-[0.95]` |
 | H3 — carousel stage | `clamp(2.6rem, 4.5vw, 3.6rem)` | `font-ragmarom font-black text-navy leading-[0.9]` |
+| H3 — media card title | `clamp(1rem, 1.3vw, 1.25rem)` | `font-heebo font-bold text-navy leading-tight` |
 | Lead paragraph | `clamp(1.2rem, 1.7vw, 1.55rem)` | `font-heebo text-navy/70 leading-relaxed font-medium` |
 | Body | `clamp(0.95rem, 1.1vw, 1.15rem)` | `font-heebo text-navy/65 leading-relaxed` |
-| Label / eyebrow (light bg) | `0.75rem` fixed | `font-inter font-bold text-orange-ink tracking-[0.22em] uppercase` |
-| Label / eyebrow (dark bg) | `clamp(0.7rem, 0.9vw, 0.85rem)` fixed | `font-inter font-bold text-orange tracking-[0.22em] uppercase` |
 
 ### Text shadows (dark backgrounds only)
 
@@ -218,16 +241,14 @@ Typical vertical rhythm: `py-16 md:py-28 lg:py-40`
 
 ### Section heading block
 
+Use the canonical type classes (`.ds-eyebrow` / `.ds-section-title` /
+`.ds-section-subtitle`) — never inline `fontSize` here.
+
 ```jsx
 <div>
-  <h2 className="font-ragmarom text-navy tracking-tight leading-[0.92]"
-      style={{ fontSize: 'clamp(2.4rem, 4.2vw, 4.8rem)' }}>
-    כותרת
-  </h2>
-  <p className="font-frank italic text-orange mt-3 leading-snug"
-     style={{ fontSize: 'clamp(1.4rem, 2.2vw, 2.4rem)' }}>
-    כותרת משנה
-  </p>
+  <p className="ds-eyebrow text-orange-ink mb-3">תווית</p>
+  <h2 className="ds-section-title text-navy">כותרת</h2>
+  <p className="ds-section-subtitle text-[#ff8714] mt-4">כותרת משנה</p>
   <div className="mt-5 w-14 h-1 rounded-full bg-orange ml-auto" />
 </div>
 ```
@@ -238,14 +259,10 @@ A shared `<SectionHeading>` component wraps this pattern in Liabah sections (`li
 
 ```jsx
 {/* Light section */}
-<span className="font-inter font-bold text-orange-ink text-xs tracking-[0.22em] uppercase">
-  תווית
-</span>
+<span className="ds-eyebrow text-orange-ink">תווית</span>
 
 {/* Dark section */}
-<span className="font-inter font-bold text-orange text-xs tracking-[0.22em] uppercase">
-  תווית
-</span>
+<span className="ds-eyebrow text-orange">תווית</span>
 ```
 
 ### Horizontal divider
@@ -274,13 +291,8 @@ Gradient or crisp 50/50 split between sections. Centered orange tick accent. See
 
 ```jsx
 <div className="flex flex-col gap-3">
-  <span className="font-inter font-bold text-orange-ink text-xs tracking-[0.22em] uppercase">
-    תווית
-  </span>
-  <h3 className="font-inter font-bold text-navy leading-tight"
-      style={{ fontSize: 'clamp(1.3rem, 1.8vw, 1.9rem)' }}>
-    כותרת בלוק
-  </h3>
+  <span className="ds-eyebrow text-orange-ink">תווית</span>
+  <h3 className="ds-card-title text-navy">כותרת בלוק</h3>
   <p className="font-heebo text-navy/65 leading-relaxed"
      style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}>
     גוף טקסט.

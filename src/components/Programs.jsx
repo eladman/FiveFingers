@@ -127,10 +127,7 @@ export default function Programs({ onContactOpen }) {
 
         {/* ── Section heading ── */}
         <div className="text-center pt-20 md:pt-28 pb-12 md:pb-16">
-          <h2
-            className="prog-section-heading font-ragmarom text-navy leading-[0.95] tracking-tight"
-            style={{ fontSize: 'clamp(2.8rem, 5vw, 5.5rem)' }}
-          >
+          <h2 className="prog-section-heading ds-section-title text-navy">
             תחומי פעילות
           </h2>
           <div

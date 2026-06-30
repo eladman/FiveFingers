@@ -107,22 +107,13 @@ export default function FiveContent() {
 
         {/* ── Section heading ── */}
         <div className="text-center pt-20 md:pt-28 pb-12 md:pb-16">
-          <p
-            className="fcontent-heading font-heebo font-semibold text-[#ff8714] mb-3"
-            style={{ fontSize: 'clamp(0.7rem, 0.9vw, 0.85rem)', letterSpacing: '0.22em' }}
-          >
+          <p className="fcontent-heading ds-eyebrow text-[#ff8714] mb-3">
             מדיה
           </p>
-          <h2
-            className="fcontent-heading font-ragmarom text-navy leading-[0.95] tracking-tight"
-            style={{ fontSize: 'clamp(2.8rem, 5vw, 5.5rem)' }}
-          >
+          <h2 className="fcontent-heading ds-section-title text-navy">
             תוכן חמש
           </h2>
-          <p
-            className="fcontent-heading font-heebo text-[#ff8714] mt-4 leading-snug mx-auto max-w-2xl"
-            style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.7rem)' }}
-          >
+          <p className="fcontent-heading ds-section-subtitle text-[#ff8714] mt-4 mx-auto max-w-2xl">
             האזינו, צפו וקראו
           </p>
           <div
