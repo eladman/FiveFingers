@@ -11,14 +11,18 @@ import ContactModal from './components/ContactModal'
 import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
 import LiabahPage from './pages/LiabahPage'
 import AcademyPage from './pages/AcademyPage'
+import CollaborationsPage from './pages/CollaborationsPage'
+import HeroConcepts from './HeroConcepts'
 import { WHATSAPP_HREF } from './data/contact'
 
 // Maps the URL hash to a top-level view. Prefix match so in-page anchors
 // (e.g. #academy-essence from the hero "גלו עוד") keep the dedicated page
 // mounted instead of bouncing back home. New dedicated pages go here.
 function resolveView(hash) {
+  if (hash.startsWith('#hero-concepts')) return 'concepts'
   if (hash.startsWith('#liabah')) return 'liabah'
   if (hash.startsWith('#academy')) return 'academy'
+  if (hash.startsWith('#collabs')) return 'collabs'
   return 'home'
 }
 
@@ -43,12 +47,17 @@ export default function App() {
   }, [])
 
   // Dedicated pages render their own Navbar immediately (no Hero intro to gate it).
-  const isDedicatedPage = view === 'liabah' || view === 'academy'
+  const isDedicatedPage = view === 'liabah' || view === 'academy' || view === 'collabs'
   const navVisible = isDedicatedPage || navReady
 
   const openContact = (product = '') => {
     setContactProduct(product)
     setContactOpen(true)
+  }
+
+  // Standalone design preview — its own switcher chrome, no site navbar/footer.
+  if (view === 'concepts') {
+    return <HeroConcepts />
   }
 
   return (
@@ -66,14 +75,16 @@ export default function App() {
         <LiabahPage onContactOpen={openContact} />
       ) : view === 'academy' ? (
         <AcademyPage onContactOpen={openContact} />
+      ) : view === 'collabs' ? (
+        <CollaborationsPage onContactOpen={openContact} />
       ) : (
         <main>
           <Hero onComplete={() => setNavReady(true)} />
           <SoftDivider fromColor="#0a0a0f" toColor="#fafaf8" />
           <WhoWeAre />
-          <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
+          <SoftDivider fromColor="#fafaf8" toColor="#0a0a0f" />
           <ManInArena />
-          <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
+          <SoftDivider fromColor="#0a0a0f" toColor="#fafaf8" />
           <Programs onContactOpen={openContact} />
           <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
           <FiveContent />

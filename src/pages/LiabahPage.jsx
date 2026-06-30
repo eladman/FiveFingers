@@ -20,7 +20,7 @@ export default function LiabahPage({ onContactOpen }) {
   return (
     <main>
       <LiabahHero onRegister={onRegister} />
-      <SoftDivider fromColor="#0a0a0f" toColor="#fafaf8" />
+      <SoftDivider fromColor="#000032" toColor="#fafaf8" />
       <LiabahEssence />
       <SoftDivider fromColor="#fafaf8" toColor="#000032" blend={false} />
       <LiabahStats />
