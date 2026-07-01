@@ -9,12 +9,13 @@ import AcademyTestimonials from '../components/academy/AcademyTestimonials'
 import AcademyGallery from '../components/academy/AcademyGallery'
 import AcademyFAQ from '../components/academy/AcademyFAQ'
 import AcademyCTA from '../components/academy/AcademyCTA'
+import SoftDivider from '../components/SoftDivider'
 
 /**
- * The אקדמיה (מכינה) page — "museum / scholarly" layout, anchored to the site's
- * shared design system (surface background, orange atmosphere, orange accent) so
- * it reads as the same movement, elevated. Sections are separated by whitespace +
- * hairline rules (no SoftDivider) and use the distinct museum interactions.
+ * The אקדמיה (מכינה) page — converged with the site's cinematic design system:
+ * a full-bleed hero, ds-* typography, and SoftDivider seams between gently banded
+ * sections (surface / surface-2 / white), so it reads as the same movement as the
+ * home + ליבה pages.
  *
  * `onContactOpen` opens the shared ContactModal. Section CTAs pass a per-program
  * tag (מכינה / Boost / כרמל); the page-level default is 'מכינה'.
@@ -25,15 +26,25 @@ export default function AcademyPage({ onContactOpen }) {
   return (
     <main className="bg-surface">
       <AcademyHero onRegister={onRegister} />
+      <SoftDivider fromColor="#0a0a0f" toColor="#fafaf8" />
       <AcademyManifesto />
+      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
       <AcademyAxes />
+      <SoftDivider fromColor="#ffffff" toColor="#f7f5f2" />
       <AcademyPrograms onRegister={onRegister} />
+      <SoftDivider fromColor="#f7f5f2" toColor="#fafaf8" />
       <AcademyImpact />
+      <SoftDivider fromColor="#fafaf8" toColor="#f7f5f2" />
       <AcademyJourney />
+      <SoftDivider fromColor="#f7f5f2" toColor="#ffffff" />
       <AcademyAdmissions onRegister={onRegister} />
+      <SoftDivider fromColor="#ffffff" toColor="#fafaf8" />
       <AcademyTestimonials />
+      <SoftDivider fromColor="#fafaf8" toColor="#f7f5f2" />
       <AcademyGallery />
+      <SoftDivider fromColor="#f7f5f2" toColor="#fafaf8" />
       <AcademyFAQ />
+      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
       <AcademyCTA onRegister={onRegister} />
     </main>
   )

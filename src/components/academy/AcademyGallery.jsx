@@ -31,7 +31,7 @@ export default function AcademyGallery() {
   }, [index, shots.length])
 
   return (
-    <MuseumSection id="academy-gallery" watermark flip>
+    <MuseumSection id="academy-gallery" watermark flip bg="surface-2">
       <div ref={ref} className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 py-24 md:py-32">
         <MuseumHeading kicker="מהשטח" title="גלריה" animateClass="lg-animate" />
 
@@ -42,14 +42,14 @@ export default function AcademyGallery() {
               <button
                 key={img.id}
                 onClick={() => shotIndex >= 0 && setIndex(shotIndex)}
-                className={`lg-animate group relative overflow-hidden aspect-[4/5] bg-navy/[0.04] border border-navy/12 p-2 ${
+                className={`lg-animate group relative overflow-hidden aspect-[4/5] bg-navy/[0.04] border border-navy/12 rounded-2xl p-2 ${
                   img.src
                     ? 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy/40 focus-visible:ring-offset-2'
                     : 'cursor-default'
                 }`}
               >
                 {img.src ? (
-                  <span className="block relative w-full h-full overflow-hidden">
+                  <span className="block relative w-full h-full overflow-hidden rounded-[1.1rem]">
                     <img
                       src={img.src}
                       alt={img.alt}

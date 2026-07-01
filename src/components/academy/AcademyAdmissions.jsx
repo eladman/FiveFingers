@@ -40,10 +40,10 @@ export default function AcademyAdmissions({ onRegister }) {
         </div>
 
         {/* Candidate tracks */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-px bg-navy/12 border border-navy/12">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-5">
           {admissions.tracks.map((track) => (
-            <div key={track.id} className="adm-animate flex flex-col gap-5 bg-white p-8 md:p-10 text-right">
-              <h3 className="font-ragmarom text-navy" style={{ fontSize: 'clamp(1.5rem, 2.1vw, 1.9rem)' }}>
+            <div key={track.id} className="adm-animate flex flex-col gap-5 bg-white p-8 md:p-10 rounded-2xl border border-navy/12 text-right">
+              <h3 className="ds-card-title text-navy">
                 {track.label}
               </h3>
               <p className="font-heebo text-navy/60 leading-relaxed flex-1" style={{ fontSize: '1.02rem' }}>

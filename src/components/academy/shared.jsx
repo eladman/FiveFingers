@@ -61,7 +61,7 @@ export function MuseumSection({
     <section id={id} dir={dir} className={`relative w-full overflow-hidden ${bgClass} ${className}`}>
       {atmosphere && <Atmosphere watermark={watermark} flip={flip} />}
       {frame && (
-        <div aria-hidden="true" className="pointer-events-none absolute inset-5 md:inset-8 border border-navy/[0.08]" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-5 md:inset-8 rounded-[2rem] border border-navy/[0.08]" />
       )}
       {children}
     </section>
@@ -78,25 +78,16 @@ export function MuseumHeading({ kicker, title, lead, align = 'center', animateCl
   return (
     <div className={`${isCenter ? 'text-center mx-auto' : 'text-right'} max-w-3xl ${isCenter ? '' : 'me-auto'}`}>
       {kicker && (
-        <p
-          className={`${animateClass} font-heebo font-semibold text-[#ff8714] mb-5`}
-          style={{ fontSize: 'clamp(0.68rem, 0.9vw, 0.8rem)', letterSpacing: '0.28em' }}
-        >
+        <p className={`${animateClass} ds-eyebrow text-orange-ink mb-5`}>
           {kicker}
         </p>
       )}
-      <h2
-        className={`${animateClass} font-ragmarom text-navy leading-[1.02] tracking-tight`}
-        style={{ fontSize: 'clamp(2.4rem, 4.4vw, 4.6rem)' }}
-      >
+      <h2 className={`${animateClass} ds-section-title text-navy`}>
         {title}
       </h2>
       <div className={`${animateClass} mt-6 h-1 rounded-full bg-orange w-16 ${isCenter ? 'mx-auto' : ''}`} />
       {lead && (
-        <p
-          className={`${animateClass} font-heebo text-navy/60 mt-7 leading-relaxed ${isCenter ? 'mx-auto' : ''}`}
-          style={{ fontSize: 'clamp(1.05rem, 1.5vw, 1.4rem)' }}
-        >
+        <p className={`${animateClass} ds-section-subtitle text-[#ff8714] mt-7 ${isCenter ? 'mx-auto' : ''}`}>
           {lead}
         </p>
       )}

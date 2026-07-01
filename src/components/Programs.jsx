@@ -141,11 +141,12 @@ export default function Programs({ onContactOpen }) {
           {PROGRAMS.map((prog, i) => {
             const isEven = i % 2 === 0
             const clip = isEven ? CLIP_EVEN : CLIP_ODD
-            // In RTL: order-1 = right side, order-2 = left side
-            // Even: image left, text right → image order-2, text order-1
-            // Odd:  image right, text left → image order-1, text order-2
-            const imageOrder = isEven ? 'order-2' : 'order-1'
-            const textOrder  = isEven ? 'order-1' : 'order-2'
+            // Mobile (single column): always text first, image second — consistent across rows.
+            // Desktop (md+): alternate sides. In RTL: order-1 = right side, order-2 = left side.
+            //   Even: image left, text right → image md:order-2, text md:order-1
+            //   Odd:  image right, text left → image md:order-1, text md:order-2
+            const imageOrder = isEven ? 'order-2 md:order-2' : 'order-2 md:order-1'
+            const textOrder  = isEven ? 'order-1 md:order-1' : 'order-1 md:order-2'
             const textAlign  = isEven ? 'text-right' : 'text-right md:text-left'
             const isLast = i === PROGRAMS.length - 1
 

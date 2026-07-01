@@ -12,17 +12,14 @@ export default function AcademyCTA({ onRegister }) {
   return (
     <MuseumSection id="academy-cta" bg="white">
       <div ref={ref} className="relative z-10 max-w-4xl mx-auto px-6 md:px-10 py-24 md:py-32">
-        <div className="border border-navy/15 px-6 md:px-16 py-16 md:py-20 text-center">
-          <p
-            className="cta-animate font-heebo font-semibold text-navy/45 mb-5"
-            style={{ fontSize: 'clamp(0.7rem, 0.9vw, 0.82rem)', letterSpacing: '0.28em' }}
-          >
+        <div className="border border-navy/15 rounded-[2rem] px-6 md:px-16 py-16 md:py-20 text-center">
+          <p className="cta-animate ds-eyebrow text-orange-ink mb-5">
             הצטרפות
           </p>
-          <h2 className="cta-animate font-ragmarom text-navy leading-[1.05]" style={{ fontSize: 'clamp(2.2rem, 4.4vw, 4rem)' }}>
+          <h2 className="cta-animate ds-section-title text-navy">
             רוצים שנה שתשנה את הדרך?
           </h2>
-          <p className="cta-animate font-heebo text-navy/60 mt-6 mx-auto max-w-xl leading-relaxed" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}>
+          <p className="cta-animate ds-section-subtitle text-[#ff8714] mt-6 mx-auto max-w-xl">
             השאירו פרטים ונחזור אליכם עם כל המידע על המיונים והמסלולים.
           </p>
 

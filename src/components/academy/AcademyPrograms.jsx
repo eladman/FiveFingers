@@ -1,8 +1,12 @@
 import { useRef, useState } from 'react'
-import { ChevronLeft, Check } from 'lucide-react'
+import { ChevronLeft, Check, ImageIcon } from 'lucide-react'
 import { programs } from '../../data/academyData'
 import { MuseumSection, MuseumHeading, PrimaryButton } from './shared'
 import useReveal from '../../hooks/useReveal'
+
+// Signature parallelogram frame (shared with the home Programs section).
+const CLIP_EVEN = 'polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%)'
+const CLIP_ODD = 'polygon(0% 0%, 94% 0%, 100% 100%, 6% 100%)'
 
 /**
  * Program "tracks" as an institutional comparison selector: a segmented tablist
@@ -30,7 +34,7 @@ export default function AcademyPrograms({ onRegister }) {
   }
 
   return (
-    <MuseumSection id="academy-programs">
+    <MuseumSection id="academy-programs" bg="surface-2">
       <div ref={ref} className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 py-24 md:py-32">
         <MuseumHeading
           kicker="המסלולים"
@@ -106,17 +110,44 @@ export default function AcademyPrograms({ onRegister }) {
               </div>
             </div>
 
-            {/* Right (RTL: left) — spec sheet */}
-            <dl className="border-t border-navy/12">
-              <SpecRow term="משך" value={prog.duration} />
-              <SpecRow term="מיקוד" value={prog.focus} />
-              <SpecRow term="למי מתאים" value={prog.forWhom} />
-              <SpecRow term="תקופה" value={prog.ages} />
-            </dl>
+            {/* Right (RTL: left) — signature parallelogram photo + spec sheet */}
+            <div className="flex flex-col gap-8">
+              <ProgramFrame even={active % 2 === 0} src={prog.imageSrc} alt={prog.title} />
+              <dl className="border-t border-navy/12">
+                <SpecRow term="משך" value={prog.duration} />
+                <SpecRow term="מיקוד" value={prog.focus} />
+                <SpecRow term="למי מתאים" value={prog.forWhom} />
+                <SpecRow term="תקופה" value={prog.ages} />
+              </dl>
+            </div>
           </div>
         </div>
       </div>
     </MuseumSection>
+  )
+}
+
+function ProgramFrame({ even, src, alt }) {
+  const clip = even ? CLIP_EVEN : CLIP_ODD
+  return (
+    <div className="relative">
+      {/* Offset orange backing frame */}
+      <div
+        aria-hidden="true"
+        className="absolute bg-orange"
+        style={{ inset: 0, clipPath: clip, transform: even ? 'translate(14px, 14px)' : 'translate(-14px, 14px)' }}
+      />
+      <div className="relative aspect-[4/3] overflow-hidden bg-surface" style={{ clipPath: clip }}>
+        {src ? (
+          <img src={src} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
+        ) : (
+          <div className="absolute inset-0 bg-navy/[0.05] flex flex-col items-center justify-center gap-3">
+            <ImageIcon size={32} className="text-navy/20" strokeWidth={1.5} />
+            <span className="font-heebo text-navy/25 text-sm">תמונה בקרוב</span>
+          </div>
+        )}
+      </div>
+    </div>
   )
 }
 

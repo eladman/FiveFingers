@@ -12,10 +12,7 @@ export default function AcademyManifesto() {
   return (
     <MuseumSection id="academy-manifesto" watermark>
       <div ref={ref} className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 py-24 md:py-36">
-        <p
-          className="mf-animate font-heebo font-semibold text-navy/45 mb-8"
-          style={{ fontSize: 'clamp(0.7rem, 0.9vw, 0.82rem)', letterSpacing: '0.28em' }}
-        >
+        <p className="mf-animate ds-eyebrow text-orange-ink mb-8">
           {manifesto.kicker}
         </p>
 

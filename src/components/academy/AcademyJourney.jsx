@@ -52,7 +52,7 @@ export default function AcademyJourney() {
   }, [])
 
   return (
-    <section ref={sectionRef} dir="rtl" id="academy-year" className="relative w-full bg-surface overflow-hidden">
+    <section ref={sectionRef} dir="rtl" id="academy-year" className="relative w-full bg-surface-2 overflow-hidden">
       <Atmosphere />
       <div className="relative z-10 lg:h-dvh flex flex-col">
         <div className="max-w-5xl mx-auto w-full px-6 md:px-10 pt-24 lg:pt-28 pb-8">
@@ -72,7 +72,7 @@ export default function AcademyJourney() {
               <article
                 key={item.period}
                 dir="rtl"
-                className="shrink-0 w-full lg:w-[clamp(20rem,32vw,30rem)] bg-white border border-navy/12 p-8 md:p-10"
+                className="shrink-0 w-full lg:w-[clamp(20rem,32vw,30rem)] bg-white border border-navy/12 rounded-[1.5rem] p-8 md:p-10"
               >
                 <div className="flex items-baseline justify-between gap-4">
                   <span className="font-ragmarom text-orange/80 leading-none" style={{ fontSize: 'clamp(2.4rem, 3vw, 3.4rem)' }}>
@@ -83,7 +83,7 @@ export default function AcademyJourney() {
                   </span>
                 </div>
                 <div className="mt-6 h-px w-full bg-navy/12" />
-                <h3 className="font-heebo font-extrabold text-navy mt-6" style={{ fontSize: 'clamp(1.4rem, 2vw, 1.9rem)' }}>
+                <h3 className="ds-card-title text-navy mt-6">
                   {item.title}
                 </h3>
                 <p className="font-heebo text-navy/65 leading-relaxed mt-3" style={{ fontSize: '1.02rem' }}>

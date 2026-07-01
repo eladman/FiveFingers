@@ -33,10 +33,7 @@ export default function AcademyTestimonials() {
         onFocusCapture={() => setPaused(true)}
         onBlurCapture={() => setPaused(false)}
       >
-        <p
-          className="font-heebo font-semibold text-navy/45 mb-10"
-          style={{ fontSize: 'clamp(0.7rem, 0.9vw, 0.82rem)', letterSpacing: '0.28em' }}
-        >
+        <p className="ds-eyebrow text-orange-ink mb-10">
           עדויות
         </p>
 
