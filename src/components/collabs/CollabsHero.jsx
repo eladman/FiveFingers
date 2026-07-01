@@ -74,8 +74,8 @@ export default function CollabsHero({ onRegister }) {
         ))}
         <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/30" />
-        <div className="absolute bottom-0 inset-x-0 h-1/4 bg-gradient-to-t from-black/75 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#081028]/90 via-[#081028]/30 to-[#081028]/35" />
+        <div className="absolute bottom-0 inset-x-0 h-1/4 bg-gradient-to-t from-[#081028] to-transparent" />
         <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-orange/10 to-transparent" />
       </div>
 

@@ -42,7 +42,7 @@ export default function ManInArena() {
       id="belief"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-navy"
+      className="relative w-full overflow-hidden bg-black"
     >
       {/* ── Background video ── */}
       <div className="absolute inset-0">
@@ -62,9 +62,9 @@ export default function ManInArena() {
         <div className="absolute inset-0 bg-black/60" />
         {/* Gradient for depth */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/55" />
-        {/* Edge feathers — video emerges from / dissolves into the divider color (#0a0a0f) */}
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0a0a0f] to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0a0a0f] to-transparent" />
+        {/* Edge feathers — video emerges from / dissolves into the divider color (#081028) */}
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black to-transparent" />
       </div>
 
       {/* ── Halftone dot grid ── */}

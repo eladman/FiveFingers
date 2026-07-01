@@ -29,7 +29,7 @@ function SplitText({ children, wordClass }) {
   )
 }
 
-export default function Hero({ onComplete }) {
+export default function Hero({ onComplete, onContactOpen }) {
   const ref = useRef(null)
   const imgRefs = useRef([])
   const onCompleteRef = useRef(onComplete)
@@ -136,11 +136,8 @@ export default function Hero({ onComplete }) {
         <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
         {/* Dark scrim for text legibility */}
         <div className="absolute inset-0 bg-black/50" />
-        {/* Multi-layer gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-1/5 bg-gradient-to-t from-black/65 to-transparent" />
-        {/* Subtle orange warmth at the very bottom */}
-        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-orange/8 to-transparent" />
+        {/* Neutral depth gradient — grounds the CTAs and the floating sheet below, with no blue cast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
       </div>
 
       {/* ── Content ── */}
@@ -183,7 +180,7 @@ export default function Hero({ onComplete }) {
 
         {/* CTA buttons */}
         <div className="flex flex-wrap gap-4 justify-center mt-10 md:mt-14">
-          <Button variant="primary" href="#contact" icon={ChevronLeft} className="hero-cta">
+          <Button variant="primary" onClick={() => onContactOpen?.()} icon={ChevronLeft} className="hero-cta">
             הצטרפו אלינו
           </Button>
 

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>חמש אצבעות · אפשרויות ניווט</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --orange:#ff8714;
+    --orange-ink:#b35600;
+    --navy:#0d1b4b;
+    --navy-deep:#081028;
+    --navy-light:#1e3578;
+    --surface:#fafaf8;
+    --surface-2:#f7f5f2;
+    --line:rgba(13,27,75,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Heebo',sans-serif;
+    background:var(--surface);
+    color:var(--navy);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{text-decoration:none;color:inherit}
+  .page{max-width:1200px;margin:0 auto;padding:56px 24px 120px}
+
+  /* ── Page header ── */
+  .head{margin-bottom:44px}
+  .kicker{font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--orange-ink);text-transform:uppercase}
+  .head h1{font-size:clamp(28px,4vw,44px);font-weight:800;margin-top:10px;letter-spacing:-.02em}
+  .head p{margin-top:14px;font-size:17px;line-height:1.7;color:#4b5168;max-width:62ch}
+  .head .now{margin-top:18px;font-size:15px;line-height:1.7;color:#6b7185;max-width:62ch;
+    padding:14px 18px;background:#fff;border:1px solid var(--line);border-radius:14px}
+  .head .now b{color:var(--navy)}
+
+  /* ── Global state toggle ── */
+  .toggle{
+    position:sticky;top:16px;z-index:200;
+    display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+    background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:8px;margin:0 auto 40px;width:fit-content;
+    box-shadow:0 12px 40px -18px rgba(13,27,75,.35);
+  }
+  .toggle span{font-size:13px;font-weight:600;color:#8a90a3;padding:0 10px}
+  .toggle button{
+    font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;
+    border:none;background:transparent;color:#6b7185;
+    padding:9px 18px;border-radius:999px;transition:.2s;
+  }
+  .toggle button.on{background:var(--navy);color:#fff}
+
+  /* ── Option block ── */
+  .opt{margin-bottom:56px}
+  .opt-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+  .opt-head .tag{
+    font-size:12px;font-weight:700;letter-spacing:.08em;
+    background:var(--navy);color:#fff;padding:4px 11px;border-radius:8px;
+  }
+  .opt-head.rec .tag{background:var(--orange)}
+  .opt-head h2{font-size:22px;font-weight:700;letter-spacing:-.01em}
+  .opt-head .rec-badge{font-size:12px;font-weight:700;color:var(--orange-ink);
+    border:1px solid rgba(179,86,0,.3);padding:3px 9px;border-radius:999px}
+  .opt-desc{font-size:15px;line-height:1.7;color:#5a6076;max-width:70ch;margin-bottom:18px}
+
+  /* ── Stage (mini viewport that swaps hero/light bg) ── */
+  .stage{
+    position:relative;border-radius:22px;overflow:hidden;
+    border:1px solid var(--line);
+    height:190px;display:flex;align-items:flex-start;
+    box-shadow:0 20px 60px -30px rgba(13,27,75,.4);
+  }
+  /* HERO background */
+  .stage::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      linear-gradient(to top,rgba(8,16,40,.65),rgba(8,16,40,.15) 55%,rgba(8,16,40,.35)),
+      url('/Hero-Pics/214A0011.jpg') center/cover;
+    opacity:1;transition:opacity .4s;
+  }
+  /* LIGHT background (warm section) */
+  .stage::after{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(120% 100% at 50% 0%,#ffffff, var(--surface) 70%);
+    opacity:0;transition:opacity .4s;
+  }
+  body[data-state="scrolled"] .stage::before{opacity:0}
+  body[data-state="scrolled"] .stage::after{opacity:1}
+
+  .stage .content-hint{
+    position:absolute;bottom:14px;right:20px;z-index:1;
+    font-size:12px;font-weight:600;letter-spacing:.06em;
+  }
+  body[data-state="hero"] .content-hint{color:rgba(255,255,255,.55)}
+  body[data-state="scrolled"] .content-hint{color:#9aa0b2}
+  body[data-state="hero"] .content-hint::before{content:"מעל התמונה הראשית"}
+  body[data-state="scrolled"] .content-hint::before{content:"בגלילה · מעל רקע בהיר"}
+
+  /* ── Shared nav layout ── */
+  .nav{
+    position:relative;z-index:5;
+    display:flex;align-items:center;gap:6px;
+    margin:18px auto 0;transition:all .4s cubic-bezier(.25,.46,.45,.94);
+  }
+  .nav .logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;padding-inline-start:4px;white-space:nowrap}
+  .nav .logo .mark{width:26px;height:26px;border-radius:7px;background:var(--orange);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800;flex-shrink:0}
+  .nav .links{display:flex;align-items:center;gap:2px}
+  .nav .links a{font-size:14px;font-weight:500;padding:7px 12px;border-radius:999px;white-space:nowrap;transition:.2s;position:relative}
+  .nav .cta{font-size:14px;font-weight:700;padding:8px 18px;border-radius:999px;white-space:nowrap;transition:.2s;cursor:pointer;border:none;font-family:inherit}
+
+  /* ══════════════════════════════════════════
+     OPTION A · Light Frosted Glass (pill)
+     ══════════════════════════════════════════ */
+  .nA{width:min(880px,94%);padding:8px 10px;border-radius:999px}
+  /* hero state — clear glass, white text */
+  body[data-state="hero"] .nA{background:rgba(255,255,255,.10);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.18)}
+  body[data-state="hero"] .nA .logo{color:#fff}
+  body[data-state="hero"] .nA .links a{color:rgba(255,255,255,.78)}
+  body[data-state="hero"] .nA .links a:hover{color:#fff;background:rgba(255,255,255,.12)}
+  body[data-state="hero"] .nA .links a.active{color:#fff;background:rgba(255,255,255,.15)}
+  /* scrolled state — white frosted, navy text */
+  body[data-state="scrolled"] .nA{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:0 14px 44px -22px rgba(13,27,75,.35)}
+  body[data-state="scrolled"] .nA .logo{color:var(--navy)}
+  body[data-state="scrolled"] .nA .links a{color:#5a6076}
+  body[data-state="scrolled"] .nA .links a:hover{color:var(--navy);background:rgba(13,27,75,.05)}
+  body[data-state="scrolled"] .nA .links a.active{color:var(--navy);background:rgba(13,27,75,.06);font-weight:600}
+  /* orange = only a tiny active underline */
+  .nA .links a.active::after{content:"";position:absolute;bottom:2px;right:12px;left:12px;height:2px;border-radius:2px;background:var(--orange)}
+  .nA .cta{margin-inline-start:6px;background:var(--orange);color:#fff}
+  .nA .cta:hover{background:#e9790f}
+
+  /* ══════════════════════════════════════════
+     OPTION B · Editorial Full-Width Rail
+     ══════════════════════════════════════════ */
+  .nB{width:100%;margin-top:0;padding:16px 26px;justify-content:space-between}
+  body[data-state="hero"] .nB{background:transparent}
+  body[data-state="hero"] .nB .logo{color:#fff}
+  body[data-state="hero"] .nB .links a{color:rgba(255,255,255,.8)}
+  body[data-state="hero"] .nB .links a:hover{color:#fff}
+  body[data-state="hero"] .nB .links a.active{color:#fff}
+  body[data-state="scrolled"] .nB{background:rgba(250,250,248,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  body[data-state="scrolled"] .nB .logo{color:var(--navy)}
+  body[data-state="scrolled"] .nB .links a{color:#5a6076}
+  body[data-state="scrolled"] .nB .links a:hover{color:var(--navy)}
+  body[data-state="scrolled"] .nB .links a.active{color:var(--navy);font-weight:600}
+  .nB .links{gap:4px}
+  .nB .links a{padding:6px 10px;border-radius:0}
+  .nB .links a.active::after{content:"";position:absolute;bottom:-2px;right:10px;left:10px;height:2px;background:var(--orange)}
+  /* text CTA with arrow — no fill */
+  .nB .cta{background:transparent;padding:8px 4px;display:inline-flex;align-items:center;gap:6px}
+  body[data-state="hero"] .nB .cta{color:#fff}
+  body[data-state="scrolled"] .nB .cta{color:var(--orange-ink)}
+  .nB .cta .arw{transition:transform .2s}
+  .nB .cta:hover .arw{transform:translateX(-4px)}
+
+  /* ══════════════════════════════════════════
+     OPTION C · Minimal Ghost (no background)
+     ══════════════════════════════════════════ */
+  .nC{width:min(880px,94%);padding:6px 8px;justify-content:space-between}
+  .nC,body[data-state="scrolled"] .nC{background:transparent;border:none;box-shadow:none}
+  body[data-state="hero"] .nC .logo{color:#fff}
+  body[data-state="hero"] .nC .links a{color:rgba(255,255,255,.82)}
+  body[data-state="hero"] .nC .links a:hover{color:#fff}
+  body[data-state="scrolled"] .nC .logo{color:var(--navy)}
+  body[data-state="scrolled"] .nC .links a{color:#5a6076}
+  body[data-state="scrolled"] .nC .links a:hover{color:var(--navy)}
+  .nC .links a{font-weight:500}
+  /* active = small orange dot beneath */
+  .nC .links a.active::after{content:"";position:absolute;bottom:0;right:50%;transform:translateX(50%);width:5px;height:5px;border-radius:50%;background:var(--orange)}
+  body[data-state="scrolled"] .nC .links a.active,body[data-state="hero"] .nC .links a.active{color:currentColor;font-weight:600}
+  /* outline CTA */
+  .nC .cta{background:transparent;border:1.5px solid currentColor}
+  body[data-state="hero"] .nC .cta{color:#fff;border-color:rgba(255,255,255,.5)}
+  body[data-state="hero"] .nC .cta:hover{background:#fff;color:var(--navy);border-color:#fff}
+  body[data-state="scrolled"] .nC .cta{color:var(--navy);border-color:rgba(13,27,75,.25)}
+  body[data-state="scrolled"] .nC .cta:hover{background:var(--navy);color:#fff}
+
+  /* ══════════════════════════════════════════
+     OPTION D · Warm Ivory Pill (de-colored)
+     ══════════════════════════════════════════ */
+  .nD{width:min(880px,94%);padding:8px 10px;border-radius:999px}
+  body[data-state="hero"] .nD{background:rgba(250,250,248,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2)}
+  body[data-state="hero"] .nD .logo{color:#fff}
+  body[data-state="hero"] .nD .links a{color:rgba(255,255,255,.8)}
+  body[data-state="hero"] .nD .links a:hover{color:#fff;background:rgba(255,255,255,.12)}
+  /* scrolled — solid warm ivory, feels like the page */
+  body[data-state="scrolled"] .nD{background:var(--surface);border:1px solid var(--line);box-shadow:0 10px 34px -20px rgba(13,27,75,.28)}
+  body[data-state="scrolled"] .nD .logo{color:var(--navy)}
+  body[data-state="scrolled"] .nD .links a{color:#5a6076}
+  body[data-state="scrolled"] .nD .links a:hover{color:var(--navy);background:var(--surface-2)}
+  .nD .links a.active{color:var(--navy);font-weight:600}
+  body[data-state="scrolled"] .nD .links a.active{background:var(--surface-2)}
+  body[data-state="hero"] .nD .links a.active{background:rgba(255,255,255,.15);color:#fff}
+  .nD .links a.active::after{content:"";position:absolute;bottom:3px;right:12px;left:12px;height:2px;border-radius:2px;background:var(--orange)}
+  .nD .cta{margin-inline-start:6px;background:var(--navy);color:#fff}
+  .nD .cta:hover{background:var(--navy-light)}
+
+  /* ══════════════════════════════════════════
+     OPTION E · Hairline Outline Pill
+     ══════════════════════════════════════════ */
+  .nE{width:min(880px,94%);padding:8px 10px;border-radius:999px}
+  body[data-state="hero"] .nE{background:rgba(8,16,40,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.28)}
+  body[data-state="hero"] .nE .logo{color:#fff}
+  body[data-state="hero"] .nE .links a{color:rgba(255,255,255,.8)}
+  body[data-state="hero"] .nE .links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+  body[data-state="scrolled"] .nE{background:rgba(255,255,255,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(13,27,75,.14)}
+  body[data-state="scrolled"] .nE .logo{color:var(--navy)}
+  body[data-state="scrolled"] .nE .links a{color:#5a6076}
+  body[data-state="scrolled"] .nE .links a:hover{color:var(--navy);background:rgba(13,27,75,.04)}
+  .nE .links a.active{color:var(--navy);font-weight:600}
+  body[data-state="hero"] .nE .links a.active{color:#fff;background:rgba(255,255,255,.12)}
+  .nE .links a.active::after{content:"";position:absolute;bottom:2px;right:12px;left:12px;height:2px;border-radius:2px;background:var(--orange)}
+  /* outline orange CTA */
+  .nE .cta{margin-inline-start:6px;background:transparent;border:1.5px solid var(--orange);color:var(--orange)}
+  body[data-state="hero"] .nE .cta{color:#fff;border-color:var(--orange)}
+  .nE .cta:hover{background:var(--orange);color:#fff}
+
+  /* ── Mobile comparison ── */
+  .mobile-wrap{margin-top:26px;display:flex;gap:22px;flex-wrap:wrap}
+  .phone{
+    width:300px;border-radius:30px;overflow:hidden;
+    border:1px solid var(--line);background:var(--surface);
+    box-shadow:0 24px 70px -34px rgba(13,27,75,.5);
+  }
+  .phone-label{font-size:13px;font-weight:600;color:#8a90a3;margin-bottom:10px}
+  .phone-hero{
+    height:132px;position:relative;
+    background:linear-gradient(to top,rgba(8,16,40,.55),rgba(8,16,40,.1)),url('/Hero-Pics/214A0011.jpg') center/cover;
+  }
+  .m-bar{
+    position:absolute;top:12px;right:14px;left:14px;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 14px;border-radius:16px;
+  }
+  .m-bar .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px}
+  .m-bar .logo .mark{width:23px;height:23px;border-radius:6px;background:var(--orange);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .m-burger{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;background:transparent}
+  .m-burger svg{width:22px;height:22px}
+  /* drawer */
+  .m-drawer{padding:8px 16px 18px}
+  .m-drawer a{display:block;padding:14px 6px;font-size:16px;font-weight:500;border-bottom:1px solid var(--line)}
+  .m-drawer a:last-of-type{border-bottom:none}
+  .m-drawer a.active{color:var(--navy);font-weight:700}
+  .m-drawer a.active::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--orange);margin-inline-end:9px;vertical-align:middle}
+  .m-cta{width:100%;margin-top:14px;padding:14px;border-radius:14px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;border:none}
+
+  /* mobile variant A/D — light drawer */
+  .phone.mA .m-bar,.phone.mD .m-bar{background:rgba(255,255,255,.14);backdrop-filter:blur(12px)}
+  .phone.mA .m-bar .logo,.phone.mD .m-bar .logo{color:#fff}
+  .phone.mA .m-burger,.phone.mD .m-burger{color:#fff}
+  .phone.mA .m-drawer,.phone.mD .m-drawer{background:#fff}
+  .phone.mA .m-drawer a,.phone.mD .m-drawer a{color:#5a6076}
+  .phone.mA .m-cta{background:var(--orange);color:#fff}
+  .phone.mD .m-cta{background:var(--navy);color:#fff}
+
+  /* mobile variant B — ivory drawer */
+  .phone.mB .m-bar{background:transparent}
+  .phone.mB .m-bar .logo{color:#fff}
+  .phone.mB .m-burger{color:#fff}
+  .phone.mB .m-drawer{background:var(--surface)}
+  .phone.mB .m-drawer a{color:#5a6076}
+  .phone.mB .m-cta{background:var(--navy);color:#fff}
+
+  .foot{margin-top:80px;padding-top:28px;border-top:1px solid var(--line);color:#6b7185;font-size:15px;line-height:1.8}
+  .foot b{color:var(--navy)}
+  @media(max-width:720px){
+    .nav .links{display:none}
+    .stage{height:150px}
+  }
+</style>
+</head>
+<body data-state="scrolled">
+
+<div class="page">
+
+  <!-- Header -->
+  <header class="head">
+    <div class="kicker">חמש אצבעות · שדרוג ניווט</div>
+    <h1>אפשרויות לסרגל הניווט</h1>
+    <p>הסרגל הנוכחי הוא "כדור" בצבע נייבי מלא עם כפתור כתום מלא, שצף מעל הרקעים הבהירים והחמים של האתר — ולכן הוא מרגיש כבד ו"צבעוני מדי". חמש החלופות למטה <b>מפחיתות צבע</b>: הרקע הופך שקוף/מזוגג, הנייבי הופך לצבע טקסט ולא למילוי, והכתום שמור רק כאקצנט קטן (סימון פעיל / כפתור).</p>
+    <div class="now">👇 השתמשו במתג כדי לראות כל אפשרות <b>מעל התמונה הראשית</b> ובמצב <b>גלילה מעל רקע בהיר</b> — שני ההקשרים שבהם הסרגל חייב לעבוד.</div>
+  </header>
+
+  <!-- Global toggle -->
+  <div class="toggle">
+    <span>מצב תצוגה</span>
+    <button id="btnHero" onclick="setState('hero')">מעל התמונה</button>
+    <button id="btnScroll" class="on" onclick="setState('scrolled')">בגלילה (רקע בהיר)</button>
+  </div>
+
+  <!-- OPTION A -->
+  <section class="opt">
+    <div class="opt-head rec">
+      <span class="tag">A</span>
+      <h2>זכוכית בהירה מזוגגת</h2>
+      <span class="rec-badge">מומלץ</span>
+    </div>
+    <p class="opt-desc">שומר על צורת ה"כדור" הקיימת, אבל מחליף את מילוי הנייבי בזכוכית מזוגגת: שקופה־לבנה מעל התמונה, לבנה־חלבית עם טקסט נייבי בגלילה. הכתום מצטמצם לקו תחתון דק תחת הפריט הפעיל + כפתור. אוורירי, מודרני, מתלבש על הרקעים החמים.</p>
+    <div class="stage">
+      <nav class="nav nA">
+        <a class="logo"><span class="mark">5</span> חמש אצבעות</a>
+        <div class="links">
+          <a class="active">קבוצות הנוער</a><a>מכינה</a><a>שיתופי פעולה</a><a>בוגרים</a><a>צוות</a>
+        </div>
+        <button class="cta">יצירת קשר</button>
+      </nav>
+      <div class="content-hint"></div>
+    </div>
+  </section>
+
+  <!-- OPTION B -->
+  <section class="opt">
+    <div class="opt-head rec">
+      <span class="tag">B</span>
+      <h2>רצועה מלאה · סגנון מגזין</h2>
+      <span class="rec-badge">מומלץ</span>
+    </div>
+    <p class="opt-desc">מוותר על ה"כדור" הצף לטובת רצועה נקייה לרוחב, עם קו הפרדה דק בלבד בגלילה. הטקסט נייבי, הפריט הפעיל מסומן בקו כתום דק, וכפתור יצירת הקשר הופך לקישור טקסטואלי עם חץ — אפס מילוי צבע. הכי "עריכותי" ומתאים לאופי הרגוע של האתר.</p>
+    <div class="stage">
+      <nav class="nav nB">
+        <a class="logo"><span class="mark">5</span> חמש אצבעות</a>
+        <div class="links">
+          <a class="active">קבוצות הנוער</a><a>מכינה</a><a>שיתופי פעולה</a><a>בוגרים</a><a>צוות</a>
+        </div>
+        <a class="cta">יצירת קשר <span class="arw">←</span></a>
+      </nav>
+      <div class="content-hint"></div>
+    </div>
+  </section>
+
+  <!-- OPTION C -->
+  <section class="opt">
+    <div class="opt-head">
+      <span class="tag">C</span>
+      <h2>מינימלי · ללא רקע</h2>
+    </div>
+    <p class="opt-desc">הכי מופחת שאפשר: אין קופסה, אין רקע — רק לוגו, קישורים וכפתור מתאר (outline). הפריט הפעיל מסומן בנקודה כתומה זעירה. הכי קליל, אבל דורש שהתוכן מתחת תמיד יספק ניגודיות מספקת לקריאוּת.</p>
+    <div class="stage">
+      <nav class="nav nC">
+        <a class="logo"><span class="mark">5</span> חמש אצבעות</a>
+        <div class="links">
+          <a class="active">קבוצות הנוער</a><a>מכינה</a><a>שיתופי פעולה</a><a>בוגרים</a><a>צוות</a>
+        </div>
+        <button class="cta">יצירת קשר</button>
+      </nav>
+      <div class="content-hint"></div>
+    </div>
+  </section>
+
+  <!-- OPTION D -->
+  <section class="opt">
+    <div class="opt-head">
+      <span class="tag">D</span>
+      <h2>כדור שנהב חם</h2>
+    </div>
+    <p class="opt-desc">שומר על ה"כדור" אבל בצבע השנהב החם של האתר עצמו (surface) במקום נייבי — כך הוא מרגיש כמו חלק מהדף ולא אובייקט זר. הטקסט נייבי, כפתור יצירת הקשר בנייבי מוצק (לא כתום), והכתום נשאר רק כקו פעיל. אפשרות "בטוחה" עם שינוי מינימלי מהקיים.</p>
+    <div class="stage">
+      <nav class="nav nD">
+        <a class="logo"><span class="mark">5</span> חמש אצבעות</a>
+        <div class="links">
+          <a class="active">קבוצות הנוער</a><a>מכינה</a><a>שיתופי פעולה</a><a>בוגרים</a><a>צוות</a>
+        </div>
+        <button class="cta">יצירת קשר</button>
+      </nav>
+      <div class="content-hint"></div>
+    </div>
+  </section>
+
+  <!-- OPTION E -->
+  <section class="opt">
+    <div class="opt-head">
+      <span class="tag">E</span>
+      <h2>כדור מתאר · קו דק</h2>
+    </div>
+    <p class="opt-desc">כדור כמעט שקוף עם מסגרת דקה (hairline) בלבד, וכפתור כתום במתאר במקום מילוי מלא. שומר על נוכחות עדינה של הכתום כזהות מותג, אבל בהרבה פחות "משקל" מהמצב הקיים.</p>
+    <div class="stage">
+      <nav class="nav nE">
+        <a class="logo"><span class="mark">5</span> חמש אצבעות</a>
+        <div class="links">
+          <a class="active">קבוצות הנוער</a><a>מכינה</a><a>שיתופי פעולה</a><a>בוגרים</a><a>צוות</a>
+        </div>
+        <button class="cta">יצירת קשר</button>
+      </nav>
+      <div class="content-hint"></div>
+    </div>
+  </section>
+
+  <!-- Mobile open drawers -->
+  <section class="opt">
+    <div class="opt-head">
+      <span class="tag">📱</span>
+      <h2>מצב פתוח · מובייל</h2>
+    </div>
+    <p class="opt-desc">הבעיה במובייל הנוכחי זהה: תפריט נפתח בנייבי מלא + כפתור כתום מלא. שלוש גרסאות נקיות יותר — מגירה לבנה/שנהב, טקסט נייבי, נקודה כתומה על הפריט הפעיל.</p>
+    <div class="mobile-wrap">
+      <!-- Phone A -->
+      <div>
+        <div class="phone-label">A/E · מגירה לבנה + כפתור כתום</div>
+        <div class="phone mA">
+          <div class="phone-hero">
+            <div class="m-bar">
+              <div class="logo"><span class="mark">5</span> חמש</div>
+              <button class="m-burger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
+            </div>
+          </div>
+          <div class="m-drawer">
+            <a class="active">קבוצות הנוער</a><a>מכינה</a><a>שיתופי פעולה</a><a>בוגרים</a><a>צוות</a>
+            <button class="m-cta">יצירת קשר</button>
+          </div>
+        </div>
+      </div>
+      <!-- Phone D -->
+      <div>
+        <div class="phone-label">D · מגירה לבנה + כפתור נייבי</div>
+        <div class="phone mD">
+          <div class="phone-hero">
+            <div class="m-bar">
+              <div class="logo"><span class="mark">5</span> חמש</div>
+              <button class="m-burger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg></button>
+            </div>
+          </div>
+          <div class="m-drawer">
+            <a class="active">קבוצות הנוער</a><a>מכינה</a><a>שיתופי פעולה</a><a>בוגרים</a><a>צוות</a>
+            <button class="m-cta">יצירת קשר</button>
+          </div>
+        </div>
+      </div>
+      <!-- Phone B -->
+      <div>
+        <div class="phone-label">B · מגירת שנהב חם</div>
+        <div class="phone mB">
+          <div class="phone-hero">
+            <div class="m-bar">
+              <div class="logo"><span class="mark">5</span> חמש</div>
+              <button class="m-burger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
+            </div>
+          </div>
+          <div class="m-drawer">
+            <a class="active">קבוצות הנוער</a><a>מכינה</a><a>שיתופי פעולה</a><a>בוגרים</a><a>צוות</a>
+            <button class="m-cta">יצירת קשר</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <b>המלצה שלי:</b> אפשרות <b>A (זכוכית בהירה)</b> אם רוצים לשמור על ה"כדור" הצף המוכר אבל להוריד ממנו את המשקל — או אפשרות <b>B (רצועת מגזין)</b> אם רוצים את המראה הכי נקי ועריכותי שמתאים לאופי הרגוע של האתר. שתיהן מצמצמות את הכתום לאקצנט בלבד ומחליפות את מילוי הנייבי בזכוכית/רקע בהיר.
+    <br><br>בחרו אפשרות (או שילוב — למשל צורת A עם כפתור־טקסט של B) ואטמיע אותה ב־<b>src/components/Navbar.jsx</b>.
+  </div>
+
+</div>
+
+<script>
+  function setState(s){
+    document.body.dataset.state = s;
+    document.getElementById('btnHero').classList.toggle('on', s==='hero');
+    document.getElementById('btnScroll').classList.toggle('on', s==='scrolled');
+  }
+</script>
+</body>
+</html>

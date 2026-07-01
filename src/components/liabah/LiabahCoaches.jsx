@@ -33,7 +33,7 @@ function CoachesMobileCarousel() {
         zIndex: 10,
         pointerEvents: 'none',
         boxShadow:
-          '0 28px 70px -14px rgba(0,0,50,0.22), 0 12px 30px -6px rgba(255,135,20,0.16)',
+          '0 28px 70px -14px rgba(13,27,75,0.22), 0 12px 30px -6px rgba(255,135,20,0.16)',
         background: 'linear-gradient(150deg, #ffffff 0%, #fff7ee 100%)',
       }
     }
@@ -47,7 +47,7 @@ function CoachesMobileCarousel() {
       zIndex: 5,
       pointerEvents: 'auto',
       cursor: 'pointer',
-      boxShadow: '0 6px 24px -4px rgba(0,0,50,0.07)',
+      boxShadow: '0 6px 24px -4px rgba(13,27,75,0.07)',
       background: '#ffffff',
     }
   }
@@ -203,7 +203,7 @@ export default function LiabahCoaches() {
                 ) : (
                   <>
                     <h3 className="font-heebo font-bold text-navy text-lg">{coach.name}</h3>
-                    <p className="font-heebo text-[#ff8714] text-sm mt-0.5">{coach.role}</p>
+                    <p className="font-heebo text-orange text-sm mt-0.5">{coach.role}</p>
                     <p className="font-heebo text-navy/60 text-sm leading-relaxed mt-2">{coach.bio}</p>
                   </>
                 )}

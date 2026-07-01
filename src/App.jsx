@@ -5,8 +5,8 @@ import WhoWeAre from './components/WhoWeAre'
 import ManInArena from './components/ManInArena'
 import Programs from './components/Programs'
 import FiveContent from './components/FiveContent'
+import ContactCTA from './components/ContactCTA'
 import Footer from './components/Footer'
-import SoftDivider from './components/SoftDivider'
 import ContactModal from './components/ContactModal'
 import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
 import LiabahPage from './pages/LiabahPage'
@@ -79,15 +79,13 @@ export default function App() {
         <CollaborationsPage onContactOpen={openContact} />
       ) : (
         <main>
-          <Hero onComplete={() => setNavReady(true)} />
-          <SoftDivider fromColor="#0a0a0f" toColor="#fafaf8" />
+          <Hero onComplete={() => setNavReady(true)} onContactOpen={openContact} />
+          {/* WhoWeAre floats up over the hero's dark base as a sheet — no seam divider here */}
           <WhoWeAre />
-          <SoftDivider fromColor="#fafaf8" toColor="#0a0a0f" />
           <ManInArena />
-          <SoftDivider fromColor="#0a0a0f" toColor="#fafaf8" />
           <Programs onContactOpen={openContact} />
-          <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
           <FiveContent />
+          <ContactCTA onContactOpen={openContact} />
         </main>
       )}
       <Footer onContactOpen={() => openContact()} />

@@ -18,17 +18,18 @@ export default function LiabahCTA({ onRegister }) {
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-12 text-center py-24 md:py-28">
         <p
-          className="cta-animate font-heebo font-semibold text-orange mb-3"
+          className="cta-animate font-heebo font-semibold text-orange mb-3 uppercase"
           style={{ fontSize: 'clamp(0.7rem, 0.9vw, 0.85rem)', letterSpacing: '0.22em' }}
         >
           הצטרפות
         </p>
         <h2
           className="cta-animate font-ragmarom leading-[0.95]"
-          style={{ fontSize: 'clamp(2.4rem, 4.6vw, 4.2rem)' }}
+          style={{ fontSize: 'clamp(2.8rem, 5vw, 5.5rem)' }}
         >
           מוכנים להצטרף לליבה?
         </h2>
+        <div className="cta-animate mt-5 mx-auto h-1 rounded-full bg-orange" style={{ width: 'clamp(3.5rem, 7vw, 6rem)' }} />
         <p className="cta-animate font-heebo text-white/75 mt-5 mx-auto max-w-xl" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.3rem)' }}>
           השאירו פרטים ונחבר אתכם לקבוצה הקרובה אליכם. בואו תהיו חלק ממשהו גדול.
         </p>

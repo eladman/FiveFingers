@@ -74,7 +74,7 @@ export default function LiabahPrograms({ onRegister }) {
           {programsByAge.map((prog) => (
             <article
               key={prog.id}
-              className="lp-card relative overflow-hidden rounded-xl border border-navy/10 bg-white shadow-[0_4px_16px_-8px_rgba(0,0,50,0.16)]"
+              className="lp-card relative overflow-hidden rounded-xl border border-navy/10 bg-white shadow-[0_4px_16px_-8px_rgba(13,27,75,0.16)]"
             >
               {/* Banner — real photo, or a branded orange gradient until one is added */}
               <div className="relative aspect-[21/9] overflow-hidden">
@@ -96,7 +96,7 @@ export default function LiabahPrograms({ onRegister }) {
                   </div>
                 )}
                 {/* Legibility scrim under the title */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#000032]/80 via-[#000032]/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b4b]/80 via-[#0d1b4b]/20 to-transparent" />
                 {/* Title + ages, overlaid bottom-right */}
                 <div className="absolute inset-x-0 bottom-0 p-3 text-right">
                   <h3 className="font-heebo font-extrabold text-white leading-tight text-[1.3rem]">

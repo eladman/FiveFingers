@@ -96,7 +96,7 @@ export default function FiveContent() {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: 'radial-gradient(circle, #000032 1.2px, transparent 1.2px)',
+          backgroundImage: 'radial-gradient(circle, #0d1b4b 1.2px, transparent 1.2px)',
           backgroundSize: '22px 22px',
           opacity: 0.04,
         }}

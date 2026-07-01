@@ -9,14 +9,16 @@
   /* Brand */
   --orange: #ff8714;
   --orange-ink: #b35600;     /* AA-safe orange text on light */
-  --navy: #000032;
+  --navy: #0d1b4b;           /* brand dark — text on light + primary dark surfaces */
+  --navy-deep: #081028;      /* deepest — gradient anchors, vignettes, footer */
+  --navy-light: #1e3578;     /* lifted — gradient tops, elevated dark panels */
   --bg: #ffffff;
   --surface: #fafaf8;        /* warm off-white */
   --surface-2: #f7f5f2;
 
   /* Hairlines / soft fills */
-  --line: rgba(0, 0, 50, 0.08);
-  --fill-soft: rgba(0, 0, 50, 0.04);
+  --line: rgba(13, 27, 75, 0.08);
+  --fill-soft: rgba(13, 27, 75, 0.04);
   --orange-soft: rgba(255, 135, 20, 0.10);
 
   /* Elevation scale */
@@ -85,7 +87,7 @@ body {
   padding: 0;
   font-family: 'Heebo', 'Inter', sans-serif;
   background: #ffffff;
-  color: #000032;
+  color: #0d1b4b;
   direction: rtl;
 }
 

@@ -6,10 +6,12 @@ export default {
       colors: {
         orange: '#ff8714',
         'orange-ink': '#b35600', // contrast-safe orange for text on light backgrounds (AA)
-        navy: '#000032',
+        navy: '#0d1b4b',         // brand dark — text on light + primary dark surfaces
+        'navy-deep': '#081028',  // deepest — gradient anchors, vignettes, footer
+        'navy-light': '#1e3578', // lifted — gradient tops, elevated dark panels
         surface: '#fafaf8',      // warm off-white section background
         'surface-2': '#f7f5f2',
-        line: 'rgba(0,0,50,0.08)', // standard hairline / border
+        line: 'rgba(13,27,75,0.08)', // standard hairline / border
       },
       fontFamily: {
         sans: ['Heebo', 'Inter', 'sans-serif'],

@@ -132,9 +132,9 @@ export default function AcademyHero({ onRegister }) {
         <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
         {/* Dark scrim for text legibility */}
         <div className="absolute inset-0 bg-black/50" />
-        {/* Multi-layer gradient for depth (matches the homepage hero) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-1/5 bg-gradient-to-t from-black/65 to-transparent" />
+        {/* Multi-layer gradient for depth (matches the homepage hero) — bottom dissolves into navy-deep to meet the divider */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#081028]/85 via-[#081028]/25 to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-1/4 bg-gradient-to-t from-[#081028] to-transparent" />
         {/* Subtle orange warmth at the very bottom */}
         <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-orange/8 to-transparent" />
       </div>

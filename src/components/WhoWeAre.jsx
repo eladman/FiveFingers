@@ -8,7 +8,7 @@ export default function WhoWeAre() {
       id="who-we-are"
       ref={ref}
       dir="rtl"
-      className="relative w-full min-h-[100dvh] overflow-hidden flex items-center bg-surface"
+      className="relative z-10 w-full min-h-[100dvh] overflow-hidden flex items-center bg-surface"
     >
       {/* ── Atmospheric glows ── */}
       <div className="pointer-events-none absolute bottom-[-10%] left-[20%] w-[70vw] h-[50vh] rounded-full bg-orange/14 blur-[160px]" />
@@ -18,7 +18,7 @@ export default function WhoWeAre() {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: 'radial-gradient(circle, #000032 1.2px, transparent 1.2px)',
+          backgroundImage: 'radial-gradient(circle, #0d1b4b 1.2px, transparent 1.2px)',
           backgroundSize: '22px 22px',
           opacity: 0.04,
         }}

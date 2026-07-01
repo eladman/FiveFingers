@@ -30,14 +30,18 @@ export default function Navbar({ onContactOpen }) {
     }
   }, [])
 
+  // Option A — Light Frosted Glass: clear glass + white text over the hero,
+  // white frosted glass + navy text once scrolled over the warm light sections.
+  const mobileLifted = scrolled || menuOpen
+
   return (
     <>
       {/* ── Desktop Navbar ── */}
       <nav
         className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden lg:flex items-center gap-1 px-3 py-2.5 rounded-full transition-all duration-500 ${
           scrolled
-            ? 'bg-black/85 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/40'
-            : 'bg-black/25 backdrop-blur-md'
+            ? 'bg-white/30 backdrop-blur-2xl border border-line shadow-xl shadow-navy/10'
+            : 'bg-white/10 backdrop-blur-md border border-white/20'
         }`}
       >
         {/* Logo */}
@@ -49,16 +53,27 @@ export default function Navbar({ onContactOpen }) {
         <div className="flex items-center gap-0.5">
           {NAV_LINKS.map(({ label, href }) => {
             const active = activeHash === href
+            const linkClass = scrolled
+              ? active
+                ? 'text-navy bg-navy/[0.06] font-semibold'
+                : 'text-navy/70 hover:text-navy hover:bg-navy/[0.05]'
+              : active
+                ? 'text-white bg-white/15 font-semibold'
+                : 'text-white/75 hover:text-white hover:bg-white/10'
             return (
               <a
                 key={label}
                 href={href}
                 aria-current={active ? 'page' : undefined}
-                className={`px-3 py-1.5 text-sm transition-colors duration-200 rounded-full whitespace-nowrap ${
-                  active ? 'text-white bg-white/10 font-semibold' : 'text-white/70 hover:text-white hover:bg-white/10'
-                }`}
+                className={`relative px-3 py-1.5 text-sm transition-colors duration-200 rounded-full whitespace-nowrap ${linkClass}`}
               >
                 {label}
+                {active && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-1 inset-x-3 h-0.5 rounded-full bg-orange"
+                  />
+                )}
               </a>
             )
           })}
@@ -74,9 +89,9 @@ export default function Navbar({ onContactOpen }) {
       <nav className="fixed top-0 right-0 left-0 z-50 lg:hidden">
         <div
           className={`mx-4 mt-4 px-4 py-3 rounded-2xl flex items-center justify-between transition-all duration-500 ${
-            scrolled || menuOpen
-              ? 'bg-black/90 backdrop-blur-xl border border-white/10 shadow-xl shadow-black/40'
-              : 'bg-black/30 backdrop-blur-md'
+            mobileLifted
+              ? 'bg-white/40 backdrop-blur-2xl border border-line shadow-lg shadow-navy/10'
+              : 'bg-white/10 backdrop-blur-md border border-white/20'
           }`}
         >
           <a href="#home">
@@ -84,7 +99,11 @@ export default function Navbar({ onContactOpen }) {
           </a>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg transition-colors text-white hover:bg-white/10 active:bg-white/15"
+            className={`min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg transition-colors ${
+              mobileLifted
+                ? 'text-navy hover:bg-navy/5 active:bg-navy/10'
+                : 'text-white hover:bg-white/10 active:bg-white/15'
+            }`}
             aria-label="תפריט"
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -93,7 +112,7 @@ export default function Navbar({ onContactOpen }) {
 
         {/* Mobile drawer */}
         <div
-          className={`mx-4 mt-1 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 ${
+          className={`mx-4 mt-1 bg-white/70 backdrop-blur-2xl border border-line rounded-2xl overflow-hidden transition-all duration-300 shadow-xl shadow-navy/10 ${
             menuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
@@ -106,10 +125,13 @@ export default function Navbar({ onContactOpen }) {
                   href={href}
                   onClick={() => setMenuOpen(false)}
                   aria-current={active ? 'page' : undefined}
-                  className={`block py-3.5 border-b border-white/8 last:border-0 text-lg font-medium transition-colors ${
-                    active ? 'text-orange' : 'text-white/60 hover:text-white'
+                  className={`flex items-center gap-2.5 py-3.5 border-b border-line last:border-0 text-lg transition-colors ${
+                    active ? 'text-navy font-bold' : 'text-navy/60 hover:text-navy font-medium'
                   }`}
                 >
+                  {active && (
+                    <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-orange shrink-0" />
+                  )}
                   {label}
                 </a>
               )

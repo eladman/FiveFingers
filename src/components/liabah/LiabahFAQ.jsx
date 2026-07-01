@@ -14,7 +14,7 @@ export default function LiabahFAQ() {
       id="liabah-faq"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-[#ffffff]"
+      className="relative w-full overflow-hidden bg-white"
     >
       <SectionBg watermark={false} />
 
@@ -41,7 +41,7 @@ export default function LiabahFAQ() {
                   <span className="font-heebo font-bold text-navy text-base md:text-lg">{item.q}</span>
                   <ChevronDown
                     size={20}
-                    className={`text-[#ff8714] shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    className={`text-orange shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
                   />
                 </button>
                 <div

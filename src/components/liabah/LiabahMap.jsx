@@ -140,9 +140,9 @@ export default function LiabahMap() {
               >
                 <path
                   d={ISRAEL_PATH}
-                  fill="#000032"
+                  fill="#0d1b4b"
                   fillOpacity="0.06"
-                  stroke="#000032"
+                  stroke="#0d1b4b"
                   strokeOpacity="0.22"
                   strokeWidth="6"
                   strokeLinejoin="round"
@@ -238,7 +238,7 @@ export default function LiabahMap() {
         <div
           onClick={() => setSelected(null)}
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 animate-[fadeIn_0.2s_ease-out]"
-          style={{ background: 'rgba(0,0,50,0.55)' }}
+          style={{ background: 'rgba(13,27,75,0.55)' }}
           role="dialog"
           aria-modal="true"
           aria-label={selectedLoc.city}

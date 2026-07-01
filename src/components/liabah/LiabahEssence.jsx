@@ -34,7 +34,7 @@ function StagesCarousel({ stages }) {
         zIndex: 10,
         pointerEvents: 'none',
         boxShadow:
-          '0 28px 70px -14px rgba(0,0,50,0.22), 0 12px 30px -6px rgba(255,135,20,0.16)',
+          '0 28px 70px -14px rgba(13,27,75,0.22), 0 12px 30px -6px rgba(255,135,20,0.16)',
         background: 'linear-gradient(150deg, #ffffff 0%, #fff7ee 100%)',
       }
     }
@@ -49,7 +49,7 @@ function StagesCarousel({ stages }) {
       zIndex: 5,
       pointerEvents: 'auto',
       cursor: 'pointer',
-      boxShadow: '0 6px 24px -4px rgba(0,0,50,0.07)',
+      boxShadow: '0 6px 24px -4px rgba(13,27,75,0.07)',
       background: '#ffffff',
     }
   }
@@ -98,7 +98,7 @@ function StagesCarousel({ stages }) {
               }}
             >
               {/* Step number */}
-              <span className="block font-heebo text-[0.6rem] font-bold tracking-[0.28em] text-[#ff8714] mb-5">
+              <span className="block font-heebo text-[0.6rem] font-bold tracking-[0.28em] text-orange mb-5">
                 {s.num}
               </span>
 
@@ -268,7 +268,7 @@ export default function LiabahEssence() {
                 >
                   {p.title}
                 </h4>
-                <div className="w-8 h-[3px] rounded-full bg-orange" />
+                <div className="w-8 h-1 rounded-full bg-orange" />
                 <p className="font-heebo text-navy/65 leading-relaxed" style={{ fontSize: '0.92rem' }}>
                   {p.text}
                 </p>

@@ -20,11 +20,11 @@ export default function LiabahPage({ onContactOpen }) {
   return (
     <main>
       <LiabahHero onRegister={onRegister} />
-      <SoftDivider fromColor="#000032" toColor="#fafaf8" />
+      <SoftDivider fromColor="#081028" toColor="#fafaf8" />
       <LiabahEssence />
-      <SoftDivider fromColor="#fafaf8" toColor="#000032" blend={false} />
+      <SoftDivider fromColor="#fafaf8" toColor="#0d1b4b" blend={false} />
       <LiabahStats />
-      <SoftDivider fromColor="#000032" toColor="#ffffff" blend={false} />
+      <SoftDivider fromColor="#0d1b4b" toColor="#ffffff" blend={false} />
       <LiabahPrograms onRegister={onRegister} />
       <SoftDivider fromColor="#ffffff" toColor="#fafaf8" />
       <LiabahYear />
@@ -36,7 +36,7 @@ export default function LiabahPage({ onContactOpen }) {
       <LiabahGallery />
       <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
       <LiabahFAQ />
-      <SoftDivider fromColor="#ffffff" toColor="#000032" blend={false} />
+      <SoftDivider fromColor="#ffffff" toColor="#0d1b4b" blend={false} />
       <LiabahCTA onRegister={onRegister} />
     </main>
   )

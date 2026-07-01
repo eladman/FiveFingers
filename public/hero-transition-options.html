@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>חמש אצבעות — Hero Transition Options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'RagMarom';
+      src: url('fonts/rag-marom-2.1.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --orange: #ff8714;
+      --cream: #fafaf8;
+      --navy-deep: #081028;
+      --hero-img: url('Hero-Pics/214A0011.jpg');
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #0c0f18;
+      color: #fff;
+      font-family: 'Heebo', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 120px;
+    }
+
+    /* ── Sticky top switcher ────────────────────────────────── */
+    .top-nav {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9000;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+      max-width: calc(100vw - 24px);
+      background: rgba(8,10,22,0.86);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 6px 8px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+    .top-nav a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.55);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 6px 13px;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+      font-family: 'Heebo', sans-serif;
+      direction: ltr;
+    }
+    .top-nav a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .top-nav a.active { color: #fff; background: var(--orange); }
+    .top-nav .divider { width: 1px; align-self: stretch; margin: 4px 4px; background: rgba(255,255,255,0.12); }
+
+    /* Mobile/Desktop mode toggle lives in the same pill */
+    .mode-toggle { display: flex; gap: 2px; }
+    .mode-toggle button {
+      font-family: 'Heebo', sans-serif;
+      cursor: pointer;
+      border: none;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.55);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 6px 12px;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+    }
+    .mode-toggle button.active { background: #fff; color: #0c0f18; }
+
+    /* ── Page intro ─────────────────────────────────────────── */
+    .intro {
+      max-width: 760px;
+      margin: 96px auto 8px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .intro h1 {
+      font-family: 'RagMarom', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      letter-spacing: 0.01em;
+      margin-bottom: 10px;
+    }
+    .intro p {
+      color: rgba(255,255,255,0.55);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── Option block ───────────────────────────────────────── */
+    .option {
+      max-width: 1240px;
+      margin: 64px auto 0;
+      padding: 0 24px;
+      scroll-margin-top: 90px;
+    }
+    .option-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .option-tag {
+      font-family: 'Heebo', sans-serif;
+      direction: ltr;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--navy-deep);
+      background: var(--orange);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .option-title { font-size: 17px; font-weight: 800; }
+    .option-desc { font-size: 13px; color: rgba(255,255,255,0.5); margin-right: auto; text-align: left; direction: rtl; }
+
+    /* Frames row: desktop + phone side by side */
+    .frames {
+      display: grid;
+      grid-template-columns: 1fr 390px;
+      gap: 28px;
+      align-items: start;
+    }
+    .frame-label {
+      font-family: 'Heebo', sans-serif;
+      direction: ltr;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 10px;
+    }
+    .frame {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #000;
+    }
+
+    /* Mobile-focus mode hides desktop frames, centers phone */
+    body.mode-mobile .frames { grid-template-columns: 390px; justify-content: center; }
+    body.mode-mobile .col-desktop { display: none; }
+    /* Desktop-focus mode hides phone frames */
+    body.mode-desktop .col-phone { display: none; }
+    body.mode-desktop .frames { grid-template-columns: 1fr; }
+
+    @media (max-width: 1080px) {
+      .frames { grid-template-columns: 1fr; }
+      .col-phone { justify-self: center; }
+      body.mode-both .col-phone .scene { max-width: 390px; }
+    }
+
+    /* ── The mini-scene (hero → who-we-are) ─────────────────── */
+    .scene {
+      position: relative;
+      width: 100%;
+      background: var(--cream);
+    }
+    .scene .hero {
+      position: relative;
+      background-image: linear-gradient(rgba(8,16,40,0.42), rgba(8,16,40,0.42)), var(--hero-img);
+      background-size: cover;
+      background-position: center 28%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    /* heights per frame type */
+    .desktop-scene .hero { height: 440px; }
+    .desktop-scene .who  { min-height: 300px; }
+    .phone-scene .hero   { height: 520px; }
+    .phone-scene .who    { min-height: 340px; }
+
+    .hero-inner { position: relative; z-index: 5; padding: 0 24px; transform: translateY(-6%); }
+    .hero h2 {
+      font-family: 'RagMarom', sans-serif;
+      color: #fff;
+      line-height: 0.95;
+      text-shadow: 0 4px 32px rgba(0,0,0,0.9);
+      white-space: nowrap;
+    }
+    .desktop-scene .hero h2 { font-size: 4.4rem; }
+    .phone-scene .hero h2   { font-size: 3rem; }
+    .hero .accent {
+      height: 3px; width: 190px; background: var(--orange);
+      border-radius: 3px; margin: 20px auto 18px;
+    }
+    .phone-scene .hero .accent { width: 130px; margin: 16px auto 14px; }
+    .hero .sub {
+      font-family: 'RagMarom', sans-serif;
+      color: var(--orange);
+      text-shadow: 0 2px 20px rgba(0,0,0,0.85);
+    }
+    .desktop-scene .hero .sub { font-size: 2rem; }
+    .phone-scene .hero .sub   { font-size: 1.5rem; }
+
+    /* the WHO-WE-ARE cream section */
+    .who {
+      position: relative;
+      background: var(--cream);
+      padding: 54px 40px 60px;
+      text-align: right;
+    }
+    .phone-scene .who { padding: 44px 26px 50px; }
+    .who .eyebrow-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .who .eyebrow-row .rule { height: 1px; width: 34px; background: var(--orange); }
+    .who .eyebrow { color: var(--orange); font-size: 13px; font-weight: 700; }
+    .who h3 {
+      font-family: 'RagMarom', sans-serif;
+      color: var(--navy-deep);
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+    .phone-scene .who h3 { font-size: 1.9rem; }
+    .who .panel {
+      position: relative;
+      padding-right: 18px;
+      max-width: 480px;
+    }
+    .who .panel .rail {
+      position: absolute; right: 0; top: 4px; bottom: 4px; width: 3px; border-radius: 3px;
+      background: linear-gradient(180deg, var(--orange), rgba(255,135,20,0.25));
+    }
+    .who .panel .k { color: #b25c00; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; display:block; margin-bottom: 4px; }
+    .who .panel .t { color: var(--navy-deep); font-family: 'RagMarom', sans-serif; font-size: 1.35rem; margin-bottom: 6px; }
+    .who .panel .b { color: rgba(13,27,75,0.62); font-size: 14px; line-height: 1.6; }
+
+    /* seam layer shared helpers */
+    .seam { position: absolute; left: 0; right: 0; z-index: 6; pointer-events: none; }
+    .tick {
+      position: absolute; left: 50%; transform: translate(-50%,-50%);
+      width: 2px; height: 34px; border-radius: 2px;
+      background: linear-gradient(180deg, transparent, var(--orange), transparent);
+      opacity: 0.7; z-index: 8;
+    }
+
+    /* =====================================================================
+       CURRENT (reference) — heavy navy band
+       ===================================================================== */
+    .v-current .hero::after {
+      content: ''; position: absolute; inset: 0; z-index: 2;
+      background:
+        linear-gradient(to top, var(--navy-deep) 0%, rgba(8,16,40,0.25) 45%, transparent 75%),
+        linear-gradient(to top, var(--navy-deep) 0%, transparent 26%);
+    }
+    .v-current .who { background: linear-gradient(180deg, var(--navy-deep) 0%, var(--cream) 120px), var(--cream); }
+    .v-current .who::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:120px;
+      background: linear-gradient(180deg, var(--navy-deep), var(--cream));
+    }
+    .v-current .who .inner-guard { position: relative; z-index: 2; padding-top: 66px; }
+
+    /* =====================================================================
+       A1 — Straight bright dissolve to cream
+       ===================================================================== */
+    .v-a1 .hero::after {
+      content: ''; position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(to top, var(--cream) 0%, rgba(250,250,248,0.0) 34%);
+    }
+    .v-a1 .seam-hair {
+      bottom: 0; height: 0; border-top: 1px solid rgba(255,135,20,0.55);
+      z-index: 7;
+    }
+
+    /* =====================================================================
+       A2 — Light-leak dissolve (warm bloom at seam)
+       ===================================================================== */
+    .v-a2 .hero::after {
+      content: ''; position: absolute; inset: 0; z-index: 2;
+      background:
+        radial-gradient(120% 60% at 50% 100%, rgba(255,255,255,0.55) 0%, rgba(255,246,235,0.0) 55%),
+        linear-gradient(to top, var(--cream) 0%, rgba(250,250,248,0.0) 38%);
+    }
+    .v-a2 .hero::before {
+      content:''; position:absolute; left:50%; bottom:-40px; transform:translateX(-50%);
+      width: 60%; height: 120px; z-index: 3;
+      background: radial-gradient(50% 60% at 50% 50%, rgba(255,135,20,0.20), transparent 70%);
+      filter: blur(10px);
+    }
+
+    /* =====================================================================
+       B1 — Cream sheet pull-up (rounded, floating over hero)
+       ===================================================================== */
+    .v-b1 .hero::after {
+      content:''; position:absolute; inset:0; z-index:2;
+      background: linear-gradient(to top, rgba(8,16,40,0.55) 0%, transparent 40%);
+    }
+    .v-b1 .who {
+      margin-top: -48px; position: relative; z-index: 5;
+      border-top-left-radius: 34px; border-top-right-radius: 34px;
+      box-shadow: 0 -24px 50px rgba(0,0,0,0.28);
+      padding-top: 48px;
+    }
+    .v-b1 .who .grabber {
+      position:absolute; top:16px; left:50%; transform:translateX(-50%);
+      width:52px; height:5px; border-radius:5px; background: var(--orange); opacity:0.85;
+    }
+
+    /* =====================================================================
+       B2 — Floating white sheet over a slim dark base
+       ===================================================================== */
+    .v-b2 .hero::after {
+      content:''; position:absolute; inset:0; z-index:2;
+      background: linear-gradient(to top, var(--navy-deep) 0%, rgba(8,16,40,0.35) 22%, transparent 46%);
+    }
+    .v-b2 .who {
+      background: #ffffff;
+      margin-top: -40px; position: relative; z-index: 5;
+      border-top-left-radius: 30px; border-top-right-radius: 30px;
+      box-shadow: 0 -18px 44px rgba(0,0,0,0.4);
+      padding-top: 46px;
+    }
+    .v-b2 .who .grabber {
+      position:absolute; top:15px; left:50%; transform:translateX(-50%);
+      width:46px; height:5px; border-radius:5px; background: var(--orange); opacity:0.85;
+    }
+
+    /* =====================================================================
+       C1 — Diagonal graphic cut
+       ===================================================================== */
+    .v-c1 .hero { padding-bottom: 20px; }
+    .v-c1 .cut { bottom: -1px; height: 84px; z-index: 6; }
+    .v-c1 .cut svg { display:block; width:100%; height:100%; }
+    .phone-scene.v-c1 .cut { height: 60px; }
+
+    /* =====================================================================
+       C2 — Organic wave cut
+       ===================================================================== */
+    .v-c2 .wave { bottom: -1px; height: 96px; z-index: 6; }
+    .v-c2 .wave svg { display:block; width:100%; height:100%; }
+    .phone-scene.v-c2 .wave { height: 68px; }
+
+    footer.note {
+      max-width: 760px; margin: 90px auto 0; padding: 0 24px; text-align:center;
+      color: rgba(255,255,255,0.4); font-size: 13px; line-height: 1.7;
+    }
+  </style>
+</head>
+<body class="mode-both">
+
+  <!-- ── Switcher ─────────────────────────────────────────── -->
+  <nav class="top-nav" id="topnav">
+    <a href="#opt-current">Current</a>
+    <span class="divider"></span>
+    <a href="#opt-a1">A1 · Dissolve</a>
+    <a href="#opt-a2">A2 · Light-leak</a>
+    <a href="#opt-b1">B1 · Sheet</a>
+    <a href="#opt-b2">B2 · Float</a>
+    <a href="#opt-c1">C1 · Angle</a>
+    <a href="#opt-c2">C2 · Wave</a>
+    <span class="divider"></span>
+    <div class="mode-toggle">
+      <button data-mode="both" class="active">Both</button>
+      <button data-mode="mobile">Mobile</button>
+      <button data-mode="desktop">Desktop</button>
+    </div>
+  </nav>
+
+  <div class="intro">
+    <h1>מעברי Hero — אפשרויות</h1>
+    <p>שש חלופות למעבר מתחתית ה־Hero אל מקטע «מי אנחנו». כל אפשרות מוצגת גם בדסקטופ וגם במובייל. השתמשו בכפתורי Both / Mobile / Desktop למעלה כדי למקד את התצוגה.</p>
+  </div>
+
+  <!-- =============================================================
+       Template note: each .option repeats the same scene markup with a
+       different variant class (v-*). Desktop + phone side by side.
+       ============================================================= -->
+
+  <!-- CURRENT (reference) -->
+  <section class="option" id="opt-current">
+    <div class="option-head">
+      <span class="option-tag">CURRENT</span>
+      <span class="option-title">המצב הנוכחי — פס נייבי כהה</span>
+      <span class="option-desc">נקודת ההשוואה: תחתית ה־Hero נמסה לכחול כהה ואז חוצץ נייבי→קרם.</span>
+    </div>
+    <div class="frames">
+      <div class="col-desktop">
+        <div class="frame-label">Desktop</div>
+        <div class="frame"><div class="scene desktop-scene v-current">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div></div>
+          <div class="who"><div class="inner-guard"><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת ולבסוף בין כלל הגורמים בחברה הישראלית.</div></div></div></div>
+        </div></div>
+      </div>
+      <div class="col-phone">
+        <div class="frame-label">Mobile</div>
+        <div class="frame"><div class="scene phone-scene v-current">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div></div>
+          <div class="who"><div class="inner-guard"><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה ובקהילה שאליה הוא/היא משתייך/ת.</div></div></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A1 -->
+  <section class="option" id="opt-a1">
+    <div class="option-head">
+      <span class="option-tag">A1</span>
+      <span class="option-title">המסה בהירה ישירה</span>
+      <span class="option-desc">התמונה נמסה ישירות אל הקרם. בלי נייבי. קו כתום דק בתפר. אוורירי ועריכתי.</span>
+    </div>
+    <div class="frames">
+      <div class="col-desktop">
+        <div class="frame-label">Desktop</div>
+        <div class="frame"><div class="scene desktop-scene v-a1">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div><div class="seam seam-hair"></div></div>
+          <div class="who"><div class="tick" style="top:0"></div><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת ולבסוף בין כלל הגורמים בחברה הישראלית.</div></div></div>
+        </div></div>
+      </div>
+      <div class="col-phone">
+        <div class="frame-label">Mobile</div>
+        <div class="frame"><div class="scene phone-scene v-a1">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div><div class="seam seam-hair"></div></div>
+          <div class="who"><div class="tick" style="top:0"></div><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה ובקהילה שאליה הוא/היא משתייך/ת.</div></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A2 -->
+  <section class="option" id="opt-a2">
+    <div class="option-head">
+      <span class="option-tag">A2</span>
+      <span class="option-title">המסה עם זריחת אור</span>
+      <span class="option-desc">כמו A1 אך עם הילה לבנה/כתומה רכה בתפר — יותר חום ועומק.</span>
+    </div>
+    <div class="frames">
+      <div class="col-desktop">
+        <div class="frame-label">Desktop</div>
+        <div class="frame"><div class="scene desktop-scene v-a2">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div></div>
+          <div class="who"><div class="tick" style="top:0"></div><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת ולבסוף בין כלל הגורמים בחברה הישראלית.</div></div></div>
+        </div></div>
+      </div>
+      <div class="col-phone">
+        <div class="frame-label">Mobile</div>
+        <div class="frame"><div class="scene phone-scene v-a2">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div></div>
+          <div class="who"><div class="tick" style="top:0"></div><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה ובקהילה שאליה הוא/היא משתייך/ת.</div></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B1 -->
+  <section class="option" id="opt-b1">
+    <div class="option-head">
+      <span class="option-tag">B1</span>
+      <span class="option-title">גיליון נמשך מעלה (קרם)</span>
+      <span class="option-desc">מקטע הקרם עולה מעל ה־Hero עם פינות מעוגלות וצל רך. תחושת שכבות מודרנית.</span>
+    </div>
+    <div class="frames">
+      <div class="col-desktop">
+        <div class="frame-label">Desktop</div>
+        <div class="frame"><div class="scene desktop-scene v-b1">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div></div>
+          <div class="who"><span class="grabber"></span><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת ולבסוף בין כלל הגורמים בחברה הישראלית.</div></div></div>
+        </div></div>
+      </div>
+      <div class="col-phone">
+        <div class="frame-label">Mobile</div>
+        <div class="frame"><div class="scene phone-scene v-b1">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div></div>
+          <div class="who"><span class="grabber"></span><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה ובקהילה שאליה הוא/היא משתייך/ת.</div></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B2 -->
+  <section class="option" id="opt-b2">
+    <div class="option-head">
+      <span class="option-tag">B2</span>
+      <span class="option-title">גיליון לבן צף מעל בסיס כהה</span>
+      <span class="option-desc">ה־Hero שומר בסיס כהה דק כדי שהגיליון הלבן ייקרא כמשטח צף נפרד.</span>
+    </div>
+    <div class="frames">
+      <div class="col-desktop">
+        <div class="frame-label">Desktop</div>
+        <div class="frame"><div class="scene desktop-scene v-b2">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div></div>
+          <div class="who"><span class="grabber"></span><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת ולבסוף בין כלל הגורמים בחברה הישראלית.</div></div></div>
+        </div></div>
+      </div>
+      <div class="col-phone">
+        <div class="frame-label">Mobile</div>
+        <div class="frame"><div class="scene phone-scene v-b2">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div></div>
+          <div class="who"><span class="grabber"></span><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה ובקהילה שאליה הוא/היא משתייך/ת.</div></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C1 -->
+  <section class="option" id="opt-c1">
+    <div class="option-head">
+      <span class="option-tag">C1</span>
+      <span class="option-title">חיתוך גרפי אלכסוני</span>
+      <span class="option-desc">טריז קרם חותך אלכסונית אל תוך התמונה, עם קו כתום דק לאורך החיתוך.</span>
+    </div>
+    <div class="frames">
+      <div class="col-desktop">
+        <div class="frame-label">Desktop</div>
+        <div class="frame"><div class="scene desktop-scene v-c1">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div>
+            <div class="seam cut"><svg viewBox="0 0 1200 84" preserveAspectRatio="none"><polygon points="0,84 1200,20 1200,84" fill="#fafaf8"/><line x1="0" y1="84" x2="1200" y2="20" stroke="#ff8714" stroke-width="2"/></svg></div>
+          </div>
+          <div class="who"><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת ולבסוף בין כלל הגורמים בחברה הישראלית.</div></div></div>
+        </div></div>
+      </div>
+      <div class="col-phone">
+        <div class="frame-label">Mobile</div>
+        <div class="frame"><div class="scene phone-scene v-c1">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div>
+            <div class="seam cut"><svg viewBox="0 0 390 60" preserveAspectRatio="none"><polygon points="0,60 390,16 390,60" fill="#fafaf8"/><line x1="0" y1="60" x2="390" y2="16" stroke="#ff8714" stroke-width="2"/></svg></div>
+          </div>
+          <div class="who"><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה ובקהילה שאליה הוא/היא משתייך/ת.</div></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C2 -->
+  <section class="option" id="opt-c2">
+    <div class="option-head">
+      <span class="option-tag">C2</span>
+      <span class="option-title">חיתוך גל אורגני</span>
+      <span class="option-desc">חוצץ גלי מהתמונה אל הקרם, עם סימן כתום עדין במרכז.</span>
+    </div>
+    <div class="frames">
+      <div class="col-desktop">
+        <div class="frame-label">Desktop</div>
+        <div class="frame"><div class="scene desktop-scene v-c2">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div>
+            <div class="seam wave"><svg viewBox="0 0 1200 96" preserveAspectRatio="none"><path d="M0,96 L0,52 C220,8 420,8 600,44 C800,82 1000,82 1200,40 L1200,96 Z" fill="#fafaf8"/></svg></div>
+          </div>
+          <div class="who"><div class="tick" style="top:0"></div><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת ולבסוף בין כלל הגורמים בחברה הישראלית.</div></div></div>
+        </div></div>
+      </div>
+      <div class="col-phone">
+        <div class="frame-label">Mobile</div>
+        <div class="frame"><div class="scene phone-scene v-c2">
+          <div class="hero"><div class="hero-inner"><h2>חמש אצבעות</h2><div class="accent"></div><div class="sub">חינוך למצוינות</div></div>
+            <div class="seam wave"><svg viewBox="0 0 390 68" preserveAspectRatio="none"><path d="M0,68 L0,38 C70,6 140,6 195,32 C260,60 320,60 390,28 L390,68 Z" fill="#fafaf8"/></svg></div>
+          </div>
+          <div class="who"><div class="tick" style="top:0"></div><div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div><h3>מי אנחנו</h3><div class="panel"><span class="rail"></span><span class="k">חזון</span><div class="t">חברה מבוססת אמון</div><div class="b">אמון של האדם בעצמו/ה ובקהילה שאליה הוא/היא משתייך/ת.</div></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="note">
+    בחרו כיוון מועדף ואטמיע אותו ב־<code style="color:#ff8714">Hero.jsx</code> ו־<code style="color:#ff8714">SoftDivider</code> באתר עצמו.
+  </footer>
+
+  <script>
+    // Mode toggle: Both / Mobile / Desktop
+    const body = document.body;
+    document.querySelectorAll('.mode-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.mode-toggle button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        body.className = 'mode-' + btn.dataset.mode;
+      });
+    });
+
+    // Scroll-spy for the switcher
+    const links = [...document.querySelectorAll('.top-nav a')];
+    const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          map.get(e.target.id)?.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('.option').forEach(s => obs.observe(s));
+  </script>
+</body>
+</html>

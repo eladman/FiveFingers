@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>חמש אצבעות — Scroll Reveal (B2 · C1)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'RagMarom';
+      src: url('fonts/rag-marom-2.1.otf') format('opentype');
+      font-weight: normal; font-style: normal; font-display: swap;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --orange: #ff8714;
+      --cream: #fafaf8;
+      --navy-deep: #081028;
+      --hero-img: url('Hero-Pics/214A0011.jpg');
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy-deep); color: #fff; font-family: 'Heebo', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    /* ── Floating switcher ─────────────────────────────────── */
+    .top-nav {
+      position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 9000;
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(8,10,22,0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; padding: 6px 8px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+    .top-nav button {
+      font-family: 'Heebo', sans-serif; cursor: pointer; border: none;
+      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.02em; direction: ltr;
+      padding: 7px 15px; border-radius: 100px; transition: all 0.18s ease; white-space: nowrap;
+    }
+    .top-nav button:hover { color: #fff; background: rgba(255,255,255,0.12); }
+    .top-nav button.active { color: var(--navy-deep); background: var(--orange); }
+    .top-nav .divider { width: 1px; height: 20px; background: rgba(255,255,255,0.14); }
+    .top-nav .replay { color: rgba(255,255,255,0.55); background: transparent; font-size: 13px; }
+    .top-nav .replay:hover { color: #fff; background: rgba(255,255,255,0.08); }
+
+    /* ── HERO ──────────────────────────────────────────────── */
+    .hero {
+      position: relative; height: 100dvh; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      background-image: linear-gradient(rgba(8,16,40,0.30), rgba(8,16,40,0.46)), var(--hero-img);
+      background-size: cover; background-position: center 22%;
+    }
+    .hero-inner { position: relative; z-index: 5; padding: 0 24px; transform: translateY(-4%); }
+    .hero h1 {
+      font-family: 'RagMarom', sans-serif; color: #fff; line-height: 0.95; white-space: nowrap;
+      font-size: clamp(3rem, 9vw, 8.5rem);
+      text-shadow: 0 4px 32px rgba(0,0,0,0.9), 0 0 60px rgba(0,0,0,0.6);
+    }
+    .hero .accent { height: 3px; width: clamp(8rem, 20vw, 20rem); background: var(--orange); border-radius: 3px; margin: 22px auto 20px; }
+    .hero .sub {
+      font-family: 'RagMarom', sans-serif; color: var(--orange);
+      font-size: clamp(1.5rem, 4.5vw, 3.6rem); text-shadow: 0 2px 20px rgba(0,0,0,0.85);
+    }
+    /* Hero load-in */
+    .hero .fade-up { opacity: 0; transform: translateY(22px); animation: heroUp 0.9s var(--ease) forwards; }
+    .hero .accent  { transform-origin: center; animation: heroLine 0.5s var(--ease) 0.35s both; }
+    .hero .sub     { animation-delay: 0.28s; }
+    .hero .cta-row { animation-delay: 0.42s; }
+    @keyframes heroUp   { to { opacity: 1; transform: translateY(0); } }
+    @keyframes heroLine { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+
+    .cta-row { display: flex; gap: 14px; justify-content: center; margin-top: 36px; }
+    .btn {
+      font-family: 'Heebo', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer;
+      border-radius: 100px; padding: 13px 30px; border: none; transition: transform 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.5); }
+
+    .scroll-indicator {
+      position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); z-index: 6;
+      animation: heroUp 0.9s var(--ease) 0.6s both;
+    }
+    .scroll-indicator .mouse {
+      width: 26px; height: 42px; border: 2px solid rgba(255,255,255,0.4); border-radius: 100px;
+      display: flex; justify-content: center; padding-top: 8px;
+    }
+    .scroll-indicator .wheel { width: 4px; height: 9px; background: rgba(255,255,255,0.7); border-radius: 3px; animation: wheel 1.5s ease-in-out infinite; }
+    @keyframes wheel { 0% { transform: translateY(0); opacity: 1; } 60% { transform: translateY(8px); opacity: 0; } 100% { opacity: 0; } }
+
+    /* Hero bottom seam treatment differs per variant */
+    #stage.v-b2 .hero::after {
+      content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background: linear-gradient(to top, var(--navy-deep) 0%, rgba(8,16,40,0.35) 20%, transparent 44%);
+    }
+    /* C1 diagonal cut lives as an SVG at the hero bottom */
+    .cut { position: absolute; left: 0; right: 0; bottom: -1px; height: 96px; z-index: 4; pointer-events: none; display: none; }
+    #stage.v-c1 .cut { display: block; }
+    .cut svg { display: block; width: 100%; height: 100%; }
+    @media (max-width: 720px) { .cut { height: 66px; } }
+
+    /* ── WHO-WE-ARE (revealed on scroll) ───────────────────── */
+    .who {
+      position: relative; z-index: 5; min-height: 92vh;
+      padding: clamp(48px, 8vw, 96px) clamp(24px, 8vw, 120px) 100px; text-align: right;
+    }
+    /* B2 — floating white sheet over the dark hero base */
+    #stage.v-b2 .who {
+      background: #fff; margin-top: -46px;
+      border-top-left-radius: 34px; border-top-right-radius: 34px;
+      box-shadow: 0 -22px 50px rgba(0,0,0,0.45);
+    }
+    #stage.v-b2 .grabber {
+      position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+      width: 50px; height: 5px; border-radius: 5px; background: var(--orange); opacity: 0.85;
+    }
+    /* C1 — cream section beneath the diagonal cut */
+    #stage.v-c1 .who { background: var(--cream); }
+    #stage.v-c1 .grabber { display: none; }
+    #stage.v-b2 .tick { display: none; }
+    .tick {
+      position: absolute; top: -1px; left: 50%; transform: translate(-50%,-50%);
+      width: 2px; height: 34px; border-radius: 2px; opacity: 0.7;
+      background: linear-gradient(180deg, transparent, var(--orange), transparent);
+    }
+
+    .who .wrap { max-width: 900px; margin-right: auto; }
+    .who .eyebrow-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .who .eyebrow-row .rule { height: 1px; width: 40px; background: var(--orange); }
+    .who .eyebrow { color: var(--orange); font-size: 14px; font-weight: 700; }
+    .who h2 { font-family: 'RagMarom', sans-serif; color: var(--navy-deep); font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1; margin-bottom: 30px; }
+    .who .grid { display: grid; grid-template-columns: 1fr; gap: 26px; max-width: 620px; }
+    .who .panel { position: relative; padding-right: 20px; }
+    .who .panel .rail { position: absolute; right: 0; top: 4px; bottom: 4px; width: 3px; border-radius: 3px; background: linear-gradient(180deg, var(--orange), rgba(255,135,20,0.25)); }
+    .who .panel .k { color: #b25c00; font-size: 13px; font-weight: 700; display: block; margin-bottom: 5px; }
+    .who .panel .t { color: var(--navy-deep); font-family: 'RagMarom', sans-serif; font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin-bottom: 7px; }
+    .who .panel .b { color: rgba(13,27,75,0.62); font-size: 15px; line-height: 1.65; }
+    .who .hair { height: 1px; background: rgba(13,27,75,0.08); }
+
+    /* ── Reveal animation state ────────────────────────────── */
+    /* Sheet / cream section enters */
+    #stage.v-b2 .who { opacity: 0; transform: translateY(70px); transition: opacity 0.7s var(--ease), transform 0.9s var(--ease); }
+    #stage.v-c1 .who { opacity: 0; transform: translateY(40px); transition: opacity 0.7s var(--ease), transform 0.8s var(--ease); }
+    #stage.revealed .who { opacity: 1; transform: translateY(0); }
+
+    /* Staggered content children */
+    .r { opacity: 0; transform: translateY(26px); transition: opacity 0.6s var(--ease), transform 0.7s var(--ease); }
+    #stage.revealed .r { opacity: 1; transform: translateY(0); }
+    #stage.revealed .r:nth-child(1) { transition-delay: 0.15s; }
+    #stage.revealed .r:nth-child(2) { transition-delay: 0.24s; }
+    #stage.revealed .r:nth-child(3) { transition-delay: 0.33s; }
+    #stage.revealed .r:nth-child(4) { transition-delay: 0.42s; }
+    #stage.revealed .r:nth-child(5) { transition-delay: 0.51s; }
+
+    /* C1 orange diagonal line draws in on reveal */
+    .cut .draw { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 0.9s var(--ease) 0.1s; }
+    #stage.revealed .cut .draw { stroke-dashoffset: 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      #stage .who, .r { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .cut .draw { stroke-dashoffset: 0 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <button data-v="b2" class="active">B2 · Float</button>
+    <button data-v="c1">C1 · Angle</button>
+    <span class="divider"></span>
+    <button class="replay" id="replay">↻ Replay</button>
+  </nav>
+
+  <div id="stage" class="v-b2">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1 class="fade-up">חמש אצבעות</h1>
+        <div class="accent"></div>
+        <div class="sub fade-up">חינוך למצוינות</div>
+        <div class="cta-row fade-up">
+          <button class="btn btn-primary">הצטרפו אלינו ‹</button>
+          <button class="btn btn-ghost">גלו עוד</button>
+        </div>
+      </div>
+
+      <!-- C1 diagonal cut (hidden in B2) -->
+      <div class="cut">
+        <svg viewBox="0 0 1200 96" preserveAspectRatio="none">
+          <polygon points="0,96 1200,26 1200,96" fill="#fafaf8"/>
+          <line class="draw" x1="0" y1="96" x2="1200" y2="26" stroke="#ff8714" stroke-width="2.5" pathLength="1"/>
+        </svg>
+      </div>
+
+      <div class="scroll-indicator"><div class="mouse"><div class="wheel"></div></div></div>
+    </section>
+
+    <!-- WHO WE ARE -->
+    <section class="who">
+      <span class="grabber"></span>
+      <span class="tick"></span>
+      <div class="wrap">
+        <div class="r">
+          <div class="eyebrow-row"><span class="rule"></span><span class="eyebrow">הכירו את התנועה</span></div>
+        </div>
+        <h2 class="r">מי אנחנו</h2>
+        <div class="grid">
+          <div class="panel r">
+            <span class="rail"></span>
+            <span class="k">חזון</span>
+            <div class="t">חברה מבוססת אמון</div>
+            <div class="b">אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת ולבסוף בין כלל הגורמים בחברה הישראלית.</div>
+          </div>
+          <div class="hair r"></div>
+          <div class="panel r">
+            <span class="rail"></span>
+            <span class="k">המשימה שלנו</span>
+            <div class="t">מימוש פוטנציאל</div>
+            <div class="b">לבנות אנשים חזקים ואכפתיים שישפיעו על החברה הישראלית.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const stage = document.getElementById('stage');
+    const who = stage.querySelector('.who');
+
+    // Reveal on scroll into view
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) stage.classList.add('revealed'); });
+    }, { threshold: 0.18 });
+    obs.observe(who);
+
+    // Variant toggle — reset the reveal so the animation replays after switching
+    document.querySelectorAll('.top-nav button[data-v]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.top-nav button[data-v]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        stage.classList.remove('revealed');
+        stage.classList.remove('v-b2', 'v-c1');
+        stage.classList.add('v-' + btn.dataset.v);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Replay — scroll back to the top; reveal re-fires as you scroll down again
+    document.getElementById('replay').addEventListener('click', () => {
+      stage.classList.remove('revealed');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

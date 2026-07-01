@@ -11,8 +11,14 @@
 | Role | Hex |
 |---|---|
 | Theme (primary) | `#ff8714` (orange) |
-| Secondary (optional) | `#000032` (deep navy) |
+| Secondary (dark) | `#0d1b4b` (rich navy) — base for text on light + solid dark surfaces |
+| Dark — deep | `#081028` (navy-deep) — gradient anchors, vignettes, footer |
+| Dark — lifted | `#1e3578` (navy-light) — gradient tops, elevated panels |
 | Background / Text | `#ffffff` (white) |
+
+> Navy scale is tokenized in `tailwind.config.js` / `src/index.css` (`navy`, `navy-deep`,
+> `navy-light`). Pure black is reserved for photo overlays/scrims and nav glass only.
+> The old flat `#000032` (too dark to read as navy) was retired site-wide in favor of `#0d1b4b`.
 
 ### Logo
 - File: `אתר חמש/Five-Finger-LOGO.png`

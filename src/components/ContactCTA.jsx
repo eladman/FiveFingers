@@ -9,7 +9,7 @@ const CONTACT_ITEMS = [
   { icon: MapPin, label: 'מיקום', value: 'ישראל', href: '#' },
 ]
 
-export default function ContactCTA() {
+export default function ContactCTA({ onContactOpen }) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function ContactCTA() {
         </p>
 
         {/* Headline */}
-        <h2 className="contact-el text-[#0d1b4b] font-ragmarom text-5xl md:text-7xl leading-tight mb-6">
+        <h2 className="contact-el text-navy font-ragmarom text-5xl md:text-7xl leading-tight mb-6">
           מוכנים לצעד
           <br />
           <span className="font-ragmarom text-orange">הבא?</span>
@@ -52,8 +52,8 @@ export default function ContactCTA() {
 
         {/* CTA buttons */}
         <div className="contact-el flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <MagneticBtn primary>יצירת קשר</MagneticBtn>
-          <MagneticBtn>הצטרפו לתנועה</MagneticBtn>
+          <MagneticBtn primary onClick={() => onContactOpen?.()}>יצירת קשר</MagneticBtn>
+          <MagneticBtn onClick={() => onContactOpen?.()}>הצטרפו לתנועה</MagneticBtn>
         </div>
 
         {/* Contact info cards */}
@@ -62,14 +62,14 @@ export default function ContactCTA() {
             <a
               key={label}
               href={href}
-              className="group flex flex-col items-center gap-3 p-6 rounded-2xl bg-gray-50 hover:bg-[#0d1b4b] border border-transparent hover:border-[#0d1b4b] transition-all duration-300"
+              className="group flex flex-col items-center gap-3 p-6 rounded-2xl bg-gray-50 hover:bg-navy border border-transparent hover:border-navy transition-all duration-300"
             >
               <Icon
                 size={22}
                 className="text-orange group-hover:text-orange transition-colors"
               />
               <p className="text-gray-400 group-hover:text-white/50 text-xs transition-colors">{label}</p>
-              <p className="text-[#0d1b4b] group-hover:text-white font-semibold text-sm transition-colors">
+              <p className="text-navy group-hover:text-white font-semibold text-sm transition-colors">
                 {value}
               </p>
             </a>
@@ -80,16 +80,17 @@ export default function ContactCTA() {
   )
 }
 
-function MagneticBtn({ children, primary }) {
+function MagneticBtn({ children, primary, onClick }) {
   const onEnter = (e) => { e.currentTarget.style.transform = 'scale(1.04)' }
   const onLeave = (e) => { e.currentTarget.style.transform = 'scale(1)' }
 
   return (
     <button
+      onClick={onClick}
       className={`group relative overflow-hidden px-10 py-4 rounded-full text-lg font-bold transition-all duration-300 ${
         primary
           ? 'bg-orange text-white'
-          : 'bg-[#0d1b4b] text-white'
+          : 'bg-navy text-white'
       }`}
       style={{ transition: 'transform 280ms cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
       onMouseEnter={onEnter}

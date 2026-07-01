@@ -24,9 +24,9 @@ export default function CollaborationsPage({ onContactOpen }) {
   return (
     <main className="bg-surface">
       <CollabsHero onRegister={onRegister} />
-      <SoftDivider fromColor="#000000" toColor="#000032" blend={false} />
+      <SoftDivider fromColor="#081028" toColor="#0d1b4b" blend={false} />
       <CollabsStats />
-      <SoftDivider fromColor="#000032" toColor="#fafaf8" blend={false} />
+      <SoftDivider fromColor="#0d1b4b" toColor="#fafaf8" blend={false} />
       <CollabsIntro />
       <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
       <CollabsProcess />
@@ -34,11 +34,11 @@ export default function CollaborationsPage({ onContactOpen }) {
       <CollabsContentWorlds />
       <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
       <CollabsFormats onRegister={onRegister} />
-      <SoftDivider fromColor="#fafaf8" toColor="#000032" blend={false} />
+      <SoftDivider fromColor="#fafaf8" toColor="#0d1b4b" blend={false} />
       <CollabsTeam />
-      <SoftDivider fromColor="#000032" toColor="#fafaf8" blend={false} />
+      <SoftDivider fromColor="#0d1b4b" toColor="#fafaf8" blend={false} />
       <CollabsPartners />
-      <SoftDivider fromColor="#fafaf8" toColor="#000032" blend={false} />
+      <SoftDivider fromColor="#fafaf8" toColor="#0d1b4b" blend={false} />
       <CollabsCTA onRegister={onRegister} />
     </main>
   )

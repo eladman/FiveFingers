@@ -26,7 +26,7 @@ const FOOTER_NAV = {
 
 export default function Footer({ onContactOpen }) {
   return (
-    <footer className="rounded-t-[4rem] pt-16 md:pt-20 pb-10 px-8 md:px-16" style={{ background: 'linear-gradient(180deg, #111111 0%, #0a0a0a 50%, #060606 100%)' }}>
+    <footer className="rounded-t-[4rem] pt-16 md:pt-20 pb-10 px-8 md:px-16" style={{ background: 'linear-gradient(180deg, #0d1b4b 0%, #081028 100%)' }}>
       <div className="max-w-7xl mx-auto">
         {/* Main grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
