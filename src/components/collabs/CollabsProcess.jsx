@@ -1,4 +1,4 @@
-import { SectionBg, SectionHeading } from '../liabah/shared'
+import { MuseumSection, MuseumHeading } from '../academy/shared'
 import useReveal from '../../hooks/useReveal'
 
 // The catalog's "איך זה עובד?" — a four-step engagement flow.
@@ -25,39 +25,40 @@ const STEPS = [
   },
 ]
 
-/** "איך זה עובד?" — numbered step cards connected by a guide line. */
+/** "איך זה עובד?" — numbered steps as a ruled editorial flow (museum layout). */
 export default function CollabsProcess() {
-  const ref = useReveal({ selector: '.reveal', start: 'top 80%' })
+  const ref = useReveal({ selector: '.pr-animate', y: 28, stagger: 0.08, duration: 1, start: 'top 82%' })
 
   return (
-    <section id="collabs-process" ref={ref} dir="rtl" className="relative w-full overflow-hidden bg-surface">
-      <SectionBg flip watermark={false} />
-      <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
-        <SectionHeading eyebrow="התהליך" title="איך זה עובד?" animateClass="reveal" />
+    <MuseumSection id="collabs-process" bg="surface">
+      <div ref={ref} className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 py-24 md:py-32">
+        <MuseumHeading kicker="התהליך" title="איך זה עובד?" align="start" animateClass="pr-animate" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-24">
+        <div className="mt-16 border-t border-navy/12">
           {STEPS.map((s) => (
             <div
               key={s.n}
-              className="reveal relative flex flex-col gap-3 rounded-2xl bg-white p-7 shadow-sm border border-navy/8 hover:shadow-xl hover:shadow-navy/10 hover:border-orange/30 hover:-translate-y-1.5 transition-all duration-300 text-right"
+              className="pr-animate group grid grid-cols-[auto_1fr] md:grid-cols-[5rem_1fr_1.6fr] gap-x-6 md:gap-x-10 gap-y-2 items-baseline py-7 md:py-9 border-b border-navy/12"
             >
               <span
-                className="font-ragmarom text-orange/85 leading-none"
-                style={{ fontSize: 'clamp(2.6rem, 4vw, 3.4rem)' }}
+                className="font-ragmarom text-navy/25 leading-none tabular-nums transition-colors duration-300 group-hover:text-orange"
+                style={{ fontSize: 'clamp(1.8rem, 2.6vw, 2.6rem)' }}
               >
                 {s.n}
               </span>
               <h3
-                className="font-heebo font-extrabold text-navy"
-                style={{ fontSize: 'clamp(1.25rem, 1.7vw, 1.5rem)' }}
+                className="font-heebo font-bold text-navy leading-tight"
+                style={{ fontSize: 'clamp(1.25rem, 1.9vw, 1.7rem)' }}
               >
                 {s.title}
               </h3>
-              <p className="font-heebo text-navy/65 leading-relaxed">{s.text}</p>
+              <p className="col-span-2 md:col-span-1 font-heebo text-navy/60 leading-relaxed">
+                {s.text}
+              </p>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </MuseumSection>
   )
 }

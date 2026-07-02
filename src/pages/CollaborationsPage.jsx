@@ -26,15 +26,15 @@ export default function CollaborationsPage({ onContactOpen }) {
       <CollabsHero onRegister={onRegister} />
       {/* No divider — the light stats sheet rises directly over the hero's neutral base */}
       <CollabsStats />
-      <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
+      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
       <CollabsIntro />
-      <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
+      <SoftDivider fromColor="#ffffff" toColor="#fafaf8" />
       <CollabsProcess />
-      <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
+      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
       <CollabsContentWorlds />
-      <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
+      <SoftDivider fromColor="#ffffff" toColor="#f7f5f2" />
       <CollabsFormats onRegister={onRegister} />
-      <SoftDivider fromColor="#fafaf8" toColor="#0d1b4b" blend={false} />
+      <SoftDivider fromColor="#f7f5f2" toColor="#0d1b4b" blend={false} />
       <CollabsTeam />
       <SoftDivider fromColor="#0d1b4b" toColor="#fafaf8" blend={false} />
       <CollabsPartners />

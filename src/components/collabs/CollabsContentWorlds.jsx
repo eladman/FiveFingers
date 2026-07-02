@@ -1,6 +1,10 @@
 import { Check } from 'lucide-react'
-import { SectionBg, SectionHeading } from '../liabah/shared'
+import { MuseumSection, MuseumHeading } from '../academy/shared'
 import useReveal from '../../hooks/useReveal'
+
+// Signature parallelogram frame (shared with the home Programs / Academy sections).
+const CLIP_EVEN = 'polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%)'
+const CLIP_ODD = 'polygon(0% 0%, 94% 0%, 100% 100%, 6% 100%)'
 
 // The catalog's "עולמות התוכן" — three content worlds to choose from.
 const WORLDS = [
@@ -30,76 +34,102 @@ const WORLDS = [
   },
 ]
 
-/** "עולמות התוכן" — three content-world cards with image header + tool list. */
+/**
+ * "עולמות התוכן" — three content worlds as alternating full-bleed editorial
+ * rows with the signature parallelogram photo frame (museum layout).
+ */
 export default function CollabsContentWorlds() {
-  const ref = useReveal({ selector: '.reveal', start: 'top 80%' })
+  const ref = useReveal({ selector: '.cw-animate', y: 32, stagger: 0.08, duration: 1, start: 'top 82%' })
 
   return (
-    <section id="collabs-worlds" ref={ref} dir="rtl" className="relative w-full overflow-hidden bg-surface">
-      <SectionBg />
-      <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
-        <SectionHeading
-          eyebrow="התוכן"
+    <MuseumSection id="collabs-worlds" bg="white">
+      <div ref={ref} className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32">
+        <MuseumHeading
+          kicker="התוכן"
           title="עולמות התוכן"
-          subtitle="על מה תרצו לדבר? בחרו את הנושא שמדבר אליכם מתוך שלושה עולמות"
-          animateClass="reveal"
+          lead="על מה תרצו לדבר? בחרו את הנושא שמדבר אליכם מתוך שלושה עולמות"
+          align="start"
+          animateClass="cw-animate"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-24">
-          {WORLDS.map((w) => (
-            <div
-              key={w.n}
-              className="reveal group flex flex-col rounded-2xl overflow-hidden bg-white shadow-sm border border-navy/8 hover:shadow-xl hover:shadow-navy/10 hover:border-orange/30 hover:-translate-y-1.5 transition-all duration-300"
-            >
-              {/* Image header with number badge */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-navy/[0.06]">
-                <img
-                  src={w.image}
-                  alt={w.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/55 to-transparent" />
-                <span
-                  className="absolute top-4 left-4 font-ragmarom text-white/90 leading-none"
-                  style={{ fontSize: 'clamp(2rem, 3vw, 2.6rem)' }}
-                >
-                  {w.n}
-                </span>
-              </div>
+        <div className="mt-16 md:mt-24 flex flex-col gap-20 md:gap-28">
+          {WORLDS.map((w, i) => {
+            const even = i % 2 === 0
+            const clip = even ? CLIP_EVEN : CLIP_ODD
+            return (
+              <div
+                key={w.n}
+                className="cw-animate grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+              >
+                {/* Image with parallelogram clip + offset orange backing */}
+                <div className={`relative ${even ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <div
+                    aria-hidden="true"
+                    className="absolute bg-orange"
+                    style={{
+                      inset: 0,
+                      clipPath: clip,
+                      transform: even ? 'translate(14px, 14px)' : 'translate(-14px, 14px)',
+                    }}
+                  />
+                  <div
+                    className="relative aspect-[4/3] overflow-hidden bg-surface"
+                    style={{ clipPath: clip }}
+                  >
+                    <img
+                      src={w.image}
+                      alt={w.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <span
+                      className={`absolute top-5 font-ragmarom text-white leading-none ${even ? 'right-6' : 'left-6'}`}
+                      style={{ fontSize: 'clamp(2.4rem, 4vw, 3.4rem)', textShadow: '0 2px 20px rgba(8,16,40,0.5)' }}
+                    >
+                      {w.n}
+                    </span>
+                  </div>
+                </div>
 
-              {/* Body */}
-              <div className="flex flex-col gap-4 p-7 text-right flex-1">
-                <div>
+                {/* Text */}
+                <div className={`text-right ${even ? 'lg:order-2' : 'lg:order-1'}`}>
                   <h3
-                    className="font-heebo font-extrabold text-navy"
-                    style={{ fontSize: 'clamp(1.4rem, 2vw, 1.7rem)' }}
+                    className="font-ragmarom text-navy leading-tight"
+                    style={{ fontSize: 'clamp(2rem, 3.4vw, 3rem)' }}
                   >
                     {w.title}
                   </h3>
-                  <p className="font-heebo text-[#ff8714] font-semibold mt-1 leading-snug">
+                  <p
+                    className="font-heebo text-orange-ink font-semibold mt-2"
+                    style={{ fontSize: 'clamp(1.05rem, 1.4vw, 1.25rem)' }}
+                  >
                     {w.subtitle}
                   </p>
+                  <div className="mt-5 h-1 w-12 rounded-full bg-orange" />
+                  <p
+                    className="font-heebo text-navy/65 leading-relaxed mt-6"
+                    style={{ fontSize: 'clamp(1rem, 1.15vw, 1.12rem)' }}
+                  >
+                    {w.text}
+                  </p>
+                  <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                    {w.tools.map((t) => (
+                      <li
+                        key={t}
+                        className="flex items-center gap-2.5 font-heebo text-navy/75"
+                        style={{ fontSize: '0.98rem' }}
+                      >
+                        <Check size={17} className="text-orange shrink-0" strokeWidth={2.5} />
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="w-8 h-[3px] rounded-full bg-orange" />
-                <p className="font-heebo text-navy/65 leading-relaxed">{w.text}</p>
-
-                {/* Tool list */}
-                <ul className="mt-auto flex flex-col gap-2.5 pt-2">
-                  {w.tools.map((t) => (
-                    <li key={t} className="flex items-center gap-2.5 font-heebo text-navy/80">
-                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange/10 text-[#ff8714]">
-                        <Check size={13} strokeWidth={3} />
-                      </span>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
-    </section>
+    </MuseumSection>
   )
 }
