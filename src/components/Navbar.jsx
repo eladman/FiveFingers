@@ -7,6 +7,10 @@ const NAV_LINKS = [
   { label: 'קבוצות הנוער', href: '#liabah' },
   { label: 'מכינה', href: '#academy' },
   { label: 'שיתופי פעולה', href: '#collabs' },
+  // Memorial — a standalone static page in public/memorial/ (full navigation,
+  // not an in-page hash anchor). Pointed at the explicit file so it resolves
+  // identically in Vite dev, vite preview, and Vercel. Centered per the design.
+  { label: 'יזכור', href: '/memorial/index.html' },
   { label: 'בוגרים', href: '#alumni' },
   { label: 'צוות', href: '#team' },
   { label: 'עמיר מנחם', href: '#amir' },

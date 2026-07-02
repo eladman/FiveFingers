@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Standalone static page served from public/memorial/ inside the Five Fingers
+     Vite app. All asset paths stay relative so they resolve against /memorial/
+     and in-page niche links (#hall / #n0…#n18) route within this same document. -->
+<title>היכל הזיכרון · חמש אצבעות</title>
+<meta name="description" content="היכל הזיכרון של תנועת חמש אצבעות — לזכר בוגרי התנועה שנפלו.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Frank+Ruhl+Libre:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/memorial.css">
+</head>
+<body>
+
+<div id="root">
+
+<!-- =====================================================================
+     VIEW · HALL  (Layer 1 opening + Layer 2 the register)
+     ================================================================== -->
+<main id="view-hall" class="view" role="main">
+
+  <nav class="sitenav" aria-label="ניווט ראשי">
+    <a class="sitenav__logo" href="/" aria-label="חמש אצבעות — דף הבית"><img src="assets/logo.png" alt="חמש אצבעות"></a>
+    <div class="sitenav__links">
+      <a class="sitenav__link" href="/#liabah">ליבה</a>
+      <a class="sitenav__link" href="/#academy">אקדמיה</a>
+      <a class="sitenav__link" href="/#collabs">פרויקטים</a>
+      <a class="sitenav__link is-active" href="#hall" aria-current="page">יזכור</a>
+      <a class="sitenav__link" href="/#alumni">בוגרים</a>
+      <a class="sitenav__link" href="/#team">צוות</a>
+      <a class="sitenav__link" href="/#amir">עמיר מנחם</a>
+    </div>
+    <a class="sitenav__cta" href="/#contact">יצירת קשר</a>
+  </nav>
+
+  <!-- LAYER 1 — OPENING -->
+  <section class="opening" aria-labelledby="opening-title">
+    <div class="opening__stage">
+      <div class="opening__candle-wrap"><span id="opening-candle"></span></div>
+      <h1 class="opening__title" id="opening-title">היכל הזיכרון</h1>
+      <p class="opening__sub opening__dedication">
+        <span class="ded-line">עמוד הנצחה זה מוקדש לזכרם של 19 בוגרי התנועה שנפלו במלחמת חרבות ברזל.</span>
+      </p>
+      <div class="opening__count"><b class="ltr">19</b> בוגרי התנועה שנפלו</div>
+    </div>
+    <a class="opening__scroll" href="#hall" aria-label="אל ההיכל">
+      <span>אל ההיכל</span>
+      <span class="arrow" aria-hidden="true">↓</span>
+    </a>
+  </section>
+
+  <!-- LAYER 2 — THE HALL -->
+  <section class="hall" id="hall" aria-labelledby="hall-title">
+    <div class="hall__rail" aria-hidden="true"></div>
+    <div class="hall__head">
+      <div class="eyebrow">לזכרם</div>
+      <h2 class="hall__title" id="hall-title">יזכור</h2>
+      <p class="hall__sub">תשעה־עשר בוגרי התנועה שנפלו במלחמת חרבות ברזל.</p>
+      <p class="hall__note">
+        מסודרים לפי תאריך נפילתם. לחצו על שם כדי להכיר את מי שהיו,
+        ואת מה שהשאירו אחריהם.
+      </p>
+    </div>
+    <div class="wall" id="wall" role="list" aria-label="רשימת הנופלים"></div>
+    <div class="hall__floor" aria-hidden="true"></div>
+  </section>
+
+  <footer class="sitefoot">
+    <div class="sitefoot__inner">
+      <div class="sitefoot__grid">
+        <div class="sitefoot__brand">
+          <img src="assets/logo.png" alt="חמש אצבעות">
+          <p class="sitefoot__desc">מפתחים את הדור הבא של מנהיגי ישראל דרך מצוינות ערכית, חוויות אתגריות וקהילה תומכת — מאז 2014.</p>
+          <div class="sitefoot__status">
+            <span class="sitefoot__dot" aria-hidden="true"></span>
+            <span class="t">המערכת פועלת תקין</span>
+          </div>
+        </div>
+        <div class="sitefoot__col">
+          <h4>תנועה</h4>
+          <ul>
+            <li><a href="/#liabah">ליבה</a></li>
+            <li><a href="/#programs">אקדמיה</a></li>
+            <li><a href="/#programs">שת&quot;פ</a></li>
+            <li><a href="/#programs">בוגרים</a></li>
+          </ul>
+        </div>
+        <div class="sitefoot__col">
+          <h4>אודות</h4>
+          <ul>
+            <li><a href="/#who-we-are">עמיר מנחם</a></li>
+            <li><a href="/#belief">ערכים</a></li>
+            <li><a href="/#who-we-are">חזון</a></li>
+            <li><a href="/#who-we-are">מה אנחנו</a></li>
+          </ul>
+        </div>
+        <div class="sitefoot__col">
+          <h4>הצטרף</h4>
+          <ul>
+            <li><a href="/#contact">הרשמה</a></li>
+            <li><a href="/#contact">מתנדבים</a></li>
+            <li><a href="/#contact">תרומות</a></li>
+            <li><a href="/#contact">יצירת קשר</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="sitefoot__bottom">
+        <p>© 2026 תנועת חמש אצבעות — אמיר מנחם ויורם מנחם. כל הזכויות שמורות.</p>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- =====================================================================
+     VIEW · PERSON  (Layer 3 — rendered on demand)
+     ================================================================== -->
+<main id="view-person" class="view person" role="main"></main>
+
+</div><!-- /#root -->
+
+<script src="js/fallen-data.js"></script>
+<script src="js/memorial.js"></script>
+
+<!-- Accessibility widget (React, portal-based, outside #root) — ported 1:1
+     from the live Five Fingers site. -->
+<div id="a11y-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="js/a11y-widget.jsx"></script>
+</body>
+</html>

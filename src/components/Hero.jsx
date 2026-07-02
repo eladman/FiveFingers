@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { ChevronLeft } from 'lucide-react'
 import Button from './ui/Button'
 
 const IMAGES = [
@@ -180,7 +179,7 @@ export default function Hero({ onComplete, onContactOpen }) {
 
         {/* CTA buttons */}
         <div className="flex flex-wrap gap-4 justify-center mt-10 md:mt-14">
-          <Button variant="primary" onClick={() => onContactOpen?.()} icon={ChevronLeft} className="hero-cta">
+          <Button variant="primary" size="lg" onClick={() => onContactOpen?.()} className="hero-cta">
             הצטרפו אלינו
           </Button>
 
