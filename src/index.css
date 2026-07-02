@@ -8,6 +8,8 @@
 :root {
   /* Brand */
   --orange: #ff8714;
+  --orange-lift: #ffa347;    /* lit top of the CTA gradient */
+  --orange-deep: #e56f00;    /* grounded bottom of the CTA gradient */
   --orange-ink: #b35600;     /* AA-safe orange text on light */
   --navy: #0d1b4b;           /* brand dark — text on light + primary dark surfaces */
   --navy-deep: #081028;      /* deepest — gradient anchors, vignettes, footer */
@@ -280,4 +282,51 @@ html.a11y-stop-animations body::after {
 html.a11y-big-cursor,
 html.a11y-big-cursor * {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M8 4l28 20H20l8 16-4 2-8-16-8 8z' fill='%23000' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") 4 4, auto !important;
+}
+
+/* ─── Primary CTA — "Sheen Sweep" ───────────────────────────── */
+/* A deep vertical orange gradient gives the button weight; a light */
+/* streak sweeps diagonally across on hover for a premium, energetic */
+/* feel. The .btn-glow halo is reserved for a single hero CTA        */
+/* (opt-in via the `glow` prop on <Button />). transform stays in    */
+/* the transition so the component's magnetic scale still animates.  */
+.btn-cta {
+  background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep));
+  box-shadow:
+    0 8px 22px rgba(255, 135, 20, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.40);
+  transition: box-shadow var(--t-base) var(--ease-brand),
+              transform 300ms var(--ease-brand);
+}
+.btn-cta:hover {
+  box-shadow:
+    0 12px 30px rgba(255, 135, 20, 0.50),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+/* Sheen streak — sits behind the label (which is `relative`),      */
+/* clipped by the button's own overflow-hidden + rounded-full.      */
+.btn-sheen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60%;
+  left: -85%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.50), transparent);
+  transform: skewX(-18deg);
+  transition: left 600ms var(--ease-brand);
+  pointer-events: none;
+}
+.group:hover .btn-sheen { left: 130%; }
+
+/* Breathing halo for THE hero CTA only. drop-shadow follows the    */
+/* pill shape and isn't clipped by overflow-hidden.                 */
+.btn-glow { animation: emberHalo 2.4s var(--ease-brand) infinite; }
+@keyframes emberHalo {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(255, 135, 20, 0.35)); }
+  50%      { filter: drop-shadow(0 0 20px rgba(255, 135, 20, 0.65)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-glow { animation: none; filter: drop-shadow(0 0 10px rgba(255, 135, 20, 0.45)); }
+  .btn-sheen { transition: none; }
 }

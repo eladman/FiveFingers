@@ -13,6 +13,8 @@ import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
 import LiabahPage from './pages/LiabahPage'
 import AcademyPage from './pages/AcademyPage'
 import CollaborationsPage from './pages/CollaborationsPage'
+import AmirPage from './pages/AmirPage'
+import AlumniPage from './pages/AlumniPage'
 import HeroConcepts from './HeroConcepts'
 import { WHATSAPP_HREF } from './data/contact'
 
@@ -24,6 +26,8 @@ function resolveView(hash) {
   if (hash.startsWith('#liabah')) return 'liabah'
   if (hash.startsWith('#academy')) return 'academy'
   if (hash.startsWith('#collabs')) return 'collabs'
+  if (hash.startsWith('#amir')) return 'amir'
+  if (hash.startsWith('#alumni')) return 'alumni'
   return 'home'
 }
 
@@ -48,7 +52,7 @@ export default function App() {
   }, [])
 
   // Dedicated pages render their own Navbar immediately (no Hero intro to gate it).
-  const isDedicatedPage = view === 'liabah' || view === 'academy' || view === 'collabs'
+  const isDedicatedPage = view === 'liabah' || view === 'academy' || view === 'collabs' || view === 'amir' || view === 'alumni'
   const navVisible = isDedicatedPage || navReady
 
   const openContact = (product = '') => {
@@ -78,6 +82,10 @@ export default function App() {
         <AcademyPage onContactOpen={openContact} />
       ) : view === 'collabs' ? (
         <CollaborationsPage onContactOpen={openContact} />
+      ) : view === 'amir' ? (
+        <AmirPage onContactOpen={openContact} />
+      ) : view === 'alumni' ? (
+        <AlumniPage onContactOpen={openContact} />
       ) : (
         <main>
           <Hero onComplete={() => setNavReady(true)} onContactOpen={openContact} />

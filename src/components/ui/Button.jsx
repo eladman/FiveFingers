@@ -14,7 +14,7 @@ import { Loader2 } from 'lucide-react'
  */
 
 const VARIANTS = {
-  primary: 'bg-orange text-white focus-visible:ring-orange',
+  primary: 'btn-cta text-white focus-visible:ring-orange',
   secondary:
     'bg-white/10 text-white border border-white/20 hover:border-white/50 focus-visible:ring-white',
   ghost:
@@ -42,6 +42,7 @@ export default function Button({
   icon: Icon,
   loading = false,
   disabled = false,
+  glow = false,
   className = '',
   type = 'button',
   target,
@@ -50,12 +51,14 @@ export default function Button({
   ...rest
 }) {
   const isDisabled = disabled || loading
+  const isPrimary = variant === 'primary'
 
   const base =
     `group relative overflow-hidden inline-flex items-center justify-center font-bold ` +
     `rounded-full whitespace-nowrap transition-transform duration-300 ease-brand ` +
     `active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ` +
     `${VARIANTS[variant] || VARIANTS.primary} ${SIZES[size] || SIZES.md} ` +
+    `${glow && isPrimary && !isDisabled ? 'btn-glow' : ''} ` +
     `${isDisabled ? 'opacity-50 pointer-events-none' : ''} ${className}`
 
   const onEnter = (e) => { if (!isDisabled) e.currentTarget.style.transform = 'scale(1.04)' }
@@ -63,10 +66,14 @@ export default function Button({
 
   const inner = (
     <>
-      <span
-        aria-hidden="true"
-        className={`absolute inset-0 ${OVERLAY[variant] || OVERLAY.primary} translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full`}
-      />
+      {isPrimary ? (
+        <span aria-hidden="true" className="btn-sheen" />
+      ) : (
+        <span
+          aria-hidden="true"
+          className={`absolute inset-0 ${OVERLAY[variant] || OVERLAY.primary} translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full`}
+        />
+      )}
       {loading && <Loader2 size={18} className="relative shrink-0 animate-spin" aria-hidden="true" />}
       <span className="relative">{children}</span>
       {!loading && Icon && <Icon size={18} className="relative shrink-0" aria-hidden="true" />}

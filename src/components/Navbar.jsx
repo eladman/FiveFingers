@@ -10,7 +10,7 @@ const NAV_LINKS = [
   // Memorial — a standalone static page in public/memorial/ (full navigation,
   // not an in-page hash anchor). Pointed at the explicit file so it resolves
   // identically in Vite dev, vite preview, and Vercel. Centered per the design.
-  { label: 'יזכור', href: '/memorial/index.html' },
+  { label: 'לזכרם', href: '/memorial/index.html' },
   { label: 'בוגרים', href: '#alumni' },
   { label: 'צוות', href: '#team' },
   { label: 'עמיר מנחם', href: '#amir' },
@@ -93,7 +93,7 @@ export default function Navbar({ onContactOpen }) {
         </div>
 
         {/* CTA */}
-        <Button variant="primary" size="sm" onClick={onContactOpen} className="ms-2 me-1">
+        <Button variant="primary" size="md" onClick={onContactOpen} className="ms-2 me-1">
           יצירת קשר
         </Button>
       </nav>
@@ -149,12 +149,13 @@ export default function Navbar({ onContactOpen }) {
                 </a>
               )
             })}
-            <button
+            <Button
+              variant="primary" size="md"
               onClick={() => { setMenuOpen(false); onContactOpen() }}
-              className="w-full mt-4 bg-orange text-white py-3.5 rounded-xl font-bold text-base"
+              className="w-full mt-4"
             >
               יצירת קשר
-            </button>
+            </Button>
           </div>
         </div>
       </nav>

@@ -47,8 +47,8 @@
         '<stop offset="100%" stop-color="#fffdf5"/>' +
       "</linearGradient>" +
       '<linearGradient id="w' + u + '" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0%" stop-color="#f6eedd"/>' +
-        '<stop offset="100%" stop-color="#e0d3ba"/>' +
+        '<stop offset="0%" stop-color="#efe3c9"/>' +
+        '<stop offset="100%" stop-color="#d4c3a0"/>' +
       "</linearGradient>" +
       "</defs>";
   }
@@ -98,9 +98,10 @@
         node = el(
           '<a class="niche niche--featured reveal" role="listitem" href="#n' + i + '" ' +
             'aria-label="' + esc(data.name) + ", " + esc(data.rank) + '. למסע חייו">' +
-            flameSm("niche__flame") +
-            '<img class="niche__photo" src="' + IMG + esc(data.photo) + '" alt="' + esc(data.name) + '" loading="lazy" decoding="async">' +
-            '<span class="niche__scrim"></span>' +
+            '<span class="niche__photo-wrap">' +
+              '<img class="niche__photo" src="' + IMG + esc(data.photo) + '" alt="' + esc(data.name) + '" loading="lazy" decoding="async">' +
+              flameSm("niche__flame") +
+            "</span>" +
             '<span class="niche__meta">' +
               '<span class="niche__name">' + esc(data.name) + "</span>" +
               '<span class="niche__dates">בן ' + ltr(data.age) + " · נפל ב־" + ltr(data.date) + "</span>" +
@@ -112,8 +113,8 @@
         node = el(
           '<a class="niche niche--plaque reveal" role="listitem" href="#n' + i + '" ' +
             'aria-label="' + esc(entry.n) + ' — לעמוד הזיכרון">' +
-            flameSm("niche__flame") +
             '<span class="niche__plaque-inner">' +
+              flameSm("niche__flame") +
               '<span class="niche__name">' + esc(entry.n) + "</span>" +
               '<span class="niche__tick"></span>' +
               '<span class="niche__held">לזכרם</span>' +
@@ -471,6 +472,34 @@
   var openingCandle = document.getElementById("opening-candle");
   if (openingCandle) { openingCandle.innerHTML = candle("opening__candle"); }
   buildHall();
+
+  /* ---------- mobile nav drawer (mirrors the React <Navbar> menu) --------- */
+  (function initNav() {
+    var nav = document.querySelector(".sitenav");
+    var toggle = document.getElementById("navToggle");
+    var drawer = document.getElementById("navDrawer");
+    if (!nav || !toggle || !drawer) { return; }
+
+    function setOpen(open) {
+      nav.classList.toggle("is-open", open);
+      drawer.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    toggle.addEventListener("click", function () {
+      setOpen(!drawer.classList.contains("is-open"));
+    });
+    // Close after choosing a destination, on Escape, or when clicking away.
+    drawer.addEventListener("click", function (e) {
+      if (e.target.closest("a")) { setOpen(false); }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { setOpen(false); }
+    });
+    document.addEventListener("click", function (e) {
+      if (!nav.contains(e.target) && !drawer.contains(e.target)) { setOpen(false); }
+    });
+  })();
+
   window.addEventListener("hashchange", route);
   route();
 })();
