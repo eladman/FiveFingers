@@ -26,7 +26,7 @@ export default function AcademyPage({ onContactOpen }) {
   return (
     <main className="bg-surface">
       <AcademyHero onRegister={onRegister} />
-      <SoftDivider fromColor="#081028" toColor="#fafaf8" />
+      {/* No seam divider here — like the homepage, AcademyManifesto floats up over the hero's dark base as a sheet */}
       <AcademyManifesto />
       <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
       <AcademyAxes />

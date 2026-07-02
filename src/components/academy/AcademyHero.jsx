@@ -36,7 +36,8 @@ function SplitText({ children }) {
  * Full-bleed cinematic hero, converged with the homepage Hero: background
  * slideshow (Ken Burns) or direct video, layered warm-grade/scrim overlays,
  * per-character RagMarom headline, center-draw orange accent, primary + ghost
- * CTAs. The bottom is tinted toward navy so it hands off to the first SoftDivider.
+ * CTAs. Like the homepage hero, the dark base has no seam divider below it — the
+ * first section floats up over it as a sheet.
  */
 export default function AcademyHero({ onRegister }) {
   const ref = useRef(null)
@@ -132,11 +133,8 @@ export default function AcademyHero({ onRegister }) {
         <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
         {/* Dark scrim for text legibility */}
         <div className="absolute inset-0 bg-black/50" />
-        {/* Multi-layer gradient for depth (matches the homepage hero) — bottom dissolves into navy-deep to meet the divider */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#081028]/85 via-[#081028]/25 to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-1/4 bg-gradient-to-t from-[#081028] to-transparent" />
-        {/* Subtle orange warmth at the very bottom */}
-        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-orange/8 to-transparent" />
+        {/* Neutral depth gradient — grounds the CTAs and the sheet that floats up below, with no blue cast (matches the homepage hero) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
       </div>
 
       {/* ── Content ── */}
