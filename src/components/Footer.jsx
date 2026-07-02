@@ -13,7 +13,7 @@ const FOOTER_NAV = {
   אודות: [
     { label: 'עמיר מנחם', href: '#who-we-are' },
     { label: 'ערכים', href: '#belief' },
-    { label: 'חזון', href: '#who-we-are' },
+    { label: 'חזון', href: '#what-we-believe' },
     { label: 'מה אנחנו', href: '#who-we-are' },
   ],
   הצטרף: [

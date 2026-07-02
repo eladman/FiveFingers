@@ -30,6 +30,15 @@ export default function Navbar({ onContactOpen }) {
     }
   }, [])
 
+  // Scroll to the very top when the logo is clicked. Covers the case where the
+  // hash is already #home (no hashchange fires, so App's router won't scroll).
+  const handleLogoClick = () => {
+    setMenuOpen(false)
+    if (window.location.hash === '#home' || window.location.hash === '') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
   // Option A — Light Frosted Glass: clear glass + white text over the hero,
   // white frosted glass + navy text once scrolled over the warm light sections.
   const mobileLifted = scrolled || menuOpen
@@ -45,7 +54,7 @@ export default function Navbar({ onContactOpen }) {
         }`}
       >
         {/* Logo */}
-        <a href="#home" className="flex items-center me-3 ms-1 shrink-0">
+        <a href="#home" onClick={handleLogoClick} className="flex items-center me-3 ms-1 shrink-0">
           <img src={logo} alt="חמש אצבעות" className="h-8 w-auto" />
         </a>
 
@@ -94,7 +103,7 @@ export default function Navbar({ onContactOpen }) {
               : 'bg-white/10 backdrop-blur-md border border-white/20'
           }`}
         >
-          <a href="#home">
+          <a href="#home" onClick={handleLogoClick}>
             <img src={logo} alt="חמש אצבעות" className="h-8 w-auto" />
           </a>
           <button

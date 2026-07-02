@@ -122,11 +122,9 @@ export default function LiabahHero({ onRegister }) {
         <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
         {/* Dark scrim */}
         <div className="absolute inset-0 bg-black/50" />
-        {/* Multi-layer gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#081028]/85 via-[#081028]/25 to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-1/4 bg-gradient-to-t from-[#081028] to-transparent" />
-        {/* Subtle orange warmth at the bottom */}
-        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-orange/8 to-transparent" />
+        {/* Neutral depth gradient — grounds the CTAs and lets the light content
+            sheet below rise up cleanly, with no blue cast (matches the homepage hero) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
       </div>
 
       {/* ── Content ── */}

@@ -20,7 +20,7 @@ export default function LiabahPage({ onContactOpen }) {
   return (
     <main>
       <LiabahHero onRegister={onRegister} />
-      <SoftDivider fromColor="#081028" toColor="#fafaf8" />
+      {/* No divider — the light essence sheet rises directly over the hero's neutral base */}
       <LiabahEssence />
       <SoftDivider fromColor="#fafaf8" toColor="#0d1b4b" blend={false} />
       <LiabahStats />

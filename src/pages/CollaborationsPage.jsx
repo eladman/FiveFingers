@@ -24,9 +24,9 @@ export default function CollaborationsPage({ onContactOpen }) {
   return (
     <main className="bg-surface">
       <CollabsHero onRegister={onRegister} />
-      <SoftDivider fromColor="#081028" toColor="#0d1b4b" blend={false} />
+      {/* No divider — the light stats sheet rises directly over the hero's neutral base */}
       <CollabsStats />
-      <SoftDivider fromColor="#0d1b4b" toColor="#fafaf8" blend={false} />
+      <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
       <CollabsIntro />
       <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
       <CollabsProcess />

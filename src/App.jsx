@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import WhoWeAre from './components/WhoWeAre'
+import WhatWeBelieve from './components/WhatWeBelieve'
 import ManInArena from './components/ManInArena'
 import Programs from './components/Programs'
 import FiveContent from './components/FiveContent'
@@ -37,7 +38,7 @@ export default function App() {
     const onHashChange = () => {
       const next = resolveView(window.location.hash)
       setView((prev) => {
-        if (next !== 'home' && prev !== next) window.scrollTo(0, 0)
+        if (prev !== next) window.scrollTo(0, 0)
         if (next === 'home' && prev !== 'home') setNavReady(true)
         return next
       })
@@ -82,6 +83,7 @@ export default function App() {
           <Hero onComplete={() => setNavReady(true)} onContactOpen={openContact} />
           {/* WhoWeAre floats up over the hero's dark base as a sheet — no seam divider here */}
           <WhoWeAre />
+          <WhatWeBelieve />
           <ManInArena />
           <Programs onContactOpen={openContact} />
           <FiveContent />

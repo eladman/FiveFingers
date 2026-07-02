@@ -152,7 +152,7 @@ export default function LiabahEssence() {
       id="liabah-essence"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-surface"
+      className="relative z-10 w-full overflow-hidden bg-surface"
     >
       <SectionBg />
 
