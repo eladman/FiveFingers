@@ -26,14 +26,14 @@ const FOOTER_NAV = {
 
 export default function Footer({ onContactOpen }) {
   return (
-    <footer className="rounded-t-[4rem] pt-16 md:pt-20 pb-10 px-8 md:px-16" style={{ background: 'linear-gradient(180deg, #0d1b4b 0%, #081028 100%)' }}>
+    <footer className="rounded-t-[4rem] pt-16 md:pt-20 pb-10 px-8 md:px-16 bg-white border-t border-navy/10">
       <div className="max-w-7xl mx-auto">
         {/* Main grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand column */}
           <div className="md:col-span-1">
             <img src={logo} alt="חמש אצבעות" className="h-12 w-auto mb-5" />
-            <p className="text-white/45 text-sm leading-relaxed mb-7 max-w-xs">
+            <p className="text-navy/55 text-sm leading-relaxed mb-7 max-w-xs">
               מפתחים את הדור הבא של מנהיגי ישראל דרך מצוינות ערכית, חוויות אתגריות וקהילה תומכת — מאז 2014.
             </p>
 
@@ -43,14 +43,14 @@ export default function Footer({ onContactOpen }) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
               </span>
-              <span className="font-mono text-white/35 text-xs tracking-wide">המערכת פועלת תקין</span>
+              <span className="font-mono text-navy/45 text-xs tracking-wide">המערכת פועלת תקין</span>
             </div>
           </div>
 
           {/* Link columns */}
           {Object.entries(FOOTER_NAV).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-orange font-semibold text-sm mb-5 tracking-wide">{category}</h4>
+              <h4 className="text-orange-ink font-semibold text-sm mb-5 tracking-wide">{category}</h4>
               <ul className="space-y-3.5">
                 {links.map((link) => (
                   <li key={link.label}>
@@ -58,14 +58,14 @@ export default function Footer({ onContactOpen }) {
                       <button
                         type="button"
                         onClick={onContactOpen}
-                        className="text-white/40 hover:text-white/80 text-sm transition-colors duration-200 text-right"
+                        className="text-navy/55 hover:text-navy text-sm transition-colors duration-200 text-right"
                       >
                         {link.label}
                       </button>
                     ) : (
                       <a
                         href={link.href}
-                        className="text-white/40 hover:text-white/80 text-sm transition-colors duration-200"
+                        className="text-navy/55 hover:text-navy text-sm transition-colors duration-200"
                       >
                         {link.label}
                       </a>
@@ -80,8 +80,8 @@ export default function Footer({ onContactOpen }) {
         {/* Divider */}
         {/* NOTE: legal links (תנאי שימוש / מדיניות פרטיות) were removed until real
             pages exist — re-add here once those routes/pages are created. */}
-        <div className="border-t border-white/10 pt-8 flex items-center justify-center">
-          <p className="text-white/25 text-sm text-center">
+        <div className="border-t border-navy/10 pt-8 flex items-center justify-center">
+          <p className="text-navy/40 text-sm text-center">
             © {new Date().getFullYear()} תנועת חמש אצבעות — אמיר מנחם ויורם מנחם. כל הזכויות שמורות.
           </p>
         </div>
