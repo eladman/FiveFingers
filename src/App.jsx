@@ -15,6 +15,7 @@ import AcademyPage from './pages/AcademyPage'
 import CollaborationsPage from './pages/CollaborationsPage'
 import AmirPage from './pages/AmirPage'
 import AlumniPage from './pages/AlumniPage'
+import TeamPage from './pages/TeamPage'
 import HeroConcepts from './HeroConcepts'
 import { WHATSAPP_HREF } from './data/contact'
 
@@ -28,6 +29,7 @@ function resolveView(hash) {
   if (hash.startsWith('#collabs')) return 'collabs'
   if (hash.startsWith('#amir')) return 'amir'
   if (hash.startsWith('#alumni')) return 'alumni'
+  if (hash.startsWith('#team')) return 'team'
   return 'home'
 }
 
@@ -52,7 +54,7 @@ export default function App() {
   }, [])
 
   // Dedicated pages render their own Navbar immediately (no Hero intro to gate it).
-  const isDedicatedPage = view === 'liabah' || view === 'academy' || view === 'collabs' || view === 'amir' || view === 'alumni'
+  const isDedicatedPage = view === 'liabah' || view === 'academy' || view === 'collabs' || view === 'amir' || view === 'alumni' || view === 'team'
   const navVisible = isDedicatedPage || navReady
 
   const openContact = (product = '') => {
@@ -86,6 +88,8 @@ export default function App() {
         <AmirPage onContactOpen={openContact} />
       ) : view === 'alumni' ? (
         <AlumniPage onContactOpen={openContact} />
+      ) : view === 'team' ? (
+        <TeamPage onContactOpen={openContact} />
       ) : (
         <main>
           <Hero onComplete={() => setNavReady(true)} onContactOpen={openContact} />

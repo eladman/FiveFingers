@@ -10,9 +10,18 @@ const PRODUCT_TYPES = [
   'שיתוף פעולה',
   'יואב',
   'קשר עם עמיר',
+  'מאמן/ת',
+  'מדריך/ה בהזנק',
+  'צוות מטה',
 ]
 
 const INITIAL_FORM = { name: '', phone: '', email: '', productType: '' }
+
+const CONTACT_CHANNELS = [
+  { Icon: WhatsAppIcon, label: 'וואטסאפ', value: 'שלחו הודעה', href: WHATSAPP_HREF },
+  { Icon: Phone, label: 'טלפון', value: PHONE_DISPLAY, href: PHONE_HREF },
+  { Icon: Mail, label: 'מייל', value: EMAIL, href: EMAIL_HREF },
+]
 
 export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
   const [form, setForm] = useState(INITIAL_FORM)
@@ -144,10 +153,10 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
 
         {/* ─── Form panel ──────────────────────────────── */}
         <div
-          className="relative flex-1 overflow-y-auto"
+          className="relative flex-1 min-h-0 overflow-y-auto"
           style={{ background: '#ffffff' }}
         >
-          <div className="px-7 sm:px-10 py-9 sm:py-11">
+          <div className="px-6 py-6 sm:px-10 sm:py-11">
             {status === 'success' ? (
               <SuccessState onClose={onClose} name={form.name} />
             ) : (
@@ -219,6 +228,8 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
                 </form>
               </>
             )}
+
+            <MobileContactBar />
           </div>
         </div>
       </div>
@@ -248,15 +259,9 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
 /* ─────────────────────────────────────────────────────────── */
 
 function BrandPanel() {
-  const channels = [
-    { Icon: WhatsAppIcon, label: 'וואטסאפ', value: 'שלחו הודעה', href: WHATSAPP_HREF },
-    { Icon: Phone, label: 'טלפון', value: PHONE_DISPLAY, href: PHONE_HREF },
-    { Icon: Mail, label: 'מייל', value: EMAIL, href: EMAIL_HREF },
-  ]
-
   return (
     <div
-      className="relative overflow-hidden md:w-[42%] shrink-0 px-7 sm:px-10 py-9 sm:py-11"
+      className="hidden md:block relative overflow-hidden md:w-[42%] shrink-0 px-10 py-11"
       style={{ background: 'linear-gradient(150deg, #0d1b4b 0%, #0a1230 55%, #06081a 100%)' }}
     >
       {/* Animated orange glow */}
@@ -285,7 +290,7 @@ function BrandPanel() {
 
         {/* Quick contact channels */}
         <div className="mt-auto flex flex-col gap-2.5">
-          {channels.map(({ Icon, label, value, href }) => (
+          {CONTACT_CHANNELS.map(({ Icon, label, value, href }) => (
             <a
               key={label}
               href={href}
@@ -310,6 +315,33 @@ function BrandPanel() {
           ))}
         </div>
       </div>
+    </div>
+  )
+}
+
+/* Mobile-only contact channels — shown at the very bottom of the white panel,
+   replacing the navy BrandPanel (which is desktop-only, md:block above). */
+function MobileContactBar() {
+  return (
+    <div className="md:hidden mt-7 pt-6 flex items-center gap-2" style={{ borderTop: '1px solid #eef0f3' }}>
+      {CONTACT_CHANNELS.map(({ Icon, label, href }) => (
+        <a
+          key={label}
+          href={href}
+          target={href.startsWith('http') ? '_blank' : undefined}
+          rel={href.startsWith('http') ? 'noreferrer' : undefined}
+          className="flex flex-1 flex-col items-center gap-1.5 rounded-2xl py-3 transition-colors duration-200"
+          style={{ background: '#f7f8fa', border: '1px solid #eef0f3' }}
+        >
+          <span
+            className="flex items-center justify-center rounded-xl shrink-0"
+            style={{ width: '36px', height: '36px', background: 'rgba(255,135,20,0.12)' }}
+          >
+            <Icon size={17} className="text-orange" strokeWidth={2} />
+          </span>
+          <span className="text-[11px] font-semibold" style={{ color: '#3a3f4b' }}>{label}</span>
+        </a>
+      ))}
     </div>
   )
 }
@@ -450,7 +482,7 @@ function SuccessState({ onClose, name }) {
         {name ? `תודה, ${name.split(' ')[0]}!` : 'תודה רבה!'}
       </h3>
       <p className="text-sm leading-relaxed mb-7 max-w-[280px] mx-auto" style={{ color: '#9aa0ad' }}>
-        קיבלנו את הפנייה שלכם — נחזור אליכם תוך 24 שעות. נתראה בזירה. 🔥
+        קיבלנו את הפנייה שלך - נחזור אלייך תוך 24 שעות. נתראה בזירה. 🔥
       </p>
       <button
         onClick={onClose}
