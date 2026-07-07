@@ -41,14 +41,14 @@ export const essence = {
       num: '01',
       title: 'אימון פיזי-מנטלי',
       text: 'אתגר גופני שמפתח חוסן, הרגלים ומשמעת. מכל מפגש יוצאים חזקים יותר — בגוף ובמחשבה.',
-      imageSrc: '/our_product_pics/core_pic.jpg',
+      imageSrc: '/liba_pics/214A0223.jpg',
       objectPosition: '50% 20%',
     },
     {
       num: '02',
       title: 'קבוצה',
       text: 'קהילה מלוכדת שמייצרת שייכות וכוח משותף. לומדים שמשיגים יותר ביחד מאשר לבד.',
-      imageSrc: '/our_product_pics/collab_pic.jpg',
+      imageSrc: '/our_product_pics/core_pic.jpg',
       objectPosition: '50% 20%',
     },
     {
