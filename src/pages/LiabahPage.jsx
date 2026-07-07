@@ -3,7 +3,6 @@ import LiabahHero from '../components/liabah/LiabahHero'
 import LiabahEssence from '../components/liabah/LiabahEssence'
 import LiabahStats from '../components/liabah/LiabahStats'
 import LiabahPrograms from '../components/liabah/LiabahPrograms'
-import LiabahYear from '../components/liabah/LiabahYear'
 import LiabahCoaches from '../components/liabah/LiabahCoaches'
 import LiabahMap from '../components/liabah/LiabahMap'
 import LiabahGallery from '../components/liabah/LiabahGallery'
@@ -27,8 +26,6 @@ export default function LiabahPage({ onContactOpen }) {
       <SoftDivider fromColor="#0d1b4b" toColor="#ffffff" blend={false} />
       <LiabahPrograms onRegister={onRegister} />
       <SoftDivider fromColor="#ffffff" toColor="#fafaf8" />
-      <LiabahYear />
-      <SoftDivider fromColor="#fafaf8" toColor="#fafaf8" />
       <LiabahCoaches />
       <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
       <LiabahMap />

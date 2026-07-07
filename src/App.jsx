@@ -6,7 +6,6 @@ import WhatWeBelieve from './components/WhatWeBelieve'
 import ManInArena from './components/ManInArena'
 import Programs from './components/Programs'
 import FiveContent from './components/FiveContent'
-import ContactCTA from './components/ContactCTA'
 import Footer from './components/Footer'
 import ContactModal from './components/ContactModal'
 import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
@@ -31,6 +30,19 @@ function resolveView(hash) {
   if (hash.startsWith('#alumni')) return 'alumni'
   if (hash.startsWith('#team')) return 'team'
   return 'home'
+}
+
+// The interest a generic "יצירת קשר" (navbar / footer) should preselect when
+// opened from a dedicated page. Values match ContactModal's chips (or its
+// aliases). Homepage / concepts have no obvious lane, so they stay empty and
+// the modal opens with the full picker.
+const VIEW_TO_PRODUCT = {
+  liabah: 'קבוצות הנוער',
+  academy: 'מכינה',
+  collabs: 'שיתוף פעולה',
+  amir: 'קשר עם עמיר',
+  alumni: 'יואב',
+  team: 'מאמן/ת',
 }
 
 export default function App() {
@@ -70,7 +82,7 @@ export default function App() {
   return (
     <div className="antialiased">
       <div style={{ opacity: navVisible ? 1 : 0, transition: 'opacity 0.7s ease' }}>
-        <Navbar onContactOpen={() => openContact()} />
+        <Navbar onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')} forceLifted={view === 'team'} />
       </div>
       <ContactModal
         isOpen={contactOpen}
@@ -99,10 +111,9 @@ export default function App() {
           <ManInArena />
           <Programs onContactOpen={openContact} />
           <FiveContent />
-          <ContactCTA onContactOpen={openContact} />
         </main>
       )}
-      <Footer onContactOpen={() => openContact()} />
+      <Footer onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')} />
 
       {/* Floating WhatsApp button */}
       <a

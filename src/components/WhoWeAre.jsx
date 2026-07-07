@@ -4,8 +4,8 @@ import useCountUp from '../hooks/useCountUp'
 // Movement-wide numbers (mirrors the collaborations "מי אנחנו" catalog figures).
 const STATS = [
   { value: 12, suffix: '', label: 'שנות פעילות' },
-  { value: 10000, suffix: '+', label: 'בוגרים וחניכים' },
-  { value: 100, suffix: '+', label: 'ארגונים שותפים' },
+  { value: 5000, suffix: '+', label: 'בוגרים וחניכים' },
+  { value: 100, suffix: '+', label: 'שיתופי פעולה' },
 ]
 
 export default function WhoWeAre() {

@@ -12,6 +12,31 @@ export const hero = {
   secondaryCta: 'גלו את התפקידים',
 }
 
+// The "מי אנחנו" roster — real people behind the movement, grouped by department.
+// Photos/names/bios are placeholders until the real content is supplied; every
+// member keeps the same shape (photo, name, title, bio) so real content drops
+// straight in later.
+function placeholderMembers(count) {
+  return Array.from({ length: count }, (_, i) => ({
+    id: `member-${i + 1}`,
+    photo: '', // TODO: add portrait
+    name: 'שם ותפקיד', // TODO: add real name
+    title: 'תפקיד יעודכן', // TODO: add real title
+    bio: 'תיאור קצר על חבר/ת הצוות יתווסף בהמשך.', // TODO: add real bio
+  }))
+}
+
+export const roster = {
+  eyebrow: 'הכירו את הצוות',
+  title: 'האנשים שמניעים את חמש אצבעות',
+  lead: 'בורד, הנהלה וצוות מטה — האנשים והאנשות שעומדים מאחורי התנועה.',
+  groups: [
+    { id: 'board', title: 'בורד ומנכ״לים', members: placeholderMembers(4) },
+    { id: 'managers', title: 'מנהלים', members: placeholderMembers(3) },
+    { id: 'staff', title: 'מטה', members: placeholderMembers(6) },
+  ],
+}
+
 export const intro = {
   eyebrow: 'הצוות שלנו',
   title: 'חמש אצבעות נבנית מהאנשים שבתוכה',

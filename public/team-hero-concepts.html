@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>צוות · Hero Concepts — חמש אצבעות</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'RagMarom';
+      src: url('fonts/rag-marom-2.1.otf') format('opentype');
+      font-weight: normal; font-style: normal; font-display: swap;
+    }
+
+    :root {
+      --orange: #ff8714;
+      --orange-lift: #ffa347;
+      --orange-deep: #e56f00;
+      --orange-ink: #b35600;
+      --navy: #0d1b4b;
+      --navy-deep: #081028;
+      --navy-light: #1e3578;
+      --surface: #fafaf8;
+      --surface-2: #f7f5f2;
+      --ease-brand: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--navy-deep);
+      color: var(--navy);
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    /* Global grain */
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ── Design-system atoms ─────────────────────────────── */
+    .ds-eyebrow {
+      font-family: 'Heebo', sans-serif; font-weight: 600;
+      font-size: clamp(0.72rem, 0.9vw, 0.85rem); line-height: 1.2;
+      letter-spacing: 0.22em; text-transform: uppercase;
+    }
+    .rag { font-family: 'RagMarom', 'Heebo', sans-serif; }
+    .accent-rule { height: 3px; border-radius: 999px; background: var(--orange); transform-origin: center; }
+
+    .btn {
+      position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.6rem; font-family: 'Heebo', sans-serif; font-weight: 700; border-radius: 999px;
+      padding: 0.9rem 2rem; font-size: 1rem; white-space: nowrap; cursor: pointer; border: none;
+      transition: transform 0.3s var(--ease-brand), box-shadow 0.24s var(--ease-brand), border-color 0.3s, background 0.3s, color 0.3s;
+      text-decoration: none;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      color: #fff; background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep));
+      box-shadow: 0 8px 22px rgba(255,135,20,0.38), inset 0 1px 0 rgba(255,255,255,0.40);
+    }
+    .btn-primary:hover { transform: scale(1.04); box-shadow: 0 12px 30px rgba(255,135,20,0.50), inset 0 1px 0 rgba(255,255,255,0.45); }
+    .btn-primary .sheen {
+      position: absolute; top: 0; bottom: 0; width: 60%; left: -85%;
+      background: linear-gradient(100deg, transparent, rgba(255,255,255,0.5), transparent);
+      transform: skewX(-18deg); transition: left 0.6s var(--ease-brand); pointer-events: none;
+    }
+    .btn-primary:hover .sheen { left: 130%; }
+    /* Ghost on dark */
+    .btn-ghost-dark {
+      color: rgba(255,255,255,0.75); background: transparent; border: 1px solid rgba(255,255,255,0.22);
+    }
+    .btn-ghost-dark:hover { color: #fff; border-color: rgba(255,255,255,0.55); transform: scale(1.03); }
+    /* Quiet on light */
+    .btn-quiet {
+      color: var(--navy); background: transparent; border: 1px solid rgba(13,27,75,0.25);
+    }
+    .btn-quiet:hover { border-color: rgba(13,27,75,0.6); background: rgba(13,27,75,0.03); transform: scale(1.03); }
+
+    .icon { width: 18px; height: 18px; flex: none; }
+
+    /* ── Switcher ────────────────────────────────────────── */
+    .switcher {
+      position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 100;
+      display: flex; gap: 4px; padding: 5px; border-radius: 999px;
+      background: rgba(8,16,40,0.72); backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+    }
+    .switcher button {
+      font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 0.82rem; color: rgba(255,255,255,0.7);
+      background: transparent; border: none; cursor: pointer; padding: 0.5rem 1rem; border-radius: 999px;
+      transition: all 0.25s var(--ease-brand); white-space: nowrap;
+    }
+    .switcher button:hover { color: #fff; }
+    .switcher button.active { color: #fff; background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); box-shadow: 0 4px 14px rgba(255,135,20,0.4); }
+    .caption {
+      position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 100;
+      font-size: 0.8rem; color: rgba(255,255,255,0.55); background: rgba(8,16,40,0.6); backdrop-filter: blur(10px);
+      padding: 0.5rem 1.1rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); max-width: 92vw; text-align: center;
+    }
+    .caption b { color: rgba(255,255,255,0.85); font-weight: 700; }
+
+    /* ── Concept shell ───────────────────────────────────── */
+    .concept { display: none; min-height: 100dvh; position: relative; overflow: hidden; }
+    .concept.active { display: flex; }
+
+    /* halftone dot layer */
+    .dots {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, currentColor 1.2px, transparent 1.2px);
+      background-size: 22px 22px; opacity: 0.05;
+    }
+
+    /* ============ ENTRANCE ANIMATIONS ============ */
+    .concept.active .anim-char { animation: charUp 0.9s var(--ease-brand) both; }
+    @keyframes charUp { from { opacity: 0; transform: translateY(55px); filter: blur(14px); } to { opacity: 1; transform: none; filter: blur(0); } }
+    .concept.active .anim-rule { animation: ruleIn 0.4s var(--ease-brand) both; }
+    @keyframes ruleIn { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+    .concept.active .anim-up { animation: fadeUp 0.6s var(--ease-brand) both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .concept.active .anim-tile { animation: tileIn 0.8s var(--ease-brand) both; }
+    @keyframes tileIn { from { opacity: 0; transform: translateY(28px) scale(0.94); } to { opacity: 1; transform: none; } }
+    .concept.active .anim-pop { animation: popIn 0.55s var(--ease-brand) both; }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; }
+    }
+
+    /* =====================================================
+       CONCEPT A — קיר הפנים / Faces Wall (dark, static mosaic)
+       ===================================================== */
+    #cA { color: #fff; align-items: center;
+      background:
+        radial-gradient(120% 90% at 82% 12%, rgba(30,53,120,0.55), transparent 60%),
+        linear-gradient(160deg, #0f2050 0%, var(--navy-deep) 55%, #06091c 100%);
+    }
+    #cA .glow1 { position: absolute; top: -8%; right: -6%; width: 44vw; height: 50vh; border-radius: 999px; background: rgba(255,135,20,0.14); filter: blur(150px); }
+    #cA .glow2 { position: absolute; bottom: 6%; left: 30%; width: 40vw; height: 40vh; border-radius: 999px; background: rgba(255,135,20,0.08); filter: blur(160px); }
+    #cA .wrap { position: relative; z-index: 5; width: 100%; max-width: 1240px; margin: 0 auto; padding: 7rem 2rem 5rem;
+      display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+    #cA .mosaic {
+      display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 12px;
+      aspect-ratio: 1/1.02;
+    }
+    #cA .mosaic .tile { position: relative; border-radius: 16px; overflow: hidden; background: #10193a;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.45); }
+    #cA .mosaic .tile img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.02); }
+    #cA .mosaic .tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(8,16,40,0.35)); }
+    #cA .mosaic .tile.orange::before { content: ''; position: absolute; inset: 0; z-index: 2; background: var(--orange); mix-blend-mode: multiply; opacity: 0.16; }
+    #cA .t-tall { grid-row: span 2; }
+    #cA .t-wide { grid-column: span 2; }
+    #cA .badge {
+      position: absolute; z-index: 6; bottom: -14px; right: -14px;
+      background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); color: #fff;
+      border-radius: 18px; padding: 0.9rem 1.2rem; text-align: center; box-shadow: 0 12px 30px rgba(255,135,20,0.45);
+      border: 3px solid #0f2050;
+    }
+    #cA .badge b { display: block; font-family: 'RagMarom', sans-serif; font-size: 1.9rem; line-height: 1; }
+    #cA .badge span { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; opacity: 0.95; }
+    #cA h1 { font-size: clamp(3rem, 7vw, 6.6rem); line-height: 0.92; letter-spacing: -0.02em; margin-bottom: 0.2em;
+      text-shadow: 0 4px 32px rgba(0,0,0,0.5); }
+    #cA h1 .l2 { color: var(--orange); }
+    #cA .sub { font-family: 'RagMarom', sans-serif; color: rgba(255,255,255,0.9); font-size: clamp(1.2rem, 2vw, 1.9rem); line-height: 1.25; margin-top: 1rem; max-width: 22ch; }
+    #cA .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.2rem; }
+
+    /* =====================================================
+       CONCEPT B — עריכה בהירה / Editorial Light Roster
+       ===================================================== */
+    #cB { color: var(--navy); align-items: center; background: var(--surface); }
+    #cB .glow1 { position: absolute; top: -6%; right: -6%; width: 42vw; height: 50vh; border-radius: 999px; background: rgba(255,135,20,0.07); filter: blur(150px); }
+    #cB .glow2 { position: absolute; bottom: 8%; left: 6%; width: 46vw; height: 40vh; border-radius: 999px; background: rgba(255,135,20,0.08); filter: blur(160px); }
+    #cB .dots { color: var(--navy); }
+    #cB .watermark { position: absolute; left: -3%; top: 50%; transform: translateY(-50%) rotate(-12deg) scaleX(-1);
+      width: 42%; max-width: 420px; opacity: 0.045; filter: grayscale(1); pointer-events: none; }
+    #cB .wrap { position: relative; z-index: 5; width: 100%; max-width: 1180px; margin: 0 auto; padding: 8rem 2rem 4rem; text-align: right; }
+    #cB .eyebrow-row { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.4rem; }
+    #cB .eyebrow-row .ds-eyebrow { color: var(--orange-ink); }
+    #cB .eyebrow-row .line { flex: 1; height: 1px; background: rgba(13,27,75,0.14); max-width: 120px; }
+    #cB h1 { font-size: clamp(3.2rem, 8vw, 7.5rem); line-height: 0.92; letter-spacing: -0.02em; }
+    #cB h1 .l2 { color: var(--orange); }
+    #cB .accent-rule { width: 90px; margin: 1.6rem 0 0; }
+    #cB .lead { font-family: 'Heebo', sans-serif; font-weight: 500; color: var(--orange-ink); font-size: clamp(1.15rem, 1.9vw, 1.7rem); line-height: 1.4; margin-top: 1.6rem; max-width: 30ch; }
+    #cB .roster { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.6rem; max-width: 780px; }
+    #cB .role {
+      position: relative; text-align: right; background: #fff; border: 1px solid rgba(13,27,75,0.09);
+      border-radius: 18px; padding: 1.3rem 1.3rem 1.4rem; transition: transform 0.3s var(--ease-brand), box-shadow 0.3s, border-color 0.3s;
+      box-shadow: 0 1px 0 rgba(13,27,75,0.03);
+    }
+    #cB .role:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(13,27,75,0.1); border-color: rgba(255,135,20,0.4); }
+    #cB .role .num { font-family: 'RagMarom', sans-serif; color: rgba(13,27,75,0.18); font-size: 1.5rem; line-height: 1; }
+    #cB .role h3 { font-family: 'Heebo', sans-serif; font-weight: 700; font-size: 1.25rem; margin-top: 0.5rem; }
+    #cB .role p { font-size: 0.92rem; color: rgba(13,27,75,0.62); line-height: 1.45; margin-top: 0.35rem; }
+    #cB .role .arrow { position: absolute; bottom: 1.1rem; left: 1.1rem; color: var(--orange); opacity: 0; transform: translateX(6px); transition: all 0.3s var(--ease-brand); }
+    #cB .role:hover .arrow { opacity: 1; transform: none; }
+    #cB .bottom { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 2.8rem; }
+    #cB .avatars { display: flex; }
+    #cB .avatars img { width: 48px; height: 48px; border-radius: 999px; object-fit: cover; border: 3px solid var(--surface); margin-left: -14px; box-shadow: 0 4px 12px rgba(13,27,75,0.15); }
+    #cB .avatars .count { width: 48px; height: 48px; border-radius: 999px; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; border: 3px solid var(--surface); margin-left: -14px; }
+    #cB .avatars-label { font-size: 0.92rem; color: rgba(13,27,75,0.6); }
+    #cB .avatars-label b { color: var(--navy); font-weight: 700; }
+
+    /* =====================================================
+       CONCEPT C — פורטרט מפוצל / Split Portrait (duotone)
+       ===================================================== */
+    #cC { background: var(--surface); }
+    #cC .split { display: grid; grid-template-columns: 1.1fr 0.9fr; width: 100%; min-height: 100dvh; }
+    #cC .left { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 7rem clamp(2rem, 6vw, 6rem) 5rem; color: var(--navy); }
+    #cC .left .glow { position: absolute; bottom: 6%; right: 6%; width: 40vw; height: 40vh; border-radius: 999px; background: rgba(255,135,20,0.08); filter: blur(150px); }
+    #cC .dots { color: var(--navy); }
+    #cC .ds-eyebrow { color: var(--orange-ink); margin-bottom: 1.2rem; }
+    #cC h1 { font-size: clamp(3rem, 6vw, 6.4rem); line-height: 0.92; letter-spacing: -0.02em; }
+    #cC h1 .l2 { color: var(--orange); }
+    #cC .accent-rule { width: 80px; margin: 1.4rem 0 0; }
+    #cC .lead { font-family: 'Heebo', sans-serif; font-weight: 500; color: var(--orange-ink); font-size: clamp(1.1rem, 1.7vw, 1.55rem); line-height: 1.4; margin-top: 1.4rem; max-width: 26ch; }
+    #cC .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.8rem; }
+    #cC .chip { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 600; color: var(--navy); background: #fff; border: 1px solid rgba(13,27,75,0.1); border-radius: 999px; padding: 0.5rem 1rem; }
+    #cC .chip .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--orange); }
+    #cC .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.2rem; }
+    #cC .right { position: relative; overflow: hidden; background: var(--navy-deep); }
+    #cC .right img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    #cC .right .tint { position: absolute; inset: 0; background: var(--orange); mix-blend-mode: multiply; opacity: 0.2; }
+    #cC .right .shade { position: absolute; inset: 0; background: linear-gradient(90deg, var(--surface) -2%, transparent 22%), linear-gradient(180deg, transparent 55%, rgba(8,16,40,0.55)); }
+    #cC .seam { position: absolute; top: 0; bottom: 0; right: 0; width: 4px; background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); z-index: 3; }
+    #cC .name { position: absolute; z-index: 4; bottom: 2.4rem; right: 2.4rem; color: #fff; text-align: right; }
+    #cC .name b { display: block; font-family: 'RagMarom', sans-serif; font-size: 1.5rem; line-height: 1; }
+    #cC .name span { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
+
+    /* =====================================================
+       CONCEPT D — מפגש / Constellation (centered on navy)
+       ===================================================== */
+    #cD { color: #fff; align-items: center; justify-content: center; text-align: center;
+      background:
+        radial-gradient(90% 70% at 50% 30%, rgba(30,53,120,0.5), transparent 65%),
+        linear-gradient(170deg, #10224f 0%, var(--navy-deep) 60%, #05081a 100%);
+    }
+    #cD .glow { position: absolute; top: 20%; left: 50%; transform: translateX(-50%); width: 55vw; height: 45vh; border-radius: 999px; background: rgba(255,135,20,0.12); filter: blur(160px); }
+    #cD .field { position: absolute; inset: 0; pointer-events: none; }
+    #cD .av { position: absolute; border-radius: 999px; object-fit: cover; box-shadow: 0 12px 34px rgba(0,0,0,0.45); border: 3px solid rgba(255,255,255,0.14); }
+    #cD .wrap { position: relative; z-index: 5; max-width: 900px; padding: 7rem 2rem; }
+    #cD .ds-eyebrow { color: var(--orange); margin-bottom: 1.5rem; }
+    #cD h1 { font-size: clamp(3.2rem, 8vw, 8rem); line-height: 0.9; letter-spacing: -0.02em; text-shadow: 0 4px 40px rgba(0,0,0,0.5); }
+    #cD h1 .l2 { color: var(--orange); }
+    #cD .accent-rule { width: 130px; margin: 1.8rem auto 0; }
+    #cD .sub { font-family: 'RagMarom', sans-serif; color: rgba(255,255,255,0.9); font-size: clamp(1.25rem, 2.4vw, 2.2rem); line-height: 1.25; margin-top: 1.6rem; }
+    #cD .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; margin-top: 2.4rem; }
+
+    /* ── Responsive ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      #cA .wrap { grid-template-columns: 1fr; padding-top: 6rem; gap: 3rem; }
+      #cA .mosaic { max-width: 460px; margin: 0 auto; }
+      #cA .badge { bottom: -12px; right: auto; left: -8px; }
+      #cB .roster { grid-template-columns: 1fr; max-width: 460px; }
+      #cC .split { grid-template-columns: 1fr; }
+      #cC .right { min-height: 42vh; order: -1; }
+      #cC .seam { top: auto; bottom: 0; right: 0; left: 0; width: auto; height: 4px; }
+      #cD .field { display: none; }
+      .switcher { top: 8px; gap: 2px; padding: 4px; }
+      .switcher button { padding: 0.45rem 0.7rem; font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Switcher ── -->
+  <nav class="switcher" id="switcher">
+    <button data-target="cA" class="active">קיר הפנים</button>
+    <button data-target="cB">עריכה בהירה</button>
+    <button data-target="cC">פורטרט מפוצל</button>
+    <button data-target="cD">מפגש</button>
+  </nav>
+
+  <!-- ═══════════ CONCEPT A ═══════════ -->
+  <section class="concept active" id="cA">
+    <div class="glow1"></div><div class="glow2"></div>
+    <div class="dots" style="color:#fff"></div>
+    <div class="wrap">
+      <!-- text -->
+      <div>
+        <p class="ds-eyebrow anim-up" style="color:var(--orange); margin-bottom:1.4rem;">הצטרפו לצוות</p>
+        <h1 class="rag"><span class="hl">להוביל </span><span class="l2 hl">בחמש</span></h1>
+        <p class="sub anim-up">המקום שבו מובילים ומובילות משפיעים על דור שלם</p>
+        <div class="cta-row">
+          <a class="btn btn-primary anim-up"><span class="sheen"></span>השאירו פרטים
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+          <a class="btn btn-ghost-dark anim-up">גלו את התפקידים</a>
+        </div>
+      </div>
+      <!-- mosaic -->
+      <div style="position:relative">
+        <div class="mosaic">
+          <div class="tile t-tall anim-tile"><img src="coachs/taranto.JPG" alt="" /></div>
+          <div class="tile orange anim-tile"><img src="team_hero/_14A9346.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/roi.JPG" alt="" /></div>
+          <div class="tile t-wide anim-tile"><img src="Hero-Pics/214A0511.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/amit.JPG" alt="" /></div>
+          <div class="tile orange anim-tile"><img src="team_hero/_14A9373.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/idan.JPG" alt="" /></div>
+        </div>
+        <div class="badge anim-pop"><b>3,000+</b><span>מובילים ומובילות ברחבי הארץ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONCEPT B ═══════════ -->
+  <section class="concept" id="cB">
+    <div class="glow1"></div><div class="glow2"></div>
+    <div class="dots"></div>
+    <img class="watermark" src="logo.png" alt="" aria-hidden="true" />
+    <div class="wrap">
+      <div class="eyebrow-row anim-up">
+        <span class="ds-eyebrow">הצטרפו לצוות</span>
+        <span class="line"></span>
+      </div>
+      <h1 class="rag"><span class="hl">להוביל </span><span class="l2 hl">בחמש</span></h1>
+      <div class="accent-rule anim-rule"></div>
+      <p class="lead anim-up">המקום שבו מובילים ומובילות משפיעים על דור שלם — יש כאן יותר מדרך אחת להוביל.</p>
+
+      <div class="roster">
+        <div class="role anim-tile">
+          <div class="num rag">01</div>
+          <h3>מאמן/ת</h3>
+          <p>התפקיד המרכזי — להוביל קבוצה ולהיות דמות מופת</p>
+          <svg class="arrow icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+        <div class="role anim-tile">
+          <div class="num rag">02</div>
+          <h3>מדריך/ה בהזנק</h3>
+          <p>הדרכה בשטח בתוך חוויות מאתגרות</p>
+          <svg class="arrow icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+        <div class="role anim-tile">
+          <div class="num rag">03</div>
+          <h3>תפקידי מטה</h3>
+          <p>טכנולוגיה, סושיאל, ניהול, לוגיסטיקה ועוד</p>
+          <svg class="arrow icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <a class="btn btn-primary anim-up"><span class="sheen"></span>השאירו פרטים
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+        <div style="display:flex; align-items:center; gap:0.9rem" class="anim-up">
+          <div class="avatars">
+            <img src="coachs/amit.JPG" alt="" /><img src="coachs/roi.JPG" alt="" /><img src="coachs/idan.JPG" alt="" /><img src="coachs/taranto.JPG" alt="" />
+            <div class="count">+</div>
+          </div>
+          <span class="avatars-label">הצטרפו ל־<b>3,000</b> אנשי ונשות צוות</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONCEPT C ═══════════ -->
+  <section class="concept" id="cC">
+    <div class="split">
+      <div class="left">
+        <div class="dots"></div><div class="glow"></div>
+        <div style="position:relative; z-index:2">
+          <p class="ds-eyebrow anim-up">הצטרפו לצוות</p>
+          <h1 class="rag"><span class="hl">להוביל </span><span class="l2 hl">בחמש</span></h1>
+          <div class="accent-rule anim-rule"></div>
+          <p class="lead anim-up">המקום שבו מובילים ומובילות משפיעים על דור שלם.</p>
+          <div class="chips">
+            <span class="chip anim-up"><span class="dot"></span>מאמן/ת</span>
+            <span class="chip anim-up"><span class="dot"></span>מדריך/ה בהזנק</span>
+            <span class="chip anim-up"><span class="dot"></span>תפקידי מטה</span>
+          </div>
+          <div class="cta-row">
+            <a class="btn btn-primary anim-up"><span class="sheen"></span>השאירו פרטים
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+            <a class="btn btn-quiet anim-up">גלו את התפקידים</a>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <img src="team_hero/_14A9355.jpg" alt="" />
+        <div class="tint"></div><div class="shade"></div>
+        <div class="seam"></div>
+        <div class="name anim-up"><b>הצוות של חמש</b><span>אנשים שבחרו לקחת אחריות</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONCEPT D ═══════════ -->
+  <section class="concept" id="cD">
+    <div class="glow"></div>
+    <div class="field">
+      <img class="av anim-pop" src="coachs/amit.JPG"    style="width:88px;height:88px; top:16%; right:14%;" alt="" />
+      <img class="av anim-pop" src="coachs/roi.JPG"     style="width:64px;height:64px; top:30%; right:26%;" alt="" />
+      <img class="av anim-pop" src="team_hero/_14A9346.jpg" style="width:104px;height:104px; top:58%; right:11%;" alt="" />
+      <img class="av anim-pop" src="coachs/idan.JPG"    style="width:72px;height:72px; bottom:14%; right:24%;" alt="" />
+      <img class="av anim-pop" src="coachs/taranto.JPG" style="width:96px;height:96px; top:15%; left:13%;" alt="" />
+      <img class="av anim-pop" src="team_hero/_14A9373.jpg" style="width:66px;height:66px; top:32%; left:25%;" alt="" />
+      <img class="av anim-pop" src="Hero-Pics/214A0088.jpg" style="width:110px;height:110px; top:60%; left:10%;" alt="" />
+      <img class="av anim-pop" src="team_hero/_14A9355.jpg" style="width:70px;height:70px; bottom:15%; left:23%;" alt="" />
+    </div>
+    <div class="wrap">
+      <p class="ds-eyebrow anim-up">הצטרפו לצוות</p>
+      <h1 class="rag"><span class="hl">להוביל </span><span class="l2 hl">בחמש</span></h1>
+      <div class="accent-rule anim-rule"></div>
+      <p class="sub anim-up">המקום שבו מובילים ומובילות משפיעים על דור שלם</p>
+      <div class="cta-row">
+        <a class="btn btn-primary anim-up"><span class="sheen"></span>השאירו פרטים
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+        <a class="btn btn-ghost-dark anim-up">גלו את התפקידים</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="caption" id="caption"></div>
+
+  <script>
+    const CAPTIONS = {
+      cA: '<b>קיר הפנים</b> — רקע נייבי סטטי + פסיפס פורטרטים אמיתי של הצוות. מראה את הקולקטיב, לא תמונה מתחלפת.',
+      cB: '<b>עריכה בהירה</b> — משטח בהיר במערכת ה״מוזיאון״ של האקדמיה, כותרת אסימטרית + שלושת המסלולים ואשכול פרצופים.',
+      cC: '<b>פורטרט מפוצל</b> — טקסט על משטח בהיר מול פאנל פורטרט דואוטון בנייבי עם תפר כתום. חם ואישי.',
+      cD: '<b>מפגש</b> — הצהרה ממורכזת על נייבי עם קונסטלציית פרצופים עגולים מסביב. בולט ואנרגטי.'
+    };
+    const HEADLINES = ['cA','cB','cC','cD'];
+
+    function splitChars(concept){
+      concept.querySelectorAll('h1 .hl').forEach(seg=>{
+        if(seg.dataset.split) return;
+        const txt = seg.textContent; seg.textContent='';
+        [...txt].forEach(ch=>{
+          const s=document.createElement('span');
+          s.className='anim-char'; s.style.display='inline-block';
+          s.textContent = ch===' ' ? ' ' : ch;
+          seg.appendChild(s);
+        });
+        seg.dataset.split='1';
+      });
+    }
+
+    function stagger(concept){
+      // headline chars
+      const chars = concept.querySelectorAll('.anim-char');
+      chars.forEach((c,i)=> c.style.animationDelay = (0.15 + i*0.05)+'s');
+      // rules / ups / tiles / pops
+      concept.querySelectorAll('.anim-rule').forEach(el=> el.style.animationDelay = '0.7s');
+      concept.querySelectorAll('.anim-up').forEach((el,i)=> el.style.animationDelay = (0.75 + i*0.08)+'s');
+      concept.querySelectorAll('.anim-tile').forEach((el,i)=> el.style.animationDelay = (0.5 + i*0.09)+'s');
+      concept.querySelectorAll('.anim-pop').forEach((el,i)=> el.style.animationDelay = (0.9 + i*0.07)+'s');
+    }
+
+    function activate(id){
+      document.querySelectorAll('.concept').forEach(c=> c.classList.remove('active'));
+      document.querySelectorAll('.switcher button').forEach(b=> b.classList.toggle('active', b.dataset.target===id));
+      const el = document.getElementById(id);
+      splitChars(el);
+      stagger(el);
+      // force reflow to replay animations
+      void el.offsetWidth;
+      el.classList.add('active');
+      document.getElementById('caption').innerHTML = CAPTIONS[id];
+      window.scrollTo(0,0);
+    }
+
+    document.querySelectorAll('.switcher button').forEach(b=>{
+      b.addEventListener('click', ()=> activate(b.dataset.target));
+    });
+
+    // init
+    activate('cA');
+  </script>
+</body>
+</html>

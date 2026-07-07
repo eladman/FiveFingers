@@ -1,21 +1,67 @@
 import { useState, useEffect, useRef, forwardRef } from 'react'
-import { X, Phone, Mail, Check, Loader2, ArrowLeft } from 'lucide-react'
+import { X, Phone, Mail, Check, Loader2, ArrowLeft, ChevronDown } from 'lucide-react'
 import { WHATSAPP_HREF, PHONE_HREF, EMAIL, EMAIL_HREF, PHONE_DISPLAY } from '../data/contact'
 
-const PRODUCT_TYPES = [
-  'קבוצות הנוער',
-  'מכינה',
-  'Boost',
-  'כרמל',
-  'שיתוף פעולה',
-  'יואב',
-  'קשר עם עמיר',
-  'מאמן/ת',
-  'מדריך/ה בהזנק',
-  'צוות מטה',
+// Interest options grouped by life-stage / intent, so youth, pre-army young
+// adults, graduates, and organizations each see their own lane instead of one
+// flat cloud. The `items` strings are the actual productType values (unchanged),
+// so deep-links from pages still preselect correctly. מכינה / Boost / כרמל are
+// the three tracks of the Academy, hence one group.
+const INTEREST_GROUPS = [
+  { label: 'נוער', hint: 'גילאי 12-18', items: ['קבוצות הנוער'] },
+  { label: 'מכינה והכנה לצבא', hint: 'מלש״בים', items: ['מכינה', 'הזנק', 'כרמל'] },
+  { label: 'בוגרים', hint: '21+', items: ['יואב'] },
+  { label: 'שותפויות וקשר', hint: '', items: ['שיתוף פעולה', 'קשר עם עמיר'] },
 ]
 
+const JOBS_LABEL = 'משרות בתנועה'
+const JOB_ROLES = ['מאמן/ת', 'מדריך/ה בהזנק', 'צוות מטה', 'מדריך במכינה']
+
+// Some page CTAs deep-link us with a program/section label that isn't the exact
+// chip value (e.g. an Alumni page says "בוגרים", the chip is "יואב"). Map those
+// to a real chip so the preselected interest actually highlights when expanded.
+const TYPE_ALIASES = {
+  'בוגרים': 'יואב',
+  'קהילת הבוגרים': 'יואב',
+  'שיתופי פעולה': 'שיתוף פעולה',
+  'המכינה הקדם צבאית': 'מכינה',
+}
+const normalizeType = (t) => TYPE_ALIASES[t] || t
+
+// Every movement role is a job application, so they all collect the same
+// application details. Rendered only once a specific role is selected.
+const JOB_APPLICATION_FIELDS = [
+  { name: 'residence', label: 'מקום מגורים', type: 'text', placeholder: 'עיר / יישוב', autoComplete: 'address-level2', required: true },
+  { name: 'birthDate', label: 'תאריך לידה', type: 'date', required: true },
+  { name: 'experience', label: 'ניסיון תעסוקתי רלוונטי', type: 'textarea', placeholder: 'ספרו בקצרה על תפקידים וניסיון שרלוונטיים לתפקיד', required: true },
+  { name: 'certificates', label: 'תעודות (אם יש)', type: 'textarea', placeholder: 'פירוט תעודות והסמכות רלוונטיות, או קישור אליהן', required: false },
+]
+
+// School grades a youth-group participant can be in (ages 12-18), as a closed
+// list so we never get free-text grade values.
+const GRADE_OPTIONS = ['ה׳', 'ו׳', 'ז׳', 'ח׳', 'ט׳', 'י׳', 'י״א', 'י״ב']
+
+// Youth-group ("קבוצות הנוער") sign-ups are done by a parent for their child,
+// so we collect the child's details rather than treating the contact as the
+// participant.
+const YOUTH_GROUP_FIELDS = [
+  { name: 'childGender', label: 'מין', type: 'select', options: ['זכר', 'נקבה'], required: true },
+  { name: 'childName', label: 'שם הילד/ה', type: 'text', placeholder: 'שם פרטי ומשפחה', required: true },
+  { name: 'childCity', label: 'עיר מגורים', type: 'text', placeholder: 'עיר / יישוב', autoComplete: 'address-level2', required: true },
+  { name: 'childGrade', label: 'כיתה של הילד/ה', type: 'select', options: GRADE_OPTIONS, required: true },
+  { name: 'notes', label: 'הערות', type: 'textarea', placeholder: 'משהו שנרצה לדעת? (לא חובה)', required: false },
+]
+
+// Per-interest custom fields, keyed by the exact chip/role label.
+const EXTRA_FIELDS = {
+  ...Object.fromEntries(JOB_ROLES.map((role) => [role, JOB_APPLICATION_FIELDS])),
+  'קבוצות הנוער': YOUTH_GROUP_FIELDS,
+}
+
 const INITIAL_FORM = { name: '', phone: '', email: '', productType: '' }
+
+// The reserved core keys — everything else on the form object is an extra field.
+const CORE_KEYS = Object.keys(INITIAL_FORM)
 
 const CONTACT_CHANNELS = [
   { Icon: WhatsAppIcon, label: 'וואטסאפ', value: 'שלחו הודעה', href: WHATSAPP_HREF },
@@ -26,13 +72,23 @@ const CONTACT_CHANNELS = [
 export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
   const [form, setForm] = useState(INITIAL_FORM)
   const [status, setStatus] = useState('idle') // idle | loading | success
+  const [jobsOpen, setJobsOpen] = useState(false) // "משרות בתנועה" role sub-panel expanded?
+  // When a page deep-links us with a specific interest, the full lane picker is
+  // collapsed down to just the preselected chip (with a "change" affordance).
+  // Opened from the homepage / navbar / footer (no product) it starts expanded.
+  const [pickerExpanded, setPickerExpanded] = useState(true)
   const overlayRef = useRef(null)
   const firstFieldRef = useRef(null)
 
   useEffect(() => {
     if (isOpen) {
-      setForm({ ...INITIAL_FORM, productType: defaultProduct })
+      const product = normalizeType(defaultProduct)
+      setForm({ ...INITIAL_FORM, productType: product })
       setStatus('idle')
+      // If a page opened us tagged with a specific role, expand the jobs panel.
+      setJobsOpen(JOB_ROLES.includes(product))
+      // Collapse the picker only when we arrived pre-tagged from a page.
+      setPickerExpanded(!defaultProduct)
       document.body.style.overflow = 'hidden'
       // Focus the first field once the entrance settles.
       const t = setTimeout(() => firstFieldRef.current?.focus(), 360)
@@ -56,10 +112,49 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  // Switching interest type: drop any prior type's extra answers and seed the
+  // new type's fields as empty so the payload never carries stale data.
+  const handleTypeSelect = (type) => {
+    setForm((prev) => {
+      const core = Object.fromEntries(CORE_KEYS.map((k) => [k, prev[k]]))
+      const seeded = Object.fromEntries((EXTRA_FIELDS[type] || []).map((f) => [f.name, '']))
+      return { ...core, ...seeded, productType: type }
+    })
+  }
+
+  // Picking a normal top-level chip closes the jobs panel and — once a real
+  // type is chosen — collapses the picker down to that selection (deselecting
+  // back to '' keeps it open so there's something to pick).
+  const handleSelectTop = (type) => {
+    setJobsOpen(false)
+    handleTypeSelect(type)
+    if (type) setPickerExpanded(false)
+  }
+
+  // Picking a specific job role collapses the picker just like a top-level chip.
+  const handleSelectRole = (role) => {
+    handleTypeSelect(role)
+    if (role) setPickerExpanded(false)
+  }
+
+  // The "משרות בתנועה" chip just toggles the role sub-panel; no role committed yet.
+  const handleToggleJobs = () => {
+    setJobsOpen((open) => !open)
+    handleTypeSelect('')
+  }
+
+  const extraFields = EXTRA_FIELDS[form.productType] || []
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (status === 'loading') return
     setStatus('loading')
+
+    // Per-interest extra answers — sent both as raw keys (for scripting) and as
+    // a Hebrew label→value map (for a readable email) so the Make.com automation
+    // needs no per-type schema.
+    const extraValues = Object.fromEntries(extraFields.map((f) => [f.name, form[f.name] ?? '']))
+    const details = Object.fromEntries(extraFields.map((f) => [f.label, form[f.name] ?? '']))
 
     // Payload sent to the Make.com webhook that fires the thank-you automation.
     const payload = {
@@ -67,6 +162,8 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
       phone: form.phone,
       email: form.email,
       productType: form.productType,
+      ...extraValues,
+      details,
       submittedAt: new Date().toISOString(),
       source: 'fivefingers-website',
       pageUrl: window.location.href,
@@ -113,9 +210,9 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
     >
       <div
         dir="rtl"
-        className="relative w-full bg-white overflow-hidden flex flex-col md:flex-row"
+        className="relative w-full bg-white overflow-hidden flex flex-col"
         style={{
-          width: 'min(900px, calc(100vw - 32px))',
+          width: 'min(600px, calc(100vw - 32px))',
           maxHeight: 'calc(100dvh - 48px)',
           borderRadius: '30px',
           boxShadow: '0 30px 90px -20px rgba(0,0,0,0.55)',
@@ -148,9 +245,6 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
           <X size={18} strokeWidth={2.5} />
         </button>
 
-        {/* ─── Brand panel ─────────────────────────────── */}
-        <BrandPanel />
-
         {/* ─── Form panel ──────────────────────────────── */}
         <div
           className="relative flex-1 min-h-0 overflow-y-auto"
@@ -175,7 +269,12 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
                   {/* Interest chips — replaces the dull dropdown */}
                   <ChipGroup
                     value={form.productType}
-                    onSelect={(v) => setForm((p) => ({ ...p, productType: v }))}
+                    jobsOpen={jobsOpen}
+                    expanded={pickerExpanded}
+                    onExpand={() => setPickerExpanded(true)}
+                    onSelectTop={handleSelectTop}
+                    onToggleJobs={handleToggleJobs}
+                    onSelectRole={handleSelectRole}
                   />
 
                   <GlowField
@@ -214,6 +313,47 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
                     />
                   </div>
 
+                  {/* Per-interest questions come after the core contact fields,
+                      so name / phone / email are always filled first. */}
+                  {extraFields.length > 0 && (
+                    <div key={form.productType} className="flex flex-col gap-5" style={{ animation: 'ff-reveal 320ms cubic-bezier(0.22,1,0.36,1)' }}>
+                      {extraFields.map((field) =>
+                        field.type === 'date' ? (
+                          <DateField
+                            key={field.name}
+                            label={field.label}
+                            name={field.name}
+                            value={form[field.name] ?? ''}
+                            onChange={handleChange}
+                            required={field.required}
+                          />
+                        ) : field.type === 'select' ? (
+                          <SelectField
+                            key={field.name}
+                            label={field.label}
+                            name={field.name}
+                            value={form[field.name] ?? ''}
+                            onChange={handleChange}
+                            options={field.options}
+                            required={field.required}
+                          />
+                        ) : (
+                          <GlowField
+                            key={field.name}
+                            label={field.label}
+                            name={field.name}
+                            type={field.type}
+                            value={form[field.name] ?? ''}
+                            onChange={handleChange}
+                            placeholder={field.placeholder}
+                            autoComplete={field.autoComplete}
+                            required={field.required}
+                          />
+                        )
+                      )}
+                    </div>
+                  )}
+
                   {status === 'error' && (
                     <p className="text-center text-sm" style={{ color: '#d23a3a' }}>
                       משהו השתבש בשליחה. נסו שוב, או דברו איתנו בוואטסאפ 🙏
@@ -229,17 +369,13 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
               </>
             )}
 
-            <MobileContactBar />
+            <ContactBar />
           </div>
         </div>
       </div>
 
       {/* Scoped keyframes for the modal */}
       <style>{`
-        @keyframes ff-glow {
-          0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.55; }
-          50% { transform: translate(8%, -6%) scale(1.18); opacity: 0.8; }
-        }
         @keyframes ff-pop {
           0% { transform: scale(0.6); opacity: 0; }
           60% { transform: scale(1.08); opacity: 1; }
@@ -248,8 +384,14 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
         @keyframes ff-draw {
           to { stroke-dashoffset: 0; }
         }
-        @media (prefers-reduced-motion: reduce) {
-          .ff-glow-blob { animation: none !important; }
+        @keyframes ff-reveal {
+          from { opacity: 0; transform: translateY(-6px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes ff-settle {
+          0% { opacity: 0; transform: scale(0.85) translateY(-4px); }
+          55% { opacity: 1; transform: scale(1.06); }
+          100% { opacity: 1; transform: scale(1) translateY(0); }
         }
       `}</style>
     </div>
@@ -258,128 +400,178 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
 
 /* ─────────────────────────────────────────────────────────── */
 
-function BrandPanel() {
+/* Quick contact channels — sits at the very bottom of the form for every
+   screen size (replaces the old navy brand panel). Each channel shows its
+   icon, label, and the actual value (number / address). */
+function ContactBar() {
   return (
-    <div
-      className="hidden md:block relative overflow-hidden md:w-[42%] shrink-0 px-10 py-11"
-      style={{ background: 'linear-gradient(150deg, #0d1b4b 0%, #0a1230 55%, #06081a 100%)' }}
-    >
-      {/* Animated orange glow */}
-      <div
-        className="ff-glow-blob absolute -top-16 -right-10 rounded-full pointer-events-none"
-        style={{
-          width: '240px', height: '240px',
-          background: 'radial-gradient(circle, rgba(255,135,20,0.55) 0%, rgba(255,135,20,0) 70%)',
-          filter: 'blur(8px)',
-          animation: 'ff-glow 7s ease-in-out infinite',
-        }}
-      />
-
-      <div className="relative z-10 flex flex-col h-full">
-        <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-orange mb-4">
-          בואו נדבר
-        </p>
-        <h3 className="font-ragmarom text-white leading-[1.05] mb-4" style={{ fontSize: '2.6rem' }}>
-          מוכנים
-          <br />
-          לצעד <span className="text-orange">הבא?</span>
-        </h3>
-        <p className="text-white/55 text-sm leading-relaxed mb-8 max-w-[260px]">
-          צעירים/ות, הורים או ארגון — בכל דרך שתבחרו, אנחנו כאן בשבילכם.
-        </p>
-
-        {/* Quick contact channels */}
-        <div className="mt-auto flex flex-col gap-2.5">
-          {CONTACT_CHANNELS.map(({ Icon, label, value, href }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith('http') ? '_blank' : undefined}
-              rel={href.startsWith('http') ? 'noreferrer' : undefined}
-              className="group flex items-center gap-3 rounded-2xl px-3.5 py-3 transition-all duration-200"
-              style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)' }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,135,20,0.15)'; e.currentTarget.style.borderColor = 'rgba(255,135,20,0.4)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)' }}
+    <div className="mt-7 pt-6" style={{ borderTop: '1px solid #eef0f3' }}>
+      <p className="text-xs font-semibold mb-3" style={{ color: '#9aa0ad' }}>
+        או דברו איתנו ישירות
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        {CONTACT_CHANNELS.map(({ Icon, label, value, href }) => (
+          <a
+            key={label}
+            href={href}
+            target={href.startsWith('http') ? '_blank' : undefined}
+            rel={href.startsWith('http') ? 'noreferrer' : undefined}
+            className="flex items-center gap-2.5 rounded-2xl px-3 py-2.5 transition-all duration-200"
+            style={{ background: '#f7f8fa', border: '1px solid #eef0f3' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = '#fff3e6'; e.currentTarget.style.borderColor = 'rgba(255,135,20,0.35)' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#f7f8fa'; e.currentTarget.style.borderColor = '#eef0f3' }}
+          >
+            <span
+              className="flex items-center justify-center rounded-xl shrink-0"
+              style={{ width: '36px', height: '36px', background: 'rgba(255,135,20,0.12)' }}
             >
-              <span
-                className="flex items-center justify-center rounded-xl shrink-0 transition-colors"
-                style={{ width: '38px', height: '38px', background: 'rgba(255,135,20,0.16)' }}
-              >
-                <Icon size={17} className="text-orange" strokeWidth={2} />
-              </span>
-              <span className="flex flex-col">
-                <span className="text-[11px] text-white/45">{label}</span>
-                <span className="text-sm font-semibold text-white" dir="ltr" style={{ textAlign: 'right' }}>{value}</span>
-              </span>
-            </a>
-          ))}
-        </div>
+              <Icon size={17} className="text-orange" strokeWidth={2} />
+            </span>
+            <span className="flex flex-col min-w-0">
+              <span className="text-[11px]" style={{ color: '#9aa0ad' }}>{label}</span>
+              <span className="text-[13px] font-semibold truncate" dir="ltr" style={{ color: '#3a3f4b', textAlign: 'right' }}>{value}</span>
+            </span>
+          </a>
+        ))}
       </div>
     </div>
   )
 }
 
-/* Mobile-only contact channels — shown at the very bottom of the white panel,
-   replacing the navy BrandPanel (which is desktop-only, md:block above). */
-function MobileContactBar() {
+function Chip({ label, active, onClick, trailing, inactiveBg = '#f4f5f7', ...aria }) {
   return (
-    <div className="md:hidden mt-7 pt-6 flex items-center gap-2" style={{ borderTop: '1px solid #eef0f3' }}>
-      {CONTACT_CHANNELS.map(({ Icon, label, href }) => (
-        <a
-          key={label}
-          href={href}
-          target={href.startsWith('http') ? '_blank' : undefined}
-          rel={href.startsWith('http') ? 'noreferrer' : undefined}
-          className="flex flex-1 flex-col items-center gap-1.5 rounded-2xl py-3 transition-colors duration-200"
-          style={{ background: '#f7f8fa', border: '1px solid #eef0f3' }}
-        >
-          <span
-            className="flex items-center justify-center rounded-xl shrink-0"
-            style={{ width: '36px', height: '36px', background: 'rgba(255,135,20,0.12)' }}
-          >
-            <Icon size={17} className="text-orange" strokeWidth={2} />
-          </span>
-          <span className="text-[11px] font-semibold" style={{ color: '#3a3f4b' }}>{label}</span>
-        </a>
-      ))}
+    <button
+      type="button"
+      onClick={onClick}
+      {...aria}
+      className="relative rounded-full text-sm font-medium transition-all duration-200 flex items-center"
+      style={{
+        minHeight: '40px',
+        padding: '0 16px',
+        background: active ? '#ff8714' : inactiveBg,
+        color: active ? '#fff' : '#4a4f5a',
+        border: `1.5px solid ${active ? '#ff8714' : '#e8eaee'}`,
+        transform: active ? 'translateY(-1px)' : 'none',
+        boxShadow: active ? '0 6px 16px -4px rgba(255,135,20,0.5)' : 'none',
+      }}
+      onMouseEnter={(e) => { if (!active) { e.currentTarget.style.borderColor = '#ff8714'; e.currentTarget.style.color = '#ff8714' } }}
+      onMouseLeave={(e) => { if (!active) { e.currentTarget.style.borderColor = '#e8eaee'; e.currentTarget.style.color = '#4a4f5a' } }}
+    >
+      {active && <Check size={14} strokeWidth={3} className="inline-block ml-1 -mt-0.5" />}
+      {label}
+      {trailing}
+    </button>
+  )
+}
+
+// Small caption above each interest lane: "נוער · גילאי 12-18".
+function GroupHeader({ label, hint }) {
+  return (
+    <div className="flex items-baseline gap-1.5 mb-2">
+      <span className="text-[12px] font-bold" style={{ color: '#0d1b4b' }}>{label}</span>
+      {hint && <span className="text-[11px] font-medium" style={{ color: '#aeb4bf' }}>· {hint}</span>}
     </div>
   )
 }
 
-function ChipGroup({ value, onSelect }) {
+function ChipGroup({ value, jobsOpen, expanded, onExpand, onSelectTop, onToggleJobs, onSelectRole }) {
+  // Deep-linked from a page: show just the preselected interest with a way to
+  // change it, instead of the full set of lanes.
+  if (!expanded && value) {
+    return (
+      <fieldset className="border-0 p-0 m-0">
+        <legend className="block text-sm font-semibold mb-3" style={{ color: '#3a3f4b' }}>
+          מה מעניין אתכם?
+        </legend>
+        <div className="flex flex-wrap items-center gap-3">
+          <span style={{ display: 'inline-flex', animation: 'ff-settle 380ms cubic-bezier(0.22,1,0.36,1)' }}>
+            <Chip label={value} active onClick={onExpand} />
+          </span>
+          <button
+            type="button"
+            onClick={onExpand}
+            className="text-sm font-semibold transition-colors duration-200"
+            style={{ color: '#9aa0ad', textDecoration: 'underline', textUnderlineOffset: '3px', animation: 'ff-reveal 320ms ease 140ms both' }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = '#ff8714' }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = '#9aa0ad' }}
+          >
+            לא זה? שנו בחירה
+          </button>
+        </div>
+      </fieldset>
+    )
+  }
+
   return (
     <fieldset className="border-0 p-0 m-0">
-      <legend className="block text-sm font-semibold mb-2.5" style={{ color: '#3a3f4b' }}>
+      <legend className="block text-sm font-semibold mb-3" style={{ color: '#3a3f4b' }}>
         מה מעניין אתכם?
       </legend>
-      <div role="radiogroup" aria-label="מה מעניין אתכם" className="flex flex-wrap gap-2">
-        {PRODUCT_TYPES.map((type) => {
-          const active = value === type
-          return (
-            <button
-              key={type}
-              type="button"
-              role="radio"
-              aria-checked={active}
-              onClick={() => onSelect(active ? '' : type)}
-              className="relative rounded-full text-sm font-medium transition-all duration-200"
-              style={{
-                minHeight: '40px',
-                padding: '0 16px',
-                background: active ? '#ff8714' : '#f4f5f7',
-                color: active ? '#fff' : '#4a4f5a',
-                border: `1.5px solid ${active ? '#ff8714' : '#e8eaee'}`,
-                transform: active ? 'translateY(-1px)' : 'none',
-                boxShadow: active ? '0 6px 16px -4px rgba(255,135,20,0.5)' : 'none',
-              }}
-              onMouseEnter={(e) => { if (!active) { e.currentTarget.style.borderColor = '#ff8714'; e.currentTarget.style.color = '#ff8714' } }}
-              onMouseLeave={(e) => { if (!active) { e.currentTarget.style.borderColor = '#e8eaee'; e.currentTarget.style.color = '#4a4f5a' } }}
+
+      <div className="flex flex-col gap-4" style={{ animation: 'ff-reveal 300ms ease' }}>
+        {/* Life-stage lanes */}
+        {INTEREST_GROUPS.map((group) => (
+          <div key={group.label}>
+            <GroupHeader label={group.label} hint={group.hint} />
+            <div role="radiogroup" aria-label={group.label} className="flex flex-wrap gap-2">
+              {group.items.map((type) => (
+                <Chip
+                  key={type}
+                  label={type}
+                  active={value === type}
+                  role="radio"
+                  aria-checked={value === type}
+                  onClick={() => onSelectTop(value === type ? '' : type)}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+
+        {/* Careers lane — the roles hide behind one chip that expands below */}
+        <div>
+          <GroupHeader label="הצטרפות לצוות" />
+          <div className="flex flex-wrap gap-2">
+            <Chip
+              label={JOBS_LABEL}
+              active={jobsOpen}
+              aria-expanded={jobsOpen}
+              onClick={onToggleJobs}
+              trailing={
+                <ChevronDown
+                  size={15}
+                  strokeWidth={2.5}
+                  className="mr-1 -ml-0.5 transition-transform duration-200"
+                  style={{ transform: jobsOpen ? 'rotate(180deg)' : 'none' }}
+                />
+              }
+            />
+          </div>
+
+          {jobsOpen && (
+            <div
+              className="mt-3 rounded-2xl"
+              style={{ background: '#f7f8fa', border: '1px solid #eef0f3', padding: '14px', animation: 'ff-reveal 240ms ease' }}
             >
-              {active && <Check size={14} strokeWidth={3} className="inline-block ml-1 -mt-0.5" />}
-              {type}
-            </button>
-          )
-        })}
+              <p className="text-xs font-semibold mb-2.5" style={{ color: '#6b7180' }}>
+                בחרו תפקיד
+              </p>
+              <div role="radiogroup" aria-label="בחירת תפקיד" className="flex flex-wrap gap-2">
+                {JOB_ROLES.map((role) => (
+                  <Chip
+                    key={role}
+                    label={role}
+                    active={value === role}
+                    inactiveBg="#fff"
+                    role="radio"
+                    aria-checked={value === role}
+                    onClick={() => onSelectRole(value === role ? '' : role)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </fieldset>
   )
@@ -391,24 +583,88 @@ const GlowField = forwardRef(function GlowField(
 ) {
   const [focused, setFocused] = useState(false)
   const id = `ff-${name}`
+  const multiline = type === 'textarea'
+  const sharedStyle = {
+    borderRadius: '13px',
+    background: focused ? '#fff' : '#f7f8fa',
+    border: `1.5px solid ${focused ? '#ff8714' : '#e8eaee'}`,
+    boxShadow: focused ? '0 0 0 4px rgba(255,135,20,0.12)' : 'none',
+    color: '#111',
+    transition: 'border-color 160ms ease, box-shadow 160ms ease, background 160ms ease',
+  }
+  const shared = {
+    ref,
+    id,
+    name,
+    value,
+    onChange,
+    placeholder,
+    required,
+    autoComplete,
+    onFocus: () => setFocused(true),
+    onBlur: () => setFocused(false),
+    dir,
+    className: 'w-full text-sm outline-none',
+  }
+  return (
+    <div>
+      <label htmlFor={id} className="block text-sm font-semibold mb-2" style={{ color: '#3a3f4b' }}>
+        {label}{required && <span className="text-orange"> *</span>}
+      </label>
+      {multiline ? (
+        <textarea
+          {...shared}
+          rows={3}
+          style={{ ...sharedStyle, minHeight: '92px', padding: '12px 15px', resize: 'vertical', lineHeight: 1.5 }}
+        />
+      ) : (
+        <input
+          {...shared}
+          type={type}
+          style={{ ...sharedStyle, height: '48px', padding: '0 15px' }}
+        />
+      )}
+    </div>
+  )
+})
+
+/* ─── Date field ───────────────────────────────────────────
+   Manual entry with a light DD/MM/YYYY mask: as digits are typed the
+   slashes drop in automatically. Native required + pattern handle
+   validation; the value stored/sent is the formatted DD/MM/YYYY string. */
+
+function maskDate(raw) {
+  const digits = raw.replace(/\D/g, '').slice(0, 8) // DDMMYYYY
+  const parts = [digits.slice(0, 2)]
+  if (digits.length >= 3) parts.push(digits.slice(2, 4))
+  if (digits.length >= 5) parts.push(digits.slice(4, 8))
+  return parts.join('/')
+}
+
+function DateField({ label, name, value, onChange, required }) {
+  const [focused, setFocused] = useState(false)
+  const id = `ff-${name}`
+  const handle = (e) => onChange({ target: { name, value: maskDate(e.target.value) } })
   return (
     <div>
       <label htmlFor={id} className="block text-sm font-semibold mb-2" style={{ color: '#3a3f4b' }}>
         {label}{required && <span className="text-orange"> *</span>}
       </label>
       <input
-        ref={ref}
         id={id}
-        type={type}
         name={name}
+        type="text"
+        inputMode="numeric"
+        dir="rtl"
         value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        required={required}
-        autoComplete={autoComplete}
+        onChange={handle}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        dir={dir}
+        placeholder="יום / חודש / שנה"
+        required={required}
+        pattern="\d{2}/\d{2}/\d{4}"
+        title="בפורמט יום/חודש/שנה, לדוגמה 15/03/2005"
+        maxLength={10}
         className="w-full text-sm outline-none"
         style={{
           height: '48px',
@@ -423,7 +679,57 @@ const GlowField = forwardRef(function GlowField(
       />
     </div>
   )
-})
+}
+
+/* ─── Select field ─────────────────────────────────────────
+   Native <select> styled to match GlowField, with a closed option list.
+   The empty first option acts as the placeholder and, being required with an
+   empty value, forces a real choice on submit. */
+function SelectField({ label, name, value, onChange, options, required }) {
+  const [focused, setFocused] = useState(false)
+  const id = `ff-${name}`
+  return (
+    <div>
+      <label htmlFor={id} className="block text-sm font-semibold mb-2" style={{ color: '#3a3f4b' }}>
+        {label}{required && <span className="text-orange"> *</span>}
+      </label>
+      <div className="relative">
+        <select
+          id={id}
+          name={name}
+          value={value}
+          onChange={onChange}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          required={required}
+          dir="rtl"
+          className="w-full text-sm outline-none appearance-none cursor-pointer"
+          style={{
+            height: '48px',
+            borderRadius: '13px',
+            background: focused ? '#fff' : '#f7f8fa',
+            border: `1.5px solid ${focused ? '#ff8714' : '#e8eaee'}`,
+            boxShadow: focused ? '0 0 0 4px rgba(255,135,20,0.12)' : 'none',
+            padding: '0 15px',
+            color: value ? '#111' : '#9aa0ad',
+            transition: 'border-color 160ms ease, box-shadow 160ms ease, background 160ms ease',
+          }}
+        >
+          <option value="" disabled>בחרו…</option>
+          {options.map((opt) => (
+            <option key={opt} value={opt} style={{ color: '#111' }}>{opt}</option>
+          ))}
+        </select>
+        <ChevronDown
+          size={18}
+          strokeWidth={2.5}
+          className="pointer-events-none absolute top-1/2 -translate-y-1/2"
+          style={{ left: '14px', color: focused ? '#ff8714' : '#9aa0ad' }}
+        />
+      </div>
+    </div>
+  )
+}
 
 function SubmitButton({ loading }) {
   return (

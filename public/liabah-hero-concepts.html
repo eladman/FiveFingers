@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>קבוצות הנוער · Hero Concepts — חמש אצבעות</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    @font-face { font-family: 'RagMarom'; src: url('fonts/rag-marom-2.1.otf') format('opentype'); font-weight: normal; font-style: normal; font-display: swap; }
+    :root {
+      --orange: #ff8714; --orange-lift: #ffa347; --orange-deep: #e56f00; --orange-ink: #b35600;
+      --navy: #0d1b4b; --navy-deep: #081028; --navy-light: #1e3578;
+      --surface: #fafaf8; --surface-2: #f7f5f2;
+      --ease-brand: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Heebo', sans-serif; background: var(--navy-deep); color: #fff; direction: rtl; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    .ds-eyebrow { font-family: 'Heebo', sans-serif; font-weight: 700; font-size: clamp(0.72rem, 0.9vw, 0.85rem); line-height: 1.2; letter-spacing: 0.24em; text-transform: uppercase; }
+    .rag { font-family: 'RagMarom', 'Heebo', sans-serif; }
+    .accent-rule { height: 3px; border-radius: 999px; background: var(--orange); transform-origin: center; }
+
+    .btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; font-family: 'Heebo', sans-serif; font-weight: 700; border-radius: 999px; padding: 0.9rem 2rem; font-size: 1rem; white-space: nowrap; cursor: pointer; border: none; text-decoration: none; transition: transform 0.3s var(--ease-brand), box-shadow 0.24s var(--ease-brand), border-color 0.3s, background 0.3s, color 0.3s; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { color: #fff; background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); box-shadow: 0 8px 22px rgba(255,135,20,0.38), inset 0 1px 0 rgba(255,255,255,0.40); }
+    .btn-primary:hover { transform: scale(1.04); box-shadow: 0 12px 30px rgba(255,135,20,0.50), inset 0 1px 0 rgba(255,255,255,0.45); }
+    .btn-primary .sheen { position: absolute; top: 0; bottom: 0; width: 60%; left: -85%; background: linear-gradient(100deg, transparent, rgba(255,255,255,0.5), transparent); transform: skewX(-18deg); transition: left 0.6s var(--ease-brand); pointer-events: none; }
+    .btn-primary:hover .sheen { left: 130%; }
+    .btn-ghost-dark { color: rgba(255,255,255,0.8); background: transparent; border: 1px solid rgba(255,255,255,0.28); }
+    .btn-ghost-dark:hover { color: #fff; border-color: rgba(255,255,255,0.6); transform: scale(1.03); }
+    .btn-quiet { color: var(--navy); background: transparent; border: 1px solid rgba(13,27,75,0.25); }
+    .btn-quiet:hover { border-color: rgba(13,27,75,0.6); background: rgba(13,27,75,0.03); transform: scale(1.03); }
+    .icon { width: 18px; height: 18px; flex: none; }
+
+    /* Switcher */
+    .switcher { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 4px; padding: 5px; border-radius: 999px; background: rgba(8,16,40,0.72); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 10px 40px rgba(0,0,0,0.45); }
+    .switcher button { font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 0.82rem; color: rgba(255,255,255,0.7); background: transparent; border: none; cursor: pointer; padding: 0.5rem 1rem; border-radius: 999px; transition: all 0.25s var(--ease-brand); white-space: nowrap; }
+    .switcher button:hover { color: #fff; }
+    .switcher button.active { color: #fff; background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); box-shadow: 0 4px 14px rgba(255,135,20,0.4); }
+    .caption { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 100; font-size: 0.8rem; color: rgba(255,255,255,0.55); background: rgba(8,16,40,0.6); backdrop-filter: blur(10px); padding: 0.5rem 1.1rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); max-width: 92vw; text-align: center; }
+    .caption b { color: rgba(255,255,255,0.85); font-weight: 700; }
+
+    .concept { display: none; min-height: 100dvh; position: relative; overflow: hidden; }
+    .concept.active { display: flex; }
+    .concept h1 { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.22em; }
+    #cC h1 { justify-content: center; }
+    .dots { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, currentColor 1.2px, transparent 1.2px); background-size: 22px 22px; opacity: 0.05; }
+
+    /* Entrance */
+    .concept.active .anim-char { animation: charUp 0.9s var(--ease-brand) both; }
+    @keyframes charUp { from { opacity: 0; transform: translateY(60px); filter: blur(14px); } to { opacity: 1; transform: none; filter: blur(0); } }
+    .concept.active .anim-rule { animation: ruleIn 0.4s var(--ease-brand) both; }
+    @keyframes ruleIn { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+    .concept.active .anim-up { animation: fadeUp 0.6s var(--ease-brand) both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+    .concept.active .anim-slide { animation: slideIn 0.8s var(--ease-brand) both; }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: none; } }
+    .concept.active .anim-count { animation: fadeUp 0.6s var(--ease-brand) both; }
+    .concept.active .anim-photo { animation: photoIn 1s var(--ease-brand) both; }
+    @keyframes photoIn { from { opacity: 0; transform: scale(1.08); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; } }
+
+    /* ═══════════ A · זירה (kinetic diagonal, dark) ═══════════ */
+    #cA { color: #fff; align-items: center; }
+    #cA .bg { position: absolute; inset: 0; }
+    #cA .bg img { width: 100%; height: 100%; object-fit: cover; }
+    #cA .grade1 { position: absolute; inset: 0; background: var(--orange); mix-blend-mode: multiply; opacity: 0.12; }
+    #cA .grade2 { position: absolute; inset: 0; background: linear-gradient(115deg, rgba(8,16,40,0.85) 8%, rgba(8,16,40,0.35) 45%, rgba(8,16,40,0.15) 70%); }
+    #cA .grade3 { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,16,40,0.9), transparent 45%); }
+    #cA .streaks { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    #cA .streaks i { position: absolute; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,135,20,0.5), transparent); transform: skewX(-30deg); }
+    #cA .streaks i:nth-child(1) { top: 22%; right: -10%; width: 45%; }
+    #cA .streaks i:nth-child(2) { top: 30%; right: 5%; width: 30%; opacity: 0.6; }
+    #cA .wrap { position: relative; z-index: 5; width: 100%; max-width: 1240px; margin: 0 auto; padding: 6rem 2.5rem 12rem; text-align: right; }
+    #cA .eyebrow { color: var(--orange); margin-bottom: 1.2rem; display: inline-flex; align-items: center; gap: 0.7rem; }
+    #cA .eyebrow::before { content: ''; width: 34px; height: 2px; background: var(--orange); }
+    #cA h1 { font-size: clamp(3.4rem, 11vw, 10rem); line-height: 0.86; letter-spacing: -0.03em; text-shadow: 0 6px 40px rgba(0,0,0,0.6); }
+    #cA h1 .l2 { color: var(--orange); }
+    #cA .sub { font-family: 'RagMarom', sans-serif; font-size: clamp(1.2rem, 2.4vw, 2.2rem); line-height: 1.2; margin-top: 1.4rem; max-width: 24ch; text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
+    #cA .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.2rem; }
+    #cA .statband { position: absolute; bottom: 0; left: 0; right: 0; z-index: 4; background: linear-gradient(100deg, var(--orange-deep), var(--orange-lift)); clip-path: polygon(0 42%, 100% 0, 100% 100%, 0 100%); padding: 4.5rem 2.5rem 2rem; }
+    #cA .statband .inner { max-width: 1240px; margin: 0 auto; display: flex; gap: clamp(1.5rem, 5vw, 4rem); }
+    #cA .statband .s { color: #fff; text-align: right; }
+    #cA .statband .s b { font-family: 'RagMarom', sans-serif; font-size: clamp(1.8rem, 4vw, 3.2rem); line-height: 1; display: block; }
+    #cA .statband .s span { font-size: clamp(0.72rem, 1vw, 0.9rem); font-weight: 700; opacity: 0.95; letter-spacing: 0.02em; }
+
+    /* ═══════════ B · לוח תוצאות (scoreboard split) ═══════════ */
+    #cB { color: #fff; }
+    #cB .split { display: grid; grid-template-columns: 1.02fr 0.98fr; width: 100%; min-height: 100dvh; }
+    #cB .panel { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: 6rem clamp(2rem, 5vw, 5rem);
+      background: radial-gradient(120% 90% at 90% 10%, rgba(30,53,120,0.6), transparent 60%), linear-gradient(160deg, #12245a 0%, var(--navy-deep) 65%); }
+    #cB .panel .dots { color: #fff; }
+    #cB .glow { position: absolute; bottom: 0; right: 0; width: 40vw; height: 40vh; border-radius: 999px; background: rgba(255,135,20,0.12); filter: blur(150px); }
+    #cB .eyebrow { color: var(--orange); margin-bottom: 1.2rem; }
+    #cB h1 { font-size: clamp(3rem, 6vw, 6.4rem); line-height: 0.9; letter-spacing: -0.02em; }
+    #cB h1 .l2 { color: var(--orange); }
+    #cB .accent-rule { width: 84px; margin: 1.3rem 0 0; }
+    #cB .sub { font-family: 'RagMarom', sans-serif; color: rgba(255,255,255,0.88); font-size: clamp(1.1rem, 1.7vw, 1.6rem); line-height: 1.3; margin-top: 1.3rem; max-width: 26ch; }
+    #cB .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; }
+    #cB .scoreboard { display: flex; gap: clamp(1rem, 3vw, 2.4rem); margin-top: 2.6rem; padding-top: 1.8rem; border-top: 1px solid rgba(255,255,255,0.15); }
+    #cB .scoreboard .s b { font-family: 'RagMarom', sans-serif; color: var(--orange); font-size: clamp(2rem, 4.2vw, 3.4rem); line-height: 1; display: block; }
+    #cB .scoreboard .s span { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.7); }
+    #cB .photo { position: relative; overflow: hidden; background: #10193a; clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%); }
+    #cB .photo img { width: 100%; height: 100%; object-fit: cover; }
+    #cB .photo .tint { position: absolute; inset: 0; background: var(--orange); mix-blend-mode: multiply; opacity: 0.12; }
+    #cB .photo .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,16,40,0.5), transparent 30%); }
+    #cB .seam { position: absolute; top: 0; bottom: 0; left: 0; width: 6px; background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); transform: skewX(-9deg) translateX(50%); transform-origin: top; z-index: 3; }
+
+    /* ═══════════ C · תנועה (marquee energy, dark) ═══════════ */
+    #cC { color: #fff; align-items: center; justify-content: center; text-align: center;
+      background: radial-gradient(90% 70% at 50% 26%, rgba(30,53,120,0.55), transparent 62%), linear-gradient(175deg, #12245a 0%, var(--navy-deep) 58%, #05081a 100%); }
+    #cC .dots { color: #fff; }
+    #cC .marquee { position: absolute; left: -20%; right: -20%; white-space: nowrap; font-family: 'RagMarom', sans-serif; font-size: clamp(4rem, 12vw, 12rem); line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(255,135,20,0.30); pointer-events: none; user-select: none; }
+    #cC .m1 { top: 12%; transform: skewY(-5deg); animation: mqRight 34s linear infinite; }
+    #cC .m2 { bottom: 12%; transform: skewY(-5deg); -webkit-text-stroke: 1.5px rgba(255,255,255,0.12); animation: mqLeft 40s linear infinite; }
+    @keyframes mqRight { from { transform: skewY(-5deg) translateX(-25%); } to { transform: skewY(-5deg) translateX(0%); } }
+    @keyframes mqLeft { from { transform: skewY(-5deg) translateX(0%); } to { transform: skewY(-5deg) translateX(-25%); } }
+    #cC .wrap { position: relative; z-index: 5; padding: 7rem 2rem; max-width: 1000px; }
+    #cC .eyebrow { color: var(--orange); margin-bottom: 1.4rem; }
+    #cC h1 { font-size: clamp(3.6rem, 12vw, 11rem); line-height: 0.85; letter-spacing: -0.03em; text-shadow: 0 6px 50px rgba(8,16,40,0.9); }
+    #cC h1 .l2 { color: var(--orange); }
+    #cC .sub { font-family: 'RagMarom', sans-serif; color: rgba(255,255,255,0.9); font-size: clamp(1.2rem, 2.2vw, 2rem); line-height: 1.25; margin-top: 1.4rem; }
+    #cC .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; margin-top: 2rem; }
+    #cC .thumbs { display: flex; gap: 10px; justify-content: center; margin-top: 2.6rem; }
+    #cC .thumbs img { width: clamp(58px, 8vw, 92px); height: clamp(58px, 8vw, 92px); border-radius: 14px; object-fit: cover; border: 2px solid rgba(255,255,255,0.16); box-shadow: 0 10px 24px rgba(0,0,0,0.4); }
+
+    /* ═══════════ D · קו הזינוק (light athletic) ═══════════ */
+    #cD { color: var(--navy); align-items: center; background: var(--surface); }
+    #cD .dots { color: var(--navy); }
+    #cD .shape { position: absolute; z-index: 0; top: -10%; left: -6%; width: 55vw; height: 70vh; background: linear-gradient(150deg, var(--orange-lift), var(--orange-deep)); clip-path: polygon(0 0, 100% 0, 62% 100%, 0 78%); opacity: 0.14; }
+    #cD .shape2 { position: absolute; z-index: 0; bottom: -14%; right: -8%; width: 40vw; height: 48vh; border-radius: 999px; background: rgba(255,135,20,0.1); filter: blur(120px); }
+    #cD .wrap { position: relative; z-index: 5; width: 100%; max-width: 1200px; margin: 0 auto; padding: 7rem 2.5rem 3rem; text-align: right; }
+    #cD .eyebrow { color: var(--orange-ink); margin-bottom: 1.2rem; display: inline-flex; align-items: center; gap: 0.7rem; }
+    #cD .eyebrow::before { content: ''; width: 34px; height: 2px; background: var(--orange); }
+    #cD h1 { font-size: clamp(3.4rem, 9vw, 8.5rem); line-height: 0.88; letter-spacing: -0.03em; }
+    #cD h1 .mark { position: relative; color: var(--orange); display: inline-block; }
+    #cD .sub { font-family: 'RagMarom', sans-serif; color: var(--orange-ink); font-size: clamp(1.2rem, 2.1vw, 1.9rem); line-height: 1.25; margin-top: 1.3rem; max-width: 28ch; }
+    #cD .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1.9rem; }
+    #cD .scoreboard { display: flex; gap: clamp(1.2rem, 4vw, 3rem); margin-top: 2.2rem; }
+    #cD .scoreboard .s b { font-family: 'RagMarom', sans-serif; color: var(--navy); font-size: clamp(1.8rem, 3.6vw, 3rem); line-height: 1; display: block; }
+    #cD .scoreboard .s b em { color: var(--orange); font-style: normal; }
+    #cD .scoreboard .s span { font-size: 0.82rem; font-weight: 600; color: rgba(13,27,75,0.55); }
+    #cD .filmstrip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 2.8rem; }
+    #cD .filmstrip .f { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 14px 34px rgba(13,27,75,0.13); }
+    #cD .filmstrip .f:nth-child(4) { display: block; }
+    #cD .filmstrip img { width: 100%; height: 100%; object-fit: cover; }
+    #cD .filmstrip .f.accent::after { content: ''; position: absolute; inset: 0; background: var(--orange); mix-blend-mode: multiply; opacity: 0.16; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      #cA .wrap { padding: 6rem 1.5rem 14rem; }
+      #cA .statband { padding: 3.5rem 1.5rem 1.6rem; clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%); }
+      #cA .statband .inner { flex-wrap: wrap; gap: 1.2rem 2rem; }
+      #cB .split { grid-template-columns: 1fr; }
+      #cB .photo { order: -1; min-height: 40vh; clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); }
+      #cB .seam { display: none; }
+      #cB .scoreboard { flex-wrap: wrap; gap: 1.2rem 1.8rem; }
+      #cC .thumbs { flex-wrap: wrap; }
+      #cD .filmstrip { grid-template-columns: repeat(2, 1fr); }
+      #cD .filmstrip .f:nth-child(n+3) { display: none; }
+      .switcher { top: 8px; gap: 2px; padding: 4px; }
+      .switcher button { padding: 0.45rem 0.7rem; font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="switcher" id="switcher">
+    <button data-target="cA" class="active">זירה</button>
+    <button data-target="cB">לוח תוצאות</button>
+    <button data-target="cC">תנועה</button>
+    <button data-target="cD">קו הזינוק</button>
+  </nav>
+
+  <!-- A · זירה -->
+  <section class="concept" id="cA">
+    <div class="bg anim-photo"><img src="liba_pics/214A1552.jpg" alt="" /></div>
+    <div class="grade1"></div><div class="grade2"></div><div class="grade3"></div>
+    <div class="streaks"><i></i><i></i></div>
+    <div class="wrap">
+      <p class="ds-eyebrow eyebrow anim-up">הליבה</p>
+      <h1 class="rag"><span class="hl">קבוצות</span><span class="l2 hl">הנוער</span></h1>
+      <p class="sub anim-up">המקום שבו בני ובנות נוער הופכים לאנשים שבוחרים להיכנס לזירה.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary anim-up"><span class="sheen"></span>הרשמה לקבוצה <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+        <a class="btn btn-ghost-dark anim-up">גלו עוד</a>
+      </div>
+    </div>
+    <div class="statband anim-up">
+      <div class="inner">
+        <div class="s"><b class="rag">2,500+</b><span>מתאמנים ומתאמנות</span></div>
+        <div class="s"><b class="rag">67</b><span>קבוצות פעילות</span></div>
+        <div class="s"><b class="rag">18</b><span>אזורים בארץ</span></div>
+        <div class="s"><b class="rag">60</b><span>מאמנים ומאמנות</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B · לוח תוצאות -->
+  <section class="concept" id="cB">
+    <div class="split">
+      <div class="panel">
+        <div class="dots"></div><div class="glow"></div>
+        <div style="position:relative; z-index:2">
+          <p class="ds-eyebrow eyebrow anim-up">הליבה</p>
+          <h1 class="rag"><span class="hl">קבוצות</span><span class="l2 hl">הנוער</span></h1>
+          <div class="accent-rule anim-rule"></div>
+          <p class="sub anim-up">המקום שבו בני ובנות נוער הופכים לאנשים שבוחרים להיכנס לזירה.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary anim-up"><span class="sheen"></span>הרשמה לקבוצה <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+            <a class="btn btn-ghost-dark anim-up">גלו עוד</a>
+          </div>
+          <div class="scoreboard">
+            <div class="s anim-count"><b class="rag">2,500+</b><span>מתאמנים/ות</span></div>
+            <div class="s anim-count"><b class="rag">67</b><span>קבוצות</span></div>
+            <div class="s anim-count"><b class="rag">18</b><span>אזורים בארץ</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="photo anim-photo">
+        <img src="liba_pics/214A0362.jpg" alt="" />
+        <div class="tint"></div><div class="shade"></div>
+        <div class="seam"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C · תנועה -->
+  <section class="concept" id="cC">
+    <div class="dots"></div>
+    <div class="marquee m1">מסוגלות • שייכות • השפעה • זירה • מסוגלות • שייכות • השפעה • זירה •</div>
+    <div class="marquee m2">תנועה • קבוצה • אתגר • גריט • תנועה • קבוצה • אתגר • גריט •</div>
+    <div class="wrap">
+      <p class="ds-eyebrow eyebrow anim-up">הליבה</p>
+      <h1 class="rag"><span class="hl">קבוצות</span><span class="l2 hl">הנוער</span></h1>
+      <p class="sub anim-up">המקום שבו בני ובנות נוער הופכים לאנשים שבוחרים להיכנס לזירה.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary anim-up"><span class="sheen"></span>הרשמה לקבוצה <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+        <a class="btn btn-ghost-dark anim-up">גלו עוד</a>
+      </div>
+      <div class="thumbs">
+        <img class="anim-up" src="liba_pics/214A0005.jpg" alt="" />
+        <img class="anim-up" src="liba_pics/214A1343.jpg" alt="" />
+        <img class="anim-up" src="liba_pics/214A9628.jpg" alt="" />
+        <img class="anim-up" src="liba_pics/214A0223.jpg" alt="" />
+        <img class="anim-up" src="liba_pics/214A9700.jpg" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <!-- D · קו הזינוק -->
+  <section class="concept" id="cD">
+    <div class="shape"></div><div class="shape2"></div><div class="dots"></div>
+    <div class="wrap">
+      <p class="ds-eyebrow eyebrow anim-up">הליבה</p>
+      <h1 class="rag"><span class="hl">קבוצות</span><span class="mark hl">הנוער</span></h1>
+      <p class="sub anim-up">המקום שבו בני ובנות נוער הופכים לאנשים שבוחרים להיכנס לזירה.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary anim-up"><span class="sheen"></span>הרשמה לקבוצה <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+        <a class="btn btn-quiet anim-up">גלו עוד</a>
+      </div>
+      <div class="scoreboard">
+        <div class="s anim-count"><b class="rag">2,500<em>+</em></b><span>מתאמנים ומתאמנות</span></div>
+        <div class="s anim-count"><b class="rag">67</b><span>קבוצות פעילות</span></div>
+        <div class="s anim-count"><b class="rag">18</b><span>אזורים בארץ</span></div>
+      </div>
+      <div class="filmstrip">
+        <div class="f anim-photo"><img src="liba_pics/214A0005.jpg" alt="" /></div>
+        <div class="f accent anim-photo"><img src="liba_pics/214A1343.jpg" alt="" /></div>
+        <div class="f anim-photo"><img src="liba_pics/214A9628.jpg" alt="" /></div>
+        <div class="f anim-photo"><img src="liba_pics/214A0405-2.jpg" alt="" /></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="caption" id="caption"></div>
+
+  <script>
+    const CAPTIONS = {
+      cA: '<b>זירה</b> — תמונת אקשן אחת (סטטית) עם חתך אלכסוני כתום ופס נתונים ספורטיבי. אנרגיה קולנועית-אתלטית.',
+      cB: '<b>לוח תוצאות</b> — פאנל נייבי עם כותרת ומספרים גדולים כמו סקורבורד, מול תמונת אקשן בחתך אלכסוני. תחושת קבוצת ספורט.',
+      cC: '<b>תנועה</b> — כותרת ענקית עם שתי כתוביות רצות (marquee) של ערכי התנועה ברקע + רצועת תמונות. קינטי וצעיר.',
+      cD: '<b>קו הזינוק</b> — גרסה בהירה: כותרת ענקית, צורות כתומות אתלטיות, שורת נתונים ורצועת פריימים. רענן וספורטיבי.'
+    };
+    function splitChars(c){ c.querySelectorAll('h1 .hl').forEach(seg=>{ if(seg.dataset.split) return; const t=seg.textContent; seg.textContent=''; [...t].forEach(ch=>{ const s=document.createElement('span'); s.className='anim-char'; s.style.display='inline-block'; s.textContent = ch===' ' ? ' ' : ch; seg.appendChild(s); }); seg.dataset.split='1'; }); }
+    function stagger(c){
+      c.querySelectorAll('.anim-char').forEach((el,i)=> el.style.animationDelay=(0.2+i*0.05)+'s');
+      c.querySelectorAll('.anim-rule').forEach(el=> el.style.animationDelay='0.75s');
+      c.querySelectorAll('.anim-up').forEach((el,i)=> el.style.animationDelay=(0.8+i*0.08)+'s');
+      c.querySelectorAll('.anim-count').forEach((el,i)=> el.style.animationDelay=(1.0+i*0.1)+'s');
+      c.querySelectorAll('.anim-slide').forEach((el,i)=> el.style.animationDelay=(0.3+i*0.1)+'s');
+    }
+    function activate(id){
+      document.querySelectorAll('.concept').forEach(c=> c.classList.remove('active'));
+      document.querySelectorAll('.switcher button').forEach(b=> b.classList.toggle('active', b.dataset.target===id));
+      const el=document.getElementById(id); splitChars(el); stagger(el); void el.offsetWidth; el.classList.add('active');
+      document.getElementById('caption').innerHTML=CAPTIONS[id]; window.scrollTo(0,0);
+    }
+    document.querySelectorAll('.switcher button').forEach(b=> b.addEventListener('click', ()=> activate(b.dataset.target)));
+    activate('cA');
+  </script>
+</body>
+</html>
