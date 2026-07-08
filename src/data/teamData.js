@@ -31,7 +31,29 @@ export const roster = {
   title: 'האנשים שמניעים את חמש אצבעות',
   lead: 'בורד, הנהלה וצוות מטה — האנשים והאנשות שעומדים מאחורי התנועה.',
   groups: [
-    { id: 'board', title: 'בורד ומנכ״לים', members: placeholderMembers(4) },
+    {
+      id: 'board',
+      title: 'בורד ומנכ״לים',
+      members: [
+        {
+          id: 'amir-menachem',
+          photo: '/Amir_pics/amir-portrait.jpg',
+          name: 'עמיר מנחם',
+          title: 'מייסד ויו״ר',
+          bio: 'בן 36, קצין לשעבר בשייטת 13 ומקים תנועת חמש אצבעות',
+          instagram: 'https://www.instagram.com/amir_menachem5?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+        },
+        {
+          id: 'ron-olarchik',
+          photo: '/team_members/RON.JPG',
+          name: 'רון אולארצ\'יק',
+          title: 'מנכ״ל',
+          bio: 'לאחר שהשתחרר מעוקץ, רון מוביל את התנועה מהשטח ומאמן כבר מעל לעשור',
+          instagram: 'https://www.instagram.com/ron.olearchik?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+        },
+        ...placeholderMembers(2),
+      ],
+    },
     { id: 'managers', title: 'מנהלים', members: placeholderMembers(3) },
     { id: 'staff', title: 'מטה', members: placeholderMembers(6) },
   ],

@@ -100,6 +100,7 @@ function CoachesMobileCarousel() {
                     src={coach.imageSrc}
                     alt={coach.name}
                     className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectPosition: coach.imgPosition }}
                   />
                 ) : (
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
@@ -186,6 +187,7 @@ export default function LiabahCoaches() {
                         src={coach.imageSrc}
                         alt={coach.name}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        style={{ objectPosition: coach.imgPosition }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </>

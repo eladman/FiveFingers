@@ -35,6 +35,8 @@ export const ZONES = [
     badge: 'גילאי 20 ומעלה',
     text: 'הרצאות בנושא מסוגלות, חוסן, מימוש פוטנציאל והאדם בזירה — מיועדות לגילאי 20 ומעלה. שילוב של סיפור אישי, שיטה ותובנות שמניעות לפעולה.',
     imageSrc: '/Amir_pics/amir-stage.jpg',
+    // Tall portrait (2:3) cropped into a 4:3 frame — bias to the top so the face isn't cut off.
+    imagePosition: 'top',
     cta: 'הזמינו הרצאה',
     contactLabel: 'קשר עם עמיר',
   },
@@ -72,18 +74,18 @@ export const SOCIALS = [
     key: 'podcast',
     title: 'פודקאסט',
     label: 'חמש אצבעות | האדם בזירה',
-    href: '/#belief', // homepage ManInArena ("האדם בזירה") section
+    href: 'https://open.spotify.com/show/1pkoB14iPwztzO8LXkqGaR?si=a787a5babe4c4d28',
   },
   {
     key: 'instagram',
     title: 'אינסטגרם',
     label: 'עקבו אחרי הרגעים מהשטח',
-    href: '#', // TODO: Instagram profile (sent later)
+    href: 'https://www.instagram.com/amir_menachem5?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
   },
   {
     key: 'youtube',
     title: 'הרצאה מלאה',
     label: 'הרצאה בבה״ד 1 · יוטיוב',
-    href: '#', // TODO: YouTube lecture link (sent later)
+    href: 'https://www.youtube.com/watch?v=dn48dteg1x8',
   },
 ]

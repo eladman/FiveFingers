@@ -1,4 +1,4 @@
-import { User } from 'lucide-react'
+import { User, Instagram } from 'lucide-react'
 import { MuseumSection, MuseumHeading } from '../academy/shared'
 import useReveal from '../../hooks/useReveal'
 import { roster } from '../../data/teamData'
@@ -9,8 +9,21 @@ import { roster } from '../../data/teamData'
 const GRID_COLS_CLASS = 'grid-cols-2 sm:grid-cols-4'
 
 function MemberCard({ member }) {
+  const CardTag = member.instagram ? 'a' : 'div'
+  const cardProps = member.instagram
+    ? {
+        href: member.instagram,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        'aria-label': `${member.name} באינסטגרם`,
+      }
+    : {}
+
   return (
-    <div className="tr-animate group flex flex-col rounded-2xl overflow-hidden border border-navy/12 bg-white/60 transition-all duration-300 hover:-translate-y-1 hover:border-orange/40 hover:shadow-lg hover:shadow-navy/5">
+    <CardTag
+      {...cardProps}
+      className="tr-animate group flex flex-col rounded-2xl overflow-hidden border border-navy/12 bg-white/60 transition-all duration-300 hover:-translate-y-1 hover:border-orange/40 hover:shadow-lg hover:shadow-navy/5"
+    >
       {/* Photo placeholder — swap for a real portrait via member.photo */}
       <div
         className="relative w-full flex items-center justify-center"
@@ -24,11 +37,16 @@ function MemberCard({ member }) {
       </div>
 
       <div className="flex flex-col text-right p-5">
-        <h4 className="font-heebo font-bold text-navy text-base leading-snug">{member.name}</h4>
+        <div className="flex items-center justify-between gap-2">
+          <h4 className="font-heebo font-bold text-navy text-base leading-snug">{member.name}</h4>
+          {member.instagram && (
+            <Instagram size={18} strokeWidth={1.75} className="shrink-0 text-navy/40 transition-colors group-hover:text-orange" />
+          )}
+        </div>
         <p className="font-heebo text-orange-ink text-sm font-semibold mt-1">{member.title}</p>
         <p className="font-heebo text-navy/60 text-sm leading-relaxed mt-3">{member.bio}</p>
       </div>
-    </div>
+    </CardTag>
   )
 }
 

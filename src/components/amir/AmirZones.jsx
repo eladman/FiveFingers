@@ -107,6 +107,7 @@ export default function AmirZones({ onBook }) {
                         alt={z.title}
                         loading="lazy"
                         className="absolute inset-0 w-full h-full object-cover"
+                        style={{ objectPosition: z.imagePosition || 'center' }}
                       />
                     </div>
                   </div>

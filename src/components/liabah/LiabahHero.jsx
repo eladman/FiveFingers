@@ -153,7 +153,6 @@ export default function LiabahHero({ onRegister }) {
       {/* ── Content (RTL: right-aligned) ── */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 pt-24 pb-48 md:pb-52 text-right select-none">
         <p className="lh-eyebrow ds-eyebrow text-orange mb-5 inline-flex items-center gap-3">
-          <span aria-hidden="true" className="inline-block w-8 h-0.5 bg-orange" />
           {hero.eyebrow}
         </p>
 
