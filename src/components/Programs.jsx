@@ -148,7 +148,7 @@ export default function Programs({ onContactOpen }) {
             //   Odd:  image right, text left → image md:order-1, text md:order-2
             const imageOrder = isEven ? 'order-2 md:order-2' : 'order-2 md:order-1'
             const textOrder  = isEven ? 'order-1 md:order-1' : 'order-1 md:order-2'
-            const textAlign  = isEven ? 'text-right' : 'text-right md:text-left'
+            const textAlign  = 'text-right'
             const isLast = i === PROGRAMS.length - 1
 
             return (

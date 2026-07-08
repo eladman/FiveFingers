@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { MapPin, Clock, Users, User, X, ChevronLeft } from 'lucide-react'
-import { locations } from '../../data/liabahData'
+import { locations, coaches } from '../../data/liabahData'
 import { ISRAEL_PATH, VIEWBOX_W, VIEWBOX_H, project } from '../../data/israelOutline'
 import { SectionBg, SectionHeading } from './shared'
 
@@ -76,6 +76,7 @@ export default function LiabahMap() {
   const [selected, setSelected] = useState(null) // clicked city → detail panel
 
   const selectedLoc = locations.find((l) => l.id === selected) || null
+  const selectedCoach = selectedLoc ? coaches.find((c) => c.region === selectedLoc.region) : null
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -256,14 +257,15 @@ export default function LiabahMap() {
               <X size={20} />
             </button>
 
-            {/* Manager photo / placeholder */}
+            {/* Coach photo / placeholder */}
             <div className="relative w-full h-52 sm:h-60 overflow-hidden bg-navy/[0.04] rounded-t-2xl">
-              {selectedLoc.manager?.image ? (
+              {selectedCoach?.imageSrc ? (
                 <>
                   <img
-                    src={selectedLoc.manager.image}
-                    alt={selectedLoc.manager.name}
+                    src={selectedCoach.imageSrc}
+                    alt={selectedCoach.name}
                     className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectPosition: selectedCoach.imgPosition }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" />
                 </>
@@ -282,26 +284,26 @@ export default function LiabahMap() {
                 <span className="font-heebo font-bold text-navy text-sm">{selectedLoc.city}</span>
               </div>
 
-              {/* Manager name over photo */}
-              {selectedLoc.manager?.image && (
+              {/* Coach name over photo */}
+              {selectedCoach?.imageSrc && (
                 <div className="absolute bottom-4 right-5 text-white">
-                  <h3 className="font-heebo font-bold text-2xl drop-shadow">{selectedLoc.manager.name}</h3>
-                  <p className="font-heebo text-white/85 text-sm drop-shadow">{selectedLoc.manager.role}</p>
+                  <h3 className="font-heebo font-bold text-2xl drop-shadow">{selectedCoach.name}</h3>
+                  <p className="font-heebo text-white/85 text-sm drop-shadow">{selectedCoach.role}</p>
                 </div>
               )}
             </div>
 
             {/* Body */}
             <div className="p-6 sm:p-7 flex flex-col gap-5">
-              {/* Manager name + bio (when present) */}
-              {selectedLoc.manager && !selectedLoc.manager.image && (
+              {/* Coach name + bio (when present) */}
+              {selectedCoach && !selectedCoach.imageSrc && (
                 <div>
-                  <h3 className="font-heebo font-bold text-navy text-xl">{selectedLoc.manager.name}</h3>
-                  <p className="font-heebo text-[#ff8714] text-sm mt-0.5">{selectedLoc.manager.role}</p>
+                  <h3 className="font-heebo font-bold text-navy text-xl">{selectedCoach.name}</h3>
+                  <p className="font-heebo text-[#ff8714] text-sm mt-0.5">{selectedCoach.role}</p>
                 </div>
               )}
-              {selectedLoc.manager?.bio && (
-                <p className="font-heebo text-navy/70 leading-relaxed">{selectedLoc.manager.bio}</p>
+              {selectedCoach?.bio && (
+                <p className="font-heebo text-navy/70 leading-relaxed">{selectedCoach.bio}</p>
               )}
 
               {/* Teams in the city */}

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>קיר הפנים · וריאציות — צוות חמש אצבעות</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'RagMarom';
+      src: url('fonts/rag-marom-2.1.otf') format('opentype');
+      font-weight: normal; font-style: normal; font-display: swap;
+    }
+    :root {
+      --orange: #ff8714; --orange-lift: #ffa347; --orange-deep: #e56f00; --orange-ink: #b35600;
+      --navy: #0d1b4b; --navy-deep: #081028; --navy-light: #1e3578;
+      --surface: #fafaf8; --surface-2: #f7f5f2;
+      --ease-brand: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Heebo', sans-serif; background: var(--navy-deep); color: var(--navy); direction: rtl; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    .ds-eyebrow { font-family: 'Heebo', sans-serif; font-weight: 600; font-size: clamp(0.72rem, 0.9vw, 0.85rem); line-height: 1.2; letter-spacing: 0.22em; text-transform: uppercase; }
+    .rag { font-family: 'RagMarom', 'Heebo', sans-serif; }
+    .accent-rule { height: 3px; border-radius: 999px; background: var(--orange); transform-origin: center; }
+
+    .btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      font-family: 'Heebo', sans-serif; font-weight: 700; border-radius: 999px; padding: 0.9rem 2rem; font-size: 1rem; white-space: nowrap;
+      cursor: pointer; border: none; text-decoration: none; transition: transform 0.3s var(--ease-brand), box-shadow 0.24s var(--ease-brand), border-color 0.3s, background 0.3s, color 0.3s; }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { color: #fff; background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); box-shadow: 0 8px 22px rgba(255,135,20,0.38), inset 0 1px 0 rgba(255,255,255,0.40); }
+    .btn-primary:hover { transform: scale(1.04); box-shadow: 0 12px 30px rgba(255,135,20,0.50), inset 0 1px 0 rgba(255,255,255,0.45); }
+    .btn-primary .sheen { position: absolute; top: 0; bottom: 0; width: 60%; left: -85%; background: linear-gradient(100deg, transparent, rgba(255,255,255,0.5), transparent); transform: skewX(-18deg); transition: left 0.6s var(--ease-brand); pointer-events: none; }
+    .btn-primary:hover .sheen { left: 130%; }
+    .btn-ghost-dark { color: rgba(255,255,255,0.75); background: transparent; border: 1px solid rgba(255,255,255,0.22); }
+    .btn-ghost-dark:hover { color: #fff; border-color: rgba(255,255,255,0.55); transform: scale(1.03); }
+    .btn-quiet { color: var(--navy); background: transparent; border: 1px solid rgba(13,27,75,0.25); }
+    .btn-quiet:hover { border-color: rgba(13,27,75,0.6); background: rgba(13,27,75,0.03); transform: scale(1.03); }
+    .icon { width: 18px; height: 18px; flex: none; }
+
+    /* Switcher */
+    .switcher { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 4px; padding: 5px; border-radius: 999px;
+      background: rgba(8,16,40,0.72); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 10px 40px rgba(0,0,0,0.45); }
+    .switcher button { font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 0.82rem; color: rgba(255,255,255,0.7); background: transparent; border: none; cursor: pointer; padding: 0.5rem 1rem; border-radius: 999px; transition: all 0.25s var(--ease-brand); white-space: nowrap; }
+    .switcher button:hover { color: #fff; }
+    .switcher button.active { color: #fff; background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); box-shadow: 0 4px 14px rgba(255,135,20,0.4); }
+    .caption { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 100; font-size: 0.8rem; color: rgba(255,255,255,0.55);
+      background: rgba(8,16,40,0.6); backdrop-filter: blur(10px); padding: 0.5rem 1.1rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); max-width: 92vw; text-align: center; }
+    .caption b { color: rgba(255,255,255,0.85); font-weight: 700; }
+
+    .concept { display: none; min-height: 100dvh; position: relative; overflow: hidden; }
+    .concept.active { display: flex; align-items: center; }
+    .dots { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, currentColor 1.2px, transparent 1.2px); background-size: 22px 22px; opacity: 0.05; }
+
+    /* Entrance */
+    .concept.active .anim-char { animation: charUp 0.9s var(--ease-brand) both; }
+    @keyframes charUp { from { opacity: 0; transform: translateY(55px); filter: blur(14px); } to { opacity: 1; transform: none; filter: blur(0); } }
+    .concept.active .anim-rule { animation: ruleIn 0.4s var(--ease-brand) both; }
+    @keyframes ruleIn { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+    .concept.active .anim-up { animation: fadeUp 0.6s var(--ease-brand) both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .concept.active .anim-tile { animation: tileIn 0.8s var(--ease-brand) both; }
+    @keyframes tileIn { from { opacity: 0; transform: translateY(28px) scale(0.94); } to { opacity: 1; transform: none; } }
+    .concept.active .anim-pop { animation: popIn 0.55s var(--ease-brand) both; }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; } }
+
+    /* ══════════ SHARED FACES-WALL BASE ══════════ */
+    .fw .wrap { position: relative; z-index: 5; width: 100%; max-width: 1240px; margin: 0 auto; padding: 7rem 2rem 5rem;
+      display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+    .fw .mosaic { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 12px; aspect-ratio: 1/1.02; }
+    .fw .mosaic .tile { position: relative; border-radius: 16px; overflow: hidden; }
+    .fw .mosaic .tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fw .t-tall { grid-row: span 2; }
+    .fw .t-wide { grid-column: span 2; }
+    .fw h1 { font-size: clamp(3rem, 7vw, 6.6rem); line-height: 0.92; letter-spacing: -0.02em; margin-bottom: 0.2em; color: var(--fg); }
+    .fw h1 .l2 { color: var(--orange); }
+    .fw .sub { font-family: 'RagMarom', sans-serif; color: var(--sub); font-size: clamp(1.2rem, 2vw, 1.9rem); line-height: 1.25; margin-top: 1rem; max-width: 22ch; }
+    .fw .eyebrow { color: var(--orange); margin-bottom: 1.4rem; }
+    .fw .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.2rem; }
+    .fw .badge { position: absolute; z-index: 6; bottom: -14px; right: -14px; border-radius: 18px; padding: 0.9rem 1.2rem; text-align: center; }
+    .fw .badge b { display: block; font-family: 'RagMarom', sans-serif; font-size: 1.9rem; line-height: 1; }
+    .fw .badge span { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em; opacity: 0.95; }
+
+    /* ─── V0 · מקור (dark, reference) ─── */
+    #v0 { --fg: #fff; --sub: rgba(255,255,255,0.9);
+      background: radial-gradient(120% 90% at 82% 12%, rgba(30,53,120,0.55), transparent 60%), linear-gradient(160deg, #0f2050 0%, var(--navy-deep) 55%, #06091c 100%); }
+    #v0 .glow1 { position: absolute; top: -8%; right: -6%; width: 44vw; height: 50vh; border-radius: 999px; background: rgba(255,135,20,0.14); filter: blur(150px); }
+    #v0 .glow2 { position: absolute; bottom: 6%; left: 30%; width: 40vw; height: 40vh; border-radius: 999px; background: rgba(255,135,20,0.08); filter: blur(160px); }
+    #v0 .dots { color: #fff; }
+    #v0 h1 { text-shadow: 0 4px 32px rgba(0,0,0,0.5); }
+    #v0 .tile { background: #10193a; box-shadow: 0 14px 40px rgba(0,0,0,0.45); }
+    #v0 .tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(8,16,40,0.35)); }
+    #v0 .tile.orange::before { content: ''; position: absolute; inset: 0; z-index: 2; background: var(--orange); mix-blend-mode: multiply; opacity: 0.16; }
+    #v0 .badge { background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); color: #fff; box-shadow: 0 12px 30px rgba(255,135,20,0.45); border: 3px solid #0f2050; }
+
+    /* ─── V1 · בהיר (light surface) ─── */
+    #v1 { --fg: var(--navy); --sub: var(--orange-ink); background:
+      radial-gradient(110% 80% at 85% 8%, rgba(255,135,20,0.05), transparent 55%), var(--surface); }
+    #v1 .glow1 { position: absolute; top: -6%; right: -6%; width: 42vw; height: 50vh; border-radius: 999px; background: rgba(255,135,20,0.07); filter: blur(150px); }
+    #v1 .glow2 { position: absolute; bottom: 8%; left: 24%; width: 42vw; height: 40vh; border-radius: 999px; background: rgba(255,135,20,0.08); filter: blur(160px); }
+    #v1 .dots { color: var(--navy); }
+    #v1 .tile { background: #e9e7e2; box-shadow: 0 16px 40px rgba(13,27,75,0.14); }
+    #v1 .tile.orange::before { content: ''; position: absolute; inset: 0; z-index: 2; background: var(--orange); mix-blend-mode: multiply; opacity: 0.13; }
+    #v1 .badge { background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); color: #fff; box-shadow: 0 14px 32px rgba(255,135,20,0.4); border: 3px solid var(--surface); }
+    #v1 .eyebrow { color: var(--orange-ink); }
+
+    /* ─── V2 · גלריה לבנה (white, framed museum) ─── */
+    #v2 { --fg: var(--navy); --sub: var(--orange-ink); background: #ffffff; }
+    #v2 .glow1 { position: absolute; top: 0; left: 10%; width: 44vw; height: 45vh; border-radius: 999px; background: rgba(255,135,20,0.06); filter: blur(160px); }
+    #v2 .dots { color: var(--navy); opacity: 0.04; }
+    #v2 .watermark { position: absolute; left: -3%; top: 50%; transform: translateY(-50%) rotate(-12deg) scaleX(-1); width: 38%; max-width: 380px; opacity: 0.04; filter: grayscale(1); pointer-events: none; }
+    #v2 .mosaic { gap: 16px; }
+    #v2 .tile { background: #fff; border-radius: 8px; padding: 8px 8px 30px; border: 1px solid rgba(13,27,75,0.1); box-shadow: 0 10px 26px rgba(13,27,75,0.08); }
+    #v2 .tile img { border-radius: 4px; height: 100%; }
+    #v2 .tile .cap { position: absolute; bottom: 8px; right: 12px; font-size: 0.72rem; font-weight: 600; color: rgba(13,27,75,0.55); letter-spacing: 0.03em; }
+    #v2 .tile.t-tall img, #v2 .tile.t-wide img { height: 100%; }
+    #v2 .badge { background: var(--navy); color: #fff; box-shadow: 0 14px 30px rgba(13,27,75,0.25); border: 3px solid #fff; }
+    #v2 .badge b { color: var(--orange-lift); }
+
+    /* ─── V3 · בליד (dark, edge-bleed masonry) ─── */
+    #v3 { --fg: #fff; --sub: rgba(255,255,255,0.9);
+      background: radial-gradient(110% 90% at 20% 15%, rgba(30,53,120,0.5), transparent 60%), linear-gradient(150deg, #0e1f4d 0%, var(--navy-deep) 60%, #05081a 100%); }
+    #v3 .glow1 { position: absolute; top: 10%; left: -6%; width: 44vw; height: 55vh; border-radius: 999px; background: rgba(255,135,20,0.13); filter: blur(160px); }
+    #v3 .dots { color: #fff; }
+    #v3 { height: 100dvh; }
+    #v3 .wrap { grid-template-columns: 1fr 1fr; gap: 0; max-width: none; padding: 0; height: 100dvh; align-items: stretch; }
+    #v3 .textcol { display: flex; flex-direction: column; justify-content: center; padding: 2rem clamp(2rem, 5vw, 5.5rem); z-index: 3; }
+    #v3 .bleed { position: relative; overflow: hidden; height: 100dvh; }
+    #v3 .bleed::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; z-index: 4; background: linear-gradient(0deg, #06091c, transparent); pointer-events: none; }
+    #v3 .masonry { columns: 2; column-gap: 14px; padding: 16px; }
+    #v3 .masonry .m { break-inside: avoid; margin-bottom: 14px; border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 16px 40px rgba(0,0,0,0.5); background: #10193a; }
+    #v3 .masonry .m img { width: 100%; display: block; object-fit: cover; }
+    #v3 .masonry .m.orange::before { content: ''; position: absolute; inset: 0; z-index: 2; background: var(--orange); mix-blend-mode: multiply; opacity: 0.16; }
+    #v3 .masonry .m::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(8,16,40,0.35)); }
+    #v3 .fade { position: absolute; top: 0; bottom: 0; right: -1px; width: 90px; z-index: 4; pointer-events: none; background: linear-gradient(270deg, #081028 0%, transparent 100%); }
+    #v3 h1 { text-shadow: 0 4px 32px rgba(0,0,0,0.5); }
+    #v3 .pill { display: inline-flex; align-items: center; gap: 0.5rem; align-self: flex-start; margin-top: 1.6rem; background: rgba(255,135,20,0.14); border: 1px solid rgba(255,135,20,0.4); color: var(--orange-lift); border-radius: 999px; padding: 0.5rem 1.1rem; font-weight: 700; font-size: 0.9rem; }
+    #v3 .pill b { font-family: 'RagMarom', sans-serif; font-size: 1.1rem; }
+
+    /* ─── V4 · מראה (mirrored, feature portrait) ─── */
+    #v4 { --fg: #fff; --sub: rgba(255,255,255,0.9);
+      background: radial-gradient(120% 90% at 15% 12%, rgba(30,53,120,0.5), transparent 60%), linear-gradient(200deg, #0f2050 0%, var(--navy-deep) 58%, #06091c 100%); }
+    #v4 .glow1 { position: absolute; top: -8%; left: -6%; width: 44vw; height: 50vh; border-radius: 999px; background: rgba(255,135,20,0.13); filter: blur(150px); }
+    #v4 .dots { color: #fff; }
+    #v4 .wrap { grid-template-columns: 1fr 1.05fr; } /* mosaic first (right in RTL) */
+    #v4 .textcol { order: 2; text-align: left; }
+    #v4 .textcol .sub, #v4 .textcol .cta-row { margin-left: 0; }
+    #v4 .mosaic { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); aspect-ratio: 1/1; }
+    #v4 .feature { grid-column: span 2; grid-row: span 2; }
+    #v4 .tile { background: #10193a; box-shadow: 0 14px 40px rgba(0,0,0,0.45); }
+    #v4 .tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(8,16,40,0.4)); }
+    #v4 .tile.orange::before { content: ''; position: absolute; inset: 0; z-index: 2; background: var(--orange); mix-blend-mode: multiply; opacity: 0.16; }
+    #v4 .feature .name { position: absolute; z-index: 3; right: 16px; bottom: 14px; color: #fff; text-align: right; }
+    #v4 .feature .name b { display: block; font-family: 'RagMarom', sans-serif; font-size: 1.3rem; line-height: 1; }
+    #v4 .feature .name span { font-size: 0.78rem; color: rgba(255,255,255,0.75); }
+    #v4 .badge { right: auto; left: -14px; bottom: -14px; background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); color: #fff; box-shadow: 0 12px 30px rgba(255,135,20,0.45); border: 3px solid #0f2050; }
+
+    /* ─── V5 · דואוטון (light, orange-tinted tiles) ─── */
+    #v5 { --fg: var(--navy); --sub: var(--orange-ink); background: var(--surface-2); }
+    #v5 .glow1 { position: absolute; top: -6%; right: -4%; width: 40vw; height: 48vh; border-radius: 999px; background: rgba(255,135,20,0.1); filter: blur(150px); }
+    #v5 .glow2 { position: absolute; bottom: 6%; left: 20%; width: 40vw; height: 40vh; border-radius: 999px; background: rgba(13,27,75,0.05); filter: blur(160px); }
+    #v5 .dots { color: var(--navy); }
+    #v5 .tile { background: var(--navy); box-shadow: 0 16px 40px rgba(13,27,75,0.18); }
+    #v5 .tile img { filter: grayscale(1) contrast(1.05) brightness(1.02); }
+    #v5 .tile::before { content: ''; position: absolute; inset: 0; z-index: 2; background: var(--orange); mix-blend-mode: multiply; opacity: 0.62; }
+    #v5 .tile::after { content: ''; position: absolute; inset: 0; z-index: 3; background: linear-gradient(180deg, rgba(255,163,71,0.15), rgba(13,27,75,0.35)); mix-blend-mode: multiply; }
+    #v5 .tile.plain img { filter: none; }
+    #v5 .tile.plain::before, #v5 .tile.plain::after { display: none; }
+    #v5 .badge { background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep)); color: #fff; box-shadow: 0 14px 32px rgba(255,135,20,0.42); border: 3px solid var(--surface-2); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .fw .wrap { grid-template-columns: 1fr !important; padding-top: 6rem; gap: 3rem; }
+      .fw .mosaic { max-width: 460px; margin: 0 auto; }
+      .fw .badge { right: auto; left: -8px; }
+      #v3, #v3 .wrap { height: auto; }
+      #v3 .wrap { grid-template-columns: 1fr !important; }
+      #v3 .textcol { padding: 6rem 2rem 0; }
+      #v3 .bleed { height: auto; max-height: 62vh; }
+      #v3 .masonry { columns: 2; padding: 0; }
+      #v3 .fade { display: none; }
+      #v4 .textcol { order: -1; text-align: right; }
+      .switcher { top: 8px; gap: 2px; padding: 4px; }
+      .switcher button { padding: 0.45rem 0.6rem; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="switcher" id="switcher">
+    <button data-target="v0" class="active">מקור · כהה</button>
+    <button data-target="v1">בהיר</button>
+    <button data-target="v2">גלריה לבנה</button>
+    <button data-target="v3">בליד</button>
+    <button data-target="v4">מראה</button>
+    <button data-target="v5">דואוטון</button>
+  </nav>
+
+  <!-- V0 · מקור -->
+  <section class="concept fw active" id="v0">
+    <div class="glow1"></div><div class="glow2"></div><div class="dots"></div>
+    <div class="wrap">
+      <div>
+        <p class="ds-eyebrow eyebrow anim-up">הצטרפו לצוות</p>
+        <h1 class="rag"><span class="hl">להוביל </span><span class="l2 hl">בחמש</span></h1>
+        <p class="sub anim-up">המקום שבו מובילים ומובילות משפיעים על דור שלם</p>
+        <div class="cta-row">
+          <a class="btn btn-primary anim-up"><span class="sheen"></span>השאירו פרטים <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+          <a class="btn btn-ghost-dark anim-up">גלו את התפקידים</a>
+        </div>
+      </div>
+      <div style="position:relative">
+        <div class="mosaic">
+          <div class="tile t-tall anim-tile"><img src="coachs/taranto.JPG" alt="" /></div>
+          <div class="tile orange anim-tile"><img src="team_hero/_14A9346.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/roi.JPG" alt="" /></div>
+          <div class="tile t-wide anim-tile"><img src="Hero-Pics/214A0511.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/amit.JPG" alt="" /></div>
+          <div class="tile orange anim-tile"><img src="team_hero/_14A9373.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/idan.JPG" alt="" /></div>
+        </div>
+        <div class="badge anim-pop"><b>3,000+</b><span>מובילים ומובילות ברחבי הארץ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- V1 · בהיר -->
+  <section class="concept fw" id="v1">
+    <div class="glow1"></div><div class="glow2"></div><div class="dots"></div>
+    <div class="wrap">
+      <div>
+        <p class="ds-eyebrow eyebrow anim-up">הצטרפו לצוות</p>
+        <h1 class="rag"><span class="hl">להוביל </span><span class="l2 hl">בחמש</span></h1>
+        <p class="sub anim-up">המקום שבו מובילים ומובילות משפיעים על דור שלם</p>
+        <div class="cta-row">
+          <a class="btn btn-primary anim-up"><span class="sheen"></span>השאירו פרטים <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+          <a class="btn btn-quiet anim-up">גלו את התפקידים</a>
+        </div>
+      </div>
+      <div style="position:relative">
+        <div class="mosaic">
+          <div class="tile t-tall anim-tile"><img src="coachs/taranto.JPG" alt="" /></div>
+          <div class="tile orange anim-tile"><img src="team_hero/_14A9346.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/roi.JPG" alt="" /></div>
+          <div class="tile t-wide anim-tile"><img src="Hero-Pics/214A0511.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/amit.JPG" alt="" /></div>
+          <div class="tile orange anim-tile"><img src="team_hero/_14A9373.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/idan.JPG" alt="" /></div>
+        </div>
+        <div class="badge anim-pop"><b>3,000+</b><span>מובילים ומובילות ברחבי הארץ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- V2 · גלריה לבנה -->
+  <section class="concept fw" id="v2">
+    <div class="glow1"></div><div class="dots"></div>
+    <img class="watermark" src="logo.png" alt="" aria-hidden="true" />
+    <div class="wrap">
+      <div>
+        <p class="ds-eyebrow eyebrow anim-up">הצטרפו לצוות</p>
+        <h1 class="rag"><span class="hl">להוביל </span><span class="l2 hl">בחמש</span></h1>
+        <p class="sub anim-up">המקום שבו מובילים ומובילות משפיעים על דור שלם</p>
+        <div class="cta-row">
+          <a class="btn btn-primary anim-up"><span class="sheen"></span>השאירו פרטים <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+          <a class="btn btn-quiet anim-up">גלו את התפקידים</a>
+        </div>
+      </div>
+      <div style="position:relative">
+        <div class="mosaic">
+          <div class="tile t-tall anim-tile"><img src="coachs/taranto.JPG" alt="" /><span class="cap">טרנטו · מאמן</span></div>
+          <div class="tile anim-tile"><img src="team_hero/_14A9346.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/roi.JPG" alt="" /><span class="cap">רועי · מאמן</span></div>
+          <div class="tile t-wide anim-tile"><img src="Hero-Pics/214A0511.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/amit.JPG" alt="" /><span class="cap">עמית</span></div>
+          <div class="tile anim-tile"><img src="team_hero/_14A9373.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/idan.JPG" alt="" /><span class="cap">עידן</span></div>
+        </div>
+        <div class="badge anim-pop"><b>3,000+</b><span>מובילים ומובילות ברחבי הארץ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- V3 · בליד -->
+  <section class="concept fw" id="v3">
+    <div class="glow1"></div><div class="dots"></div>
+    <div class="wrap">
+      <div class="textcol">
+        <p class="ds-eyebrow eyebrow anim-up">הצטרפו לצוות</p>
+        <h1 class="rag"><span class="hl">להוביל </span><span class="l2 hl">בחמש</span></h1>
+        <p class="sub anim-up">המקום שבו מובילים ומובילות משפיעים על דור שלם</p>
+        <div class="pill anim-up"><b>3,000+</b> מובילים ומובילות ברחבי הארץ</div>
+        <div class="cta-row">
+          <a class="btn btn-primary anim-up"><span class="sheen"></span>השאירו פרטים <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+          <a class="btn btn-ghost-dark anim-up">גלו את התפקידים</a>
+        </div>
+      </div>
+      <div class="bleed">
+        <div class="masonry">
+          <div class="m anim-tile"><img src="coachs/taranto.JPG" alt="" /></div>
+          <div class="m orange anim-tile"><img src="team_hero/_14A9346.jpg" alt="" /></div>
+          <div class="m anim-tile"><img src="Hero-Pics/214A0511.jpg" alt="" /></div>
+          <div class="m anim-tile"><img src="coachs/roi.JPG" alt="" /></div>
+          <div class="m anim-tile"><img src="coachs/amit.JPG" alt="" /></div>
+          <div class="m orange anim-tile"><img src="team_hero/_14A9373.jpg" alt="" /></div>
+          <div class="m anim-tile"><img src="Hero-Pics/214A0088.jpg" alt="" /></div>
+          <div class="m anim-tile"><img src="coachs/idan.JPG" alt="" /></div>
+        </div>
+        <div class="fade"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- V4 · מראה -->
+  <section class="concept fw" id="v4">
+    <div class="glow1"></div><div class="dots"></div>
+    <div class="wrap">
+      <div style="position:relative">
+        <div class="mosaic">
+          <div class="tile feature anim-tile"><img src="coachs/taranto.JPG" alt="" /><span class="name"><b>הצוות של חמש</b><span>אנשים שבחרו לקחת אחריות</span></span></div>
+          <div class="tile orange anim-tile"><img src="team_hero/_14A9346.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/roi.JPG" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/amit.JPG" alt="" /></div>
+          <div class="tile orange anim-tile"><img src="team_hero/_14A9373.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/idan.JPG" alt="" /></div>
+        </div>
+        <div class="badge anim-pop"><b>3,000+</b><span>מובילים ומובילות ברחבי הארץ</span></div>
+      </div>
+      <div class="textcol">
+        <p class="ds-eyebrow eyebrow anim-up">הצטרפו לצוות</p>
+        <h1 class="rag"><span class="hl">להוביל </span><span class="l2 hl">בחמש</span></h1>
+        <p class="sub anim-up">המקום שבו מובילים ומובילות משפיעים על דור שלם</p>
+        <div class="cta-row">
+          <a class="btn btn-primary anim-up"><span class="sheen"></span>השאירו פרטים <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+          <a class="btn btn-ghost-dark anim-up">גלו את התפקידים</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- V5 · דואוטון -->
+  <section class="concept fw" id="v5">
+    <div class="glow1"></div><div class="glow2"></div><div class="dots"></div>
+    <div class="wrap">
+      <div>
+        <p class="ds-eyebrow eyebrow anim-up">הצטרפו לצוות</p>
+        <h1 class="rag"><span class="hl">להוביל </span><span class="l2 hl">בחמש</span></h1>
+        <p class="sub anim-up">המקום שבו מובילים ומובילות משפיעים על דור שלם</p>
+        <div class="cta-row">
+          <a class="btn btn-primary anim-up"><span class="sheen"></span>השאירו פרטים <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+          <a class="btn btn-quiet anim-up">גלו את התפקידים</a>
+        </div>
+      </div>
+      <div style="position:relative">
+        <div class="mosaic">
+          <div class="tile t-tall anim-tile"><img src="coachs/taranto.JPG" alt="" /></div>
+          <div class="tile anim-tile"><img src="team_hero/_14A9346.jpg" alt="" /></div>
+          <div class="tile plain anim-tile"><img src="coachs/roi.JPG" alt="" /></div>
+          <div class="tile t-wide plain anim-tile"><img src="Hero-Pics/214A0511.jpg" alt="" /></div>
+          <div class="tile anim-tile"><img src="coachs/amit.JPG" alt="" /></div>
+          <div class="tile anim-tile"><img src="team_hero/_14A9373.jpg" alt="" /></div>
+          <div class="tile plain anim-tile"><img src="coachs/idan.JPG" alt="" /></div>
+        </div>
+        <div class="badge anim-pop"><b>3,000+</b><span>מובילים ומובילות ברחבי הארץ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="caption" id="caption"></div>
+
+  <script>
+    const CAPTIONS = {
+      v0: '<b>מקור · כהה</b> — הגרסה שאהבת, לעיון והשוואה.',
+      v1: '<b>בהיר</b> — אותו פסיפס בדיוק על משטח בהיר (surface), כותרת נייבי. אוורירי ונקי.',
+      v2: '<b>גלריה לבנה</b> — רקע לבן, מסגרות "מוזיאון" דקות לכל תמונה + שמות תחתיהן. אישי ומכובד.',
+      v3: '<b>בליד</b> — פסיפס masonry שנשפך אל קצה המסך, טקסט על נייבי עם צ׳יפ סטטיסטיקה. אימרסיבי.',
+      v4: '<b>מראה</b> — הרכב הפוך: פורטרט מוביל גדול + טקסט בצד שני. פוקוס על אדם אחד + הקבוצה.',
+      v5: '<b>דואוטון</b> — משטח בהיר עם תמונות בגוון כתום אחיד (למעט 2 צבעוניות למיקוד). הכי מותגי.'
+    };
+    function splitChars(c){ c.querySelectorAll('h1 .hl').forEach(seg=>{ if(seg.dataset.split) return; const t=seg.textContent; seg.textContent=''; [...t].forEach(ch=>{ const s=document.createElement('span'); s.className='anim-char'; s.style.display='inline-block'; s.textContent = ch===' ' ? ' ' : ch; seg.appendChild(s); }); seg.dataset.split='1'; }); }
+    function stagger(c){
+      c.querySelectorAll('.anim-char').forEach((el,i)=> el.style.animationDelay=(0.15+i*0.05)+'s');
+      c.querySelectorAll('.anim-rule').forEach(el=> el.style.animationDelay='0.7s');
+      c.querySelectorAll('.anim-up').forEach((el,i)=> el.style.animationDelay=(0.75+i*0.08)+'s');
+      c.querySelectorAll('.anim-tile').forEach((el,i)=> el.style.animationDelay=(0.5+i*0.09)+'s');
+      c.querySelectorAll('.anim-pop').forEach((el,i)=> el.style.animationDelay=(0.95+i*0.07)+'s');
+    }
+    function activate(id){
+      document.querySelectorAll('.concept').forEach(c=> c.classList.remove('active'));
+      document.querySelectorAll('.switcher button').forEach(b=> b.classList.toggle('active', b.dataset.target===id));
+      const el=document.getElementById(id); splitChars(el); stagger(el); void el.offsetWidth; el.classList.add('active');
+      document.getElementById('caption').innerHTML=CAPTIONS[id]; window.scrollTo(0,0);
+    }
+    document.querySelectorAll('.switcher button').forEach(b=> b.addEventListener('click', ()=> activate(b.dataset.target)));
+    activate('v0');
+  </script>
+</body>
+</html>

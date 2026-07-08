@@ -16,7 +16,7 @@ const NAV_LINKS = [
   { label: 'עמיר מנחם', href: '#amir' },
 ]
 
-export default function Navbar({ onContactOpen }) {
+export default function Navbar({ onContactOpen, forceLifted = false }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeHash, setActiveHash] = useState(
@@ -45,14 +45,17 @@ export default function Navbar({ onContactOpen }) {
 
   // Option A — Light Frosted Glass: clear glass + white text over the hero,
   // white frosted glass + navy text once scrolled over the warm light sections.
-  const mobileLifted = scrolled || menuOpen
+  // `forceLifted` keeps the lifted/navy style from the top on pages whose hero
+  // is light (e.g. the צוות faces-wall hero), where white text would vanish.
+  const lifted = scrolled || forceLifted
+  const mobileLifted = lifted || menuOpen
 
   return (
     <>
       {/* ── Desktop Navbar ── */}
       <nav
         className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden lg:flex items-center gap-1 px-3 py-2.5 rounded-full transition-all duration-500 ${
-          scrolled
+          lifted
             ? 'bg-white/30 backdrop-blur-2xl border border-line shadow-xl shadow-navy/10'
             : 'bg-white/10 backdrop-blur-md border border-white/20'
         }`}
@@ -66,7 +69,7 @@ export default function Navbar({ onContactOpen }) {
         <div className="flex items-center gap-0.5">
           {NAV_LINKS.map(({ label, href }) => {
             const active = activeHash === href
-            const linkClass = scrolled
+            const linkClass = lifted
               ? active
                 ? 'text-navy bg-navy/[0.06] font-semibold'
                 : 'text-navy/70 hover:text-navy hover:bg-navy/[0.05]'

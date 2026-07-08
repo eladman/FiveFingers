@@ -1,4 +1,39 @@
-[2026-06-07T14:33:06.891Z] [debug] [vite] connecting...
-[2026-06-07T14:33:06.995Z] [debug] [vite] connected.
-[2026-06-07T14:33:07.240Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-06-07T14:33:40.566Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-07-07T13:58:08.021Z] [debug] [vite] connecting...
+[2026-07-07T13:58:08.052Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-07T13:58:08.164Z] [debug] [vite] connected.
+[2026-07-07T14:06:35.339Z] [log] [vite] server connection lost. Polling for restart...
+[2026-07-07T14:06:35.489Z] [debug] [vite] connecting...
+[2026-07-07T14:06:35.536Z] [debug] [vite] connected.
+[2026-07-07T14:06:35.655Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-07T14:17:05.695Z] [debug] [vite] hot updated: /src/components/WhoWeAre.jsx
+[2026-07-07T14:17:05.695Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-07T14:17:05.750Z] [debug] [vite] hot updated: /src/components/collabs/hero-versions/HeroCorporateSplit.jsx
+[2026-07-07T14:17:05.750Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-07T14:17:11.684Z] [debug] [vite] hot updated: /src/components/collabs/hero-versions/HeroCorporateSplit.jsx
+[2026-07-07T14:17:11.684Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-07T14:17:15.650Z] [debug] [vite] hot updated: /src/components/collabs/hero-versions/HeroCorporateSplit.jsx
+[2026-07-07T14:17:15.651Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-07T14:17:19.530Z] [debug] [vite] hot updated: /src/pages/CollaborationsPage.jsx
+[2026-07-07T14:17:19.531Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-07T14:17:28.859Z] [debug] [vite] hot updated: /src/components/WhoWeAre.jsx
+[2026-07-07T14:17:28.859Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-07T14:17:29.083Z] [debug] [vite] hot updated: /src/pages/CollaborationsPage.jsx
+[2026-07-07T14:17:29.083Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-07T14:17:36.601Z] [debug] [vite] hot updated: /src/pages/CollaborationsPage.jsx
+[2026-07-07T14:17:36.601Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-07T14:17:42.080Z] [debug] [vite] hot updated: /src/App.jsx
+[2026-07-07T14:17:42.080Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-07T14:19:22.119Z] [debug] [vite] connecting...
+[2026-07-07T14:19:22.125Z] [debug] [vite] connected.
+[2026-07-07T14:19:22.157Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahStats.jsx
+[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahHero.jsx
+[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahCoaches.jsx
+[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahGallery.jsx
+[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahFAQ.jsx
+[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
+[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahPrograms.jsx
+[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahMap.jsx
+[2026-07-07T14:23:44.886Z] [debug] [vite] hot updated: /src/components/collabs/hero-versions/HeroCorporateSplit.jsx
+[2026-07-07T14:23:44.886Z] [debug] [vite] hot updated: /src/index.css
