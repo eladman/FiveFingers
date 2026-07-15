@@ -144,8 +144,10 @@ edit here, then paste into Make.
 3. The template references the Webhook module as `{{1.…}}`. If your webhook isn't module **1**, change
    the number (fields: `name`, `childName`, `childCity`, `childGrade`, `phone`). To greet by first
    name only, swap `{{1.name}}` in the header line for `{{split(1.name; " ")[1]}}`.
-4. The logo is embedded as base64 so it renders with no external hosting. To use a hosted image
-   instead, replace the `src="data:image/png;base64,…"` on the header `<img>` with its URL.
+4. The logo loads from Supabase Storage (public `assets` bucket) —
+   `…/storage/v1/object/public/assets/Five-Finger-LOGO.png`. Email clients (Gmail/Outlook) block
+   base64 `data:` images, so a hosted `https://` URL is required; the header `<img>` points at it.
+   When the site gets a domain, this can move to the site's own `/logo.png`.
 
 > This template is for the youth (`קבוצות הנוער`) interest only. Other interests (jobs, partnership,
 > alumni) can either share a generic version or get their own file here later.
