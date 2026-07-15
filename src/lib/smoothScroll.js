@@ -4,6 +4,19 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+let lenisInstance = null
+
+/**
+ * The active Lenis instance (or null under reduced-motion / before init).
+ * Lets things like modals pause momentum scroll so a wheel/touch gesture
+ * over an overlay can't drive the page underneath — body.style.overflow
+ * alone doesn't stop Lenis, since it scrolls the page via its own RAF loop
+ * rather than native browser scrolling.
+ */
+export function getLenis() {
+  return lenisInstance
+}
+
 /**
  * Site-wide momentum smooth-scroll, driven by Lenis and synced to GSAP
  * ScrollTrigger so every scrubbed/pinned animation stays frame-locked to
@@ -26,6 +39,7 @@ export function initSmoothScroll() {
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true,
   })
+  lenisInstance = lenis
 
   // Keep ScrollTrigger's cached positions in step with Lenis, and let GSAP's
   // ticker drive Lenis' RAF loop (single rAF for the whole site).

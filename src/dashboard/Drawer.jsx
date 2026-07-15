@@ -51,9 +51,9 @@ export default function Drawer({ row, onClose, onSaved }) {
         onClick={onClose}
         aria-hidden
       />
-      {/* panel (slides from the inline-start edge in RTL) */}
+      {/* panel — pinned to the right edge of the screen */}
       <aside
-        className="relative ms-auto h-full w-full max-w-md bg-white shadow-2xl overflow-y-auto animate-[dashslide_.28s_cubic-bezier(0.22,1,0.36,1)]"
+        className="relative me-auto h-full w-full max-w-md bg-white shadow-2xl overflow-y-auto animate-[dashslide_.28s_cubic-bezier(0.22,1,0.36,1)]"
         role="dialog"
         aria-modal="true"
       >
@@ -140,7 +140,7 @@ export default function Drawer({ row, onClose, onSaved }) {
         </div>
       </aside>
 
-      <style>{`@keyframes dashslide{from{transform:translateX(-24px);opacity:.4}to{transform:translateX(0);opacity:1}}`}</style>
+      <style>{`@keyframes dashslide{from{transform:translateX(24px);opacity:.4}to{transform:translateX(0);opacity:1}}`}</style>
     </div>
   )
 }

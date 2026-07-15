@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, forwardRef } from 'react'
 import { X, Phone, Mail, Check, Loader2, ArrowLeft, ChevronDown } from 'lucide-react'
 import { WHATSAPP_HREF, PHONE_HREF, EMAIL, EMAIL_HREF, PHONE_DISPLAY } from '../data/contact'
+import { getLenis } from '../lib/smoothScroll'
 
 // Interest options grouped by life-stage / intent, so youth, pre-army young
 // adults, graduates, and organizations each see their own lane instead of one
@@ -108,12 +109,20 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
       // Collapse the picker only when we arrived pre-tagged from a page.
       setPickerExpanded(!defaultProduct)
       document.body.style.overflow = 'hidden'
+      // Lenis drives page scroll via its own RAF loop, so body overflow:hidden
+      // alone doesn't stop a wheel/touch gesture over the overlay from
+      // scrolling the page underneath — pause it while the modal is open.
+      getLenis()?.stop()
       // Focus the first field once the entrance settles.
       const t = setTimeout(() => firstFieldRef.current?.focus(), 360)
       return () => clearTimeout(t)
     }
     document.body.style.overflow = ''
-    return () => { document.body.style.overflow = '' }
+    getLenis()?.start()
+    return () => {
+      document.body.style.overflow = ''
+      getLenis()?.start()
+    }
   }, [isOpen, defaultProduct])
 
   useEffect(() => {
@@ -265,6 +274,7 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
 
         {/* ─── Form panel ──────────────────────────────── */}
         <div
+          data-lenis-prevent
           className="relative flex-1 min-h-0 overflow-y-auto"
           style={{ background: '#ffffff' }}
         >
