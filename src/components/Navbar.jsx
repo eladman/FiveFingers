@@ -5,7 +5,6 @@ import Button from './ui/Button'
 
 const NAV_LINKS = [
   { label: 'קבוצות הנוער', href: '#liabah' },
-  { label: 'מכינה', href: '#academy' },
   { label: 'שיתופי פעולה', href: '#collabs' },
   // Memorial — a standalone static page in public/memorial/ (full navigation,
   // not an in-page hash anchor). Pointed at the explicit file so it resolves

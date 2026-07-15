@@ -53,20 +53,6 @@
       "</defs>";
   }
 
-  /* small free-standing flame (register rows) */
-  function flameSm(cls) {
-    var u = "u" + (++uidCounter);
-    return '<span class="flame-sm ' + (cls || "") + '" aria-hidden="true">' +
-      '<svg viewBox="0 0 24 30" role="presentation" focusable="false">' +
-        flameDefs(u) +
-        '<circle class="halo" cx="12" cy="14" r="13" fill="url(#h' + u + ')"/>' +
-        '<g class="fl">' +
-          '<path d="M12 3 C 9.4 8.6, 7.2 11.8, 7.2 16.6 C 7.2 21.4, 9.2 24.2, 12 24.2 C 14.8 24.2, 16.8 21.4, 16.8 16.6 C 16.8 11.8, 14.6 8.6, 12 3 Z" fill="url(#f' + u + ')"/>' +
-          '<path d="M12 11 C 10.8 13.8, 10 15.8, 10 18.6 C 10 21.3, 10.9 22.8, 12 22.8 C 13.1 22.8, 14 21.3, 14 18.6 C 14 15.8, 13.2 13.8, 12 11 Z" fill="url(#c' + u + ')"/>' +
-        "</g>" +
-      "</svg></span>";
-  }
-
   /* full memorial candle: flame + wick + slender wax pillar */
   function candle(cls) {
     var u = "u" + (++uidCounter);
@@ -88,6 +74,70 @@
   /* =========================================================================
      LAYER 2 — THE HALL (memorial register)
      ====================================================================== */
+  /* the 19 fallen portraits, in roster order */
+  function fallenPhotos() {
+    var photos = [];
+    ROSTER.forEach(function (entry) {
+      var data = entry.id && FALLEN[entry.id] ? FALLEN[entry.id] : null;
+      if (data && data.photo) photos.push(IMG + data.photo);
+    });
+    return photos;
+  }
+
+  /* Opening "wall of faces" (desktop) — the 19 portraits, tiled to fill the hero
+     and dissolved into the paper by .opening__scrim. Decorative (aria-hidden). */
+  function buildOpeningMosaic() {
+    var m = document.getElementById("opening-mosaic");
+    if (!m) return;
+    var photos = fallenPhotos();
+    if (!photos.length) return;
+    var TILES = 48;
+    var stride = 7; // coprime with 19 → spreads duplicates, no adjacent repeats
+    var html = "";
+    for (var i = 0; i < TILES; i++) {
+      html += '<img src="' + esc(photos[(i * stride) % photos.length]) +
+              '" alt="" loading="lazy" decoding="async">';
+    }
+    m.innerHTML = html;
+  }
+
+  /* Living wall (mobile) — on small screens the grid holds fewer distinct faces,
+     so we crossfade individual tiles to new portraits at staggered times. Over a
+     minute or so every one of the 19 is shown across the tiles. ≤700px only. */
+  function startMosaicCycle() {
+    var m = document.getElementById("opening-mosaic");
+    if (!m || reduceMotion) return;
+    var photos = fallenPhotos();
+    if (photos.length < 2) return;
+    var tiles = m.querySelectorAll("img");
+    if (!tiles.length) return;
+
+    function rand(n) { return (Math.random() * n) | 0; }
+    function swap() {
+      var img = tiles[rand(tiles.length)];
+      if (img.classList.contains("is-fading")) return; // already mid-swap
+      var next = photos[rand(photos.length)];
+      if (img.getAttribute("src") === next) return;    // would be a no-op
+      img.classList.add("is-fading");                  // fade this tile out
+      setTimeout(function () {
+        img.src = next;                                // photos are already cached
+        img.classList.remove("is-fading");             // fade the new face in
+      }, 800);                                          // matches the CSS transition
+    }
+
+    var mq = window.matchMedia("(max-width: 700px)");
+    var timer = null;
+    function start() { if (!timer) timer = setInterval(swap, 1300); }
+    function stop() {
+      if (timer) { clearInterval(timer); timer = null; }
+      tiles.forEach(function (t) { t.classList.remove("is-fading"); });
+    }
+    function sync() { if (mq.matches) start(); else stop(); }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else if (mq.addListener) mq.addListener(sync); // older Safari
+  }
+
   function buildHall() {
     var wall = document.getElementById("wall");
     wall.innerHTML = "";
@@ -100,7 +150,6 @@
             'aria-label="' + esc(data.name) + ", " + esc(data.rank) + '. למסע חייו">' +
             '<span class="niche__photo-wrap">' +
               '<img class="niche__photo" src="' + IMG + esc(data.photo) + '" alt="' + esc(data.name) + '" loading="lazy" decoding="async">' +
-              flameSm("niche__flame") +
             "</span>" +
             '<span class="niche__meta">' +
               '<span class="niche__name">' + esc(data.name) + "</span>" +
@@ -114,7 +163,6 @@
           '<a class="niche niche--plaque reveal" role="listitem" href="#n' + i + '" ' +
             'aria-label="' + esc(entry.n) + ' — לעמוד הזיכרון">' +
             '<span class="niche__plaque-inner">' +
-              flameSm("niche__flame") +
               '<span class="niche__name">' + esc(entry.n) + "</span>" +
               '<span class="niche__tick"></span>' +
               '<span class="niche__held">לזכרם</span>' +
@@ -469,8 +517,8 @@
   /* =========================================================================
      INIT
      ====================================================================== */
-  var openingCandle = document.getElementById("opening-candle");
-  if (openingCandle) { openingCandle.innerHTML = candle("opening__candle"); }
+  buildOpeningMosaic();
+  startMosaicCycle();
   buildHall();
 
   /* ---------- mobile nav drawer (mirrors the React <Navbar> menu) --------- */

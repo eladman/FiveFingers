@@ -40,7 +40,7 @@ export const essence = {
     {
       num: '01',
       title: 'אימון פיזי-מנטלי',
-      text: 'אתגר גופני שמפתח חוסן, הרגלים ומשמעת. מכל מפגש יוצאים חזקים יותר — בגוף ובמחשבה.',
+      text: ' תהליך חינוכי שבו הפעילות הגופנית משמשת ככלי לפיתוח מנטלי. אימון נבנה כך שלא רק ישפר את הכושר, אלא גם יחזק ערכים, אופי והרגלים. המטרה היא שהיכולות שנרכשות באימון יבואו לידי ביטוי בבית הספר, בצבא, בעבודה ובחיים בכלל.',
       imageSrc: '/liba_pics/214A0223.jpg',
       objectPosition: '50% 20%',
     },
@@ -65,9 +65,9 @@ export const essence = {
 // `value` is the number to count up to; `suffix` appended after (e.g. '+').
 export const stats = [
   { value: 2500, suffix: '+', label: 'מתאמנים ומתאמנות פעילים' },
-  { value: 67,   suffix: '',  label: 'קבוצות פעילות' },
-  { value: 18,   suffix: '',  label: 'אזורים בארץ' },
-  { value: 60,   suffix: '',  label: 'מאמנים ומאמנות' },
+  { value: 74,   suffix: '',  label: 'קבוצות פעילות' },
+  { value: 19,   suffix: '',  label: 'אזורים בארץ' },
+  { value: 60,   suffix: '',  label: 'מאמנים ואנשי צוות' },
   { value: 3000, suffix: '+', label: 'בוגרים ובוגרות' },
 ]
 
@@ -114,78 +114,119 @@ export const trainingItems = [
 // grid tile, the 4:3 mobile carousel, and the wide city-detail banner — the
 // source photos are headshot crops with the face in the upper third.
 export const coaches = [
-  { id: 'c1', name: 'רועי רוט',    role: 'מנהל בייס מרכז',  region: 'מרכז', bio: 'טקסט קצר על המאמן/ת יתווסף כאן בקרוב.', imageSrc: '/coachs/roi.JPG', imgPosition: '50% 22%' }, // TODO
-  { id: 'c2', name: 'עמית מירן',    role: 'מנהלת בייס שרון', region: 'שרון', bio: 'טקסט קצר על המאמן/ת יתווסף כאן בקרוב.', imageSrc: '/coachs/amit.JPG', imgPosition: '50% 25%' }, // TODO
+  { id: 'c1', name: 'רועי רוט',    role: 'מנהל מחוז מרכז',  region: 'מרכז', bio: 'קצין בשייטת 13 במילואים,מאמן 4 שנים בתנועה ומוביל צוותים, בשלוש שנים האחרונות מוביל את אזור המרכז', imageSrc: '/coachs/roi.JPG', imgPosition: '50% 22%' }, // TODO
+  { id: 'c2', name: 'עמית מירן',    role: ' מנהלת מחוז צפון', region: 'שרון', bio: 'לשעבר מפקדת פלוגה בקורס מדריכי כושר בצה״ל, סטודנטית לתואר ראשון בתל אביב. מאמנת 3 שנים בתנועה ובמקביל מנהלת את אזור השרון והצפון', imageSrc: '/coachs/amit.JPG', imgPosition: '50% 25%' }, // TODO
   { id: 'c3', name: 'גיא טרנטו',   role: 'מנהל בייס צפון',  region: 'צפון', bio: 'טקסט קצר על המאמן/ת יתווסף כאן בקרוב.', imageSrc: '/coachs/taranto.JPG', imgPosition: '50% 20%' }, // TODO
 ]
 
 // ── Locations + map (מיקומים ומפה) ────────────────────────────────────────────
-// `lng`/`lat` are the real geographic coordinates of each city. They are
+// `lng`/`lat` are the real geographic coordinates of each area. They are
 // projected onto the Israel outline automatically (see src/data/israelOutline.js),
 // so pins always land in the right place — just edit the coordinates.
-//   city  — city name (shown on the map, list, and detail panel)
-//   days  — workout days for the city's groups (from teams.csv)
-//   teams — the group names that run in the city (shown in the detail panel)
-//   region — matches a coach's `region` (above) so the detail panel can show
-//            that region's coach as the city's מנהל/ת אזור
-// Generated from teams.csv — edit team names / days there and keep this in sync.
+//   city    — area name (shown on the map, list, and detail panel)
+//   region  — 'מרכז' | 'שרון' | 'צפון' — groups the mobile region tabs
+//   manager — area lead (מנהל/ת בייס), shown as the area lead in the detail panel
+//   venue   — where the groups train (מיקום)
+//   days    — workout days for the area's groups
+//   teams   — the groups that run in the area: { name, coach }. `coach` (מאמן 1)
+//             is stored for reference; the panel currently lists names only.
+// Generated from "קבוצות שנה 13.html" (year-13 planning sheet). Groups explicitly
+// flagged as not starting were dropped; groups without an assigned coach are kept.
 export const locations = [
   {
-    id: 'tel-aviv', city: 'תל אביב', region: 'מרכז', days: 'ראשון ורביעי', lng: 34.7818, lat: 32.0853,    teams: ['תל אביב ילדים (ו-ח)', 'תל אביב נערים (ט-י)', 'תל אביב נוער בנים (י-יב)', 'תל אביב נוער בנות (י-יב)'],
+    id: 'emek-hefer-east', city: 'עמק חפר מזרח', region: 'שרון', lng: 34.99, lat: 32.37,
+    manager: 'מתן רון', venue: 'בת חפר', days: 'שני וחמישי',
+    teams: [ { name: "עמק חפר מזרח (ז'-ח')", coach: 'מתן רון' }, { name: 'עמק חפר מזרח נערים (ט-י)', coach: 'מתן רון' }, { name: 'עמק חפר מזרח בנים (י - יא)', coach: 'מתן רון' }, { name: 'עמק חפר מזרח בנות (י - יב)', coach: 'עמית מירן' } ],
   },
   {
-    id: 'tel-mond', city: 'תל מונד', region: 'שרון', days: 'ראשון ורביעי', lng: 34.917, lat: 32.250,    teams: ['תל מונד ילדים (ז-ט)', 'תל מונד נוער בנים (י-יב)'],
+    id: 'emek-hefer-west', city: 'עמק חפר מערב', region: 'שרון', lng: 34.875, lat: 32.39,
+    manager: 'מתן רון', venue: 'רופין', days: 'ראשון ורביעי',
+    teams: [ { name: 'עמק חפר מערב יסודי (ה -ו)', coach: '' }, { name: 'עמק חפר מערב (ז-ח)', coach: 'מתן רון' }, { name: 'עמק חפר מערב נערות (ט-י)', coach: 'מתן רון' }, { name: 'עמק חפר מערב נערים (ט-י)', coach: 'ערן מובשוביץ' }, { name: 'עמק חפר מערב בנים (יא - יב)', coach: 'מתן רון' }, { name: 'עמק חפר מערב בנות (יא - יב)', coach: 'מתן רון' } ],
   },
   {
-    id: 'raanana', city: 'רעננה', region: 'שרון', days: 'ראשון ורביעי', lng: 34.8707, lat: 32.1847,    teams: ['רעננה ילדים (ו-ז)', 'רעננה נערים (ח-ט)', 'רעננה נערות (ח-ט)', 'רעננה נוער בנים (י-יב)', 'רעננה נוער בנות (י-יב)'],
+    id: 'even-yehuda', city: 'אבן יהודה', region: 'שרון', lng: 34.888, lat: 32.27,
+    manager: 'עמית בן עמי', venue: 'ראלף / הכביש הישן', days: 'שני וחמישי',
+    teams: [ { name: 'נוער בנים (י-יב)', coach: 'אבדר' }, { name: 'נוער בנות (י-יב)', coach: 'מיטל' }, { name: 'נערים נערות (ט)', coach: 'אבדר' }, { name: 'ילדים (ו-ח)', coach: 'מיטל' } ],
   },
   {
-    id: 'ramat-yishai', city: 'רמת ישי', region: 'צפון', days: 'ראשון ורביעי', lng: 35.170, lat: 32.7035,    teams: ['רמת ישי ג-ד', 'רמת ישי ה-ו'],
+    id: 'tel-mond', city: 'תל מונד', region: 'שרון', lng: 34.917, lat: 32.25,
+    manager: 'עמית בן עמי', venue: 'פארק היערות', days: 'שני וחמישי',
+    teams: [ { name: 'תל מונד נוער (יא-יב)', coach: 'רועי גונן' }, { name: 'תל מונד נערים נערות (ט-י)', coach: 'עמית בן עמי' }, { name: 'תל מונד ילדים (ו-ז-ח)', coach: 'עמית בן עמי' } ],
   },
   {
-    id: 'kiryat-ono', city: 'קרית אונו', region: 'מרכז', days: 'שני וחמישי', lng: 34.855, lat: 32.0556,    teams: ['קרית אונו נערים (ז-ט)', 'קרית אונו נוער בנים (י-יב)', 'קרית אונו בנות (י-יב)'],
+    id: 'kfar-yona', city: 'כפר יונה', region: 'שרון', lng: 34.933, lat: 32.317,
+    manager: 'עמית בן עמי', venue: 'פארק שרונה', days: 'ראשון ורביעי',
+    teams: [ { name: 'נוער בנים (יא-יב)', coach: 'רועי גונן' }, { name: 'נוער בנות (יא-יב)', coach: 'עמית מירן' }, { name: 'נערים נערות (ט-י)', coach: 'אבדר' }, { name: 'ילדים (ז-ח)', coach: 'קליינר' }, { name: 'יסודי (ה-ו)', coach: 'קליינר' } ],
   },
   {
-    id: 'kiryat-tivon', city: 'קריית טבעון', region: 'צפון', days: 'ראשון ורביעי', lng: 35.1236, lat: 32.7197,    teams: ['קריית טבעון ילדים (ז-ט)', 'קריית טבעון נוער בנים (י-יב)', 'קריית טבעון בנות (י-יב)'],
+    id: 'zichron', city: 'זכרון יעקב', region: 'צפון', lng: 34.954, lat: 32.572,
+    manager: 'עדן בראון', venue: 'פארק המושבה זכרון', days: 'שני וחמישי',
+    teams: [ { name: 'זכרון יסודי ה-ו', coach: 'עדן' }, { name: 'זכרון ילדים ז-ח', coach: 'עדן' }, { name: 'זכרון נערים ט׳', coach: 'עדן' }, { name: 'זכרון נוער בנים י׳-י״ב', coach: 'גיא בארי' }, { name: 'זכרון נוער בנות י׳-י״ב', coach: 'אור כהן' } ],
   },
   {
-    id: 'petah-tikva', city: 'פתח תקווה', region: 'מרכז', days: 'ראשון ורביעי', lng: 34.8878, lat: 32.0840,    teams: ['פתח תקווה בנים (י-יב)'],
+    id: 'ramat-yishai', city: 'רמת ישי', region: 'צפון', lng: 35.17, lat: 32.7035,
+    manager: 'יניב שורר', venue: 'ארזים- רמת ישי', days: 'ראשון ורביעי',
+    teams: [ { name: "רמת ישי ג'-ד'", coach: 'תאבט' }, { name: "רמת ישי ה'-ו'", coach: 'יניב שורר' } ],
   },
   {
-    id: 'emek-yizrael', city: 'עמק יזרעאל', region: 'צפון', days: 'שני וחמישי', lng: 35.290, lat: 32.620,    teams: ['עמק יזרעאל ילדים (ז-ט)', 'עמק יזרעאל ילדות (ז׳-ט׳)', 'עמק יזרעאל נערים (י)', 'עמק יזרעאל נוער בנים (יא-יב)', 'עמק יזרעאל נוער בנות (י-יב)'],
+    id: 'kiryat-tivon', city: 'קריית טבעון', region: 'צפון', lng: 35.1236, lat: 32.7197,
+    manager: 'גיא טרנטו', venue: 'בית ספר צל אורנים', days: 'ראשון ורביעי',
+    teams: [ { name: 'טבעון נוער בנים (י\'-י"ב)', coach: 'בנטל' }, { name: 'טבעון נוער בנות (י\'-י"ב)', coach: 'אור פרץ' }, { name: "טבעון ילדים (ז'-ט')", coach: 'בנטל' } ],
   },
   {
-    id: 'emek-hefer-west', city: 'עמק חפר מערב', region: 'שרון', days: 'ראשון ורביעי', lng: 34.875, lat: 32.390,    teams: ['עמק חפר מערב ילדים (ז-ח)', 'עמק חפר נערים (ט-י)', 'עמק חפר בנים (יא-יב)', 'עמק חפר בנות (י-יב)'],
+    id: 'emek-yizrael', city: 'עמק יזרעאל', region: 'צפון', lng: 35.29, lat: 32.62,
+    manager: 'גיא טרנטו', venue: 'נהלל- אולם ספורט', days: 'שני וחמישי',
+    teams: [ { name: 'עמק יזרעאל נוער בנים (י"א י"ב)', coach: 'גיא טרנטו' }, { name: 'עמק יזרעאל נוער בנות ( י\'-י"ב)', coach: 'גיל טל' }, { name: "עמק יזרעאל נערים (ט'-י')", coach: 'אור פרץ' }, { name: "עמק יזרעאל ילדים (ז'-ח')", coach: 'יניב שורר' }, { name: "עמק יזרעאל ילדות (ז'-ט')", coach: 'גיל טל' } ],
   },
   {
-    id: 'emek-hefer-east', city: 'עמק חפר מזרח', region: 'שרון', days: 'שני וחמישי', lng: 34.990, lat: 32.370,    teams: ['עמק חפר מזרח ילדים (ז-ט)', 'עמק חפר מזרח נוער בנים', 'עמק חפר מזרח נוער בנות (י׳-י״ב)'],
+    id: 'tel-aviv', city: 'תל אביב', region: 'מרכז', lng: 34.7818, lat: 32.0853,
+    manager: 'עידן ילין', venue: 'ספורטק ת"א', days: 'ראשון ורביעי',
+    teams: [ { name: 'תל אביב יסודי ה-ו', coach: 'עידן ילין' }, { name: 'תל אביב ילדים ז-ח', coach: 'עידן ילין' }, { name: 'תל אביב נערים ט-י', coach: 'עידן ילין' }, { name: 'תל אביב בנים יא-יב', coach: 'עומר גרסטן' }, { name: 'תל אביב בנות יא-יב', coach: 'גל רוזנקרנץ' } ],
   },
   {
-    id: 'kfar-saba', city: 'כפר סבא', region: 'שרון', days: 'ראשון ורביעי', lng: 34.907, lat: 32.175,    teams: ['כפר סבא ילדים (ז-ח)', 'כפר סבא נערים (ט-י)', 'כפר סבא נערות (ט)', 'כפר סבא נוער בנים (יא-יב)', 'כפר סבא נוער בנות (י-יב)'],
+    id: 'herzliya', city: 'הרצליה', region: 'שרון', lng: 34.844, lat: 32.166,
+    manager: 'עידן ילין', venue: 'פארקר הרצליה', days: 'שני וחמישי',
+    teams: [ { name: 'הרצליה ילדים ז-ח', coach: 'עידן ילין' }, { name: 'הרצליה נערים ט-י', coach: 'אמיר סיבור' }, { name: 'הרצליה בנים יא-יב', coach: 'עומר גרסטן' }, { name: 'הרצליה בנות יא-יב', coach: 'עידן ילין' } ],
   },
   {
-    id: 'kfar-yona', city: 'כפר יונה', region: 'שרון', days: 'ראשון ורביעי', lng: 34.933, lat: 32.317,    teams: ['כפר יונה ילדים (ו-ז)', 'כפר יונה נערים (ח-ט)', 'כפר יונה נוער בנים', 'כפר יונה נוער בנות'],
+    id: 'raanana', city: 'רעננה', region: 'שרון', lng: 34.8707, lat: 32.1847,
+    manager: 'בן שטראובר', venue: 'פארק רעננה', days: 'ראשון ורביעי',
+    teams: [ { name: 'רעננה ילדים (ז-ח)', coach: 'יובל המלך' }, { name: 'רעננה נערים (ט-י)', coach: 'שגב' }, { name: 'רעננה נערות (ט-י)', coach: '' }, { name: 'רעננה בנים (יא-יב)', coach: 'שטראובר' }, { name: 'רעננה בנות (יא-יב)', coach: '' } ],
   },
   {
-    id: 'kochav-yair', city: 'כוכב יאיר', region: 'שרון', days: 'ראשון ורביעי', lng: 35.005, lat: 32.225,    teams: ['כוכב יאיר ילדים (ז-ח)', 'כוכב יאיר נערים (ט-י)', 'כוכב יאיר נערות (ט-י)', 'כוכב יאיר נוער בנים (יא-יב)', 'כוכב יאיר בנות (יא-יב)'],
+    id: 'hod-hasharon', city: 'הוד השרון', region: 'שרון', lng: 34.889, lat: 32.15,
+    manager: 'בן שטראובר', venue: 'פארק אקולוגי', days: 'שני וחמישי',
+    teams: [ { name: 'הודש ילדים (ז-ח)', coach: 'יובל המלך' }, { name: 'הודש נערים (ט-י)', coach: 'שגב' }, { name: 'הודש נערות (ט-י)', coach: '' }, { name: 'הודש בנים (יא-יב)', coach: 'שטראובר' }, { name: 'הודש בנות (יא-יב)', coach: '' } ],
   },
   {
-    id: 'jerusalem', city: 'ירושלים', region: 'מרכז', days: 'שני וחמישי', lng: 35.2137, lat: 31.7683,    teams: ['ירושלים בנים (י-יב)'],
+    id: 'kochav-yair', city: 'כוכב יאיר', region: 'שרון', lng: 35.005, lat: 32.225,
+    manager: "קורן קופלוביץ'", venue: 'אתלטיקה כ"י', days: 'ראשון ורביעי',
+    teams: [ { name: 'כוכב יאיר ילדים', coach: 'רם אסא' }, { name: 'כוכב יאיר נערים (ט-י)', coach: 'עמית ברקן' }, { name: 'כוכב יאיר בנים (יא-יב)', coach: 'רועי רוט' }, { name: 'כוכב יאיר בנות', coach: '' } ],
   },
   {
-    id: 'zichron', city: 'זכרון יעקב', region: 'צפון', days: 'שני וחמישי', lng: 34.954, lat: 32.572,    teams: ['זכרון יעקב ילדים (ו-ז)', 'זכרון יעקב חטיבות (ח-ט)', 'זכרון יעקב נוער בנים (י-יב)', 'זכרון יעקב נוער בנות (י-יב)'],
+    id: 'kfar-saba', city: 'כפר סבא', region: 'שרון', lng: 34.907, lat: 32.175,
+    manager: "קורן קופלוביץ'", venue: 'ספורטק כפר סבא', days: 'שני וחמישי',
+    teams: [ { name: 'כפר סבא ילדים (ז-ח)', coach: 'קורן' }, { name: 'כפר סבא ילדות (ז-ט)', coach: 'קורן' }, { name: 'כפר סבא נערים (ט-י)', coach: '' }, { name: 'כפר סבא בנים (יא-יב)', coach: 'רועי רוט' }, { name: 'כפר סבא בנות (יא-יב)', coach: 'קורן' } ],
   },
   {
-    id: 'herzliya', city: 'הרצליה', region: 'שרון', days: 'שני וחמישי', lng: 34.844, lat: 32.166,    teams: ['הרצליה יסודי', 'הרצליה ילדים (ו-ז)', 'הרצליה נערים (ח-ט)', 'הרצליה נוער בנים (י-יב)', 'הרצליה נוער בנות (י-יב)'],
+    id: 'jerusalem', city: 'ירושלים', region: 'מרכז', lng: 35.2137, lat: 31.7683,
+    manager: "קורן קופלוביץ'", venue: 'גן סאקר', days: 'שני וחמישי',
+    teams: [ { name: 'ירושלים בנים (י-יב)', coach: 'רם אסא' } ],
   },
   {
-    id: 'hod-hasharon', city: 'הוד השרון', region: 'שרון', days: 'שני וחמישי', lng: 34.889, lat: 32.150,    teams: ['הוד השרון ילדים (ז-ח)', 'הוד השרון נערים (ט-י)', 'הוד השרון נוער בנים (יא-יב)', 'הוד השרון נוער בנות (י-יב)'],
+    id: 'kiryat-ono', city: 'קרית אונו', region: 'מרכז', lng: 34.855, lat: 32.0556,
+    manager: 'כפיר שמחה', venue: 'רייספלד', days: 'ראשון ורביעי',
+    teams: [ { name: 'קריית אונו ילדים (ו׳-ח׳)', coach: 'אורי לוי' }, { name: 'קריית אונו נערים (ט׳-י׳)', coach: 'נועם להט' }, { name: 'קריית אונו בנים (יא-יב)', coach: 'כפיר שמחה' }, { name: 'קריית אונו בנות (י-יב)', coach: '' } ],
   },
   {
-    id: 'givat-shmuel', city: 'גבעת שמואל', region: 'מרכז', days: 'שני וחמישי', lng: 34.848, lat: 32.077,    teams: ['גבעת שמואל ילדים (ו-ז)', 'גבעת שמואל נערים (ח-ט)', 'גבעת שמואל נוער בנים (י-יב)'],
+    id: 'givat-shmuel', city: 'גבעת שמואל', region: 'מרכז', lng: 34.848, lat: 32.077,
+    manager: 'כפיר שמחה', venue: 'פארק דרום', days: 'שני וחמישי',
+    teams: [ { name: 'גב״ש ילדים (ז-ח)', coach: 'נועם להט' }, { name: 'גב״ש נערים (ט-י)', coach: 'נועם להט' }, { name: 'גב״ש בנים (יא-יב)', coach: 'כפיר שמחה' } ],
   },
   {
-    id: 'even-yehuda', city: 'אבן יהודה', region: 'שרון', days: 'שני וחמישי', lng: 34.888, lat: 32.270,    teams: ['אבן יהודה ילדים', 'אבן יהודה נערים', 'אבן יהודה נוער בנים (יא-יב)', 'אבן יהודה נוער בנות (י-יב)'],
+    id: 'petah-tikva', city: 'פתח תקווה', region: 'מרכז', lng: 34.8878, lat: 32.084,
+    manager: 'כפיר שמחה', venue: '', days: 'שני וחמישי',
+    teams: [ { name: 'פתח תקווה בנים (י-יב׳)', coach: 'אורי לוי' } ],
   },
 ]
 

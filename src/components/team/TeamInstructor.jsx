@@ -22,7 +22,7 @@ export default function TeamInstructor({ onRegister }) {
             <p className="tin-animate ds-section-subtitle text-[#ff8714] mt-7">{instructor.lead}</p>
             <p className="tin-animate font-heebo text-navy/70 text-lg leading-relaxed mt-6">{instructor.body}</p>
             <div className="tin-animate mt-9">
-              <QuietButton icon={ChevronLeft} onClick={() => onRegister?.('מדריך/ה בהזנק')}>
+              <QuietButton icon={ChevronLeft} onClick={() => onRegister?.('הדרכה בהזנק')}>
                 {instructor.cta}
               </QuietButton>
             </div>

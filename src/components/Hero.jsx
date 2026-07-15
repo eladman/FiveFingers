@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Button from './ui/Button'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const IMAGES = [
   '/Hero-Pics/214A0011.jpg',
@@ -108,6 +111,32 @@ export default function Hero({ onComplete, onContactOpen }) {
     return () => clearInterval(id)
   }, [])
 
+  // Scroll-out parallax — as the hero leaves, the image plane drifts up slower
+  // than the page (depth), the headline lifts + blurs away like a rack focus,
+  // and an extra scrim deepens so the section dissolves into WhoWeAre below.
+  // Scrubbed to the real scroll position; skipped entirely under reduced-motion.
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) return
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ref.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
+      tl.to('.hero-bg', { yPercent: 16, ease: 'none' }, 0)
+        .to('.hero-content', { yPercent: -26, opacity: 0, filter: 'blur(6px)', ease: 'none' }, 0)
+        .to('.hero-scrim', { opacity: 0.55, ease: 'none' }, 0)
+        .to('.scroll-indicator', { opacity: 0, ease: 'none' }, 0)
+    }, ref)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
     <section
       id="home"
@@ -115,32 +144,44 @@ export default function Hero({ onComplete, onContactOpen }) {
       className="relative w-full min-h-[100dvh] overflow-hidden flex items-center justify-center"
     >
       {/* ── Background slideshow ── */}
-      <div className="absolute inset-0">
-        {IMAGES.map((src, i) => (
-          <img
-            key={src}
-            ref={el => imgRefs.current[i] = el}
-            src={src}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              opacity: i === 0 ? 1 : 0,
-              transition: 'opacity 1.2s ease-in-out, transform 1.2s ease-out',
-              willChange: 'opacity, transform',
-            }}
-            loading={i === 0 ? 'eager' : 'lazy'}
-          />
-        ))}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Parallax image plane — oversized top/bottom so the scroll-out drift
+            never exposes an edge inside the section's clip. */}
+        <div
+          className="hero-bg absolute left-0 right-0"
+          style={{ top: '-8%', height: '116%', willChange: 'transform' }}
+        >
+          {IMAGES.map((src, i) => (
+            <img
+              key={src}
+              ref={el => imgRefs.current[i] = el}
+              src={src}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{
+                opacity: i === 0 ? 1 : 0,
+                transition: 'opacity 1.2s ease-in-out, transform 1.2s ease-out',
+                willChange: 'opacity, transform',
+              }}
+              loading={i === 0 ? 'eager' : 'lazy'}
+            />
+          ))}
+        </div>
         {/* Warm-tone color grade */}
         <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
         {/* Dark scrim for text legibility */}
         <div className="absolute inset-0 bg-black/50" />
         {/* Neutral depth gradient — grounds the CTAs and the floating sheet below, with no blue cast */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+        {/* Deepens on scroll-out to dissolve the hero into the sheet below */}
+        <div className="hero-scrim absolute inset-0 bg-black" style={{ opacity: 0 }} />
       </div>
 
       {/* ── Content ── */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-8 md:px-16 text-center select-none">
+      <div
+        className="hero-content relative z-10 w-full max-w-6xl mx-auto px-8 md:px-16 text-center select-none"
+        style={{ willChange: 'transform, opacity, filter' }}
+      >
         {/* Main headline — single line */}
         <h1
           className="mb-0 flex items-center justify-center gap-[0.25em] text-white tracking-tight"

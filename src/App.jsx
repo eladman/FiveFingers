@@ -51,9 +51,25 @@ export default function App() {
   const [contactProduct, setContactProduct] = useState('')
   const [view, setView] = useState(() => resolveView(window.location.hash))
 
+  // #contact is a special case: not a page view, just a request to pop the
+  // shared ContactModal open (e.g. the "יצירת קשר" link from the standalone
+  // /memorial page, which can't reach React state directly). Strip it from
+  // the URL once handled so it doesn't linger or reopen on back/forward.
+  const openContactFromHash = () => {
+    if (window.location.hash.startsWith('#contact')) {
+      setContactProduct('')
+      setContactOpen(true)
+      history.replaceState(null, '', window.location.pathname + window.location.search)
+      return true
+    }
+    return false
+  }
+
   // Hash-based routing: #liabah / #academy → dedicated page, anything else → homepage.
   useEffect(() => {
+    openContactFromHash()
     const onHashChange = () => {
+      if (openContactFromHash()) return
       const next = resolveView(window.location.hash)
       setView((prev) => {
         if (prev !== next) window.scrollTo(0, 0)

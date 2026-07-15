@@ -84,6 +84,25 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ─── Lenis smooth-scroll ───────────────────────────────────── */
+/* When Lenis is active it stamps these classes on <html>. Hand JS   */
+/* the scroll (disable native smooth so the two don't fight), and    */
+/* let nested scrollers opt out via [data-lenis-prevent]. Reduced-   */
+/* motion users never get the .lenis class, so native scroll stands. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;

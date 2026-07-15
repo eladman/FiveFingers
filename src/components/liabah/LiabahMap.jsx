@@ -76,7 +76,12 @@ export default function LiabahMap() {
   const [selected, setSelected] = useState(null) // clicked city → detail panel
 
   const selectedLoc = locations.find((l) => l.id === selected) || null
-  const selectedCoach = selectedLoc ? coaches.find((c) => c.region === selectedLoc.region) : null
+  // Area lead = the base manager (מנהל/ת בייס). Reuse a coach headshot when we
+  // have one for that person; otherwise the panel shows a placeholder.
+  const leadPhoto = selectedLoc ? coaches.find((c) => c.name === selectedLoc.manager) : null
+  const selectedLead = selectedLoc && selectedLoc.manager
+    ? { name: selectedLoc.manager, role: 'מנהל/ת בייס', imageSrc: leadPhoto?.imageSrc, imgPosition: leadPhoto?.imgPosition }
+    : null
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -257,15 +262,15 @@ export default function LiabahMap() {
               <X size={20} />
             </button>
 
-            {/* Coach photo / placeholder */}
+            {/* Area lead photo / placeholder */}
             <div className="relative w-full h-52 sm:h-60 overflow-hidden bg-navy/[0.04] rounded-t-2xl">
-              {selectedCoach?.imageSrc ? (
+              {selectedLead?.imageSrc ? (
                 <>
                   <img
-                    src={selectedCoach.imageSrc}
-                    alt={selectedCoach.name}
+                    src={selectedLead.imageSrc}
+                    alt={selectedLead.name}
                     className="absolute inset-0 w-full h-full object-cover"
-                    style={{ objectPosition: selectedCoach.imgPosition }}
+                    style={{ objectPosition: selectedLead.imgPosition }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" />
                 </>
@@ -274,7 +279,12 @@ export default function LiabahMap() {
                   <div className="flex items-center justify-center w-16 h-16 rounded-full bg-orange/10">
                     <User size={32} className="text-orange" strokeWidth={1.5} />
                   </div>
-                  <span className="font-heebo text-navy/40 text-sm">מנהל/ת אזור בקרוב</span>
+                  {selectedLead && (
+                    <div className="text-center">
+                      <h3 className="font-heebo font-bold text-navy text-lg">{selectedLead.name}</h3>
+                      <p className="font-heebo text-[#ff8714] text-sm">{selectedLead.role}</p>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -284,26 +294,28 @@ export default function LiabahMap() {
                 <span className="font-heebo font-bold text-navy text-sm">{selectedLoc.city}</span>
               </div>
 
-              {/* Coach name over photo */}
-              {selectedCoach?.imageSrc && (
+              {/* Lead name over photo */}
+              {selectedLead?.imageSrc && (
                 <div className="absolute bottom-4 right-5 text-white">
-                  <h3 className="font-heebo font-bold text-2xl drop-shadow">{selectedCoach.name}</h3>
-                  <p className="font-heebo text-white/85 text-sm drop-shadow">{selectedCoach.role}</p>
+                  <h3 className="font-heebo font-bold text-2xl drop-shadow">{selectedLead.name}</h3>
+                  <p className="font-heebo text-white/85 text-sm drop-shadow">{selectedLead.role}</p>
                 </div>
               )}
             </div>
 
             {/* Body */}
             <div className="p-6 sm:p-7 flex flex-col gap-5">
-              {/* Coach name + bio (when present) */}
-              {selectedCoach && !selectedCoach.imageSrc && (
-                <div>
-                  <h3 className="font-heebo font-bold text-navy text-xl">{selectedCoach.name}</h3>
-                  <p className="font-heebo text-[#ff8714] text-sm mt-0.5">{selectedCoach.role}</p>
+              {/* Training venue (מיקום) */}
+              {selectedLoc.venue && (
+                <div className="flex gap-3">
+                  <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-orange/10 shrink-0">
+                    <MapPin size={18} className="text-orange" />
+                  </div>
+                  <div>
+                    <h4 className="font-heebo font-bold text-navy text-sm mb-1">מיקום האימונים</h4>
+                    <p className="font-heebo text-navy/65 text-sm leading-relaxed">{selectedLoc.venue}</p>
+                  </div>
                 </div>
-              )}
-              {selectedCoach?.bio && (
-                <p className="font-heebo text-navy/70 leading-relaxed">{selectedCoach.bio}</p>
               )}
 
               {/* Teams in the city */}
@@ -318,9 +330,9 @@ export default function LiabahMap() {
                   </h4>
                   <ul className="flex flex-col gap-1.5">
                     {selectedLoc.teams.map((t) => (
-                      <li key={t} className="flex items-center gap-2">
+                      <li key={t.name} className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-orange shrink-0" aria-hidden="true" />
-                        <span className="font-heebo text-navy/70 text-sm">{teamLabel(t, selectedLoc.city)}</span>
+                        <span className="font-heebo text-navy/70 text-sm">{teamLabel(t.name, selectedLoc.city)}</span>
                       </li>
                     ))}
                   </ul>

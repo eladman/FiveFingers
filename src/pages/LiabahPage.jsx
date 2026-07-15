@@ -1,7 +1,6 @@
 import SoftDivider from '../components/SoftDivider'
 import LiabahHero from '../components/liabah/LiabahHero'
 import LiabahEssence from '../components/liabah/LiabahEssence'
-import LiabahStats from '../components/liabah/LiabahStats'
 import LiabahPrograms from '../components/liabah/LiabahPrograms'
 import LiabahCoaches from '../components/liabah/LiabahCoaches'
 import LiabahMap from '../components/liabah/LiabahMap'
@@ -21,9 +20,7 @@ export default function LiabahPage({ onContactOpen }) {
       <LiabahHero onRegister={onRegister} />
       {/* No divider — the light essence sheet rises directly over the hero's neutral base */}
       <LiabahEssence />
-      <SoftDivider fromColor="#fafaf8" toColor="#0d1b4b" blend={false} />
-      <LiabahStats />
-      <SoftDivider fromColor="#0d1b4b" toColor="#ffffff" blend={false} />
+      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
       <LiabahPrograms onRegister={onRegister} />
       <SoftDivider fromColor="#ffffff" toColor="#fafaf8" />
       <LiabahCoaches />

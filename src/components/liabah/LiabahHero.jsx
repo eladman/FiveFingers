@@ -99,7 +99,7 @@ export default function LiabahHero({ onRegister }) {
       id="liabah-top"
       ref={ref}
       dir="rtl"
-      className="relative w-full min-h-[100dvh] overflow-hidden flex items-center"
+      className="relative w-full min-h-[100svh] overflow-hidden flex items-center"
     >
       {/* ── Static action photo + cinematic grade ── */}
       <div className="absolute inset-0">
@@ -131,15 +131,8 @@ export default function LiabahHero({ onRegister }) {
           className="absolute inset-x-0 top-0 h-40 pointer-events-none"
           style={{ background: 'linear-gradient(180deg, rgba(8,16,40,0.55), transparent)' }}
         />
-        {/* Kinetic orange streaks */}
+        {/* Kinetic orange streak */}
         <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
-          <span
-            className="absolute"
-            style={{
-              top: '22%', right: '-10%', width: '45%', height: '2px', transform: 'skewX(-30deg)',
-              background: 'linear-gradient(90deg, transparent, rgba(255,135,20,0.5), transparent)',
-            }}
-          />
           <span
             className="absolute"
             style={{
@@ -200,7 +193,7 @@ export default function LiabahHero({ onRegister }) {
           clipPath: 'polygon(0 42%, 100% 0, 100% 100%, 0 100%)',
         }}
       >
-        <div className="max-w-6xl mx-auto px-6 md:px-12 pt-16 md:pt-20 pb-6 flex flex-wrap gap-x-8 gap-y-3 md:gap-x-14">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 pt-28 md:pt-32 pb-6 flex flex-wrap gap-x-8 gap-y-3 md:gap-x-14">
           {BAND_STATS.map((s) => (
             <div key={s.label} className="lh-stat text-right text-white">
               <b

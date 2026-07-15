@@ -167,15 +167,15 @@ export default function LiabahCoaches() {
       <SectionBg />
 
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
-        <SectionHeading eyebrow="הצוות" title="המאמנים והמאמנות" subtitle="הדמויות שמובילות את הדרך" animateClass="lc-animate" />
+        <SectionHeading eyebrow="הצוות" title="המאמנים המובילים בתנועה" subtitle="הדמויות שמובילות את הדרך" animateClass="lc-animate" />
 
         {/* Mobile: 3D carousel */}
-        <div className="sm:hidden pb-20">
+        <div className="sm:hidden pb-6">
           <CoachesMobileCarousel />
         </div>
 
         {/* sm+: full grid */}
-        <div className="hidden sm:grid grid-cols-3 gap-6 md:gap-8 pb-24 max-w-3xl mx-auto">
+        <div className="hidden sm:grid grid-cols-3 gap-6 md:gap-8 pb-6 max-w-3xl mx-auto">
           {coaches.map((coach) => {
             const isPlaceholder = !coach.imageSrc && coach.name === 'שם המאמן/ת'
             return (
@@ -212,6 +212,20 @@ export default function LiabahCoaches() {
               </div>
             )
           })}
+        </div>
+
+        <div className="lc-animate mx-auto mb-20 md:mb-24 max-w-xl text-center">
+          <div className="mx-auto mb-5 h-px w-10 bg-orange/50" />
+          <p className="font-heebo text-navy/55 leading-relaxed" style={{ fontSize: 'clamp(1rem, 1.4vw, 1.15rem)' }}>
+            ועוד{' '}
+            <span
+              className="font-ragmarom text-orange align-middle"
+              style={{ fontSize: 'clamp(2.2rem, 3.4vw, 3rem)' }}
+            >
+              60
+            </span>{' '}
+            מאמנים ואנשי צוות הדואגים כל יום לפיתוח הדור הבא של מדינת ישראל
+          </p>
         </div>
       </div>
     </section>

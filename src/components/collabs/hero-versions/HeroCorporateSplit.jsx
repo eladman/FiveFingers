@@ -21,7 +21,7 @@ export default function HeroCorporateSplit({ onRegister }) {
   useEffect(() => {
     const ctx = gsap.context(() => {
       if (reduced) {
-        gsap.set('.b-eyebrow, .b-char, .b-accent, .b-sub, .b-cta, .b-trust, .b-plate, .b-chip',
+        gsap.set('.b-eyebrow, .b-char, .b-accent, .b-sub, .b-cta, .b-trust, .b-plate',
           { opacity: 1, y: 0, x: 0, filter: 'blur(0px)', scaleX: 1, scale: 1 })
         return
       }
@@ -34,7 +34,6 @@ export default function HeroCorporateSplit({ onRegister }) {
       tl.fromTo('.b-accent', { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.35, ease: 'power2.inOut' }, '-=0.2')
       tl.fromTo('.b-sub', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' }, '-=0.1')
       tl.fromTo('.b-cta', { y: 12, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.08, duration: 0.35, ease: 'power2.out' }, '-=0.15')
-      tl.fromTo('.b-chip', { y: 18, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.6)' }, '-=0.2')
       tl.fromTo('.b-trust', { y: 14, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.05, duration: 0.4, ease: 'power2.out' }, '-=0.1')
     }, ref)
     return () => ctx.revert()
@@ -45,7 +44,7 @@ export default function HeroCorporateSplit({ onRegister }) {
       id="collabs-top"
       ref={ref}
       dir="rtl"
-      className="relative w-full min-h-[100dvh] overflow-hidden bg-surface flex items-center"
+      className="relative w-full min-h-[92dvh] lg:min-h-[100dvh] overflow-hidden bg-surface flex items-start lg:items-center"
     >
       <Atmosphere />
 
@@ -106,22 +105,17 @@ export default function HeroCorporateSplit({ onRegister }) {
           </div>
         </div>
 
-        {/* ── Proof plate (RTL: left) ── */}
-        <div className="b-plate relative order-first lg:order-none">
-          <div className="relative rounded-[1.75rem] overflow-hidden"
-               style={{ boxShadow: '0 30px 70px -20px rgba(13,27,75,0.35)', aspectRatio: '4 / 5' }}>
+        {/* ── Proof plate (RTL: left) ──
+            Mobile: demoted below the copy + partner icons and shown as a
+            compact wide banner, so the headline/text lead. Desktop: unchanged. */}
+        <div className="b-plate relative order-last lg:order-none mt-6 lg:mt-0">
+          <div className="relative rounded-[1.75rem] overflow-hidden aspect-[16/10] sm:aspect-[3/2] lg:aspect-[4/5] max-h-[40vh] lg:max-h-none"
+               style={{ boxShadow: '0 30px 70px -20px rgba(13,27,75,0.35)' }}>
             <img src="/our_product_pics/collab_pic.jpg" alt="הכשרה קבוצתית של חמש אצבעות"
                  className="w-full h-full object-cover" style={{ objectPosition: 'center 35%' }} />
             <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, transparent 55%, rgba(8,16,40,0.5))' }} />
             {/* thin brand frame */}
             <div aria-hidden="true" className="absolute inset-3 rounded-[1.4rem] border border-white/20" />
-          </div>
-
-          {/* Overlapping stat chip */}
-          <div className="b-chip absolute -bottom-5 right-6 lg:-right-6 rounded-2xl bg-white px-6 py-4 text-right"
-               style={{ boxShadow: '0 20px 45px -12px rgba(13,27,75,0.4)' }}>
-            <div className="font-ragmarom text-navy leading-none" style={{ fontSize: 'clamp(1.9rem, 3vw, 2.6rem)' }}>100+</div>
-            <div className="font-heebo text-navy/55 mt-1" style={{ fontSize: '0.85rem' }}>ארגונים שותפים</div>
           </div>
         </div>
       </div>

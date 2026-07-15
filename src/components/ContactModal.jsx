@@ -8,14 +8,14 @@ import { WHATSAPP_HREF, PHONE_HREF, EMAIL, EMAIL_HREF, PHONE_DISPLAY } from '../
 // so deep-links from pages still preselect correctly. מכינה / Boost / כרמל are
 // the three tracks of the Academy, hence one group.
 const INTEREST_GROUPS = [
-  { label: 'נוער', hint: 'גילאי 12-18', items: ['קבוצות הנוער'] },
+  { label: 'נוער', hint: 'גילאי 10-18', items: ['קבוצות הנוער'] },
   { label: 'מכינה והכנה לצבא', hint: 'מלש״בים', items: ['מכינה', 'הזנק', 'כרמל'] },
   { label: 'בוגרים', hint: '21+', items: ['יואב'] },
   { label: 'שותפויות וקשר', hint: '', items: ['שיתוף פעולה', 'קשר עם עמיר'] },
 ]
 
 const JOBS_LABEL = 'משרות בתנועה'
-const JOB_ROLES = ['מאמן/ת', 'מדריך/ה בהזנק', 'צוות מטה', 'מדריך במכינה']
+const JOB_ROLES = ['מאמן/ת', 'הדרכה בהזנק', 'צוות מטה', 'הדרכה במכינה']
 
 // Some page CTAs deep-link us with a program/section label that isn't the exact
 // chip value (e.g. an Alumni page says "בוגרים", the chip is "יואב"). Map those
@@ -52,10 +52,28 @@ const YOUTH_GROUP_FIELDS = [
   { name: 'notes', label: 'הערות', type: 'textarea', placeholder: 'משהו שנרצה לדעת? (לא חובה)', required: false },
 ]
 
+// "שיתוף פעולה" (partnership) inquiries come from an organization rather than
+// an individual, so we collect who they represent and a target date instead
+// of the personal/job fields above.
+const PARTNERSHIP_FIELDS = [
+  { name: 'orgName', label: 'ארגון', type: 'text', placeholder: 'שם הארגון', required: true },
+  { name: 'orgRole', label: 'תפקיד בארגון', type: 'text', placeholder: 'התפקיד שלכם בארגון', required: true },
+  { name: 'inquiryDetails', label: 'פירוט', type: 'textarea', placeholder: 'ספרו לנו על השיתוף פעולה שאתם מדמיינים', required: true },
+  { name: 'targetDate', label: 'תאריך מבוקש', type: 'date', required: false },
+]
+
+// "יואב" (alumni) inquiries are otherwise contact-only, so we add a single
+// free-text field asking what the graduate wants to reach out about.
+const ALUMNI_FIELDS = [
+  { name: 'inquiryDetails', label: 'פירוט הפנייה', type: 'textarea', placeholder: 'ספרו לנו במה תרצו לעזור/להיעזר', required: true },
+]
+
 // Per-interest custom fields, keyed by the exact chip/role label.
 const EXTRA_FIELDS = {
   ...Object.fromEntries(JOB_ROLES.map((role) => [role, JOB_APPLICATION_FIELDS])),
   'קבוצות הנוער': YOUTH_GROUP_FIELDS,
+  'שיתוף פעולה': PARTNERSHIP_FIELDS,
+  'יואב': ALUMNI_FIELDS,
 }
 
 const INITIAL_FORM = { name: '', phone: '', email: '', productType: '' }
@@ -464,7 +482,7 @@ function Chip({ label, active, onClick, trailing, inactiveBg = '#f4f5f7', ...ari
   )
 }
 
-// Small caption above each interest lane: "נוער · גילאי 12-18".
+// Small caption above each interest lane: "נוער · גילאי 10-18".
 function GroupHeader({ label, hint }) {
   return (
     <div className="flex items-baseline gap-1.5 mb-2">
