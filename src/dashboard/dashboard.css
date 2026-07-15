@@ -1,0 +1,118 @@
+/* Dashboard-only utility classes, built on the brand tokens in src/index.css. */
+
+.dash-input,
+.dash-select,
+.dash-textarea {
+  width: 100%;
+  background: #f7f8fa;
+  border: 1.5px solid #e8eaee;
+  border-radius: 13px;
+  padding: 0 14px;
+  height: 46px;
+  font-family: 'Heebo', 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--navy);
+  transition: border-color var(--t-fast) var(--ease-brand),
+    background var(--t-fast) var(--ease-brand), box-shadow var(--t-fast) var(--ease-brand);
+}
+.dash-textarea {
+  height: auto;
+  min-height: 92px;
+  padding: 12px 14px;
+  line-height: 1.6;
+  resize: vertical;
+}
+.dash-input:focus,
+.dash-select:focus,
+.dash-textarea:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 4px rgba(255, 135, 20, 0.12);
+}
+.dash-input::placeholder,
+.dash-textarea::placeholder {
+  color: #aab0bb;
+}
+
+/* Primary (orange gradient) button */
+.dash-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep));
+  box-shadow: 0 8px 20px -6px rgba(255, 135, 20, 0.5);
+  transition: transform var(--t-fast) var(--ease-brand), box-shadow var(--t-fast) var(--ease-brand);
+}
+.dash-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px -6px rgba(255, 135, 20, 0.55);
+}
+.dash-btn-primary:active {
+  transform: scale(0.98);
+}
+.dash-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Ghost / outline button for light surfaces */
+.dash-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--navy);
+  background: #fff;
+  border: 1.5px solid rgba(13, 27, 75, 0.16);
+  transition: border-color var(--t-fast) var(--ease-brand), background var(--t-fast) var(--ease-brand);
+}
+.dash-btn-ghost:hover {
+  border-color: rgba(13, 27, 75, 0.4);
+  background: rgba(13, 27, 75, 0.03);
+}
+.dash-btn-ghost.is-active {
+  border-color: var(--orange);
+  background: var(--orange-soft);
+  color: var(--orange-ink);
+}
+
+/* Card shell */
+.dash-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Status pill */
+.dash-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 11px 3px 9px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.dash-badge .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
