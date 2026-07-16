@@ -164,6 +164,7 @@ export default function Hero({ onComplete, onContactOpen }) {
                 willChange: 'opacity, transform',
               }}
               loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
             />
           ))}
         </div>
