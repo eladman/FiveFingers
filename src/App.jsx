@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import WhoWeAre from './components/WhoWeAre'
-import WhatWeBelieve from './components/WhatWeBelieve'
-import ManInArena from './components/ManInArena'
-import Programs from './components/Programs'
-import FiveContent from './components/FiveContent'
+import Preloader, { shouldShowPreloader } from './redesign/Preloader'
+import ArenaHero from './redesign/ArenaHero'
+import IntroV2 from './redesign/IntroV2'
+import Manifesto from './redesign/Manifesto'
+import FiveDNA from './redesign/FiveDNA'
+import ProgramsV2 from './redesign/ProgramsV2'
+import PulseBand from './redesign/PulseBand'
+import FinaleCTA from './redesign/FinaleCTA'
 import Footer from './components/Footer'
 import ContactModal from './components/ContactModal'
 import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
@@ -47,6 +49,9 @@ const VIEW_TO_PRODUCT = {
 
 export default function App() {
   const [navReady, setNavReady] = useState(false)
+  // The intro veil (Preloader) shows once per session on the homepage; the
+  // hero waits for it before running its entrance choreography.
+  const [introDone, setIntroDone] = useState(() => !shouldShowPreloader())
   const [contactOpen, setContactOpen] = useState(false)
   const [contactProduct, setContactProduct] = useState('')
   const [view, setView] = useState(() => resolveView(window.location.hash))
@@ -120,13 +125,14 @@ export default function App() {
         <TeamPage onContactOpen={openContact} />
       ) : (
         <main>
-          <Hero onComplete={() => setNavReady(true)} onContactOpen={openContact} />
-          {/* WhoWeAre floats up over the hero's dark base as a sheet — no seam divider here */}
-          <WhoWeAre />
-          <WhatWeBelieve />
-          <ManInArena />
-          <Programs onContactOpen={openContact} />
-          <FiveContent />
+          {!introDone && <Preloader onDone={() => setIntroDone(true)} />}
+          <ArenaHero start={introDone} onComplete={() => setNavReady(true)} onContactOpen={openContact} />
+          <IntroV2 />
+          <Manifesto />
+          <FiveDNA />
+          <ProgramsV2 onContactOpen={openContact} />
+          <PulseBand />
+          <FinaleCTA onContactOpen={openContact} />
         </main>
       )}
       <Footer onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')} />
