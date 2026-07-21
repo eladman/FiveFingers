@@ -1,52 +1,38 @@
 import useReveal from '../hooks/useReveal'
 
 export default function WhatWeBelieve() {
-  const ref = useReveal({ selector: '.wwb-el', y: 60, stagger: 0.12, duration: 1.4, start: 'top 70%' })
+  const ref = useReveal({ selector: '.wwb-el', y: 48, stagger: 0.14, duration: 1.4, start: 'top 78%' })
 
   return (
     <section
       id="what-we-believe"
       ref={ref}
       dir="rtl"
-      className="relative z-10 w-full min-h-[100dvh] overflow-hidden flex items-center bg-surface"
+      className="relative z-10 w-full min-h-[100dvh] overflow-hidden flex items-center bg-surface text-navy"
     >
-      {/* ── Atmospheric glows ── */}
-      <div className="pointer-events-none absolute bottom-[-10%] left-[20%] w-[70vw] h-[50vh] rounded-full bg-orange/14 blur-[160px]" />
-      <div className="pointer-events-none absolute top-[-10%] right-[-5%] w-[40vw] h-[60vh] rounded-full bg-orange/8 blur-[140px]" />
+      {/* One soft glow — brand warmth, nothing more */}
+      <div className="pointer-events-none absolute top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 w-[70vw] h-[60vh] rounded-full bg-orange/10 blur-[180px]" />
 
-      {/* ── Halftone dot grid ── */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #0d1b4b 1.2px, transparent 1.2px)',
-          backgroundSize: '22px 22px',
-          opacity: 0.04,
-        }}
-      />
+      <div className="relative z-10 w-full max-w-[1080px] mx-auto px-6 sm:px-10 md:px-14 py-24 md:py-28 text-center">
 
-      {/* ── Layout ──
-          Mobile  : single column, ordered heading → video → values
-          Desktop : two columns, values stacked under heading on the right,
-                    video spanning the full height on the left              */}
-      <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_2.2fr] md:grid-rows-[auto_1fr]">
-
-        {/* ── Heading ── */}
-        <div className="order-1 md:order-none md:col-start-1 md:row-start-1 md:border-l border-navy/8 px-6 sm:px-10 md:px-14 lg:px-20 pt-24 md:pt-16 lg:pt-24 pb-2 md:pb-6">
-          <div className="wwb-el">
-            <h2 className="ds-section-title text-navy">
-              במה אנחנו מאמינים
-            </h2>
-            <div className="flex items-center gap-3 mt-3">
-              <span className="h-px w-9 bg-orange shrink-0" />
-              <p className="ds-section-subtitle text-[#ff8714]">
-                החזון והמשימה שלנו
-              </p>
-            </div>
-          </div>
+        {/* Kicker */}
+        <div className="wwb-el flex items-center justify-center gap-3 mb-7 md:mb-9">
+          <span className="h-px w-8 bg-orange/70" />
+          <span className="ds-eyebrow text-[#ff8714]">במה אנחנו מאמינים</span>
+          <span className="h-px w-8 bg-orange/70" />
         </div>
 
-        {/* ── Video ── */}
-        <div className="wwb-el order-2 md:order-none md:col-start-2 md:row-start-1 md:row-span-2 md:self-center px-6 sm:px-10 pt-6 pb-2 md:p-12 lg:p-16">
+        {/* The statement — the hero of the section */}
+        <h2
+          className="wwb-el font-ragmarom text-navy leading-[1.06] mx-auto max-w-[14ch] md:max-w-[20ch]"
+          style={{ fontSize: 'clamp(2.3rem, 5.4vw, 4.6rem)' }}
+        >
+          בכל צעיר וצעירה טמון הכוח{' '}
+          <span className="text-[#ff8714]">לשנות את המציאות</span>.
+        </h2>
+
+        {/* Hero media — the film, centered */}
+        <div className="wwb-el mx-auto max-w-[860px] mt-12 md:mt-16">
           <div
             className="relative w-full rounded-[1.6rem] md:rounded-[2rem] overflow-hidden shadow-[0_24px_60px_rgba(0,0,30,0.16)] md:shadow-[0_40px_100px_rgba(0,0,30,0.18)] ring-1 ring-black/8"
             style={{ paddingBottom: '56.25%' }}
@@ -61,48 +47,30 @@ export default function WhatWeBelieve() {
           </div>
         </div>
 
-        {/* ── Vision + Mission ── one connected editorial panel */}
-        <div className="order-3 md:order-none md:col-start-1 md:row-start-2 md:border-l border-navy/8 px-6 sm:px-10 md:px-14 lg:px-20 pt-8 md:pt-2 pb-20 md:pb-16 lg:pb-24">
-          <div className="wwb-el relative pr-5">
-            {/* continuous orange accent rail on the leading (right) edge */}
-            <span className="absolute right-0 top-1.5 bottom-1.5 w-[3px] rounded-full bg-gradient-to-b from-[#ff8714] via-[#ff8714] to-orange/25" />
+        {/* Vision + Mission — quiet supporting detail, one tight row */}
+        <div className="wwb-el mt-12 md:mt-16 mx-auto max-w-[820px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0">
+          {/* Vision */}
+          <div className="md:px-10 md:border-s md:border-navy/10 md:first:border-s-0">
+            <span className="ds-eyebrow text-orange-ink">חזון</span>
+            <h3 className="ds-card-title text-navy mt-2">חברה מבוססת אמון</h3>
+            <p
+              className="font-heebo text-navy/65 leading-relaxed mt-2 mx-auto max-w-[34ch]"
+              style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.15rem)' }}
+            >
+              אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת ולבסוף בין כלל הגורמים בחברה הישראלית.
+            </p>
+          </div>
 
-            <div className="flex flex-col gap-8">
-              {/* Vision */}
-              <div className="flex flex-col gap-2">
-                <span className="ds-eyebrow text-orange-ink">
-                  חזון
-                </span>
-                <h3 className="ds-card-title text-navy">
-                  חברה מבוססת אמון
-                </h3>
-                <p
-                  className="font-heebo text-navy/65 leading-relaxed"
-                  style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.15rem)' }}
-                >
-                  אמון של האדם בעצמו/ה, בקהילה שאליה הוא/היא משתייך/ת ולבסוף בין כלל הגורמים בחברה הישראלית.
-                </p>
-              </div>
-
-              {/* hairline between the two ideas */}
-              <span className="h-px w-full bg-navy/8" />
-
-              {/* Mission */}
-              <div className="flex flex-col gap-2">
-                <span className="ds-eyebrow text-orange-ink">
-                  המשימה שלנו
-                </span>
-                <h3 className="ds-card-title text-navy">
-                  מימוש פוטנציאל
-                </h3>
-                <p
-                  className="font-heebo text-navy/65 leading-relaxed"
-                  style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.15rem)' }}
-                >
-                  לבנות אנשים חזקים ואכפתיים שישפיעו על החברה הישראלית.
-                </p>
-              </div>
-            </div>
+          {/* Mission */}
+          <div className="md:px-10 md:border-s md:border-navy/10">
+            <span className="ds-eyebrow text-orange-ink">המשימה שלנו</span>
+            <h3 className="ds-card-title text-navy mt-2">מימוש פוטנציאל</h3>
+            <p
+              className="font-heebo text-navy/65 leading-relaxed mt-2 mx-auto max-w-[34ch]"
+              style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.15rem)' }}
+            >
+              לבנות אנשים חזקים ואכפתיים שישפיעו על החברה הישראלית.
+            </p>
           </div>
         </div>
 

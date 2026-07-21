@@ -1,39 +1,735 @@
-[2026-07-07T13:58:08.021Z] [debug] [vite] connecting...
-[2026-07-07T13:58:08.052Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-07-07T13:58:08.164Z] [debug] [vite] connected.
-[2026-07-07T14:06:35.339Z] [log] [vite] server connection lost. Polling for restart...
-[2026-07-07T14:06:35.489Z] [debug] [vite] connecting...
-[2026-07-07T14:06:35.536Z] [debug] [vite] connected.
-[2026-07-07T14:06:35.655Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-07-07T14:17:05.695Z] [debug] [vite] hot updated: /src/components/WhoWeAre.jsx
-[2026-07-07T14:17:05.695Z] [debug] [vite] hot updated: /src/index.css
-[2026-07-07T14:17:05.750Z] [debug] [vite] hot updated: /src/components/collabs/hero-versions/HeroCorporateSplit.jsx
-[2026-07-07T14:17:05.750Z] [debug] [vite] hot updated: /src/index.css
-[2026-07-07T14:17:11.684Z] [debug] [vite] hot updated: /src/components/collabs/hero-versions/HeroCorporateSplit.jsx
-[2026-07-07T14:17:11.684Z] [debug] [vite] hot updated: /src/index.css
-[2026-07-07T14:17:15.650Z] [debug] [vite] hot updated: /src/components/collabs/hero-versions/HeroCorporateSplit.jsx
-[2026-07-07T14:17:15.651Z] [debug] [vite] hot updated: /src/index.css
-[2026-07-07T14:17:19.530Z] [debug] [vite] hot updated: /src/pages/CollaborationsPage.jsx
-[2026-07-07T14:17:19.531Z] [debug] [vite] hot updated: /src/index.css
-[2026-07-07T14:17:28.859Z] [debug] [vite] hot updated: /src/components/WhoWeAre.jsx
-[2026-07-07T14:17:28.859Z] [debug] [vite] hot updated: /src/index.css
-[2026-07-07T14:17:29.083Z] [debug] [vite] hot updated: /src/pages/CollaborationsPage.jsx
-[2026-07-07T14:17:29.083Z] [debug] [vite] hot updated: /src/index.css
-[2026-07-07T14:17:36.601Z] [debug] [vite] hot updated: /src/pages/CollaborationsPage.jsx
-[2026-07-07T14:17:36.601Z] [debug] [vite] hot updated: /src/index.css
-[2026-07-07T14:17:42.080Z] [debug] [vite] hot updated: /src/App.jsx
-[2026-07-07T14:17:42.080Z] [debug] [vite] hot updated: /src/index.css
-[2026-07-07T14:19:22.119Z] [debug] [vite] connecting...
-[2026-07-07T14:19:22.125Z] [debug] [vite] connected.
-[2026-07-07T14:19:22.157Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/index.css
-[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahStats.jsx
-[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahHero.jsx
-[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahCoaches.jsx
-[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahGallery.jsx
-[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahFAQ.jsx
-[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahEssence.jsx
-[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahPrograms.jsx
-[2026-07-07T14:22:03.510Z] [debug] [vite] hot updated: /src/components/liabah/LiabahMap.jsx
-[2026-07-07T14:23:44.886Z] [debug] [vite] hot updated: /src/components/collabs/hero-versions/HeroCorporateSplit.jsx
-[2026-07-07T14:23:44.886Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-21T14:05:59.668Z] [debug] [vite] connecting...
+[2026-07-21T14:05:59.672Z] [error] THREE.WebGLRenderer: Error creating WebGL context.
+[2026-07-21T14:05:59.685Z] [debug] [vite] connected.
+[2026-07-21T14:08:27.735Z] [debug] [vite] connecting...
+[2026-07-21T14:08:27.861Z] [debug] [vite] connected.
+[2026-07-21T14:08:28.499Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-21T14:09:53.219Z] [debug] [vite] hot updated: /src/components/WhoWeAre.jsx
+[2026-07-21T14:09:53.220Z] [debug] [vite] hot updated: /src/index.css
+[2026-07-21T14:10:03.883Z] [debug] [vite] connecting...
+[2026-07-21T14:10:03.896Z] [debug] [vite] connected.
+[2026-07-21T14:10:03.919Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-21T14:10:23.807Z] [debug] [vite] connecting...
+[2026-07-21T14:10:23.816Z] [debug] [vite] connected.
+[2026-07-21T14:10:23.839Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-21T14:10:47.890Z] [error] WebSocket connection to 'ws://localhost:5210/?token=QqXgwI-ETWuh' failed: 
+[2026-07-21T14:10:47.890Z] [log] [vite] server connection lost. Polling for restart...
+[2026-07-21T14:10:47.936Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:10:48.943Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:10:49.945Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:10:50.947Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:10:51.951Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:10:52.954Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:10:53.958Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:10:54.989Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:10:56.023Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:10:57.092Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:10:58.157Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:10:59.272Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:00.776Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:02.412Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:05.234Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:09.164Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:11.645Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:16.045Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:18.931Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:22.428Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:25.252Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:29.543Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:34.045Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:37.990Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:43.720Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:48.226Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:52.471Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:11:55.282Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:00.620Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:05.451Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:09.162Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:13.842Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:16.509Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:20.587Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:26.117Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:30.909Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:35.097Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:37.244Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:41.431Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:46.485Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:52.408Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:56.010Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:12:58.741Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:13:01.850Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:13:06.138Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:13:09.340Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:13:13.227Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:13:19.178Z] [debug] [vite] connecting...
+[2026-07-21T14:13:19.819Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-21T14:13:21.422Z] [debug] [vite] connected.
+[2026-07-21T14:13:34.115Z] [debug] [vite] connecting...
+[2026-07-21T14:13:34.141Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-21T14:13:35.154Z] [debug] [vite] connected.
+[2026-07-21T14:13:56.902Z] [error] WebSocket connection to 'ws://localhost:5210/?token=IijlGJ4TKuzY' failed: 
+[2026-07-21T14:13:56.902Z] [log] [vite] server connection lost. Polling for restart...
+[2026-07-21T14:13:56.930Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:13:57.931Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:13:58.933Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:13:59.934Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:00.946Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:01.951Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:02.959Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:03.976Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:05.016Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:06.059Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:07.222Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:08.318Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:09.468Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:10.930Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:14.433Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:17.899Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:23.237Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:27.441Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:31.955Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:34.812Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:39.934Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:42.794Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:45.328Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:47.819Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:51.564Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:54.679Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:14:58.341Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:01.820Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:05.723Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:08.892Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:12.704Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:17.588Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:21.760Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:27.457Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:31.383Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:36.528Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:40.892Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:45.084Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:49.517Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:53.324Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:15:57.243Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:01.489Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:06.373Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:09.426Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:12.512Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:15.447Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:20.688Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:22.923Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:25.337Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:29.805Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:32.329Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:37.029Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:42.235Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:45.410Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:47.638Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:51.232Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:55.991Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:16:59.122Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:04.545Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:06.740Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:09.751Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:12.296Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:15.553Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:19.461Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:22.960Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:28.770Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:30.892Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:36.738Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:38.801Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:43.923Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:46.696Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:50.424Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:55.532Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:17:57.976Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:03.800Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:06.034Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:10.981Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:15.975Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:19.439Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:22.827Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:25.912Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:31.191Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:33.491Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:37.854Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:43.459Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:48.494Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:52.104Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:55.069Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:18:59.268Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:02.185Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:05.367Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:07.820Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:11.540Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:15.049Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:20.347Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:23.250Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:26.419Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:31.727Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:37.666Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:41.965Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:47.420Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:51.811Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:19:57.576Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:02.363Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:08.302Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:13.557Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:18.738Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:20.929Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:23.097Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:27.661Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:31.676Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:35.816Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:38.442Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:42.584Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:44.702Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:47.358Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:50.034Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:53.066Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:55.804Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:20:58.209Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:02.747Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:05.235Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:07.384Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:12.366Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:14.382Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:17.588Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:19.609Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:24.632Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:29.466Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:32.312Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:37.958Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:43.502Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:47.220Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:50.390Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:21:55.422Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:01.330Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:05.412Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:10.735Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:13.273Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:18.447Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:22.155Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:26.104Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:30.254Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:33.481Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:37.176Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:40.190Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:43.843Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:46.756Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:49.045Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:52.291Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:54.773Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:22:57.913Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:02.925Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:05.666Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:10.322Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:16.104Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:21.102Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:24.874Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:27.476Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:31.883Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:35.354Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:39.776Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:45.165Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:48.237Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:53.626Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:55.876Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:23:58.926Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:04.922Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:07.606Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:11.300Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:14.420Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:17.251Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:19.499Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:24.495Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:29.421Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:34.332Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:39.670Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:42.921Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:47.209Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:52.063Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:24:56.362Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:01.783Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:06.940Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:12.764Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:15.766Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:19.682Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:22.147Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:24.782Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:29.965Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:35.818Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:39.261Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:41.476Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:46.510Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:50.544Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:25:54.856Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:00.111Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:04.041Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:08.483Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:11.340Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:16.018Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:19.785Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:24.091Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:27.455Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:30.159Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:35.134Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:39.668Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:45.548Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:50.176Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:26:54.785Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:00.708Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:03.098Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:06.617Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:08.716Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:12.836Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:16.698Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:22.212Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:25.310Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:28.085Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:33.725Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:37.842Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:42.532Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:45.142Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:48.699Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:54.143Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:56.576Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:57.579Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:58.581Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:27:59.583Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:00.584Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:01.587Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:02.593Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:03.604Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:04.612Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:05.642Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:06.671Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:07.804Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:09.044Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:10.541Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:12.149Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:14.169Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:17.887Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:22.167Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:25.603Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:30.389Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:34.899Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:39.104Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:44.585Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:48.237Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:51.259Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:55.738Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:28:59.120Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:01.360Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:03.711Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:06.299Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:10.342Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:13.952Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:16.454Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:20.473Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:25.384Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:28.997Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:33.168Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:37.875Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:43.379Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:45.658Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:48.689Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:51.254Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:56.624Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:57.631Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:58.632Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:29:59.633Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:00.636Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:01.641Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:02.648Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:03.668Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:04.677Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:05.705Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:06.770Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:07.865Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:08.980Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:10.584Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:12.261Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:14.215Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:17.112Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:20.506Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:24.909Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:29.341Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:32.744Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:37.841Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:43.135Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:45.690Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:51.034Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:53.701Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:30:58.752Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:02.244Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:04.356Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:07.261Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:12.561Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:17.509Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:20.851Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:22.950Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:27.123Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:29.568Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:35.380Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:39.588Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:42.875Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:45.468Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:47.628Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:52.268Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:55.214Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:31:59.480Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:32:04.431Z] [debug] [vite] connecting...
+[2026-07-21T14:32:05.100Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-21T14:32:07.362Z] [debug] [vite] connected.
+[2026-07-21T14:32:22.484Z] [debug] [vite] connecting...
+[2026-07-21T14:32:22.514Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-21T14:32:23.479Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-07-21T14:32:24.402Z] [debug] [vite] connected.
+[2026-07-21T14:33:17.856Z] [error] WebSocket connection to 'ws://localhost:5210/?token=ybrurlM1iYNK' failed: 
+[2026-07-21T14:33:17.856Z] [log] [vite] server connection lost. Polling for restart...
+[2026-07-21T14:33:17.882Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:18.884Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:19.885Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:20.887Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:21.891Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:22.896Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:23.907Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:24.921Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:25.957Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:27.037Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:28.095Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:29.316Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:30.625Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:31.954Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:33.667Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:37.709Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:39.890Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:45.590Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:50.897Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:53.038Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:33:57.783Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:01.648Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:04.930Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:07.766Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:11.436Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:15.496Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:17.991Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:23.928Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:29.458Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:32.753Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:34.946Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:38.658Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:41.505Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:46.062Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:51.050Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:53.991Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:34:59.565Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:03.233Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:05.601Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:09.659Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:13.711Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:18.745Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:22.039Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:27.819Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:32.348Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:35.181Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:38.664Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:42.400Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:46.039Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:50.428Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:55.024Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:35:59.565Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:03.839Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:07.615Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:10.021Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:13.693Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:15.890Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:19.137Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:22.522Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:25.852Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:29.077Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:33.655Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:39.099Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:42.631Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:48.593Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:53.144Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:36:58.096Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:00.173Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:04.074Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:08.395Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:10.459Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:14.327Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:16.542Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:21.822Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:24.609Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:27.305Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:30.962Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:34.962Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:39.590Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:43.922Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:49.030Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:52.710Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:54.780Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:37:59.138Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:04.534Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:08.886Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:13.996Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:16.172Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:20.978Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:24.967Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:27.164Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:31.841Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:37.062Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:40.104Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:44.412Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:49.101Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:52.861Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:38:57.798Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:03.198Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:07.121Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:10.306Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:15.727Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:20.814Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:23.378Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:26.800Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:31.156Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:33.398Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:37.681Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:41.008Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:46.012Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:50.039Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:55.408Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:39:57.698Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:02.507Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:06.265Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:10.623Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:14.708Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:18.253Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:22.348Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:24.750Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:30.253Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:35.371Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:40.009Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:42.846Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:45.848Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:48.886Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:53.340Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:40:56.333Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:01.844Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:06.929Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:12.170Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:18.085Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:21.875Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:24.913Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:30.453Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:34.960Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:37.195Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:40.106Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:42.688Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:46.235Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:49.989Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:52.244Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:41:57.987Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:00.646Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:06.449Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:11.810Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:15.441Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:18.000Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:22.706Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:27.717Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:32.374Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:35.946Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:38.148Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:40.887Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:44.314Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:48.139Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:50.203Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:52.979Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:42:57.945Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:00.678Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:05.649Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:10.908Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:13.206Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:15.461Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:20.550Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:24.158Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:28.857Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:33.989Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:38.837Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:43.308Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:46.361Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:50.279Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:53.565Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:43:59.043Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:03.389Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:05.881Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:09.252Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:13.875Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:19.448Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:24.644Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:28.232Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:32.740Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:35.359Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:37.515Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:43.497Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:46.173Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:50.159Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:44:55.363Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:01.307Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:03.629Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:09.495Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:13.327Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:18.402Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:24.260Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:30.245Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:34.981Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:38.339Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:42.460Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:46.037Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:49.270Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:54.764Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:45:58.566Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:46:03.102Z] [debug] [vite] connecting...
+[2026-07-21T14:46:04.253Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-21T14:46:05.174Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-07-21T14:46:06.544Z] [debug] [vite] connected.
+[2026-07-21T14:46:20.467Z] [debug] [vite] connecting...
+[2026-07-21T14:46:20.507Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-21T14:46:20.597Z] [debug] [vite] connected.
+[2026-07-21T14:46:20.948Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-07-21T14:47:01.847Z] [error] WebSocket connection to 'ws://localhost:5210/?token=DqdfDLIg5OjF' failed: 
+[2026-07-21T14:47:01.848Z] [log] [vite] server connection lost. Polling for restart...
+[2026-07-21T14:47:01.921Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:02.926Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:03.928Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:04.929Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:05.930Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:06.936Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:07.940Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:08.962Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:09.978Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:11.006Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:12.049Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:13.307Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:14.890Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:16.193Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:18.018Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:23.295Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:28.323Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:30.530Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:33.457Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:36.878Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:42.835Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:46.306Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:51.322Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:47:55.017Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:00.678Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:04.823Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:09.748Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:15.187Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:19.864Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:22.711Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:25.717Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:28.171Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:31.834Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:34.054Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:37.805Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:43.344Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:46.515Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:50.449Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:52.562Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:48:57.706Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:00.282Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:04.757Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:10.271Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:14.874Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:20.254Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:23.247Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:27.100Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:31.500Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:33.914Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:36.545Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:42.246Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:45.182Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:50.778Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:54.795Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:49:58.108Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:01.906Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:06.720Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:09.428Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:13.692Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:16.444Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:21.773Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:27.478Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:30.012Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:33.292Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:37.950Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:41.423Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:45.744Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:49.924Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:53.439Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:50:56.802Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:02.595Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:05.073Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:10.845Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:14.412Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:17.637Z] [debug] [vite] connecting...
+[2026-07-21T14:51:18.222Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-21T14:51:18.904Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-07-21T14:51:20.684Z] [debug] [vite] connecting...
+[2026-07-21T14:51:20.702Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-07-21T14:51:21.783Z] [warning] It is recommended that a robustness level be specified. Not specifying the robustness level could result in unexpected behavior.
+[2026-07-21T14:51:21.884Z] [debug] [vite] connected.
+[2026-07-21T14:51:40.799Z] [error] WebSocket connection to 'ws://localhost:5210/?token=cRjk6EsxZ-aS' failed: 
+[2026-07-21T14:51:40.799Z] [log] [vite] server connection lost. Polling for restart...
+[2026-07-21T14:51:40.821Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:41.823Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:42.826Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:43.832Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:44.840Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:45.847Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:46.858Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:47.878Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:48.907Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:49.937Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:51.025Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:52.096Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:53.622Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:55.638Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:51:58.108Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:03.185Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:06.021Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:10.123Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:12.915Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:18.268Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:23.241Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:25.937Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:28.121Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:30.818Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:33.362Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:36.959Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:41.187Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:44.488Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:48.437Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:52.062Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:52:56.238Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:00.011Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:04.690Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:09.336Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:12.024Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:16.326Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:20.739Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:25.704Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:31.470Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:34.822Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:40.787Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:41.789Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:42.792Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:43.794Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:44.796Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:45.800Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:46.803Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:47.809Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:48.823Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-07-21T14:53:49.849Z] [error] WebSocket connection to 'ws://localhost:5210/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
