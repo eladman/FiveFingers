@@ -6,10 +6,11 @@ gsap.registerPlugin(ScrollTrigger)
 
 /**
  * The manifesto — Roosevelt's arena speech, the movement's compass.
- * The section pins and the words ignite one after another as the visitor
- * scrolls, ending on the movement's own commitment line.
+ * A single, calm screen: the words fade in once as the section enters
+ * view, ending on the movement's own commitment line. No pinning, no
+ * long scroll — you read it and move on.
  *
- * Reduced motion: no pin, fully lit static text.
+ * Reduced motion: fully lit static text.
  */
 
 // [text, highlighted?] — highlighted words burn orange.
@@ -34,34 +35,34 @@ export default function Manifesto() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const ctx = gsap.context(() => {
       if (reduced) {
-        gsap.set('.mf-word', { opacity: 1 })
+        gsap.set('.mf-head, .mf-word', { opacity: 1 })
         gsap.set('.mf-outro', { opacity: 1, y: 0 })
         return
       }
 
+      // One gentle reveal when the section scrolls into view — plays once.
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ref.current,
-          start: 'top top',
-          end: '+=230%',
-          pin: true,
-          scrub: 0.6,
-          anticipatePin: 1,
+          start: 'top 70%',
+          once: true,
         },
-        defaults: { ease: 'none' },
       })
 
-      tl.fromTo('.mf-word',
+      tl.fromTo('.mf-head',
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out' }
+      )
+        .fromTo('.mf-word',
         { opacity: 0.13 },
-        { opacity: 1, stagger: 0.35, duration: 1.2 }
+        { opacity: 1, stagger: 0.08, duration: 0.7, ease: 'power2.out' },
+        '>-0.2'
       )
         .fromTo('.mf-outro',
-          { y: 34, opacity: 0 },
-          { y: 0, opacity: 1, duration: 2.4, ease: 'power2.out' },
-          '>-0.4'
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.9, ease: 'power2.out' },
+          '>-0.3'
         )
-        // breathing room at the end of the pin so the outro can be read
-        .to({}, { duration: 2 })
     }, ref)
 
     return () => ctx.revert()
@@ -72,25 +73,22 @@ export default function Manifesto() {
       id="manifesto"
       ref={ref}
       dir="rtl"
-      className="relative w-full min-h-[100dvh] overflow-hidden flex items-center"
-      style={{ background: 'linear-gradient(180deg, #081028 0%, #0d1b4b 55%, #081028 100%)' }}
+      className="relative w-full overflow-hidden bg-white"
     >
       {/* faint radial ember behind the text */}
       <div
         className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 55%, rgba(255,135,20,0.07) 0%, transparent 65%)' }}
-      />
-      {/* halftone texture */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #ffffff 1.2px, transparent 1.2px)',
-          backgroundSize: '22px 22px',
-          opacity: 0.04,
-        }}
+        style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 55%, rgba(255,135,20,0.06) 0%, transparent 65%)' }}
       />
 
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 sm:px-10 md:px-16 py-24">
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 sm:px-10 md:px-16 py-24 md:py-32">
+        <header className="mf-head mb-12 md:mb-16 text-right">
+          <h2 className="ds-section-title text-navy">נאום האדם בזירה</h2>
+          <p className="ds-section-subtitle text-orange-ink mt-4">
+            האני מאמין של חמש אצבעות
+          </p>
+        </header>
+
         <blockquote>
           {LINES.map((words, li) => (
             <p
@@ -101,7 +99,7 @@ export default function Manifesto() {
               {words.map(([w, hl], wi) => (
                 <span
                   key={wi}
-                  className={`mf-word inline-block ${hl ? 'text-orange' : 'text-white'}`}
+                  className={`mf-word inline-block ${hl ? 'text-orange' : 'text-navy'}`}
                   style={{ marginInlineEnd: '0.28em' }}
                 >
                   {w}
@@ -111,15 +109,15 @@ export default function Manifesto() {
           ))}
         </blockquote>
 
-        <div className="mf-outro mt-12 md:mt-14 pt-7 border-t border-white/15 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="mf-outro mt-12 md:mt-14 pt-7 border-t border-navy/15 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <p
-            className="font-heebo text-white/80 leading-[1.85] max-w-xl text-right"
+            className="font-heebo text-navy/75 leading-[1.85] max-w-xl text-right"
             style={{ fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}
           >
             אנחנו בחמש אצבעות מאמינים שתפקידנו להיכנס לזירה הישראלית ולהשפיע על המציאות,
             ולחנך את דור העתיד לא להסתכל מהצד אלא לפעול למען חברה טובה יותר במדינת ישראל.
           </p>
-          <p className="font-heebo text-white/45 text-sm md:text-base whitespace-nowrap shrink-0">
+          <p className="font-heebo text-navy/40 text-sm md:text-base whitespace-nowrap shrink-0">
             תיאודור רוזוולט, 1910
           </p>
         </div>

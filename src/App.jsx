@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Preloader, { shouldShowPreloader } from './redesign/Preloader'
-import ArenaHero from './redesign/ArenaHero'
+import Hero from './components/Hero'
 import IntroV2 from './redesign/IntroV2'
 import Manifesto from './redesign/Manifesto'
 import FiveDNA from './redesign/FiveDNA'
@@ -126,7 +126,7 @@ export default function App() {
       ) : (
         <main>
           {!introDone && <Preloader onDone={() => setIntroDone(true)} />}
-          <ArenaHero start={introDone} onComplete={() => setNavReady(true)} onContactOpen={openContact} />
+          {introDone && <Hero onComplete={() => setNavReady(true)} onContactOpen={openContact} />}
           <IntroV2 />
           <Manifesto />
           <FiveDNA />
