@@ -24,7 +24,7 @@ const IMAGES = [
 ]
 
 const VALUES = [
-  { id: '01', he: 'מצוינות מקצועית', en: 'Professional Excellence', pct: 94 },
+  { id: '01', he: 'מצוינות', en: 'Professional Excellence', pct: 94 },
   { id: '02', he: 'גמישות',           en: 'Adaptability',           pct: 87 },
   { id: '03', he: 'עמידות',           en: 'Grit',                   pct: 91 },
   { id: '04', he: 'יוזמה',            en: 'Initiative',             pct: 88 },

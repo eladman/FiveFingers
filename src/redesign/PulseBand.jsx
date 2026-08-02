@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger)
  * counting up underneath. Navy on orange (≈7:1) throughout.
  */
 
-const WORDS = ['מצוינות מקצועית', 'הסתגלות', 'גריט', 'אחריות יוזמת', 'שייכות ומשמעות']
+const WORDS = ['מצוינות', 'מסוגלות', 'גריט', 'אחריות יוזמת', 'שייכות ומשמעות']
 
 const STATS = [
   { value: 12, suffix: '', label: 'שנות פעילות' },

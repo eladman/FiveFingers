@@ -17,7 +17,7 @@ const VALUES = [
   {
     id: 'excellence',
     num: 'א',
-    title: 'מצוינות מקצועית',
+    title: 'מצוינות',
     tag: 'BE BETTER',
     body: 'שיטתיות, ירידה לפרטים ושאיפה מתמדת להשתפר. הטוב של אתמול הוא נקודת הפתיחה של היום.',
     img: '/liba_pics/214A0005.jpg',
@@ -26,7 +26,7 @@ const VALUES = [
   {
     id: 'adaptability',
     num: 'ב',
-    title: 'הסתגלות',
+    title: 'מסוגלות',
     tag: 'COMFORTABLY HARD',
     body: 'חוסן מנטלי ונוחות בתוך אי־נוחות. לומדים להרגיש בבית דווקא כשקשה.',
     img: '/liba_pics/214A0223.jpg',
