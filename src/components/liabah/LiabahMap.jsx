@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { MapPin, Clock, Users, User, X, ChevronLeft } from 'lucide-react'
 import { locations, coaches } from '../../data/liabahData'
 import { ISRAEL_PATH, VIEWBOX_W, VIEWBOX_H, project } from '../../data/israelOutline'
-import { SectionBg, SectionHeading } from './shared'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -119,12 +118,18 @@ export default function LiabahMap() {
       id="liabah-map"
       ref={ref}
       dir="rtl"
-      className="relative w-full overflow-hidden bg-[#ffffff]"
+      className="relative w-full overflow-hidden bg-surface"
     >
-      <SectionBg watermark={false} />
+      {/* warm glows — the redesign's light-section atmosphere */}
+      <div className="pointer-events-none absolute top-[-8%] right-[-6%] w-[45vw] h-[45vh] rounded-full bg-orange/8 blur-[150px]" />
+      <div className="pointer-events-none absolute bottom-[8%] left-[-8%] w-[40vw] h-[40vh] rounded-full bg-orange/10 blur-[150px]" />
 
-      <div className="relative z-10 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20">
-        <SectionHeading eyebrow="פריסה ארצית" title="איפה אנחנו פועלים" animateClass="lm-animate" />
+      <div className="relative z-10 max-w-screen-xl mx-auto px-6 sm:px-10 md:px-16">
+        {/* heading — right-anchored, the Home v2 language */}
+        <div className="lm-animate max-w-3xl pt-24 md:pt-32 pb-12 md:pb-16">
+          <p className="ds-eyebrow text-orange-ink mb-3">פריסה ארצית</p>
+          <h2 className="ds-section-title text-navy">איפה אנחנו פועלים</h2>
+        </div>
 
         {/* Mobile: region tabs — no map */}
         <div className="sm:hidden">

@@ -23,7 +23,7 @@ export const BIO_PARAGRAPH =
 export const STATS = [
   { value: '2014', label: 'הקמת התנועה' },
   { value: '+3,000', label: 'משתתפים ברחבי הארץ' },
-  { value: '+20', label: 'הרצאות' },
+  { value: '+1,000', label: 'הרצאות ברחבי הארץ' },
 ]
 
 // "הזירות שלנו" — the three offerings. `contactLabel` tags the shared ContactModal;

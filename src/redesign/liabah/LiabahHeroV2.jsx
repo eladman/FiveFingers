@@ -1,0 +1,179 @@
+import { useLayoutEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Button from '../../components/ui/Button'
+import { hero, stats } from '../../data/liabahData'
+
+gsap.registerPlugin(ScrollTrigger)
+
+/**
+ * ליבה hero — "Into the Arena" language, cinematic-lite.
+ * One full-bleed action photo (no WebGL — that stays unique to the home
+ * ArenaHero), a poster-scale RagMarom composition with char-mask entrance,
+ * and a data strip instead of the old diagonal stat band. Racks focus into
+ * the next scene on scroll-out.
+ */
+
+const HERO_IMAGE = '/liba_pics/214A1552.jpg'
+
+// The three numbers that matter, straight from the shared stats source.
+const META = stats.slice(0, 3).map((s) => `${s.value.toLocaleString('en-US')}${s.suffix} ${s.label}`)
+
+function Chars({ text }) {
+  return (
+    <span aria-hidden="true">
+      {[...text].map((ch, i) => (
+        <span key={i} className="lhv2-char inline-block will-change-transform">
+          {ch === ' ' ? ' ' : ch}
+        </span>
+      ))}
+    </span>
+  )
+}
+
+export default function LiabahHeroV2({ onRegister }) {
+  const ref = useRef(null)
+
+  useLayoutEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const ctx = gsap.context(() => {
+      if (reduced) return
+
+      /* entrance choreography */
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
+      tl.fromTo('.lhv2-photo',
+        { scale: 1.08 },
+        { scale: 1, duration: 1.6, ease: 'power2.out' },
+        0
+      )
+        .fromTo('.lhv2-word-a .lhv2-char',
+          { yPercent: 110 },
+          { yPercent: 0, duration: 1.1, stagger: 0.055 },
+          0.15
+        )
+        .fromTo('.lhv2-word-b .lhv2-char',
+          { yPercent: 110 },
+          { yPercent: 0, duration: 1.1, stagger: 0.045 },
+          '-=0.8'
+        )
+        .fromTo('.lhv2-sub',
+          { y: 26, opacity: 0, filter: 'blur(8px)' },
+          { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7 },
+          '-=0.55'
+        )
+        .fromTo('.lhv2-cta',
+          { y: 18, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, stagger: 0.08 },
+          '-=0.35'
+        )
+        .fromTo('.lhv2-meta',
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.5 },
+          '-=0.25'
+        )
+        .fromTo('.lhv2-scroll', { opacity: 0 }, { opacity: 1, duration: 0.4 }, '-=0.2')
+
+      /* scroll-out: rack focus into the essence sheet */
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: ref.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
+        .to('.lhv2-stage', { scale: 1.08, ease: 'none' }, 0)
+        .to('.lhv2-content', { yPercent: -22, opacity: 0, filter: 'blur(5px)', ease: 'none' }, 0)
+        .to('.lhv2-out-scrim', { opacity: 0.7, ease: 'none' }, 0)
+        .to('.lhv2-scroll', { opacity: 0, ease: 'none' }, 0)
+    }, ref)
+
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section
+      id="liabah-top"
+      ref={ref}
+      dir="rtl"
+      className="relative w-full min-h-[100dvh] overflow-hidden flex items-end bg-navy-deep"
+    >
+      {/* ── Stage: photo + grade ── */}
+      <div className="lhv2-stage absolute inset-0 will-change-transform">
+        <img
+          src={HERO_IMAGE}
+          alt=""
+          className="lhv2-photo absolute inset-0 w-full h-full object-cover will-change-transform"
+          loading="eager"
+          decoding="async"
+        />
+        {/* warm grade + legibility scrims — same stack as the home hero */}
+        <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
+        <div className="lhv2-out-scrim absolute inset-0 bg-black" style={{ opacity: 0 }} />
+      </div>
+
+      {/* ── Content — poster composition, anchored to the base ── */}
+      <div className="lhv2-content relative z-10 w-full max-w-screen-2xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 pb-[clamp(5rem,12vh,9rem)] pt-40 will-change-transform">
+        <p className="ds-eyebrow text-orange mb-4" style={{ textShadow: '0 1px 10px rgba(0,0,0,0.7)' }}>
+          {hero.eyebrow}
+        </p>
+
+        <h1 className="text-white select-none" aria-label="קבוצות הנוער — המקום שבו נכנסים לזירה">
+          <span
+            className="lhv2-word-a block overflow-hidden font-ragmarom leading-[0.9] tracking-tight"
+            style={{ fontSize: 'clamp(3.6rem, 14vw, 11rem)', textShadow: '0 4px 40px rgba(0,0,0,0.6)' }}
+          >
+            <Chars text="קבוצות הנוער" />
+          </span>
+          <span
+            className="lhv2-word-b block overflow-hidden font-ragmarom leading-[0.95] text-orange mt-1"
+            style={{ fontSize: 'clamp(1.7rem, 4.6vw, 4rem)', textShadow: '0 2px 24px rgba(0,0,0,0.7)' }}
+          >
+            <Chars text="כאן נכנסים לזירה" />
+          </span>
+        </h1>
+
+        <p
+          className="lhv2-sub font-heebo text-white/85 mt-6 max-w-xl leading-relaxed"
+          style={{ fontSize: 'clamp(1.05rem, 1.5vw, 1.35rem)', textShadow: '0 2px 16px rgba(0,0,0,0.8)' }}
+        >
+          {hero.subtitle}
+        </p>
+
+        <div className="flex flex-wrap items-center gap-4 mt-9">
+          <Button variant="primary" size="lg" glow onClick={onRegister} className="lhv2-cta">
+            {hero.primaryCta}
+          </Button>
+          <Button variant="ghost" size="lg" href="#liabah-essence" className="lhv2-cta">
+            גלו עוד
+          </Button>
+        </div>
+
+        {/* data strip */}
+        <div
+          className="lhv2-meta mt-12 pt-5 border-t border-white/15 flex flex-wrap items-center gap-x-8 gap-y-2 text-white/60 font-heebo text-sm md:text-base"
+          style={{ textShadow: '0 1px 10px rgba(0,0,0,0.7)' }}
+        >
+          {META.map((m, i) => (
+            <span key={m} className="inline-flex items-center gap-x-8">
+              {i > 0 && <span className="w-1 h-1 rounded-full bg-orange inline-block" aria-hidden="true" />}
+              <span>{m}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Scroll hint ── */}
+      <div
+        className="lhv2-scroll scroll-indicator absolute left-1/2 -translate-x-1/2 z-10 hidden md:block"
+        style={{ bottom: 'max(1.6rem, env(safe-area-inset-bottom, 1.6rem))' }}
+      >
+        <div className="w-6 h-10 rounded-full border-2 border-white/25 flex items-start justify-center pt-2">
+          <div className="w-1 h-2.5 bg-white/50 rounded-full" />
+        </div>
+      </div>
+    </section>
+  )
+}

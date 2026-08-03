@@ -103,7 +103,8 @@ export default function App() {
   return (
     <div className="antialiased">
       <div style={{ opacity: navVisible ? 1 : 0, transition: 'opacity 0.7s ease' }}>
-        <Navbar onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')} forceLifted={view === 'team' || view === 'collabs'} />
+        {/* no forceLifted pages left — every v2 hero is a dark full-bleed photo */}
+        <Navbar onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')} />
       </div>
       <ContactModal
         isOpen={contactOpen}

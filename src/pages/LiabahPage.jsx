@@ -1,37 +1,31 @@
-import SoftDivider from '../components/SoftDivider'
-import LiabahHero from '../components/liabah/LiabahHero'
-import LiabahEssence from '../components/liabah/LiabahEssence'
-import LiabahPrograms from '../components/liabah/LiabahPrograms'
-import LiabahCoaches from '../components/liabah/LiabahCoaches'
+import LiabahHeroV2 from '../redesign/liabah/LiabahHeroV2'
+import LiabahEssenceV2 from '../redesign/liabah/LiabahEssenceV2'
+import LiabahJourneyV2 from '../redesign/liabah/LiabahJourneyV2'
+import LiabahTracksV2 from '../redesign/liabah/LiabahTracksV2'
 import LiabahMap from '../components/liabah/LiabahMap'
 import LiabahGallery from '../components/liabah/LiabahGallery'
-import LiabahFAQ from '../components/liabah/LiabahFAQ'
-import LiabahCTA from '../components/liabah/LiabahCTA'
+import LiabahFAQV2 from '../redesign/liabah/LiabahFAQV2'
+import LiabahFinaleV2 from '../redesign/liabah/LiabahFinaleV2'
 
 /**
- * The ליבה (Core) page. `onContactOpen` opens the shared ContactModal,
- * pre-set to the ליבה (קבוצות הנוער) registration.
+ * The ליבה (Core) page — "Into the Arena" language (see DESIGN.MD §11).
+ * Sections butt directly against each other (dark ↔ light rhythm), no
+ * SoftDividers. `onContactOpen` opens the shared ContactModal, pre-set
+ * to the ליבה (קבוצות הנוער) registration.
  */
 export default function LiabahPage({ onContactOpen }) {
   const onRegister = () => onContactOpen?.('קבוצות הנוער')
 
   return (
     <main>
-      <LiabahHero onRegister={onRegister} />
-      {/* No divider — the light essence sheet rises directly over the hero's neutral base */}
-      <LiabahEssence />
-      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
-      <LiabahPrograms onRegister={onRegister} />
-      <SoftDivider fromColor="#ffffff" toColor="#fafaf8" />
-      <LiabahCoaches />
-      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
+      <LiabahHeroV2 onRegister={onRegister} />
+      <LiabahEssenceV2 />
+      <LiabahJourneyV2 />
+      <LiabahTracksV2 onRegister={onRegister} />
       <LiabahMap />
-      <SoftDivider fromColor="#ffffff" toColor="#fafaf8" />
       <LiabahGallery />
-      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
-      <LiabahFAQ />
-      <SoftDivider fromColor="#ffffff" toColor="#0d1b4b" blend={false} />
-      <LiabahCTA onRegister={onRegister} />
+      <LiabahFAQV2 />
+      <LiabahFinaleV2 onRegister={onRegister} />
     </main>
   )
 }
