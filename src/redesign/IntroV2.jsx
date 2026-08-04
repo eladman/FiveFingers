@@ -147,7 +147,7 @@ export default function IntroV2() {
         <div className="in2-film mt-16 md:mt-28">
           <div className="flex items-baseline justify-between gap-6 mb-6">
             <h3 className="font-ragmarom text-navy leading-none" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)' }}>
-              דקה אחת, <span className="text-orange-ink">כל הסיפור</span>
+              שתי דקות, <span className="text-orange-ink">כל הסיפור</span>
             </h3>
           </div>
           <div

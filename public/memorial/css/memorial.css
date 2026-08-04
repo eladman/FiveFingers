@@ -1,7 +1,8 @@
 /* ===========================================================================
-   היכל הזיכרון · חמש אצבעות — Memorial design system (v3, light editorial pass)
-   Matched to the site design system (src/index.css tokens, .ds-* scale,
-   atmosphere recipe, sheen CTA). Light, clean, reverent. RTL Hebrew.
+   היכל הזיכרון · חמש אצבעות — Memorial design system (v4, "Into the Arena")
+   Matched to the redesign language (DESIGN.MD §11): dark cinematic openings,
+   char-mask entrances, duotone portraits, Mode B dark gradients — kept quiet
+   and reverent for the memorial context. RTL Hebrew.
    =========================================================================== */
 
 @font-face {
@@ -339,6 +340,19 @@ button { font-family: inherit; cursor: pointer; }
 }
 .sitenav__drawer-cta:hover { box-shadow: 0 10px 26px rgba(255,135,20,.4); }
 
+/* Dark-glass variant — over the dark hero screens (toggled by memorial.js
+   while the page is near the top; mirrors the site nav over dark heroes). */
+.sitenav--dark {
+  background: rgba(8,16,40,.45);
+  border-color: rgba(255,255,255,.14);
+  box-shadow: 0 8px 30px rgba(0,0,10,.35);
+}
+.sitenav--dark .sitenav__link { color: rgba(255,255,255,.72); }
+.sitenav--dark .sitenav__link:hover { color: #fff; background: rgba(255,255,255,.08); }
+.sitenav--dark .sitenav__link.is-active { color: #fff; }
+.sitenav--dark .sitenav__toggle:hover { background: rgba(255,255,255,.1); }
+.sitenav--dark .sitenav__toggle-bars i { background: #fff; }
+
 /* ── Below lg: full-width bar. */
 @media (max-width: 1023px) {
   .sitenav {
@@ -437,7 +451,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ===========================================================================
-   LAYER 1 — OPENING (a single candle on a calm, light surface)
+   LAYER 1 — OPENING (dark cinematic monument — the wall of faces in the dark)
    =========================================================================== */
 .opening {
   position: relative;
@@ -449,10 +463,11 @@ button { font-family: inherit; cursor: pointer; }
   text-align: center;
   overflow: hidden;
   padding: clamp(96px, 15vh, 180px) clamp(20px, 5vw, 40px) clamp(96px, 13vh, 150px);
-  background: var(--surface);
+  background: var(--navy-deep);
+  color: #fff;
 }
 
-/* the 19 faces — soft warm grayscale, fading up into the paper */
+/* the 19 faces — quiet grayscale, glowing softly out of the dark */
 .opening__mosaic {
   position: absolute;
   inset: 0;
@@ -465,28 +480,36 @@ button { font-family: inherit; cursor: pointer; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) contrast(1) brightness(1) sepia(.12);
-  opacity: .82;
+  filter: grayscale(1) brightness(.92) contrast(1.02);
+  opacity: 1;
   transition: opacity .8s ease-in-out;
 }
 /* a tile fades out, swaps its portrait, then fades back — driven by memorial.js */
 .opening__mosaic img.is-fading { opacity: 0; }
 
-/* light scrim: center stays clean & readable, edges dissolve into the paper */
+/* dark grade — warm multiply + navy scrims; deepest behind the composition
+   so the white text reads (the V2 hero grade stack, tuned navy). */
 .opening__scrim {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(72% 66% at 50% 46%, rgba(250,250,248,.94) 0%, rgba(250,250,248,.78) 38%, rgba(250,250,248,.42) 66%, rgba(247,245,242,.14) 100%),
-    linear-gradient(180deg, rgba(255,255,255,.5), rgba(250,250,248,.2) 42%, rgba(247,245,242,.62));
+    radial-gradient(72% 66% at 50% 46%, rgba(5,10,30,.84) 0%, rgba(5,10,30,.68) 42%, rgba(5,10,30,.46) 72%, rgba(5,10,30,.34) 100%),
+    linear-gradient(180deg, rgba(5,10,30,.55), rgba(5,10,30,.22) 42%, rgba(8,16,40,.82));
+}
+.opening__scrim::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,135,20,.10);
+  mix-blend-mode: multiply;
 }
 .opening__scrim::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(60% 40% at 50% 28%, rgba(255,135,20,.07), transparent 60%);
+  background: radial-gradient(60% 40% at 50% 26%, rgba(255,135,20,.09), transparent 60%);
 }
 
 .opening__stage {
@@ -504,15 +527,16 @@ button { font-family: inherit; cursor: pointer; }
   font-size: clamp(.72rem, .9vw, .85rem);
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--orange-ink);
+  color: var(--orange);
   display: inline-flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 26px;
   white-space: nowrap;
+  text-shadow: 0 1px 10px rgba(0,0,0,.7);
 }
-.opening__eyebrow .dot { color: rgba(13,27,75,.28); }
-.opening__eyebrow b { color: var(--orange-ink); font-weight: 700; }
+.opening__eyebrow .dot { color: rgba(255,255,255,.35); }
+.opening__eyebrow b { color: var(--orange); font-weight: 700; }
 
 .opening__title {
   position: relative;
@@ -521,41 +545,37 @@ button { font-family: inherit; cursor: pointer; }
   line-height: .92;
   letter-spacing: -0.02em;
   margin: 16px 0 0;
-  font-size: clamp(3rem, 9vw, 7.4rem);
-  color: var(--navy);
+  font-size: clamp(3.2rem, 10.5vw, 9rem);
+  color: #fff;
+  text-shadow: 0 4px 40px rgba(0,0,0,.6);
 }
-
-/* orange accent rule — draws from center (mirrors Hero.jsx .hero-accent) */
-.opening__rule {
-  height: 3px;
-  width: clamp(9rem, 24vw, 18rem);
-  margin: 24px auto 0;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, var(--orange), transparent);
-  transform: scaleX(1);
-  transform-origin: center;
+/* char-mask entrance — memorial.js splits the title into .oc spans inside
+   an overflow-hidden mask (the V2 hero pattern) */
+.opening__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: .06em;
+  margin-bottom: -.06em;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .opening.is-ready .opening__rule { animation: ruleDraw 1s var(--ease-out) 260ms both; }
-}
-@keyframes ruleDraw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.oc { display: inline-block; will-change: transform; }
 
 .opening__sub {
   font-family: var(--f-italic);
   font-style: italic;
-  color: var(--orange-ink);
+  color: var(--orange);
   font-size: clamp(1.15rem, 2.4vw, 1.6rem);
   margin: 20px 0 0;
   line-height: 1.45;
 }
 
-/* dedication block — calm Hebrew serif */
+/* dedication block — quiet white on the dark grade */
 .opening__dedication {
   font-style: normal;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  max-width: 600px;
+  max-width: 620px;
   margin: 26px auto 0;
 }
 .opening__dedication .ded-line {
@@ -563,8 +583,9 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 400;
   font-size: clamp(1.08rem, 1.6vw, 1.3rem);
   line-height: 1.7;
-  color: rgba(13,27,75,.74);
+  color: rgba(255,255,255,.85);
   text-wrap: pretty;
+  text-shadow: 0 2px 16px rgba(0,0,0,.8);
 }
 .opening__dedication .ded-accent {
   font-family: var(--f-italic);
@@ -572,13 +593,13 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 500;
   font-size: clamp(1.22rem, 2.2vw, 1.6rem);
   line-height: 1.4;
-  color: var(--orange-ink);
+  color: var(--orange);
 }
 
 .opening__lead {
   font-family: var(--f-body);
   font-weight: 300;
-  color: rgba(13,27,75,.7);
+  color: rgba(255,255,255,.75);
   font-size: clamp(1rem, 1.35vw, 1.14rem);
   line-height: 1.95;
   max-width: 544px;
@@ -586,28 +607,24 @@ button { font-family: inherit; cursor: pointer; }
   text-wrap: pretty;
 }
 
+/* data strip — the V2 hero META treatment */
 .opening__count {
   position: relative;
   font-family: var(--f-body);
   font-weight: 400;
   font-size: .92rem;
-  color: rgba(13,27,75,.6);
-  margin-top: 34px;
-  padding-top: 26px;
+  color: rgba(255,255,255,.65);
+  margin-top: 38px;
+  padding-top: 22px;
   white-space: nowrap;
-}
-.opening__count::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 50px; height: 1px;
-  background: linear-gradient(to left, transparent, rgba(13,27,75,.28), transparent);
+  min-width: clamp(240px, 34vw, 380px);
+  border-top: 1px solid rgba(255,255,255,.18);
+  text-shadow: 0 1px 10px rgba(0,0,0,.7);
 }
 .opening__count b {
   font-family: var(--f-mono);
   font-weight: 500;
-  color: var(--orange-ink);
+  color: var(--orange);
   font-size: 1.05rem;
   margin-inline-end: 6px;
 }
@@ -628,10 +645,10 @@ button { font-family: inherit; cursor: pointer; }
   font-family: var(--f-body);
   font-size: .8rem;
   letter-spacing: .04em;
-  color: rgba(13,27,75,.55);
+  color: rgba(255,255,255,.55);
   transition: color .3s var(--ease-brand);
 }
-.opening__scroll:hover { color: var(--navy); }
+.opening__scroll:hover { color: #fff; }
 .opening__scroll .arrow { font-size: 1rem; line-height: 1; }
 @media (prefers-reduced-motion: no-preference) {
   .opening__scroll .arrow { animation: scrollNudge 1.9s ease-in-out infinite; }
@@ -641,16 +658,27 @@ button { font-family: inherit; cursor: pointer; }
   50%      { transform: translateY(5px); opacity: 1; }
 }
 
-/* gentle entrance (transform-only; resting state always visible) */
+/* entrance choreography — chars rise through the mask, the rest breathes up.
+   Transform-only; resting state always visible. */
 @media (prefers-reduced-motion: no-preference) {
-  .opening.is-ready .opening__stage > * {
+  html.js .opening .oc { transform: translateY(110%); }
+  html.js .opening.is-ready .oc {
+    /* per-char animation-delay is set inline by memorial.js */
+    animation: charRise 1.1s var(--ease-out) both;
+  }
+  .opening.is-ready .opening__eyebrow,
+  .opening.is-ready .opening__dedication,
+  .opening.is-ready .opening__count {
     animation: openRise 1.1s var(--ease-out) both;
   }
   .opening.is-ready .opening__eyebrow { animation-delay: 0ms; }
-  .opening.is-ready .opening__title  { animation-delay: 140ms; }
-  .opening.is-ready .opening__dedication { animation-delay: 300ms; }
-  .opening.is-ready .opening__count  { animation-delay: 390ms; }
-  .opening.is-ready .opening__scroll { animation: openRise 1.1s var(--ease-out) 540ms both; }
+  .opening.is-ready .opening__dedication { animation-delay: 420ms; }
+  .opening.is-ready .opening__count  { animation-delay: 540ms; }
+  .opening.is-ready .opening__scroll { animation: openRise 1.1s var(--ease-out) 680ms both; }
+}
+@keyframes charRise {
+  from { transform: translateY(110%); }
+  to   { transform: none; }
 }
 @keyframes openRise {
   from { transform: translateY(22px); }
@@ -698,7 +726,7 @@ button { font-family: inherit; cursor: pointer; }
 .hall__sub {
   font-family: var(--f-body);
   font-weight: 500;
-  color: var(--orange-ink);
+  color: rgba(13,27,75,.68);
   font-size: clamp(1.2rem, 1.9vw, 1.6rem);
   line-height: 1.35;
   margin: 22px 0 0;
@@ -759,15 +787,27 @@ button { font-family: inherit; cursor: pointer; }
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center 25%;
-  filter: grayscale(1) contrast(1.02);
+  filter: grayscale(.55) contrast(1.02);
   transform: scale(1.01);
   transition: filter .7s var(--ease-out), transform 1.1s var(--ease-out);
+}
+/* warm duotone wash (V2 photo treatment) — lifts on hover as color returns */
+.niche__photo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,135,20,.15);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  transition: opacity .7s var(--ease-out);
 }
 .niche:hover .niche__photo,
 .niche:focus-visible .niche__photo {
   filter: grayscale(0) contrast(1);
   transform: scale(1.05);
 }
+.niche:hover .niche__photo-wrap::after,
+.niche:focus-visible .niche__photo-wrap::after { opacity: 0; }
 /* legacy scrim node (no longer emitted) — neutralised if present */
 .niche__scrim { display: none; }
 
@@ -894,12 +934,18 @@ button { font-family: inherit; cursor: pointer; }
   box-shadow: 0 8px 28px rgba(0,0,30,.10);
 }
 .pbar__idx b { color: var(--orange-ink); }
+/* below lg the sitenav becomes a full-width bar — drop the pbar under it */
+@media (max-width: 1023px) {
+  .pbar { top: 82px; height: auto; transition: opacity .25s var(--ease-brand); }
+  /* the open drawer occupies the same strip — fade the pills out under it */
+  .sitenav.is-open ~ .pbar { opacity: 0; pointer-events: none; }
+}
 
-/* Hero — light, editorial: text + portrait */
+/* Hero — dark cinematic (Mode B gradient), text + duotone portrait */
 .phero {
   position: relative;
-  background: var(--surface);
-  color: var(--navy);
+  background: linear-gradient(155deg, var(--navy-light) 0%, var(--navy) 45%, var(--navy-deep) 100%);
+  color: #fff;
   overflow: hidden;
   padding: clamp(108px, 13vh, 150px) clamp(20px, 5vw, 72px) clamp(56px, 9vh, 110px);
 }
@@ -908,9 +954,7 @@ button { font-family: inherit; cursor: pointer; }
   position: absolute; inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle, var(--navy) 1.2px, transparent 1.2px);
-  background-size: 22px 22px;
-  opacity: .04;
+  background: radial-gradient(ellipse 90% 45% at 50% 0%, rgba(255,135,20,.08), transparent 65%);
 }
 .phero::after {
   content: "";
@@ -919,7 +963,7 @@ button { font-family: inherit; cursor: pointer; }
   top: -12%; inset-inline-start: -8%;
   width: 55vw; height: 60vh;
   border-radius: 50%;
-  background: rgba(255,135,20,.10);
+  background: rgba(255,135,20,.08);
   filter: blur(150px);
   pointer-events: none;
 }
@@ -941,7 +985,7 @@ button { font-family: inherit; cursor: pointer; }
   font-family: var(--f-mono);
   font-size: .78rem;
   letter-spacing: .14em;
-  color: var(--orange-ink);
+  color: var(--orange);
   margin-bottom: 22px;
 }
 .phero__eyebrow .ln { width: 40px; height: 1px; background: rgba(255,135,20,.5); }
@@ -950,15 +994,16 @@ button { font-family: inherit; cursor: pointer; }
   font-family: var(--f-display);
   font-weight: 400;
   letter-spacing: -0.02em;
-  color: var(--navy);
+  color: #fff;
   font-size: clamp(3rem, 8vw, 6.4rem);
   line-height: .9;
   margin: 0;
+  text-shadow: 0 4px 32px rgba(0,0,0,.45);
 }
 .phero__rank {
   font-family: var(--f-body);
   font-weight: 500;
-  color: rgba(13,27,75,.72);
+  color: rgba(255,255,255,.75);
   font-size: clamp(1rem, 1.6vw, 1.2rem);
   margin: 18px 0 0;
 }
@@ -968,8 +1013,8 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   flex-wrap: wrap;
   margin-top: 30px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px solid rgba(255,255,255,.16);
+  border-bottom: 1px solid rgba(255,255,255,.16);
 }
 .meta-strip__item {
   display: flex;
@@ -978,21 +1023,21 @@ button { font-family: inherit; cursor: pointer; }
   padding: 14px 0;
   padding-inline-end: clamp(14px, 1.8vw, 26px);
   margin-inline-end: clamp(14px, 1.8vw, 26px);
-  border-inline-end: 1px solid var(--line);
+  border-inline-end: 1px solid rgba(255,255,255,.16);
 }
 .meta-strip__item:last-child { border-inline-end: none; margin-inline-end: 0; padding-inline-end: 0; }
 .meta-strip__k {
   font-family: var(--f-body);
   font-weight: 400;
   font-size: .74rem;
-  color: rgba(13,27,75,.52);
+  color: rgba(255,255,255,.55);
   white-space: nowrap;
 }
 .meta-strip__v {
   font-family: var(--f-body);
   font-weight: 600;
   font-size: .98rem;
-  color: var(--navy);
+  color: #fff;
   white-space: nowrap;
 }
 .meta-strip__v .num { font-family: var(--f-mono); font-weight: 400; font-size: .92rem; }
@@ -1009,13 +1054,13 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 600;
   font-size: .78rem;
   letter-spacing: .06em;
-  color: var(--orange-ink);
+  color: var(--orange);
   margin-bottom: 10px;
 }
 .phero__quote-text {
   font-family: var(--f-italic);
   font-style: italic;
-  color: var(--navy);
+  color: rgba(255,255,255,.92);
   font-size: clamp(1.25rem, 2.3vw, 1.85rem);
   line-height: 1.5;
   margin: 0;
@@ -1026,10 +1071,10 @@ button { font-family: inherit; cursor: pointer; }
   position: relative;
   border-radius: var(--r-card);
   overflow: hidden;
-  box-shadow: var(--shadow-xl);
+  box-shadow: 0 30px 80px rgba(0,0,10,.45);
   aspect-ratio: 4 / 5;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
+  background: var(--navy-deep);
+  border: 1px solid rgba(255,255,255,.12);
 }
 .phero__portrait {
   width: 100%; height: 100%;
@@ -1165,14 +1210,24 @@ button { font-family: inherit; cursor: pointer; }
   transition: transform .5s var(--ease-out), box-shadow .5s var(--ease-out);
 }
 .trait:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.trait__img { aspect-ratio: 16 / 11; overflow: hidden; }
+.trait__img { position: relative; aspect-ratio: 16 / 11; overflow: hidden; }
 .trait__img img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: grayscale(.35);
+  filter: grayscale(.55);
   transition: transform .7s var(--ease-out), filter .7s var(--ease-out);
 }
+.trait__img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,135,20,.15);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  transition: opacity .7s var(--ease-out);
+}
 .trait:hover .trait__img img { transform: scale(1.06); filter: grayscale(0); }
+.trait:hover .trait__img::after { opacity: 0; }
 .trait__body { padding: clamp(20px, 2.6vw, 30px); }
 .trait__t {
   font-family: var(--f-display);
@@ -1193,7 +1248,7 @@ button { font-family: inherit; cursor: pointer; }
 
 /* Extra block — the ONE intentional dark panel (navy-light → navy-deep) */
 .extra {
-  background: linear-gradient(160deg, var(--navy-light) 0%, var(--navy) 55%, var(--navy-deep) 100%);
+  background: linear-gradient(155deg, var(--navy-light) 0%, var(--navy) 45%, var(--navy-deep) 100%);
   color: #fff;
   border-radius: var(--r-card);
   padding: clamp(34px, 5vw, 64px);
@@ -1230,6 +1285,7 @@ button { font-family: inherit; cursor: pointer; }
 /* Gallery */
 .gallery { columns: 3; column-gap: clamp(14px, 1.6vw, 22px); }
 .gallery__item {
+  position: relative;
   break-inside: avoid;
   margin-bottom: clamp(14px, 1.6vw, 22px);
   border-radius: var(--r-sm);
@@ -1240,10 +1296,20 @@ button { font-family: inherit; cursor: pointer; }
 .gallery__item img {
   width: 100%;
   display: block;
-  filter: grayscale(.2);
+  filter: grayscale(.35);
   transition: transform .7s var(--ease-out), filter .7s var(--ease-out);
 }
+.gallery__item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,135,20,.12);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  transition: opacity .7s var(--ease-out);
+}
 .gallery__item:hover img { transform: scale(1.04); filter: grayscale(0); }
+.gallery__item:hover::after { opacity: 0; }
 
 /* Song */
 .song { text-align: center; }
@@ -1415,19 +1481,20 @@ button { font-family: inherit; cursor: pointer; }
   font-size: clamp(3rem, 9vw, 6rem);
   line-height: .92;
   margin: 0;
-  color: var(--navy);
+  color: #fff;
+  text-shadow: 0 4px 32px rgba(0,0,0,.45);
 }
 .placeholder__role {
   font-family: var(--f-body);
   font-weight: 500;
-  color: var(--orange-ink);
+  color: var(--orange);
   font-size: clamp(1rem, 1.8vw, 1.2rem);
   margin: 20px 0 0;
 }
 .placeholder__msg {
   font-family: var(--f-body);
   font-weight: 400;
-  color: rgba(13,27,75,.7);
+  color: rgba(255,255,255,.75);
   font-size: clamp(1rem, 1.4vw, 1.12rem);
   line-height: 1.9;
   margin: 26px auto 0;
@@ -1453,11 +1520,17 @@ html.portraits-living .niche__photo { filter: grayscale(0) contrast(1.02) !impor
 html.portraits-living .phero__portrait { filter: grayscale(0) contrast(1) !important; }
 html.portraits-living .trait__img img,
 html.portraits-living .gallery__item img { filter: grayscale(0) !important; }
+html.portraits-living .niche__photo-wrap::after,
+html.portraits-living .trait__img::after,
+html.portraits-living .gallery__item::after { display: none !important; }
 
 html.portraits-sepia .niche__photo { filter: sepia(.5) saturate(.85) contrast(1.02) !important; }
 html.portraits-sepia .phero__portrait { filter: sepia(.5) saturate(.9) !important; }
 html.portraits-sepia .trait__img img { filter: sepia(.5) saturate(.85) grayscale(.1) !important; }
 html.portraits-sepia .gallery__item img { filter: sepia(.45) saturate(.85) !important; }
+html.portraits-sepia .niche__photo-wrap::after,
+html.portraits-sepia .trait__img::after,
+html.portraits-sepia .gallery__item::after { display: none !important; }
 
 /* ===========================================================================
    ACCESSIBILITY WIDGET — global overrides (ported 1:1 from the main site)
@@ -1557,5 +1630,9 @@ html.a11y-big-cursor * {
   .reveal { opacity: 1 !important; transform: none !important; }
   .phero__portrait { filter: grayscale(0) contrast(1) !important; transform: none !important; }
   .niche__photo { filter: grayscale(0) contrast(1) !important; }
+  .niche__photo-wrap::after,
+  .trait__img::after,
+  .gallery__item::after { display: none !important; }
+  .oc { transform: none !important; }
   .candle .fl { animation: none !important; }
 }

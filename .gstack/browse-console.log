@@ -1,11 +1,30 @@
-[2026-08-03T10:10:07.535Z] [debug] [vite] connecting...
-[2026-08-03T10:10:07.555Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-08-03T10:10:07.719Z] [debug] [vite] connected.
-[2026-08-03T10:10:32.885Z] [debug] [vite] hot updated: /src/redesign/amir/AmirHeroV2.jsx
-[2026-08-03T10:10:32.885Z] [debug] [vite] hot updated: /src/index.css
-[2026-08-03T10:11:03.973Z] [debug] [vite] connecting...
-[2026-08-03T10:11:03.977Z] [debug] [vite] connected.
-[2026-08-03T10:11:04.001Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-08-03T10:12:01.557Z] [debug] [vite] connecting...
-[2026-08-03T10:12:01.561Z] [debug] [vite] connected.
-[2026-08-03T10:12:01.574Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-08-04T11:12:08.955Z] [info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-08-04T11:12:09.396Z] [warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[2026-08-04T11:18:08.621Z] [info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-08-04T11:18:08.724Z] [warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[2026-08-04T11:19:20.932Z] [info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-08-04T11:19:20.972Z] [warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[2026-08-04T11:19:43.231Z] [info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-08-04T11:19:43.254Z] [warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[2026-08-04T11:20:07.943Z] [info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-08-04T11:20:07.967Z] [warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[2026-08-04T11:20:19.957Z] [info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-08-04T11:20:19.970Z] [warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[2026-08-04T11:22:23.228Z] [info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-08-04T11:22:23.252Z] [warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[2026-08-04T11:23:14.341Z] [info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-08-04T11:23:14.360Z] [warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[2026-08-04T11:33:36.791Z] [debug] [vite] connecting...
+[2026-08-04T11:33:36.804Z] [debug] [vite] connected.
+[2026-08-04T11:33:36.861Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-08-04T11:34:39.915Z] [debug] [vite] hot updated: /src/index.css
+[2026-08-04T11:34:39.915Z] [debug] [vite] hot updated: /src/redesign/alumni/AlumniFinaleV2.jsx
+[2026-08-04T11:34:39.915Z] [debug] [vite] hot updated: /src/redesign/alumni/AlumniEssenceV2.jsx
+[2026-08-04T11:34:39.915Z] [debug] [vite] hot updated: /src/redesign/alumni/AlumniYoavV2.jsx
+[2026-08-04T11:34:39.915Z] [debug] [vite] hot updated: /src/redesign/alumni/AlumniHeroV2.jsx
+[2026-08-04T11:34:43.097Z] [debug] [vite] hot updated: /src/redesign/alumni/AlumniFinaleV2.jsx
+[2026-08-04T11:34:43.097Z] [debug] [vite] hot updated: /src/index.css
+[2026-08-04T11:34:44.529Z] [debug] [vite] hot updated: /src/redesign/alumni/AlumniFinaleV2.jsx
+[2026-08-04T11:34:44.529Z] [debug] [vite] hot updated: /src/index.css
+[2026-08-04T11:34:52.427Z] [debug] [vite] hot updated: /src/redesign/alumni/AlumniEssenceV2.jsx
+[2026-08-04T11:34:52.427Z] [debug] [vite] hot updated: /src/index.css
