@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Button from '../../components/ui/Button'
+import VideoFacade from '../VideoFacade'
 import { coach } from '../../data/teamData'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -39,6 +40,7 @@ export default function TeamPathV2({ onRegister }) {
             pin: true,
             scrub: 0.8,
             anticipatePin: 1,
+            invalidateOnRefresh: true,
             onUpdate: (self) => {
               const idx = Math.min(3, Math.floor(self.progress * 4))
               segsRef.current.forEach((seg, i) => {
@@ -173,14 +175,7 @@ export default function TeamPathV2({ onRegister }) {
               className="relative w-full rounded-[1.6rem] md:rounded-[2rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.4)] ring-1 ring-white/10"
               style={{ paddingBottom: '56.25%' }}
             >
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src={coach.videoUrl}
-                title={coach.videoCaption}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-              />
+              <VideoFacade src={coach.videoUrl} title={coach.videoCaption} />
             </div>
           </div>
         )}

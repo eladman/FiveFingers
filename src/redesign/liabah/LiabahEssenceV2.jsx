@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import VideoFacade from '../VideoFacade'
 import { hero } from '../../data/liabahData'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -112,14 +113,7 @@ export default function LiabahEssenceV2() {
               className="relative w-full rounded-[1.6rem] md:rounded-[2rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,30,0.18)] ring-1 ring-black/8"
               style={{ paddingBottom: '56.25%' }}
             >
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src={hero.videoUrl}
-                title="סרטון ליבה"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-              />
+              <VideoFacade src={hero.videoUrl} title="סרטון ליבה" />
             </div>
           </div>
         )}
