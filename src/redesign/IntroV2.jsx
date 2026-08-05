@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -33,8 +33,17 @@ const PHOTOS = [
   { src: '/liba_pics/214A9700.jpg', speed: -6, alt: 'רגע של גיבוש קבוצתי' },
 ]
 
+const FILM_ID = 'jOdf0gJrZug'
+
 export default function IntroV2() {
   const ref = useRef(null)
+  // The film's iframe stays unmounted until the user clicks play. A live
+  // cross-origin YouTube iframe swallows wheel events whenever the cursor is
+  // over it, which starves Lenis (smoothWheel drives the page from window
+  // wheel events) and makes scrolling past this section feel stuck. The
+  // poster below is part of the parent document, so wheel events reach Lenis
+  // normally — scroll stays fluid until someone deliberately watches.
+  const [playing, setPlaying] = useState(false)
 
   useLayoutEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -154,14 +163,38 @@ export default function IntroV2() {
             className="relative w-full rounded-[1.6rem] md:rounded-[2rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,30,0.18)] ring-1 ring-black/8"
             style={{ paddingBottom: '56.25%' }}
           >
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/jOdf0gJrZug?rel=0&modestbranding=1"
-              title="מי אנחנו — חמש אצבעות"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            />
+            {playing ? (
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src={`https://www.youtube.com/embed/${FILM_ID}?rel=0&modestbranding=1&autoplay=1`}
+                title="מי אנחנו — חמש אצבעות"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => setPlaying(true)}
+                aria-label="נגן את הסרט — מי אנחנו, חמש אצבעות"
+                className="group absolute inset-0 w-full h-full cursor-pointer"
+              >
+                <img
+                  src={`https://img.youtube.com/vi/${FILM_ID}/maxresdefault.jpg`}
+                  alt="מי אנחנו — חמש אצבעות"
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <span className="absolute inset-0 bg-navy-deep/25 transition-colors duration-300 group-hover:bg-navy-deep/15" />
+                <span className="absolute inset-0 flex items-center justify-center">
+                  <span className="flex items-center justify-center w-[4.5rem] h-[4.5rem] md:w-24 md:h-24 rounded-full bg-orange shadow-[0_10px_40px_rgba(255,135,20,0.5)] transition-transform duration-300 group-hover:scale-110">
+                    <svg viewBox="0 0 24 24" fill="white" className="w-7 h-7 md:w-9 md:h-9 translate-x-[2px]" aria-hidden="true">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                </span>
+              </button>
+            )}
           </div>
         </div>
       </div>
