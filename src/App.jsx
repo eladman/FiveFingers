@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from './components/Navbar'
 import Preloader, { shouldShowPreloader } from './redesign/Preloader'
 import Hero from './components/Hero'
@@ -85,6 +86,17 @@ export default function App() {
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
+
+  // The Hero mounts only after the preloader finishes (first visit). It inserts
+  // a full viewport at the top of the page, shifting every section below it —
+  // but ScrollTrigger already measured its pins (e.g. FiveDNA) without the Hero
+  // present. Recompute once the Hero has laid out, else the values section pins
+  // ~100vh too early and the manifesto above it bleeds through / overlaps.
+  useEffect(() => {
+    if (!introDone) return
+    const id = requestAnimationFrame(() => ScrollTrigger.refresh())
+    return () => cancelAnimationFrame(id)
+  }, [introDone])
 
   // Dedicated pages render their own Navbar immediately (no Hero intro to gate it).
   const isDedicatedPage = view === 'liabah' || view === 'academy' || view === 'collabs' || view === 'amir' || view === 'alumni' || view === 'team'
