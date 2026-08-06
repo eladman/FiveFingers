@@ -1,32 +1,26 @@
-import AlumniHero from '../components/alumni/AlumniHero'
-import AlumniStats from '../components/alumni/AlumniStats'
-import AlumniIntro from '../components/alumni/AlumniIntro'
-import YoavProgram from '../components/alumni/YoavProgram'
-import AlumniCTA from '../components/alumni/AlumniCTA'
-import SoftDivider from '../components/SoftDivider'
+import AlumniHeroV2 from '../redesign/alumni/AlumniHeroV2'
+import AlumniEssenceV2 from '../redesign/alumni/AlumniEssenceV2'
+import AlumniYoavV2 from '../redesign/alumni/AlumniYoavV2'
+import AlumniFinaleV2 from '../redesign/alumni/AlumniFinaleV2'
 
 /**
- * בוגרים — the alumni page. Shows a few movement-wide graduate numbers plus short
- * context, then funnels to תוכנית יואב (the flagship alumni program), linking out
- * to https://www.yoavprogram.com/.
+ * בוגרים — the alumni page, "Into the Arena" language (see DESIGN.MD §11).
+ * The page funnels to תוכנית יואב (the flagship alumni program) at
+ * https://www.yoavprogram.com/: dark hero → light essence (community + the
+ * movement numbers, merged) → dark Yoav main event → photo finale.
  *
- * Same design system + section rhythm as the other program pages:
- * dark hero → navy stats → light intro → navy Yoav (the main event) → dark CTA.
- *
- * `onContactOpen` opens the shared ContactModal (secondary CTAs).
+ * Sections butt directly against each other (dark ↔ light rhythm), no
+ * SoftDividers. `onContactOpen` opens the shared ContactModal tagged 'בוגרים'.
  */
 export default function AlumniPage({ onContactOpen }) {
+  const onBook = () => onContactOpen?.('בוגרים')
+
   return (
-    <main className="bg-surface">
-      <AlumniHero onContactOpen={onContactOpen} />
-      <SoftDivider fromColor="#081028" toColor="#0d1b4b" blend={false} />
-      <AlumniStats />
-      <SoftDivider fromColor="#0d1b4b" toColor="#ffffff" blend={false} />
-      <AlumniIntro />
-      <SoftDivider fromColor="#ffffff" toColor="#1a2f6b" blend={false} />
-      <YoavProgram />
-      <SoftDivider fromColor="#081028" toColor="#0d1b4b" blend={false} />
-      <AlumniCTA onContactOpen={onContactOpen} />
+    <main>
+      <AlumniHeroV2 onBook={onBook} />
+      <AlumniEssenceV2 />
+      <AlumniYoavV2 />
+      <AlumniFinaleV2 onBook={onBook} />
     </main>
   )
 }

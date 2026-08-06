@@ -10,7 +10,7 @@
   --orange: #ff8714;
   --orange-lift: #ffa347;    /* lit top of the CTA gradient */
   --orange-deep: #e56f00;    /* grounded bottom of the CTA gradient */
-  --orange-ink: #b35600;     /* AA-safe orange text on light */
+  --orange-ink: #ff8714;     /* brand orange for accent text */
   --navy: #0d1b4b;           /* brand dark — text on light + primary dark surfaces */
   --navy-deep: #081028;      /* deepest — gradient anchors, vignettes, footer */
   --navy-light: #1e3578;     /* lifted — gradient tops, elevated dark panels */

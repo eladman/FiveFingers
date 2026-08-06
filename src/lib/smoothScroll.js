@@ -30,6 +30,17 @@ export function getLenis() {
  * null when reduced-motion is on) in case a caller needs lenis.scrollTo.
  */
 export function initSmoothScroll() {
+  // Recompute every ScrollTrigger's start/end once late-loading assets settle.
+  // The RagMarom display font (font-display:swap) and the lazy panel images
+  // change layout height *after* components measure their triggers in
+  // useLayoutEffect. Without this, FiveDNA's pin locks at a stale scroll
+  // position and the Manifesto section above it never clears — the two visually
+  // merge. The triggers set invalidateOnRefresh, so each refresh also
+  // recomputes their pin distances. Runs regardless of reduced-motion.
+  const refresh = () => ScrollTrigger.refresh()
+  document.fonts?.ready.then(refresh)
+  window.addEventListener('load', refresh)
+
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   if (reduced) return null
 

@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from './components/Navbar'
+import Preloader, { shouldShowPreloader } from './redesign/Preloader'
 import Hero from './components/Hero'
-import WhoWeAre from './components/WhoWeAre'
-import WhatWeBelieve from './components/WhatWeBelieve'
-import ManInArena from './components/ManInArena'
-import Programs from './components/Programs'
-import FiveContent from './components/FiveContent'
+import IntroV2 from './redesign/IntroV2'
+import Manifesto from './redesign/Manifesto'
+import FiveDNA from './redesign/FiveDNA'
+import ProgramsV2 from './redesign/ProgramsV2'
+import PulseBand from './redesign/PulseBand'
+import FinaleCTA from './redesign/FinaleCTA'
 import Footer from './components/Footer'
 import ContactModal from './components/ContactModal'
 import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
@@ -47,6 +50,9 @@ const VIEW_TO_PRODUCT = {
 
 export default function App() {
   const [navReady, setNavReady] = useState(false)
+  // The intro veil (Preloader) shows once per session on the homepage; the
+  // hero waits for it before running its entrance choreography.
+  const [introDone, setIntroDone] = useState(() => !shouldShowPreloader())
   const [contactOpen, setContactOpen] = useState(false)
   const [contactProduct, setContactProduct] = useState('')
   const [view, setView] = useState(() => resolveView(window.location.hash))
@@ -81,6 +87,17 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
+  // The Hero mounts only after the preloader finishes (first visit). It inserts
+  // a full viewport at the top of the page, shifting every section below it —
+  // but ScrollTrigger already measured its pins (e.g. FiveDNA) without the Hero
+  // present. Recompute once the Hero has laid out, else the values section pins
+  // ~100vh too early and the manifesto above it bleeds through / overlaps.
+  useEffect(() => {
+    if (!introDone) return
+    const id = requestAnimationFrame(() => ScrollTrigger.refresh())
+    return () => cancelAnimationFrame(id)
+  }, [introDone])
+
   // Dedicated pages render their own Navbar immediately (no Hero intro to gate it).
   const isDedicatedPage = view === 'liabah' || view === 'academy' || view === 'collabs' || view === 'amir' || view === 'alumni' || view === 'team'
   const navVisible = isDedicatedPage || navReady
@@ -98,7 +115,8 @@ export default function App() {
   return (
     <div className="antialiased">
       <div style={{ opacity: navVisible ? 1 : 0, transition: 'opacity 0.7s ease' }}>
-        <Navbar onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')} forceLifted={view === 'team' || view === 'collabs'} />
+        {/* no forceLifted pages left — every v2 hero is a dark full-bleed photo */}
+        <Navbar onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')} />
       </div>
       <ContactModal
         isOpen={contactOpen}
@@ -120,13 +138,14 @@ export default function App() {
         <TeamPage onContactOpen={openContact} />
       ) : (
         <main>
-          <Hero onComplete={() => setNavReady(true)} onContactOpen={openContact} />
-          {/* WhoWeAre floats up over the hero's dark base as a sheet — no seam divider here */}
-          <WhoWeAre />
-          <WhatWeBelieve />
-          <ManInArena />
-          <Programs onContactOpen={openContact} />
-          <FiveContent />
+          {!introDone && <Preloader onDone={() => setIntroDone(true)} />}
+          {introDone && <Hero onComplete={() => setNavReady(true)} onContactOpen={openContact} />}
+          <IntroV2 />
+          <Manifesto />
+          <FiveDNA />
+          <ProgramsV2 onContactOpen={openContact} />
+          <PulseBand />
+          <FinaleCTA onContactOpen={openContact} />
         </main>
       )}
       <Footer onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')} />

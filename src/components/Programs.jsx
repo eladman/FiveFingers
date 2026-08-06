@@ -181,6 +181,8 @@ export default function Programs({ onContactOpen }) {
                         <img
                           src={prog.imageSrc}
                           alt={prog.title}
+                          loading="lazy"
+                          decoding="async"
                           className="absolute inset-0 w-full h-full object-cover"
                         />
                       ) : (

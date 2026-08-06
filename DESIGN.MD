@@ -566,3 +566,24 @@ Global CSS also resets all durations to `0.01ms` for this preference (see `index
 - Use `justify-center` on text columns that should be top-anchored
 - Use masculine singular Hebrew as a generic default — follow the gender-neutral policy in `CLAUDE.md`
 - Run GSAP animations without checking `prefers-reduced-motion` first
+
+---
+
+## 11. Home v2 — "Into the Arena" (redesign branch)
+
+The homepage is a scroll-choreographed experience built from `src/redesign/`.
+Sub-pages keep the original system above; these patterns are home-only.
+
+| Component | Pattern |
+|---|---|
+| `Preloader.jsx` | Session-once brand veil: five orange pillars fill on navy-deep, wordmark, clip-path wipe up. Skipped under reduced motion. Hands off to the hero via `onDone`. |
+| `ArenaHero.jsx` + `heroGL.js` | Custom WebGL (no three.js dep): fullscreen quad, procedural-noise displacement crossfade between Hero-Pics, pointer ripple, scroll-velocity warp + chromatic split. Poster-scale RagMarom composition anchored to the base, char-mask entrance. Fallbacks: img crossfade (no WebGL), static frame (reduced motion). |
+| `IntroV2.jsx` | Light breath: masked word-reveal statement, photo trio at three parallax speeds, the movement film. |
+| `Manifesto.jsx` | Pinned 230% scrub: the Roosevelt arena quote ignites word-by-word (white; key words orange), outro rises at the end. |
+| `FiveDNA.jsx` | Signature section: 5 full-screen value panels travel horizontally (RTL direction) inside a pin; five-finger progress indicator + LTR counter; duotone photos (`grayscale(0.55)` + orange multiply); giant ghost Hebrew ordinals (א–ה) at 7% white. Mobile: vertical stack, plain reveals. |
+| `ProgramsV2.jsx` | Cinematic rows: image unclips on scrub, inner parallax (`inset-[-10%]` + `max-w-none` — Tailwind preflight caps img at max-w 100%), text card overlaps the frame on desktop, animated two-tone underline links. |
+| `PulseBand.jsx` | Orange drench: seamless RagMarom marquee (two identical halves, `xPercent -50 → 0`, repeat -1), count-up stats in navy on orange. |
+| `FinaleCTA.jsx` | One question, one door: slow photo push-in scrub, magnetic primary CTA (`useMagnetic`, desktop fine-pointers only). |
+
+Motion defaults follow section 6; every scrub/pin/loop checks
+`prefers-reduced-motion` and `gsap.matchMedia` handles the desktop/mobile split.

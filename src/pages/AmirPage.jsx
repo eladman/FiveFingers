@@ -1,36 +1,29 @@
-import AmirHero from '../components/amir/AmirHero'
-import AmirIntro from '../components/amir/AmirIntro'
-import AmirZones from '../components/amir/AmirZones'
-import AmirContentWorlds from '../components/amir/AmirContentWorlds'
-import AmirCTA from '../components/amir/AmirCTA'
-import SoftDivider from '../components/SoftDivider'
+import AmirHeroV2 from '../redesign/amir/AmirHeroV2'
+import AmirEssenceV2 from '../redesign/amir/AmirEssenceV2'
+import AmirZonesV2 from '../redesign/amir/AmirZonesV2'
+import AmirContentV2 from '../redesign/amir/AmirContentV2'
+import AmirFinaleV2 from '../redesign/amir/AmirFinaleV2'
 
 /**
- * עמיר מנחם — the founder's personal-brand page. He is both the founder & chairman
- * of חמש אצבעות and a standalone brand (lectures, the 0→1 workshop, personal
- * mentoring, and the "האדם בזירה" podcast).
+ * עמיר מנחם — the founder's personal-brand page, "Into the Arena" language
+ * (see DESIGN.MD §11). He is both the founder & chairman of חמש אצבעות and a
+ * standalone brand (lectures, the 0→1 workshop, personal mentoring, and the
+ * "האדם בזירה" podcast) — the hero leans into that sub-brand.
  *
- * Same design system as the program pages, but leaning into the cinematic dark
- * "האדם בזירה" styling so it reads as a distinct sub-brand within the family.
- * Section rhythm: dark hero → light intro → light zones → light content → dark CTA.
- *
- * `onContactOpen` opens the shared ContactModal; section CTAs tag it per zone.
+ * Sections butt directly against each other (dark ↔ light rhythm), no
+ * SoftDividers. `onContactOpen` opens the shared ContactModal; section CTAs
+ * tag it per zone ('קשר עם עמיר' matches the interest chip so it preselects).
  */
 export default function AmirPage({ onContactOpen }) {
-  // 'קשר עם עמיר' matches the ContactModal interest chip so it preselects.
   const onBook = (label = 'קשר עם עמיר') => onContactOpen?.(label)
 
   return (
-    <main className="bg-surface">
-      <AmirHero onBook={() => onBook()} />
-      <SoftDivider fromColor="#081028" toColor="#ffffff" blend={false} />
-      <AmirIntro />
-      <SoftDivider fromColor="#ffffff" toColor="#fafaf8" blend={false} />
-      <AmirZones onBook={onBook} />
-      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" blend={false} />
-      <AmirContentWorlds />
-      <SoftDivider fromColor="#ffffff" toColor="#0d1b4b" blend={false} />
-      <AmirCTA onBook={() => onBook()} />
+    <main>
+      <AmirHeroV2 onBook={() => onBook()} />
+      <AmirEssenceV2 />
+      <AmirZonesV2 onBook={onBook} />
+      <AmirContentV2 />
+      <AmirFinaleV2 onBook={() => onBook()} />
     </main>
   )
 }
