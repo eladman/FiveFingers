@@ -131,7 +131,7 @@ export default function AmirHeroV2({ onBook }) {
           מייסד ויו״ר · תנועת חמש אצבעות
         </p>
 
-        <h1 className="text-white select-none" aria-label="עמיר מנחם — האדם בזירה">
+        <h1 className="text-white select-none" aria-label="עמיר מנחם, האדם בזירה">
           <span
             className="amh-word-a block overflow-hidden font-ragmarom leading-[0.9] tracking-tight"
             style={{ fontSize: 'clamp(3.6rem, 14vw, 11rem)', textShadow: '0 4px 40px rgba(0,0,0,0.6)' }}
@@ -150,7 +150,7 @@ export default function AmirHeroV2({ onBook }) {
           className="amh-sub font-heebo text-white/85 mt-6 max-w-xl leading-relaxed"
           style={{ fontSize: 'clamp(1.05rem, 1.5vw, 1.35rem)', textShadow: '0 2px 16px rgba(0,0,0,0.8)' }}
         >
-          הרצאות, סדנאות וליווי אישי — מסוגלות, חוסן ומימוש פוטנציאל, מהבמה הגדולה ועד אחד־על־אחד.
+          הרצאות, סדנאות וליווי אישי: מסוגלות, חוסן ומימוש פוטנציאל, מהבמה הגדולה ועד אחד־על־אחד.
         </p>
 
         <div className="flex flex-wrap items-center gap-4 mt-9">

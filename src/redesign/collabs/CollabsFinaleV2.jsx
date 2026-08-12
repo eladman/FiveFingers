@@ -104,11 +104,11 @@ export default function CollabsFinaleV2({ onRegister }) {
           className="cfin-el mt-14 pt-6 border-t border-white/15 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-heebo text-sm md:text-base"
           style={{ textShadow: '0 1px 10px rgba(0,0,0,0.7)' }}
         >
-          <a href={`tel:${PHONE.replace(/-/g, '')}`} dir="ltr" className="text-white/60 hover:text-white transition-colors">
+          <a href={`tel:${PHONE.replace(/-/g, '')}`} dir="ltr" className="tap-safe text-white/60 hover:text-white transition-colors">
             {PHONE}
           </a>
           <span className="w-1 h-1 rounded-full bg-orange inline-block" aria-hidden="true" />
-          <a href={`mailto:${EMAIL}`} dir="ltr" className="text-white/60 hover:text-white transition-colors">
+          <a href={`mailto:${EMAIL}`} dir="ltr" className="tap-safe text-white/60 hover:text-white transition-colors">
             {EMAIL}
           </a>
         </div>

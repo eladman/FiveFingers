@@ -97,10 +97,10 @@ export default function TeamEssenceV2() {
         {/* support copy */}
         <div className="tes-supportwrap grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 mt-12 md:mt-16 max-w-4xl">
           <p className="tes-support font-heebo text-navy/70 leading-[1.85]" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
-            מאחורי כל קבוצה, כל חוויה וכל חניך/ה עומדים אנשים שבחרו לקחת אחריות — באימון ישיר, בהדרכה בשטח או בתפקיד מטה שמניע את כל התנועה.
+            מאחורי כל קבוצה, כל חוויה וכל חניך/ה עומדים אנשים שבחרו לקחת אחריות: באימון ישיר, בהדרכה בשטח או בתפקיד מטה שמניע את כל התנועה.
           </p>
           <p className="tes-support font-heebo text-navy/70 leading-[1.85]" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
-            יש כמה דרכים להוביל אצלנו — ולכל אחת מהן אנחנו מחפשים אנשים ואנשות שרוצים להשפיע ולהשאיר חותם.
+            יש כמה דרכים להוביל אצלנו, ולכל אחת מהן אנחנו מחפשים אנשים ואנשות שרוצים להשפיע ולהשאיר חותם.
           </p>
         </div>
 

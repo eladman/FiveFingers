@@ -120,6 +120,8 @@ function FontSizeControl({ value, onChange }) {
             style={{
               flex: 1,
               padding: '6px 4px',
+              // 44px minimum touch target — these measured 34px tall.
+              minHeight: '44px',
               border: '2px solid',
               borderColor: value === i ? '#1565C0' : '#ddd',
               borderRadius: '6px',
@@ -215,10 +217,12 @@ export default function AccessibilityWidget() {
         onClick={toggle}
         aria-label="פתח תפריט נגישות"
         aria-expanded={isOpen}
+        // .ds-fab supplies the safe-area-aware inset and the pointer-gated
+        // hover (see index.css), replacing the inline mouseenter/mouseleave
+        // pair that used to stay stuck after a touch tap.
+        className="ds-fab ds-fab-start"
         style={{
           position: 'fixed',
-          bottom: '24px',
-          left: '24px',
           zIndex: 10000,
           width: '52px',
           height: '52px',
@@ -231,16 +235,6 @@ export default function AccessibilityWidget() {
           justifyContent: 'center',
           boxShadow: 'var(--shadow-md)',
           transition: 'transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease',
-        }}
-        onMouseEnter={e => {
-          e.currentTarget.style.transform = 'scale(1.05)'
-          e.currentTarget.style.backgroundColor = '#0D47A1'
-          e.currentTarget.style.boxShadow = 'var(--shadow-lg)'
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.transform = 'scale(1)'
-          e.currentTarget.style.backgroundColor = '#1565C0'
-          e.currentTarget.style.boxShadow = 'var(--shadow-md)'
         }}
         onFocus={e => { e.currentTarget.style.outline = '3px solid #FFD600'; e.currentTarget.style.outlineOffset = '3px' }}
         onBlur={e => { e.currentTarget.style.outline = 'none' }}
@@ -257,11 +251,15 @@ export default function AccessibilityWidget() {
         aria-modal="true"
         style={{
           position: 'fixed',
-          bottom: '88px',
-          left: '24px',
+          // Sits above the FAB, which itself now respects the bottom safe area.
+          bottom: 'max(88px, calc(env(safe-area-inset-bottom, 0px) + 76px))',
+          left: 'max(24px, calc(env(safe-area-inset-left, 0px) + 12px))',
           zIndex: 10000,
-          width: '320px',
-          maxHeight: '80vh',
+          // 320px fixed overflowed a 360px phone; 80vh overflowed a landscape
+          // phone (measured: top edge cut 10px above the viewport at 390px tall).
+          // Both now derive from the actual viewport.
+          width: 'min(320px, calc(100vw - 48px))',
+          maxHeight: 'calc(100dvh - 108px)',
           overflowY: 'auto',
           backgroundColor: '#fff',
           borderRadius: '16px',
@@ -297,7 +295,14 @@ export default function AccessibilityWidget() {
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              padding: '4px',
+              // 44px hit area — the glyph alone measured 23×28, under the
+              // minimum touch target, and this is the a11y panel of all places.
+              minWidth: '44px',
+              minHeight: '44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '-8px -12px -8px 0',
               fontSize: '20px',
               color: '#666',
               lineHeight: 1,

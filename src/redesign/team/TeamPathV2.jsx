@@ -184,7 +184,7 @@ export default function TeamPathV2({ onRegister }) {
           <div className="max-w-xl">
             <p className="ds-eyebrow text-orange mb-3">{coach.course.eyebrow}</p>
             <p className="font-ragmarom text-white leading-[1.05]" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)' }}>
-              {coach.course.title} — נפתח בקרוב.
+              {coach.course.title}. נפתח בקרוב.
             </p>
             <p className="font-heebo text-white/70 leading-relaxed mt-4" style={{ fontSize: 'clamp(0.98rem, 1.15vw, 1.15rem)' }}>
               {coach.course.note} השאירו פרטים ונעדכן אתכם/ן ברגע שנקבע מועד.

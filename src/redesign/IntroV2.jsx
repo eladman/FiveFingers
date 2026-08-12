@@ -159,7 +159,7 @@ export default function IntroV2() {
           >
             <VideoFacade
               src={`https://www.youtube.com/embed/${FILM_ID}?rel=0&modestbranding=1`}
-              title="מי אנחנו — חמש אצבעות"
+              title="מי אנחנו · חמש אצבעות"
             />
           </div>
         </div>

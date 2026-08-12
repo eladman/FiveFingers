@@ -168,7 +168,7 @@ export default function ProgramsV2({ onContactOpen }) {
                       {prog.ctaHref ? (
                         <a
                           href={prog.ctaHref}
-                          className="group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg"
+                          className="tap-safe group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg"
                         >
                           <span className="relative">
                             {prog.ctaLabel}
@@ -181,7 +181,7 @@ export default function ProgramsV2({ onContactOpen }) {
                         <button
                           type="button"
                           onClick={() => onContactOpen?.(prog.title)}
-                          className="group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg"
+                          className="tap-safe group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg"
                         >
                           <span className="relative">
                             יצירת קשר

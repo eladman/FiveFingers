@@ -22,7 +22,7 @@ function MobileLocations({ onSelect }) {
           <button
             key={r}
             onClick={() => setActiveRegion(r)}
-            className={`flex-1 py-2.5 rounded-xl font-heebo font-bold text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange ${
+            className={`flex-1 min-h-[44px] py-2.5 rounded-xl font-heebo font-bold text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange ${
               activeRegion === r
                 ? 'bg-orange text-white shadow-md shadow-orange/30'
                 : 'bg-white border border-navy/10 text-navy/60 hover:border-orange/40'
@@ -172,8 +172,15 @@ export default function LiabahMap() {
                     onFocus={() => setActive(loc.id)}
                     onBlur={() => setActive(null)}
                     onClick={() => setSelected(loc.id)}
-                    aria-label={`${loc.city} — פרטים`}
-                    className="lm-pin absolute rounded-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+                    aria-label={`פרטים על ${loc.city}`}
+                    // The pin glyph is 18x18 — too small to tap comfortably on an
+                    // iPad, where this map (sm+) is the primary view. The ::after
+                    // grows the hit area to ~30px without moving the pin. It stops
+                    // short of the full 44px on purpose: neighbouring towns (e.g.
+                    // עמק חפר מזרח/מערב) sit close enough that 44px boxes would
+                    // overlap and steal each other's taps. The locations list
+                    // beside the map is the full-size affordance for every city.
+                    className="lm-pin absolute rounded-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 after:absolute after:-inset-1.5 after:content-['']"
                     style={{
                       left: `${(x / VIEWBOX_W) * 100}%`,
                       top: `${(y / VIEWBOX_H) * 100}%`,

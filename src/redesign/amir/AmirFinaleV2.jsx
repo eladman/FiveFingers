@@ -77,7 +77,7 @@ export default function AmirFinaleV2({ onBook }) {
           className="afn-el font-heebo text-white/80 mt-6 max-w-xl mx-auto leading-relaxed"
           style={{ fontSize: 'clamp(1.05rem, 1.4vw, 1.3rem)', textShadow: '0 2px 16px rgba(0,0,0,0.8)' }}
         >
-          להזמנת הרצאה, סדנה או ליווי אישי — השאירו פרטים ונחזור אליכם/ן.
+          להזמנת הרצאה, סדנה או ליווי אישי, השאירו פרטים ונחזור אליכם/ן.
         </p>
 
         <div className="afn-el mt-11 flex flex-wrap items-center justify-center gap-5">
@@ -102,11 +102,11 @@ export default function AmirFinaleV2({ onBook }) {
           className="afn-el mt-14 pt-6 border-t border-white/15 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-heebo text-sm md:text-base"
           style={{ textShadow: '0 1px 10px rgba(0,0,0,0.7)' }}
         >
-          <a href={PHONE_HREF} dir="ltr" className="text-white/60 hover:text-white transition-colors">
+          <a href={PHONE_HREF} dir="ltr" className="tap-safe text-white/60 hover:text-white transition-colors">
             {PHONE_DISPLAY}
           </a>
           <span className="w-1 h-1 rounded-full bg-orange inline-block" aria-hidden="true" />
-          <a href={EMAIL_HREF} dir="ltr" className="text-white/60 hover:text-white transition-colors">
+          <a href={EMAIL_HREF} dir="ltr" className="tap-safe text-white/60 hover:text-white transition-colors">
             {EMAIL}
           </a>
         </div>

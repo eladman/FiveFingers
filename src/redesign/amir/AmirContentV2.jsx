@@ -113,7 +113,7 @@ export default function AmirContentV2() {
             להישאר מחוברים
           </h2>
           <p className="ds-section-subtitle text-white/70 mt-4">
-            רגעים מהשטח, פרקים והרצאות — כל התוכן במקום אחד.
+            רגעים מהשטח, פרקים והרצאות. כל התוכן במקום אחד.
           </p>
         </div>
 

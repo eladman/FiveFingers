@@ -99,7 +99,7 @@ export default function LiabahEssenceV2() {
         {/* support copy */}
         <div className="les-supportwrap grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 mt-12 md:mt-16 max-w-4xl">
           <p className="les-support font-heebo text-navy/70 leading-[1.85]" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
-            השיטה הייחודית שלנו משלבת בין האימון הפיזי־מנטלי, השייכות לקבוצה מלוכדת והחיבור האישי למאמן/ת — שילוב שבונה בסיס אישיותי־ערכי רחב.
+            השיטה הייחודית שלנו משלבת בין האימון הפיזי־מנטלי, השייכות לקבוצה מלוכדת והחיבור האישי למאמן/ת, שילוב שבונה בסיס אישיותי־ערכי רחב.
           </p>
           <p className="les-support font-heebo text-navy/70 leading-[1.85]" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
             המטרה: להקנות כלים להתמודדות עם אתגרים, ולאפשר לבני ובנות הנוער למקסם את הפוטנציאל שלהם למען השפעה וקידום החברה הישראלית.

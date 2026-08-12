@@ -18,6 +18,7 @@ import CollaborationsPage from './pages/CollaborationsPage'
 import AmirPage from './pages/AmirPage'
 import AlumniPage from './pages/AlumniPage'
 import TeamPage from './pages/TeamPage'
+import MemorialPage from './pages/MemorialPage'
 import HeroConcepts from './HeroConcepts'
 import { WHATSAPP_HREF } from './data/contact'
 
@@ -32,6 +33,9 @@ function resolveView(hash) {
   if (hash.startsWith('#amir')) return 'amir'
   if (hash.startsWith('#alumni')) return 'alumni'
   if (hash.startsWith('#team')) return 'team'
+  // #memorial / #memorial-hall / #memorial-n<i> — the memorial hall + its
+  // per-person pages all resolve here, so moving between them never remounts.
+  if (hash.startsWith('#memorial')) return 'memorial'
   return 'home'
 }
 
@@ -73,12 +77,14 @@ export default function App() {
 
   // Hash-based routing: #liabah / #academy → dedicated page, anything else → homepage.
   useEffect(() => {
+    // Don't let the browser restore the previous scroll position on hash
+    // navigation — we always want a new page to open at the top (see effect below).
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
     openContactFromHash()
     const onHashChange = () => {
       if (openContactFromHash()) return
       const next = resolveView(window.location.hash)
       setView((prev) => {
-        if (prev !== next) window.scrollTo(0, 0)
         if (next === 'home' && prev !== 'home') setNavReady(true)
         return next
       })
@@ -86,6 +92,16 @@ export default function App() {
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
+
+  // Whenever the top-level view changes (nav to another page), start at the very
+  // top — no matter what. Runs after the new page has rendered, so it wins over
+  // any layout-driven scroll. Two frames guard against the browser re-applying a
+  // restored position between commit and paint.
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    const id = requestAnimationFrame(() => window.scrollTo(0, 0))
+    return () => cancelAnimationFrame(id)
+  }, [view])
 
   // The Hero mounts only after the preloader finishes (first visit). It inserts
   // a full viewport at the top of the page, shifting every section below it —
@@ -110,6 +126,24 @@ export default function App() {
   // Standalone design preview — its own switcher chrome, no site navbar/footer.
   if (view === 'concepts') {
     return <HeroConcepts />
+  }
+
+  // Memorial — a self-contained, reverent page with its own dark nav + footer
+  // (ported from the former standalone /memorial static page). No app Navbar /
+  // Footer and no floating WhatsApp button here; it keeps the ContactModal +
+  // AccessibilityWidget so the nav CTA and a11y still work.
+  if (view === 'memorial') {
+    return (
+      <div className="antialiased">
+        <ContactModal
+          isOpen={contactOpen}
+          onClose={() => setContactOpen(false)}
+          defaultProduct={contactProduct}
+        />
+        <MemorialPage onContactOpen={() => openContact('')} />
+        <AccessibilityWidget />
+      </div>
+    )
   }
 
   return (
@@ -156,10 +190,12 @@ export default function App() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="שלחו לנו הודעה בוואטסאפ"
+        // Inset + hover come from .ds-fab (index.css): the offsets respect
+        // env(safe-area-inset-*) so the button clears an iPhone home indicator,
+        // and the hover lift is pointer-gated so a tap doesn't strand it scaled.
+        className="ds-fab ds-fab-end"
         style={{
           position: 'fixed',
-          bottom: '28px',
-          right: '28px',
           zIndex: 9999,
           display: 'flex',
           alignItems: 'center',
@@ -170,14 +206,6 @@ export default function App() {
           backgroundColor: '#25D366',
           boxShadow: 'var(--shadow-md)',
           transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-        }}
-        onMouseEnter={e => {
-          e.currentTarget.style.transform = 'scale(1.1)'
-          e.currentTarget.style.boxShadow = 'var(--shadow-lg)'
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.transform = 'scale(1)'
-          e.currentTarget.style.boxShadow = 'var(--shadow-md)'
         }}
       >
         <svg viewBox="0 0 32 32" width="32" height="32" fill="white" xmlns="http://www.w3.org/2000/svg">

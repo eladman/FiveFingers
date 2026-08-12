@@ -97,12 +97,12 @@ export default function AlumniEssenceV2() {
           {/* support copy + stats */}
           <div className="ale-supportwrap">
             <p className="ale-support font-heebo text-navy/70 leading-[1.85]" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
-              אלפי בוגרים ובוגרות עברו במסגרות של חמש אצבעות מאז 2014 — ומהמסלול הם יוצאים
+              אלפי בוגרים ובוגרות עברו במסגרות של חמש אצבעות מאז 2014, ומהמסלול הם יוצאים
               עם ערכים, כלים וקבוצת שווים שנשארת איתם לחיים. קהילת הבוגרים יוצרת רשת חברתית
               ומקצועית של חיבורים אישיים שמאפשרים תמיכה והמשכיות.
             </p>
             <p className="ale-support font-heebo text-navy/70 leading-[1.85] mt-6" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
-              בליבה שלה עומדת <span className="font-semibold text-navy">תוכנית יואב</span> — תוכנית
+              בליבה שלה עומדת <span className="font-semibold text-navy">תוכנית יואב</span>, תוכנית
               הדגל שמלווה צעירות וצעירים בדרך למקסום הפוטנציאל ולהשפעה על המציאות הישראלית.
             </p>
 

@@ -56,7 +56,7 @@ export default function AcademyJourney() {
       <Atmosphere />
       <div className="relative z-10 lg:h-dvh flex flex-col">
         <div className="max-w-5xl mx-auto w-full px-6 md:px-10 pt-24 lg:pt-28 pb-8">
-          <MuseumHeading kicker="המסע" title="שנה באקדמיה" lead="מספטמבר ועד הסיום — תחנות בשנה אחת." align="start" />
+          <MuseumHeading kicker="המסע" title="שנה באקדמיה" lead="מספטמבר ועד הסיום, תחנות בשנה אחת." align="start" />
         </div>
 
         {/* Track: horizontal on lg (translated by GSAP), vertical stack otherwise.
