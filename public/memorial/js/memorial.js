@@ -217,7 +217,21 @@
         '<a class="sitenav__link" href="/#amir">עמיר מנחם</a>' +
       '</div>' +
       '<a class="sitenav__cta" href="/#contact">יצירת קשר</a>' +
-    '</nav>';
+      '<button class="sitenav__toggle" type="button" aria-label="תפריט" aria-expanded="false">' +
+        '<span class="sitenav__toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span>' +
+      '</button>' +
+    '</nav>' +
+    /* drawer must be the nav's next sibling — the delegated toggle relies on it */
+    '<div class="sitenav__drawer" aria-label="ניווט">' +
+      '<a class="sitenav__drawer-link" href="/#liabah">ליבה</a>' +
+      '<a class="sitenav__drawer-link" href="/#academy">אקדמיה</a>' +
+      '<a class="sitenav__drawer-link" href="/#collabs">פרויקטים</a>' +
+      '<a class="sitenav__drawer-link is-active" href="#hall" aria-current="page">יזכור</a>' +
+      '<a class="sitenav__drawer-link" href="/#alumni">בוגרים</a>' +
+      '<a class="sitenav__drawer-link" href="/#team">צוות</a>' +
+      '<a class="sitenav__drawer-link" href="/#amir">עמיר מנחם</a>' +
+      '<a class="sitenav__drawer-cta" href="/#contact">יצירת קשר</a>' +
+    '</div>';
   }
 
   function topBar(i, total) {
@@ -514,40 +528,85 @@
     else { showHall(h === "hall" ? "wall" : "top"); }
   }
 
+  /* Char-mask entrance for the opening title (the V2 hero pattern): each
+     char in its own span, rising through an overflow-hidden mask. Spaces
+     become NBSP so inline-block spans don't collapse them. */
+  function splitOpeningTitle() {
+    var t = document.getElementById("opening-title");
+    if (!t || reduceMotion) return;
+    var text = t.textContent;
+    var label = t.getAttribute("aria-label") || text;
+    var html = '<span class="opening__mask" aria-hidden="true">';
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i] === " " ? " " : esc(text[i]);
+      html += '<span class="oc" style="animation-delay:' + (i * 55) + 'ms">' + ch + "</span>";
+    }
+    html += "</span>";
+    t.setAttribute("aria-label", label);
+    t.innerHTML = html;
+  }
+
   /* =========================================================================
      INIT
      ====================================================================== */
+  splitOpeningTitle();
   buildOpeningMosaic();
   startMosaicCycle();
   buildHall();
 
-  /* ---------- mobile nav drawer (mirrors the React <Navbar> menu) --------- */
+  /* ---------- mobile nav drawer (mirrors the React <Navbar> menu) ---------
+     Delegated so it also drives the person view's nav, which is re-rendered
+     on every route. The drawer is always the nav's next sibling. */
   (function initNav() {
-    var nav = document.querySelector(".sitenav");
-    var toggle = document.getElementById("navToggle");
-    var drawer = document.getElementById("navDrawer");
-    if (!nav || !toggle || !drawer) { return; }
-
-    function setOpen(open) {
+    function drawerFor(nav) {
+      var sib = nav.nextElementSibling;
+      return sib && sib.classList.contains("sitenav__drawer") ? sib : null;
+    }
+    function setOpen(nav, open) {
+      var drawer = drawerFor(nav);
+      var toggle = nav.querySelector(".sitenav__toggle");
+      if (!drawer) { return; }
       nav.classList.toggle("is-open", open);
       drawer.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (toggle) { toggle.setAttribute("aria-expanded", open ? "true" : "false"); }
     }
-    toggle.addEventListener("click", function () {
-      setOpen(!drawer.classList.contains("is-open"));
-    });
-    // Close after choosing a destination, on Escape, or when clicking away.
-    drawer.addEventListener("click", function (e) {
-      if (e.target.closest("a")) { setOpen(false); }
+    function closeAll() {
+      document.querySelectorAll(".sitenav.is-open").forEach(function (n) { setOpen(n, false); });
+    }
+    document.addEventListener("click", function (e) {
+      var toggle = e.target.closest(".sitenav__toggle");
+      if (toggle) {
+        var nav = toggle.closest(".sitenav");
+        var drawer = drawerFor(nav);
+        setOpen(nav, !(drawer && drawer.classList.contains("is-open")));
+        return;
+      }
+      // Close after choosing a destination or when clicking away.
+      if (e.target.closest(".sitenav__drawer a")) { closeAll(); return; }
+      if (!e.target.closest(".sitenav") && !e.target.closest(".sitenav__drawer")) { closeAll(); }
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") { setOpen(false); }
+      if (e.key === "Escape") { closeAll(); }
     });
-    document.addEventListener("click", function (e) {
-      if (!nav.contains(e.target) && !drawer.contains(e.target)) { setOpen(false); }
-    });
+    window.addEventListener("hashchange", closeAll);
   })();
 
   window.addEventListener("hashchange", route);
   route();
+
+  /* ---------- nav glass state — dark over the dark hero screens ----------- */
+  (function initNavState() {
+    function sync() {
+      var dark = window.scrollY < window.innerHeight * 0.55;
+      var navs = document.querySelectorAll(".sitenav");
+      for (var i = 0; i < navs.length; i++) {
+        navs[i].classList.toggle("sitenav--dark", dark);
+      }
+    }
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    /* runs after route() re-renders the person view's own nav */
+    window.addEventListener("hashchange", function () { setTimeout(sync, 0); });
+    sync();
+  })();
 })();

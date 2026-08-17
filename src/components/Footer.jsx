@@ -11,9 +11,9 @@ const FOOTER_NAV = {
     { label: 'בוגרים', href: '#programs' },
   ],
   אודות: [
-    { label: 'עמיר מנחם', href: '#who-we-are' },
-    { label: 'ערכים', href: '#belief' },
-    { label: 'חזון', href: '#what-we-believe' },
+    { label: 'עמיר מנחם', href: '#amir' },
+    { label: 'ערכים', href: '#dna' },
+    { label: 'חזון', href: '#manifesto' },
     { label: 'מה אנחנו', href: '#who-we-are' },
   ],
   הצטרף: [

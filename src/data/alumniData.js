@@ -18,6 +18,10 @@ export const YOAV_URL = 'https://www.yoavprogram.com/'
 export const HERO = { src: '/Hero-Pics/214A0011.jpg', w: 1600, h: 1067 }
 /** Community context shot for the intro card. Placeholder from ליבה set. */
 export const COMMUNITY = { src: '/liba_pics/214A0405-2.jpg', w: 1600, h: 1067 }
+/** Speaker with a circle of young adults in the forest — backs the finale
+    photo push-in (the ערב מורשת theater shot clashed with the headline: the
+    projected title on its screen fought the CTA copy). */
+export const FINALE = { src: '/Hero-Pics/amir_talking_2.jpg', w: 2673, h: 1782 }
 
 // "בוגרים במספרים" — animated counters. Numeric `value` so useCountUp can animate;
 // `plain: true` skips the thousands separator (so 2014 reads as a year, not 2,014).
