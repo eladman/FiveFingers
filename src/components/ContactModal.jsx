@@ -252,21 +252,16 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
         <button
           onClick={onClose}
           aria-label="סגירה"
-          className="absolute top-4 left-4 z-30 flex items-center justify-center rounded-full transition-all duration-200"
+          // 44px to clear the minimum touch target (it measured 40×40). The
+          // hover rotate moved to CSS: on touch the mouseenter fired without a
+          // matching mouseleave, leaving the ✕ stuck at 90°.
+          className="cm-close absolute top-4 left-4 z-30 flex items-center justify-center rounded-full transition-all duration-200"
           style={{
-            width: '40px', height: '40px',
+            width: '44px', height: '44px',
             background: 'rgba(255,255,255,0.12)',
             color: '#fff',
             backdropFilter: 'blur(4px)',
             border: '1px solid rgba(255,255,255,0.18)',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(255,255,255,0.22)'
-            e.currentTarget.style.transform = 'rotate(90deg)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(255,255,255,0.12)'
-            e.currentTarget.style.transform = 'rotate(0deg)'
           }}
         >
           <X size={18} strokeWidth={2.5} />
@@ -472,9 +467,12 @@ function Chip({ label, active, onClick, trailing, inactiveBg = '#f4f5f7', ...ari
       type="button"
       onClick={onClick}
       {...aria}
-      className="relative rounded-full text-sm font-medium transition-all duration-200 flex items-center"
+      // cm-chip carries the hover tint in CSS (pointer-gated) — as inline
+      // handlers it stuck on touch, leaving an un-selected chip looking active.
+      data-active={active ? 'true' : undefined}
+      className="cm-chip relative rounded-full text-sm font-medium transition-all duration-200 flex items-center"
       style={{
-        minHeight: '40px',
+        minHeight: '44px',
         padding: '0 16px',
         background: active ? '#ff8714' : inactiveBg,
         color: active ? '#fff' : '#4a4f5a',
@@ -482,8 +480,6 @@ function Chip({ label, active, onClick, trailing, inactiveBg = '#f4f5f7', ...ari
         transform: active ? 'translateY(-1px)' : 'none',
         boxShadow: active ? '0 6px 16px -4px rgba(255,135,20,0.5)' : 'none',
       }}
-      onMouseEnter={(e) => { if (!active) { e.currentTarget.style.borderColor = '#ff8714'; e.currentTarget.style.color = '#ff8714' } }}
-      onMouseLeave={(e) => { if (!active) { e.currentTarget.style.borderColor = '#e8eaee'; e.currentTarget.style.color = '#4a4f5a' } }}
     >
       {active && <Check size={14} strokeWidth={3} className="inline-block ml-1 -mt-0.5" />}
       {label}

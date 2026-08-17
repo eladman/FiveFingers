@@ -28,7 +28,7 @@ function ZoneCta({ zone, onBook }) {
       )}
     </>
   )
-  const cls = 'group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg'
+  const cls = 'tap-safe group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg'
 
   return zone.href ? (
     <a href={zone.href} target="_blank" rel="noopener noreferrer" className={cls}>
@@ -106,7 +106,7 @@ export default function AmirZonesV2({ onBook }) {
           <p className="ds-eyebrow text-orange-ink mb-4">הזירות שלנו</p>
           <h2 className="ds-section-title text-navy">איפה נפגשים</h2>
           <p className="ds-section-subtitle text-orange-ink mt-4">
-            מהבמה הגדולה ועד אחד־על־אחד — בחרו את הזירה שלכם.
+            מהבמה הגדולה ועד אחד־על־אחד. בחרו את הזירה שלכם.
           </p>
         </div>
 

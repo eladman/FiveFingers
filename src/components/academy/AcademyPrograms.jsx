@@ -62,7 +62,7 @@ export default function AcademyPrograms({ onRegister }) {
                 aria-controls={`prog-panel-${p.id}`}
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setActive(i)}
-                className={`relative flex-1 md:flex-none px-5 md:px-8 py-2.5 rounded-full font-heebo font-semibold text-sm md:text-base transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy/40 ${
+                className={`relative flex-1 md:flex-none min-h-[44px] px-5 md:px-8 py-2.5 rounded-full font-heebo font-semibold text-sm md:text-base transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy/40 ${
                   selected ? 'bg-navy text-white' : 'text-navy/60 hover:text-navy'
                 }`}
               >

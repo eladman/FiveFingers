@@ -139,7 +139,7 @@ export default function AlumniHeroV2({ onBook }) {
           className="alh-sub font-heebo text-white/85 mt-6 max-w-xl leading-relaxed"
           style={{ fontSize: 'clamp(1.05rem, 1.5vw, 1.35rem)', textShadow: '0 2px 16px rgba(0,0,0,0.8)' }}
         >
-          כשהמסלול נגמר, הקהילה רק מתחילה — רשת של אלפי בוגרים ובוגרות, ובליבה
+          כשהמסלול נגמר, הקהילה רק מתחילה: רשת של אלפי בוגרים ובוגרות, ובליבה
           תוכנית יואב: תוכנית הדגל למקסום הפוטנציאל ולהשפעה על המציאות שלנו.
         </p>
 

@@ -78,7 +78,7 @@ export default function LiabahTracksV2({ onRegister }) {
         <div className="ltr-heading max-w-3xl">
           <h2 className="ds-section-title text-navy">מסלול לכל גיל</h2>
           <p className="ds-section-subtitle text-orange-ink mt-4">
-            מכיתה ה׳ ועד י״ב — נכנסים בדיוק בשלב הנכון.
+            מכיתה ה׳ ועד י״ב, נכנסים בדיוק בשלב הנכון.
           </p>
         </div>
 
@@ -128,7 +128,7 @@ export default function LiabahTracksV2({ onRegister }) {
                       <button
                         type="button"
                         onClick={onRegister}
-                        className="group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg"
+                        className="tap-safe group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg"
                       >
                         <span className="relative">
                           הרשמה לקבוצה

@@ -119,7 +119,7 @@ export default function TeamHeroV2({ onRegister }) {
           {hero.eyebrow}
         </p>
 
-        <h1 className="text-white select-none" aria-label="להוביל בחמש — הצטרפו לצוות">
+        <h1 className="text-white select-none" aria-label="להוביל בחמש, הצטרפו לצוות">
           <span
             className="thv2-word-a block overflow-hidden font-ragmarom leading-[0.9] tracking-tight"
             style={{ fontSize: 'clamp(3.6rem, 14vw, 11rem)', textShadow: '0 4px 40px rgba(0,0,0,0.6)' }}

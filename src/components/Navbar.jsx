@@ -5,11 +5,11 @@ import Button from './ui/Button'
 
 const NAV_LINKS = [
   { label: 'קבוצות הנוער', href: '#liabah' },
+  { label: 'מכינה', href: '#academy' },
   { label: 'שיתופי פעולה', href: '#collabs' },
-  // Memorial — a standalone static page in public/memorial/ (full navigation,
-  // not an in-page hash anchor). Pointed at the explicit file so it resolves
-  // identically in Vite dev, vite preview, and Vercel. Centered per the design.
-  { label: 'לזכרם', href: '/memorial/index.html' },
+  // Memorial — now an in-app route (src/pages/MemorialPage.jsx). Hash nav, so
+  // it opens instantly with no full page reload like the rest of the site.
+  { label: 'לזכרם', href: '#memorial' },
   { label: 'בוגרים', href: '#alumni' },
   { label: 'צוות', href: '#team' },
   { label: 'עמיר מנחם', href: '#amir' },
@@ -109,7 +109,10 @@ export default function Navbar({ onContactOpen, forceLifted = false }) {
               : 'bg-white/10 backdrop-blur-md border border-white/20'
           }`}
         >
-          <a href="#home" onClick={handleLogoClick}>
+          {/* The logo image is only 22×32, so the anchor carries its own 44px
+              hit area (the bar's py-3 already reserves the room — this just
+              claims it) rather than leaving a sub-thumb-sized home link. */}
+          <a href="#home" onClick={handleLogoClick} className="flex items-center min-h-[44px] pe-2">
             <img src={logo} alt="חמש אצבעות" className="h-8 w-auto" />
           </a>
           <button
@@ -126,9 +129,21 @@ export default function Navbar({ onContactOpen, forceLifted = false }) {
         </div>
 
         {/* Mobile drawer */}
+        {/* The open height is capped to the viewport, not a flat 500px: the panel
+            is inside a `fixed` nav, so anything taller than the screen simply
+            can't be reached — page scroll doesn't move it. On a landscape phone
+            (~390px tall) the six links + CTA measure 444px, which used to strand
+            צוות, עמיר מנחם and the יצירת קשר button off-screen with
+            `overflow-hidden`. Capping at 100dvh minus the bar (6.5rem) and
+            scrolling the overflow makes every item reachable at any height.
+            `data-lenis-prevent` keeps that inner scroll away from Lenis (see
+            index.css) so the page underneath doesn't move with it. */}
         <div
-          className={`mx-4 mt-1 bg-white/70 backdrop-blur-2xl border border-line rounded-2xl overflow-hidden transition-all duration-300 shadow-xl shadow-navy/10 ${
-            menuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+          data-lenis-prevent
+          className={`mx-4 mt-1 bg-white/70 backdrop-blur-2xl border border-line rounded-2xl transition-all duration-300 shadow-xl shadow-navy/10 ${
+            menuOpen
+              ? 'max-h-[min(31.25rem,calc(100dvh-6.5rem))] opacity-100 overflow-y-auto overscroll-contain'
+              : 'max-h-0 opacity-0 overflow-hidden'
           }`}
         >
           <div className="p-4">

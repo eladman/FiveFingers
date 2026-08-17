@@ -64,7 +64,11 @@ export default function AcademyTestimonials() {
             <ChevronRight size={20} />
           </button>
 
-          <div className="flex items-center gap-2" role="tablist" aria-label="בחירת עדות">
+          {/* The dots stay 8px tall visually, but each carries an invisible
+              44px-tall ::after hit area — they measured 28×8, by far the
+              smallest tap target on the site. The gap widens on touch so the
+              neighbouring hit areas don't overlap. */}
+          <div className="flex items-center gap-2 [@media(pointer:coarse)]:gap-3" role="tablist" aria-label="בחירת עדות">
             {testimonials.map((item, i) => (
               <button
                 key={item.id}
@@ -72,7 +76,7 @@ export default function AcademyTestimonials() {
                 aria-selected={i === active}
                 aria-label={`עדות ${i + 1}`}
                 onClick={() => go(i)}
-                className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy/40 ${
+                className={`relative h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy/40 after:absolute after:-inset-x-1.5 after:top-1/2 after:h-11 after:-translate-y-1/2 after:content-[''] ${
                   i === active ? 'w-7 bg-orange' : 'w-2 bg-navy/20 hover:bg-navy/40'
                 }`}
               />

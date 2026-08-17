@@ -338,6 +338,55 @@ html.a11y-big-cursor * {
 }
 .group:hover .btn-sheen { left: 130%; }
 
+/* Hover lift — pointer-gated. A touch screen fires a synthetic mouseenter on  */
+/* tap but never a matching mouseleave, so the old inline JS version left      */
+/* every CTA stuck at scale(1.04) after the finger lifted. In CSS, :hover      */
+/* simply never sticks, and touch falls through to active:scale-[0.97].        */
+@media (hover: hover) and (pointer: fine) {
+  .btn-lift:hover { transform: scale(1.04); }
+}
+
+/* ─── Touch hit areas ───────────────────────────────────────── */
+/* Small text links (footer columns, inline arrow CTAs, tel/mailto rows) render
+   ~20-28px tall, under the 44px minimum touch target. This grows the box only —
+   the type size and colour are untouched, so the visual weight of the link is
+   unchanged. Applied unconditionally rather than behind (pointer: coarse):
+   a 44px target is correct for a mouse too, and an unconditional rule is one
+   we can actually verify in the browser harness. */
+.tap-safe {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* ─── Floating action buttons ───────────────────────────────── */
+/* The WhatsApp FAB (App.jsx) and the a11y FAB (which renders through a portal */
+/* outside #root) are both inline-styled, so their insets live here where one  */
+/* rule reaches both. max() keeps the existing desktop offsets and only grows  */
+/* them where a home indicator / notch actually exists — same idiom the hero   */
+/* scroll indicators already use.                                             */
+.ds-fab       { bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 12px)); }
+.ds-fab-end   { right:  max(24px, calc(env(safe-area-inset-right,  0px) + 12px)); }
+.ds-fab-start { left:   max(24px, calc(env(safe-area-inset-left,   0px) + 12px)); }
+
+/* Same pointer gate as .btn-lift — these used inline mouseenter handlers that */
+/* left the FAB stuck enlarged after a tap.                                    */
+@media (hover: hover) and (pointer: fine) {
+  .ds-fab:hover { transform: scale(1.08); box-shadow: var(--shadow-lg); }
+  /* the a11y trigger also deepens its blue, as it did inline */
+  .ds-fab-start:hover { background-color: #0d47a1 !important; }
+  .cm-close:hover {
+    background: rgba(255, 255, 255, 0.22) !important;
+    transform: rotate(90deg);
+  }
+  /* Only unselected chips tint — an active chip keeps its orange fill, and
+     tinting its label orange would make the text vanish against it. */
+  .cm-chip:not([data-active]):hover {
+    border-color: var(--orange) !important;
+    color: var(--orange) !important;
+  }
+}
+
 /* Breathing halo for THE hero CTA only. drop-shadow follows the    */
 /* pill shape and isn't clipped by overflow-hidden.                 */
 .btn-glow { animation: emberHalo 2.4s var(--ease-brand) infinite; }

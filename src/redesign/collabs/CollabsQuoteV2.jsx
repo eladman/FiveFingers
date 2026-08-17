@@ -97,7 +97,7 @@ export default function CollabsQuoteV2() {
 
             <div className="cq2-outro mt-10 pt-6 border-t border-navy/15 flex flex-col sm:flex-row sm:items-end justify-between gap-5 sm:gap-10">
               <p className="font-heebo text-navy/70 leading-[1.85] max-w-xl text-right" style={{ fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
-                צוות המדריכים שלנו מגיע מעולמות החינוך, הצבא והספורט — אנשים שעברו את מסלול ההכשרה
+                צוות המדריכים שלנו מגיע מעולמות החינוך, הצבא והספורט, אנשים שעברו את מסלול ההכשרה
                 של חמש אצבעות וחיים את השיטה בעצמם.
               </p>
               <cite className="font-heebo not-italic font-bold text-navy whitespace-nowrap shrink-0 text-sm md:text-base">

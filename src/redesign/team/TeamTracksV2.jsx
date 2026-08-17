@@ -17,7 +17,7 @@ const TRACKS = [
     id: 'coach',
     badge: 'התפקיד המרכזי',
     title: 'מאמן/ת',
-    text: 'הלב של התנועה — דמות מופת שחיה את הערכים, בונה אמון ומובילה קבוצה של צעירים וצעירות לאורך זמן. זו לא עוד עבודה — זו שליחות שמעצבת אנשים.',
+    text: 'הלב של התנועה, דמות מופת שחיה את הערכים, בונה אמון ומובילה קבוצה של צעירים וצעירות לאורך זמן. זו לא עוד עבודה. זו שליחות שמעצבת אנשים.',
     image: '/Hero-Pics/214A0088.jpg',
     tag: 'מאמן/ת',
     cta: 'רוצה לשמוע פרטים',
@@ -26,7 +26,7 @@ const TRACKS = [
     id: 'instructor',
     badge: 'הדרכה בשטח',
     title: 'מדריך/ה בהזנק',
-    text: 'הקו הראשון של החוויה — להפעיל, ללוות קבוצות ברגעים המאתגרים ולתרגם את ערכי התנועה לשפה של שטח. למי שאוהבים אנשים, אנרגיה גבוהה ואחריות.',
+    text: 'הקו הראשון של החוויה: להפעיל, ללוות קבוצות ברגעים המאתגרים ולתרגם את ערכי התנועה לשפה של שטח. למי שאוהבים אנשים, אנרגיה גבוהה ואחריות.',
     image: '/Hero-Pics/214A0027.jpg',
     tag: 'הדרכה בהזנק',
     cta: 'מעניין אותי',
@@ -35,7 +35,7 @@ const TRACKS = [
     id: 'hq',
     badge: 'מאחורי הקלעים',
     title: 'תפקידי מטה',
-    text: 'הצוות שמאפשר לכל השאר לקרות. אם יש לכם כישרון ורצון להשפיע — כנראה שיש לנו מקום בשבילכם.',
+    text: 'הצוות שמאפשר לכל השאר לקרות. אם יש לכם כישרון ורצון להשפיע, כנראה שיש לנו מקום בשבילכם.',
     image: '/team_hero/office.png',
     tag: 'צוות מטה',
     cta: 'רוצים להתחבר',
@@ -107,7 +107,7 @@ export default function TeamTracksV2({ onRegister }) {
         <div className="ttr-heading max-w-3xl">
           <h2 className="ds-section-title text-navy">שלוש דרכים להוביל</h2>
           <p className="ds-section-subtitle text-orange-ink mt-4">
-            בשטח, מול קבוצה או מאחורי הקלעים — בחרו את הדרך שלכם.
+            בשטח, מול קבוצה או מאחורי הקלעים. בחרו את הדרך שלכם.
           </p>
         </div>
 
@@ -167,7 +167,7 @@ export default function TeamTracksV2({ onRegister }) {
                       <button
                         type="button"
                         onClick={() => onRegister?.(track.tag)}
-                        className="group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg"
+                        className="tap-safe group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg"
                       >
                         <span className="relative">
                           {track.cta}

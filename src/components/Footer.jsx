@@ -34,7 +34,7 @@ export default function Footer({ onContactOpen }) {
           <div className="md:col-span-1">
             <img src={logo} alt="חמש אצבעות" className="h-12 w-auto mb-5" />
             <p className="text-navy/55 text-sm leading-relaxed mb-7 max-w-xs">
-              מפתחים את הדור הבא של מנהיגי ישראל דרך מצוינות ערכית, חוויות אתגריות וקהילה תומכת — מאז 2014.
+              מפתחים את הדור הבא של מנהיגי ישראל דרך מצוינות ערכית, חוויות אתגריות וקהילה תומכת, מאז 2014.
             </p>
 
             {/* System operational indicator */}
@@ -51,21 +51,24 @@ export default function Footer({ onContactOpen }) {
           {Object.entries(FOOTER_NAV).map(([category, links]) => (
             <div key={category}>
               <h4 className="text-orange-ink font-semibold text-sm mb-5 tracking-wide">{category}</h4>
-              <ul className="space-y-3.5">
+              {/* .tap-safe already gives each row a 44px box, so the gap shrinks
+                  to keep the column's rhythm close to its original density
+                  instead of stacking 14px gaps on top of taller targets. */}
+              <ul className="space-y-0.5">
                 {links.map((link) => (
                   <li key={link.label}>
                     {link.action === 'contact' ? (
                       <button
                         type="button"
                         onClick={onContactOpen}
-                        className="text-navy/55 hover:text-navy text-sm transition-colors duration-200 text-right"
+                        className="tap-safe text-navy/55 hover:text-navy text-sm transition-colors duration-200 text-right"
                       >
                         {link.label}
                       </button>
                     ) : (
                       <a
                         href={link.href}
-                        className="text-navy/55 hover:text-navy text-sm transition-colors duration-200"
+                        className="tap-safe text-navy/55 hover:text-navy text-sm transition-colors duration-200"
                       >
                         {link.label}
                       </a>
@@ -82,7 +85,7 @@ export default function Footer({ onContactOpen }) {
             pages exist — re-add here once those routes/pages are created. */}
         <div className="border-t border-navy/10 pt-8 flex items-center justify-center">
           <p className="text-navy/40 text-sm text-center">
-            © {new Date().getFullYear()} תנועת חמש אצבעות — אמיר מנחם ויורם מנחם. כל הזכויות שמורות.
+            © {new Date().getFullYear()} תנועת חמש אצבעות · אמיר מנחם ויורם מנחם. כל הזכויות שמורות.
           </p>
         </div>
       </div>

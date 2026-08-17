@@ -97,10 +97,10 @@ export default function AmirEssenceV2() {
           <div className="aes-supportwrap">
             <p className="aes-support font-heebo text-navy/70 leading-[1.85]" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
               עמיר בן 36, קצין שייטת 13 לשעבר, מייסד ויו״ר תנועת חמש אצבעות, יזם סדרתי ומגיש הפודקאסט
-              ״האדם בזירה״ — עם ניסיון של מעל 1,000 הרצאות בכל רחבי הארץ.
+              ״האדם בזירה״, עם ניסיון של מעל 1,000 הרצאות בכל רחבי הארץ.
             </p>
             <p className="aes-support font-heebo text-navy/70 leading-[1.85] mt-6" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
-              היום עמיר פועל גם בפאן האישי — הרצאות, סדנאות וליווי של גילאי 20 ומעלה בדרך ליזמות
+              היום עמיר פועל גם בפאן האישי: הרצאות, סדנאות וליווי של גילאי 20 ומעלה בדרך ליזמות
               ולמימוש פוטנציאל.
             </p>
 

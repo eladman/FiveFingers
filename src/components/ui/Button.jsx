@@ -55,15 +55,17 @@ export default function Button({
 
   const base =
     `group relative overflow-hidden inline-flex items-center justify-center font-bold ` +
-    `rounded-full whitespace-nowrap transition-transform duration-300 ease-brand ` +
+    `btn-lift rounded-full whitespace-nowrap transition-transform duration-300 ease-brand ` +
     `active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ` +
     `${VARIANTS[variant] || VARIANTS.primary} ${SIZES[size] || SIZES.md} ` +
     `${glow && isPrimary && !isDisabled ? 'btn-glow' : ''} ` +
     `${isDisabled ? 'opacity-50 pointer-events-none' : ''} ${className}`
 
-  const onEnter = (e) => { if (!isDisabled) e.currentTarget.style.transform = 'scale(1.04)' }
-  const onLeave = (e) => { e.currentTarget.style.transform = 'scale(1)' }
-
+  // The hover lift lives in CSS (.btn-lift, gated on a real pointer) rather than
+  // inline onMouseEnter/onMouseLeave. Two reasons: a touch tap fires a synthetic
+  // mouseenter with no matching mouseleave, which stranded the button at
+  // scale(1.04) after the finger lifted; and an inline transform outranks the
+  // `active:scale-[0.97]` class, so the press-down state never rendered at all.
   const inner = (
     <>
       {isPrimary ? (
@@ -82,8 +84,6 @@ export default function Button({
 
   const shared = {
     className: base,
-    onMouseEnter: onEnter,
-    onMouseLeave: onLeave,
     'aria-label': ariaLabel,
     'aria-busy': loading || undefined,
   }
