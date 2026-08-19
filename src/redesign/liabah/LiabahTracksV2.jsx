@@ -124,18 +124,25 @@ export default function LiabahTracksV2({ onRegister }) {
                     >
                       {prog.description}
                     </p>
-                    <div className="ltr-el mt-6">
-                      <button
-                        type="button"
-                        onClick={onRegister}
+                    <div className="ltr-el mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
+                      {/* dedicated age page — the main door for parents */}
+                      <a
+                        href={`#liabah/${prog.id}`}
                         className="tap-safe group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg"
                       >
                         <span className="relative">
-                          הרשמה לקבוצה
+                          לכל הפרטים על המסלול
                           <span className="absolute -bottom-1 right-0 h-[2px] w-full bg-orange origin-right scale-x-100 group-hover/link:scale-x-0 transition-transform duration-300" />
                           <span className="absolute -bottom-1 right-0 h-[2px] w-full bg-navy origin-left scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 delay-150" />
                         </span>
                         <ArrowLeft size={20} className="text-orange-ink transition-transform duration-300 group-hover/link:-translate-x-1.5" aria-hidden="true" />
+                      </a>
+                      <button
+                        type="button"
+                        onClick={onRegister}
+                        className="tap-safe font-heebo font-semibold text-navy/55 hover:text-navy text-base transition-colors"
+                      >
+                        הרשמה לקבוצה
                       </button>
                     </div>
                   </div>

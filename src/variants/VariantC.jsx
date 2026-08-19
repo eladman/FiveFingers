@@ -126,7 +126,7 @@ export default function VariantC() {
               border: `1px solid rgba(232,93,58,0.15)`,
             }}>
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: CORAL, display: 'inline-block' }} />
-              תנועת נוער ישראלית · פועלת מ-2014
+              תנועה ישראלית · פועלת מ-2014
             </div>
 
             {/* Headline */}

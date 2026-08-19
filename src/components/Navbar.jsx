@@ -11,6 +11,7 @@ const NAV_LINKS = [
   // it opens instantly with no full page reload like the rest of the site.
   { label: 'לזכרם', href: '#memorial' },
   { label: 'בוגרים', href: '#alumni' },
+  { label: 'אודות', href: '#about' },
   { label: 'צוות', href: '#team' },
   { label: 'עמיר מנחם', href: '#amir' },
 ]

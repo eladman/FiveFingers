@@ -36,7 +36,7 @@ export default function WhoWeAre() {
           style={{ fontSize: 'clamp(2.3rem, 5.4vw, 4.6rem)' }}
         >
           חמש אצבעות היא{' '}
-          <span className="text-[#ff8714]">תנועת נוער חינוכית-חברתית</span>{' '}
+          <span className="text-[#ff8714]">תנועה חינוכית-חברתית</span>{' '}
           הפועלת בכל רחבי הארץ לפיתוח הדור הבא.
         </h2>
 

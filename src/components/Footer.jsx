@@ -11,6 +11,7 @@ const FOOTER_NAV = {
     { label: 'בוגרים', href: '#programs' },
   ],
   אודות: [
+    { label: 'הסיפור שלנו', href: '#about' },
     { label: 'עמיר מנחם', href: '#amir' },
     { label: 'ערכים', href: '#dna' },
     { label: 'חזון', href: '#manifesto' },

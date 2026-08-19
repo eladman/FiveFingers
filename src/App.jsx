@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Preloader, { shouldShowPreloader } from './redesign/Preloader'
 import Hero from './components/Hero'
 import IntroV2 from './redesign/IntroV2'
+import VisionV2 from './redesign/VisionV2'
 import Manifesto from './redesign/Manifesto'
 import FiveDNA from './redesign/FiveDNA'
 import ProgramsV2 from './redesign/ProgramsV2'
@@ -13,11 +14,13 @@ import Footer from './components/Footer'
 import ContactModal from './components/ContactModal'
 import AccessibilityWidget from './components/Accessibility/AccessibilityWidget'
 import LiabahPage from './pages/LiabahPage'
+import LiabahAgePage from './pages/LiabahAgePage'
 import AcademyPage from './pages/AcademyPage'
 import CollaborationsPage from './pages/CollaborationsPage'
 import AmirPage from './pages/AmirPage'
 import AlumniPage from './pages/AlumniPage'
 import TeamPage from './pages/TeamPage'
+import AboutPage from './pages/AboutPage'
 import MemorialPage from './pages/MemorialPage'
 import HeroConcepts from './HeroConcepts'
 import { WHATSAPP_HREF } from './data/contact'
@@ -27,11 +30,19 @@ import { WHATSAPP_HREF } from './data/contact'
 // mounted instead of bouncing back home. New dedicated pages go here.
 function resolveView(hash) {
   if (hash.startsWith('#hero-concepts')) return 'concepts'
+  // Age-band pages live under #liabah/<band> — must match before the plain
+  // #liabah prefix. Suffixes (e.g. #liabah/young-overview) keep the page mounted.
+  if (hash.startsWith('#liabah/young')) return 'liabah-young'
+  if (hash.startsWith('#liabah/middle')) return 'liabah-middle'
+  if (hash.startsWith('#liabah/high')) return 'liabah-high'
   if (hash.startsWith('#liabah')) return 'liabah'
   if (hash.startsWith('#academy')) return 'academy'
   if (hash.startsWith('#collabs')) return 'collabs'
   if (hash.startsWith('#amir')) return 'amir'
   if (hash.startsWith('#alumni')) return 'alumni'
+  // #about / #about-origin / #about-journey / ... — the story page and every
+  // one of its in-page anchors resolve here.
+  if (hash.startsWith('#about')) return 'about'
   if (hash.startsWith('#team')) return 'team'
   // #memorial / #memorial-hall / #memorial-n<i> — the memorial hall + its
   // per-person pages all resolve here, so moving between them never remounts.
@@ -45,6 +56,9 @@ function resolveView(hash) {
 // the modal opens with the full picker.
 const VIEW_TO_PRODUCT = {
   liabah: 'קבוצות הנוער',
+  'liabah-young': 'קבוצות הנוער',
+  'liabah-middle': 'קבוצות הנוער',
+  'liabah-high': 'קבוצות הנוער',
   academy: 'מכינה',
   collabs: 'שיתוף פעולה',
   amir: 'קשר עם עמיר',
@@ -115,7 +129,7 @@ export default function App() {
   }, [introDone])
 
   // Dedicated pages render their own Navbar immediately (no Hero intro to gate it).
-  const isDedicatedPage = view === 'liabah' || view === 'academy' || view === 'collabs' || view === 'amir' || view === 'alumni' || view === 'team'
+  const isDedicatedPage = view.startsWith('liabah') || view === 'academy' || view === 'collabs' || view === 'amir' || view === 'alumni' || view === 'about' || view === 'team'
   const navVisible = isDedicatedPage || navReady
 
   const openContact = (product = '') => {
@@ -149,8 +163,13 @@ export default function App() {
   return (
     <div className="antialiased">
       <div style={{ opacity: navVisible ? 1 : 0, transition: 'opacity 0.7s ease' }}>
-        {/* no forceLifted pages left — every v2 hero is a dark full-bleed photo */}
-        <Navbar onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')} />
+        {/* אודות is the one page with a light hero (a typographic title page,
+            not a photo), so the nav must start in its lifted/navy style there —
+            the default white-on-transparent treatment would be invisible on it. */}
+        <Navbar
+          forceLifted={view === 'about'}
+          onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')}
+        />
       </div>
       <ContactModal
         isOpen={contactOpen}
@@ -160,6 +179,14 @@ export default function App() {
 
       {view === 'liabah' ? (
         <LiabahPage onContactOpen={openContact} />
+      ) : view.startsWith('liabah-') ? (
+        // key remounts the page when hopping between bands, so entrance
+        // animations and ScrollTriggers rebuild for the new content.
+        <LiabahAgePage
+          key={view}
+          band={view.slice('liabah-'.length)}
+          onContactOpen={openContact}
+        />
       ) : view === 'academy' ? (
         <AcademyPage onContactOpen={openContact} />
       ) : view === 'collabs' ? (
@@ -168,6 +195,8 @@ export default function App() {
         <AmirPage onContactOpen={openContact} />
       ) : view === 'alumni' ? (
         <AlumniPage onContactOpen={openContact} />
+      ) : view === 'about' ? (
+        <AboutPage onContactOpen={openContact} />
       ) : view === 'team' ? (
         <TeamPage onContactOpen={openContact} />
       ) : (
@@ -175,6 +204,7 @@ export default function App() {
           {!introDone && <Preloader onDone={() => setIntroDone(true)} />}
           {introDone && <Hero onComplete={() => setNavReady(true)} onContactOpen={openContact} />}
           <IntroV2 />
+          <VisionV2 />
           <Manifesto />
           <FiveDNA />
           <ProgramsV2 onContactOpen={openContact} />
