@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLayoutEffect } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from './components/Navbar'
 import Preloader, { shouldShowPreloader } from './redesign/Preloader'
@@ -24,6 +24,7 @@ import AboutPage from './pages/AboutPage'
 import MemorialPage from './pages/MemorialPage'
 import HeroConcepts from './HeroConcepts'
 import { WHATSAPP_HREF } from './data/contact'
+import { getLenis } from './lib/smoothScroll'
 
 // Maps the URL hash to a top-level view. Prefix match so in-page anchors
 // (e.g. #academy-essence from the hero "גלו עוד") keep the dedicated page
@@ -107,13 +108,18 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
-  // Whenever the top-level view changes (nav to another page), start at the very
-  // top — no matter what. Runs after the new page has rendered, so it wins over
-  // any layout-driven scroll. Two frames guard against the browser re-applying a
-  // restored position between commit and paint.
-  useEffect(() => {
-    window.scrollTo(0, 0)
-    const id = requestAnimationFrame(() => window.scrollTo(0, 0))
+  // Whenever the top-level view changes, start at the hero before the new page
+  // is painted. Reset Lenis as well as the native scroll position: otherwise a
+  // hash link clicked low on the homepage can carry its momentum/target into the
+  // dedicated page and leave it opened near the bottom.
+  useLayoutEffect(() => {
+    const scrollToTop = () => {
+      getLenis()?.scrollTo(0, { immediate: true, force: true })
+      window.scrollTo(0, 0)
+    }
+
+    scrollToTop()
+    const id = requestAnimationFrame(scrollToTop)
     return () => cancelAnimationFrame(id)
   }, [view])
 
