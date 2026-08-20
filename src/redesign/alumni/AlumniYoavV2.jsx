@@ -91,7 +91,7 @@ export default function AlumniYoavV2() {
                     <Icon size={26} strokeWidth={1.9} />
                   </span>
                   <span className="font-mono text-white/25 text-sm tracking-widest" dir="ltr">
-                    {String(i + 1).padStart(2, '0')}
+                    {i + 1}
                   </span>
                 </div>
                 <h3 className="font-ragmarom text-white mt-7 leading-none" style={{ fontSize: 'clamp(1.8rem, 2.6vw, 2.4rem)' }}>

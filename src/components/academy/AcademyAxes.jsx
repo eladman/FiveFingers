@@ -31,7 +31,7 @@ export default function AcademyAxes() {
                 className="font-ragmarom text-navy/25 leading-none tabular-nums transition-colors duration-300 group-hover:text-orange"
                 style={{ fontSize: 'clamp(1.6rem, 2.4vw, 2.4rem)' }}
               >
-                {String(i + 1).padStart(2, '0')}
+                {i + 1}
               </span>
               <h3
                 className="font-heebo font-bold text-navy leading-tight"

@@ -86,7 +86,7 @@ export const FALLEN = {
     "h": "https://www.remember-adir-mesika.com/"
    }
   ],
-  "idx": "01"
+  "idx": "1"
  },
  "alon-werber": {
   "id": "alon-werber",
@@ -158,7 +158,7 @@ export const FALLEN = {
    "embed": "https://open.spotify.com/embed/track/1SKPmfSYaPsETbRHaiA18G"
   },
   "links": [],
-  "idx": "02"
+  "idx": "2"
  },
  "ben-fishman": {
   "id": "ben-fishman",
@@ -237,7 +237,7 @@ export const FALLEN = {
     "h": "https://soundcloud.com/rom-tzabar/dj-set-by-tzabar-tribute-for-ben-fishman"
    }
   ],
-  "idx": "03"
+  "idx": "3"
  },
  "guy-iluz": {
   "id": "guy-iluz",
@@ -307,7 +307,7 @@ export const FALLEN = {
     "h": "https://open.spotify.com/playlist/00lmjmVrJgHmHRxmifZWq3"
    }
   ],
-  "idx": "04"
+  "idx": "4"
  },
  "guy-bazak": {
   "id": "guy-bazak",
@@ -381,7 +381,7 @@ export const FALLEN = {
     "h": "https://www.instagram.com/remember.guy.bazak"
    }
   ],
-  "idx": "05"
+  "idx": "5"
  },
  "hadar-kama": {
   "id": "hadar-kama",
@@ -470,7 +470,7 @@ export const FALLEN = {
     "h": "https://www.hadar-kama.com/"
    }
   ],
-  "idx": "06"
+  "idx": "6"
  },
  "yotam-ben-bassat": {
   "id": "yotam-ben-bassat",
@@ -554,7 +554,7 @@ export const FALLEN = {
    "embed": "https://open.spotify.com/embed/track/4osXldskNRjqEiWkxJkUJB"
   },
   "links": [],
-  "idx": "07"
+  "idx": "7"
  },
  "ron-tzarfati": {
   "id": "ron-tzarfati",
@@ -641,7 +641,7 @@ export const FALLEN = {
     "h": "https://www.instagram.com/remember_ronzarfati"
    }
   ],
-  "idx": "08"
+  "idx": "8"
  },
  "roi-nehari": {
   "id": "roi-nehari",
@@ -733,7 +733,7 @@ export const FALLEN = {
     "h": "https://www.instagram.com/remember_roi"
    }
   ],
-  "idx": "09"
+  "idx": "9"
  },
  "lior-simanovich": {
   "id": "lior-simanovich",

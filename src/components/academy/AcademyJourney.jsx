@@ -76,7 +76,7 @@ export default function AcademyJourney() {
               >
                 <div className="flex items-baseline justify-between gap-4">
                   <span className="font-ragmarom text-orange/80 leading-none" style={{ fontSize: 'clamp(2.4rem, 3vw, 3.4rem)' }}>
-                    {String(i + 1).padStart(2, '0')}
+                    {i + 1}
                   </span>
                   <span className="font-heebo font-semibold text-navy/45 text-sm" style={{ letterSpacing: '0.06em' }}>
                     {item.period}

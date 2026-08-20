@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { MapPin, Clock, Users, User, X, ChevronLeft } from 'lucide-react'
-import { locations, coaches } from '../../data/liabahData'
+import { MapPin, Clock, X, ChevronLeft, ChevronRight, Check } from 'lucide-react'
+import { locations } from '../../data/liabahData'
 import { ISRAEL_PATH, VIEWBOX_W, VIEWBOX_H, project } from '../../data/israelOutline'
+import { GlowField, SelectField, DateField, SubmitButton } from '../contactFields'
+import { YOUTH_GROUP_FIELDS, YOUTH_GROUP_PRODUCT } from '../../data/youthGroupFields'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -69,18 +71,206 @@ function teamLabel(name, city) {
   return stripped || name
 }
 
+/** First letters of the first two words — a quiet contact-card monogram. */
+function initials(name) {
+  const parts = name.trim().split(/\s+/).filter(Boolean)
+  return (parts[0]?.[0] || '') + (parts[1]?.[0] || '')
+}
+
+/**
+ * Per-team interest form. Mirrors the youth-group ("קבוצות הנוער") flow of the
+ * main ContactModal — same fields, same components, same payload — but framed
+ * around the team the visitor already picked on the map. That chosen team
+ * (city · team · coach) is shown up top with a "change" link and travels along
+ * in the payload as extra data (team/city/coach + a readable inquiryDetails).
+ *
+ * Persistence reuses the same Make.com webhook as ContactModal — the only
+ * sanctioned write into `contact_submissions` (browser inserts are RLS-blocked;
+ * Make writes with the service_role key). product_type = 'קבוצות הנוער', so it
+ * lands beside every other youth-group lead in the staff dashboard.
+ */
+function TeamInterestForm({ team, city, onBack }) {
+  const teamName = teamLabel(team.name, city)
+  // Core + youth-group fields, with the child's city pre-filled to the team's
+  // city as a sensible (still editable) default.
+  const [form, setForm] = useState(() => ({
+    name: '',
+    phone: '',
+    email: '',
+    ...Object.fromEntries(YOUTH_GROUP_FIELDS.map((f) => [f.name, f.name === 'childCity' ? city : ''])),
+  }))
+  const [status, setStatus] = useState('idle') // idle | loading | error
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleChange = (e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (status === 'loading') return
+    setStatus('loading')
+
+    // Same shape ContactModal sends, so the existing Make scenario maps it with
+    // no changes. Extra keys = the chosen team (readable in the drawer + raw).
+    const extraValues = Object.fromEntries(YOUTH_GROUP_FIELDS.map((f) => [f.name, form[f.name] ?? '']))
+    const details = Object.fromEntries(YOUTH_GROUP_FIELDS.map((f) => [f.label, form[f.name] ?? '']))
+    const payload = {
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      productType: YOUTH_GROUP_PRODUCT,
+      ...extraValues,
+      // The team the visitor chose on the map:
+      team: team.name,
+      city,
+      coach: team.coach || '',
+      inquiryDetails: `קבוצה שנבחרה: ${teamName} · עיר: ${city}${team.coach ? ` · מאמן/ת: ${team.coach}` : ''}`,
+      details: {
+        ...details,
+        'קבוצה שנבחרה': teamName,
+        'עיר הקבוצה': city,
+        'מאמן/ת הקבוצה': team.coach || '',
+      },
+      submittedAt: new Date().toISOString(),
+      source: 'fivefingers-website',
+      pageUrl: window.location.href,
+    }
+
+    const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL
+
+    try {
+      if (webhookUrl) {
+        const res = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+        if (!res.ok) throw new Error(`Webhook responded ${res.status}`)
+      } else {
+        // No webhook configured yet — keep a simulated send for local dev.
+        console.warn('VITE_MAKE_WEBHOOK_URL not set — skipping Make webhook.', payload)
+        await new Promise((r) => setTimeout(r, 800))
+      }
+      setSubmitted(true)
+    } catch (err) {
+      console.error('Team interest submission failed:', err)
+      setStatus('error')
+    }
+  }
+
+  if (submitted) {
+    return (
+      <div className="px-6 sm:px-8 pt-6 pb-10 text-center animate-[fadeIn_0.25s_ease-out]">
+        <div
+          className="flex items-center justify-center mx-auto mb-5 rounded-full"
+          style={{ width: '72px', height: '72px', background: '#fff3e6', boxShadow: '0 0 0 8px rgba(255,135,20,0.08)' }}
+        >
+          <Check size={32} className="text-orange" strokeWidth={2.5} />
+        </div>
+        <h3 className="font-heebo font-bold text-navy text-2xl tracking-tight">
+          {form.name ? `תודה, ${form.name.split(' ')[0]}!` : 'תודה רבה!'}
+        </h3>
+        <p className="font-heebo text-navy/55 text-[15px] leading-relaxed max-w-[300px] mx-auto mt-2">
+          קיבלנו את הפנייה לקבוצת {teamName} ב{city} — נחזור אליכם תוך 24 שעות. נתראה בזירה. 🔥
+        </p>
+        <button
+          type="button"
+          onClick={onBack}
+          className="mt-6 font-heebo font-semibold text-orange text-[15px] hover:opacity-70 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded px-2 py-1"
+        >
+          חזרה לפרטי העיר
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="px-6 sm:px-8 pt-8 pb-8 flex flex-col gap-5">
+      {/* Back to the city detail */}
+      <button
+        type="button"
+        onClick={onBack}
+        className="flex items-center gap-0.5 self-start -mr-1 font-heebo font-medium text-navy/50 text-[15px] hover:text-navy transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded"
+      >
+        <ChevronRight size={18} />
+        חזרה לפרטי העיר
+      </button>
+
+      {/* Heading — matches the ContactModal join form */}
+      <div>
+        <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-orange mb-2">טופס הצטרפות</p>
+        <h3 className="font-heebo font-bold text-navy text-[26px] leading-tight tracking-tight">ספרו לנו עליכם</h3>
+        <p className="font-heebo text-navy/45 text-sm mt-1">כמה פרטים קצרים ונחזור אליכם תוך 24 שעות.</p>
+      </div>
+
+      {/* The team the visitor already chose on the map */}
+      <div className="rounded-2xl p-4" style={{ background: '#f7f8fa', border: '1px solid #eef0f3' }}>
+        <div className="flex items-center justify-between gap-3">
+          <span className="font-heebo text-[11px] font-semibold" style={{ color: '#9aa0ad' }}>הקבוצה שבחרתם</span>
+          <button
+            type="button"
+            onClick={onBack}
+            className="font-heebo text-[13px] font-semibold text-orange hover:opacity-70 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded"
+          >
+            שינוי
+          </button>
+        </div>
+        <div className="font-heebo font-bold text-navy mt-1.5">{teamName}</div>
+        <div className="font-heebo text-[13px]" style={{ color: '#6b7180' }}>
+          {city}{team.coach ? ` · מאמן/ת ${team.coach}` : ''}
+        </div>
+      </div>
+
+      {/* Core contact */}
+      <GlowField label="שם מלא" name="name" type="text" value={form.name} onChange={handleChange} placeholder="ישראל/ה ישראלי/ת" autoComplete="name" required />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <GlowField label="טלפון" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="050-0000000" autoComplete="tel" dir="rtl" required />
+        <GlowField label="מייל" name="email" type="email" value={form.email} onChange={handleChange} placeholder="example@mail.com" autoComplete="email" required />
+      </div>
+
+      {/* Youth-group questions — identical to the ContactModal flow */}
+      <div className="flex flex-col gap-5">
+        {YOUTH_GROUP_FIELDS.map((field) =>
+          field.type === 'date' ? (
+            <DateField key={field.name} label={field.label} name={field.name} value={form[field.name] ?? ''} onChange={handleChange} required={field.required} />
+          ) : field.type === 'select' ? (
+            <SelectField key={field.name} label={field.label} name={field.name} value={form[field.name] ?? ''} onChange={handleChange} options={field.options} required={field.required} />
+          ) : (
+            <GlowField key={field.name} label={field.label} name={field.name} type={field.type} value={form[field.name] ?? ''} onChange={handleChange} placeholder={field.placeholder} autoComplete={field.autoComplete} required={field.required} />
+          )
+        )}
+      </div>
+
+      {status === 'error' && (
+        <p className="font-heebo text-center text-sm" style={{ color: '#d23a3a' }} role="alert">
+          משהו השתבש בשליחה. נסו שוב, או דברו איתנו בוואטסאפ 🙏
+        </p>
+      )}
+
+      <SubmitButton loading={status === 'loading'} />
+
+      <p className="font-heebo text-center text-xs" style={{ color: '#b3b8c2' }}>
+        הפרטים שלכם נשמרים אצלנו בלבד 🤝
+      </p>
+    </form>
+  )
+}
+
 export default function LiabahMap() {
   const ref = useRef(null)
   const [active, setActive] = useState(null)   // hovered/focused pin
   const [selected, setSelected] = useState(null) // clicked city → detail panel
+  const [interestTeam, setInterestTeam] = useState(null) // team → interest form
 
   const selectedLoc = locations.find((l) => l.id === selected) || null
-  // Area lead = the base manager (מנהל/ת בייס). Reuse a coach headshot when we
-  // have one for that person; otherwise the panel shows a placeholder.
-  const leadPhoto = selectedLoc ? coaches.find((c) => c.name === selectedLoc.manager) : null
+  // Area lead = the base manager (מנהל/ת בייס). We show their name only — no photo.
   const selectedLead = selectedLoc && selectedLoc.manager
-    ? { name: selectedLoc.manager, role: 'מנהל/ת בייס', imageSrc: leadPhoto?.imageSrc, imgPosition: leadPhoto?.imgPosition }
+    ? { name: selectedLoc.manager, role: 'מנהל/ת בייס' }
     : null
+
+  const closePanel = () => {
+    setSelected(null)
+    setInterestTeam(null)
+  }
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -254,9 +444,9 @@ export default function LiabahMap() {
       {/* City detail panel */}
       {selectedLoc && (
         <div
-          onClick={() => setSelected(null)}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 animate-[fadeIn_0.2s_ease-out]"
-          style={{ background: 'rgba(13,27,75,0.55)' }}
+          onClick={closePanel}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 backdrop-blur-md animate-[fadeIn_0.2s_ease-out]"
+          style={{ background: 'rgba(13,27,75,0.35)' }}
           role="dialog"
           aria-modal="true"
           aria-label={selectedLoc.city}
@@ -264,104 +454,85 @@ export default function LiabahMap() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl shadow-navy/30 animate-[fadeIn_0.25s_ease-out]"
+            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-[28px] bg-white shadow-2xl shadow-navy/25 ring-1 ring-navy/[0.06] animate-[fadeIn_0.25s_ease-out]"
           >
             <button
-              onClick={() => setSelected(null)}
+              onClick={closePanel}
               aria-label="סגור"
-              className="absolute top-4 left-4 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-navy/70 hover:text-navy hover:bg-white shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
+              className="absolute top-5 left-5 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-navy/[0.04] text-navy/45 hover:bg-navy/[0.08] hover:text-navy/70 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
             >
-              <X size={20} />
+              <X size={18} />
             </button>
 
-            {/* Area lead photo / placeholder */}
-            <div className="relative w-full h-52 sm:h-60 overflow-hidden bg-navy/[0.04] rounded-t-2xl">
-              {selectedLead?.imageSrc ? (
-                <>
-                  <img
-                    src={selectedLead.imageSrc}
-                    alt={selectedLead.name}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ objectPosition: selectedLead.imgPosition }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" />
-                </>
-              ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-orange/10">
-                    <User size={32} className="text-orange" strokeWidth={1.5} />
-                  </div>
-                  {selectedLead && (
-                    <div className="text-center">
-                      <h3 className="font-heebo font-bold text-navy text-lg">{selectedLead.name}</h3>
-                      <p className="font-heebo text-[#ff8714] text-sm">{selectedLead.role}</p>
+            {interestTeam ? (
+              <TeamInterestForm
+                team={interestTeam}
+                city={selectedLoc.city}
+                onBack={() => setInterestTeam(null)}
+              />
+            ) : (
+              /* City detail — a quiet contact card for the base manager (no photo) */
+              <div className="pb-3">
+                {/* Header */}
+                <div className="px-7 sm:px-8 pt-9 pb-6">
+                  <p className="font-heebo font-medium text-navy/40 text-[13px]">{selectedLoc.city}</p>
+                  {selectedLead ? (
+                    <div className="flex items-center gap-3.5 mt-3">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-navy/[0.05] shrink-0 font-heebo font-semibold text-navy/60 text-lg">
+                        {initials(selectedLead.name)}
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="font-heebo font-bold text-navy text-[22px] leading-tight tracking-tight truncate">{selectedLead.name}</h3>
+                        <p className="font-heebo text-navy/45 text-sm mt-0.5">{selectedLead.role}</p>
+                      </div>
                     </div>
+                  ) : (
+                    <h3 className="font-heebo font-bold text-navy text-[22px] leading-tight tracking-tight mt-1">{selectedLoc.city}</h3>
                   )}
                 </div>
-              )}
 
-              {/* City badge */}
-              <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 shadow-sm">
-                <MapPin size={14} className="text-orange" />
-                <span className="font-heebo font-bold text-navy text-sm">{selectedLoc.city}</span>
-              </div>
-
-              {/* Lead name over photo */}
-              {selectedLead?.imageSrc && (
-                <div className="absolute bottom-4 right-5 text-white">
-                  <h3 className="font-heebo font-bold text-2xl drop-shadow">{selectedLead.name}</h3>
-                  <p className="font-heebo text-white/85 text-sm drop-shadow">{selectedLead.role}</p>
-                </div>
-              )}
-            </div>
-
-            {/* Body */}
-            <div className="p-6 sm:p-7 flex flex-col gap-5">
-              {/* Training venue (מיקום) */}
-              {selectedLoc.venue && (
-                <div className="flex gap-3">
-                  <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-orange/10 shrink-0">
-                    <MapPin size={18} className="text-orange" />
-                  </div>
-                  <div>
-                    <h4 className="font-heebo font-bold text-navy text-sm mb-1">מיקום האימונים</h4>
-                    <p className="font-heebo text-navy/65 text-sm leading-relaxed">{selectedLoc.venue}</p>
+                {/* Meta — iOS-settings style label / value rows */}
+                <div className="px-7 sm:px-8">
+                  {selectedLoc.venue && (
+                    <div className="flex items-baseline justify-between gap-6 py-3.5 border-t border-navy/[0.07]">
+                      <span className="font-heebo text-navy/50 text-[15px] shrink-0">מיקום האימונים</span>
+                      <span className="font-heebo font-medium text-navy text-[15px] text-left">{selectedLoc.venue}</span>
+                    </div>
+                  )}
+                  <div className="flex items-baseline justify-between gap-6 py-3.5 border-t border-navy/[0.07]">
+                    <span className="font-heebo text-navy/50 text-[15px] shrink-0">ימי האימונים</span>
+                    <span className="font-heebo font-medium text-navy text-[15px] text-left">{selectedLoc.days}</span>
                   </div>
                 </div>
-              )}
 
-              {/* Teams in the city */}
-              <div className="flex gap-3">
-                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-orange/10 shrink-0">
-                  <Users size={18} className="text-orange" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-heebo font-bold text-navy text-sm mb-2">
-                    הקבוצות בעיר
-                    <span className="font-normal text-navy/40"> · {selectedLoc.teams.length}</span>
-                  </h4>
-                  <ul className="flex flex-col gap-1.5">
+                {/* Teams — full-bleed tappable rows, each opens an interest form */}
+                <div className="mt-5 border-t border-navy/[0.07]">
+                  <div className="flex items-baseline justify-between px-7 sm:px-8 pt-4 pb-2">
+                    <h4 className="font-heebo font-semibold text-navy text-[15px]">הקבוצות בעיר</h4>
+                    <span className="font-heebo text-navy/35 text-sm">{selectedLoc.teams.length} קבוצות</span>
+                  </div>
+                  <ul>
                     {selectedLoc.teams.map((t) => (
-                      <li key={t.name} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-orange shrink-0" aria-hidden="true" />
-                        <span className="font-heebo text-navy/70 text-sm">{teamLabel(t.name, selectedLoc.city)}</span>
+                      <li key={t.name}>
+                        <button
+                          type="button"
+                          onClick={() => setInterestTeam(t)}
+                          className="group w-full flex items-center gap-3 px-7 sm:px-8 py-3.5 border-t border-navy/[0.05] hover:bg-navy/[0.02] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-orange"
+                        >
+                          <div className="flex-1 text-right min-w-0">
+                            <div className="font-heebo font-medium text-navy text-[15px] truncate">{teamLabel(t.name, selectedLoc.city)}</div>
+                            {t.coach && (
+                              <div className="font-heebo text-navy/45 text-[13px] mt-0.5 truncate">{t.coach}</div>
+                            )}
+                          </div>
+                          <ChevronLeft size={18} className="shrink-0 text-navy/25 group-hover:text-orange transition-colors" />
+                        </button>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
-
-              {/* Workout days */}
-              <div className="flex gap-3">
-                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-orange/10 shrink-0">
-                  <Clock size={18} className="text-orange" />
-                </div>
-                <div>
-                  <h4 className="font-heebo font-bold text-navy text-sm mb-1">ימי האימונים</h4>
-                  <p className="font-heebo text-navy/65 text-sm leading-relaxed">{selectedLoc.days}</p>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       )}

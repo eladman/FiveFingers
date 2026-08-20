@@ -8,12 +8,13 @@ gsap.registerPlugin(ScrollTrigger)
 /**
  * The journey — מסוגלות → שייכות → השפעה, the page's signature moment.
  *
- * Desktop: the stage pins and the three phases ignite one after another
- * (crossfade + drift) while a three-segment progress bar fills — a vertical
- * cousin of the home FiveDNA train, so the home keeps its horizontal
- * signature. Mobile / reduced motion: plain stacked reveals.
+ * A single connected path: all three phases live on screen at once, threaded
+ * by one orange spine that draws itself in as the section enters view (the
+ * literal "דרך אחת"). The page scrolls normally — no pin, no scrub, no
+ * content swapping in place. Each step fades up in sequence; reduced motion
+ * shows everything immediately.
  *
- * Below the pin, the method triptych: three duotone photos, one line each.
+ * Below, the method triptych: three duotone photos, one line each.
  */
 
 /** One-line summary per pillar — the first sentence of the full copy. */
@@ -24,69 +25,29 @@ const firstSentence = (text) => {
 
 export default function LiabahJourneyV2() {
   const ref = useRef(null)
-  const pinRef = useRef(null)
-  const segsRef = useRef([])
-  const counterRef = useRef(null)
 
   useLayoutEffect(() => {
     const mm = gsap.matchMedia()
 
-    mm.add(
-      '(min-width: 1024px) and (prefers-reduced-motion: no-preference)',
-      () => {
-        const stages = gsap.utils.toArray('.jr-stage', ref.current)
-        // First stage visible, the rest waiting below.
-        gsap.set(stages[0], { opacity: 1, y: 0 })
-        gsap.set(stages.slice(1), { opacity: 0, y: 60 })
+    // The path + steps reveal on enter — same choreography every viewport.
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.fromTo('.jr-step',
+        { y: 44, opacity: 0 },
+        {
+          y: 0, opacity: 1, stagger: 0.18, duration: 0.9, ease: 'power3.out',
+          scrollTrigger: { trigger: '.jr-path', start: 'top 75%', once: true },
+        }
+      )
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: pinRef.current,
-            start: 'top top',
-            end: '+=220%',
-            pin: true,
-            scrub: 0.8,
-            anticipatePin: 1,
-            onUpdate: (self) => {
-              const idx = Math.min(2, Math.floor(self.progress * 3))
-              segsRef.current.forEach((seg, i) => {
-                if (seg) seg.style.opacity = i <= idx ? '1' : '0.22'
-              })
-              if (counterRef.current) counterRef.current.textContent = `${idx + 1} / 3`
-            },
-          },
-        })
+      // The spine draws itself top-to-bottom, tracing the "one path".
+      gsap.fromTo('.jr-spine-fill',
+        { scaleY: 0 },
+        {
+          scaleY: 1, duration: 1.5, ease: 'power2.out',
+          scrollTrigger: { trigger: '.jr-path', start: 'top 72%', once: true },
+        }
+      )
 
-        // Two hand-offs, each with reading room before it.
-        stages.slice(1).forEach((stage, i) => {
-          const prev = stages[i]
-          tl.to(prev, { opacity: 0, y: -60, filter: 'blur(6px)', duration: 0.4, ease: 'power2.in' }, i + 0.6)
-            .to(stage, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' }, i + 0.85)
-        })
-        tl.to({}, { duration: 0.7 }) // hold the last stage before unpinning
-
-        return () => tl.scrollTrigger?.kill()
-      }
-    )
-
-    // Mobile + reduced motion: simple reveals, no pin.
-    mm.add('(max-width: 1023px), (prefers-reduced-motion: reduce)', () => {
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      gsap.set('.jr-stage', { opacity: 1, y: 0, clearProps: 'filter' })
-      if (reduced) return
-      gsap.utils.toArray('.jr-stage, .jr-pillar', ref.current).forEach((el) => {
-        gsap.fromTo(el,
-          { y: 44, opacity: 0 },
-          {
-            y: 0, opacity: 1, duration: 1, ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 80%', once: true },
-          }
-        )
-      })
-    })
-
-    // Triptych reveal (desktop — mobile handled above).
-    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
       gsap.fromTo('.jr-pillar',
         { y: 50, opacity: 0 },
         {
@@ -94,6 +55,12 @@ export default function LiabahJourneyV2() {
           scrollTrigger: { trigger: '.jr-pillars', start: 'top 78%', once: true },
         }
       )
+    })
+
+    // Reduced motion: everything present, no animation.
+    mm.add('(prefers-reduced-motion: reduce)', () => {
+      gsap.set('.jr-step, .jr-pillar', { opacity: 1, y: 0 })
+      gsap.set('.jr-spine-fill', { scaleY: 1 })
     })
 
     return () => mm.revert()
@@ -112,66 +79,52 @@ export default function LiabahJourneyV2() {
         style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 30%, rgba(255,135,20,0.06) 0%, transparent 65%)' }}
       />
 
-      {/* ── The pinned journey ── */}
-      <div ref={pinRef} className="relative lg:h-[100dvh] flex flex-col">
+      {/* ── The journey: one connected path ── */}
+      <div className="relative max-w-screen-2xl w-full mx-auto px-6 sm:px-10 md:px-16 lg:px-24 pt-20 lg:pt-28">
         {/* header */}
-        <div className="relative z-20 max-w-screen-2xl w-full mx-auto px-6 sm:px-10 md:px-16 lg:px-24 pt-20 lg:pt-28 flex items-end justify-between gap-6">
-          <div>
-            <p className="ds-eyebrow text-orange mb-3">התהליך</p>
-            <h2 className="font-ragmarom text-white leading-[0.95]" style={{ fontSize: 'clamp(2.2rem, 4vw, 4.2rem)' }}>
-              שלושה שלבים. <span className="text-orange">דרך אחת.</span>
-            </h2>
-          </div>
-          <span ref={counterRef} dir="ltr" className="hidden lg:block font-heebo font-bold text-white/50 text-lg tabular-nums shrink-0">
-            1 / 3
-          </span>
+        <div className="relative z-20">
+          <p className="ds-eyebrow text-orange mb-3">התהליך</p>
+          <h2 className="font-ragmarom text-white leading-[0.95]" style={{ fontSize: 'clamp(2.2rem, 4vw, 4.2rem)' }}>
+            שלושה שלבים. <span className="text-orange">דרך אחת.</span>
+          </h2>
         </div>
 
-        {/* stages */}
-        <div className="relative flex-1 flex flex-col lg:block">
-          {essence.stages.map((s, i) => (
-            <div
-              key={s.num}
-              className="jr-stage relative lg:absolute lg:inset-0 flex items-center will-change-transform py-16 lg:py-0"
-            >
-              <div className="relative w-full max-w-screen-2xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24">
-                {/* giant ghost numeral */}
-                <span
-                  aria-hidden="true"
-                  className="absolute top-1/2 -translate-y-1/2 left-6 lg:left-16 font-ragmarom text-white/[0.06] leading-none select-none pointer-events-none"
-                  style={{ fontSize: 'clamp(11rem, 28vw, 28rem)' }}
-                >
-                  {s.num}
-                </span>
+        {/* the path — all three steps at once, threaded by one spine */}
+        <div className="jr-path relative mt-14 lg:mt-20">
+          {essence.stages.map((s, i) => {
+            const last = i === essence.stages.length - 1
+            return (
+              <div
+                key={s.num}
+                className="jr-step relative grid grid-cols-[3.25rem_1fr] lg:grid-cols-[4.5rem_1fr] gap-x-6 lg:gap-x-12 pb-14 lg:pb-24 last:pb-0"
+              >
+                {/* spine column: node + connecting line */}
+                <div className="relative flex flex-col items-center">
+                  <span className="relative z-10 grid place-items-center rounded-full bg-navy-deep border-2 border-orange text-orange font-heebo font-bold shrink-0 h-[3.25rem] w-[3.25rem] lg:h-[4.5rem] lg:w-[4.5rem]"
+                    style={{ boxShadow: '0 0 0 6px rgba(255,135,20,0.10), 0 0 32px rgba(255,135,20,0.28)', fontSize: 'clamp(1rem, 1.4vw, 1.4rem)' }}
+                    dir="ltr"
+                  >
+                    {i + 1}
+                  </span>
+                  {!last && (
+                    <span aria-hidden="true" className="relative flex-1 w-[3px] mt-2 overflow-hidden rounded-full bg-white/10">
+                      <span className="jr-spine-fill absolute inset-0 origin-top rounded-full bg-gradient-to-b from-orange to-orange/40" />
+                    </span>
+                  )}
+                </div>
 
-                <p className="font-heebo font-bold text-orange tracking-[0.3em] text-xs md:text-sm mb-5" dir="ltr" style={{ textAlign: 'right' }}>
-                  {s.num}
-                </p>
-                <h3 className="font-ragmarom text-white leading-[0.95]" style={{ fontSize: 'clamp(3rem, 7vw, 7rem)' }}>
-                  {s.title}
-                </h3>
-                <p className="font-heebo text-white/75 leading-[1.8] mt-6 max-w-md" style={{ fontSize: 'clamp(1.05rem, 1.3vw, 1.3rem)' }}>
-                  {s.text}
-                </p>
-                <div className="mt-8 h-1 w-14 rounded-full bg-orange" />
+                {/* content */}
+                <div className="relative pb-2 lg:pb-6">
+                  <h3 className="relative font-ragmarom text-white leading-[0.95]" style={{ fontSize: 'clamp(2.4rem, 5.5vw, 5rem)' }}>
+                    {s.title}
+                  </h3>
+                  <p className="relative font-heebo text-white/75 leading-[1.8] mt-4 lg:mt-6 max-w-md" style={{ fontSize: 'clamp(1.02rem, 1.25vw, 1.25rem)' }}>
+                    {s.text}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* three-segment progress (desktop) */}
-        <div className="hidden lg:flex absolute bottom-10 left-1/2 -translate-x-1/2 z-20 items-center gap-2 pointer-events-none" aria-hidden="true">
-          {[0, 1, 2].map((i) => (
-            <span
-              key={i}
-              ref={(el) => (segsRef.current[i] = el)}
-              className="h-[7px] w-12 rounded-full bg-orange"
-              style={{
-                opacity: i === 0 ? 1 : 0.22,
-                transition: 'opacity 380ms cubic-bezier(0.25,0.46,0.45,0.94)',
-              }}
-            />
-          ))}
+            )
+          })}
         </div>
       </div>
 

@@ -103,10 +103,10 @@ export const coach = {
   // Entry process — placeholder step copy, refined later.
   stepsTitle: 'תהליך הכניסה למאמן/ת',
   steps: [
-    { n: '01', title: 'השארת פרטים', text: 'ממלאים את הטופס ואנחנו חוזרים אליכם.' }, // TODO refine
-    { n: '02', title: 'שיחת היכרות', text: 'שיחה אישית להכיר אתכם ולספר על התפקיד.' }, // TODO refine
-    { n: '03', title: 'קורס מאמנים/ות', text: 'הכשרה מלאה לכלים ולשפה של חמש.' }, // TODO refine
-    { n: '04', title: 'כניסה לקבוצה', text: 'מתחילים להוביל קבוצה עם ליווי צמוד.' }, // TODO refine
+    { n: '1', title: 'השארת פרטים', text: 'ממלאים את הטופס ואנחנו חוזרים אליכם.' }, // TODO refine
+    { n: '2', title: 'שיחת היכרות', text: 'שיחה אישית להכיר אתכם ולספר על התפקיד.' }, // TODO refine
+    { n: '3', title: 'קורס מאמנים/ות', text: 'הכשרה מלאה לכלים ולשפה של חמש.' }, // TODO refine
+    { n: '4', title: 'כניסה לקבוצה', text: 'מתחילים להוביל קבוצה עם ליווי צמוד.' }, // TODO refine
   ],
 
   cta: 'רוצים להיות מאמנים/ות?',

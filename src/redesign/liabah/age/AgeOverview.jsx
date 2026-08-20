@@ -87,7 +87,7 @@ export default function AgeOverview({ page }) {
                   style={{ fontSize: 'clamp(2.6rem, 6vw, 5.5rem)' }}
                   aria-hidden="true"
                 >
-                  {String(i + 1).padStart(2, '0')}
+                  {i + 1}
                 </span>
                 <div className="max-w-2xl">
                   <h3

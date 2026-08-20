@@ -25,28 +25,28 @@ gsap.registerPlugin(ScrollTrigger)
 // (= (100 - size) / 2, precomputed so the markup stays declarative).
 const SCOPES = [
   {
-    n: '01',
+    n: '1',
     word: 'אדם',
     size: 23,
     labelTop: 38.5,
     line: 'צעיר או צעירה שמגלים שהם מסוגלים להרבה יותר ממה שהאמינו.',
   },
   {
-    n: '02',
+    n: '2',
     word: 'קבוצה',
     size: 48,
     labelTop: 26,
     line: 'המקום שבו לומדים לסמוך, לתת יד, ולקחת אחריות על מישהו/י מלבד עצמך.',
   },
   {
-    n: '03',
+    n: '3',
     word: 'קהילה',
     size: 73,
     labelTop: 13.5,
     line: 'מעגל שממשיך הרבה אחרי — בשיחות, במפגשים ובליווי לאורך שנים.',
   },
   {
-    n: '04',
+    n: '4',
     word: 'חברה',
     size: 100,
     labelTop: 0,
@@ -79,10 +79,10 @@ const CHIPS = [
 ]
 
 const RING_LABEL_SIZE = {
-  '01': 'clamp(0.8rem, 1.1vw, 1.1rem)',
-  '02': 'clamp(0.9rem, 1.35vw, 1.35rem)',
-  '03': 'clamp(1.05rem, 1.65vw, 1.65rem)',
-  '04': 'clamp(1.3rem, 2.1vw, 2.1rem)',
+  '1': 'clamp(0.8rem, 1.1vw, 1.1rem)',
+  '2': 'clamp(0.9rem, 1.35vw, 1.35rem)',
+  '3': 'clamp(1.05rem, 1.65vw, 1.65rem)',
+  '4': 'clamp(1.3rem, 2.1vw, 2.1rem)',
 }
 
 export default function VisionV2() {
@@ -197,7 +197,7 @@ export default function VisionV2() {
                   style={
                     s.climax
                       ? { border: '1.5px dashed rgba(255,135,20,0.55)' }
-                      : s.n === '01'
+                      : s.n === '1'
                         ? {
                             border: '1.5px solid var(--orange)',
                             background: 'radial-gradient(circle, rgba(255,135,20,0.30), rgba(255,135,20,0.06))',

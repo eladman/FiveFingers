@@ -29,7 +29,7 @@ function esc(s) {
     .replace(/"/g, '&quot;')
 }
 function ltr(s) { return '<span class="ltr num">' + esc(s) + '</span>' }
-function pad(n) { return n < 10 ? '0' + n : '' + n }
+function pad(n) { return '' + n }
 
 /* ---------- memorial candle (SVG, unique gradient ids) ------------------- */
 let uidCounter = 0
@@ -230,9 +230,9 @@ function renderFull(id, i) {
     '<section class="psec psec--dots">' +
       '<div class="psec__inner">' +
         secHead('הסיפור', 'מסע של חיים') +
-        chapter('01', 'שורשים', d.roots) +
-        chapter('02', 'השירות', d.service) +
-        chapter('03', 'הנפילה', d.fall) +
+        chapter('1', 'שורשים', d.roots) +
+        chapter('2', 'השירות', d.service) +
+        chapter('3', 'הנפילה', d.fall) +
       '</div>' +
     '</section>'
 
