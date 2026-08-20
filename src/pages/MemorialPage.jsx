@@ -453,7 +453,7 @@ function MemorialFooter({ onContactOpen }) {
             <h4>תנועה</h4>
             <ul>
               <li><a href="#liabah">ליבה</a></li>
-              <li><a href="#academy">אקדמיה</a></li>
+              <li><a href="#academy">מכינה</a></li>
               <li><a href="#collabs">שת&quot;פ</a></li>
               <li><a href="#alumni">בוגרים</a></li>
             </ul>

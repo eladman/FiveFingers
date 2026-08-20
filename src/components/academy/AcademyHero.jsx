@@ -7,10 +7,10 @@ import Button from '../ui/Button'
 
 // Academy slideshow set (used when there is no direct background video).
 const IMAGES = [
-  '/Hero-Pics/214A0511.jpg',
-  '/Hero-Pics/214A0088.jpg',
-  '/Hero-Pics/214A0114.jpg',
-  '/Hero-Pics/214A0034.jpg',
+  '/mehina_pics/mehina-desert-group.jpg',
+  '/mehina_pics/mehina-huddle.jpg',
+  '/mehina_pics/mehina-team-girls.jpg',
+  '/mehina_pics/mehina-shirts-night.jpg',
 ]
 
 // A direct video file plays as the background; YouTube/empty URLs fall back to the slideshow.

@@ -2,10 +2,8 @@ import AcademyHero from '../components/academy/AcademyHero'
 import AcademyManifesto from '../components/academy/AcademyManifesto'
 import AcademyAxes from '../components/academy/AcademyAxes'
 import AcademyPrograms from '../components/academy/AcademyPrograms'
-import AcademyImpact from '../components/academy/AcademyImpact'
 import AcademyJourney from '../components/academy/AcademyJourney'
 import AcademyAdmissions from '../components/academy/AcademyAdmissions'
-import AcademyTestimonials from '../components/academy/AcademyTestimonials'
 import AcademyGallery from '../components/academy/AcademyGallery'
 import AcademyFAQ from '../components/academy/AcademyFAQ'
 import AcademyCTA from '../components/academy/AcademyCTA'
@@ -18,7 +16,7 @@ import SoftDivider from '../components/SoftDivider'
  * home + ליבה pages.
  *
  * `onContactOpen` opens the shared ContactModal. Section CTAs pass a per-program
- * tag (מכינה / Boost / כרמל); the page-level default is 'מכינה'.
+ * tag (מכינה / הזנק / כרמל); the page-level default is 'מכינה'.
  */
 export default function AcademyPage({ onContactOpen }) {
   const onRegister = (tag) => onContactOpen?.(tag || 'מכינה')
@@ -32,15 +30,10 @@ export default function AcademyPage({ onContactOpen }) {
       <AcademyAxes />
       <SoftDivider fromColor="#ffffff" toColor="#f7f5f2" />
       <AcademyPrograms onRegister={onRegister} />
-      <SoftDivider fromColor="#f7f5f2" toColor="#fafaf8" />
-      <AcademyImpact />
-      <SoftDivider fromColor="#fafaf8" toColor="#f7f5f2" />
       <AcademyJourney />
       <SoftDivider fromColor="#f7f5f2" toColor="#ffffff" />
       <AcademyAdmissions onRegister={onRegister} />
-      <SoftDivider fromColor="#ffffff" toColor="#fafaf8" />
-      <AcademyTestimonials />
-      <SoftDivider fromColor="#fafaf8" toColor="#f7f5f2" />
+      <SoftDivider fromColor="#ffffff" toColor="#f7f5f2" />
       <AcademyGallery />
       <SoftDivider fromColor="#f7f5f2" toColor="#fafaf8" />
       <AcademyFAQ />

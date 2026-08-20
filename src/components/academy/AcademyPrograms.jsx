@@ -10,7 +10,7 @@ const CLIP_ODD = 'polygon(0% 0%, 94% 0%, 100% 100%, 6% 100%)'
 
 /**
  * Program "tracks" as an institutional comparison selector: a segmented tablist
- * (מכינה / Boost / כרמל) that swaps a detail panel, plus a compact comparison row.
+ * (מכינה / הזנק / כרמל) that swaps a detail panel, plus a compact comparison row.
  * Keyboard-accessible (roving tabindex + arrow keys, RTL-aware).
  */
 export default function AcademyPrograms({ onRegister }) {
@@ -46,7 +46,7 @@ export default function AcademyPrograms({ onRegister }) {
         {/* Segmented tablist */}
         <div
           role="tablist"
-          aria-label="מסלולי האקדמיה"
+          aria-label="מסלולי המכינה"
           className="pr-animate mt-14 inline-flex w-full md:w-auto mx-auto justify-center rounded-full border border-navy/15 p-1.5 bg-white"
           onKeyDown={onKeyDown}
         >

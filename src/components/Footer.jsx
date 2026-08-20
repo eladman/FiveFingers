@@ -6,7 +6,7 @@ import logo from '../assets/logo.png'
 const FOOTER_NAV = {
   תנועה: [
     { label: 'ליבה', href: '#liabah' },
-    { label: 'אקדמיה', href: '#programs' },
+    { label: 'מכינה', href: '#programs' },
     { label: 'שת"פ', href: '#programs' },
     { label: 'בוגרים', href: '#programs' },
   ],

@@ -18,9 +18,9 @@ const CONCEPTS = [
     note: 'מילה ענקית שהתמונה מבצבצת מתוך האותיות.', Component: ConceptOversizedType },
   { id: 3, he: 'בנטו', en: 'Bento Mosaic', suits: 'שיתופי פעולה · עמודי תוכניות',
     note: 'רשת אריחים — טקסט, תמונות ונתון, הכל במבט אחד.', Component: ConceptBentoMosaic },
-  { id: 4, he: 'זרקור', en: 'Spotlight Arena', suits: 'הליבה · אקדמיה',
+  { id: 4, he: 'זרקור', en: 'Spotlight Arena', suits: 'הליבה · מכינה',
     note: 'במה כהה, תמונה אחת מוארת בזרקור — האדם בזירה.', Component: ConceptSpotlightArena },
-  { id: 5, he: 'לוח ממוסגר', en: 'Framed Plate', suits: 'אקדמיה · בוגרים',
+  { id: 5, he: 'לוח ממוסגר', en: 'Framed Plate', suits: 'מכינה · בוגרים',
     note: 'לוח תמונה ממוסגר מעל טקסט מרכזי — שקט ויוקרתי.', Component: ConceptFramedPlate },
 ]
 
