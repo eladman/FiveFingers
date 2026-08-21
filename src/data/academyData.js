@@ -157,10 +157,8 @@ export const gallery = [
   { id: 'g3', src: '/mehina_pics/mehina-team-girls.jpg', alt: 'קבוצת המכינה אחרי אימון' },
   { id: 'g4', src: '/mehina_pics/mehina-shirts-night.jpg', alt: 'חולצות מכינת חמש אצבעות' },
   { id: 'g5', src: '/mehina_pics/mehina-gear.jpg', alt: 'חלוקת ציוד המכינה' },
-  { id: 'g6', src: '/Hero-Pics/214A0088.jpg', alt: 'פעילות המכינה' },
-  { id: 'g7', src: '/liba_pics/214A1552.jpg', alt: 'פעילות המכינה' },
-  { id: 'g8', src: '/Hero-Pics/214A0034.jpg', alt: 'פעילות המכינה' },
-  { id: 'g9', src: '/Hero-Pics/214A0511.jpg', alt: 'פעילות המכינה' },
+  { id: 'g6', src: '/mehina_pics/mehina-flag.jpg', alt: 'חניכי וחניכות המכינה עם דגל ישראל' },
+  { id: 'g7', src: '/mehina_pics/mehina-action.jpg', alt: 'פעילות המכינה בשטח' },
 ]
 
 // ── FAQ (שאלות נפוצות) ─────────────────────────────────────────────────────────

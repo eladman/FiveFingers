@@ -37,6 +37,20 @@ export const PHOTOS = {
 /** Hero data strip — the three facts that frame the whole story. */
 export const HERO_META = ['נוסדה 2014', 'עמיר מנחם', 'כ-3,000 חניכים וחניכות']
 
+/**
+ * The founder card, dropped into the story where he's first introduced. Kept
+ * out of the nav — this is the in-context door to his dedicated page (#amir).
+ */
+export const FOUNDER = {
+  href: '#amir',
+  eyebrow: 'המייסד',
+  name: 'עמיר מנחם',
+  role: 'מייסד ויו״ר התנועה · קצין שייטת 13 לשעבר · מגיש ״האדם בזירה״',
+  teaser: 'מעל 1,000 הרצאות, פודקאסט, וליווי אישי — הסיפור והשיטה שמאחורי חמש אצבעות.',
+  cta: 'עוד על עמיר',
+  photo: { src: '/Amir_pics/amir-portrait.jpg', w: 1600, h: 1067, alt: 'עמיר מנחם, מייסד תנועת חמש אצבעות' },
+}
+
 /** The opening paragraph, set larger than the body — the story's way in. */
 export const LEAD =
   'בשנת 2014 יצא עמיר מנחם, יחד עם אביו יורם, לדרך עם טענה אחת, פשוטה ועקשנית: ' +
@@ -59,6 +73,7 @@ export const STORY = [
       'שלושת הדברים האלה — חוויה מאתגרת, קבוצה מלוכדת ומאמן/ת שחיים את הערכים לפני ' +
         'שהם מדברים עליהם — לא השתנו מאז. הם עדיין השיטה.',
     ],
+    founder: FOUNDER,
     photo: 'early',
   },
   {

@@ -13,7 +13,6 @@ const NAV_LINKS = [
   { label: 'בוגרים', href: '#alumni' },
   { label: 'אודות', href: '#about' },
   { label: 'צוות', href: '#team' },
-  { label: 'עמיר מנחם', href: '#amir' },
 ]
 
 export default function Navbar({ onContactOpen, forceLifted = false }) {
@@ -133,8 +132,8 @@ export default function Navbar({ onContactOpen, forceLifted = false }) {
         {/* The open height is capped to the viewport, not a flat 500px: the panel
             is inside a `fixed` nav, so anything taller than the screen simply
             can't be reached — page scroll doesn't move it. On a landscape phone
-            (~390px tall) the six links + CTA measure 444px, which used to strand
-            צוות, עמיר מנחם and the יצירת קשר button off-screen with
+            (~390px tall) a full link list + CTA can exceed the screen, which used
+            to strand the last links and the יצירת קשר button off-screen with
             `overflow-hidden`. Capping at 100dvh minus the bar (6.5rem) and
             scrolling the overflow makes every item reachable at any height.
             `data-lenis-prevent` keeps that inner scroll away from Lenis (see

@@ -90,6 +90,47 @@ export default function AboutStoryV2() {
                 {p}
               </p>
             ))}
+
+            {/* Founder card — the in-context door to עמיר's dedicated page,
+                kept out of the nav and dropped where the story introduces him. */}
+            {mv.founder && (
+              <a
+                href={mv.founder.href}
+                className="abs-rise group relative mt-10 flex flex-col sm:flex-row items-stretch overflow-hidden rounded-[1.4rem] bg-white border border-line shadow-sm shadow-navy/5 transition-all duration-300 hover:shadow-xl hover:shadow-navy/10 hover:-translate-y-0.5 hover:border-orange/30"
+              >
+                {/* Portrait */}
+                <div className="relative shrink-0 sm:w-44 md:w-52">
+                  <img
+                    src={mv.founder.photo.src}
+                    width={mv.founder.photo.w}
+                    height={mv.founder.photo.h}
+                    alt={mv.founder.photo.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-52 w-full sm:h-full object-cover"
+                    style={{ objectPosition: 'center 22%' }}
+                  />
+                </div>
+
+                {/* Copy */}
+                <div className="flex flex-1 flex-col justify-center p-6 md:p-7">
+                  <span className="ds-eyebrow text-orange-ink">{mv.founder.eyebrow}</span>
+                  <h3 className="font-ragmarom text-navy leading-tight mt-2" style={{ fontSize: 'clamp(1.5rem, 2.4vw, 2rem)' }}>
+                    {mv.founder.name}
+                  </h3>
+                  <p className="font-heebo text-navy/55 text-sm leading-relaxed mt-1.5">
+                    {mv.founder.role}
+                  </p>
+                  <p className="font-heebo text-navy/75 leading-relaxed mt-3" style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.08rem)' }}>
+                    {mv.founder.teaser}
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 mt-4 font-heebo font-semibold text-orange-ink group-hover:text-orange transition-colors">
+                    {mv.founder.cta}
+                    <span aria-hidden="true" className="transition-transform duration-200 group-hover:-translate-x-1">←</span>
+                  </span>
+                </div>
+              </a>
+            )}
           </div>
 
           {/* photo breaks the measure — wider, with a caption in the margin */}

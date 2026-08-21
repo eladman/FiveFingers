@@ -132,7 +132,8 @@ export default function TeamEssenceV2() {
         </figure>
 
         {/* leadership faces — duotone portraits, color on hover */}
-        {REAL_MEMBERS.length > 0 && (
+        {/* Temporarily hidden until we have photos of the full team — do not delete */}
+        {false && REAL_MEMBERS.length > 0 && (
           <div className="tes-faces mt-16 md:mt-24">
             <p className="ds-eyebrow text-orange-ink mb-8">מובילים את הדרך</p>
             <div className="flex flex-wrap gap-6 md:gap-8">

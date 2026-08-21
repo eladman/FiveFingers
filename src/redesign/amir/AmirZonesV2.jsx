@@ -7,10 +7,10 @@ import { ZONES } from '../../data/amirData'
 gsap.registerPlugin(ScrollTrigger)
 
 /**
- * הזירות שלנו — the three offerings as ProgramsV2 cinematic rows: unclip
- * on scrub, inner parallax, overlapping text card, alternating sides.
- * Replaces the old parallelogram-clip rows. The workshop row links out to
- * the dedicated 0→1 site; the others open the tagged contact modal.
+ * הזירות שלנו — the three offerings as one clean, photo-free section.
+ * Icon-led cards in a single grid (replaces the old cinematic image rows):
+ * each zone shows its lucide icon, badge, title, copy and CTA. The workshop
+ * card links out to the dedicated 0→1 site; the others open the contact modal.
  */
 
 function ZoneCta({ zone, onBook }) {
@@ -57,34 +57,13 @@ export default function AmirZonesV2({ onBook }) {
         }
       )
 
-      gsap.utils.toArray('.azn-row', ref.current).forEach((row) => {
-        const frame = row.querySelector('.azn-frame')
-        const img = row.querySelector('.azn-img')
-
-        gsap.fromTo(frame,
-          { clipPath: 'inset(10% 6% 10% 6% round 2rem)' },
-          {
-            clipPath: 'inset(0% 0% 0% 0% round 2rem)',
-            ease: 'none',
-            scrollTrigger: { trigger: row, start: 'top 92%', end: 'top 45%', scrub: 0.6 },
-          }
-        )
-        gsap.fromTo(img,
-          { yPercent: -9 },
-          {
-            yPercent: 9,
-            ease: 'none',
-            scrollTrigger: { trigger: row, start: 'top bottom', end: 'bottom top', scrub: 1 },
-          }
-        )
-        gsap.fromTo(row.querySelectorAll('.azn-el'),
-          { y: 40, opacity: 0 },
-          {
-            y: 0, opacity: 1, stagger: 0.09, duration: 0.9, ease: 'power3.out',
-            scrollTrigger: { trigger: row, start: 'top 68%', once: true },
-          }
-        )
-      })
+      gsap.fromTo('.azn-card',
+        { y: 48, opacity: 0 },
+        {
+          y: 0, opacity: 1, stagger: 0.12, duration: 0.9, ease: 'power3.out',
+          scrollTrigger: { trigger: '.azn-grid', start: 'top 82%', once: true },
+        }
+      )
     }, ref)
 
     return () => ctx.revert()
@@ -100,7 +79,7 @@ export default function AmirZonesV2({ onBook }) {
       <div className="pointer-events-none absolute top-[5%] left-[-10%] w-[45vw] h-[45vh] rounded-full bg-orange/8 blur-[150px]" />
       <div className="pointer-events-none absolute bottom-[10%] right-[-8%] w-[40vw] h-[40vh] rounded-full bg-orange/10 blur-[150px]" />
 
-      <div className="relative z-10 max-w-screen-xl mx-auto px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-16 md:pb-24">
+      <div className="relative z-10 max-w-screen-xl mx-auto px-6 sm:px-10 md:px-16 pt-24 md:pt-32 pb-24 md:pb-32">
 
         <div className="azn-heading max-w-3xl">
           <p className="ds-eyebrow text-orange-ink mb-4">הזירות שלנו</p>
@@ -110,53 +89,35 @@ export default function AmirZonesV2({ onBook }) {
           </p>
         </div>
 
-        <div className="mt-16 md:mt-24 flex flex-col gap-24 md:gap-36">
-          {ZONES.map((zone, i) => {
-            const even = i % 2 === 0
+        <div className="azn-grid mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {ZONES.map((zone) => {
+            const Icon = zone.icon
             return (
               <article
                 key={zone.title}
-                className="azn-row grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-center"
+                className="azn-card group relative flex flex-col rounded-[1.75rem] bg-white border border-navy/[0.07] p-8 lg:p-9 shadow-[0_18px_44px_rgba(0,0,30,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:border-orange/30 hover:shadow-[0_26px_60px_rgba(255,135,20,0.14)]"
               >
-                {/* image — spans 8 columns, side alternates */}
-                <div className={`lg:row-start-1 ${even ? 'lg:col-start-1' : 'lg:col-start-5'} lg:col-span-8`}>
-                  <div className="azn-frame relative overflow-hidden rounded-[2rem] group" style={{ clipPath: 'inset(0% 0% 0% 0% round 2rem)' }}>
-                    <div className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden">
-                      <img
-                        src={zone.imageSrc}
-                        alt={zone.title}
-                        loading="lazy"
-                        decoding="async"
-                        className="azn-img absolute inset-[-10%] w-[120%] h-[120%] max-w-none object-cover will-change-transform group-hover:scale-[1.04] transition-transform duration-700"
-                        style={{ objectPosition: zone.imagePosition || 'center' }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy/35 via-transparent to-transparent opacity-70" />
-                    </div>
-                  </div>
-                </div>
+                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-orange/10 text-orange-ink transition-colors duration-300 group-hover:bg-orange group-hover:text-white">
+                  {Icon ? <Icon size={26} strokeWidth={2} aria-hidden="true" /> : null}
+                </span>
 
-                {/* text card — overlaps the image edge on desktop */}
-                <div className={`lg:row-start-1 ${even ? 'lg:col-start-8' : 'lg:col-start-1'} lg:col-span-5 relative z-10`}>
-                  <div className="bg-surface/95 backdrop-blur rounded-[1.6rem] lg:rounded-[2rem] lg:shadow-[0_24px_60px_rgba(0,0,30,0.14)] p-0 lg:p-10">
-                    <span className="azn-el inline-flex items-center rounded-full bg-orange/10 text-orange-ink font-heebo font-semibold px-4 py-1.5 text-sm md:text-base">
-                      {zone.badge}
-                    </span>
-                    <h3
-                      className="azn-el font-ragmarom text-navy leading-[0.98] mt-4"
-                      style={{ fontSize: 'clamp(2.2rem, 4vw, 3.8rem)' }}
-                    >
-                      {zone.title}
-                    </h3>
-                    <p
-                      className="azn-el font-heebo text-navy/70 leading-[1.8] mt-4"
-                      style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.15rem)' }}
-                    >
-                      {zone.text}
-                    </p>
-                    <div className="azn-el mt-6">
-                      <ZoneCta zone={zone} onBook={onBook} />
-                    </div>
-                  </div>
+                <span className="mt-6 inline-flex w-fit items-center rounded-full bg-orange/10 text-orange-ink font-heebo font-semibold px-3.5 py-1 text-sm">
+                  {zone.badge}
+                </span>
+
+                <h3
+                  className="font-ragmarom text-navy leading-[0.98] mt-4"
+                  style={{ fontSize: 'clamp(1.9rem, 2.4vw, 2.5rem)' }}
+                >
+                  {zone.title}
+                </h3>
+
+                <p className="font-heebo text-navy/70 leading-[1.8] mt-3 text-[0.98rem]">
+                  {zone.text}
+                </p>
+
+                <div className="mt-7 pt-6 border-t border-navy/[0.07]">
+                  <ZoneCta zone={zone} onBook={onBook} />
                 </div>
               </article>
             )

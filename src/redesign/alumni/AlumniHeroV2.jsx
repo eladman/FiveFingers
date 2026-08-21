@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger)
  * Racks focus into the essence sheet on scroll-out.
  */
 
-const META = ['מאז 2014', '+3,000 בוגרים ובוגרות', 'תוכנית יואב · תוכנית הדגל']
+const META = ['+5,000 בוגרים ובוגרות', 'תוכנית יואב · תוכנית הדגל']
 
 function Chars({ text }) {
   return (
