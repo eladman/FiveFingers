@@ -26,7 +26,7 @@ gsap.registerPlugin(ScrollTrigger)
 const SCOPES = [
   {
     n: '1',
-    word: 'אדם',
+    word: 'האני',
     size: 23,
     labelTop: 38.5,
     line: 'צעיר או צעירה שמגלים שהם מסוגלים להרבה יותר ממה שהאמינו.',
@@ -171,7 +171,7 @@ export default function VisionV2() {
               className="lg:col-span-8 font-heebo text-navy/62 leading-[1.92] max-w-2xl"
               style={{ fontSize: 'clamp(1rem, 1.1vw, 1.15rem)' }}
             >
-              חמש אצבעות היא לא מועדון כושר ולא חוג. זו תנועה חינוכית־חברתית שפועלת בכל רחבי הארץ,
+              חמש אצבעות היא לא מועדון כושר ולא חוג. זו תנועה שפועלת בכל רחבי הארץ,
               ומודדת את עצמה לא במספר האימונים אלא באנשים שיוצאים מהם — ובמה שהם עושים עם זה הלאה.
             </p>
           </div>

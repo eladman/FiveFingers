@@ -52,12 +52,12 @@ export default function FinaleCTA({ onContactOpen }) {
     >
       <div className="absolute inset-0 overflow-hidden">
         <img
-          src="/Hero-Pics/214A0088.jpg"
+          src="/more_pics/843a971e-d2aa-4b12-ba7b-902b0fae6cdb.JPG"
           alt=""
           aria-hidden="true"
           loading="lazy"
           decoding="async"
-          className="fc-photo absolute inset-0 w-full h-full object-cover will-change-transform"
+          className="fc-photo absolute inset-0 w-full h-full object-cover object-[center_35%] will-change-transform"
         />
         <div className="absolute inset-0 bg-orange/10 mix-blend-multiply" />
         <div className="absolute inset-0 bg-black/60" />

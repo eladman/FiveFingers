@@ -71,12 +71,6 @@ function teamLabel(name, city) {
   return stripped || name
 }
 
-/** First letters of the first two words — a quiet contact-card monogram. */
-function initials(name) {
-  const parts = name.trim().split(/\s+/).filter(Boolean)
-  return (parts[0]?.[0] || '') + (parts[1]?.[0] || '')
-}
-
 /**
  * Per-team interest form. Mirrors the youth-group ("קבוצות הנוער") flow of the
  * main ContactModal — same fields, same components, same payload — but framed
@@ -262,10 +256,6 @@ export default function LiabahMap() {
   const [interestTeam, setInterestTeam] = useState(null) // team → interest form
 
   const selectedLoc = locations.find((l) => l.id === selected) || null
-  // Area lead = the base manager (מנהל/ת בייס). We show their name only — no photo.
-  const selectedLead = selectedLoc && selectedLoc.manager
-    ? { name: selectedLoc.manager, role: 'מנהל/ת בייס' }
-    : null
 
   const closePanel = () => {
     setSelected(null)
@@ -471,65 +461,71 @@ export default function LiabahMap() {
                 onBack={() => setInterestTeam(null)}
               />
             ) : (
-              /* City detail — a quiet contact card for the base manager (no photo) */
-              <div className="pb-3">
-                {/* Header */}
-                <div className="px-7 sm:px-8 pt-9 pb-6">
-                  <p className="font-heebo font-medium text-navy/40 text-[13px]">{selectedLoc.city}</p>
-                  {selectedLead ? (
-                    <div className="flex items-center gap-3.5 mt-3">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-navy/[0.05] shrink-0 font-heebo font-semibold text-navy/60 text-lg">
-                        {initials(selectedLead.name)}
-                      </div>
-                      <div className="min-w-0">
-                        <h3 className="font-heebo font-bold text-navy text-[22px] leading-tight tracking-tight truncate">{selectedLead.name}</h3>
-                        <p className="font-heebo text-navy/45 text-sm mt-0.5">{selectedLead.role}</p>
-                      </div>
-                    </div>
-                  ) : (
-                    <h3 className="font-heebo font-bold text-navy text-[22px] leading-tight tracking-tight mt-1">{selectedLoc.city}</h3>
-                  )}
-                </div>
-
-                {/* Meta — iOS-settings style label / value rows */}
-                <div className="px-7 sm:px-8">
-                  {selectedLoc.venue && (
-                    <div className="flex items-baseline justify-between gap-6 py-3.5 border-t border-navy/[0.07]">
-                      <span className="font-heebo text-navy/50 text-[15px] shrink-0">מיקום האימונים</span>
-                      <span className="font-heebo font-medium text-navy text-[15px] text-left">{selectedLoc.venue}</span>
-                    </div>
-                  )}
-                  <div className="flex items-baseline justify-between gap-6 py-3.5 border-t border-navy/[0.07]">
-                    <span className="font-heebo text-navy/50 text-[15px] shrink-0">ימי האימונים</span>
-                    <span className="font-heebo font-medium text-navy text-[15px] text-left">{selectedLoc.days}</span>
+              /* City detail — the city is the hero; the teams (each a join CTA) are the main event */
+              <div className="pb-2">
+                {/* Header — city name leads, training info sits quietly beneath as pills */}
+                <div className="px-7 sm:px-8 pt-9 pb-5">
+                  <p className="font-heebo font-semibold text-orange text-[12px] tracking-[0.06em] mb-2">
+                    קבוצות הנוער · {selectedLoc.region}
+                  </p>
+                  <h3 className="font-heebo font-bold text-navy text-[30px] leading-[1.1] tracking-tight">
+                    {selectedLoc.city}
+                  </h3>
+                  <div className="flex flex-wrap items-center gap-2 mt-4">
+                    {selectedLoc.venue && (
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-navy/[0.04] px-3 py-1.5 font-heebo text-navy/70 text-[13px]">
+                        <MapPin size={13} className="text-orange shrink-0" />
+                        {selectedLoc.venue}
+                      </span>
+                    )}
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-navy/[0.04] px-3 py-1.5 font-heebo text-navy/70 text-[13px]">
+                      <Clock size={13} className="text-orange shrink-0" />
+                      {selectedLoc.days}
+                    </span>
                   </div>
                 </div>
 
-                {/* Teams — full-bleed tappable rows, each opens an interest form */}
-                <div className="mt-5 border-t border-navy/[0.07]">
-                  <div className="flex items-baseline justify-between px-7 sm:px-8 pt-4 pb-2">
-                    <h4 className="font-heebo font-semibold text-navy text-[15px]">הקבוצות בעיר</h4>
-                    <span className="font-heebo text-navy/35 text-sm">{selectedLoc.teams.length} קבוצות</span>
+                {/* Teams — the centerpiece. Each row is a standalone join CTA. */}
+                <div className="border-t border-navy/[0.07]">
+                  <div className="flex items-baseline justify-between px-7 sm:px-8 pt-5 pb-2">
+                    <h4 className="font-heebo font-bold text-navy text-[17px]">בחרו קבוצה והצטרפו</h4>
+                    <span className="font-heebo text-navy/40 text-[13px] shrink-0">{selectedLoc.teams.length} קבוצות</span>
                   </div>
-                  <ul>
+                  <ul className="px-3 sm:px-4 pb-1">
                     {selectedLoc.teams.map((t) => (
                       <li key={t.name}>
                         <button
                           type="button"
                           onClick={() => setInterestTeam(t)}
-                          className="group w-full flex items-center gap-3 px-7 sm:px-8 py-3.5 border-t border-navy/[0.05] hover:bg-navy/[0.02] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-orange"
+                          className="group w-full flex items-center gap-3 rounded-2xl px-4 py-3.5 hover:bg-orange/[0.05] active:bg-orange/[0.08] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-orange"
                         >
                           <div className="flex-1 text-right min-w-0">
-                            <div className="font-heebo font-medium text-navy text-[15px] truncate">{teamLabel(t.name, selectedLoc.city)}</div>
+                            <div className="font-heebo font-bold text-navy text-[16px] leading-snug truncate">{teamLabel(t.name, selectedLoc.city)}</div>
                             {t.coach && (
-                              <div className="font-heebo text-navy/45 text-[13px] mt-0.5 truncate">{t.coach}</div>
+                              <div className="font-heebo text-navy/45 text-[13px] mt-0.5 truncate">מאמן/ת {t.coach}</div>
                             )}
                           </div>
-                          <ChevronLeft size={18} className="shrink-0 text-navy/25 group-hover:text-orange transition-colors" />
+                          {/* Join affordance — orange at rest (mobile-legible), fills solid on hover/press */}
+                          <span className="shrink-0 inline-flex items-center gap-0.5 rounded-full bg-orange/10 group-hover:bg-orange px-3.5 py-1.5 font-heebo font-bold text-orange group-hover:text-white text-[13px] transition-colors">
+                            הצטרפו
+                            <ChevronLeft size={15} className="-mr-1" />
+                          </span>
                         </button>
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                {/* Soft fallback — for visitors unsure which group fits */}
+                <div className="px-7 sm:px-8 pt-3 pb-7">
+                  <button
+                    type="button"
+                    onClick={() => setInterestTeam(selectedLoc.teams[0])}
+                    className="inline-flex items-center gap-1 font-heebo font-semibold text-navy/55 hover:text-orange text-[13.5px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded px-1 py-1"
+                  >
+                    <ChevronLeft size={15} className="shrink-0" />
+                    לא בטוחים לאיזו קבוצה מתאים? השאירו פרטים ונכוון אתכם
+                  </button>
                 </div>
               </div>
             )}

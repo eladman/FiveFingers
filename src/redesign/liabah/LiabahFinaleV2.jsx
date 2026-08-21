@@ -68,7 +68,7 @@ export default function LiabahFinaleV2({ onRegister }) {
           className="lf2-el font-ragmarom text-white leading-[1.0]"
           style={{ fontSize: 'clamp(2.8rem, 7vw, 7rem)', textShadow: '0 4px 32px rgba(0,0,0,0.9)', textWrap: 'balance' }}
         >
-          מוכנים להצטרף <span className="text-orange">לליבה?</span>
+          מוכנים להצטרף <span className="text-orange">לקבוצה?</span>
         </h2>
         <p
           className="lf2-el font-heebo text-white/80 mt-6 max-w-xl mx-auto leading-relaxed"

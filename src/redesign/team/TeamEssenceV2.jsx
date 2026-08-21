@@ -55,6 +55,15 @@ export default function TeamEssenceV2() {
         }
       )
 
+      gsap.fromTo('.tes-band',
+        { y: 48, opacity: 0, scale: 0.98 },
+        {
+          y: 0, opacity: 1, scale: 1, duration: 1.1,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: '.tes-band', start: 'top 84%', once: true },
+        }
+      )
+
       gsap.fromTo('.tes-face',
         { y: 44, opacity: 0 },
         {
@@ -103,6 +112,24 @@ export default function TeamEssenceV2() {
             יש כמה דרכים להוביל אצלנו, ולכל אחת מהן אנחנו מחפשים אנשים ואנשות שרוצים להשפיע ולהשאיר חותם.
           </p>
         </div>
+
+        {/* the whole staff, together — the movement is its people */}
+        <figure className="tes-band mt-16 md:mt-24 will-change-transform">
+          <div className="relative overflow-hidden rounded-[1.6rem] md:rounded-[2.2rem] ring-1 ring-black/8 shadow-[0_40px_100px_rgba(0,0,30,0.18)]">
+            <img
+              src="/more_pics/2cf5e70f-1dfe-4811-a9fb-aa838cc707d2.JPG"
+              alt="צוות תנועת חמש אצבעות יחד"
+              loading="lazy"
+              decoding="async"
+              className="w-full aspect-[16/10] md:aspect-[16/7] object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-orange/10 mix-blend-multiply pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/25 via-transparent to-transparent pointer-events-none" />
+          </div>
+          <figcaption className="mt-4 font-heebo text-navy/55 text-sm md:text-base text-right">
+            המאמנים, המדריכים ואנשי המטה שמניעים את חמש אצבעות — קבוצה אחת.
+          </figcaption>
+        </figure>
 
         {/* leadership faces — duotone portraits, color on hover */}
         {REAL_MEMBERS.length > 0 && (

@@ -245,10 +245,9 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
           className="cm-close absolute top-4 left-4 z-30 flex items-center justify-center rounded-full transition-all duration-200"
           style={{
             width: '44px', height: '44px',
-            background: 'rgba(255,255,255,0.12)',
-            color: '#fff',
-            backdropFilter: 'blur(4px)',
-            border: '1px solid rgba(255,255,255,0.18)',
+            background: 'rgba(13,27,75,0.06)',
+            color: '#0d1b4b',
+            border: '1px solid rgba(13,27,75,0.12)',
           }}
         >
           <X size={18} strokeWidth={2.5} />

@@ -82,7 +82,7 @@ export default function LiabahEssenceV2() {
       <div className="pointer-events-none absolute bottom-[-10%] left-[-8%] w-[45vw] h-[50vh] rounded-full bg-orange/8 blur-[140px]" />
 
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 sm:px-10 md:px-16 pt-24 md:pt-36 pb-20 md:pb-28">
-        <p className="ds-eyebrow text-orange-ink mb-6">מה זה ליבה?</p>
+        <p className="ds-eyebrow text-orange-ink mb-6">מה הן קבוצות הנוער?</p>
 
         {/* lead statement — masked word reveal */}
         <h2
@@ -113,7 +113,7 @@ export default function LiabahEssenceV2() {
               className="relative w-full rounded-[1.6rem] md:rounded-[2rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,30,0.18)] ring-1 ring-black/8"
               style={{ paddingBottom: '56.25%' }}
             >
-              <VideoFacade src={hero.videoUrl} title="סרטון ליבה" />
+              <VideoFacade src={hero.videoUrl} title="סרטון קבוצות הנוער" />
             </div>
           </div>
         )}

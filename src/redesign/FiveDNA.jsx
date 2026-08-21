@@ -209,15 +209,6 @@ export default function FiveDNA() {
             {/* text side */}
             <div className="relative flex-1 lg:w-[54%] order-2 lg:order-1 flex items-center">
               <div className="w-full px-6 sm:px-10 md:px-16 lg:px-24 py-14 lg:py-0 lg:pt-24">
-                {/* giant ghost letter — Hebrew ordinal of the finger */}
-                <span
-                  aria-hidden="true"
-                  className="dna-el block font-ragmarom text-white/[0.07] leading-none select-none absolute top-1/2 -translate-y-1/2 left-6 lg:left-16 pointer-events-none"
-                  style={{ fontSize: 'clamp(14rem, 30vw, 30rem)' }}
-                >
-                  {v.num}
-                </span>
-
                 <p className="dna-el font-heebo font-bold text-orange tracking-[0.3em] text-xs md:text-sm mb-5">
                   {v.tag}
                 </p>

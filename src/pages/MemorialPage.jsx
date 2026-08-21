@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { FALLEN, ROSTER } from '../data/fallen'
 import logo from '../assets/logo.png'
+import Navbar from '../components/Navbar'
 import './memorial.css'
 
 /* =============================================================================
@@ -362,79 +363,6 @@ function observeReveals(scope, io) {
 /* =============================================================================
    Persistent chrome — React
    ========================================================================== */
-const NAV_LINKS = [
-  { label: 'קבוצות הנוער', href: '#liabah' },
-  { label: 'מכינה', href: '#academy' },
-  { label: 'שיתופי פעולה', href: '#collabs' },
-  { label: 'יזכור', href: '#memorial', active: true },
-  { label: 'בוגרים', href: '#alumni' },
-  { label: 'צוות', href: '#team' },
-  { label: 'עמיר מנחם', href: '#amir' },
-]
-
-function MemorialNav({ onContactOpen }) {
-  const [dark, setDark] = useState(true)
-  const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const sync = () => setDark(window.scrollY < window.innerHeight * 0.55)
-    sync()
-    window.addEventListener('scroll', sync, { passive: true })
-    window.addEventListener('resize', sync)
-    return () => {
-      window.removeEventListener('scroll', sync)
-      window.removeEventListener('resize', sync)
-    }
-  }, [])
-
-  const contact = (e) => { e.preventDefault(); setOpen(false); onContactOpen() }
-
-  return (
-    <>
-      <nav className={`sitenav${dark ? ' sitenav--dark' : ''}${open ? ' is-open' : ''}`} aria-label="ניווט ראשי">
-        <a className="sitenav__logo" href="#home" aria-label="חמש אצבעות, דף הבית">
-          <img src={logo} alt="חמש אצבעות" />
-        </a>
-        <div className="sitenav__links">
-          {NAV_LINKS.map(({ label, href, active }) => (
-            <a
-              key={label}
-              className={`sitenav__link${active ? ' is-active' : ''}`}
-              href={href}
-              aria-current={active ? 'page' : undefined}
-            >
-              {label}
-            </a>
-          ))}
-        </div>
-        <a className="sitenav__cta" href="#contact" onClick={contact}>יצירת קשר</a>
-        <button
-          className="sitenav__toggle" type="button"
-          aria-label="תפריט" aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className="sitenav__toggle-bars" aria-hidden="true"><i /><i /><i /></span>
-        </button>
-      </nav>
-
-      <div className={`sitenav__drawer${open ? ' is-open' : ''}`} aria-label="ניווט">
-        {NAV_LINKS.map(({ label, href, active }) => (
-          <a
-            key={label}
-            className={`sitenav__drawer-link${active ? ' is-active' : ''}`}
-            href={href}
-            aria-current={active ? 'page' : undefined}
-            onClick={() => setOpen(false)}
-          >
-            {label}
-          </a>
-        ))}
-        <a className="sitenav__drawer-cta" href="#contact" onClick={contact}>יצירת קשר</a>
-      </div>
-    </>
-  )
-}
-
 function MemorialFooter({ onContactOpen }) {
   const contact = (e) => { e.preventDefault(); onContactOpen() }
   return (
@@ -620,7 +548,7 @@ export default function MemorialPage({ onContactOpen }) {
 
   return (
     <div className="memorial-page" ref={rootRef}>
-      <MemorialNav onContactOpen={onContactOpen} />
+      <Navbar onContactOpen={onContactOpen} />
 
       {/* LAYER 1 + 2 — the hall */}
       <main className={`view${!isPerson ? ' is-active' : ''}`} role="main">

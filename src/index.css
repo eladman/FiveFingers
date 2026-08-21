@@ -376,7 +376,7 @@ html.a11y-big-cursor * {
   /* the a11y trigger also deepens its blue, as it did inline */
   .ds-fab-start:hover { background-color: #0d47a1 !important; }
   .cm-close:hover {
-    background: rgba(255, 255, 255, 0.22) !important;
+    background: rgba(13, 27, 75, 0.12) !important;
     transform: rotate(90deg);
   }
   /* Only unselected chips tint — an active chip keeps its orange fill, and
