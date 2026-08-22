@@ -27,7 +27,8 @@ const TRACKS = [
     badge: 'הדרכה בשטח',
     title: 'מדריך/ה בהזנק',
     text: 'הקו הראשון של החוויה: להפעיל, ללוות קבוצות ברגעים המאתגרים ולתרגם את ערכי התנועה לשפה של שטח. למי שאוהבים אנשים, אנרגיה גבוהה ואחריות.',
-    image: '/Hero-Pics/214A0027.jpg',
+    image: '/coachs/heznek2.JPG',
+    noZoom: true,
     tag: 'הדרכה בהזנק',
     cta: 'מעניין אותי',
   },
@@ -129,7 +130,11 @@ export default function TeamTracksV2({ onRegister }) {
                         alt={track.title}
                         loading="lazy"
                         decoding="async"
-                        className="ttr-img absolute inset-[-10%] w-[120%] h-[120%] max-w-none object-cover will-change-transform group-hover:scale-[1.04] transition-transform duration-700"
+                        className={
+                          track.noZoom
+                            ? 'absolute inset-0 w-full h-full max-w-none object-cover will-change-transform group-hover:scale-[1.04] transition-transform duration-700'
+                            : 'ttr-img absolute inset-[-10%] w-[120%] h-[120%] max-w-none object-cover will-change-transform group-hover:scale-[1.04] transition-transform duration-700'
+                        }
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-navy/35 via-transparent to-transparent opacity-70" />
                     </div>

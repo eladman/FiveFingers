@@ -23,6 +23,15 @@ const PROGRAMS = [
     ctaLabel: 'לדף קבוצות הנוער',
   },
   {
+    id: 'boost',
+    title: 'הזנק',
+    badge: 'קדם צבא · מרוכז',
+    description:
+      'תוכנית קדם-צבאית מרוכזת בת שלושה עד ארבעה שבועות: הכנה פיזית-מנטלית, מנהיגות, ניווט וחוויית שטח — בליווי מדריכים ומומחים מהשורה הראשונה.',
+    imageSrc: '/coachs/heznek2.JPG',
+    ctaContact: true,
+  },
+  {
     id: 'academy',
     title: 'המכינה הקדם־צבאית',
     badge: 'קדם צבא',
@@ -118,7 +127,7 @@ export default function ProgramsV2({ onContactOpen }) {
         <div className="pr2-heading max-w-3xl">
           <h2 className="ds-section-title text-navy">הזירות שלנו</h2>
           <p className="ds-section-subtitle text-orange-ink mt-4">
-            ארבע דרכים להיכנס. דרך אחת לגדול.
+            חמש דרכים להיכנס. דרך אחת לגדול.
           </p>
         </div>
 

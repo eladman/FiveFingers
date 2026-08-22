@@ -32,7 +32,7 @@ export default function TeamInstructor({ onRegister }) {
           <div className="tin-animate order-1 lg:order-2">
             <div className="relative w-full overflow-hidden rounded-[2rem] border border-navy/10 shadow-xl shadow-navy/10" style={{ aspectRatio: '4 / 5' }}>
               <img
-                src="/Hero-Pics/214A0027.jpg"
+                src="/coachs/heznek.JPG"
                 alt="מדריך/ה בפעילות שטח של חמש אצבעות"
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="lazy"
