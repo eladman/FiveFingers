@@ -161,6 +161,9 @@ export default function IntroV2() {
               title="מי אנחנו · חמש אצבעות"
             />
           </div>
+          <p className="mt-4 text-center text-navy/70 leading-relaxed" style={{ fontSize: 'clamp(0.85rem, 1.1vw, 1rem)' }}>
+            הוכן ע״י בוגר התנועה <span className="text-navy font-semibold">טל להט ז״ל</span> שנפל במלחמת חרבות ברזל, לוחם ומפקד ביחידת מגלן
+          </p>
         </div>
       </div>
     </section>

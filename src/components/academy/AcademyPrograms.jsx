@@ -10,7 +10,7 @@ const CLIP_ODD = 'polygon(0% 0%, 94% 0%, 100% 100%, 6% 100%)'
 
 /**
  * Program "tracks" as an institutional comparison selector: a segmented tablist
- * (מכינה / הזנק / כרמל) that swaps a detail panel, plus a compact comparison row.
+ * (מכינה / Boost / כרמל) that swaps a detail panel, plus a compact comparison row.
  * Keyboard-accessible (roving tabindex + arrow keys, RTL-aware).
  */
 export default function AcademyPrograms({ onRegister }) {
@@ -89,6 +89,11 @@ export default function AcademyPrograms({ onRegister }) {
               >
                 {prog.title}
               </h3>
+              {prog.subtitle && (
+                <p className="font-heebo text-navy/50 font-medium mt-1.5" style={{ fontSize: '0.95rem' }}>
+                  {prog.subtitle}
+                </p>
+              )}
               <p className="font-heebo text-orange-ink font-semibold mt-2" style={{ fontSize: '1rem' }}>
                 {prog.ages}
               </p>

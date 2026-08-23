@@ -44,7 +44,7 @@ const VALUES = [
   {
     id: 'proactive',
     num: 'ד',
-    title: 'אחריות יוזמת',
+    title: 'לקיחת אחריות',
     tag: 'PROACTIVE',
     body: 'יוזמה במקום תגובה. לוקחים אחריות על המציאות במקום לחכות שמישהו אחר יתקן אותה.',
     img: '/liba_pics/214A1343.jpg',

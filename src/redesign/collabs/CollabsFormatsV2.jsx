@@ -15,11 +15,20 @@ gsap.registerPlugin(ScrollTrigger)
 const FORMATS = [
   {
     n: '1',
-    title: 'הרצאת השראה',
+    title: 'הרצאה: חוסן ומנהיגות במציאות משתנה',
     duration: '45–90 דק׳',
     text: 'הרצאה מעוררת השראה שמציגה גישות חדשות ומעניקה כלים פרקטיים ליישום מיידי.',
     location: 'אולם או חלל פתוח · עד 500 משתתפים',
     audience: 'כנסים, אירועי חברה, פתיחת/סגירת שנה, ימי עיון',
+    speaker: {
+      href: '#amir',
+      eyebrow: 'המרצה',
+      name: 'עמיר מנחם',
+      role: 'מייסד ויו״ר התנועה · מגיש ״האדם בזירה״',
+      teaser: 'מעל 1,000 הרצאות על חוסן, מנהיגות וצמיחה מתוך אתגר — הסיפור והשיטה שמאחורי חמש אצבעות.',
+      cta: 'עוד על עמיר',
+      photo: { src: '/Amir_pics/amir-portrait.jpg', w: 1600, h: 1067, alt: 'עמיר מנחם, מייסד תנועת חמש אצבעות' },
+    },
   },
   {
     n: '2',
@@ -113,6 +122,45 @@ export default function CollabsFormatsV2({ onRegister }) {
                   </dt>
                   <dd className="font-heebo text-navy leading-snug">{f.audience}</dd>
                 </dl>
+
+                {/* Speaker card — the in-context door to עמיר's page, dropped
+                    on the lecture format he delivers. Mirrors the אודות card. */}
+                {f.speaker && (
+                  <a
+                    href={f.speaker.href}
+                    className="group/spk relative mt-8 flex flex-col sm:flex-row items-stretch overflow-hidden rounded-[1.4rem] bg-white border border-navy/10 shadow-sm shadow-navy/5 transition-all duration-300 hover:shadow-xl hover:shadow-navy/10 hover:-translate-y-0.5 hover:border-orange/30 max-w-2xl"
+                  >
+                    <div className="relative shrink-0 sm:w-40 md:w-48">
+                      <img
+                        src={f.speaker.photo.src}
+                        width={f.speaker.photo.w}
+                        height={f.speaker.photo.h}
+                        alt={f.speaker.photo.alt}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-48 w-full sm:h-full object-cover"
+                        style={{ objectPosition: 'center 22%' }}
+                      />
+                    </div>
+
+                    <div className="flex flex-1 flex-col justify-center p-6 md:p-7">
+                      <span className="ds-eyebrow text-orange-ink">{f.speaker.eyebrow}</span>
+                      <h4 className="font-ragmarom text-navy leading-tight mt-2" style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.9rem)' }}>
+                        {f.speaker.name}
+                      </h4>
+                      <p className="font-heebo text-navy/55 text-sm leading-relaxed mt-1.5">
+                        {f.speaker.role}
+                      </p>
+                      <p className="font-heebo text-navy/75 leading-relaxed mt-3" style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.06rem)' }}>
+                        {f.speaker.teaser}
+                      </p>
+                      <span className="inline-flex items-center gap-1.5 mt-4 font-heebo font-semibold text-orange-ink group-hover/spk:text-orange transition-colors">
+                        {f.speaker.cta}
+                        <span aria-hidden="true" className="transition-transform duration-200 group-hover/spk:-translate-x-1">←</span>
+                      </span>
+                    </div>
+                  </a>
+                )}
               </div>
             </div>
           ))}

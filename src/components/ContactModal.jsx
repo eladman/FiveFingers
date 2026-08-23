@@ -12,7 +12,7 @@ import { YOUTH_GROUP_FIELDS } from '../data/youthGroupFields'
 // the three tracks of the Academy, hence one group.
 const INTEREST_GROUPS = [
   { label: 'נוער', hint: 'גילאי 10-18', items: ['קבוצות הנוער'] },
-  { label: 'מכינה והכנה לצבא', hint: 'מלש״בים', items: ['מכינה', 'הזנק', 'כרמל'] },
+  { label: 'מכינה והכנה לצבא', hint: 'מלש״בים', items: ['מכינה', 'Boost', 'כרמל'] },
   { label: 'בוגרים', hint: '21+', items: ['יואב'] },
   { label: 'שותפויות וקשר', hint: '', items: ['שיתוף פעולה', 'קשר עם עמיר'] },
 ]
@@ -28,6 +28,7 @@ const TYPE_ALIASES = {
   'קהילת הבוגרים': 'יואב',
   'שיתופי פעולה': 'שיתוף פעולה',
   'המכינה הקדם צבאית': 'מכינה',
+  'הזנק': 'Boost',
 }
 const normalizeType = (t) => TYPE_ALIASES[t] || t
 

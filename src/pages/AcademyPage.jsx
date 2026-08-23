@@ -16,7 +16,7 @@ import SoftDivider from '../components/SoftDivider'
  * home + ליבה pages.
  *
  * `onContactOpen` opens the shared ContactModal. Section CTAs pass a per-program
- * tag (מכינה / הזנק / כרמל); the page-level default is 'מכינה'.
+ * tag (מכינה / Boost / כרמל); the page-level default is 'מכינה'.
  */
 export default function AcademyPage({ onContactOpen }) {
   const onRegister = (tag) => onContactOpen?.(tag || 'מכינה')

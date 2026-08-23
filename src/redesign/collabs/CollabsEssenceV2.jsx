@@ -12,13 +12,12 @@ gsap.registerPlugin(ScrollTrigger)
  */
 
 const STATEMENT = [
-  { t: 'לא', hl: false },
-  { t: 'מרצים', hl: false },
-  { t: 'על', hl: false },
-  { t: 'מצוינות', hl: false },
-  { t: '—', hl: false },
-  { t: 'מתאמנים', hl: true },
-  { t: 'בה.', hl: true },
+  { t: 'תרבות', hl: false },
+  { t: 'חמש', hl: false },
+  { t: 'אצבעות', hl: false },
+  { t: '-', hl: false },
+  { t: 'אצלך', hl: true },
+  { t: 'בארגון', hl: true },
 ]
 
 export default function CollabsEssenceV2() {
