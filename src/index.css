@@ -179,6 +179,18 @@ a {
   to   { opacity: 1; }
 }
 
+/* Collabs catalog — the detail panel swapping from one product to another.
+   The grid track stays at 1fr across a swap, so the height change isn't
+   animated; this short fade makes the content change read as intentional.
+   The reduced-motion rule above neutralises it automatically. */
+.cat-panel-body {
+  animation: catPanelIn 220ms var(--ease-brand) both;
+}
+@keyframes catPanelIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* ─── Utility classes ───────────────────────────────────────── */
 .font-inter    { font-family: 'Inter', sans-serif; }
 .font-frank    { font-family: 'Frank Ruhl Libre', serif; }

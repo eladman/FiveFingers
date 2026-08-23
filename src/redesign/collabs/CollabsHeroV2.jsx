@@ -145,7 +145,7 @@ export default function CollabsHeroV2({ onRegister }) {
           <Button variant="primary" size="lg" glow onClick={onRegister} className="chv2-cta">
             לתיאום שיחת ייעוץ
           </Button>
-          <Button variant="ghost" size="lg" href="#collabs-worlds" className="chv2-cta">
+          <Button variant="ghost" size="lg" href="#collabs-catalog" className="chv2-cta">
             מה תקבלו
           </Button>
         </div>

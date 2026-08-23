@@ -48,19 +48,31 @@ create policy "staff update status/notes"
 --     only) and cannot read. Staff read for the dashboard.
 -- ---------------------------------------------------------------------
 create table if not exists public.page_views (
-  id         bigint      generated always as identity primary key,
-  created_at timestamptz not null default now(),
-  path       text        not null,          -- e.g. '/#liabah'
-  referrer   text                            -- document.referrer, may be null
+  id          bigint      generated always as identity primary key,
+  created_at  timestamptz not null default now(),
+  path        text        not null,         -- e.g. '/#liabah'
+  referrer    text,                          -- document.referrer, may be null
+  -- Anonymous, cookieless IDs (random UUIDs, no PII) so we can count UNIQUE
+  -- visitors instead of raw hits. Nullable: legacy rows + storage-blocked browsers.
+  visitor_id  text,                          -- persistent per browser (localStorage)
+  session_id  text,                          -- resets each tab session (sessionStorage)
+  is_internal boolean     not null default false  -- staff/collaborator traffic, excluded by default
 );
+
+-- Existing installs: add the new columns if the table predates this change.
+alter table public.page_views
+  add column if not exists visitor_id  text,
+  add column if not exists session_id  text,
+  add column if not exists is_internal boolean not null default false;
 
 create index if not exists page_views_created_at_idx on public.page_views (created_at desc);
 create index if not exists page_views_path_idx       on public.page_views (path);
+create index if not exists page_views_visitor_idx    on public.page_views (visitor_id);
 
 alter table public.page_views enable row level security;
 
--- anon (public site) may INSERT only these two columns, nothing else, and cannot read.
-grant insert (path, referrer) on public.page_views to anon;
+-- anon (public site) may INSERT only these columns, nothing else, and cannot read.
+grant insert (path, referrer, visitor_id, session_id, is_internal) on public.page_views to anon;
 
 drop policy if exists "anyone can log a view" on public.page_views;
 create policy "anyone can log a view"

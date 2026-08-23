@@ -164,6 +164,10 @@ site traffic. Built as a separate Vite entry — not linked from the public site
 1. **Run [`dashboard.sql`](./dashboard.sql)** in the SQL Editor (after `schema.sql`). It adds
    `status` + `staff_notes` to `contact_submissions`, opens read/limited-write to logged-in staff,
    and creates the `page_views` table.
+   - **Already have `page_views` from before?** Run [`page_views_upgrade.sql`](./page_views_upgrade.sql)
+     once — it adds the `visitor_id` / `session_id` / `is_internal` columns used for unique-visitor
+     counting and internal-traffic filtering. (`dashboard.sql` is idempotent and includes the same
+     delta, so re-running it works too.)
 2. **Create staff accounts** — Supabase Dashboard → **Authentication → Users → Add user** (email +
    password), one per team member. Then **Authentication → Sign In / Providers** → turn **off**
    "Allow new users to sign up" so only invited staff exist.
@@ -183,9 +187,25 @@ site traffic. Built as a separate Vite entry — not linked from the public site
 
 ## Traffic counter
 
-`src/lib/analytics.js` fires a cookieless beacon on each page/route view → `page_views` (path +
-referrer only, no PII). It's a no-op until the Supabase env vars are set. The dashboard's "תנועה
-באתר" tab shows totals (today / 7d / 30d), a daily bar chart, and top pages.
+`src/lib/analytics.js` fires a cookieless beacon on each page/route view → `page_views`. It logs the
+path, the referrer, and two **anonymous random ids** (no PII, no cookies — they live in
+localStorage/sessionStorage): a persistent `visitor_id` (one per browser) and a per-session
+`session_id`. It's a no-op until the Supabase env vars are set.
+
+The dashboard's "תנועה באתר" tab now leads with **unique visitors** (today / 7d / 30d) alongside raw
+page views, plus sessions, pages-per-visit, returning visitors, a daily chart (toggle
+visitors ↔ views), top pages, and traffic sources (grouped from the referrer).
+
+**Internal traffic:** opening the staff dashboard marks that browser as internal
+(`localStorage.ff_internal`), so the team's own visits are flagged `is_internal` and **excluded by
+default** — with a checkbox to include them. This is why real numbers drop once staff/collaborators
+have opened the dashboard: their hits stop inflating the count.
+
+> **Why counts looked high before:** the site is a single page with hash sections (`#liabah`,
+> `#team`, …). Every hash change fired a view, so one person browsing all sections logged ~8 "views",
+> and repeat visits from the small review circle stacked up — with no unique-visitor de-duplication
+> and no internal filter. Both are fixed now; unique numbers are accurate for traffic logged from the
+> upgrade onward (older rows have no `visitor_id`, so each legacy hit counts as its own visit).
 
 > The `page_views` insert is open to the anon role (necessary for a client beacon) and therefore
 > spammable. Fine for a counter; harden with an edge function / rate limit if abuse appears.
