@@ -217,7 +217,7 @@ export default function HeroV1DiagonalSplit() {
             fontSize: 'clamp(1rem, 2.2vw, 2rem)',
             margin: 0,
             letterSpacing: '-0.01em',
-          }}>חינוך למצוינות</p>
+          }}>מצוינות ערכית</p>
 
           <a
             className="ds-text"

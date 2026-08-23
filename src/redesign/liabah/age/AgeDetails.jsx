@@ -3,7 +3,6 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowLeft } from 'lucide-react'
 import Button from '../../../components/ui/Button'
-import { coaches } from '../../../data/liabahData'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -23,7 +22,6 @@ export default function AgeDetails({ page, locations, onRegister }) {
   const regions = REGION_ORDER
     .map((region) => ({
       region,
-      coach: coaches.find((c) => c.region === region),
       locations: locations.filter((l) => l.region === region),
     }))
     .filter((r) => r.locations.length > 0)
@@ -94,18 +92,13 @@ export default function AgeDetails({ page, locations, onRegister }) {
 
         {/* regions */}
         <div className="mt-16 md:mt-24 flex flex-col gap-16 md:gap-24">
-          {regions.map(({ region, coach, locations: regionLocs }) => (
+          {regions.map(({ region, locations: regionLocs }) => (
             <div key={region} className="agd-region">
               {/* region header */}
               <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1 pb-6 border-b-2 border-navy/85">
                 <h3 className="font-ragmarom text-navy leading-none" style={{ fontSize: 'clamp(1.9rem, 3.4vw, 3rem)' }}>
                   אזור ה{region}
                 </h3>
-                {coach && (
-                  <p className="font-heebo text-navy/50 text-sm md:text-base">
-                    {coach.role}: <span className="font-semibold text-navy/75">{coach.name}</span>
-                  </p>
-                )}
               </div>
 
               {/* cities — top-hairline editorial blocks, no shadow cards */}
@@ -123,11 +116,21 @@ export default function AgeDetails({ page, locations, onRegister }) {
                     <p className="font-heebo text-navy/55 text-sm md:text-[0.95rem] mt-1.5">
                       {loc.venue ? `${loc.venue} · ` : ''}ימי {loc.days}
                     </p>
+                    {loc.manager && (
+                      <p className="font-heebo text-navy/45 text-xs md:text-sm mt-0.5">
+                        מנהל/ת אזור · {loc.manager}
+                      </p>
+                    )}
                     <ul className="mt-3.5 flex flex-col gap-1.5">
                       {loc.teams.map((team) => (
                         <li key={team.name} className="font-heebo text-navy/70 text-[0.9rem] md:text-[0.95rem] flex items-center gap-2.5">
                           <span className="w-1.5 h-1.5 rounded-full bg-orange/70 shrink-0" aria-hidden="true" />
-                          {team.name}
+                          <span className="flex-1 min-w-0">{team.name}</span>
+                          <span className="shrink-0 flex items-center gap-2 text-navy/40 text-xs md:text-sm">
+                            {team.venue && <span>{team.venue}</span>}
+                            {team.hours && <span className="tabular-nums">{team.hours}</span>}
+                            {team.note && <span className="text-orange font-semibold">{team.note}</span>}
+                          </span>
                         </li>
                       ))}
                     </ul>

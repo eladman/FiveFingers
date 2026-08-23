@@ -7,12 +7,13 @@ const NAV_LINKS = [
   { label: 'קבוצות הנוער', href: '#liabah' },
   { label: 'מכינה', href: '#academy' },
   { label: 'שיתופי פעולה', href: '#collabs' },
-  // Memorial — now an in-app route (src/pages/MemorialPage.jsx). Hash nav, so
-  // it opens instantly with no full page reload like the rest of the site.
-  { label: 'לזכרם', href: '#memorial' },
   { label: 'בוגרים', href: '#alumni' },
   { label: 'אודות', href: '#about' },
   { label: 'צוות', href: '#team' },
+  // Memorial — now an in-app route (src/pages/MemorialPage.jsx). Hash nav, so
+  // it opens instantly with no full page reload like the rest of the site.
+  // Kept last in the nav.
+  { label: 'לזכרם', href: '#memorial' },
 ]
 
 export default function Navbar({ onContactOpen, forceLifted = false }) {

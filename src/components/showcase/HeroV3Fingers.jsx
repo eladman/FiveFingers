@@ -223,7 +223,7 @@ export default function HeroV3Triptych() {
             fontSize: 'clamp(1.1rem, 2.5vw, 2rem)',
             marginRight: '0.8rem',
             letterSpacing: '-0.02em',
-          }}>· חינוך למצוינות</span>
+          }}>· מצוינות ערכית</span>
         </div>
 
         {/* Stats + CTA */}

@@ -345,7 +345,7 @@ export default function HeroV4MissionHUD() {
           margin: 0,
           marginBottom: 'clamp(1rem, 2.5vh, 2rem)',
           opacity: 0,
-        }}>חינוך למצוינות</p>
+        }}>מצוינות ערכית</p>
 
         {/* Stats + CTA */}
         <div className="hud-el" style={{

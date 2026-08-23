@@ -215,7 +215,7 @@ export default function Hero({ onComplete, onContactOpen }) {
             textShadow: '0 2px 20px rgba(0,0,0,0.9)',
           }}
         >
-          חינוך למצוינות
+          מצוינות ערכית
         </p>
 
         {/* CTA buttons */}

@@ -1,66 +1,71 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { MapPin, Clock, X, ChevronLeft, ChevronRight, Check } from 'lucide-react'
+import { MapPin, Clock, X, ChevronLeft, ChevronRight, Check, Users } from 'lucide-react'
 import { locations } from '../../data/liabahData'
-import { ISRAEL_PATH, VIEWBOX_W, VIEWBOX_H, project } from '../../data/israelOutline'
 import { GlowField, SelectField, DateField, SubmitButton } from '../contactFields'
 import { YOUTH_GROUP_FIELDS, YOUTH_GROUP_PRODUCT } from '../../data/youthGroupFields'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const REGIONS = ['מרכז', 'שרון', 'צפון']
+// Region bands, north → south. Each carries a one-line orientation cue.
+const REGIONS = [
+  { name: 'צפון', tag: 'עמק יזרעאל והכרמל' },
+  { name: 'מרכז', tag: 'גוש דן וירושלים' },
+  { name: 'שרון', tag: 'מהרצליה ועד עמק חפר' },
+]
 
-// ─── Mobile region-tabs + city list ──────────────────────────────────────────
-function MobileLocations({ onSelect }) {
-  const [activeRegion, setActiveRegion] = useState('מרכז')
-  const cities = locations.filter((l) => l.region === activeRegion)
-
+// ─── A single city card — the tap target that opens the city detail ──────────
+function CityCard({ loc, onSelect }) {
   return (
-    <div className="pb-16">
-      {/* Region tabs */}
-      <div className="flex gap-2 mb-5">
-        {REGIONS.map((r) => (
-          <button
-            key={r}
-            onClick={() => setActiveRegion(r)}
-            className={`flex-1 min-h-[44px] py-2.5 rounded-xl font-heebo font-bold text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange ${
-              activeRegion === r
-                ? 'bg-orange text-white shadow-md shadow-orange/30'
-                : 'bg-white border border-navy/10 text-navy/60 hover:border-orange/40'
-            }`}
-          >
-            {r}
-          </button>
-        ))}
+    <button
+      type="button"
+      onClick={() => onSelect(loc.id)}
+      className="group text-right rounded-2xl border border-navy/8 bg-white p-4 sm:p-5 transition-all duration-200 cursor-pointer hover:border-orange/50 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-navy/[0.06] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+    >
+      <div className="flex items-center gap-3">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange/10 text-orange transition-colors duration-200 group-hover:bg-orange group-hover:text-white">
+          <MapPin size={18} strokeWidth={2.2} />
+        </span>
+        <div className="min-w-0 flex-1">
+          <h4 className="font-heebo font-bold text-navy text-[17px] leading-tight truncate">{loc.city}</h4>
+          <span className="font-heebo text-navy/45 text-[13px]">{loc.teams.length} קבוצות</span>
+        </div>
+        <ChevronLeft size={20} className="shrink-0 text-navy/25 transition-all duration-200 group-hover:text-orange group-hover:-translate-x-0.5" />
+      </div>
+      <div className="flex items-center gap-1.5 mt-3.5 pt-3.5 border-t border-navy/[0.06]">
+        <Clock size={14} className="shrink-0 text-navy/40" />
+        <span className="font-heebo text-navy/55 text-[13.5px]">{loc.days}</span>
+      </div>
+    </button>
+  )
+}
+
+// ─── A region band — bold header + its city grid ─────────────────────────────
+function RegionBand({ region, cities, onSelect }) {
+  return (
+    <div className="lm-animate">
+      {/* Band header — region name leads, a rule carries the eye, count anchors the end */}
+      <div className="flex items-center gap-4 mb-6">
+        <div className="min-w-0">
+          <h3 className="font-heebo font-extrabold text-navy text-2xl md:text-[28px] leading-none tracking-tight">
+            {region.name}
+          </h3>
+          <p className="font-heebo text-navy/45 text-[13px] mt-1.5">{region.tag}</p>
+        </div>
+        <span className="h-px flex-1 bg-navy/10 min-w-4" />
+        <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-navy/[0.04] px-3 py-1.5 font-heebo font-semibold text-navy/60 text-[13px]">
+          <Users size={13} className="text-orange" />
+          {cities.length} יישובים
+        </span>
       </div>
 
-      {/* Cities in active region */}
-      <div className="flex flex-col gap-2">
+      {/* City grid — scales from 1-up (mobile) to 3-up (desktop) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {cities.map((loc) => (
-          <button
-            key={loc.id}
-            type="button"
-            onClick={() => onSelect(loc.id)}
-            className="text-right rounded-xl border border-navy/8 bg-white p-4 transition-all duration-200 hover:border-orange/40 hover:bg-orange/[0.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
-          >
-            <div className="flex items-center gap-2">
-              <MapPin size={16} className="text-orange shrink-0" />
-              <h3 className="font-heebo font-bold text-navy">{loc.city}</h3>
-              <span className="font-heebo text-navy/40 text-xs">· {loc.teams.length} קבוצות</span>
-              <ChevronLeft size={16} className="mr-auto shrink-0 text-navy/25" />
-            </div>
-            <div className="flex items-center gap-2 mt-1.5 pr-1">
-              <Clock size={13} className="text-navy/40 shrink-0" />
-              <span className="font-heebo text-navy/55 text-sm">{loc.days}</span>
-            </div>
-          </button>
+          <CityCard key={loc.id} loc={loc} onSelect={onSelect} />
         ))}
       </div>
-
-      <p className="font-heebo text-navy/45 text-sm mt-4">
-        לא מצאתם קבוצה באזורכם? השאירו פרטים ונעדכן אתכם בפתיחת קבוצה קרובה.
-      </p>
     </div>
   )
 }
@@ -251,7 +256,6 @@ function TeamInterestForm({ team, city, onBack }) {
 
 export default function LiabahMap() {
   const ref = useRef(null)
-  const [active, setActive] = useState(null)   // hovered/focused pin
   const [selected, setSelected] = useState(null) // clicked city → detail panel
   const [interestTeam, setInterestTeam] = useState(null) // team → interest form
 
@@ -268,18 +272,13 @@ export default function LiabahMap() {
 
     const ctx = gsap.context(() => {
       if (reduced) {
-        gsap.set('.lm-animate, .lm-pin', { opacity: 1, y: 0, scale: 1 })
+        gsap.set('.lm-animate', { opacity: 1, y: 0 })
         return
       }
 
-      gsap.fromTo('.lm-animate', { y: 50, opacity: 0 }, {
-        y: 0, opacity: 1, stagger: 0.06, duration: 1.0, ease: 'power3.out',
-        scrollTrigger: { trigger: root, start: 'top 80%' },
-      })
-
-      gsap.fromTo('.lm-pin', { y: -16, opacity: 0, scale: 0.5 }, {
-        y: 0, opacity: 1, scale: 1, stagger: 0.04, duration: 0.5, ease: 'back.out(2)',
-        scrollTrigger: { trigger: '.lm-map', start: 'top 78%' },
+      gsap.fromTo('.lm-animate', { y: 40, opacity: 0 }, {
+        y: 0, opacity: 1, stagger: 0.09, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: root, start: 'top 78%' },
       })
     }, ref)
     return () => ctx.revert()
@@ -306,128 +305,39 @@ export default function LiabahMap() {
 
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 sm:px-10 md:px-16">
         {/* heading — right-anchored, the Home v2 language */}
-        <div className="lm-animate max-w-3xl pt-24 md:pt-32 pb-12 md:pb-16">
+        <div className="lm-animate max-w-3xl pt-24 md:pt-32 pb-8 md:pb-10">
           <p className="ds-eyebrow text-orange-ink mb-3">פריסה ארצית</p>
           <h2 className="ds-section-title text-navy">איפה אנחנו פועלים</h2>
+          <p className="font-heebo text-navy/55 text-lg mt-4 leading-relaxed">
+            <span className="font-bold text-navy">{locations.length} יישובים</span> בשלושה אזורים.
+            בחרו את האזור שלכם, מצאו קבוצה — והצטרפו.
+          </p>
         </div>
 
-        {/* Mobile: region tabs — no map */}
-        <div className="sm:hidden">
-          <MobileLocations onSelect={setSelected} />
+        {/* Region bands — north → south, each its own block of city cards */}
+        <div className="flex flex-col gap-14 md:gap-16 pb-16">
+          {REGIONS.map((region) => (
+            <RegionBand
+              key={region.name}
+              region={region}
+              cities={locations.filter((l) => l.region === region.name)}
+              onSelect={setSelected}
+            />
+          ))}
         </div>
 
-        {/* sm+: original map + list layout */}
-        <div className="hidden sm:grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pb-24">
-          {/* Map */}
-          <div className="lm-animate order-2 lg:order-1 flex justify-center lg:sticky lg:top-24 self-start">
-            <div
-              className="lm-map relative w-[260px] sm:w-[340px] lg:w-[400px]"
-              style={{ aspectRatio: `${VIEWBOX_W} / ${VIEWBOX_H}` }}
-            >
-              <svg
-                viewBox={`0 0 ${VIEWBOX_W} ${VIEWBOX_H}`}
-                className="w-full h-full overflow-visible"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d={ISRAEL_PATH}
-                  fill="#0d1b4b"
-                  fillOpacity="0.06"
-                  stroke="#0d1b4b"
-                  strokeOpacity="0.22"
-                  strokeWidth="6"
-                  strokeLinejoin="round"
-                />
-              </svg>
-
-              {/* Pins — positioned by real geographic projection */}
-              {locations.map((loc) => {
-                const isActive = active === loc.id
-                const { x, y } = project(loc.lng, loc.lat)
-                return (
-                  <button
-                    key={loc.id}
-                    onMouseEnter={() => setActive(loc.id)}
-                    onMouseLeave={() => setActive(null)}
-                    onFocus={() => setActive(loc.id)}
-                    onBlur={() => setActive(null)}
-                    onClick={() => setSelected(loc.id)}
-                    aria-label={`פרטים על ${loc.city}`}
-                    // The pin glyph is 18x18 — too small to tap comfortably on an
-                    // iPad, where this map (sm+) is the primary view. The ::after
-                    // grows the hit area to ~30px without moving the pin. It stops
-                    // short of the full 44px on purpose: neighbouring towns (e.g.
-                    // עמק חפר מזרח/מערב) sit close enough that 44px boxes would
-                    // overlap and steal each other's taps. The locations list
-                    // beside the map is the full-size affordance for every city.
-                    className="lm-pin absolute rounded-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 after:absolute after:-inset-1.5 after:content-['']"
-                    style={{
-                      left: `${(x / VIEWBOX_W) * 100}%`,
-                      top: `${(y / VIEWBOX_H) * 100}%`,
-                      transform: 'translate(-50%, -100%)',
-                      zIndex: isActive ? 30 : 10,
-                    }}
-                  >
-                    {/* City label on hover/focus */}
-                    {isActive && (
-                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded-md bg-navy text-white text-xs font-heebo font-medium px-2 py-0.5 shadow-lg pointer-events-none">
-                        {loc.city}
-                      </span>
-                    )}
-                    {/* Pulse ring on active */}
-                    {isActive && (
-                      <span
-                        aria-hidden="true"
-                        className="absolute left-1/2 bottom-0 w-5 h-5 rounded-full bg-orange/40"
-                        style={{ transform: 'translate(-50%, 50%)', animation: 'pulseRing 1.4s ease-out infinite' }}
-                      />
-                    )}
-                    <MapPin
-                      size={isActive ? 28 : 18}
-                      className="relative text-orange drop-shadow transition-all duration-200"
-                      fill={isActive ? '#ff8714' : '#ffffff'}
-                      strokeWidth={2}
-                    />
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-
-          {/* Locations list */}
-          <div className="order-1 lg:order-2">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {locations.map((loc) => {
-                const isActive = active === loc.id
-                return (
-                  <button
-                    key={loc.id}
-                    type="button"
-                    onMouseEnter={() => setActive(loc.id)}
-                    onMouseLeave={() => setActive(null)}
-                    onClick={() => setSelected(loc.id)}
-                    className={`lm-animate text-right rounded-xl border p-4 transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange ${
-                      isActive ? 'border-orange bg-orange/[0.05] shadow-sm -translate-y-0.5' : 'border-navy/8 bg-white'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <MapPin size={18} className="text-[#ff8714] shrink-0" />
-                      <h3 className="font-heebo font-bold text-navy">{loc.city}</h3>
-                      <span className="font-heebo text-navy/40 text-xs">· {loc.teams.length} קבוצות</span>
-                      <ChevronLeft size={18} className={`mr-auto shrink-0 transition-colors ${isActive ? 'text-orange' : 'text-navy/25'}`} />
-                    </div>
-                    <div className="flex items-center gap-2 mt-2 pr-1">
-                      <Clock size={15} className="text-navy/40 shrink-0" />
-                      <span className="font-heebo text-navy/60 text-sm">{loc.days}</span>
-                    </div>
-                  </button>
-                )
-              })}
-            </div>
-            <p className="lm-animate font-heebo text-navy/45 text-sm mt-4">
-              לא מצאתם קבוצה באזורכם? השאירו פרטים ונעדכן אתכם בפתיחת קבוצה קרובה.
-            </p>
-          </div>
+        {/* Fallback — for towns not yet on the list */}
+        <div className="lm-animate flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 rounded-2xl border border-dashed border-navy/15 bg-white/40 px-6 py-5 mb-24">
+          <p className="font-heebo text-navy/60 text-[15px] leading-relaxed flex-1">
+            לא מצאתם קבוצה באזורכם? השאירו פרטים ונעדכן אתכם ברגע שנפתחת קבוצה קרובה.
+          </p>
+          <a
+            href="#contact"
+            className="shrink-0 inline-flex items-center justify-center gap-1 rounded-full bg-navy px-5 py-2.5 font-heebo font-bold text-white text-[14px] transition-colors hover:bg-navy/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+          >
+            עדכנו אותי
+            <ChevronLeft size={16} className="-mr-1" />
+          </a>
         </div>
       </div>
 
@@ -471,6 +381,11 @@ export default function LiabahMap() {
                   <h3 className="font-heebo font-bold text-navy text-[30px] leading-[1.1] tracking-tight">
                     {selectedLoc.city}
                   </h3>
+                  {selectedLoc.manager && (
+                    <p className="font-heebo text-navy/55 text-[13.5px] mt-2">
+                      מנהל/ת אזור · <span className="font-semibold text-navy/75">{selectedLoc.manager}</span>
+                    </p>
+                  )}
                   <div className="flex flex-wrap items-center gap-2 mt-4">
                     {selectedLoc.venue && (
                       <span className="inline-flex items-center gap-1.5 rounded-full bg-navy/[0.04] px-3 py-1.5 font-heebo text-navy/70 text-[13px]">
@@ -503,6 +418,25 @@ export default function LiabahMap() {
                             <div className="font-heebo font-bold text-navy text-[16px] leading-snug truncate">{teamLabel(t.name, selectedLoc.city)}</div>
                             {t.coach && (
                               <div className="font-heebo text-navy/45 text-[13px] mt-0.5 truncate">מאמן/ת {t.coach}</div>
+                            )}
+                            {(t.hours || t.venue || t.note) && (
+                              <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 mt-1 font-heebo text-[12.5px]">
+                                {t.hours && (
+                                  <span className="inline-flex items-center gap-1 text-navy/50">
+                                    <Clock size={12} className="text-orange/80 shrink-0" />
+                                    {t.hours}
+                                  </span>
+                                )}
+                                {t.venue && (
+                                  <span className="inline-flex items-center gap-1 text-navy/50">
+                                    <MapPin size={12} className="text-orange/80 shrink-0" />
+                                    {t.venue}
+                                  </span>
+                                )}
+                                {t.note && (
+                                  <span className="text-orange font-semibold">{t.note}</span>
+                                )}
+                              </div>
                             )}
                           </div>
                           {/* Join affordance — orange at rest (mobile-legible), fills solid on hover/press */}

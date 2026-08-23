@@ -200,7 +200,7 @@ export default function CinematicIntro({ onComplete }) {
             opacity: 0,
           }}
         >
-          חינוך למצוינות
+          מצוינות ערכית
         </p>
       </div>
     </div>

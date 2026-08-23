@@ -40,7 +40,7 @@ function Chars({ text }) {
     <span aria-hidden="true">
       {[...text].map((ch, i) => (
         <span key={i} className="lhv2-char inline-block will-change-transform">
-          {ch === ' ' ? ' ' : ch}
+          {ch === ' ' ? ' ' : ch}
         </span>
       ))}
     </span>
@@ -209,12 +209,9 @@ export default function LiabahHeroV2({ onRegister }) {
                   className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-orange/25 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 />
 
-                {/* top row: grade range + index */}
+                {/* top row: grade range */}
                 <span className="relative flex items-center justify-between">
                   <span className="font-heebo text-white/55 text-xs md:text-sm">{c.grades}</span>
-                  <span className="font-heebo text-orange/70 text-[0.65rem] tracking-[0.25em] tabular-nums">
-                    {c.index}
-                  </span>
                 </span>
 
                 {/* headline: the age range parents scan for */}

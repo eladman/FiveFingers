@@ -155,7 +155,7 @@ export default function VariantA() {
               letterSpacing: '0.22em', textTransform: 'uppercase',
               color: 'rgba(255,255,255,0.38)',
               margin: 0,
-            }}>חינוך למצוינות ערכית</p>
+            }}>מצוינות ערכית</p>
 
             <a
               href="#contact"

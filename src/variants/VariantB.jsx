@@ -102,7 +102,7 @@ export default function VariantB() {
               fontFamily: 'JetBrains Mono, monospace',
               fontSize: '0.55rem', letterSpacing: '0.35em',
               color: `${GOLD}99`, textTransform: 'uppercase',
-            }}>חינוך למצוינות ערכית</span>
+            }}>מצוינות ערכית</span>
             <div style={{ width: '80px', height: '1px', background: GOLD }} />
           </div>
 

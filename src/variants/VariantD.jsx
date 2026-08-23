@@ -160,7 +160,7 @@ export default function VariantD() {
             color: `rgba(245,240,232,0.75)`,
             margin: '0 0 2.5rem',
             letterSpacing: '-0.01em', lineHeight: 1.35,
-          }}>חינוך למצוינות ערכית שמשנה מציאות</p>
+          }}>מצוינות ערכית שמשנה מציאות</p>
 
           {/* CTA */}
           <div className="vd-hero-text" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>

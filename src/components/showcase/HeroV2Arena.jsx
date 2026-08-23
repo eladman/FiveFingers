@@ -241,7 +241,7 @@ export default function HeroV2KineticBlinds() {
           margin: 0,
           marginBottom: 'clamp(1.2rem, 3vh, 2.2rem)',
           opacity: 0,
-        }}>חינוך למצוינות</p>
+        }}>מצוינות ערכית</p>
 
         {/* Stats + CTA */}
         <div
