@@ -156,7 +156,7 @@ export default function AgeDetails({ page, locations, onRegister }) {
               השאירו פרטים
             </Button>
             <a
-              href="#liabah-map"
+              href="/liabah#liabah-map"
               className="tap-safe group/link inline-flex items-center gap-2 font-heebo font-bold text-navy hover:text-orange-ink transition-colors"
             >
               למפת כל הקבוצות

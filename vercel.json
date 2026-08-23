@@ -1,0 +1,1124 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/about/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/programs",
+      "destination": "/#programs",
+      "permanent": true
+    },
+    {
+      "source": "/programs/",
+      "destination": "/#programs",
+      "permanent": true
+    },
+    {
+      "source": "/co-operative",
+      "destination": "/collabs",
+      "permanent": true
+    },
+    {
+      "source": "/co-operative/",
+      "destination": "/collabs",
+      "permanent": true
+    },
+    {
+      "source": "/youngadults",
+      "destination": "/alumni",
+      "permanent": true
+    },
+    {
+      "source": "/youngadults/",
+      "destination": "/alumni",
+      "permanent": true
+    },
+    {
+      "source": "/mechina-3",
+      "destination": "/academy",
+      "permanent": true
+    },
+    {
+      "source": "/mechina-3/",
+      "destination": "/academy",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact/",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact-2",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact-2/",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/thanks",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/thanks/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/tichonim",
+      "destination": "/liabah/high",
+      "permanent": true
+    },
+    {
+      "source": "/tichonim/",
+      "destination": "/liabah/high",
+      "permanent": true
+    },
+    {
+      "source": "/girls",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/girls/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%A7%D7%91%D7%95%D7%A6%D7%95%D7%AA-%D7%94%D7%91%D7%A0%D7%95%D7%AA",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%A7%D7%91%D7%95%D7%A6%D7%95%D7%AA-%D7%94%D7%91%D7%A0%D7%95%D7%AA/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/קבוצות-הבנות",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/קבוצות-הבנות/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/hativotb",
+      "destination": "/liabah/middle",
+      "permanent": true
+    },
+    {
+      "source": "/hativotb/",
+      "destination": "/liabah/middle",
+      "permanent": true
+    },
+    {
+      "source": "/fivehativot",
+      "destination": "/liabah/middle",
+      "permanent": true
+    },
+    {
+      "source": "/fivehativot/",
+      "destination": "/liabah/middle",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%A7%D7%91%D7%95%D7%A6%D7%95%D7%AA-%D7%94%D7%97%D7%98%D7%99%D7%91%D7%95%D7%AA-%D7%A6%D7%A4%D7%95%D7%9F",
+      "destination": "/liabah/middle",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%A7%D7%91%D7%95%D7%A6%D7%95%D7%AA-%D7%94%D7%97%D7%98%D7%99%D7%91%D7%95%D7%AA-%D7%A6%D7%A4%D7%95%D7%9F/",
+      "destination": "/liabah/middle",
+      "permanent": true
+    },
+    {
+      "source": "/קבוצות-החטיבות-צפון",
+      "destination": "/liabah/middle",
+      "permanent": true
+    },
+    {
+      "source": "/קבוצות-החטיבות-צפון/",
+      "destination": "/liabah/middle",
+      "permanent": true
+    },
+    {
+      "source": "/signup",
+      "destination": "/#join",
+      "permanent": true
+    },
+    {
+      "source": "/signup/",
+      "destination": "/#join",
+      "permanent": true
+    },
+    {
+      "source": "/discount",
+      "destination": "/#join",
+      "permanent": true
+    },
+    {
+      "source": "/discount/",
+      "destination": "/#join",
+      "permanent": true
+    },
+    {
+      "source": "/specialneeds",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/specialneeds/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/boost",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/boost/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/army-preperation",
+      "destination": "/academy",
+      "permanent": true
+    },
+    {
+      "source": "/youth/army-preperation/",
+      "destination": "/academy",
+      "permanent": true
+    },
+    {
+      "source": "/youth/camp-mechina",
+      "destination": "/academy",
+      "permanent": true
+    },
+    {
+      "source": "/youth/camp-mechina/",
+      "destination": "/academy",
+      "permanent": true
+    },
+    {
+      "source": "/youth/camp-outer",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/camp-outer/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/competition-village",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/competition-village/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/mental-physical-zichron",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/mental-physical-zichron/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/physical-mental-camp",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/physical-mental-camp/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/%D7%9E%D7%97%D7%A0%D7%94-%D7%A7%D7%99%D7%A5-%D7%A4%D7%99%D7%96%D7%99-%D7%9E%D7%A0%D7%98%D7%9C%D7%99",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/%D7%9E%D7%97%D7%A0%D7%94-%D7%A7%D7%99%D7%A5-%D7%A4%D7%99%D7%96%D7%99-%D7%9E%D7%A0%D7%98%D7%9C%D7%99/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/מחנה-קיץ-פיזי-מנטלי",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/youth/מחנה-קיץ-פיזי-מנטלי/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/bat-hefer",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/bat-hefer/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/cohav",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/cohav/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/emek-hefer",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/emek-hefer/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/even-yehuda",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/even-yehuda/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/herzliya",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/herzliya/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/hod-hasharon",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/hod-hasharon/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/kfar-saba",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/kfar-saba/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/kfar-yona",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/kfar-yona/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/raanana",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/raanana/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/tel-aviv",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/tel-aviv/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/tel-mond",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/tel-mond/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/yizrael",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/yizrael/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/zichron",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/zichron/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/heritage",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/heritage/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%99%D7%9D-%D7%9C%D7%94%D7%A8-2024",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%99%D7%9D-%D7%9C%D7%94%D7%A8-2024/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/ים-להר-2024",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/ים-להר-2024/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/race",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/race/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/simulation",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/simulation/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/fivejourney",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/fivejourney/",
+      "destination": "/liabah",
+      "permanent": true
+    },
+    {
+      "source": "/woman-day",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/woman-day/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/team_seminar",
+      "destination": "/collabs",
+      "permanent": true
+    },
+    {
+      "source": "/team_seminar/",
+      "destination": "/collabs",
+      "permanent": true
+    },
+    {
+      "source": "/tetyud",
+      "destination": "/collabs",
+      "permanent": true
+    },
+    {
+      "source": "/tetyud/",
+      "destination": "/collabs",
+      "permanent": true
+    },
+    {
+      "source": "/five-course",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/five-course/",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%94%D7%A8%D7%A9%D7%9E%D7%94-%D7%9C%D7%A8%D7%90%D7%99%D7%95%D7%A0%D7%95%D7%AA-%D7%A7%D7%95%D7%A8%D7%A1-%D7%9E%D7%90%D7%9E%D7%A0%D7%99%D7%9D",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%94%D7%A8%D7%A9%D7%9E%D7%94-%D7%9C%D7%A8%D7%90%D7%99%D7%95%D7%A0%D7%95%D7%AA-%D7%A7%D7%95%D7%A8%D7%A1-%D7%9E%D7%90%D7%9E%D7%A0%D7%99%D7%9D/",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/הרשמה-לראיונות-קורס-מאמנים",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/הרשמה-לראיונות-קורס-מאמנים/",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/tal-libshtein",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/tal-libshtein/",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/yoaz",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/yoaz/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%A4%D7%95%D7%93%D7%A7%D7%90%D7%A1%D7%98-%D7%A1%D7%95%D7%93-%D7%94%D7%9E%D7%A0%D7%94%D7%99%D7%92%D7%95%D7%AA-%D7%A9%D7%9C-%D7%90%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%99%D7%9D",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%A4%D7%95%D7%93%D7%A7%D7%90%D7%A1%D7%98-%D7%A1%D7%95%D7%93-%D7%94%D7%9E%D7%A0%D7%94%D7%99%D7%92%D7%95%D7%AA-%D7%A9%D7%9C-%D7%90%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%99%D7%9D/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/פודקאסט-סוד-המנהיגות-של-אריות-הים",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/פודקאסט-סוד-המנהיגות-של-אריות-הים/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/digitalcontent",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/digitalcontent/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/faq/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/הצהרת-נגישות",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/הצהרת-נגישות/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%AA%D7%A7%D7%A0%D7%95%D7%9F-%D7%95%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%AA%D7%A7%D7%A0%D7%95%D7%9F-%D7%95%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/תקנון-ומדיניות-פרטיות",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/תקנון-ומדיניות-פרטיות/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fallen",
+      "destination": "/memorial",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/",
+      "destination": "/memorial",
+      "permanent": true
+    },
+    {
+      "source": "/hello-world",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/hello-world/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/elementor-9123",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/elementor-9123/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%A2%D7%9E%D7%95%D7%93-%D7%91%D7%99%D7%AA-%D7%97%D7%93%D7%A9",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/%D7%A2%D7%9E%D7%95%D7%93-%D7%91%D7%99%D7%AA-%D7%97%D7%93%D7%A9/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/עמוד-בית-חדש",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/עמוד-בית-חדש/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/category/uncategorized",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/category/uncategorized/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/author/ido",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/author/ido/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/content",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/content/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%93%D7%99%D7%A8-%D7%9E%D7%A1%D7%99%D7%A7%D7%94",
+      "destination": "/memorial/adir-mesika",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%93%D7%99%D7%A8-%D7%9E%D7%A1%D7%99%D7%A7%D7%94/",
+      "destination": "/memorial/adir-mesika",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/אדיר-מסיקה",
+      "destination": "/memorial/adir-mesika",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/אדיר-מסיקה/",
+      "destination": "/memorial/adir-mesika",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%9C%D7%95%D7%9F-%D7%95%D7%A8%D7%91%D7%A8",
+      "destination": "/memorial/alon-werber",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%9C%D7%95%D7%9F-%D7%95%D7%A8%D7%91%D7%A8/",
+      "destination": "/memorial/alon-werber",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/אלון-ורבר",
+      "destination": "/memorial/alon-werber",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/אלון-ורבר/",
+      "destination": "/memorial/alon-werber",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%91%D7%9F-%D7%A4%D7%99%D7%A9%D7%9E%D7%9F",
+      "destination": "/memorial/ben-fishman",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%91%D7%9F-%D7%A4%D7%99%D7%A9%D7%9E%D7%9F/",
+      "destination": "/memorial/ben-fishman",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/בן-פישמן",
+      "destination": "/memorial/ben-fishman",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/בן-פישמן/",
+      "destination": "/memorial/ben-fishman",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%92%D7%99%D7%90-%D7%90%D7%99%D7%9C%D7%95%D7%96",
+      "destination": "/memorial/guy-iluz",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%92%D7%99%D7%90-%D7%90%D7%99%D7%9C%D7%95%D7%96/",
+      "destination": "/memorial/guy-iluz",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/גיא-אילוז",
+      "destination": "/memorial/guy-iluz",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/גיא-אילוז/",
+      "destination": "/memorial/guy-iluz",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%92%D7%99%D7%90-%D7%91%D7%96%D7%A7",
+      "destination": "/memorial/guy-bazak",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%92%D7%99%D7%90-%D7%91%D7%96%D7%A7/",
+      "destination": "/memorial/guy-bazak",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/גיא-בזק",
+      "destination": "/memorial/guy-bazak",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/גיא-בזק/",
+      "destination": "/memorial/guy-bazak",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%94%D7%93%D7%A8-%D7%A7%D7%9E%D7%94",
+      "destination": "/memorial/hadar-kama",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%94%D7%93%D7%A8-%D7%A7%D7%9E%D7%94/",
+      "destination": "/memorial/hadar-kama",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/הדר-קמה",
+      "destination": "/memorial/hadar-kama",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/הדר-קמה/",
+      "destination": "/memorial/hadar-kama",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%99%D7%95%D7%AA%D7%9D-%D7%91%D7%9F-%D7%91%D7%A1%D7%98",
+      "destination": "/memorial/yotam-ben-bassat",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%99%D7%95%D7%AA%D7%9D-%D7%91%D7%9F-%D7%91%D7%A1%D7%98/",
+      "destination": "/memorial/yotam-ben-bassat",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/יותם-בן-בסט",
+      "destination": "/memorial/yotam-ben-bassat",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/יותם-בן-בסט/",
+      "destination": "/memorial/yotam-ben-bassat",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%A8%D7%95%D7%9F-%D7%A6%D7%A8%D7%A4%D7%AA%D7%99",
+      "destination": "/memorial/ron-tzarfati",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%A8%D7%95%D7%9F-%D7%A6%D7%A8%D7%A4%D7%AA%D7%99/",
+      "destination": "/memorial/ron-tzarfati",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/רון-צרפתי",
+      "destination": "/memorial/ron-tzarfati",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/רון-צרפתי/",
+      "destination": "/memorial/ron-tzarfati",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%A8%D7%95%D7%A2%D7%99-%D7%A0%D7%94%D7%A8%D7%99",
+      "destination": "/memorial/roi-nehari",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%A8%D7%95%D7%A2%D7%99-%D7%A0%D7%94%D7%A8%D7%99/",
+      "destination": "/memorial/roi-nehari",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/רועי-נהרי",
+      "destination": "/memorial/roi-nehari",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/רועי-נהרי/",
+      "destination": "/memorial/roi-nehari",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%9C%D7%99%D7%90%D7%95%D7%A8-%D7%A1%D7%99%D7%9E%D7%99%D7%A0%D7%95%D7%91%D7%99%D7%A5",
+      "destination": "/memorial/lior-simanovich",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%9C%D7%99%D7%90%D7%95%D7%A8-%D7%A1%D7%99%D7%9E%D7%99%D7%A0%D7%95%D7%91%D7%99%D7%A5/",
+      "destination": "/memorial/lior-simanovich",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/ליאור-סימינוביץ",
+      "destination": "/memorial/lior-simanovich",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/ליאור-סימינוביץ/",
+      "destination": "/memorial/lior-simanovich",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%A1%D7%A3-%D7%9E%D7%A1%D7%98%D7%A8",
+      "destination": "/memorial/asaf-master",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%A1%D7%A3-%D7%9E%D7%A1%D7%98%D7%A8/",
+      "destination": "/memorial/asaf-master",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/אסף-מסטר",
+      "destination": "/memorial/asaf-master",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/אסף-מסטר/",
+      "destination": "/memorial/asaf-master",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%95%D7%94%D7%93-%D7%90%D7%A9%D7%95%D7%A8",
+      "destination": "/memorial/ohad-ashur",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%95%D7%94%D7%93-%D7%90%D7%A9%D7%95%D7%A8/",
+      "destination": "/memorial/ohad-ashur",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/אוהד-אשור",
+      "destination": "/memorial/ohad-ashur",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/אוהד-אשור/",
+      "destination": "/memorial/ohad-ashur",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%95%D7%A8%D7%99-%D7%92%D7%B3%D7%A8%D7%91%D7%99",
+      "destination": "/memorial/uri-gerbi",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%95%D7%A8%D7%99-%D7%92%D7%B3%D7%A8%D7%91%D7%99/",
+      "destination": "/memorial/uri-gerbi",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/אורי-ג׳רבי",
+      "destination": "/memorial/uri-gerbi",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/אורי-ג׳רבי/",
+      "destination": "/memorial/uri-gerbi",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%99%D7%9C%D7%99%D7%99-%D7%9C%D7%95%D7%99",
+      "destination": "/memorial/ilai-levy",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%90%D7%99%D7%9C%D7%99%D7%99-%D7%9C%D7%95%D7%99/",
+      "destination": "/memorial/ilai-levy",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/איליי-לוי",
+      "destination": "/memorial/ilai-levy",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/איליי-לוי/",
+      "destination": "/memorial/ilai-levy",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%A8%D7%99%D7%A3-%D7%94%D7%A8%D7%95%D7%A9",
+      "destination": "/memorial/rif-harush",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%A8%D7%99%D7%A3-%D7%94%D7%A8%D7%95%D7%A9/",
+      "destination": "/memorial/rif-harush",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/ריף-הרוש",
+      "destination": "/memorial/rif-harush",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/ריף-הרוש/",
+      "destination": "/memorial/rif-harush",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%98%D7%9C-%D7%9C%D7%94%D7%98",
+      "destination": "/memorial/tal-lahat",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%98%D7%9C-%D7%9C%D7%94%D7%98/",
+      "destination": "/memorial/tal-lahat",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/טל-להט",
+      "destination": "/memorial/tal-lahat",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/טל-להט/",
+      "destination": "/memorial/tal-lahat",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%A0%D7%95%D7%A2%D7%9D-%D7%91%D7%A8%D7%96%D7%99%D7%9C%D7%99",
+      "destination": "/memorial/noam-barzilai",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%A0%D7%95%D7%A2%D7%9D-%D7%91%D7%A8%D7%96%D7%99%D7%9C%D7%99/",
+      "destination": "/memorial/noam-barzilai",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/נועם-ברזילי",
+      "destination": "/memorial/noam-barzilai",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/נועם-ברזילי/",
+      "destination": "/memorial/noam-barzilai",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%99%D7%9D-%D7%A4%D7%A8%D7%99%D7%93",
+      "destination": "/memorial/yam-frid",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%99%D7%9D-%D7%A4%D7%A8%D7%99%D7%93/",
+      "destination": "/memorial/yam-frid",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/ים-פריד",
+      "destination": "/memorial/yam-frid",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/ים-פריד/",
+      "destination": "/memorial/yam-frid",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%9E%D7%AA%D7%9F-%D7%A9%D7%99-%D7%99%D7%A9%D7%99%D7%A0%D7%95%D7%91%D7%A1%D7%A7%D7%99",
+      "destination": "/memorial/matan-shai",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/%D7%9E%D7%AA%D7%9F-%D7%A9%D7%99-%D7%99%D7%A9%D7%99%D7%A0%D7%95%D7%91%D7%A1%D7%A7%D7%99/",
+      "destination": "/memorial/matan-shai",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/מתן-שי-ישינובסקי",
+      "destination": "/memorial/matan-shai",
+      "permanent": true
+    },
+    {
+      "source": "/fallen/מתן-שי-ישינובסקי/",
+      "destination": "/memorial/matan-shai",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}

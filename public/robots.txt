@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Staff-only dashboard (Supabase auth). No reason for it to be indexed.
+Disallow: /dashboard.html
+
+Sitemap: https://5fingers.org.il/sitemap.xml

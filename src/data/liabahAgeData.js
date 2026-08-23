@@ -73,7 +73,7 @@ export const agePages = {
   // ═══ ליבה צעירה · גילאי 10–12 ═══
   young: {
     id: 'young',
-    hash: '#liabah/young',
+    path: '/liabah/young',
     navLabel: 'הקבוצות הצעירות',
     hero: {
       eyebrow: 'הקבוצות הצעירות · כיתות ה׳–ו׳',
@@ -147,7 +147,7 @@ export const agePages = {
   // ═══ חטיבת הביניים · גילאי 12–15 ═══
   middle: {
     id: 'middle',
-    hash: '#liabah/middle',
+    path: '/liabah/middle',
     navLabel: 'חטיבת הביניים',
     hero: {
       eyebrow: 'חטיבת הביניים · כיתות ז׳–ט׳',
@@ -218,7 +218,7 @@ export const agePages = {
   // ═══ התיכון · גילאי 15–18 ═══
   high: {
     id: 'high',
-    hash: '#liabah/high',
+    path: '/liabah/high',
     navLabel: 'התיכון',
     hero: {
       eyebrow: 'התיכון · כיתות י׳–י״ב',

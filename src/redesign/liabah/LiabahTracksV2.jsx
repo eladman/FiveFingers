@@ -127,7 +127,7 @@ export default function LiabahTracksV2({ onRegister }) {
                     <div className="ltr-el mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
                       {/* dedicated age page — the main door for parents */}
                       <a
-                        href={`#liabah/${prog.id}`}
+                        href={`/liabah/${prog.id}`}
                         className="tap-safe group/link inline-flex items-center gap-2.5 font-heebo font-bold text-navy text-lg"
                       >
                         <span className="relative">

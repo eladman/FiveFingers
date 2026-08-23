@@ -18,3 +18,4 @@ dist
 
 # Full-res image backups (created during image optimization; keep local only)
 public/_originals/
+.vercel

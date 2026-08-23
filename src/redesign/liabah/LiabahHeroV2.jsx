@@ -27,7 +27,7 @@ const AGE_CARDS = agePageOrder.map((id, i) => {
   const p = agePages[id]
   return {
     id,
-    hash: p.hash,
+    path: p.path,
     title: p.navLabel,
     age: (p.hero.meta[0]?.split('·')[0] || '').replace('גילאי', '').trim(),
     grades: p.hero.eyebrow.split('·')[1]?.trim() || '',
@@ -199,7 +199,7 @@ export default function LiabahHeroV2({ onRegister }) {
             {AGE_CARDS.map((c) => (
               <a
                 key={c.id}
-                href={c.hash}
+                href={c.path}
                 aria-label={`${c.title}, גילאי ${c.age}, ${c.grades}`}
                 className="lhv2-card group relative flex flex-col justify-between min-h-[9rem] rounded-2xl border border-white/15 bg-white/[0.06] backdrop-blur-md p-5 overflow-hidden opacity-0 motion-reduce:opacity-100 transition-all duration-300 hover:bg-white/[0.12] hover:border-orange/60 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange/70"
               >

@@ -42,7 +42,7 @@ export const HERO_META = ['נוסדה 2014', 'עמיר מנחם', 'כ-3,000 חנ
  * out of the nav — this is the in-context door to his dedicated page (#amir).
  */
 export const FOUNDER = {
-  href: '#amir',
+  href: '/amir',
   eyebrow: 'המייסד',
   name: 'עמיר מנחם',
   role: 'מייסד ויו״ר התנועה · קצין שייטת 13 לשעבר · מגיש ״האדם בזירה״',

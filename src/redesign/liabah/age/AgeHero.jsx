@@ -78,7 +78,7 @@ export default function AgeHero({ page, onRegister }) {
       <div className="agh-content relative z-10 w-full max-w-screen-2xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 pb-[clamp(5rem,12vh,9rem)] pt-40 will-change-transform">
         {/* breadcrumb back to the parent page */}
         <a
-          href="#liabah"
+          href="/liabah"
           className="agh-crumb tap-safe inline-flex items-center gap-1.5 font-heebo text-sm md:text-base text-white/60 hover:text-white transition-colors"
           style={{ textShadow: '0 1px 10px rgba(0,0,0,0.7)' }}
         >
@@ -120,7 +120,7 @@ export default function AgeHero({ page, onRegister }) {
           <Button variant="primary" size="lg" glow onClick={onRegister} className="agh-cta">
             הרשמה לקבוצה
           </Button>
-          <Button variant="ghost" size="lg" href={`#liabah/${page.id}-overview`} className="agh-cta">
+          <Button variant="ghost" size="lg" href="#overview" className="agh-cta">
             גלו עוד
           </Button>
         </div>

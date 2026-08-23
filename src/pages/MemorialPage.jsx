@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { FALLEN, ROSTER } from '../data/fallen'
+import { memorialPath, memorialIndexFromPath, navigate, onRouteChange, normalizePath } from '../lib/router'
+import { applyMeta, applyPersonMeta } from '../lib/seo'
 import logo from '../assets/logo.png'
 import Navbar from '../components/Navbar'
 import './memorial.css'
@@ -10,12 +12,13 @@ import './memorial.css'
    routing, lifecycle); the heavy hall/person markup is built imperatively by
    the original design's proven string-builders and injected via refs.
 
-   Internal routing rides the app's hash router:
-     #memorial            → the hall (opening + register), scrolled to top
-     #memorial-hall       → the hall, scrolled to the register
-     #memorial-n<index>   → a single person's page
-   App.resolveView() maps every #memorial* hash to this view, so moving between
+   Internal routing rides the app's path router:
+     /memorial            → the hall (opening + register), scrolled to top
+     /memorial#hall       → the hall, scrolled to the register
+     /memorial/<slug>     → a single person's page (slug = their id in ROSTER)
+   App.resolveView() maps every /memorial* path to this view, so moving between
    people never remounts the page — it just re-renders here. No full reload.
+   Each person having a real URL is also what lets Google index them by name.
    ========================================================================== */
 
 const IMG = '/memorial/img/'
@@ -103,7 +106,7 @@ function wallHTML() {
     const delay = Math.min(i * 45, 360)
     if (data) {
       html +=
-        '<a class="niche niche--featured reveal" role="listitem" href="#memorial-n' + i + '" ' +
+        '<a class="niche niche--featured reveal" role="listitem" href="' + memorialPath(i) + '" ' +
           'style="--reveal-delay:' + delay + 'ms" ' +
           'aria-label="' + esc(data.name) + ', ' + esc(data.rank) + '. למסע חייו">' +
           '<span class="niche__photo-wrap">' +
@@ -117,7 +120,7 @@ function wallHTML() {
         '</a>'
     } else {
       html +=
-        '<a class="niche niche--plaque reveal" role="listitem" href="#memorial-n' + i + '" ' +
+        '<a class="niche niche--plaque reveal" role="listitem" href="' + memorialPath(i) + '" ' +
           'style="--reveal-delay:' + delay + 'ms" ' +
           'aria-label="לעמוד הזיכרון של ' + esc(entry.n) + '">' +
           '<span class="niche__plaque-inner">' +
@@ -142,7 +145,7 @@ function navButtons(i) {
     const thumb = data && data.photo
       ? '<span class="pnav__thumb"><img src="' + IMG + esc(data.photo) + '" alt="" loading="lazy" decoding="async"></span>'
       : ''
-    return '<a class="pnav__link ' + mod + '" href="#memorial-n' + idx + '">' +
+    return '<a class="pnav__link ' + mod + '" href="' + memorialPath(idx) + '">' +
       thumb +
       '<span class="pnav__txt">' +
         '<span class="pnav__dir">' + dirLabel + '</span>' +
@@ -152,7 +155,7 @@ function navButtons(i) {
   /* RTL: previous sits on the right, next on the left */
   return '<nav class="pnav" aria-label="ניווט בין הנופלים">' +
     link(prev, i - 1, 'הקודם →', 'pnav__link--prev') +
-    '<a class="pnav__all" href="#memorial-hall"><span class="dot" aria-hidden="true"></span>כל הנופלים</a>' +
+    '<a class="pnav__all" href="/memorial"><span class="dot" aria-hidden="true"></span>כל הנופלים</a>' +
     link(next, i + 1, '← הבא', 'pnav__link--next') +
     '</nav>'
 }
@@ -160,7 +163,7 @@ function topBar(i, total) {
   /* the site nav is a persistent React component now — only the pbar is
      rendered per-person here */
   return '<div class="pbar">' +
-    '<a class="pbar__back" href="#memorial-hall"><span class="arr" aria-hidden="true">→</span> חזרה להיכל</a>' +
+    '<a class="pbar__back" href="/memorial"><span class="arr" aria-hidden="true">→</span> חזרה להיכל</a>' +
     '<span class="pbar__idx mono"><span class="ltr">' + pad(i + 1) + ' / ' + total + '</span></span>' +
     '</div>'
 }
@@ -380,19 +383,19 @@ function MemorialFooter({ onContactOpen }) {
           <div className="sitefoot__col">
             <h4>תנועה</h4>
             <ul>
-              <li><a href="#liabah">ליבה</a></li>
-              <li><a href="#academy">מכינה</a></li>
-              <li><a href="#collabs">שת&quot;פ</a></li>
-              <li><a href="#alumni">בוגרים</a></li>
+              <li><a href="/liabah">ליבה</a></li>
+              <li><a href="/academy">מכינה</a></li>
+              <li><a href="/collabs">שת&quot;פ</a></li>
+              <li><a href="/alumni">בוגרים</a></li>
             </ul>
           </div>
           <div className="sitefoot__col">
             <h4>אודות</h4>
             <ul>
-              <li><a href="#amir">עמיר מנחם</a></li>
-              <li><a href="#home">ערכים</a></li>
-              <li><a href="#home">חזון</a></li>
-              <li><a href="#home">מה אנחנו</a></li>
+              <li><a href="/amir">עמיר מנחם</a></li>
+              <li><a href="/#dna">ערכים</a></li>
+              <li><a href="/#vision">חזון</a></li>
+              <li><a href="/#who-we-are">מה אנחנו</a></li>
             </ul>
           </div>
           <div className="sitefoot__col">
@@ -414,18 +417,22 @@ function MemorialFooter({ onContactOpen }) {
 }
 
 /* =============================================================================
-   Routing — parse the hash into { view, index }
+   Routing — parse the path into { view, index }
+
+   /memorial          → the hall
+   /memorial/<slug>   → one person (slug is their id in ROSTER)
    ========================================================================== */
-function parseHash() {
-  const h = window.location.hash
-  const m = h.match(/^#memorial-n(\d+)$/)
-  if (m) return { view: 'person', index: parseInt(m[1], 10), scroll: 'top' }
-  if (h === '#memorial-hall') return { view: 'hall', index: -1, scroll: 'wall' }
-  return { view: 'hall', index: -1, scroll: 'top' }
+function parseRoute() {
+  const index = memorialIndexFromPath()
+  if (index >= 0) return { view: 'person', index, scroll: 'top' }
+  // #hall means "past the dedication, at the wall". On a direct load we scroll
+  // there ourselves; an in-page click is handled by smoothScroll.js instead.
+  const scroll = window.location.hash === '#hall' ? 'wall' : 'top'
+  return { view: 'hall', index: -1, scroll }
 }
 
 export default function MemorialPage({ onContactOpen }) {
-  const [route, setRoute] = useState(() => parseHash())
+  const [route, setRoute] = useState(() => parseRoute())
   const rootRef = useRef(null)
   const mosaicRef = useRef(null)
   const wallRef = useRef(null)
@@ -434,15 +441,19 @@ export default function MemorialPage({ onContactOpen }) {
   const personRef = useRef(null)
   const ioRef = useRef(null)
 
-  /* Only react to #memorial* hashes — ignore #contact and any app hashes
-     (those unmount this page via App's router instead). */
+  /* Only react while we are still under /memorial — navigating away unmounts
+     this page via App's router instead. */
   useEffect(() => {
-    const onHashChange = () => {
-      if (!window.location.hash.startsWith('#memorial')) return
-      setRoute(parseHash())
+    const sync = () => {
+      if (!normalizePath(window.location.pathname).startsWith('/memorial')) return
+      setRoute(parseRoute())
     }
-    window.addEventListener('hashchange', onHashChange)
-    return () => window.removeEventListener('hashchange', onHashChange)
+    const offRoute = onRouteChange(sync)
+    window.addEventListener('hashchange', sync)
+    return () => {
+      offRoute()
+      window.removeEventListener('hashchange', sync)
+    }
   }, [])
 
   /* One-time build: reveal observer, opening mosaic + cycle, the register,
@@ -514,13 +525,13 @@ export default function MemorialPage({ onContactOpen }) {
     const io = ioRef.current
     if (route.view === 'person') {
       const entry = ROSTER[route.index]
-      if (!entry) { window.location.hash = '#memorial-hall'; return }
+      if (!entry) { navigate('/memorial', { replace: true }); return }
       const id = entry.id && FALLEN[entry.id] ? entry.id : null
       if (personRef.current) {
         personRef.current.innerHTML = id ? renderFull(id, route.index) : renderPlaceholder(entry, route.index)
         observeReveals(personRef.current, io)
       }
-      document.title = entry.n + ' · היכל הזיכרון'
+      applyPersonMeta(entry.n, entry.id)
       window.scrollTo(0, 0)
 
       // portrait frame "develops" in
@@ -531,7 +542,7 @@ export default function MemorialPage({ onContactOpen }) {
       }
     } else {
       if (personRef.current) personRef.current.innerHTML = ''
-      document.title = 'היכל הזיכרון · חמש אצבעות'
+      applyMeta('memorial')
       if (openingRef.current) {
         requestAnimationFrame(() => openingRef.current && openingRef.current.classList.add('is-ready'))
       }
@@ -563,7 +574,7 @@ export default function MemorialPage({ onContactOpen }) {
             </p>
             <div className="opening__count"><b className="ltr">19</b> בוגרי התנועה שנפלו</div>
           </div>
-          <a className="opening__scroll" href="#memorial-hall" aria-label="אל ההיכל">
+          <a className="opening__scroll" href="#hall" aria-label="אל ההיכל">
             <span>אל ההיכל</span>
             <span className="arrow" aria-hidden="true">↓</span>
           </a>

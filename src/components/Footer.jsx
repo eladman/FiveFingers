@@ -1,21 +1,24 @@
 import logo from '../assets/logo.png'
 
-// Each link resolves to a real destination: an on-page section anchor,
-// the dedicated ליבה route, or the contact modal (action: 'contact').
+// Each link resolves to a real destination: a dedicated page, a homepage
+// section anchor, or the contact modal (action: 'contact').
 // No dead "#" links are shipped.
+//
+// Homepage anchors are written as "/#dna" rather than "#dna" — the footer
+// renders on every page, and a bare "#dna" finds nothing outside the homepage.
 const FOOTER_NAV = {
   תנועה: [
-    { label: 'ליבה', href: '#liabah' },
-    { label: 'מכינה', href: '#programs' },
-    { label: 'שת"פ', href: '#programs' },
-    { label: 'בוגרים', href: '#programs' },
+    { label: 'ליבה', href: '/liabah' },
+    { label: 'מכינה', href: '/academy' },
+    { label: 'שת"פ', href: '/collabs' },
+    { label: 'בוגרים', href: '/alumni' },
   ],
   אודות: [
-    { label: 'הסיפור שלנו', href: '#about' },
-    { label: 'עמיר מנחם', href: '#amir' },
-    { label: 'ערכים', href: '#dna' },
-    { label: 'חזון', href: '#manifesto' },
-    { label: 'מה אנחנו', href: '#who-we-are' },
+    { label: 'הסיפור שלנו', href: '/about' },
+    { label: 'עמיר מנחם', href: '/amir' },
+    { label: 'ערכים', href: '/#dna' },
+    { label: 'חזון', href: '/#manifesto' },
+    { label: 'מה אנחנו', href: '/#who-we-are' },
   ],
   הצטרף: [
     { label: 'הרשמה', action: 'contact' },

@@ -25,31 +25,8 @@ import MemorialPage from './pages/MemorialPage'
 import HeroConcepts from './HeroConcepts'
 import { WHATSAPP_HREF } from './data/contact'
 import { getLenis } from './lib/smoothScroll'
-
-// Maps the URL hash to a top-level view. Prefix match so in-page anchors
-// (e.g. #academy-essence from the hero "גלו עוד") keep the dedicated page
-// mounted instead of bouncing back home. New dedicated pages go here.
-function resolveView(hash) {
-  if (hash.startsWith('#hero-concepts')) return 'concepts'
-  // Age-band pages live under #liabah/<band> — must match before the plain
-  // #liabah prefix. Suffixes (e.g. #liabah/young-overview) keep the page mounted.
-  if (hash.startsWith('#liabah/young')) return 'liabah-young'
-  if (hash.startsWith('#liabah/middle')) return 'liabah-middle'
-  if (hash.startsWith('#liabah/high')) return 'liabah-high'
-  if (hash.startsWith('#liabah')) return 'liabah'
-  if (hash.startsWith('#academy')) return 'academy'
-  if (hash.startsWith('#collabs')) return 'collabs'
-  if (hash.startsWith('#amir')) return 'amir'
-  if (hash.startsWith('#alumni')) return 'alumni'
-  // #about / #about-origin / #about-journey / ... — the story page and every
-  // one of its in-page anchors resolve here.
-  if (hash.startsWith('#about')) return 'about'
-  if (hash.startsWith('#team')) return 'team'
-  // #memorial / #memorial-hall / #memorial-n<i> — the memorial hall + its
-  // per-person pages all resolve here, so moving between them never remounts.
-  if (hash.startsWith('#memorial')) return 'memorial'
-  return 'home'
-}
+import { resolveView, onRouteChange, installLinkInterception } from './lib/router'
+import { applyMeta } from './lib/seo'
 
 // The interest a generic "יצירת קשר" (navbar / footer) should preselect when
 // opened from a dedicated page. Values match ContactModal's chips (or its
@@ -74,7 +51,7 @@ export default function App() {
   const [introDone, setIntroDone] = useState(() => !shouldShowPreloader())
   const [contactOpen, setContactOpen] = useState(false)
   const [contactProduct, setContactProduct] = useState('')
-  const [view, setView] = useState(() => resolveView(window.location.hash))
+  const [view, setView] = useState(() => resolveView())
 
   // #contact is a special case: not a page view, just a request to pop the
   // shared ContactModal open (e.g. the "יצירת קשר" link from the standalone
@@ -90,37 +67,63 @@ export default function App() {
     return false
   }
 
-  // Hash-based routing: #liabah / #academy → dedicated page, anything else → homepage.
+  // Path-based routing: /liabah, /academy → dedicated page, anything else → homepage.
   useEffect(() => {
-    // Don't let the browser restore the previous scroll position on hash
-    // navigation — we always want a new page to open at the top (see effect below).
+    // Don't let the browser restore the previous scroll position on navigation —
+    // we always want a new page to open at the top (see effect below).
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+    installLinkInterception()
     openContactFromHash()
-    const onHashChange = () => {
+
+    const onChange = () => {
+      // #contact is a modal request, not a view — handle and stop.
       if (openContactFromHash()) return
-      const next = resolveView(window.location.hash)
+      const next = resolveView()
       setView((prev) => {
         if (next === 'home' && prev !== 'home') setNavReady(true)
         return next
       })
     }
-    window.addEventListener('hashchange', onHashChange)
-    return () => window.removeEventListener('hashchange', onHashChange)
+
+    // popstate + our own navigate event cover routing; hashchange still matters
+    // because #contact can be appended to whatever page you are already on.
+    const offRoute = onRouteChange(onChange)
+    window.addEventListener('hashchange', onChange)
+    return () => {
+      offRoute()
+      window.removeEventListener('hashchange', onChange)
+    }
   }, [])
+
+  // Keep <title>, description and canonical in step with the view. The memorial
+  // sets its own per-person metadata, so it is left to do that itself.
+  useEffect(() => {
+    if (view !== 'memorial' && view !== 'concepts') applyMeta(view)
+  }, [view])
 
   // Whenever the top-level view changes, start at the hero before the new page
   // is painted. Reset Lenis as well as the native scroll position: otherwise a
   // hash link clicked low on the homepage can carry its momentum/target into the
   // dedicated page and leave it opened near the bottom.
   useLayoutEffect(() => {
-    const scrollToTop = () => {
+    const settle = () => {
+      // A cross-page anchor (e.g. /liabah#liabah-map from an age page) should
+      // land on its section rather than the top. Same-page anchors never reach
+      // here — smoothScroll.js handles those without a view change.
+      const id = window.location.hash.slice(1)
+      const target = id ? document.getElementById(id) : null
+      if (target) {
+        getLenis()?.scrollTo(target, { immediate: true, force: true })
+        target.scrollIntoView()
+        return
+      }
       getLenis()?.scrollTo(0, { immediate: true, force: true })
       window.scrollTo(0, 0)
     }
 
-    scrollToTop()
-    const id = requestAnimationFrame(scrollToTop)
-    return () => cancelAnimationFrame(id)
+    settle()
+    const raf = requestAnimationFrame(settle)
+    return () => cancelAnimationFrame(raf)
   }, [view])
 
   // The Hero mounts only after the preloader finishes (first visit). It inserts

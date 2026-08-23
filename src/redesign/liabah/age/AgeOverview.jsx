@@ -59,7 +59,7 @@ export default function AgeOverview({ page }) {
 
   return (
     <section
-      id={`liabah/${page.id}-overview`}
+      id="overview"
       ref={ref}
       dir="rtl"
       className="relative w-full overflow-hidden bg-surface"

@@ -2,43 +2,43 @@ import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import logo from '../assets/logo.png'
 import Button from './ui/Button'
+import { onRouteChange, normalizePath } from '../lib/router'
 
 const NAV_LINKS = [
-  { label: 'קבוצות הנוער', href: '#liabah' },
-  { label: 'מכינה', href: '#academy' },
-  { label: 'שיתופי פעולה', href: '#collabs' },
-  { label: 'בוגרים', href: '#alumni' },
-  { label: 'אודות', href: '#about' },
-  { label: 'צוות', href: '#team' },
-  // Memorial — now an in-app route (src/pages/MemorialPage.jsx). Hash nav, so
-  // it opens instantly with no full page reload like the rest of the site.
-  // Kept last in the nav.
-  { label: 'לזכרם', href: '#memorial' },
+  { label: 'קבוצות הנוער', href: '/liabah' },
+  { label: 'מכינה', href: '/academy' },
+  { label: 'שיתופי פעולה', href: '/collabs' },
+  { label: 'בוגרים', href: '/alumni' },
+  { label: 'אודות', href: '/about' },
+  { label: 'צוות', href: '/team' },
+  // Memorial — an in-app route (src/pages/MemorialPage.jsx). Client-side nav,
+  // so it opens instantly with no full page reload. Kept last in the nav.
+  { label: 'לזכרם', href: '/memorial' },
 ]
 
 export default function Navbar({ onContactOpen, forceLifted = false }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [activeHash, setActiveHash] = useState(
-    typeof window !== 'undefined' ? window.location.hash || '#home' : '#home'
+  const [activePath, setActivePath] = useState(
+    typeof window !== 'undefined' ? normalizePath(window.location.pathname) : '/'
   )
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
-    const onHashChange = () => setActiveHash(window.location.hash || '#home')
+    const syncPath = () => setActivePath(normalizePath(window.location.pathname))
     window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('hashchange', onHashChange)
+    const offRoute = onRouteChange(syncPath)
     return () => {
       window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('hashchange', onHashChange)
+      offRoute()
     }
   }, [])
 
-  // Scroll to the very top when the logo is clicked. Covers the case where the
-  // hash is already #home (no hashchange fires, so App's router won't scroll).
+  // Scroll to the very top when the logo is clicked. Covers the case where we
+  // are already on "/" (no navigation fires, so App's router won't scroll).
   const handleLogoClick = () => {
     setMenuOpen(false)
-    if (window.location.hash === '#home' || window.location.hash === '') {
+    if (normalizePath(window.location.pathname) === '/') {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
@@ -61,14 +61,14 @@ export default function Navbar({ onContactOpen, forceLifted = false }) {
         }`}
       >
         {/* Logo */}
-        <a href="#home" onClick={handleLogoClick} className="flex items-center me-3 ms-1 shrink-0">
+        <a href="/" onClick={handleLogoClick} className="flex items-center me-3 ms-1 shrink-0">
           <img src={logo} alt="חמש אצבעות" className="h-8 w-auto" />
         </a>
 
         {/* Links */}
         <div className="flex items-center gap-0.5">
           {NAV_LINKS.map(({ label, href }) => {
-            const active = activeHash === href
+            const active = activePath === href
             const linkClass = lifted
               ? active
                 ? 'text-navy bg-navy/[0.06] font-semibold'
@@ -113,7 +113,7 @@ export default function Navbar({ onContactOpen, forceLifted = false }) {
           {/* The logo image is only 22×32, so the anchor carries its own 44px
               hit area (the bar's py-3 already reserves the room — this just
               claims it) rather than leaving a sub-thumb-sized home link. */}
-          <a href="#home" onClick={handleLogoClick} className="flex items-center min-h-[44px] pe-2">
+          <a href="/" onClick={handleLogoClick} className="flex items-center min-h-[44px] pe-2">
             <img src={logo} alt="חמש אצבעות" className="h-8 w-auto" />
           </a>
           <button
@@ -149,7 +149,7 @@ export default function Navbar({ onContactOpen, forceLifted = false }) {
         >
           <div className="p-4">
             {NAV_LINKS.map(({ label, href }) => {
-              const active = activeHash === href
+              const active = activePath === href
               return (
                 <a
                   key={label}

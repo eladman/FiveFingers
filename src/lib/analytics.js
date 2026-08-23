@@ -7,6 +7,8 @@
 // Cookie header) and the IDs are random UUIDs with no personal information.
 // Safe by design: no-ops if env vars are missing, never throws into the page.
 
+import { onRouteChange } from './router'
+
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
 
@@ -97,8 +99,11 @@ export function trackPageView() {
   }
 }
 
-// Track the initial load + every SPA hash-route change.
+// Track the initial load + every SPA route change. Routing moved from hashes
+// to real paths, so popstate/navigate carry the page changes now; hashchange
+// still fires for in-page anchors.
 export function initAnalytics() {
   trackPageView()
+  onRouteChange(trackPageView)
   window.addEventListener('hashchange', trackPageView)
 }

@@ -1,0 +1,28 @@
+# Files uploaded to Vercel but never served. Keeping them out makes deploys
+# fast — the repo carries ~180MB of source-only assets that the build ignores.
+
+# Pre-optimization image masters. Vite copies all of public/ verbatim, so this
+# folder WOULD ship (~179MB) if left in place. It is also in .gitignore.
+public/_originals/
+
+# Design exploration pages — kept in the repo for reference, not part of the site.
+design-scratch/
+
+# Source documents, briefs and screenshots that live at the repo root.
+*.pdf
+*.md
+*.csv
+concept1-editorial.jpeg
+ff-email-preview.png
+memorial-hero.png
+navbar-after.png
+navbar-hero-comparison.png
+cta-options.html
+divider-options.html
+vision-options.html
+אתר חמש/
+standalone/
+supabase/
+.claude/
+.agents/
+.gstack/

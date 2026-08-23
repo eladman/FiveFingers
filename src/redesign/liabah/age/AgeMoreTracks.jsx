@@ -43,7 +43,7 @@ export default function AgeMoreTracks({ currentId }) {
           {siblings.map((sib) => (
             <a
               key={sib.id}
-              href={sib.hash}
+              href={sib.path}
               className="agm-el group relative overflow-hidden rounded-[1.8rem] flex items-end min-h-[220px] md:min-h-[260px] shadow-[0_16px_44px_rgba(0,0,30,0.12)]"
             >
               <img
