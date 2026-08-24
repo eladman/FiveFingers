@@ -116,7 +116,7 @@ export default function IntroV2() {
         {/* support copy */}
         <div className="in2-supportwrap grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 mt-12 md:mt-16 max-w-4xl">
           <p className="in2-support font-heebo text-navy/70 leading-[1.85]" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
-            מאז 2014 אנחנו מלווים אלפי צעירים וצעירות בגילאי 12 ומעלה, ומפתחים אותם דרך אימונים גופניים וחינוך ערכי, קבוצה מלוכדת וחוויות מאתגרות שמעצבות אופי.
+            מאז 2014 אנחנו מלווים אלפי צעירים וצעירות בגילאי 10 ומעלה, ומפתחים אותם באמצעות אימונים גופניים וחינוך ערכי, קבוצה מלוכדת וחוויות מאתגרות שמעצבות אופי.
           </p>
           <p className="in2-support font-heebo text-navy/70 leading-[1.85]" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
             המטרה שלנו היא לאפשר לכל צעיר וצעירה במדינת ישראל לממש את הפוטנציאל שלהם, ולהפוך לאנשים שפועלים מתוך יוזמה ואחריות כדי לשפר את המציאות.
