@@ -3,7 +3,7 @@
 // so a number/email only ever needs to change in one place.
 
 export const WHATSAPP = '972556855850' // international format (972 = IL)
-export const EMAIL = 'info@fivefingers.co.il'
+export const EMAIL = 'service@5fingers.org.il'
 
 // Israeli local display: 9725XXXXXXXX → 05X-XXX-XXXX
 export const PHONE_DISPLAY = `0${WHATSAPP.slice(3, 5)}-${WHATSAPP.slice(5, 8)}-${WHATSAPP.slice(8)}`

@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin } from 'lucide-react'
 
 const CONTACT_ITEMS = [
   { icon: Phone, label: 'טלפון', value: '050-000-0000', href: 'tel:050-000-0000' },
-  { icon: Mail, label: 'אימייל', value: 'info@fivefingers.co.il', href: 'mailto:info@fivefingers.co.il' },
+  { icon: Mail, label: 'אימייל', value: 'service@5fingers.org.il', href: 'mailto:service@5fingers.org.il' },
   { icon: MapPin, label: 'מיקום', value: 'ישראל', href: '#' },
 ]
 

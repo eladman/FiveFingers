@@ -103,8 +103,8 @@ export default function LiabahFinaleV2({ onRegister }) {
             055-685-5850
           </a>
           <span className="w-1 h-1 rounded-full bg-orange inline-block" aria-hidden="true" />
-          <a href="mailto:info@5fingers.org.il" dir="ltr" className="tap-safe text-white/60 hover:text-white transition-colors">
-            info@5fingers.org.il
+          <a href="mailto:service@5fingers.org.il" dir="ltr" className="tap-safe text-white/60 hover:text-white transition-colors">
+            service@5fingers.org.il
           </a>
         </div>
       </div>

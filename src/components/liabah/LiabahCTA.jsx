@@ -42,7 +42,7 @@ export default function LiabahCTA({ onRegister }) {
         <div className="cta-animate grid grid-cols-1 sm:grid-cols-3 gap-4 mt-14 max-w-2xl mx-auto">
           <ContactCard icon={MessageCircle} label="וואטסאפ" value="055-685-5850" href="https://wa.me/972556855850" />
           <ContactCard icon={Phone} label="טלפון" value="055-685-5850" href="tel:0556855850" />
-          <ContactCard icon={Mail} label="מייל" value="info@5fingers.org.il" href="mailto:info@5fingers.org.il" />
+          <ContactCard icon={Mail} label="מייל" value="service@5fingers.org.il" href="mailto:service@5fingers.org.il" />
         </div>
       </div>
     </section>
