@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { X, Phone, Mail, Check, ChevronDown } from 'lucide-react'
 import { WHATSAPP_HREF, PHONE_HREF, EMAIL, EMAIL_HREF, PHONE_DISPLAY } from '../data/contact'
 import { getLenis } from '../lib/smoothScroll'
+import { submitToHubSpot } from '../lib/hubspot'
 import { GlowField, DateField, SelectField, SubmitButton } from './contactFields'
 import { YOUTH_GROUP_FIELDS } from '../data/youthGroupFields'
 
@@ -183,6 +184,11 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
       source: 'fivefingers-website',
       pageUrl: window.location.href,
     }
+
+    // Mirror the lead into HubSpot as a Contact Record. Deliberately outside the
+    // try below and not awaited: the visitor's success/error state stays driven
+    // purely by Make.com, so HubSpot can never break the form.
+    submitToHubSpot(payload)
 
     const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL
 

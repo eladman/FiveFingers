@@ -5,6 +5,7 @@ import { MapPin, Clock, X, ChevronLeft, ChevronRight, Check, Users } from 'lucid
 import { locations } from '../../data/liabahData'
 import { GlowField, SelectField, DateField, SubmitButton } from '../contactFields'
 import { YOUTH_GROUP_FIELDS, YOUTH_GROUP_PRODUCT } from '../../data/youthGroupFields'
+import { submitToHubSpot } from '../../lib/hubspot'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -133,6 +134,10 @@ function TeamInterestForm({ team, city, onBack }) {
       source: 'fivefingers-website',
       pageUrl: window.location.href,
     }
+
+    // Same second destination ContactModal uses — fire-and-forget, so a HubSpot
+    // failure never reaches the parent filling this in.
+    submitToHubSpot(payload)
 
     const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL
 

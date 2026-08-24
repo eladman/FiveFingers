@@ -29,6 +29,14 @@
       href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- HubSpot tracking. Sets the `hubspotutk` visitor cookie, which the contact
+         forms pass along as context.hutk so each submission attaches to a real
+         visitor session instead of landing as "no cookie was found".
+         Lives here (not in main.jsx) because scripts/prerender.mjs clones this
+         file into every route, and dashboard.html is a separate entry — so the
+         staff dashboard stays untracked, like the page-view beacon. -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/26835159.js"></script>
   </head>
   <body>
     <div id="root"></div>
