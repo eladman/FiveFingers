@@ -144,7 +144,7 @@ export default function AlumniYoavV2() {
             const last = i === AXES.length - 1
             return (
               <div key={a.title} className="ayv-step relative grid grid-cols-[3.5rem_1fr] md:grid-cols-[5rem_1fr] gap-5 md:gap-9 pb-14 md:pb-16 last:pb-0">
-                {/* node on the spine — filled orange at the destination (השפעה) */}
+                {/* node on the spine - filled orange at the destination (השפעה) */}
                 <div className="flex justify-center">
                   <span
                     className={`relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full ring-1 ${

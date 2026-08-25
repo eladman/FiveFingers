@@ -14,7 +14,7 @@ export default function AlumniIntro() {
       <div ref={ref} className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 py-24 md:py-32">
         <MuseumHeading
           kicker="קהילת הבוגרים"
-          title="הדרך לא נגמרת — היא מתרחבת"
+          title="הדרך לא נגמרת - היא מתרחבת"
           align="start"
           animateClass="intro-animate"
         />
@@ -23,13 +23,13 @@ export default function AlumniIntro() {
           {/* Copy */}
           <div className="order-2 lg:order-1">
             <p className="intro-animate font-heebo text-navy/80 leading-relaxed" style={{ fontSize: 'clamp(1.05rem, 1.4vw, 1.2rem)' }}>
-              אלפי בוגרים ובוגרות עברו במסגרות של חמש אצבעות מאז 2014 — ומהמסלול הם
+              אלפי בוגרים ובוגרות עברו במסגרות של חמש אצבעות מאז 2014 - ומהמסלול הם
               יוצאים עם ערכים, כלים וקבוצת שווים שנשארת איתם לחיים. אבל אצלנו סיום
               המסלול הוא לא קו הסיום, אלא נקודת פתיחה.
             </p>
             <p className="intro-animate font-heebo text-navy/80 leading-relaxed mt-5" style={{ fontSize: 'clamp(1.05rem, 1.4vw, 1.2rem)' }}>
               קהילת הבוגרים יוצרת רשת חברתית ומקצועית של חיבורים אישיים שמאפשרים
-              תמיכה והמשכיות. בליבה שלה עומדת <span className="font-semibold text-navy">תוכנית יואב</span> —
+              תמיכה והמשכיות. בליבה שלה עומדת <span className="font-semibold text-navy">תוכנית יואב</span> -
               תוכנית הדגל שמלווה צעירות וצעירים בדרך למקסום הפוטנציאל ולהשפעה על
               המציאות הישראלית.
             </p>

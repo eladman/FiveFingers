@@ -13,7 +13,7 @@ import Button from '../ui/Button'
 export default function ConceptBentoMosaic({
   eyebrow = 'בית תוכן והכשרות',
   title = 'שיטה שמשנה\nאת חוקי המשחק',
-  subtitle = 'מביאים את שיטת חמש אצבעות לארגונים, צוותים ויחידות — מהלכה למעשה.',
+  subtitle = 'מביאים את שיטת חמש אצבעות לארגונים, צוותים ויחידות - מהלכה למעשה.',
   cta = 'לשיחת היכרות',
 }) {
   const root = useRef(null)

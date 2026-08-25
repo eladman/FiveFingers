@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 /* ════════════════════════════════════════════════════════════════
-   CARD 1 — מסוגלות (Competence) — Orange featured card
+   CARD 1 - מסוגלות (Competence) - Orange featured card
    ════════════════════════════════════════════════════════════════ */
 const COMPETENCIES = [
   { label: 'ביטחון עצמי', sub: 'הכרת הכוח האישי שלך' },
@@ -73,7 +73,7 @@ function CompetenceCard() {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   CARD 2 — שייכות (Belonging) — White card
+   CARD 2 - שייכות (Belonging) - White card
    ════════════════════════════════════════════════════════════════ */
 const MESSAGES = [
   'מצאת קבוצה שמאמינה בך...',
@@ -163,7 +163,7 @@ function BelongingCard() {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   CARD 3 — השפעה (Impact) — Dark navy card
+   CARD 3 - השפעה (Impact) - Dark navy card
    ════════════════════════════════════════════════════════════════ */
 const DAYS = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש']
 const ACTIVE_DAYS = [0, 2, 4]

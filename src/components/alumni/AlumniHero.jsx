@@ -105,7 +105,7 @@ export default function AlumniHero({ onContactOpen }) {
           className="al-sub font-heebo text-white/85 mt-7 mx-auto max-w-2xl leading-relaxed"
           style={{ fontSize: 'clamp(1.05rem, 1.9vw, 1.55rem)', textShadow: '0 2px 20px rgba(0,0,0,0.9)' }}
         >
-          כשהמסלול נגמר, הקהילה רק מתחילה. תוכנית יואב היא תוכנית הדגל של הבוגרים —
+          כשהמסלול נגמר, הקהילה רק מתחילה. תוכנית יואב היא תוכנית הדגל של הבוגרים -
           למקסם את הפוטנציאל ולהשפיע על המציאות שלנו.
         </p>
 

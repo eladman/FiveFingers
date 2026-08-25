@@ -79,7 +79,7 @@ export default function YoavProgram() {
 
         {/* Tribute line */}
         <p className="yoav-animate mt-12 mx-auto max-w-2xl text-center font-heebo text-white/55 leading-relaxed" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
-          התוכנית נקראת על שמו של יואב שחר ז״ל ושואבת השראה מדרכו — איש של חזון
+          התוכנית נקראת על שמו של יואב שחר ז״ל ושואבת השראה מדרכו - איש של חזון
           ומעשים, מנהיג, לוחם ומעל הכל בן אדם.
         </p>
 

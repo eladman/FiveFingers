@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar'
 import './memorial.css'
 
 /* =============================================================================
-   היכל הזיכרון · חמש אצבעות — in-app route (ported from the standalone
+   היכל הזיכרון · חמש אצבעות - in-app route (ported from the standalone
    public/memorial static page). React owns the page chrome (nav, footer,
    routing, lifecycle); the heavy hall/person markup is built imperatively by
    the original design's proven string-builders and injected via refs.

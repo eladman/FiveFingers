@@ -140,7 +140,7 @@ export default function FiveContent() {
             {/* Embed fills remaining height */}
             <div className="flex-1 p-4 flex flex-col gap-3">
               <p className="font-heebo text-navy/60 leading-relaxed text-sm">
-                האזינו לפרק האחרון של הפודקאסט שלנו — שיחות מעמיקות על חינוך, מנהיגות ערכית ואנשים שנכנסים לזירה.
+                האזינו לפרק האחרון של הפודקאסט שלנו - שיחות מעמיקות על חינוך, מנהיגות ערכית ואנשים שנכנסים לזירה.
               </p>
               <iframe
                 style={{ borderRadius: '10px', flex: 1, minHeight: '352px' }}
@@ -224,7 +224,7 @@ export default function FiveContent() {
                 ערוץ חמש ביוטיוב
               </h3>
               <p className="font-heebo text-white/55 leading-relaxed text-sm">
-                צפו בסרטונים — תכניות, אירועים ורגעים מהשטח.
+                צפו בסרטונים - תכניות, אירועים ורגעים מהשטח.
               </p>
               <span className="mt-auto inline-block font-heebo font-bold text-white bg-orange px-5 py-2 rounded-xl text-sm self-start group-hover:bg-orange/90 transition-colors duration-200">
                 לערוץ שלנו &larr;

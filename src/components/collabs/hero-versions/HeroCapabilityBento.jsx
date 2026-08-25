@@ -106,7 +106,7 @@ export default function HeroCapabilityBento({ onRegister }) {
               <p className="font-heebo font-semibold text-white leading-snug" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.15rem)' }}>
                 למידה מתוך עשייה
               </p>
-              <p className="font-heebo text-white/70 mt-0.5" style={{ fontSize: '0.8rem' }}>לא מרצים על מצוינות — מתאמנים בה</p>
+              <p className="font-heebo text-white/70 mt-0.5" style={{ fontSize: '0.8rem' }}>לא מרצים על מצוינות - מתאמנים בה</p>
             </div>
           </div>
 

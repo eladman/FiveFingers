@@ -20,7 +20,7 @@ const IMAGES = [
 export default function ConceptOversizedType({
   eyebrow = 'תנועת חמש אצבעות',
   title = 'נכנסים\nלזירה',
-  subtitle = 'דור שמחנך את עצמו למצוינות ערכית — ובוחר לפעול.',
+  subtitle = 'דור שמחנך את עצמו למצוינות ערכית - ובוחר לפעול.',
   cta = 'גלו עוד',
 }) {
   const [current, setCurrent] = useState(0)

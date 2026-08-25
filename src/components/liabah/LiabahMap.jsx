@@ -174,7 +174,7 @@ function TeamInterestForm({ team, city, onBack }) {
           {form.name ? `תודה, ${form.name.split(' ')[0]}!` : 'תודה רבה!'}
         </h3>
         <p className="font-heebo text-navy/55 text-[15px] leading-relaxed max-w-[300px] mx-auto mt-2">
-          קיבלנו את הפנייה לקבוצת {teamName} ב{city} — נחזור אליכם תוך 24 שעות. נתראה בזירה. 🔥
+          קיבלנו את הפנייה לקבוצת {teamName} ב{city} - נחזור אליכם תוך 24 שעות. נתראה בזירה. 🔥
         </p>
         <button
           type="button"
@@ -315,7 +315,7 @@ export default function LiabahMap() {
           <h2 className="ds-section-title text-navy">איפה אנחנו פועלים</h2>
           <p className="font-heebo text-navy/55 text-lg mt-4 leading-relaxed">
             <span className="font-bold text-navy">{locations.length} יישובים</span> בשלושה אזורים.
-            בחרו את האזור שלכם, מצאו קבוצה — והצטרפו.
+            בחרו את האזור שלכם, מצאו קבוצה - והצטרפו.
           </p>
         </div>
 

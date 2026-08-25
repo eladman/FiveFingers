@@ -41,7 +41,7 @@ export default function VideoFacade({ src, title, poster, label }) {
     <button
       type="button"
       onClick={() => setPlaying(true)}
-      aria-label={label || (title ? `נגן — ${title}` : 'נגן את הסרט')}
+      aria-label={label || (title ? `נגן - ${title}` : 'נגן את הסרט')}
       className="group absolute inset-0 w-full h-full cursor-pointer bg-navy-deep"
     >
       {img && (

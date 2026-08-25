@@ -65,7 +65,7 @@ export default function AmirZones({ onBook }) {
             className="az-heading font-heebo text-navy/60 mt-6 mx-auto max-w-2xl leading-relaxed"
             style={{ fontSize: 'clamp(1.05rem, 1.6vw, 1.3rem)' }}
           >
-            שלוש דרכים לעבוד יחד — מהבמה הגדולה ועד הליווי האישי, אחד על אחד.
+            שלוש דרכים לעבוד יחד - מהבמה הגדולה ועד הליווי האישי, אחד על אחד.
           </p>
         </div>
 

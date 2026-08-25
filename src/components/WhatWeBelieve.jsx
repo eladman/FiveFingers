@@ -40,7 +40,7 @@ export default function WhatWeBelieve() {
             <iframe
               className="absolute inset-0 w-full h-full"
               src="https://www.youtube.com/embed/jOdf0gJrZug?rel=0&modestbranding=1"
-              title="מי אנחנו — חמש אצבעות"
+              title="מי אנחנו - חמש אצבעות"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />

@@ -33,7 +33,7 @@ const PRODUCTS = [
       eyebrow: 'המרצה',
       name: 'עמיר מנחם',
       role: 'מייסד ויו״ר התנועה · מגיש ״האדם בזירה״',
-      teaser: 'מעל 1,000 הרצאות על חוסן, מנהיגות וצמיחה מתוך אתגר — הסיפור והשיטה שמאחורי חמש אצבעות.',
+      teaser: 'מעל 1,000 הרצאות על חוסן, מנהיגות וצמיחה מתוך אתגר - הסיפור והשיטה שמאחורי חמש אצבעות.',
       cta: 'עוד על עמיר',
       photo: { src: '/Amir_pics/amir-portrait.jpg', w: 1600, h: 1067, alt: 'עמיר מנחם, מייסד תנועת חמש אצבעות' },
     },
@@ -589,7 +589,7 @@ export default function CollabsCatalogV2({ onRegister }) {
                   </div>
                 </div>
 
-                {/* Speaker card — the in-context door to עמיר's page, on the
+                {/* Speaker card - the in-context door to עמיר's page, on the
                     lecture he delivers. Mirrors the אודות card. */}
                 {product.speaker && (
                   <a

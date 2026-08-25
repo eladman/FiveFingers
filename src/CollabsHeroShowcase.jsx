@@ -14,7 +14,7 @@ import HeroCapabilityBento from './components/collabs/hero-versions/HeroCapabili
 const VERSIONS = [
   {
     id: 1, he: 'פיצול תאגידי', en: 'Corporate Split',
-    note: 'כותרת ערך + תמונת הוכחה עם צ׳יפ נתון, ורצועת לוגואים של שותפים מתחת. הקלאסיקה של B2B — אמינות במבט ראשון.',
+    note: 'כותרת ערך + תמונת הוכחה עם צ׳יפ נתון, ורצועת לוגואים של שותפים מתחת. הקלאסיקה של B2B - אמינות במבט ראשון.',
     tone: 'בהיר · אמון',
     Component: HeroCorporateSplit,
   },
@@ -26,13 +26,13 @@ const VERSIONS = [
   },
   {
     id: 3, he: 'עמוד השער', en: 'Editorial Ledger',
-    note: 'שורת מטא-דאטה בקווי שיער, כותרת ענקית ותמונה מסוגרת אחת. שקט, יוקרתי — כמו שער של מסמך ייעוץ.',
+    note: 'שורת מטא-דאטה בקווי שיער, כותרת ענקית ותמונה מסוגרת אחת. שקט, יוקרתי - כמו שער של מסמך ייעוץ.',
     tone: 'בהיר · מינימלי',
     Component: HeroEditorialLedger,
   },
   {
     id: 4, he: 'רשת היכולות', en: 'Capability Bento',
-    note: 'כל ההצעה במבט אחד: שלושת עולמות התוכן, תמונת הוכחה וכרטיס נתון — רשת בנטו לסורק B2B.',
+    note: 'כל ההצעה במבט אחד: שלושת עולמות התוכן, תמונת הוכחה וכרטיס נתון - רשת בנטו לסורק B2B.',
     tone: 'בהיר · קטלוגי',
     Component: HeroCapabilityBento,
   },
@@ -109,7 +109,7 @@ export default function CollabsHeroShowcase() {
           {version.note}
         </p>
         <div style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Heebo, sans-serif', fontSize: '0.72rem' }}>
-          <span style={{ color: 'rgba(255,135,20,0.85)' }}>אופי —</span> {version.tone}
+          <span style={{ color: 'rgba(255,135,20,0.85)' }}>אופי -</span> {version.tone}
         </div>
       </div>
     </div>

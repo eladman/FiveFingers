@@ -45,7 +45,7 @@ export default function WhoWeAre() {
           className="wwa-el font-heebo text-navy/70 leading-relaxed mx-auto max-w-[46ch] mt-8 md:mt-10"
           style={{ fontSize: 'clamp(1.05rem, 1.35vw, 1.3rem)' }}
         >
-          מאז 2014 אנחנו מלווים אלפי צעירים וצעירות מגיל 12 ומעלה — ומאפשרים לכל אחד ואחת
+          מאז 2014 אנחנו מלווים אלפי צעירים וצעירות מגיל 10 ומעלה - ומאפשרים לכל אחד ואחת
           לממש את הפוטנציאל שלהם ולפעול מתוך יוזמה ואחריות, על בסיס{' '}
           <span className="text-navy font-semibold">מצוינות ערכית</span>.
         </p>

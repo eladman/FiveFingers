@@ -13,15 +13,15 @@ import ConceptFramedPlate from './components/hero-concepts/ConceptFramedPlate'
  */
 const CONCEPTS = [
   { id: 1, he: 'פיצול עורכי', en: 'Editorial Split', suits: 'הליבה · שיתופי פעולה',
-    note: 'תמונה לצד פאנל נייבי עם הכותרת — כמו שער מגזין.', Component: ConceptEditorialSplit },
+    note: 'תמונה לצד פאנל נייבי עם הכותרת - כמו שער מגזין.', Component: ConceptEditorialSplit },
   { id: 2, he: 'טיפוגרפיה ענקית', en: 'Oversized Type', suits: 'עמוד הצהרה · בוגרים',
     note: 'מילה ענקית שהתמונה מבצבצת מתוך האותיות.', Component: ConceptOversizedType },
   { id: 3, he: 'בנטו', en: 'Bento Mosaic', suits: 'שיתופי פעולה · עמודי תוכניות',
-    note: 'רשת אריחים — טקסט, תמונות ונתון, הכל במבט אחד.', Component: ConceptBentoMosaic },
+    note: 'רשת אריחים - טקסט, תמונות ונתון, הכל במבט אחד.', Component: ConceptBentoMosaic },
   { id: 4, he: 'זרקור', en: 'Spotlight Arena', suits: 'הליבה · מכינה',
-    note: 'במה כהה, תמונה אחת מוארת בזרקור — האדם בזירה.', Component: ConceptSpotlightArena },
+    note: 'במה כהה, תמונה אחת מוארת בזרקור - האדם בזירה.', Component: ConceptSpotlightArena },
   { id: 5, he: 'לוח ממוסגר', en: 'Framed Plate', suits: 'מכינה · בוגרים',
-    note: 'לוח תמונה ממוסגר מעל טקסט מרכזי — שקט ויוקרתי.', Component: ConceptFramedPlate },
+    note: 'לוח תמונה ממוסגר מעל טקסט מרכזי - שקט ויוקרתי.', Component: ConceptFramedPlate },
 ]
 
 export default function HeroConcepts() {

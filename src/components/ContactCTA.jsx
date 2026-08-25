@@ -47,7 +47,7 @@ export default function ContactCTA({ onContactOpen }) {
 
         {/* Sub */}
         <p className="contact-el text-gray-400 text-lg md:text-xl leading-relaxed mb-12 max-w-lg mx-auto">
-          בין אם אתם צעירים/ות שרוצים/ות להצטרף, הורים שמחפשים את המסלול הנכון, או ארגון שמעוניין בשיתוף פעולה — אנחנו כאן.
+          בין אם אתם צעירים/ות שרוצים/ות להצטרף, הורים שמחפשים את המסלול הנכון, או ארגון שמעוניין בשיתוף פעולה - אנחנו כאן.
         </p>
 
         {/* CTA buttons */}

@@ -199,7 +199,7 @@ export default function ArenaHero({ start = true, onComplete, onContactOpen }) {
 
       {/* ── Content — poster composition, anchored to the base ── */}
       <div className="ah-content relative z-10 w-full max-w-screen-2xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 pb-[clamp(5rem,12vh,9rem)] pt-40 will-change-transform">
-        <h1 className="text-white select-none" aria-label="חמש אצבעות — מצוינות ערכית">
+        <h1 className="text-white select-none" aria-label="חמש אצבעות - מצוינות ערכית">
           <span className="ah-word-a block overflow-hidden font-ragmarom leading-[0.9] tracking-tight"
             style={{ fontSize: 'clamp(4rem, 15vw, 12rem)', textShadow: '0 4px 40px rgba(0,0,0,0.6)' }}>
             <Chars text="חמש אצבעות" />

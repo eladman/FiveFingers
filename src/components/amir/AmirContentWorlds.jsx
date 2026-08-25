@@ -60,7 +60,7 @@ export default function AmirContentWorlds() {
         <MuseumHeading
           kicker="עולמות תוכן"
           title="להישאר מחוברים"
-          lead="רגעים מהשטח, פרקים והרצאות — כל התוכן במקום אחד"
+          lead="רגעים מהשטח, פרקים והרצאות - כל התוכן במקום אחד"
           align="start"
           animateClass="cw-animate"
         />
@@ -128,7 +128,7 @@ export default function AmirContentWorlds() {
             <div className="px-8 md:px-12 max-w-md text-right">
               <p className="ds-eyebrow text-orange mb-3">בתקשורת</p>
               <p className="font-ragmarom text-white leading-tight" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.6rem)' }}>
-                מהבמה לאולפן — ומשם לשטח
+                מהבמה לאולפן - ומשם לשטח
               </p>
             </div>
           </div>

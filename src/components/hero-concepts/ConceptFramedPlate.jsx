@@ -13,7 +13,7 @@ import Button from '../ui/Button'
 export default function ConceptFramedPlate({
   eyebrow = 'מכינת חמש אצבעות · שנת י״ג',
   title = 'המכינה',
-  subtitle = 'שנה שמעצבת מנהיגים ומנהיגות של מצוינות ערכית — בגוף, ברוח ובמעשה.',
+  subtitle = 'שנה שמעצבת מנהיגים ומנהיגות של מצוינות ערכית - בגוף, ברוח ובמעשה.',
   cta = 'להגשת מועמדות',
 }) {
   const root = useRef(null)

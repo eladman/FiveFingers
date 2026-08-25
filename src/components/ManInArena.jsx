@@ -111,7 +111,7 @@ export default function ManInArena() {
           className="mia-el font-inter text-white/55 text-sm md:text-base mt-8"
           style={{ textShadow: '0 1px 12px rgba(0,0,0,0.6)' }}
         >
-          — תיאודור רוזוולט, 1910
+          - תיאודור רוזוולט, 1910
         </p>
 
         {/* Connecting line — the movement's belief, one quiet sentence */}
@@ -119,7 +119,7 @@ export default function ManInArena() {
           className="mia-el font-heebo text-white/75 leading-relaxed mt-12 md:mt-14 mx-auto max-w-[56ch]"
           style={{ fontSize: 'clamp(1.05rem, 1.35vw, 1.3rem)', textShadow: '0 1px 14px rgba(0,0,0,0.6)' }}
         >
-          אנחנו בחמש אצבעות מאמינים שתפקידנו להיכנס לזירה הישראלית ולהשפיע על המציאות — ולחנך
+          אנחנו בחמש אצבעות מאמינים שתפקידנו להיכנס לזירה הישראלית ולהשפיע על המציאות - ולחנך
           את דור העתיד להיות אנשים שלא מסתכלים מהצד, אלא פועלים למען חברה טובה יותר במדינת ישראל.
         </p>
 

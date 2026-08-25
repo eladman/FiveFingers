@@ -141,9 +141,12 @@ export default function Manifesto() {
                   ))}
                 </p>
               ))}
+              <cite className="mf-outro block mt-6 md:mt-7 font-heebo not-italic font-bold text-navy text-sm md:text-base">
+                תיאודור רוזוולט, 1910
+              </cite>
             </blockquote>
 
-            <div className="mf-outro mt-11 md:mt-12 pt-6 border-t border-navy/15 flex flex-col sm:flex-row sm:items-end justify-between gap-5 sm:gap-10">
+            <div className="mf-outro mt-11 md:mt-12 pt-6 border-t border-navy/15">
               <p
                 className="font-heebo text-navy/72 leading-[1.85] max-w-xl text-right"
                 style={{ fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}
@@ -151,9 +154,6 @@ export default function Manifesto() {
                 אנחנו בחמש אצבעות מאמינים שתפקידנו להיכנס לזירה הישראלית ולהשפיע על המציאות,
                 ולחנך את דור העתיד לא להסתכל מהצד אלא לפעול למען חברה טובה יותר במדינת ישראל.
               </p>
-              <cite className="font-heebo not-italic font-bold text-navy whitespace-nowrap shrink-0 text-sm md:text-base">
-                תיאודור רוזוולט, 1910
-              </cite>
             </div>
           </div>
         </div>

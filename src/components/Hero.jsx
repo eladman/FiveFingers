@@ -224,7 +224,7 @@ export default function Hero({ onComplete, onContactOpen }) {
             הצטרפו אלינו
           </Button>
 
-          <Button variant="ghost" href="#features" className="hero-cta">
+          <Button variant="ghost" href="#who-we-are" className="hero-cta">
             גלו עוד
           </Button>
         </div>

@@ -127,7 +127,7 @@ export default function TeamEssenceV2() {
             <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/25 via-transparent to-transparent pointer-events-none" />
           </div>
           <figcaption className="mt-4 font-heebo text-navy/55 text-sm md:text-base text-right">
-            המאמנים, המדריכים ואנשי המטה שמניעים את חמש אצבעות — קבוצה אחת.
+            המאמנים, המדריכים ואנשי המטה שמניעים את חמש אצבעות - קבוצה אחת.
           </figcaption>
         </figure>
 

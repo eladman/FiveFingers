@@ -26,7 +26,7 @@ export default function AmirCTA({ onBook }) {
           className="cta-animate font-heebo text-white/75 mt-6 mx-auto max-w-xl leading-relaxed"
           style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}
         >
-          להזמנת הרצאה, סדנה או ליווי אישי — השאירו פרטים ונחזור אליכם/ן.
+          להזמנת הרצאה, סדנה או ליווי אישי - השאירו פרטים ונחזור אליכם/ן.
         </p>
 
         <div className="cta-animate mt-10">

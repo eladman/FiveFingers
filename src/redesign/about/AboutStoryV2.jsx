@@ -91,7 +91,7 @@ export default function AboutStoryV2() {
               </p>
             ))}
 
-            {/* Founder card — the in-context door to עמיר's dedicated page,
+            {/* Founder card - the in-context door to עמיר's dedicated page,
                 kept out of the nav and dropped where the story introduces him. */}
             {mv.founder && (
               <a

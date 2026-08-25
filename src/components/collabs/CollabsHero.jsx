@@ -142,7 +142,7 @@ export default function CollabsHero({ onRegister }) {
           className="ch-sub font-heebo text-white/85 mt-7 mx-auto max-w-3xl leading-relaxed"
           style={{ fontSize: 'clamp(1.05rem, 1.9vw, 1.6rem)', textShadow: '0 2px 20px rgba(0,0,0,0.9)' }}
         >
-          מביאים את שיטת חמש אצבעות לארגונים, צוותים, יחידות וספורטאים —
+          מביאים את שיטת חמש אצבעות לארגונים, צוותים, יחידות וספורטאים -
           מהלכה למעשה. תוכן והכשרות שמשנים את חוקי המשחק.
         </p>
 

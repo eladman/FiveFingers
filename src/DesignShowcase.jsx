@@ -39,7 +39,7 @@ export default function DesignShowcase() {
           fontSize: '0.68rem',
           color: 'rgba(255,255,255,0.35)',
           letterSpacing: '0.02em',
-        }}>בוחרים כיוון עיצובי — חמש אצבעות</span>
+        }}>בוחרים כיוון עיצובי - חמש אצבעות</span>
         <a
           href="#"
           style={{

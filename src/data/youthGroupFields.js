@@ -5,7 +5,7 @@
 // The exact interest/product_type value the movement uses for youth groups.
 export const YOUTH_GROUP_PRODUCT = 'קבוצות הנוער'
 
-// School grades a youth-group participant can be in (ages 12-18), as a closed
+// School grades a youth-group participant can be in (ages 10-18), as a closed
 // list so we never get free-text grade values.
 export const GRADE_OPTIONS = ['ה׳', 'ו׳', 'ז׳', 'ח׳', 'ט׳', 'י׳', 'י״א', 'י״ב']
 
