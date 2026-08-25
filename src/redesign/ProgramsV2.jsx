@@ -19,7 +19,7 @@ const PROGRAMS = [
     description:
       'תכנית הבסיס של התנועה, מכיתה ה׳ עד י״ב: יסודות השיטה הפיזית־מנטלית. חוסן, הרגלים, עבודת צוות וכלים למנהיגות.',
     imageSrc: '/our_product_pics/core_pic.jpg',
-    ctaHref: '#liabah',
+    ctaHref: '/liabah',
     ctaLabel: 'לדף קבוצות הנוער',
   },
   {

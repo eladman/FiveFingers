@@ -43,7 +43,7 @@ export const ZONES = [
   {
     icon: Rocket,
     title: 'סדנאות',
-    badge: 'סדנת 0→1',
+    badge: 'סדנת ⁦0→1⁩',
     text: 'איך הופכים שאיפות למעשים ולוקחים את הצעד הראשון מרעיון למציאות. סדנה מעשית שמלווה אתכם/ן מנקודת ההתחלה ועד המהלך הראשון בשטח.',
     imageSrc: '/Amir_pics/workshop.jpeg',
     imagePosition: 'right 68%',
