@@ -14,8 +14,6 @@
 // Like src/lib/analytics.js: no-ops when unconfigured and never throws into the
 // page. A HubSpot outage or a renamed property must never break a live form.
 
-import { HUBSPOT_TEAM_IDS } from '../data/hubspotTeams'
-
 // Public identifiers, not secrets — the portal id is already visible in the
 // tracking script URL and the form guid is visible in any HubSpot embed. Kept in
 // code rather than env vars so a missing Vercel variable can't silently switch
@@ -47,9 +45,14 @@ const SUBJECT_PROPERTY = 'subject'
 // form itself. A property that exists but isn't on the form makes HubSpot reject
 // the whole submission (FIELD_NOT_IN_FORM_DEFINITION) — see the retry in
 // submitToHubSpot, which re-sends the lead the old way if that happens.
-// `team` isn't here: it's an enumeration keyed by numeric ids, so it needs
-// resolving through HUBSPOT_TEAM_IDS rather than a straight copy — see
-// buildExtraFields.
+// `team` is deliberately never sent. In HubSpot it isn't a data field but a
+// trigger: customer service sets it only after they've spoken to the family and
+// matched them to a real group, and that write drives the mobile app (coach push
+// notification, פניה, database record). A team the visitor picked on the map is a
+// preference, not a match — writing it here would fire that chain for leads
+// nobody has vetted yet, and would destroy the guarantee that "team is set"
+// means a human matched them. It stays a readable line in `message` instead, so
+// customer service sees what the parent wanted when they call.
 const FIELD_MAP = []
 
 // The child's name arrives as one free-text field ("שם פרטי ומשפחה") but is worth
@@ -156,14 +159,7 @@ function buildCoreFields(payload) {
 function buildExtraFields(payload) {
   const child = splitName(payload.childName)
 
-  // The team the visitor picked on the Liabah map, as HubSpot's option id.
-  // Unpaired teams resolve to undefined and are dropped by toFields, leaving the
-  // dropdown empty — the readable "קבוצה שנבחרה" line in `message` still carries
-  // the answer, so a team missing from the table is never a lost answer.
-  const team = HUBSPOT_TEAM_IDS[`${payload.city}|${payload.team}`]
-
   return toFields({
-    team,
     [CHILD_FIRST_NAME]: child.firstname,
     [CHILD_LAST_NAME]: child.lastname,
     ...Object.fromEntries(FIELD_MAP.map(({ key, property }) => [property, payload[key]])),
