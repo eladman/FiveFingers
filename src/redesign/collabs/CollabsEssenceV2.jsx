@@ -11,11 +11,14 @@ gsap.registerPlugin(ScrollTrigger)
  * plus two short support columns.
  */
 
+// Each entry is one masked word, and the line can only break *between*
+// entries — hence the dash rides along with 'אצבעות' instead of standing on
+// its own. As a separate word it fell to the head of the second line on a
+// phone, where it read as punctuation belonging to nothing.
 const STATEMENT = [
   { t: 'תרבות', hl: false },
   { t: 'חמש', hl: false },
-  { t: 'אצבעות', hl: false },
-  { t: '-', hl: false },
+  { t: 'אצבעות -', hl: false },
   { t: 'אצלך', hl: true },
   { t: 'בארגון', hl: true },
 ]
@@ -72,7 +75,7 @@ export default function CollabsEssenceV2() {
           style={{ fontSize: 'clamp(2.2rem, 5vw, 4.6rem)', textWrap: 'balance' }}
         >
           {STATEMENT.map((w, i) => (
-            <span key={i} className="ces-word inline-block overflow-hidden align-bottom" style={{ marginInlineEnd: '0.26em' }}>
+            <span key={i} className="ces-word inline-block overflow-hidden align-bottom whitespace-nowrap" style={{ marginInlineEnd: '0.26em' }}>
               <span className={`inline-block will-change-transform ${w.hl ? 'text-orange-ink' : ''}`}>{w.t}</span>
             </span>
           ))}

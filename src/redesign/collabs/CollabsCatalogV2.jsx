@@ -1,18 +1,25 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Clock, ChevronRight, ChevronLeft, X } from 'lucide-react'
+import { Clock, ChevronRight, ChevronLeft, ChevronDown, X } from 'lucide-react'
 import Button from '../../components/ui/Button'
 import { getLenis } from '../../lib/smoothScroll'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /**
- * הקטלוג — the collaborations offering as a browsable Netflix-style catalog:
- * a right-to-left row of landscape boxart cards, and one shared detail panel
- * that expands underneath the row with the selected product's description,
- * מיקום and קהל יעד. Replaces the old three-format spec list, which didn't
- * scale past three items.
+ * הקטלוג — the collaborations offering, in two layouts that share one
+ * selection state:
+ *
+ *  - Desktop (md+): a Netflix-style right-to-left row of landscape boxart
+ *    cards with one shared detail panel expanding underneath the row.
+ *  - Phone (<md): a vertical stack of full-bleed poster cards, each expanding
+ *    its own details in place. The row was ported to the phone as-is and the
+ *    products paid for it — three-quarters of the catalog sat off-screen
+ *    behind a swipe nobody was told about, and what did show was a ~200px
+ *    card with a two-line-clamped title. Stacking gives every product the
+ *    full width of the screen and puts the details under the finger that
+ *    asked for them.
  *
  * Only the הרצאה card is real today; the rest are clearly-marked drafts so the
  * layout can be reviewed and filled in later.
@@ -29,7 +36,10 @@ const PRODUCTS = [
     audience: 'כנסים, אירועי חברה, פתיחת/סגירת שנה, ימי עיון',
     image: { src: '/Hero-Pics/amir_talking_2.jpg', w: 2673, h: 1782, alt: 'עמיר מנחם מרצה מול קהל' },
     speaker: {
-      href: '#amir',
+      // A real path, not '#amir': the router only claims href="/..." links, and
+      // a hash with no matching element on the page just bounced the browser to
+      // the top of the document instead of opening עמיר's page.
+      href: '/amir',
       eyebrow: 'המרצה',
       name: 'עמיר מנחם',
       role: 'מייסד ויו״ר התנועה · מגיש ״האדם בזירה״',
@@ -93,6 +103,23 @@ const PRODUCTS = [
 
 const PANEL_ID = 'collabs-catalog-panel'
 const EDGE_TOL = 2
+
+/** Tailwind's `md`. Below it the row is replaced by the stack. */
+const PHONE_MQ = '(max-width: 767px)'
+
+/** Clearance for the fixed mobile navbar (mx-4 mt-4 + py-3 around a 44px row). */
+const NAV_CLEARANCE = 96
+
+function useIsPhone() {
+  const [phone, setPhone] = useState(() => window.matchMedia(PHONE_MQ).matches)
+  useEffect(() => {
+    const mq = window.matchMedia(PHONE_MQ)
+    const on = () => setPhone(mq.matches)
+    mq.addEventListener('change', on)
+    return () => mq.removeEventListener('change', on)
+  }, [])
+  return phone
+}
 
 /**
  * The row browses big and steps back once a product is open, so the detail
@@ -163,6 +190,18 @@ function readEdges(row) {
   }
 }
 
+/**
+ * Scroll the page to an absolute Y. Always via Lenis when it is running: a
+ * native scrollTop write makes its onNativeScroll hard-reset the target
+ * mid-glide. getLenis() is null under reduced motion.
+ */
+function scrollToY(y) {
+  const top = Math.max(0, y)
+  const lenis = getLenis()
+  if (lenis) lenis.scrollTo(top)
+  else window.scrollTo({ top, behavior: 'auto' })
+}
+
 export default function CollabsCatalogV2({ onRegister }) {
   const ref = useRef(null)
   const rowRef = useRef(null)
@@ -170,9 +209,12 @@ export default function CollabsCatalogV2({ onRegister }) {
   const panelBodyRef = useRef(null)
   const panelWrapRef = useRef(null)
   const cardRefs = useRef([])
+  const stackCardRefs = useRef([])
+  const stackBodyRefs = useRef([])
   const restoreFocus = useRef(false)
   const pendingScroll = useRef(false)
 
+  const isPhone = useIsPhone()
   const [active, setActive] = useState(0)
   // Starts closed so the row is first seen at its full browsing size.
   const [open, setOpen] = useState(false)
@@ -268,12 +310,12 @@ export default function CollabsCatalogV2({ onRegister }) {
     const el = panelBodyRef.current
     if (!el) return
     const r = el.getBoundingClientRect()
-    if (r.top >= 0 && r.bottom <= window.innerHeight) return
-    // Go through Lenis: a native scrollTop write makes its onNativeScroll
-    // hard-reset the target mid-glide. getLenis() is null under reduced motion.
-    const lenis = getLenis()
-    if (lenis) lenis.scrollTo(el, { offset: -120 })
-    else el.scrollIntoView({ block: 'nearest', behavior: 'auto' })
+    // The panel is routinely taller than the viewport, so "does it fit
+    // on screen" can't be the test — it would scroll on every open, including
+    // the ones already sitting exactly where you want them. Move only when the
+    // panel's *head* is outside the comfortable reading band.
+    if (r.top >= 80 && r.top <= window.innerHeight * 0.45) return
+    scrollToY(window.scrollY + r.top - 120)
   }
 
   useEffect(() => {
@@ -318,13 +360,43 @@ export default function CollabsCatalogV2({ onRegister }) {
   const select = (i) => {
     restoreFocus.current = !!panelBodyRef.current?.contains(document.activeElement)
     if (i === active) {
-      setOpen((o) => !o)
+      // Re-tapping the open card closes it; re-tapping a closed one (the state
+      // the first card is in at mount) opens it — and that open still deserves
+      // to be scrolled to, which it never used to get.
+      setOpen((o) => {
+        if (!o) pendingScroll.current = true
+        return !o
+      })
       return
     }
     setActive(i)
     setOpen(true)
     pendingScroll.current = true
     cardRefs.current[i]?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: behavior() })
+  }
+
+  /**
+   * Phone stack: one card at a time, and the tapped card's head parks just
+   * under the navbar so the details open in the space below it.
+   *
+   * The scroll target has to account for the card that is closing: if it sits
+   * above this one, everything below shifts up by its panel height. Measuring
+   * that before React commits lets the page make a single move rather than
+   * scrolling to a position that is about to slide out from under it.
+   */
+  const selectStack = (i) => {
+    const closingAbove = open && active < i ? stackBodyRefs.current[active]?.offsetHeight || 0 : 0
+    const isClose = i === active && open
+
+    setActive(i)
+    setOpen(!isClose)
+    if (isClose) return
+
+    requestAnimationFrame(() => {
+      const card = stackCardRefs.current[i]
+      if (!card) return
+      scrollToY(window.scrollY + card.getBoundingClientRect().top - closingAbove - NAV_CLEARANCE)
+    })
   }
 
   // Re-keying the panel body on swap unmounts whatever had focus inside it.
@@ -351,9 +423,11 @@ export default function CollabsCatalogV2({ onRegister }) {
     el?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: behavior() })
   }
 
+  // By id rather than by ref: the trigger is the row card on desktop and the
+  // stack card's own header on a phone, and only one of them is ever mounted.
   const close = () => {
     setOpen(false)
-    cardRefs.current[active]?.focus({ preventScroll: true })
+    document.getElementById(cardDomId(active))?.focus({ preventScroll: true })
   }
 
   return (
@@ -404,6 +478,96 @@ export default function CollabsCatalogV2({ onRegister }) {
           )}
         </div>
 
+        {isPhone ? (
+          /* ── phone: the catalog as a stack, one poster per screen width ── */
+          <ul role="list" aria-label="קטלוג המוצרים" className="cc2-el mt-10 flex flex-col gap-5">
+            {PRODUCTS.map((p, i) => {
+              const isOpen = i === active && open
+              const bodyId = `${PANEL_ID}-${p.id}`
+              return (
+                <li
+                  key={p.id}
+                  ref={(el) => (stackCardRefs.current[i] = el)}
+                  className={`overflow-hidden rounded-[1.5rem] bg-white/[0.04] ring-1 transition-shadow duration-300
+                    ${isOpen ? 'ring-orange shadow-[0_18px_50px_rgba(0,0,10,0.5)]' : 'ring-white/10'}`}
+                >
+                  <button
+                    id={cardDomId(i)}
+                    type="button"
+                    onClick={() => selectStack(i)}
+                    aria-expanded={isOpen}
+                    aria-controls={bodyId}
+                    className="block w-full text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-orange"
+                  >
+                    {/* 4:3, not the row's 16:9 — a landscape sliver reads as a
+                        thumbnail on a phone, and these are the products. */}
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img
+                        src={p.image.src}
+                        width={p.image.w}
+                        height={p.image.h}
+                        alt=""
+                        loading={i === 0 ? 'eager' : 'lazy'}
+                        decoding="async"
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                      <div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{ background: 'linear-gradient(0deg, rgba(6,7,10,0.97) 6%, rgba(6,7,10,0.45) 48%, transparent 78%)' }}
+                      />
+                      {p.duration && (
+                        <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-sm text-white/90 font-heebo font-semibold px-3 py-1 text-xs">
+                          <Clock size={13} strokeWidth={2.25} />
+                          {p.duration}
+                        </span>
+                      )}
+                      {/* Full screen width to spend, so no line-clamp: every
+                          title says its whole name. */}
+                      <div className="absolute inset-x-0 bottom-0 p-5">
+                        <h3 className="font-ragmarom text-white leading-[1.15] text-[1.5rem]">{p.title}</h3>
+                        <p className="font-heebo text-white/70 text-sm mt-2">{p.subtitle}</p>
+                      </div>
+                    </div>
+
+                    <span className="flex items-center justify-between px-5 py-4 border-t border-white/10 font-heebo font-semibold text-sm text-orange">
+                      {isOpen ? 'סגירה' : 'לפרטים המלאים'}
+                      <ChevronDown
+                        size={18}
+                        strokeWidth={2.5}
+                        aria-hidden="true"
+                        className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                      />
+                    </span>
+                  </button>
+
+                  {/* Same 0fr -> 1fr track trick as the desktop panel, per card. */}
+                  <div
+                    className="grid transition-[grid-template-rows] duration-[420ms] ease-brand"
+                    style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+                  >
+                    <div className="min-h-0 overflow-hidden" inert={!isOpen || undefined}>
+                      <div
+                        id={bodyId}
+                        ref={(el) => (stackBodyRefs.current[i] = el)}
+                        role="region"
+                        aria-labelledby={cardDomId(i)}
+                        className="px-5 pb-7 pt-1"
+                      >
+                        <p className="font-heebo text-white/75 leading-[1.8]">{p.text}</p>
+                        <Specs product={p} />
+                        <Button variant="primary" className="w-full mt-7" onClick={() => onRegister?.()}>
+                          לתיאום ובירור פרטים
+                        </Button>
+                        <SpeakerCard speaker={p.speaker} />
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
+        ) : (
+        <>
         {/* card row — scroll-ps-* must match the horizontal padding, else
             snap-start cards land tucked under the gutter. */}
         <ul
@@ -560,26 +724,7 @@ export default function CollabsCatalogV2({ onRegister }) {
                       {product.text}
                     </p>
 
-                    {(product.location || product.audience) && (
-                      <dl className="mt-6 grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-x-6 gap-y-3">
-                        {product.location && (
-                          <>
-                            <dt className="font-heebo font-semibold text-white/45 text-sm" style={{ letterSpacing: '0.06em' }}>
-                              מיקום
-                            </dt>
-                            <dd className="font-heebo text-white leading-snug">{product.location}</dd>
-                          </>
-                        )}
-                        {product.audience && (
-                          <>
-                            <dt className="font-heebo font-semibold text-white/45 text-sm" style={{ letterSpacing: '0.06em' }}>
-                              קהל יעד
-                            </dt>
-                            <dd className="font-heebo text-white leading-snug">{product.audience}</dd>
-                          </>
-                        )}
-                      </dl>
-                    )}
+                    <Specs product={product} />
 
                     <div className="mt-8">
                       <Button variant="primary" onClick={() => onRegister?.()}>
@@ -589,48 +734,13 @@ export default function CollabsCatalogV2({ onRegister }) {
                   </div>
                 </div>
 
-                {/* Speaker card - the in-context door to עמיר's page, on the
-                    lecture he delivers. Mirrors the אודות card. */}
-                {product.speaker && (
-                  <a
-                    href={product.speaker.href}
-                    className="group/spk relative mt-9 flex flex-col sm:flex-row items-stretch overflow-hidden rounded-[1.4rem] bg-white/[0.06] ring-1 ring-white/12 transition-all duration-300 hover:ring-orange/50 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
-                  >
-                    <div className="relative shrink-0 sm:w-40 md:w-48">
-                      <img
-                        src={product.speaker.photo.src}
-                        width={product.speaker.photo.w}
-                        height={product.speaker.photo.h}
-                        alt={product.speaker.photo.alt}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-48 w-full sm:h-full object-cover"
-                        style={{ objectPosition: 'center 22%' }}
-                      />
-                    </div>
-
-                    <div className="flex flex-1 flex-col justify-center p-6 md:p-7">
-                      <span className="ds-eyebrow text-orange">{product.speaker.eyebrow}</span>
-                      <h4 className="font-ragmarom text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.9rem)' }}>
-                        {product.speaker.name}
-                      </h4>
-                      <p className="font-heebo text-white/55 text-sm leading-relaxed mt-1.5">
-                        {product.speaker.role}
-                      </p>
-                      <p className="font-heebo text-white/75 leading-relaxed mt-3" style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.06rem)' }}>
-                        {product.speaker.teaser}
-                      </p>
-                      <span className="inline-flex items-center gap-1.5 mt-4 font-heebo font-semibold text-orange transition-colors">
-                        {product.speaker.cta}
-                        <span aria-hidden="true" className="transition-transform duration-200 group-hover/spk:-translate-x-1">←</span>
-                      </span>
-                    </div>
-                  </a>
-                )}
+                <SpeakerCard speaker={product.speaker} />
               </div>
             </div>
           </div>
         </div>
+        </>
+        )}
 
         <div className="cc2-el flex justify-center pt-14">
           <Button variant="secondary" onClick={() => onRegister?.()}>
@@ -639,6 +749,73 @@ export default function CollabsCatalogV2({ onRegister }) {
         </div>
       </div>
     </section>
+  )
+}
+
+/** מיקום / קהל יעד, for whichever of the two a product actually carries. */
+function Specs({ product }) {
+  if (!product.location && !product.audience) return null
+  return (
+    <dl className="mt-6 grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-x-6 gap-y-3">
+      {product.location && (
+        <>
+          <dt className="font-heebo font-semibold text-white/45 text-sm" style={{ letterSpacing: '0.06em' }}>
+            מיקום
+          </dt>
+          <dd className="font-heebo text-white leading-snug">{product.location}</dd>
+        </>
+      )}
+      {product.audience && (
+        <>
+          <dt className="font-heebo font-semibold text-white/45 text-sm" style={{ letterSpacing: '0.06em' }}>
+            קהל יעד
+          </dt>
+          <dd className="font-heebo text-white leading-snug">{product.audience}</dd>
+        </>
+      )}
+    </dl>
+  )
+}
+
+/**
+ * The in-context door to עמיר's page, on the lecture he delivers.
+ * Mirrors the אודות card.
+ */
+function SpeakerCard({ speaker }) {
+  if (!speaker) return null
+  return (
+    <a
+      href={speaker.href}
+      className="group/spk relative mt-9 flex flex-col sm:flex-row items-stretch overflow-hidden rounded-[1.4rem] bg-white/[0.06] ring-1 ring-white/12 transition-all duration-300 hover:ring-orange/50 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
+    >
+      <div className="relative shrink-0 sm:w-40 md:w-48">
+        <img
+          src={speaker.photo.src}
+          width={speaker.photo.w}
+          height={speaker.photo.h}
+          alt={speaker.photo.alt}
+          loading="lazy"
+          decoding="async"
+          className="h-48 w-full sm:h-full object-cover"
+          style={{ objectPosition: 'center 22%' }}
+        />
+      </div>
+
+      <div className="flex flex-1 flex-col justify-center p-6 md:p-7">
+        <span className="ds-eyebrow text-orange">{speaker.eyebrow}</span>
+        <h4 className="font-ragmarom text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.9rem)' }}>
+          {speaker.name}
+        </h4>
+        <p className="font-heebo text-white/55 text-sm leading-relaxed mt-1.5">{speaker.role}</p>
+        <p className="font-heebo text-white/75 leading-relaxed mt-3" style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.06rem)' }}>
+          {speaker.teaser}
+        </p>
+        <span className="inline-flex items-center gap-1.5 mt-4 font-heebo font-semibold text-orange transition-colors">
+          {speaker.cta}
+          <span aria-hidden="true" className="transition-transform duration-200 group-hover/spk:-translate-x-1">←</span>
+        </span>
+      </div>
+    </a>
   )
 }
 
