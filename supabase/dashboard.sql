@@ -94,8 +94,13 @@ create policy "staff read views"
 -- (edge function / rate limit).
 
 -- ---------------------------------------------------------------------
--- 1d. Staff accounts — NOT created here. Add them in the dashboard:
---     Authentication → Users → Add user (email + password), one per staff.
+-- 1d. Staff account — NOT created here. The dashboard uses ONE shared account
+--     (the login form asks for a password only, no email), so create a single
+--     user in the dashboard: Authentication → Users → Add user, with
+--     email `dashboard@fivefingers.co.il` (or whatever VITE_DASHBOARD_LOGIN_EMAIL
+--     is set to) and the team password. Tick "Auto Confirm User".
 --     Then Authentication → Providers/Settings → disable public sign-ups
---     so only invited staff can exist.
+--     so no one else can create an account.
+--     To change the team password later: same screen → the user → Reset/Update
+--     password. No code change, no redeploy.
 -- ---------------------------------------------------------------------

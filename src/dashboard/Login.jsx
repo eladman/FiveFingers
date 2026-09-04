@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import { supabase } from './supabaseClient.js'
+import { supabase, SHARED_LOGIN_EMAIL } from './supabaseClient.js'
 
 export default function Login() {
-  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -11,10 +10,14 @@ export default function Login() {
     e.preventDefault()
     setError('')
     setLoading(true)
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    // One shared staff account — the email is fixed, only the password is typed.
+    const { error } = await supabase.auth.signInWithPassword({
+      email: SHARED_LOGIN_EMAIL,
+      password,
+    })
     setLoading(false)
     if (error) {
-      setError('פרטי ההתחברות שגויים. בדקו את המייל והסיסמה ונסו שוב.')
+      setError('הסיסמה שגויה. נסו שוב.')
     }
     // On success, onAuthStateChange in Dashboard swaps the view.
   }
@@ -29,32 +32,23 @@ export default function Login() {
           <img src="/logo.png" alt="חמש אצבעות" className="h-12 mx-auto mb-5" />
           <div className="ds-eyebrow text-orange-ink mb-1">אזור צוות</div>
           <h1 className="text-2xl font-bold text-navy">לוח בקרה</h1>
-          <p className="text-sm text-navy/50 mt-2">התחברות לחברי צוות בלבד</p>
+          <p className="text-sm text-navy/50 mt-2">הזינו את סיסמת הצוות</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <Field label="מייל">
-            <input
-              type="email"
-              required
-              autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="dash-input"
-              placeholder="name@fivefingers.co.il"
-            />
-          </Field>
-          <Field label="סיסמה">
+          <label className="block">
+            <span className="block text-sm font-semibold text-navy/70 mb-1.5">סיסמה</span>
             <input
               type="password"
               required
+              autoFocus
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="dash-input"
               placeholder="••••••••"
             />
-          </Field>
+          </label>
 
           {error && (
             <div className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
@@ -68,14 +62,5 @@ export default function Login() {
         </form>
       </div>
     </div>
-  )
-}
-
-function Field({ label, children }) {
-  return (
-    <label className="block">
-      <span className="block text-sm font-semibold text-navy/70 mb-1.5">{label}</span>
-      {children}
-    </label>
   )
 }
