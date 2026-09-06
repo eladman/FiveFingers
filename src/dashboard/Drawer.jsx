@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import { supabase } from './supabaseClient.js'
-import { DETAIL_FIELDS, FIELD_LABELS, STATUSES } from './constants.js'
+import { DETAIL_FIELDS, FIELD_LABELS } from './constants.js'
 
 export default function Drawer({ row, onClose, onSaved }) {
-  const [status, setStatus] = useState(row.status || 'new')
   const [notes, setNotes] = useState(row.staff_notes || '')
   const [saving, setSaving] = useState(false)
   const [savedAt, setSavedAt] = useState(false)
@@ -11,7 +10,6 @@ export default function Drawer({ row, onClose, onSaved }) {
 
   // Reset local state when a different row is opened.
   useEffect(() => {
-    setStatus(row.status || 'new')
     setNotes(row.staff_notes || '')
     setSavedAt(false)
     setError('')
@@ -24,12 +22,12 @@ export default function Drawer({ row, onClose, onSaved }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
-  const dirty = status !== (row.status || 'new') || notes !== (row.staff_notes || '')
+  const dirty = notes !== (row.staff_notes || '')
 
   async function save() {
     setSaving(true)
     setError('')
-    const patch = { status, staff_notes: notes, updated_at: new Date().toISOString() }
+    const patch = { staff_notes: notes, updated_at: new Date().toISOString() }
     const { error } = await supabase.from('contact_submissions').update(patch).eq('id', row.id)
     setSaving(false)
     if (error) {
@@ -88,21 +86,6 @@ export default function Drawer({ row, onClose, onSaved }) {
 
           {/* Management */}
           <section className="space-y-4 pt-2 border-t border-line">
-            <div>
-              <span className="block text-sm font-semibold text-navy/70 mb-2">סטטוס</span>
-              <div className="flex gap-2">
-                {STATUSES.map((s) => (
-                  <button
-                    key={s.value}
-                    onClick={() => setStatus(s.value)}
-                    className={`dash-btn-ghost h-9 px-4 text-sm ${status === s.value ? 'is-active' : ''}`}
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
             <label className="block">
               <span className="block text-sm font-semibold text-navy/70 mb-1.5">הערות צוות</span>
               <textarea

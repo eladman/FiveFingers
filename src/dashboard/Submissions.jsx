@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from './supabaseClient.js'
-import { STATUSES, STATUS_LABEL } from './constants.js'
 import { downloadCsv } from './csv.js'
 import Drawer from './Drawer.jsx'
 
@@ -15,7 +14,6 @@ export default function Submissions() {
   const [rows, setRows] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const [statusFilter, setStatusFilter] = useState('all')
   const [typeFilter, setTypeFilter] = useState('all')
   const [search, setSearch] = useState('')
   const [selected, setSelected] = useState(null)
@@ -49,7 +47,6 @@ export default function Submissions() {
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase()
     return rows.filter((r) => {
-      if (statusFilter !== 'all' && r.status !== statusFilter) return false
       if (typeFilter !== 'all' && r.product_type !== typeFilter) return false
       if (q) {
         const hay = `${r.name || ''} ${r.phone || ''} ${r.email || ''}`.toLowerCase()
@@ -57,15 +54,12 @@ export default function Submissions() {
       }
       return true
     })
-  }, [rows, statusFilter, typeFilter, search])
+  }, [rows, typeFilter, search])
 
   const kpis = useMemo(() => {
     const weekStart = startOfWeek()
     return {
       total: rows.length,
-      new: rows.filter((r) => r.status === 'new').length,
-      in_progress: rows.filter((r) => r.status === 'in_progress').length,
-      handled: rows.filter((r) => r.status === 'handled').length,
       week: rows.filter((r) => new Date(r.created_at) >= weekStart).length,
     }
   }, [rows])
@@ -79,39 +73,13 @@ export default function Submissions() {
   return (
     <div className="space-y-6">
       {/* KPI row */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 gap-3">
         <Kpi label="סה״כ פניות" value={kpis.total} accent />
-        <Kpi label="חדשות" value={kpis.new} />
-        <Kpi label="בטיפול" value={kpis.in_progress} />
-        <Kpi label="טופלו" value={kpis.handled} />
         <Kpi label="ב־7 ימים" value={kpis.week} />
       </div>
 
       {/* Toolbar */}
-      <div className="dash-card p-4 space-y-3">
-        <div className="flex flex-wrap items-center gap-2">
-          <FilterChip active={statusFilter === 'all'} onClick={() => setStatusFilter('all')}>
-            הכל
-          </FilterChip>
-          {STATUSES.map((s) => (
-            <FilterChip
-              key={s.value}
-              active={statusFilter === s.value}
-              onClick={() => setStatusFilter(s.value)}
-            >
-              {s.label}
-            </FilterChip>
-          ))}
-          <div className="flex-1" />
-          <button
-            className="dash-btn-ghost"
-            onClick={() => downloadCsv(filtered)}
-            disabled={!filtered.length}
-          >
-            ייצוא CSV
-          </button>
-        </div>
-
+      <div className="dash-card p-4">
         <div className="flex flex-wrap items-center gap-3">
           <input
             type="search"
@@ -132,6 +100,13 @@ export default function Submissions() {
               </option>
             ))}
           </select>
+          <button
+            className="dash-btn-ghost"
+            onClick={() => downloadCsv(filtered)}
+            disabled={!filtered.length}
+          >
+            ייצוא CSV
+          </button>
         </div>
       </div>
 
@@ -153,7 +128,6 @@ export default function Submissions() {
                   <Th>טלפון</Th>
                   <Th>מייל</Th>
                   <Th>תחום</Th>
-                  <Th>סטטוס</Th>
                 </tr>
               </thead>
               <tbody>
@@ -168,7 +142,6 @@ export default function Submissions() {
                     <Td dir="ltr" className="text-navy/70">{r.phone}</Td>
                     <Td dir="ltr" className="text-navy/70">{r.email}</Td>
                     <Td className="text-navy/70">{r.product_type}</Td>
-                    <Td><StatusBadge status={r.status} /></Td>
                   </tr>
                 ))}
               </tbody>
@@ -198,32 +171,6 @@ function Kpi({ label, value, accent }) {
       <div className="text-xs text-navy/45 mb-1">{label}</div>
       <div className={`text-3xl font-bold ${accent ? 'text-orange-ink' : 'text-navy'}`}>{value}</div>
     </div>
-  )
-}
-
-function FilterChip({ active, onClick, children }) {
-  return (
-    <button onClick={onClick} className={`dash-btn-ghost h-9 px-4 text-sm ${active ? 'is-active' : ''}`}>
-      {children}
-    </button>
-  )
-}
-
-export function StatusBadge({ status }) {
-  const s = STATUSES.find((x) => x.value === status) || STATUSES[0]
-  const bg =
-    status === 'handled'
-      ? 'rgba(22,163,74,0.1)'
-      : status === 'in_progress'
-        ? 'rgba(30,53,120,0.1)'
-        : 'rgba(255,135,20,0.12)'
-  const color =
-    status === 'handled' ? '#15803d' : status === 'in_progress' ? '#1e3578' : '#b35600'
-  return (
-    <span className="dash-badge" style={{ background: bg, color }}>
-      <span className="dot" style={{ background: s.dot }} />
-      {STATUS_LABEL[status] || status}
-    </span>
   )
 }
 

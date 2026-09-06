@@ -1,14 +1,6 @@
 // Shared labels for the dashboard. Mirrors the field/interest vocabulary the
 // contact form (src/components/ContactModal.jsx) writes into Supabase.
 
-export const STATUSES = [
-  { value: 'new', label: 'חדש', dot: '#ff8714' },
-  { value: 'in_progress', label: 'בטיפול', dot: '#1e3578' },
-  { value: 'handled', label: 'טופל', dot: '#16a34a' },
-]
-
-export const STATUS_LABEL = Object.fromEntries(STATUSES.map((s) => [s.value, s.label]))
-
 // Hebrew labels for every column we might display in the detail drawer.
 // Keys are the snake_case DB columns (see supabase/schema.sql).
 export const FIELD_LABELS = {
@@ -59,7 +51,6 @@ export const CSV_COLUMNS = [
   'phone',
   'email',
   'product_type',
-  'status',
   'staff_notes',
   'child_name',
   'child_city',

@@ -1,4 +1,4 @@
-import { CSV_COLUMNS, FIELD_LABELS, STATUS_LABEL } from './constants.js'
+import { CSV_COLUMNS, FIELD_LABELS } from './constants.js'
 
 function escapeCell(value) {
   if (value == null) return ''
@@ -26,7 +26,6 @@ export function rowsToCsv(rows) {
     const cells = CSV_COLUMNS.map((c) => {
       let v = row[c]
       if (c === 'created_at' || c === 'submitted_at') v = formatDate(v)
-      if (c === 'status') v = STATUS_LABEL[v] || v
       return escapeCell(v)
     })
     lines.push(cells.join(','))
@@ -36,7 +35,7 @@ export function rowsToCsv(rows) {
 }
 
 function headerFallback(col) {
-  const extra = { created_at: 'התקבל', status: 'סטטוס', staff_notes: 'הערות צוות' }
+  const extra = { created_at: 'התקבל', staff_notes: 'הערות צוות' }
   return extra[col] || col
 }
 
