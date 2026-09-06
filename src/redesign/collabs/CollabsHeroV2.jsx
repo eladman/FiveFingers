@@ -121,13 +121,13 @@ export default function CollabsHeroV2({ onRegister }) {
 
         <h1 className="text-white select-none" aria-label="מהלכה למעשה, הכשרות חמש אצבעות לארגונים">
           <span
-            className="chv2-word-a block overflow-hidden font-ragmarom leading-[0.9] tracking-tight"
+            className="chv2-word-a block overflow-hidden font-ragmarom leading-[0.9] tracking-tight -mt-[0.15em] pt-[0.15em]"
             style={{ fontSize: 'clamp(3.6rem, 14vw, 11rem)', textShadow: '0 4px 40px rgba(0,0,0,0.6)' }}
           >
             <Chars text="מהלכה למעשה" />
           </span>
           <span
-            className="chv2-word-b block overflow-hidden font-ragmarom leading-[0.95] text-orange mt-1"
+            className="chv2-word-b block overflow-hidden font-ragmarom leading-[0.95] text-orange mt-1 pt-[0.1em]"
             style={{ fontSize: 'clamp(1.7rem, 4.6vw, 4rem)', textShadow: '0 2px 24px rgba(0,0,0,0.7)' }}
           >
             <Chars text="שיטת חמש אצבעות, אצלכם" />
@@ -143,7 +143,7 @@ export default function CollabsHeroV2({ onRegister }) {
 
         <div className="flex flex-wrap items-center gap-4 mt-9">
           <Button variant="primary" size="lg" glow onClick={onRegister} className="chv2-cta">
-            לתיאום שיחת ייעוץ
+            פשוט תדברו איתנו
           </Button>
           <Button variant="ghost" size="lg" href="#collabs-catalog" className="chv2-cta">
             מה תקבלו

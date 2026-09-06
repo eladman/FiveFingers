@@ -30,7 +30,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-surface text-navy">
-      <Header email={session.user?.email} tab={tab} setTab={setTab} />
+      <Header tab={tab} setTab={setTab} />
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
         {tab === 'submissions' ? <Submissions /> : <Traffic />}
       </main>
@@ -38,7 +38,7 @@ export default function Dashboard() {
   )
 }
 
-function Header({ email, tab, setTab }) {
+function Header({ tab, setTab }) {
   const tabs = [
     { id: 'submissions', label: 'פניות' },
     { id: 'traffic', label: 'תנועה באתר' },
@@ -66,9 +66,7 @@ function Header({ email, tab, setTab }) {
         </nav>
 
         <div className="flex items-center gap-3">
-          <span className="text-sm text-navy/50 hidden md:inline" dir="ltr">
-            {email}
-          </span>
+          <span className="text-sm text-navy/50 hidden md:inline">אזור צוות</span>
           <button
             onClick={() => supabase.auth.signOut()}
             className="text-sm font-semibold text-navy/60 hover:text-orange-ink transition-colors"
