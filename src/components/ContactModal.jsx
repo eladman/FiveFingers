@@ -31,7 +31,12 @@ const TYPE_ALIASES = {
   'המכינה הקדם צבאית': 'מכינה',
   'הזנק': 'Boost',
 }
-const normalizeType = (t) => TYPE_ALIASES[t] || t
+
+// Page titles spell the Academy with a maqaf, a plain hyphen, or a space
+// between הקדם and צבאית - all the same product - so flatten the separator
+// before the alias lookup, otherwise the raw title leaks out as the productType.
+const canonicalType = (t) => String(t).replace(/[\u05be-]/g, ' ').replace(/\s+/g, ' ').trim()
+const normalizeType = (t) => TYPE_ALIASES[canonicalType(t)] || t
 
 // Every movement role is a job application, so they all collect the same
 // application details. Rendered only once a specific role is selected.
