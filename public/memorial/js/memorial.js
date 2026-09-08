@@ -147,14 +147,14 @@
       if (data) {
         node = el(
           '<a class="niche niche--featured reveal" role="listitem" href="#n' + i + '" ' +
-            'aria-label="' + esc(data.name) + ", " + esc(data.rank) + '. למסע חייו">' +
+            'aria-label="' + esc(data.name) + ", " + esc(data.rank) + '. למסע ' + (data.feminine ? "חייה" : "חייו") + '">' +
             '<span class="niche__photo-wrap">' +
               '<img class="niche__photo" src="' + IMG + esc(data.photo) + '" alt="' + esc(data.name) + '" loading="lazy" decoding="async">' +
             "</span>" +
             '<span class="niche__meta">' +
               '<span class="niche__name">' + esc(data.name) + "</span>" +
-              '<span class="niche__dates">בן ' + ltr(data.age) + " · נפל ב־" + ltr(data.date) + "</span>" +
-              '<span class="niche__cta">למסע חייו ←</span>' +
+              '<span class="niche__dates">' + (data.feminine ? "בת " : "בן ") + ltr(data.age) + " · " + (data.feminine ? "נפלה" : "נפל") + " ב־" + ltr(data.date) + "</span>" +
+              '<span class="niche__cta">למסע ' + (data.feminine ? "חייה" : "חייו") + ' ←</span>' +
             "</span>" +
           "</a>"
         );
@@ -263,12 +263,12 @@
             '<h1 class="phero__name">' + esc(d.name) + "</h1>" +
             '<p class="phero__rank">' + esc(d.rank) + "</p>" +
             '<div class="meta-strip">' +
-              metaItem("גיל בנופלו", "בן " + ltr(d.age)) +
+              metaItem(d.feminine ? "גיל בנופלה" : "גיל בנופלו", (d.feminine ? "בת " : "בן ") + ltr(d.age)) +
               metaItem("יום הנפילה", ltr(d.date)) +
               metaItem("בתאריך העברי", esc(d.dateHe)) +
             "</div>" +
             '<figure class="phero__quote">' +
-              '<figcaption class="phero__quote-label">במילותיו</figcaption>' +
+              '<figcaption class="phero__quote-label">' + (d.feminine ? "במילותיה" : "במילותיו") + "</figcaption>" +
               '<blockquote class="phero__quote-text">״' + esc(d.quote) + '״</blockquote>' +
             "</figure>" +
           "</div>" +
@@ -295,7 +295,7 @@
     if (d.legacy) {
       html +=
         '<section class="psec legacy reveal">' +
-          '<span class="legacy__label">המורשת שהשאיר אחריו</span>' +
+          '<span class="legacy__label">' + (d.feminine ? "המורשת שהשאירה אחריה" : "המורשת שהשאיר אחריו") + "</span>" +
           '<p class="legacy__text">' + esc(d.legacy) + "</p>" +
         "</section>";
     }
@@ -305,7 +305,7 @@
       html +=
         '<section class="psec psec--tint">' +
           '<div class="psec__inner psec__inner--wide">' +
-            secHead("מי שהיה", "התכונות שנשארו איתנו") +
+            secHead(d.feminine ? "מי שהייתה" : "מי שהיה", "התכונות שנשארו איתנו") +
             '<div class="traits">' +
               d.traits.map(function (t) {
                 return '<article class="trait reveal">' +
@@ -353,7 +353,7 @@
     html +=
       '<section class="psec song reveal">' +
         '<div class="psec__inner">' +
-          secHeadCentered("השיר שלו", esc(d.song.t) + " · " + esc(d.song.a)) +
+          secHeadCentered(d.feminine ? "השיר שלה" : "השיר שלו", esc(d.song.t) + " · " + esc(d.song.a)) +
           '<div class="song__frame">' +
             '<iframe src="' + esc(d.song.embed) + '" width="100%" height="152" frameborder="0" ' +
               'allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" ' +

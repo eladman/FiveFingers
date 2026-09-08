@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--
+  Five Fingers (חמש אצבעות) — IN-HOUSE lead alert for עמיר.
+  Fires from the Make.com scenario when the website contact form is submitted
+  with productType = "קשר עם עמיר". Paste this whole file into the HTML body
+  of the Make "Send an Email" module.
+
+  SUGGESTED SUBJECT (Make → Subject field):
+    🔥 פנייה חדשה לעמיר — {{name}} · {{phone}}
+
+  MERGE TAGS — map these from the webhook body:
+    {{name}}        → name          (שם מלא)
+    {{phone}}       → phone         (טלפון, כפי שהוקלד)
+    {{email}}       → email
+    {{productType}} → productType   ("קשר עם עמיר")
+    {{submittedAt}} → submittedAt   (ISO — עדיף לעטוף ב-formatDate)
+    {{pageUrl}}     → pageUrl       (הדף שממנו נשלחה הפנייה)
+    {{waPhone}}     → phone מנוקה לפורמט בינלאומי, לכפתור הוואטסאפ.
+                      נוסחה ל-Make:
+                      "972" + substring(replace(replace(replace(1.phone; "-"; ""); " "; ""); "+"; ""); 1; 10)
+                      ...כשה-0 המוביל כבר הוסר. הדרך הבטוחה יותר:
+                      replace(replace(replace(1.phone; "-"; ""); " "; ""); "^0"; "972")   [Regex mode]
+
+  LOGO — email clients need an absolute URL. Replace LOGO_URL with the live file,
+  e.g. https://fivefingers.co.il/logo.png
+-->
+<html dir="rtl" lang="he" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>פנייה חדשה — קשר עם עמיר</title>
+  <!--[if mso]>
+  <style type="text/css">
+    body, table, td, a { font-family: Arial, sans-serif !important; }
+  </style>
+  <![endif]-->
+</head>
+<body style="margin:0; padding:0; background-color:#eef0f4; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
+
+  <!-- Preheader (hidden preview text in the inbox list) -->
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0; font-size:1px; line-height:1px; color:#eef0f4;">
+    {{name}} · {{phone}} · ביקש/ה קשר ישיר עם עמיר
+  </div>
+
+  <table dir="rtl" role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#eef0f4; direction:rtl;">
+    <tr>
+      <td align="center" style="padding:28px 14px; direction:rtl;">
+
+        <!-- Card -->
+        <table dir="rtl" role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:18px; overflow:hidden; box-shadow:0 10px 34px rgba(13,27,75,0.10); direction:rtl;">
+
+          <!-- Header band -->
+          <tr>
+            <td dir="rtl" style="background-color:#0d1b4b; background-image:linear-gradient(135deg,#0d1b4b 0%,#1e3578 100%); padding:26px 32px 24px 32px; direction:rtl;">
+              <table dir="rtl" role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="direction:rtl;">
+                <tr>
+                  <td dir="rtl" align="right" style="text-align:right; vertical-align:middle;">
+                    <p style="margin:0 0 7px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; letter-spacing:2.5px; color:#ff8714; font-weight:700;">
+                      פנייה חדשה מהאתר
+                    </p>
+                    <h1 style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:25px; line-height:1.25; color:#ffffff; font-weight:800;">
+                      קשר עם עמיר
+                    </h1>
+                  </td>
+                  <td align="left" style="vertical-align:middle; width:64px;">
+                    <img src="LOGO_URL" width="54" height="54" alt="חמש אצבעות" style="display:block; width:54px; height:auto; border:0; outline:none; text-decoration:none;">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Orange accent rule -->
+          <tr>
+            <td style="height:4px; background-color:#ff8714; font-size:0; line-height:0;">&nbsp;</td>
+          </tr>
+
+          <!-- The lead, headline-size -->
+          <tr>
+            <td dir="rtl" style="padding:30px 32px 4px 32px; font-family:Arial,Helvetica,sans-serif; text-align:right; direction:rtl;">
+              <p style="margin:0 0 6px 0; font-size:12px; letter-spacing:1px; color:#9aa0ad; font-weight:700;">מי פנה/תה</p>
+              <p style="margin:0; font-size:30px; line-height:1.2; color:#0d1b4b; font-weight:800;">{{name}}</p>
+            </td>
+          </tr>
+
+          <!-- One-tap actions -->
+          <tr>
+            <td dir="rtl" style="padding:22px 32px 6px 32px; direction:rtl;">
+              <table dir="rtl" role="presentation" cellpadding="0" cellspacing="0" border="0" style="direction:rtl;">
+                <tr>
+                  <td style="border-radius:28px; background-color:#25D366;">
+                    <a href="https://wa.me/{{waPhone}}" target="_blank" style="display:inline-block; padding:12px 24px; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:700; color:#ffffff; text-decoration:none; border-radius:28px;">
+                      וואטסאפ 💬
+                    </a>
+                  </td>
+                  <td style="width:9px; font-size:0; line-height:0;">&nbsp;</td>
+                  <td style="border-radius:28px; background-color:#ff8714;">
+                    <a href="tel:{{phone}}" style="display:inline-block; padding:12px 24px; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:700; color:#ffffff; text-decoration:none; border-radius:28px;">
+                      חיוג 📞
+                    </a>
+                  </td>
+                  <td style="width:9px; font-size:0; line-height:0;">&nbsp;</td>
+                  <td style="border-radius:28px; background-color:#ffffff; border:1.5px solid #d9dde5;">
+                    <a href="mailto:{{email}}" style="display:inline-block; padding:11px 22px; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:700; color:#0d1b4b; text-decoration:none; border-radius:28px;">
+                      מייל ✉️
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Details table -->
+          <tr>
+            <td dir="rtl" style="padding:24px 32px 8px 32px; direction:rtl;">
+              <table dir="rtl" role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f7f8fa; border:1px solid #eef0f3; border-radius:14px; direction:rtl;">
+
+                <!-- Phone -->
+                <tr>
+                  <td dir="rtl" style="padding:15px 20px 13px 20px; font-family:Arial,Helvetica,sans-serif; text-align:right; border-bottom:1px solid #eef0f3;">
+                    <span style="display:block; font-size:12px; color:#9aa0ad; margin-bottom:3px;">טלפון</span>
+                    <a href="tel:{{phone}}" dir="ltr" style="display:block; font-size:17px; font-weight:700; color:#0d1b4b; text-decoration:none; text-align:right;">{{phone}}</a>
+                  </td>
+                </tr>
+
+                <!-- Email -->
+                <tr>
+                  <td dir="rtl" style="padding:13px 20px; font-family:Arial,Helvetica,sans-serif; text-align:right; border-bottom:1px solid #eef0f3;">
+                    <span style="display:block; font-size:12px; color:#9aa0ad; margin-bottom:3px;">מייל</span>
+                    <a href="mailto:{{email}}" dir="ltr" style="display:block; font-size:16px; font-weight:700; color:#0d1b4b; text-decoration:none; text-align:right; word-break:break-all;">{{email}}</a>
+                  </td>
+                </tr>
+
+                <!-- Interest -->
+                <tr>
+                  <td dir="rtl" style="padding:13px 20px 15px 20px; font-family:Arial,Helvetica,sans-serif; text-align:right;">
+                    <span style="display:block; font-size:12px; color:#9aa0ad; margin-bottom:5px;">נושא הפנייה</span>
+                    <span style="display:inline-block; background-color:#fff3e6; border:1px solid #ffd9b0; border-radius:20px; padding:6px 14px; font-size:14px; font-weight:800; color:#ff8714;">{{productType}}</span>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+
+          <!-- Nudge -->
+          <tr>
+            <td dir="rtl" style="padding:16px 32px 26px 32px; font-family:Arial,Helvetica,sans-serif; text-align:right; direction:rtl;">
+              <p style="margin:0; font-size:14px; line-height:1.7; color:#6b7180;">
+                הובטח באתר מענה תוך <strong style="color:#0d1b4b;">24 שעות</strong>.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Meta strip -->
+          <tr>
+            <td dir="rtl" style="background-color:#f7f8fa; border-top:1px solid #eef0f3; padding:16px 32px; font-family:Arial,Helvetica,sans-serif; text-align:right; direction:rtl;">
+              <p style="margin:0 0 4px 0; font-size:12px; line-height:1.7; color:#9aa0ad;">
+                נשלח: <strong style="color:#6b7180;">{{submittedAt}}</strong>
+              </p>
+              <p style="margin:0; font-size:12px; line-height:1.7; color:#9aa0ad; word-break:break-all;">
+                מהדף: <a href="{{pageUrl}}" target="_blank" style="color:#9aa0ad; text-decoration:underline;">{{pageUrl}}</a>
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td dir="rtl" style="background-color:#0d1b4b; padding:18px 32px; font-family:Arial,Helvetica,sans-serif; text-align:center; direction:rtl;">
+              <p style="margin:0; font-size:11px; line-height:1.6; color:#8b93b8;">
+                התראה פנימית · טופס יצירת קשר, אתר חמש אצבעות
+              </p>
+            </td>
+          </tr>
+
+        </table>
+        <!-- /Card -->
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

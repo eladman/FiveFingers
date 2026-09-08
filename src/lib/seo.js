@@ -115,10 +115,12 @@ export function applyMeta(view) {
  * A single fallen person's page. Kept separate because the content is data
  * driven — one entry per person rather than a fixed route.
  */
-export function applyPersonMeta(name, slug) {
+export function applyPersonMeta(name, slug, feminine) {
   applyRaw(
     `${name} ז״ל · היכל הזיכרון${SUFFIX}`,
-    `לזכרו של ${name} ז״ל, בוגר תנועת חמש אצבעות שנפל במלחמת חרבות ברזל.`,
+    feminine
+      ? `לזכרה של ${name} ז״ל, בוגרת תנועת חמש אצבעות שנפלה במלחמת חרבות ברזל.`
+      : `לזכרו של ${name} ז״ל, בוגר תנועת חמש אצבעות שנפל במלחמת חרבות ברזל.`,
     `${SITE_URL}/memorial/${slug}`,
   )
 }

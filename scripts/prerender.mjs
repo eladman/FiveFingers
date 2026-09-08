@@ -26,7 +26,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const DIST = join(ROOT, 'dist')
 
 const { META, SITE_URL } = await import(join(ROOT, 'src/lib/seo.js'))
-const { ROSTER } = await import(join(ROOT, 'src/data/fallen.js'))
+const { ROSTER, FALLEN } = await import(join(ROOT, 'src/data/fallen.js'))
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 
@@ -81,9 +81,12 @@ for (const meta of Object.values(META)) {
 for (const entry of ROSTER) {
   const path = `/memorial/${entry.id}`
   const canonical = SITE_URL + path
+  const feminine = !!(entry.id && FALLEN[entry.id] && FALLEN[entry.id].feminine)
   await emit(path, render(shell, {
     title: `${entry.n} ז״ל · היכל הזיכרון | חמש אצבעות`,
-    description: `לזכרו של ${entry.n} ז״ל, בוגר תנועת חמש אצבעות שנפל במלחמת חרבות ברזל.`,
+    description: feminine
+      ? `לזכרה של ${entry.n} ז״ל, בוגרת תנועת חמש אצבעות שנפלה במלחמת חרבות ברזל.`
+      : `לזכרו של ${entry.n} ז״ל, בוגר תנועת חמש אצבעות שנפל במלחמת חרבות ברזל.`,
     canonical,
   }))
   urls.push({ loc: canonical, priority: '0.7' })
