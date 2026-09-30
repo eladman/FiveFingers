@@ -1099,6 +1099,15 @@
   ],
   "headers": [
     {
+      "source": "/(.*)\\.(webp|jpg|jpeg|JPG|png|gif|svg|mp4|otf|woff2?|ico)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
       "source": "/assets/(.*)",
       "headers": [
         {

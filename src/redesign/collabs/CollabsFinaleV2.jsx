@@ -55,7 +55,7 @@ export default function CollabsFinaleV2({ onRegister }) {
     >
       <div className="absolute inset-0 overflow-hidden">
         <img
-          src="/Hero-Pics/214A0011.jpg"
+          src="/Hero-Pics/214A0011.webp"
           alt=""
           aria-hidden="true"
           loading="lazy"

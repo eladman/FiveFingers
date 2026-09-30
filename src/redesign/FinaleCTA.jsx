@@ -52,7 +52,7 @@ export default function FinaleCTA({ onContactOpen }) {
     >
       <div className="absolute inset-0 overflow-hidden">
         <img
-          src="/more_pics/843a971e-d2aa-4b12-ba7b-902b0fae6cdb.JPG"
+          src="/more_pics/843a971e-d2aa-4b12-ba7b-902b0fae6cdb.webp"
           alt=""
           aria-hidden="true"
           loading="lazy"

@@ -44,7 +44,7 @@ export default function VariantB() {
         justifyContent: 'center',
         overflow: 'hidden',
       }}>
-        <img src="/Hero-Pics/214A0088.jpg" alt="" style={{
+        <img src="/Hero-Pics/214A0088.webp" alt="" style={{
           position: 'absolute', inset: 0,
           width: '100%', height: '100%',
           objectFit: 'cover', objectPosition: 'center 25%',

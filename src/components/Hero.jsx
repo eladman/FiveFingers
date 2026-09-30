@@ -6,12 +6,12 @@ import Button from './ui/Button'
 gsap.registerPlugin(ScrollTrigger)
 
 const IMAGES = [
-  '/Hero-Pics/amir_talking_2.jpg',
-  '/Hero-Pics/erev_moreshet.jpg',
-  '/Hero-Pics/214A0011.jpg',
-  '/Hero-Pics/214A0034.jpg',
-  '/Hero-Pics/214A0114.jpg',
-  '/Hero-Pics/_14A9355.jpg',
+  '/Hero-Pics/amir_talking_2.webp',
+  '/Hero-Pics/erev_moreshet.webp',
+  '/Hero-Pics/214A0011.webp',
+  '/Hero-Pics/214A0034.webp',
+  '/Hero-Pics/214A0114.webp',
+  '/Hero-Pics/_14A9355.webp',
 ]
 
 function SplitText({ children, wordClass }) {

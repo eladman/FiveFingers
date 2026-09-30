@@ -81,7 +81,7 @@ export const agePages = {
       titleB: 'הצעד הראשון לזירה',
       subtitle:
         'בגילאי 10–12 הכול מתחיל. דרך משחק, תנועה ואתגר מותאם גיל, הילדים והילדות בונים ביטחון, הרגלים בריאים וחברויות אמיתיות - ומגלים כמה כיף להתאמץ.',
-      imageSrc: '/plans_pics/kids_liba.jpg',
+      imageSrc: '/plans_pics/kids_liba.webp',
       imagePosition: '50% 30%',
       meta: ['גילאי 10–12 · כיתות ה׳–ו׳', 'שני אימונים בשבוע', 'קבוצה קבועה ומאמן/ת צמוד/ה'],
     },
@@ -135,12 +135,12 @@ export const agePages = {
       title: 'מתחילים את הצעד הראשון?',
       titleAccent: 'הצעד הראשון',
       subtitle: 'השאירו פרטים ונחבר אתכם/ן לקבוצה הצעירה הקרובה אליכם.',
-      imageSrc: '/liba_pics/214A1343.jpg',
+      imageSrc: '/liba_pics/214A1343.webp',
     },
     gallery: [
-      { src: '/liba_pics/214A0052.jpg', alt: 'פעילות הקבוצות הצעירות' },
-      { src: '/plans_pics/kids_liba.jpg', alt: 'פעילות הקבוצות הצעירות' },
-      { src: '/liba_pics/214A0005.jpg', alt: 'פעילות הקבוצות הצעירות' },
+      { src: '/liba_pics/214A0052.webp', alt: 'פעילות הקבוצות הצעירות' },
+      { src: '/plans_pics/kids_liba.webp', alt: 'פעילות הקבוצות הצעירות' },
+      { src: '/liba_pics/214A0005.webp', alt: 'פעילות הקבוצות הצעירות' },
     ],
   },
 
@@ -155,7 +155,7 @@ export const agePages = {
       titleB: 'כאן נבנה החוסן',
       subtitle:
         'גיל ההתבגרות הוא בדיוק הרגע לבנות חוסן, הרגלים וזהות. באימון הפיזי-מנטלי בני ובנות הנוער לומדים להתמודד עם קושי - ומגלים שהם מסוגלים להרבה יותר.',
-      imageSrc: '/our_product_pics/core_pic.jpg',
+      imageSrc: '/our_product_pics/core_pic.webp',
       imagePosition: '50% 25%',
       meta: ['גילאי 12–15 · כיתות ז׳–ט׳', 'שני אימונים בשבוע', 'קבוצות בנים ובנות'],
     },
@@ -206,12 +206,12 @@ export const agePages = {
       title: 'מוכנים ומוכנות להיכנס לזירה?',
       titleAccent: 'לזירה?',
       subtitle: 'השאירו פרטים ונחבר אתכם/ן לקבוצת החטיבה הקרובה אליכם.',
-      imageSrc: '/liba_pics/214A9628.jpg',
+      imageSrc: '/liba_pics/214A9628.webp',
     },
     gallery: [
-      { src: '/liba_pics/214A0223.jpg', alt: 'אימון חטיבת הביניים' },
-      { src: '/liba_pics/214A0405-2.jpg', alt: 'אימון חטיבת הביניים' },
-      { src: '/liba_pics/214A9628.jpg', alt: 'אימון חטיבת הביניים' },
+      { src: '/liba_pics/214A0223.webp', alt: 'אימון חטיבת הביניים' },
+      { src: '/liba_pics/214A0405-2.webp', alt: 'אימון חטיבת הביניים' },
+      { src: '/liba_pics/214A9628.webp', alt: 'אימון חטיבת הביניים' },
     ],
   },
 
@@ -226,7 +226,7 @@ export const agePages = {
       titleB: 'מנהיגות נבנית כאן',
       subtitle:
         'בשנים שלפני הגיוס לוקחים אחריות אמיתית: מתאמנים ברמה גבוהה, מובילים את הצעירים ומתכוננים לשירות משמעותי ולחיים של השפעה.',
-      imageSrc: '/plans_pics/high_schools. .jpg',
+      imageSrc: '/plans_pics/high_schools. .webp',
       imagePosition: '50% 30%',
       meta: ['גילאי 15–18 · כיתות י׳–י״ב', 'שני אימונים בשבוע', 'הכנה לשירות משמעותי'],
     },
@@ -277,12 +277,12 @@ export const agePages = {
       title: 'בוחרים להוביל?',
       titleAccent: 'להוביל?',
       subtitle: 'השאירו פרטים ונחבר אתכם/ן לקבוצת התיכון הקרובה אליכם.',
-      imageSrc: '/liba_pics/214A9700.jpg',
+      imageSrc: '/liba_pics/214A9700.webp',
     },
     gallery: [
-      { src: '/liba_pics/214A1552.jpg', alt: 'אימון קבוצות התיכון' },
-      { src: '/liba_pics/214A0362.jpg', alt: 'אימון קבוצות התיכון' },
-      { src: '/liba_pics/214A9700.jpg', alt: 'אימון קבוצות התיכון' },
+      { src: '/liba_pics/214A1552.webp', alt: 'אימון קבוצות התיכון' },
+      { src: '/liba_pics/214A0362.webp', alt: 'אימון קבוצות התיכון' },
+      { src: '/liba_pics/214A9700.webp', alt: 'אימון קבוצות התיכון' },
     ],
   },
 }

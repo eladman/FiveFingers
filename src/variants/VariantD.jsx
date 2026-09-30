@@ -88,7 +88,7 @@ export default function VariantD() {
       }}>
         {/* Background image — warm grade */}
         <img
-          src="/Hero-Pics/214A0114.jpg"
+          src="/Hero-Pics/214A0114.webp"
           alt=""
           style={{
             position: 'absolute', inset: 0,

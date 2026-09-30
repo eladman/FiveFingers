@@ -14,11 +14,11 @@ import { Sprout, Compass, Target } from 'lucide-react'
 export const YOAV_URL = 'https://www.yoavprogram.com/'
 
 /** Hero background (landscape). Alumni photo. */
-export const HERO = { src: '/Bogrim/_14A4788-2.jpg', w: 1600, h: 1067 }
+export const HERO = { src: '/Bogrim/_14A4788-2.webp', w: 1600, h: 1067 }
 /** Community context shot for the intro card. Alumni photo. */
-export const COMMUNITY = { src: '/Bogrim/_14A4652.jpg', w: 1600, h: 1067 }
+export const COMMUNITY = { src: '/Bogrim/_14A4652.webp', w: 1600, h: 1067 }
 /** Finale photo push-in. Alumni photo. */
-export const FINALE = { src: '/Bogrim/_14A4777.jpg', w: 1600, h: 1067 }
+export const FINALE = { src: '/Bogrim/_14A4777.webp', w: 1600, h: 1067 }
 
 // "בוגרים במספרים" — animated counters. Numeric `value` so useCountUp can animate.
 // Kept evergreen (no founding-year / open-cycle values) so the page never needs

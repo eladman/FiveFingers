@@ -10,7 +10,7 @@ import Button from '../ui/Button'
 // diagonal navy grade, a kinetic split-color headline, and a diagonal orange
 // stat band slashing across the bottom. Sport / youth-movement energy, same
 // design-system tokens. Image is git-tracked (public/liba_pics).
-const HERO_IMAGE = '/liba_pics/214A1552.jpg'
+const HERO_IMAGE = '/liba_pics/214A1552.webp'
 
 // First four stats feed the hero band (the fifth — בוגרים — belongs to the
 // full LiabahStats section further down the page).

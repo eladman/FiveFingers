@@ -11,10 +11,10 @@ import Button from '../ui/Button'
  */
 
 const IMAGES = [
-  '/Hero-Pics/214A0034.jpg',
-  '/Hero-Pics/214A0114.jpg',
-  '/Hero-Pics/214A0511.jpg',
-  '/Hero-Pics/214A0011.jpg',
+  '/Hero-Pics/214A0034.webp',
+  '/Hero-Pics/214A0114.webp',
+  '/Hero-Pics/214A0511.webp',
+  '/Hero-Pics/214A0011.webp',
 ]
 
 export default function ConceptOversizedType({

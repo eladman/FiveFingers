@@ -3,19 +3,19 @@ import useReveal from '../../hooks/useReveal'
 
 // Partner logos extracted from the catalog's closing page.
 const PARTNERS = [
-  { src: '/partners/idf.png', name: 'צה״ל' },
-  { src: '/partners/defense.png', name: 'משרד הביטחון' },
-  { src: '/partners/education.png', name: 'משרד החינוך' },
-  { src: '/partners/reichman.png', name: 'אוניברסיטת רייכמן' },
-  { src: '/partners/herzliya.png', name: 'עיריית הרצליה' },
-  { src: '/partners/tel-aviv-yafo.png', name: 'עיריית תל אביב-יפו' },
-  { src: '/partners/tzofim.png', name: 'תנועת הצופים' },
-  { src: '/partners/bnei-akiva.png', name: 'בני עקיבא' },
-  { src: '/partners/branco-weiss.png', name: 'מכון ברנקו וייס' },
-  { src: '/partners/ort.png', name: 'רשת אורט' },
-  { src: '/partners/azrieli.png', name: 'קרן עזריאלי' },
-  { src: '/partners/ssi.png', name: 'SSI – Sport Social Impact' },
-  { src: '/partners/hadar-habaa.png', name: 'קרן הדר הב״א' },
+  { src: '/partners/idf.webp', name: 'צה״ל' },
+  { src: '/partners/defense.webp', name: 'משרד הביטחון' },
+  { src: '/partners/education.webp', name: 'משרד החינוך' },
+  { src: '/partners/reichman.webp', name: 'אוניברסיטת רייכמן' },
+  { src: '/partners/herzliya.webp', name: 'עיריית הרצליה' },
+  { src: '/partners/tel-aviv-yafo.webp', name: 'עיריית תל אביב-יפו' },
+  { src: '/partners/tzofim.webp', name: 'תנועת הצופים' },
+  { src: '/partners/bnei-akiva.webp', name: 'בני עקיבא' },
+  { src: '/partners/branco-weiss.webp', name: 'מכון ברנקו וייס' },
+  { src: '/partners/ort.webp', name: 'רשת אורט' },
+  { src: '/partners/azrieli.webp', name: 'קרן עזריאלי' },
+  { src: '/partners/ssi.webp', name: 'SSI – Sport Social Impact' },
+  { src: '/partners/hadar-habaa.webp', name: 'קרן הדר הב״א' },
 ]
 
 /** "השותפים שלנו" — muted monochrome logo grid. */

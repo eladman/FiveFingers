@@ -31,7 +31,7 @@ export default function CollabsTeam() {
                 style={{ clipPath: 'polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%)' }}
               >
                 <img
-                  src="/Hero-Pics/214A0011.jpg"
+                  src="/Hero-Pics/214A0011.webp"
                   alt="צוות המדריכים של חמש אצבעות"
                   className="absolute inset-0 w-full h-full object-cover"
                   style={{ objectPosition: 'center 30%' }}

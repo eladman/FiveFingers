@@ -19,14 +19,14 @@
 /** Two photos that break up the read. One intimate, one at scale. */
 export const PHOTOS = {
   early: {
-    src: '/Hero-Pics/amir_talking_2.jpg',
+    src: '/Hero-Pics/amir_talking_2.webp',
     w: 2673,
     h: 1782,
     alt: 'מאמן בשיחה עם מעגל חניכים וחניכות בחורש',
     caption: 'מעגל שיחה - הפורמט שלא השתנה מאז היום הראשון.',
   },
   today: {
-    src: '/Hero-Pics/214A0114.jpg',
+    src: '/Hero-Pics/214A0114.webp',
     w: 1600,
     h: 1067,
     alt: 'חניכים וחניכות של חמש אצבעות באימון קבוצתי',
@@ -48,7 +48,7 @@ export const FOUNDER = {
   role: 'מייסד ויו״ר התנועה · קצין שייטת 13 לשעבר · מגיש ״האדם בזירה״',
   teaser: 'מעל 1,000 הרצאות, פודקאסט, וליווי אישי - הסיפור והשיטה שמאחורי חמש אצבעות.',
   cta: 'עוד על עמיר',
-  photo: { src: '/Amir_pics/amir-portrait.jpg', w: 1600, h: 1067, alt: 'עמיר מנחם, מייסד תנועת חמש אצבעות' },
+  photo: { src: '/Amir_pics/amir-portrait.webp', w: 1600, h: 1067, alt: 'עמיר מנחם, מייסד תנועת חמש אצבעות' },
 }
 
 /** The opening paragraph, set larger than the body — the story's way in. */

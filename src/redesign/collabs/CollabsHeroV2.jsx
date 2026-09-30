@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger)
  * (replaces the old separate stats section). Racks focus on scroll-out.
  */
 
-const HERO_IMAGE = '/our_product_pics/collab_pic.jpg'
+const HERO_IMAGE = '/our_product_pics/collab_pic.webp'
 
 // Real numbers from the catalog's "מי אנחנו" page.
 const META = ['50,000+ שעות אימון והדרכה', '10,000+ בוגרים וחניכים', '100+ ארגונים שותפים']

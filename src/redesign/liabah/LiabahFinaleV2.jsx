@@ -51,7 +51,7 @@ export default function LiabahFinaleV2({ onRegister }) {
     >
       <div className="absolute inset-0 overflow-hidden">
         <img
-          src="/liba_pics/214A0362.jpg"
+          src="/liba_pics/214A0362.webp"
           alt=""
           aria-hidden="true"
           loading="lazy"

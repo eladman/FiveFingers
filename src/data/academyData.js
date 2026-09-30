@@ -15,7 +15,7 @@ export const hero = {
   // Main intro video. Leave videoUrl empty ('') to show the placeholder.
   // For YouTube use an embed URL, e.g. 'https://www.youtube.com/embed/XXXXXXXX'.
   videoUrl: '', // TODO: real video embed/URL
-  videoPoster: '/mehina_pics/mehina-desert-group.jpg', // shown behind the play button
+  videoPoster: '/mehina_pics/mehina-desert-group.webp', // shown behind the play button
   primaryCta: 'להגשת מועמדות',
 }
 
@@ -72,7 +72,7 @@ export const programs = [
       'שנת המכינה הקדם-צבאית, תהליך אישי וערכי מעמיק שבונה מסוגלות, מנהיגות ואחריות חברתית, ' +
       'ומכין את החניכים והחניכות לשירות משמעותי ולחיים של השפעה.',
     highlights: ['תהליך אישי מלא', 'חמשת הצירים החינוכיים', 'עשייה חברתית', 'הכנה לשירות'],
-    imageSrc: '/mehina_pics/mehina-desert-group.jpg',
+    imageSrc: '/mehina_pics/mehina-desert-group.webp',
   },
   {
     id: 'boost',
@@ -90,7 +90,7 @@ export const programs = [
       'היכרות עם החברה הישראלית, הכנה פיזית-מנטלית, פיתוח מנהיגות, חוויית שטח וניווט, ' +
       'בליווי מדריכים ומומחים מהשורה הראשונה.',
     highlights: ['היכרות עם החברה הישראלית', 'כושר וחוסן', 'מנהיגות', 'ניווט וחוויית שטח'],
-    imageSrc: '/mehina_pics/mehina-huddle.jpg',
+    imageSrc: '/mehina_pics/mehina-huddle.webp',
   },
   {
     id: 'carmel',
@@ -105,7 +105,7 @@ export const programs = [
       'מסלול ההמשך לבוגרי השנה הראשונה, העמקת המנהיגות, הרחבת ההשפעה והובלת יוזמות חברתיות ' +
       'מתוך אחריות ובגרות גוברת.',
     highlights: ['הובלת יוזמות', 'אחריות מורחבת', 'ליווי בוגרים', 'השפעה בקהילה'],
-    imageSrc: '/mehina_pics/mehina-shirts-night.jpg',
+    imageSrc: '/mehina_pics/mehina-shirts-night.webp',
   },
 ]
 
@@ -154,13 +154,13 @@ export const testimonials = [
 // ── Gallery (גלריה) ────────────────────────────────────────────────────────────
 // Add image paths to show real photos; empty strings render placeholders.
 export const gallery = [
-  { id: 'g1', src: '/mehina_pics/mehina-desert-group.jpg', alt: 'מחזור המכינה במכתש עם דגלי ישראל' },
-  { id: 'g2', src: '/mehina_pics/mehina-huddle.jpg', alt: 'חניכי וחניכות המכינה במעגל גיבוש' },
-  { id: 'g3', src: '/mehina_pics/mehina-team-girls.jpg', alt: 'קבוצת המכינה אחרי אימון' },
-  { id: 'g4', src: '/mehina_pics/mehina-shirts-night.jpg', alt: 'חולצות מכינת חמש אצבעות' },
-  { id: 'g5', src: '/mehina_pics/mehina-gear.jpg', alt: 'חלוקת ציוד המכינה' },
-  { id: 'g6', src: '/mehina_pics/mehina-flag.jpg', alt: 'חניכי וחניכות המכינה עם דגל ישראל' },
-  { id: 'g7', src: '/mehina_pics/mehina-action.jpg', alt: 'פעילות המכינה בשטח' },
+  { id: 'g1', src: '/mehina_pics/mehina-desert-group.webp', alt: 'מחזור המכינה במכתש עם דגלי ישראל' },
+  { id: 'g2', src: '/mehina_pics/mehina-huddle.webp', alt: 'חניכי וחניכות המכינה במעגל גיבוש' },
+  { id: 'g3', src: '/mehina_pics/mehina-team-girls.webp', alt: 'קבוצת המכינה אחרי אימון' },
+  { id: 'g4', src: '/mehina_pics/mehina-shirts-night.webp', alt: 'חולצות מכינת חמש אצבעות' },
+  { id: 'g5', src: '/mehina_pics/mehina-gear.webp', alt: 'חלוקת ציוד המכינה' },
+  { id: 'g6', src: '/mehina_pics/mehina-flag.webp', alt: 'חניכי וחניכות המכינה עם דגל ישראל' },
+  { id: 'g7', src: '/mehina_pics/mehina-action.webp', alt: 'פעילות המכינה בשטח' },
 ]
 
 // ── FAQ (שאלות נפוצות) ─────────────────────────────────────────────────────────

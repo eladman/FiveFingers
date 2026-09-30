@@ -10,14 +10,14 @@ import { PrimaryButton, QuietButton, Atmosphere } from '../academy/shared'
 // the images never cycle. Faces + group shots communicate the collective "our
 // team" feel. Orange-tinted tiles (indices 1 & 5) add the brand accent.
 const MOSAIC = [
-  { src: '/team_hero/office.png' },
-  { src: '/team_hero/_14A9346.jpg', tint: true },
-  { src: '/Hero-Pics/214A0511.jpg' },
-  { src: '/Hero-Pics/214A0027.jpg' },
-  { src: '/team_hero/_14A9355.jpg' },
-  { src: '/team_hero/_14A9373.jpg', tint: true },
-  { src: '/Hero-Pics/214A0088.jpg' },
-  { src: '/coachs/idan.JPG' },
+  { src: '/team_hero/office.webp' },
+  { src: '/team_hero/_14A9346.webp', tint: true },
+  { src: '/Hero-Pics/214A0511.webp' },
+  { src: '/Hero-Pics/214A0027.webp' },
+  { src: '/team_hero/_14A9355.webp' },
+  { src: '/team_hero/_14A9373.webp', tint: true },
+  { src: '/Hero-Pics/214A0088.webp' },
+  { src: '/coachs/idan.webp' },
 ]
 
 function SplitText({ children }) {

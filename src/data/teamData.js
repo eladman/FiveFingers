@@ -37,7 +37,7 @@ export const roster = {
       members: [
         {
           id: 'amir-menachem',
-          photo: '/Amir_pics/amir-portrait.jpg',
+          photo: '/Amir_pics/amir-portrait.webp',
           name: 'עמיר מנחם',
           title: 'מייסד ויו״ר',
           bio: 'בן 36, קצין לשעבר בשייטת 13 ומקים תנועת חמש אצבעות',
@@ -45,7 +45,7 @@ export const roster = {
         },
         {
           id: 'ron-olarchik',
-          photo: '/team_members/RON.JPG',
+          photo: '/team_members/RON.webp',
           name: 'רון אולארצ\'יק',
           title: 'מנכ״ל',
           bio: 'לאחר שהשתחרר מעוקץ, רון מוביל את התנועה מהשטח ומאמן כבר מעל לעשור',
@@ -86,7 +86,7 @@ export const coach = {
   // Explainer video — placeholder for now. When a real embed is ready, set videoUrl
   // to the iframe src; until then the poster + "סרטון בקרוב" placeholder shows.
   videoUrl: '', // TODO: add explainer video embed URL ("מה זה להיות מאמן/ת בחמש")
-  videoPoster: '/Hero-Pics/214A0088.jpg',
+  videoPoster: '/Hero-Pics/214A0088.webp',
   videoCaption: 'מה זה להיות מאמן/ת בחמש',
 
   // Next coaches' course — placeholder until a real date is set.

@@ -75,7 +75,7 @@ export default function VariantA() {
       }}>
         {/* Background image */}
         <img
-          src="/Hero-Pics/214A0088.jpg"
+          src="/Hero-Pics/214A0088.webp"
           alt=""
           style={{
             position: 'absolute', inset: 0,

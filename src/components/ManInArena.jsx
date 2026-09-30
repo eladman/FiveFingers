@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import useReveal from '../hooks/useReveal'
 
 const ARENA_VIDEO = '/hero_section/arena_intro.mp4'
-const ARENA_POSTER = '/Hero-Pics/214A0011.jpg'
+const ARENA_POSTER = '/Hero-Pics/214A0011.webp'
 
 export default function ManInArena() {
   const ref = useReveal({ selector: '.mia-el', y: 48, stagger: 0.14, duration: 1.4, start: 'top 78%' })

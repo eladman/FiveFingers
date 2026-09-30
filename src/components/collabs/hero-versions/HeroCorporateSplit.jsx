@@ -111,7 +111,7 @@ export default function HeroCorporateSplit({ onRegister }) {
         <div className="b-plate relative order-last lg:order-none mt-6 lg:mt-0">
           <div className="relative rounded-[1.75rem] overflow-hidden aspect-[16/10] sm:aspect-[3/2] lg:aspect-[4/5] max-h-[40vh] lg:max-h-none"
                style={{ boxShadow: '0 30px 70px -20px rgba(13,27,75,0.35)' }}>
-            <img src="/our_product_pics/collab_pic.jpg" alt="הכשרה קבוצתית של חמש אצבעות"
+            <img src="/our_product_pics/collab_pic.webp" alt="הכשרה קבוצתית של חמש אצבעות"
                  className="w-full h-full object-cover" style={{ objectPosition: 'center 35%' }} />
             <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, transparent 55%, rgba(8,16,40,0.5))' }} />
             {/* thin brand frame */}

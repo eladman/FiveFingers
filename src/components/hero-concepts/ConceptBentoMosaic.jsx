@@ -74,13 +74,13 @@ export default function ConceptBentoMosaic({
 
       {/* ── WIDE PHOTO ── */}
       <div className={`${tile} col-span-2 row-span-1`}>
-        <img src="/Hero-Pics/214A0088.jpg" alt="" className="absolute inset-0 w-full h-full object-cover"
+        <img src="/Hero-Pics/214A0088.webp" alt="" className="absolute inset-0 w-full h-full object-cover"
              style={{ objectPosition: 'center 30%' }} />
       </div>
 
       {/* ── TALL PHOTO ── */}
       <div className={`${tile} col-span-1 row-span-1`}>
-        <img src="/Hero-Pics/214A0027.jpg" alt="" className="absolute inset-0 w-full h-full object-cover"
+        <img src="/Hero-Pics/214A0027.webp" alt="" className="absolute inset-0 w-full h-full object-cover"
              style={{ objectPosition: 'center 25%' }} />
       </div>
 

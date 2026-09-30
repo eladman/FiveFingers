@@ -34,7 +34,7 @@ const PRODUCTS = [
     text: 'הרצאה מעוררת השראה שמציגה גישות חדשות ומעניקה כלים פרקטיים ליישום מיידי.',
     location: 'אולם או חלל פתוח · עד 500 משתתפים',
     audience: 'כנסים, אירועי חברה, פתיחת/סגירת שנה, ימי עיון',
-    image: { src: '/Hero-Pics/amir_talking_2.jpg', w: 2673, h: 1782, alt: 'עמיר מנחם מרצה מול קהל' },
+    image: { src: '/Hero-Pics/amir_talking_2.webp', w: 2673, h: 1782, alt: 'עמיר מנחם מרצה מול קהל' },
     speaker: {
       // A real path, not '#amir': the router only claims href="/..." links, and
       // a hash with no matching element on the page just bounced the browser to
@@ -45,7 +45,7 @@ const PRODUCTS = [
       role: 'מייסד ויו״ר התנועה · מגיש ״האדם בזירה״',
       teaser: 'מעל 1,000 הרצאות על חוסן, מנהיגות וצמיחה מתוך אתגר - הסיפור והשיטה שמאחורי חמש אצבעות.',
       cta: 'עוד על עמיר',
-      photo: { src: '/Amir_pics/amir-portrait.jpg', w: 1600, h: 1067, alt: 'עמיר מנחם, מייסד תנועת חמש אצבעות' },
+      photo: { src: '/Amir_pics/amir-portrait.webp', w: 1600, h: 1067, alt: 'עמיר מנחם, מייסד תנועת חמש אצבעות' },
     },
   },
 
@@ -61,7 +61,7 @@ const PRODUCTS = [
     text: 'חוויה דרך אימון וכלים יישומיים לפיתוח חוסן.',
     location: 'מרכז חמש אצבעות / אצלכם',
     audience: 'קבוצות ספורט / יחידות צבאיות / בתי ספר',
-    image: { src: '/liba_pics/214A1343.jpg', w: 2400, h: 1600, alt: 'משתתפים באימון קבוצתי' },
+    image: { src: '/liba_pics/214A1343.webp', w: 2400, h: 1600, alt: 'משתתפים באימון קבוצתי' },
   },
   {
     id: 'seminar-camp',
@@ -71,7 +71,7 @@ const PRODUCTS = [
     text: 'חווית עומק במרכז חמש אצבעות המתמקדת בבניית הרגלים, מסוגלות וגיבוש קבוצתי דרך שיטת חמש אצבעות.',
     location: 'מרכז חמש אצבעות',
     audience: 'קבוצות ספורט / יחידות צבאיות / בתי ספר',
-    image: { src: '/mehina_pics/mehina-shirts-night.jpg', w: 1600, h: 1200, alt: 'קבוצה במחנה בשעות הערב' },
+    image: { src: '/mehina_pics/mehina-shirts-night.webp', w: 1600, h: 1200, alt: 'קבוצה במחנה בשעות הערב' },
   },
   {
     id: 'masa-five',
@@ -81,7 +81,7 @@ const PRODUCTS = [
     text: 'מחליפים את הטיול השנתי בחוויה מעצבת המשלבת חוסן, מצוינות וציונות דרך השטח.',
     location: 'מתווה צפוני או דרומי',
     audience: 'קבוצות ספורט / יחידות צבאיות / בתי ספר / מכינות קדם צבאיות',
-    image: { src: '/mehina_pics/mehina-desert-group.jpg', w: 1600, h: 1200, alt: 'קבוצה במסע בשטח המדברי' },
+    image: { src: '/mehina_pics/mehina-desert-group.webp', w: 1600, h: 1200, alt: 'קבוצה במסע בשטח המדברי' },
   },
   {
     id: 'captains-course',
@@ -90,14 +90,14 @@ const PRODUCTS = [
     duration: '5 מפגשים × 4 שעות',
     text: 'תפיסת מנהיגות מעודכנת למציאות החדשה, המנהל כאדריכל תרבות.',
     audience: 'פיתוח צוותים / הכשרת מנהלים / מפקדים',
-    image: { src: '/liba_pics/214A0223.jpg', w: 2400, h: 1600, alt: 'מפגש קבוצתי בהובלת מאמן' },
+    image: { src: '/liba_pics/214A0223.webp', w: 2400, h: 1600, alt: 'מפגש קבוצתי בהובלת מאמן' },
   },
   {
     id: 'long-term',
     title: 'שיתוף פעולה ארוך טווח',
     subtitle: 'תהליך שמייצר שינוי תרבותי',
     text: 'עבור ארגונים, רשויות וגופים ממשלתיים המחפשים לייצר שינוי תרבותי.',
-    image: { src: '/Hero-Pics/erev_moreshet.jpg', w: 2673, h: 1782, alt: 'אירוע קהילתי מרכזי של התנועה' },
+    image: { src: '/Hero-Pics/erev_moreshet.webp', w: 2673, h: 1782, alt: 'אירוע קהילתי מרכזי של התנועה' },
   },
 ]
 

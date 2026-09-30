@@ -12,7 +12,7 @@ const PROGRAMS = [
     badge: 'גילאי 10–18',
     description:
       'מיועדת לבני ובנות נוער מכיתה ה׳ עד י״ב. תכנית הבסיס של התנועה המהווה את יסודות השיטה הפיזית מנטלית. התכנית בונה ומעצבת היבטי חוסן, הרגלים, יכולות עבודה בצוות וכלים למנהיגות רבים בקרב בני ובנות נוער.',
-    imageSrc: '/our_product_pics/core_pic.jpg',
+    imageSrc: '/our_product_pics/core_pic.webp',
     ctaHref: '/liabah',
     ctaLabel: 'לדף קבוצות הנוער',
   },
@@ -22,7 +22,7 @@ const PROGRAMS = [
     badge: 'קדם צבא',
     description:
       'מטרתה של המכינה לחנך ולעצב דור שבוחר להיכנס לזירה ולהשפיע על מציאות חיינו. דור המבוסס על מאפייני הזהות של תנועת חמש אצבעות ועל מיומנויות רלוונטיות שרכש בתהליך החינוכי.',
-    imageSrc: '/our_product_pics/mehina_pic.png',
+    imageSrc: '/our_product_pics/mehina_pic.webp',
     ctaContact: true,
   },
   {
@@ -31,7 +31,7 @@ const PROGRAMS = [
     badge: 'גילאי 21+',
     description:
       'תכנית ההמשך, מטרתה יצירת המשכיות לתהליך החינוכי. התכנית מותאמת לשינויים בחייהם של צעירים ומכווינה להשפעה חינוכית וחברתית על ידי תפיסת עמדות מפתח בחברה הישראלית.',
-    imageSrc: '/our_product_pics/yoav_pic.jpg',
+    imageSrc: '/our_product_pics/yoav_pic.webp',
     ctaContact: true,
   },
   {
@@ -40,7 +40,7 @@ const PROGRAMS = [
     badge: 'ארגונים וצוותים',
     description:
       'סיוע לארגונים, צוותים, יחידות וספורטאים להגיע להישגים יחד, דרך התאמת שיטת ״חמש אצבעות״ לצרכים והמטרות המשתנות בכל גוף ומייצרת תהליך של מימוש פוטנציאל ספציפי וארגוני.',
-    imageSrc: '/our_product_pics/collab_pic.jpg',
+    imageSrc: '/our_product_pics/collab_pic.webp',
     ctaContact: true,
   },
 ]

@@ -28,9 +28,9 @@ const STATEMENT = [
 ]
 
 const PHOTOS = [
-  { src: '/liba_pics/214A9628.jpg', speed: -14, alt: 'חניכים וחניכות באימון שטח' },
-  { src: '/liba_pics/214A0052.jpg', speed: 8, alt: 'קבוצה בתרגול משותף' },
-  { src: '/liba_pics/214A9700.jpg', speed: -6, alt: 'רגע של גיבוש קבוצתי' },
+  { src: '/liba_pics/214A9628.webp', speed: -14, alt: 'חניכים וחניכות באימון שטח' },
+  { src: '/liba_pics/214A0052.webp', speed: 8, alt: 'קבוצה בתרגול משותף' },
+  { src: '/liba_pics/214A9700.webp', speed: -6, alt: 'רגע של גיבוש קבוצתי' },
 ]
 
 const FILM_ID = 'jOdf0gJrZug'

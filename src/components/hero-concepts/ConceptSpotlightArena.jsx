@@ -41,7 +41,7 @@ export default function ConceptSpotlightArena({
       {/* dramatic photo */}
       <img
         ref={imgRef}
-        src="/Hero-Pics/214A0511.jpg"
+        src="/Hero-Pics/214A0511.webp"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
         style={{ objectPosition: 'center 22%', filter: 'contrast(1.08) saturate(1.05)' }}

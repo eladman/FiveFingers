@@ -52,7 +52,7 @@ export default function TeamFinaleV2({ onRegister }) {
     >
       <div className="absolute inset-0 overflow-hidden">
         <img
-          src="/team_hero/_14A9373.jpg"
+          src="/team_hero/_14A9373.webp"
           alt=""
           aria-hidden="true"
           loading="lazy"

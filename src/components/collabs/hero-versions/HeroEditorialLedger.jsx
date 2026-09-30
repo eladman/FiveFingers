@@ -107,7 +107,7 @@ export default function HeroEditorialLedger({ onRegister }) {
           <div className="b-plate relative order-first lg:order-none">
             <div className="relative rounded-2xl overflow-hidden border border-navy/10"
                  style={{ aspectRatio: '3 / 4', boxShadow: '0 24px 55px -22px rgba(13,27,75,0.3)' }}>
-              <img src="/liba_pics/214A9700.jpg" alt="הכשרת מנהיגות של חמש אצבעות"
+              <img src="/liba_pics/214A9700.webp" alt="הכשרת מנהיגות של חמש אצבעות"
                    className="w-full h-full object-cover" style={{ objectPosition: 'center 30%' }} />
             </div>
             <div aria-hidden="true" className="absolute -bottom-3 -left-3 h-16 w-16 border-b-2 border-l-2 border-orange rounded-bl-2xl hidden lg:block" />

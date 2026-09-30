@@ -14,14 +14,14 @@ import { gsap } from 'gsap'
 
 const PANELS = [
   {
-    img: '/Hero-Pics/214A0027.jpg',
+    img: '/Hero-Pics/214A0027.webp',
     grade: { filter: 'brightness(0.75) saturate(1.6) sepia(0.3)', overlay: 'rgba(180,60,0,0.35)' },
     label: 'עוצמה',
     sub: 'Intensity',
     flex: 0.9,
   },
   {
-    img: '/Hero-Pics/_14A9355.jpg',
+    img: '/Hero-Pics/_14A9355.webp',
     grade: { filter: 'brightness(0.65) saturate(1.1)', overlay: 'rgba(0,0,30,0.4)' },
     label: 'מציאות',
     sub: 'Reality',
@@ -29,7 +29,7 @@ const PANELS = [
     center: true,
   },
   {
-    img: '/Hero-Pics/214A0511.jpg',
+    img: '/Hero-Pics/214A0511.webp',
     grade: { filter: 'brightness(0.7) saturate(0.7) hue-rotate(195deg)', overlay: 'rgba(0,20,90,0.4)' },
     label: 'עומק',
     sub: 'Depth',

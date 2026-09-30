@@ -17,7 +17,7 @@ gsap.registerPlugin(ScrollTrigger)
  * scene on scroll-out.
  */
 
-const HERO_IMAGE = '/liba_pics/214A1552.jpg'
+const HERO_IMAGE = '/liba_pics/214A1552.webp'
 
 // The three age bands, straight from the age-page source so labels/routes stay
 // in sync. Parents scan by age, so the age range is the card's headline —

@@ -121,7 +121,7 @@ export default function CinematicIntro({ onComplete }) {
       {/* Background image */}
       <img
         className="intro-image absolute inset-0 w-full h-full object-cover"
-        src="/Hero-Pics/214A0011.jpg"
+        src="/Hero-Pics/214A0011.webp"
         alt=""
         loading="eager"
         style={{ opacity: 0 }}

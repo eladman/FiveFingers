@@ -18,7 +18,7 @@ const PROGRAMS = [
     badge: 'גילאי 10–18',
     description:
       'תכנית הבסיס של התנועה, מכיתה ה׳ עד י״ב: יסודות השיטה הפיזית־מנטלית. חוסן, הרגלים, עבודת צוות וכלים למנהיגות.',
-    imageSrc: '/our_product_pics/core_pic.jpg',
+    imageSrc: '/our_product_pics/core_pic.webp',
     ctaHref: '/liabah',
     ctaLabel: 'לדף קבוצות הנוער',
   },
@@ -28,7 +28,7 @@ const PROGRAMS = [
     badge: 'כחלק מתוכנית הזנק של צה״ל',
     description:
       'תוכנית קדם-צבאית מרוכזת: מסיימי/ות י״א - שלושה שבועות בקיץ, ומסיימי/ות י״ב - שישה שבועות אחרי התיכון. הכנה פיזית-מנטלית, מנהיגות, ניווט וחוויית שטח - בליווי מדריכים ומומחים מהשורה הראשונה.',
-    imageSrc: '/coachs/heznek2.JPG',
+    imageSrc: '/coachs/heznek2.webp',
     ctaContact: true,
   },
   {
@@ -37,7 +37,7 @@ const PROGRAMS = [
     badge: 'קדם צבא',
     description:
       'שנה שמעצבת דור שבוחר להיכנס לזירה ולהשפיע על מציאות חיינו, על בסיס הזהות של חמש אצבעות והמיומנויות שנרכשו בדרך.',
-    imageSrc: '/our_product_pics/mehina_pic.png',
+    imageSrc: '/our_product_pics/mehina_pic.webp',
     ctaContact: true,
   },
   {
@@ -46,7 +46,7 @@ const PROGRAMS = [
     badge: 'גילאי 21+',
     description:
       'ההמשך של התהליך החינוכי: ליווי בוגרים ובוגרות אל עמדות מפתח בחברה הישראלית, מתוך השפעה חינוכית וחברתית.',
-    imageSrc: '/our_product_pics/yoav_pic.jpg',
+    imageSrc: '/our_product_pics/yoav_pic.webp',
     ctaContact: true,
   },
   {
@@ -55,7 +55,7 @@ const PROGRAMS = [
     badge: 'ארגונים וצוותים',
     description:
       'התאמת שיטת חמש אצבעות לארגונים, צוותים, יחידות וספורטאים: תהליך מדויק של מימוש פוטנציאל אישי וארגוני.',
-    imageSrc: '/our_product_pics/collab_pic.jpg',
+    imageSrc: '/our_product_pics/collab_pic.webp',
     ctaContact: true,
   },
 ]

@@ -59,19 +59,19 @@ const SCOPES = [
 // proves breadth, it does not sell a program.
 const CHIPS = [
   {
-    src: '/liba_pics/214A0223.jpg',
+    src: '/liba_pics/214A0223.webp',
     caption: 'בשטח',
     alt: 'חניכים וחניכות באימון ערב משותף',
     pos: { width: '15%', right: '30%', bottom: '26%' },
   },
   {
-    src: '/Hero-Pics/amir_talking_2.jpg',
+    src: '/Hero-Pics/amir_talking_2.webp',
     caption: 'בשיחה',
     alt: 'מפגש שיחה של קבוצה בחורש',
     pos: { width: '18%', left: '20%', bottom: '16%' },
   },
   {
-    src: '/our_product_pics/yoav_pic.jpg',
+    src: '/our_product_pics/yoav_pic.webp',
     caption: 'בקהילה',
     alt: 'מפגש קהילה של בוגרי התנועה',
     pos: { width: '21%', left: '4%', top: '22%' },

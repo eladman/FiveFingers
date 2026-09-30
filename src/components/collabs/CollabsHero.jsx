@@ -8,12 +8,12 @@ import Button from '../ui/Button'
 // Reuses the shared hero plates. Different ordering from the ליבה hero so the
 // two dark heroes don't feel identical.
 const IMAGES = [
-  '/Hero-Pics/214A0511.jpg',
-  '/Hero-Pics/214A0088.jpg',
-  '/Hero-Pics/214A0034.jpg',
-  '/Hero-Pics/214A0114.jpg',
-  '/Hero-Pics/214A0027.jpg',
-  '/Hero-Pics/_14A9355.jpg',
+  '/Hero-Pics/214A0511.webp',
+  '/Hero-Pics/214A0088.webp',
+  '/Hero-Pics/214A0034.webp',
+  '/Hero-Pics/214A0114.webp',
+  '/Hero-Pics/214A0027.webp',
+  '/Hero-Pics/_14A9355.webp',
 ]
 
 function SplitText({ children }) {

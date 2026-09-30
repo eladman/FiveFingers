@@ -12,10 +12,10 @@ import Button from '../ui/Button'
  */
 
 const IMAGES = [
-  '/Hero-Pics/214A0027.jpg',
-  '/Hero-Pics/214A0088.jpg',
-  '/Hero-Pics/214A0114.jpg',
-  '/Hero-Pics/_14A9355.jpg',
+  '/Hero-Pics/214A0027.webp',
+  '/Hero-Pics/214A0088.webp',
+  '/Hero-Pics/214A0114.webp',
+  '/Hero-Pics/_14A9355.webp',
 ]
 
 export default function ConceptEditorialSplit({

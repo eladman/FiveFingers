@@ -14,7 +14,7 @@ export const hero = {
   // Main intro video. Leave videoUrl empty ('') to show the placeholder.
   // For YouTube use an embed URL, e.g. 'https://www.youtube.com/embed/XXXXXXXX'.
   videoUrl: '', // TODO: real video embed/URL
-  videoPoster: '/Hero-Pics/214A0011.jpg', // shown behind the play button
+  videoPoster: '/Hero-Pics/214A0011.webp', // shown behind the play button
   primaryCta: 'הרשמה לקבוצה',
 }
 
@@ -41,21 +41,21 @@ export const essence = {
       num: '1',
       title: 'אימון פיזי-מנטלי',
       text: ' תהליך חינוכי שבו הפעילות הגופנית משמשת ככלי לפיתוח מנטלי. אימון נבנה כך שלא רק ישפר את הכושר, אלא גם יחזק ערכים, אופי והרגלים. המטרה היא שהיכולות שנרכשות באימון יבואו לידי ביטוי בבית הספר, בצבא, בעבודה ובחיים בכלל.',
-      imageSrc: '/liba_pics/214A0223.jpg',
+      imageSrc: '/liba_pics/214A0223.webp',
       objectPosition: '50% 20%',
     },
     {
       num: '2',
       title: 'קבוצה',
       text: 'קהילה מלוכדת שמייצרת שייכות וכוח משותף. לומדים שמשיגים יותר ביחד מאשר לבד.',
-      imageSrc: '/our_product_pics/core_pic.jpg',
+      imageSrc: '/our_product_pics/core_pic.webp',
       objectPosition: '50% 20%',
     },
     {
       num: '3',
       title: 'מאמן/ת',
       text: 'דמות מובילה שמהווה מודל ומלווה כל מתאמן/ת. מישהו/י שרואה אותך, מאמין/ה בך ודוחף/ת אותך קדימה.',
-      imageSrc: '/our_method_pics/_14A9052 copy.jpg',
+      imageSrc: '/our_method_pics/_14A9052 copy.webp',
       objectPosition: '50% 20%',
     },
   ],
@@ -79,7 +79,7 @@ export const programsByAge = [
     ages: 'גילאי 10–12 · כיתות ה׳–ו׳',
     description:
       'הצעד הראשון בתנועה, היכרות עם השיטה דרך משחק, תנועה ואתגר מותאם גיל, בקבוצה תומכת.', // TODO
-    imageSrc: '/plans_pics/kids_liba.jpg',
+    imageSrc: '/plans_pics/kids_liba.webp',
   },
   {
     id: 'middle',
@@ -87,7 +87,7 @@ export const programsByAge = [
     ages: 'גילאי 12–15 · כיתות ז׳–ט׳',
     description:
       'יסודות השיטה הפיזית-מנטלית: בונים חוסן, הרגלים ויכולת עבודה בצוות בתקופת גיבוש זהות משמעותית.', // TODO
-    imageSrc: '/our_product_pics/core_pic.jpg',
+    imageSrc: '/our_product_pics/core_pic.webp',
   },
   {
     id: 'high',
@@ -95,7 +95,7 @@ export const programsByAge = [
     ages: 'גילאי 15–18 · כיתות י׳–י״ב',
     description:
       'העמקת המנהיגות והאחריות האישית, הכנה לקראת השירות המשמעותי ולחיים של השפעה.', // TODO
-    imageSrc: '/plans_pics/high_schools. .jpg',
+    imageSrc: '/plans_pics/high_schools. .webp',
   },
 ]
 
@@ -313,15 +313,15 @@ export const locations = [
 // ── Gallery (גלריה) ────────────────────────────────────────────────────────────
 // Add image paths to show real photos; empty strings render placeholders.
 export const gallery = [
-  { id: 'g1', src: '/liba_pics/214A0223.jpg', alt: 'פעילות קבוצות הנוער' },
-  { id: 'g2', src: '/liba_pics/214A9628.jpg', alt: 'פעילות קבוצות הנוער' },
-  { id: 'g3', src: '/liba_pics/214A9700.jpg', alt: 'פעילות קבוצות הנוער' },
-  { id: 'g4', src: '/liba_pics/214A0052.jpg', alt: 'פעילות קבוצות הנוער' },
-  { id: 'g5', src: '/liba_pics/214A1343.jpg', alt: 'פעילות קבוצות הנוער' },
-  { id: 'g6', src: '/liba_pics/214A0405-2.jpg', alt: 'פעילות קבוצות הנוער' },
-  { id: 'g7', src: '/liba_pics/214A1552.jpg', alt: 'פעילות קבוצות הנוער' },
-  { id: 'g8', src: '/liba_pics/214A0362.jpg', alt: 'פעילות קבוצות הנוער' },
-  { id: 'g9', src: '/liba_pics/214A0005.jpg', alt: 'פעילות קבוצות הנוער' },
+  { id: 'g1', src: '/liba_pics/214A0223.webp', alt: 'פעילות קבוצות הנוער' },
+  { id: 'g2', src: '/liba_pics/214A9628.webp', alt: 'פעילות קבוצות הנוער' },
+  { id: 'g3', src: '/liba_pics/214A9700.webp', alt: 'פעילות קבוצות הנוער' },
+  { id: 'g4', src: '/liba_pics/214A0052.webp', alt: 'פעילות קבוצות הנוער' },
+  { id: 'g5', src: '/liba_pics/214A1343.webp', alt: 'פעילות קבוצות הנוער' },
+  { id: 'g6', src: '/liba_pics/214A0405-2.webp', alt: 'פעילות קבוצות הנוער' },
+  { id: 'g7', src: '/liba_pics/214A1552.webp', alt: 'פעילות קבוצות הנוער' },
+  { id: 'g8', src: '/liba_pics/214A0362.webp', alt: 'פעילות קבוצות הנוער' },
+  { id: 'g9', src: '/liba_pics/214A0005.webp', alt: 'פעילות קבוצות הנוער' },
 ]
 
 // ── FAQ (שאלות נפוצות) ─────────────────────────────────────────────────────────

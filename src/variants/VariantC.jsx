@@ -226,7 +226,7 @@ export default function VariantC() {
               boxShadow: `0 40px 80px rgba(232,93,58,0.12), 0 10px 30px rgba(0,0,50,0.08)`,
             }}>
               <img
-                src="/Hero-Pics/214A0027.jpg"
+                src="/Hero-Pics/214A0027.webp"
                 alt=""
                 style={{
                   width: '100%', height: '100%',

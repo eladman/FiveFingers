@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
  * Racks focus into the essence sheet on scroll-out.
  */
 
-const HERO_IMAGE = '/team_hero/_14A9355.jpg'
+const HERO_IMAGE = '/team_hero/_14A9355.webp'
 
 const META = ['60 מאמנים ואנשי צוות', '3 מסלולי הצטרפות', 'פריסה ארצית']
 

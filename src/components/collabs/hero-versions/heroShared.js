@@ -11,12 +11,12 @@ export const STATS = [
 
 // A curated, recognizable subset for the trust strips (heaviest hitters first).
 export const PARTNERS = [
-  { src: '/partners/idf.png', name: 'צה״ל' },
-  { src: '/partners/defense.png', name: 'משרד הביטחון' },
-  { src: '/partners/education.png', name: 'משרד החינוך' },
-  { src: '/partners/reichman.png', name: 'אוניברסיטת רייכמן' },
-  { src: '/partners/azrieli.png', name: 'קרן עזריאלי' },
-  { src: '/partners/tel-aviv-yafo.png', name: 'עיריית תל אביב-יפו' },
+  { src: '/partners/idf.webp', name: 'צה״ל' },
+  { src: '/partners/defense.webp', name: 'משרד הביטחון' },
+  { src: '/partners/education.webp', name: 'משרד החינוך' },
+  { src: '/partners/reichman.webp', name: 'אוניברסיטת רייכמן' },
+  { src: '/partners/azrieli.webp', name: 'קרן עזריאלי' },
+  { src: '/partners/tel-aviv-yafo.webp', name: 'עיריית תל אביב-יפו' },
 ]
 
 // The three content worlds (catalog "עולמות התוכן"), distilled for a bento.

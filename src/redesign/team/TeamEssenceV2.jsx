@@ -117,7 +117,7 @@ export default function TeamEssenceV2() {
         <figure className="tes-band mt-16 md:mt-24 will-change-transform">
           <div className="relative overflow-hidden rounded-[1.6rem] md:rounded-[2.2rem] ring-1 ring-black/8 shadow-[0_40px_100px_rgba(0,0,30,0.18)]">
             <img
-              src="/more_pics/2cf5e70f-1dfe-4811-a9fb-aa838cc707d2.JPG"
+              src="/more_pics/2cf5e70f-1dfe-4811-a9fb-aa838cc707d2.webp"
               alt="צוות תנועת חמש אצבעות יחד"
               loading="lazy"
               decoding="async"

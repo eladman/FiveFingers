@@ -99,7 +99,7 @@ export default function HeroCapabilityBento({ onRegister }) {
           {/* Proof image — spans two rows */}
           <div className="b-tile row-span-2 rounded-2xl overflow-hidden relative"
                style={{ boxShadow: '0 20px 45px -20px rgba(13,27,75,0.4)' }}>
-            <img src="/liba_pics/214A1343.jpg" alt="הכשרת חוסן מנטלי בשטח"
+            <img src="/liba_pics/214A1343.webp" alt="הכשרת חוסן מנטלי בשטח"
                  className="w-full h-full object-cover" style={{ objectPosition: 'center 35%' }} />
             <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, transparent 45%, rgba(8,16,40,0.62))' }} />
             <div className="absolute bottom-0 inset-x-0 p-5 text-right">

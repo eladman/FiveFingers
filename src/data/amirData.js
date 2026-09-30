@@ -9,11 +9,11 @@
 import { Mic2, Rocket, Compass } from 'lucide-react'
 
 /** Founder portrait (landscape 3:2, clean seamless backdrop). Hero desktop + intro. */
-export const PORTRAIT = { src: '/Amir_pics/amir-portrait.jpg', w: 1600, h: 1067 }
+export const PORTRAIT = { src: '/Amir_pics/amir-portrait.webp', w: 1600, h: 1067 }
 /** Seated stage / microphone shot (portrait 2:3). Hero mobile + intro tall card. */
-export const STAGE = { src: '/Amir_pics/amir-stage.jpg', w: 1066, h: 1600 }
+export const STAGE = { src: '/Amir_pics/amir-stage.webp', w: 1066, h: 1600 }
 /** TV / broadcast studio context shot (landscape 4:3). "בתקשורת" credibility strip. */
-export const STUDIO = { src: '/Amir_pics/amir-studio.jpg', w: 1400, h: 1050 }
+export const STUDIO = { src: '/Amir_pics/amir-studio.webp', w: 1400, h: 1050 }
 
 // "מי זה עמיר?" — identity (from amir.md), written as a flowing paragraph.
 export const BIO_PARAGRAPH =
@@ -34,7 +34,7 @@ export const ZONES = [
     title: 'הרצאות',
     badge: 'גילאי 20 ומעלה',
     text: 'הרצאות בנושא מסוגלות, חוסן, מימוש פוטנציאל והאדם בזירה. מיועדות לגילאי 20 ומעלה. שילוב של סיפור אישי, שיטה ותובנות שמניעות לפעולה.',
-    imageSrc: '/Amir_pics/amir-stage.jpg',
+    imageSrc: '/Amir_pics/amir-stage.webp',
     // Tall portrait (2:3) cropped into a 4:3 frame — bias to the top so the face isn't cut off.
     imagePosition: 'top',
     cta: 'הזמינו הרצאה',
@@ -45,7 +45,7 @@ export const ZONES = [
     title: 'סדנאות',
     badge: 'סדנת ⁦0→1⁩',
     text: 'איך הופכים שאיפות למעשים ולוקחים את הצעד הראשון מרעיון למציאות. סדנה מעשית שמלווה אתכם/ן מנקודת ההתחלה ועד המהלך הראשון בשטח.',
-    imageSrc: '/Amir_pics/workshop.jpeg',
+    imageSrc: '/Amir_pics/workshop.webp',
     imagePosition: 'right 68%',
     cta: 'לפרטים על הסדנה',
     href: 'https://amir-personal.vercel.app/',
@@ -55,7 +55,7 @@ export const ZONES = [
     title: 'ליווי אישי',
     badge: 'יזמים/ות צעירים/ות',
     text: 'ליווי מקצועי ליזמים/ות צעירים/ות בתחילת דרכם, שרוצים/ות לצאת לצעד הראשון: מיקוד, כלים וחשיבה שמקצרים את הדרך מרעיון לעשייה.',
-    imageSrc: '/Amir_pics/amir-studio.jpg',
+    imageSrc: '/Amir_pics/amir-studio.webp',
     cta: 'לתיאום ליווי',
     contactLabel: 'קשר עם עמיר',
   },

@@ -20,7 +20,7 @@ const VALUES = [
     title: 'מצוינות',
     tag: 'BE BETTER',
     body: 'שיטתיות, ירידה לפרטים ושאיפה מתמדת להשתפר. הטוב של אתמול הוא נקודת הפתיחה של היום.',
-    img: '/liba_pics/214A0005.jpg',
+    img: '/liba_pics/214A0005.webp',
     bg: 'linear-gradient(160deg, #0d1b4b 0%, #081028 100%)',
   },
   {
@@ -29,7 +29,7 @@ const VALUES = [
     title: 'מסוגלות',
     tag: 'COMFORTABLY HARD',
     body: 'חוסן מנטלי ונוחות בתוך אי־נוחות. לומדים להרגיש בבית דווקא כשקשה.',
-    img: '/liba_pics/214A0223.jpg',
+    img: '/liba_pics/214A0223.webp',
     bg: 'linear-gradient(160deg, #12255e 0%, #09163e 100%)',
   },
   {
@@ -38,7 +38,7 @@ const VALUES = [
     title: 'גריט',
     tag: 'GRIT',
     body: 'רעב, תשוקה והתמדה לאורך זמן. ממשיכים לדחוף גם כשהמוטיבציה נגמרת.',
-    img: '/liba_pics/214A0362.jpg',
+    img: '/liba_pics/214A0362.webp',
     bg: 'linear-gradient(160deg, #0d1b4b 0%, #06102e 100%)',
   },
   {
@@ -47,7 +47,7 @@ const VALUES = [
     title: 'לקיחת אחריות',
     tag: 'PROACTIVE',
     body: 'יוזמה במקום תגובה. לוקחים אחריות על המציאות במקום לחכות שמישהו אחר יתקן אותה.',
-    img: '/liba_pics/214A1343.jpg',
+    img: '/liba_pics/214A1343.webp',
     bg: 'linear-gradient(160deg, #172e68 0%, #081028 100%)',
   },
   {
@@ -56,7 +56,7 @@ const VALUES = [
     title: 'שייכות ומשמעות',
     tag: 'TOGETHER',
     body: 'אמון, נאמנות וכוח קבוצתי. קבוצה עם מטרה משותפת מגיעה רחוק יותר מכל יחיד.',
-    img: '/liba_pics/214A1552.jpg',
+    img: '/liba_pics/214A1552.webp',
     bg: 'linear-gradient(160deg, #0f2057 0%, #060d24 100%)',
   },
 ]
