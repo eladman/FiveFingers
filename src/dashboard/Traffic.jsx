@@ -2,6 +2,32 @@ import { useEffect, useMemo, useState } from 'react'
 import { supabase } from './supabaseClient.js'
 
 const DAY = 24 * 60 * 60 * 1000
+const PAGE_SIZE = 1000 // Supabase caps every response at 1000 rows by default
+
+// Fetch every page view since `since`, page by page. A single select is
+// silently truncated at PAGE_SIZE rows, which undercounted the 30-day totals.
+// Pages walk down the identity `id` (keyset), so rows inserted mid-fetch
+// can't shift the window and cause duplicates or gaps.
+async function fetchAllSince(since) {
+  const rows = []
+  let beforeId = null
+  for (;;) {
+    let query = supabase
+      .from('page_views')
+      .select('id, path, created_at, referrer, visitor_id, session_id, is_internal')
+      .gte('created_at', since)
+      .order('id', { ascending: false })
+      .limit(PAGE_SIZE)
+    if (beforeId !== null) query = query.lt('id', beforeId)
+    const { data, error } = await query
+    if (error) return { data: [], error }
+    // Stop on an empty page rather than a short one — the server's row cap may
+    // be lower than PAGE_SIZE, and a short page doesn't then mean "done".
+    if (data.length === 0) return { data: rows, error: null }
+    rows.push(...data)
+    beforeId = data[data.length - 1].id
+  }
+}
 
 export default function Traffic() {
   const [views, setViews] = useState([])
@@ -16,16 +42,12 @@ export default function Traffic() {
       setError('')
       // Last 30 days only — keeps the payload small.
       const since = new Date(Date.now() - 30 * DAY).toISOString()
-      const { data, error } = await supabase
-        .from('page_views')
-        .select('id, path, created_at, referrer, visitor_id, session_id, is_internal')
-        .gte('created_at', since)
-        .order('created_at', { ascending: false })
+      const { data, error } = await fetchAllSince(since)
       if (error) {
         setError('שגיאה בטעינת נתוני התנועה: ' + error.message)
         setViews([])
       } else {
-        setViews(data || [])
+        setViews(data)
       }
       setLoading(false)
     }
