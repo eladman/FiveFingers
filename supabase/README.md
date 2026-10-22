@@ -216,3 +216,40 @@ have opened the dashboard: their hits stop inflating the count.
   Supabase, that needs an anon INSERT-only RLS policy **plus** a code change in `ContactModal.jsx`.
 - **Real date columns:** `birth_date` / `target_date` are stored as `DD/MM/YYYY` text for robustness
   against partial input. To make them real `date` columns, have Make reformat to `YYYY-MM-DD` first.
+
+---
+
+# Lecture feedback (משוב הרצאות)
+
+Amir's assistant creates a lecture in **`/lectures`** (title, date, target audience, category).
+Each lecture gets a short link **`/f/<code>`** + QR; listeners answer there, and results show up
+back in `/lectures` (per lecture + comparison by category / audience).
+
+```
+Assistant (/lectures, logged in)  →  lectures            (insert/update/delete)
+Listener  (/f/<code>, anon key)   →  lecture_feedback    (INSERT only, open lectures only)
+```
+
+## Setup
+
+1. **Run [`lectures.sql`](./lectures.sql)** in the SQL Editor (after `schema.sql` + `dashboard.sql`).
+2. **Create the assistant's account** — Authentication → Users → Add user:
+   `lectures@fivefingers.co.il` + the team's chosen password, ✔ Auto Confirm User.
+   The password lives only in Supabase; rotate it there.
+
+## Access (RLS)
+
+| Who | `lectures` | `lecture_feedback` | `contact_submissions` / `page_views` |
+|---|---|---|---|
+| anon (public form) | read public columns | insert into an open lecture | — |
+| `lectures@…` | full | read + delete | **no access** |
+| `dashboard@…` | — | — | read (+ status/notes update) |
+
+The two staff logins never see each other's data. `lectures.sql` also re-scopes the dashboard's
+existing policies from "any logged-in user" to the dashboard account only — otherwise the second
+login could read contact leads. The two staff emails
+are defined once, in `ff_is_dashboard()` / `ff_is_lecture_staff()` at the top of the file.
+
+Questions and their columns: `src/feedback/questions.js` ↔ `lecture_feedback`. Adding a question
+means adding it in both places.
+

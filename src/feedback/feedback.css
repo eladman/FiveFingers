@@ -1,0 +1,216 @@
+/* Lecture-feedback page — built on the brand tokens in src/index.css. */
+
+/* ─── Stage (participant + slide) ───────────────────────────── */
+.fb-stage {
+  background: var(--navy-deep);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.fb-glow {
+  position: absolute;
+  inset: -20% -30% auto auto;
+  width: 90vmax;
+  height: 90vmax;
+  background: radial-gradient(closest-side, rgba(255, 135, 20, 0.16), transparent 70%);
+  pointer-events: none;
+}
+
+@keyframes fb-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.fb-in { animation: fb-in 520ms var(--ease-brand) both; }
+
+/* ─── Buttons ───────────────────────────────────────────────── */
+.fb-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 58px;
+  border-radius: var(--r-pill);
+  font-weight: 800;
+  font-size: 18px;
+  color: #fff;
+  background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep));
+  box-shadow: 0 10px 28px rgba(255, 135, 20, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: transform 200ms var(--ease-brand), opacity 200ms, box-shadow 200ms;
+}
+.fb-primary:active { transform: scale(0.97); }
+.fb-primary:disabled {
+  opacity: 0.35;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.fb-primary:focus-visible,
+.fb-icon-btn:focus-visible,
+.fb-option:focus-visible,
+.fb-finger:focus-visible,
+.fb-nps:focus-visible,
+.fb-chip:focus-visible,
+.fb-link:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.fb-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ─── Rating — the five fingers ─────────────────────────────── */
+.fb-finger {
+  position: relative;
+  border-radius: 999px 999px 22px 22px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 260ms var(--ease-brand), transform 260ms var(--ease-brand), box-shadow 260ms;
+}
+@media (hover: hover) {
+  .fb-finger:hover { background: rgba(255, 255, 255, 0.13); transform: translateY(-4px); }
+}
+.fb-finger[data-lit] {
+  background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep));
+  border-color: transparent;
+  box-shadow: 0 12px 30px rgba(255, 135, 20, 0.35);
+}
+.fb-finger-num {
+  position: absolute;
+  inset: auto 0 14px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.75);
+}
+.fb-finger[data-lit] .fb-finger-num { color: #fff; }
+
+/* ─── Choice ────────────────────────────────────────────────── */
+.fb-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 62px;
+  padding: 14px 20px;
+  border-radius: 18px;
+  text-align: right;
+  font-size: 18px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  transition: background 200ms, border-color 200ms, transform 200ms var(--ease-brand);
+}
+.fb-option:active { transform: scale(0.98); }
+.fb-option[data-on] {
+  background: rgba(255, 135, 20, 0.14);
+  border-color: var(--orange);
+}
+.fb-option:disabled { opacity: 0.35; cursor: not-allowed; }
+.fb-option-center { justify-content: center; font-size: 20px; }
+.fb-check {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+}
+.fb-option[data-on] .fb-check { background: var(--orange); border-color: var(--orange); }
+
+/* ─── NPS ───────────────────────────────────────────────────── */
+.fb-nps {
+  aspect-ratio: 1;
+  border-radius: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  transition: background 200ms, border-color 200ms, transform 200ms var(--ease-brand);
+}
+.fb-nps:active { transform: scale(0.94); }
+.fb-nps[data-on] { background: var(--orange); border-color: var(--orange); }
+
+/* ─── Text fields ───────────────────────────────────────────── */
+.fb-field {
+  width: 100%;
+  height: 56px;
+  padding: 0 18px;
+  border-radius: 16px;
+  font-size: 17px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  transition: border-color 200ms, background 200ms, box-shadow 200ms;
+}
+.fb-textarea {
+  height: auto;
+  padding: 16px 18px;
+  line-height: 1.6;
+  font-size: 19px;
+  resize: none;
+}
+.fb-field::placeholder { color: rgba(255, 255, 255, 0.35); }
+.fb-field:focus {
+  outline: none;
+  border-color: var(--orange);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 0 4px rgba(255, 135, 20, 0.18);
+}
+
+/* ─── Chips ─────────────────────────────────────────────────── */
+.fb-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: var(--r-pill);
+  font-size: 16px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  transition: background 200ms, border-color 200ms;
+}
+.fb-chip[data-on] { background: var(--orange); border-color: var(--orange); }
+
+/* ─── Done ──────────────────────────────────────────────────── */
+@keyframes fb-pop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  70%  { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.fb-done-mark {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(180deg, var(--orange-lift), var(--orange-deep));
+  box-shadow: 0 0 0 10px rgba(255, 135, 20, 0.12), 0 18px 40px rgba(255, 135, 20, 0.35);
+  animation: fb-pop 600ms var(--ease-brand) both;
+}
+.fb-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 0 18px;
+  border-radius: 18px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 200ms;
+}
+.fb-link:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* ─── QR (rendered SVG fills its box) ───────────────────────── */
+.fb-qr svg { display: block; width: 100%; height: 100%; }

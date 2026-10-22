@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { supabase, SHARED_LOGIN_EMAIL } from './supabaseClient.js'
 
-export default function Login() {
+// Shared by the dashboard and the lectures page (src/lectures/) — each passes
+// its own Supabase client + shared account email.
+export default function Login({ client = supabase, email = SHARED_LOGIN_EMAIL, title = 'לוח בקרה' }) {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -11,15 +13,15 @@ export default function Login() {
     setError('')
     setLoading(true)
     // One shared staff account — the email is fixed, only the password is typed.
-    const { error } = await supabase.auth.signInWithPassword({
-      email: SHARED_LOGIN_EMAIL,
+    const { error } = await client.auth.signInWithPassword({
+      email,
       password,
     })
     setLoading(false)
     if (error) {
       setError('הסיסמה שגויה. נסו שוב.')
     }
-    // On success, onAuthStateChange in Dashboard swaps the view.
+    // On success, the parent's onAuthStateChange swaps the view.
   }
 
   return (
@@ -31,7 +33,7 @@ export default function Login() {
         <div className="text-center mb-8">
           <img src="/logo.png" alt="חמש אצבעות" className="h-12 mx-auto mb-5" />
           <div className="ds-eyebrow text-orange-ink mb-1">אזור צוות</div>
-          <h1 className="text-2xl font-bold text-navy">לוח בקרה</h1>
+          <h1 className="text-2xl font-bold text-navy">{title}</h1>
           <p className="text-sm text-navy/50 mt-2">הזינו את סיסמת הצוות</p>
         </div>
 

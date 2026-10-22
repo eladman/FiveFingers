@@ -1,6 +1,6 @@
 import { CSV_COLUMNS, FIELD_LABELS } from './constants.js'
 
-function escapeCell(value) {
+export function escapeCell(value) {
   if (value == null) return ''
   const s = String(value)
   // Quote if it contains comma, quote, or newline; double up inner quotes.
@@ -40,7 +40,16 @@ function headerFallback(col) {
 }
 
 export function downloadCsv(rows, filename = 'pniyot.csv') {
-  const csv = rowsToCsv(rows)
+  downloadText(rowsToCsv(rows), filename)
+}
+
+// Generic table → CSV download (header row + array rows), same BOM/escaping.
+export function downloadTable(header, rows, filename) {
+  const lines = [header, ...rows].map((r) => r.map(escapeCell).join(','))
+  downloadText('\ufeff' + lines.join('\r\n'), filename)
+}
+
+function downloadText(csv, filename) {
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')

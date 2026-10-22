@@ -1097,6 +1097,16 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/f/:code",
+      "destination": "/feedback.html"
+    },
+    {
+      "source": "/lectures",
+      "destination": "/lectures.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)\\.(webp|jpg|jpeg|JPG|png|gif|svg|mp4|otf|woff2?|ico)",

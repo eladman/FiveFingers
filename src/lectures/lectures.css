@@ -1,0 +1,40 @@
+/* Lectures workspace — on top of dashboard.css + feedback.css tokens. */
+
+.lx-pick {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 50px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  text-align: right;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  background: #f7f8fa;
+  border: 1.5px solid #e8eaee;
+  transition: border-color var(--t-fast) var(--ease-brand), background var(--t-fast) var(--ease-brand);
+}
+.lx-pick:hover:not(:disabled) { border-color: rgba(13, 27, 75, 0.3); }
+.lx-pick[data-on] {
+  background: var(--orange-soft);
+  border-color: var(--orange);
+  color: var(--orange-ink);
+}
+.lx-pick:disabled { opacity: 0.4; cursor: not-allowed; }
+.lx-pick:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+
+.lx-card-accent {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+.lx-danger:hover {
+  border-color: #fca5a5;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.dash-btn-ghost:disabled { opacity: 0.5; cursor: not-allowed; }
