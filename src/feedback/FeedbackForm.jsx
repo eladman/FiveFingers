@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight, Check, Headphones, Mic2, Send, Loader2 } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Check, Headphones, Instagram, Mic2, Send, Loader2 } from 'lucide-react'
 import { isValidEmail } from './api'
 import { formatDate } from './format'
 
@@ -413,6 +413,10 @@ function YesNo({ q, value, email, onPick, onEmail }) {
 
 /* ─── Done ───────────────────────────────────────────────── */
 
+const PODCAST_URL = 'https://open.spotify.com/show/1pkoB14iPwztzO8LXkqGaR'
+const INSTAGRAM_URL = 'https://www.instagram.com/amir_menachem5'
+
+
 export function Done({ again = false }) {
   return (
     <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-xl flex-col items-center justify-center px-6 text-center">
@@ -431,9 +435,14 @@ export function Done({ again = false }) {
         </p>
 
         <div className="mt-8 grid w-full max-w-sm gap-3">
-          <a href="/#belief" className="fb-link">
+          <a href={PODCAST_URL} target="_blank" rel="noopener noreferrer" className="fb-link">
             <Headphones size={20} className="text-orange" />
             <span className="flex-1 text-right">לפודקאסט ״האדם בזירה״</span>
+            <ChevronLeft size={18} className="text-white/40" />
+          </a>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="fb-link">
+            <Instagram size={20} className="text-orange" />
+            <span className="flex-1 text-right">לאינסטגרם של עמיר</span>
             <ChevronLeft size={18} className="text-white/40" />
           </a>
           <a href="/amir" className="fb-link">
