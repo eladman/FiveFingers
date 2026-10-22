@@ -37,7 +37,7 @@ export default function TeamIntro() {
               <span className="ds-card-title text-navy group-hover:text-orange-ink transition-colors">
                 {track.label}
               </span>
-              <span className="font-heebo text-navy/60 text-base leading-relaxed mt-2 flex-1">
+              <span className="font-heebo text-navy/65 text-base leading-relaxed mt-2 flex-1">
                 {track.blurb}
               </span>
               <span className="inline-flex items-center gap-1 text-orange-ink font-heebo font-semibold text-sm mt-5">

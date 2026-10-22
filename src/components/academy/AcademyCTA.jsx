@@ -46,8 +46,8 @@ function ContactRow({ icon: Icon, label, value, href }) {
       rel="noopener noreferrer"
       className="flex flex-col items-center gap-1.5 py-3 transition-colors duration-200 group"
     >
-      <Icon size={20} className="text-navy/40 group-hover:text-orange transition-colors" />
-      <span className="font-heebo text-navy/45 text-xs">{label}</span>
+      <Icon size={20} className="text-navy/65 group-hover:text-orange transition-colors" />
+      <span className="font-heebo text-navy/65 text-xs">{label}</span>
       <span className="font-heebo text-navy font-medium text-sm group-hover:text-orange-ink transition-colors" dir="ltr">{value}</span>
     </a>
   )

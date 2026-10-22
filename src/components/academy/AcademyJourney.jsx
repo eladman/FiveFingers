@@ -78,7 +78,7 @@ export default function AcademyJourney() {
                   <span className="font-ragmarom text-orange/80 leading-none" style={{ fontSize: 'clamp(2.4rem, 3vw, 3.4rem)' }}>
                     {i + 1}
                   </span>
-                  <span className="font-heebo font-semibold text-navy/45 text-sm" style={{ letterSpacing: '0.06em' }}>
+                  <span className="font-heebo font-semibold text-navy/65 text-sm" style={{ letterSpacing: '0.06em' }}>
                     {item.period}
                   </span>
                 </div>

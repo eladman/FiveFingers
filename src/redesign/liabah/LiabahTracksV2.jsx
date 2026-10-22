@@ -140,7 +140,7 @@ export default function LiabahTracksV2({ onRegister }) {
                       <button
                         type="button"
                         onClick={onRegister}
-                        className="tap-safe font-heebo font-semibold text-navy/55 hover:text-navy text-base transition-colors"
+                        className="tap-safe font-heebo font-semibold text-navy/65 hover:text-navy text-base transition-colors"
                       >
                         הרשמה לקבוצה
                       </button>

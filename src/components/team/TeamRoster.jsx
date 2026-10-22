@@ -40,11 +40,11 @@ function MemberCard({ member }) {
         <div className="flex items-center justify-between gap-2">
           <h4 className="font-heebo font-bold text-navy text-base leading-snug">{member.name}</h4>
           {member.instagram && (
-            <Instagram size={18} strokeWidth={1.75} className="shrink-0 text-navy/40 transition-colors group-hover:text-orange" />
+            <Instagram size={18} strokeWidth={1.75} className="shrink-0 text-navy/65 transition-colors group-hover:text-orange" />
           )}
         </div>
         <p className="font-heebo text-orange-ink text-sm font-semibold mt-1">{member.title}</p>
-        <p className="font-heebo text-navy/60 text-sm leading-relaxed mt-3">{member.bio}</p>
+        <p className="font-heebo text-navy/65 text-sm leading-relaxed mt-3">{member.bio}</p>
       </div>
     </CardTag>
   )

@@ -35,7 +35,7 @@ export default function AcademyFAQ() {
                   style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
                 >
                   <div className="overflow-hidden">
-                    <p className="font-heebo text-navy/60 leading-relaxed pb-6 max-w-2xl">{item.a}</p>
+                    <p className="font-heebo text-navy/65 leading-relaxed pb-6 max-w-2xl">{item.a}</p>
                   </div>
                 </div>
               </div>

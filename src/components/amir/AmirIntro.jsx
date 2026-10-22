@@ -48,7 +48,7 @@ export default function AmirIntro() {
                   <div className="font-ragmarom text-navy leading-none" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)' }}>
                     {s.value}
                   </div>
-                  <div className="font-heebo text-navy/55 mt-1 leading-snug" style={{ fontSize: '0.82rem' }}>
+                  <div className="font-heebo text-navy/65 mt-1 leading-snug" style={{ fontSize: '0.82rem' }}>
                     {s.label}
                   </div>
                 </div>

@@ -212,7 +212,7 @@
   font-family: var(--f-body);
   font-weight: 500;
   font-size: .9rem;
-  color: rgba(13,27,75,.62);
+  color: rgba(13,27,75,.68);
   border-radius: 999px;
   white-space: nowrap;
   transition: color .2s var(--ease-brand), background .2s var(--ease-brand);
@@ -304,7 +304,7 @@
   font-family: var(--f-body);
   font-weight: 500;
   font-size: 1.125rem;
-  color: rgba(13,27,75,.6);
+  color: rgba(13,27,75,.68);
   border-bottom: 1px solid var(--line);
   transition: color .2s var(--ease-brand);
 }
@@ -400,11 +400,11 @@
 @keyframes footPing { 75%, 100% { transform: scale(2); opacity: 0; } }
 .memorial-page .sitefoot__status .t {
   font-family: var(--f-mono);
-  color: rgba(255,255,255,.45);
+  color: rgba(255,255,255,.6);
   font-size: .76rem;
   letter-spacing: .02em;
 }
-.memorial-page .sitefoot__col h4 {
+.memorial-page .sitefoot__col h2 {
   font-family: var(--f-body);
   color: var(--orange);
   font-weight: 600;
@@ -433,10 +433,17 @@
 .memorial-page .sitefoot__bottom p {
   font-family: var(--f-body);
   font-weight: 300;
-  color: rgba(255,255,255,.4);
+  color: rgba(255,255,255,.6);
   font-size: .86rem;
   margin: 0;
 }
+.memorial-page .sitefoot__bottom p + p { margin-top: 8px; }
+.memorial-page .sitefoot__bottom a {
+  color: rgba(255,255,255,.8);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.memorial-page .sitefoot__bottom a:hover { color: #fff; }
 @media (max-width: 760px) {
   .memorial-page .sitefoot__grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
   .memorial-page .sitefoot__brand { grid-column: 1 / -1; }
@@ -729,7 +736,7 @@
 .memorial-page .hall__note {
   font-family: var(--f-body);
   font-weight: 400;
-  color: rgba(13,27,75,.62);
+  color: rgba(13,27,75,.68);
   font-size: clamp(.94rem, 1.2vw, 1.05rem);
   line-height: 1.9;
   max-width: 540px;
@@ -826,7 +833,7 @@
   font-family: var(--f-body);
   font-weight: 400;
   font-size: .8rem;
-  color: rgba(13,27,75,.6);
+  color: rgba(13,27,75,.68);
   white-space: nowrap;
 }
 .memorial-page .niche__dates .num { font-family: var(--f-mono); font-size: .76rem; letter-spacing: .02em; }
@@ -871,7 +878,7 @@
   font-weight: 500;
   font-size: .78rem;
   letter-spacing: .04em;
-  color: rgba(13,27,75,.5);
+  color: rgba(13,27,75,.68);
 }
 
 /* ===========================================================================
@@ -1426,7 +1433,7 @@
   font-weight: 400;
   font-size: .74rem;
   letter-spacing: .04em;
-  color: rgba(13,27,75,.5);
+  color: rgba(13,27,75,.68);
   transition: color .35s var(--ease-out);
 }
 .memorial-page .pnav__name {

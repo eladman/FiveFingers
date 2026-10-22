@@ -60,7 +60,7 @@ export default function LiabahFAQV2() {
                   </span>
                   <ChevronDown
                     size={22}
-                    className={`shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-orange-ink' : 'text-navy/40'}`}
+                    className={`shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-orange-ink' : 'text-navy/65'}`}
                   />
                 </button>
                 <div

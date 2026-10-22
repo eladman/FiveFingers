@@ -30,13 +30,13 @@ function CityCard({ loc, onSelect }) {
         </span>
         <div className="min-w-0 flex-1">
           <h4 className="font-heebo font-bold text-navy text-[17px] leading-tight truncate">{loc.city}</h4>
-          <span className="font-heebo text-navy/45 text-[13px]">{loc.teams.length} קבוצות</span>
+          <span className="font-heebo text-navy/65 text-[13px]">{loc.teams.length} קבוצות</span>
         </div>
         <ChevronLeft size={20} className="shrink-0 text-navy/25 transition-all duration-200 group-hover:text-orange group-hover:-translate-x-0.5" />
       </div>
       <div className="flex items-center gap-1.5 mt-3.5 pt-3.5 border-t border-navy/[0.06]">
-        <Clock size={14} className="shrink-0 text-navy/40" />
-        <span className="font-heebo text-navy/55 text-[13.5px]">{loc.days}</span>
+        <Clock size={14} className="shrink-0 text-navy/65" />
+        <span className="font-heebo text-navy/65 text-[13.5px]">{loc.days}</span>
       </div>
     </button>
   )
@@ -52,10 +52,10 @@ function RegionBand({ region, cities, onSelect }) {
           <h3 className="font-heebo font-extrabold text-navy text-2xl md:text-[28px] leading-none tracking-tight">
             {region.name}
           </h3>
-          <p className="font-heebo text-navy/45 text-[13px] mt-1.5">{region.tag}</p>
+          <p className="font-heebo text-navy/65 text-[13px] mt-1.5">{region.tag}</p>
         </div>
         <span className="h-px flex-1 bg-navy/10 min-w-4" />
-        <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-navy/[0.04] px-3 py-1.5 font-heebo font-semibold text-navy/60 text-[13px]">
+        <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-navy/[0.04] px-3 py-1.5 font-heebo font-semibold text-navy/65 text-[13px]">
           <Users size={13} className="text-orange" />
           {cities.length} יישובים
         </span>
@@ -173,7 +173,7 @@ function TeamInterestForm({ team, city, onBack }) {
         <h3 className="font-heebo font-bold text-navy text-2xl tracking-tight">
           {form.name ? `תודה, ${form.name.split(' ')[0]}!` : 'תודה רבה!'}
         </h3>
-        <p className="font-heebo text-navy/55 text-[15px] leading-relaxed max-w-[300px] mx-auto mt-2">
+        <p className="font-heebo text-navy/65 text-[15px] leading-relaxed max-w-[300px] mx-auto mt-2">
           קיבלנו את הפנייה לקבוצת {teamName} ב{city} - נחזור אליכם תוך 24 שעות. נתראה בזירה. 🔥
         </p>
         <button
@@ -193,7 +193,7 @@ function TeamInterestForm({ team, city, onBack }) {
       <button
         type="button"
         onClick={onBack}
-        className="flex items-center gap-0.5 self-start -mr-1 font-heebo font-medium text-navy/50 text-[15px] hover:text-navy transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded"
+        className="flex items-center gap-0.5 self-start -mr-1 font-heebo font-medium text-navy/65 text-[15px] hover:text-navy transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded"
       >
         <ChevronRight size={18} />
         חזרה לפרטי העיר
@@ -203,7 +203,7 @@ function TeamInterestForm({ team, city, onBack }) {
       <div>
         <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-orange mb-2">טופס הצטרפות</p>
         <h3 className="font-heebo font-bold text-navy text-[26px] leading-tight tracking-tight">ספרו לנו עליכם</h3>
-        <p className="font-heebo text-navy/45 text-sm mt-1">כמה פרטים קצרים ונחזור אליכם תוך 24 שעות.</p>
+        <p className="font-heebo text-navy/65 text-sm mt-1">כמה פרטים קצרים ונחזור אליכם תוך 24 שעות.</p>
       </div>
 
       {/* The team the visitor already chose on the map */}
@@ -313,7 +313,7 @@ export default function LiabahMap() {
         <div className="lm-animate max-w-3xl pt-24 md:pt-32 pb-8 md:pb-10">
           <p className="ds-eyebrow text-orange-ink mb-3">פריסה ארצית</p>
           <h2 className="ds-section-title text-navy">איפה אנחנו פועלים</h2>
-          <p className="font-heebo text-navy/55 text-lg mt-4 leading-relaxed">
+          <p className="font-heebo text-navy/65 text-lg mt-4 leading-relaxed">
             <span className="font-bold text-navy">{locations.length} יישובים</span> בשלושה אזורים.
             בחרו את האזור שלכם, מצאו קבוצה - והצטרפו.
           </p>
@@ -333,7 +333,7 @@ export default function LiabahMap() {
 
         {/* Fallback — for towns not yet on the list */}
         <div className="lm-animate flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 rounded-2xl border border-dashed border-navy/15 bg-white/40 px-6 py-5 mb-24">
-          <p className="font-heebo text-navy/60 text-[15px] leading-relaxed flex-1">
+          <p className="font-heebo text-navy/65 text-[15px] leading-relaxed flex-1">
             לא מצאתם קבוצה באזורכם? השאירו פרטים ונעדכן אתכם ברגע שנפתחת קבוצה קרובה.
           </p>
           <a
@@ -364,7 +364,7 @@ export default function LiabahMap() {
             <button
               onClick={closePanel}
               aria-label="סגור"
-              className="absolute top-5 left-5 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-navy/[0.04] text-navy/45 hover:bg-navy/[0.08] hover:text-navy/70 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
+              className="absolute top-5 left-5 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-navy/[0.04] text-navy/65 hover:bg-navy/[0.08] hover:text-navy/70 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange"
             >
               <X size={18} />
             </button>
@@ -387,7 +387,7 @@ export default function LiabahMap() {
                     {selectedLoc.city}
                   </h3>
                   {selectedLoc.manager && (
-                    <p className="font-heebo text-navy/55 text-[13.5px] mt-2">
+                    <p className="font-heebo text-navy/65 text-[13.5px] mt-2">
                       מנהל/ת אזור · <span className="font-semibold text-navy/75">{selectedLoc.manager}</span>
                     </p>
                   )}
@@ -409,7 +409,7 @@ export default function LiabahMap() {
                 <div className="border-t border-navy/[0.07]">
                   <div className="flex items-baseline justify-between px-7 sm:px-8 pt-5 pb-2">
                     <h4 className="font-heebo font-bold text-navy text-[17px]">בחרו קבוצה והצטרפו</h4>
-                    <span className="font-heebo text-navy/40 text-[13px] shrink-0">{selectedLoc.teams.length} קבוצות</span>
+                    <span className="font-heebo text-navy/65 text-[13px] shrink-0">{selectedLoc.teams.length} קבוצות</span>
                   </div>
                   <ul className="px-3 sm:px-4 pb-1">
                     {selectedLoc.teams.map((t) => (
@@ -422,24 +422,24 @@ export default function LiabahMap() {
                           <div className="flex-1 text-right min-w-0">
                             <div className="font-heebo font-bold text-navy text-[16px] leading-snug truncate">{teamLabel(t.name, selectedLoc.city)}</div>
                             {t.coach && (
-                              <div className="font-heebo text-navy/45 text-[13px] mt-0.5 truncate">מאמן/ת {t.coach}</div>
+                              <div className="font-heebo text-navy/65 text-[13px] mt-0.5 truncate">מאמן/ת {t.coach}</div>
                             )}
                             {(t.hours || t.venue || t.note) && (
                               <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 mt-1 font-heebo text-[12.5px]">
                                 {t.hours && (
-                                  <span className="inline-flex items-center gap-1 text-navy/50">
+                                  <span className="inline-flex items-center gap-1 text-navy/65">
                                     <Clock size={12} className="text-orange/80 shrink-0" />
                                     {t.hours}
                                   </span>
                                 )}
                                 {t.venue && (
-                                  <span className="inline-flex items-center gap-1 text-navy/50">
+                                  <span className="inline-flex items-center gap-1 text-navy/65">
                                     <MapPin size={12} className="text-orange/80 shrink-0" />
                                     {t.venue}
                                   </span>
                                 )}
                                 {t.note && (
-                                  <span className="text-orange font-semibold">{t.note}</span>
+                                  <span className="text-orange-ink font-semibold">{t.note}</span>
                                 )}
                               </div>
                             )}
@@ -460,7 +460,7 @@ export default function LiabahMap() {
                   <button
                     type="button"
                     onClick={() => setInterestTeam(selectedLoc.teams[0])}
-                    className="inline-flex items-center gap-1 font-heebo font-semibold text-navy/55 hover:text-orange text-[13.5px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded px-1 py-1"
+                    className="inline-flex items-center gap-1 font-heebo font-semibold text-navy/65 hover:text-orange text-[13.5px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange rounded px-1 py-1"
                   >
                     <ChevronLeft size={15} className="shrink-0" />
                     לא בטוחים לאיזו קבוצה מתאים? השאירו פרטים ונכוון אתכם

@@ -42,7 +42,7 @@ export default function TeamHq({ onRegister }) {
                   <Icon size={24} />
                 </div>
                 <h3 className="ds-card-title text-navy">{dept.title}</h3>
-                <p className="font-heebo text-navy/60 text-base leading-relaxed mt-2">{dept.text}</p>
+                <p className="font-heebo text-navy/65 text-base leading-relaxed mt-2">{dept.text}</p>
               </div>
             )
           })}

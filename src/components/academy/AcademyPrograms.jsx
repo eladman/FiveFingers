@@ -63,7 +63,7 @@ export default function AcademyPrograms({ onRegister }) {
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setActive(i)}
                 className={`relative flex-1 md:flex-none min-h-[44px] px-5 md:px-8 py-2.5 rounded-full font-heebo font-semibold text-sm md:text-base transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy/40 ${
-                  selected ? 'bg-navy text-white' : 'text-navy/60 hover:text-navy'
+                  selected ? 'bg-navy text-white' : 'text-navy/65 hover:text-navy'
                 }`}
               >
                 {p.tab}
@@ -90,7 +90,7 @@ export default function AcademyPrograms({ onRegister }) {
                 {prog.title}
               </h3>
               {prog.subtitle && (
-                <p className="font-heebo text-navy/50 font-medium mt-1.5" style={{ fontSize: '0.95rem' }}>
+                <p className="font-heebo text-navy/65 font-medium mt-1.5" style={{ fontSize: '0.95rem' }}>
                   {prog.subtitle}
                 </p>
               )}
@@ -159,7 +159,7 @@ function ProgramFrame({ even, src, alt }) {
 function SpecRow({ term, value }) {
   return (
     <div className="flex items-baseline justify-between gap-6 py-4 border-b border-navy/12 text-right">
-      <dt className="font-heebo font-semibold text-navy/45 text-sm whitespace-nowrap" style={{ letterSpacing: '0.06em' }}>
+      <dt className="font-heebo font-semibold text-navy/65 text-sm whitespace-nowrap" style={{ letterSpacing: '0.06em' }}>
         {term}
       </dt>
       <dd className="font-heebo text-navy leading-snug">{value}</dd>

@@ -34,7 +34,7 @@ export default function AcademyAdmissions({ onRegister }) {
               <h3 className="font-heebo font-bold text-navy" style={{ fontSize: 'clamp(1.15rem, 1.6vw, 1.5rem)' }}>
                 {step.title}
               </h3>
-              <p className="col-span-2 md:col-span-1 font-heebo text-navy/60 leading-relaxed">{step.text}</p>
+              <p className="col-span-2 md:col-span-1 font-heebo text-navy/65 leading-relaxed">{step.text}</p>
             </div>
           ))}
         </div>
@@ -46,7 +46,7 @@ export default function AcademyAdmissions({ onRegister }) {
               <h3 className="ds-card-title text-navy">
                 {track.label}
               </h3>
-              <p className="font-heebo text-navy/60 leading-relaxed flex-1" style={{ fontSize: '1.02rem' }}>
+              <p className="font-heebo text-navy/65 leading-relaxed flex-1" style={{ fontSize: '1.02rem' }}>
                 {track.text}
               </p>
               <div>

@@ -381,7 +381,7 @@ function MemorialFooter({ onContactOpen }) {
             </div>
           </div>
           <div className="sitefoot__col">
-            <h4>תנועה</h4>
+            <h2>תנועה</h2>
             <ul>
               <li><a href="/liabah">ליבה</a></li>
               <li><a href="/academy">מכינה</a></li>
@@ -390,7 +390,7 @@ function MemorialFooter({ onContactOpen }) {
             </ul>
           </div>
           <div className="sitefoot__col">
-            <h4>אודות</h4>
+            <h2>אודות</h2>
             <ul>
               <li><a href="/amir">עמיר מנחם</a></li>
               <li><a href="/#dna">ערכים</a></li>
@@ -399,7 +399,7 @@ function MemorialFooter({ onContactOpen }) {
             </ul>
           </div>
           <div className="sitefoot__col">
-            <h4>הצטרפו</h4>
+            <h2>הצטרפו</h2>
             <ul>
               <li><a href="#contact" onClick={contact}>הרשמה</a></li>
               <li><a href="#contact" onClick={contact}>מתנדבים</a></li>
@@ -409,6 +409,7 @@ function MemorialFooter({ onContactOpen }) {
           </div>
         </div>
         <div className="sitefoot__bottom">
+          <p><a href="/accessibility">הצהרת נגישות</a></p>
           <p>© 2026 תנועת חמש אצבעות · אמיר מנחם ויורם מנחם. כל הזכויות שמורות.</p>
         </div>
       </div>

@@ -82,6 +82,12 @@ export const META = {
     description:
       'מייסד ויו״ר תנועת חמש אצבעות, קצין שייטת 13 לשעבר ומגיש ״האדם בזירה״ - הסיפור והשיטה שמאחורי התנועה.',
   },
+  accessibility: {
+    path: '/accessibility',
+    title: 'הצהרת נגישות' + SUFFIX,
+    description:
+      'הצהרת הנגישות של אתר תנועת חמש אצבעות: התאמות הנגישות שבוצעו, מגבלות ידועות ודרכי פנייה בנושא נגישות.',
+  },
   memorial: {
     path: '/memorial',
     title: 'היכל הזיכרון' + SUFFIX,

@@ -62,7 +62,7 @@ export default function AmirZones({ onBook }) {
           </h2>
           <div className="az-heading mt-6 mx-auto h-1 w-16 rounded-full bg-orange" />
           <p
-            className="az-heading font-heebo text-navy/60 mt-6 mx-auto max-w-2xl leading-relaxed"
+            className="az-heading font-heebo text-navy/65 mt-6 mx-auto max-w-2xl leading-relaxed"
             style={{ fontSize: 'clamp(1.05rem, 1.6vw, 1.3rem)' }}
           >
             שלוש דרכים לעבוד יחד - מהבמה הגדולה ועד הליווי האישי, אחד על אחד.

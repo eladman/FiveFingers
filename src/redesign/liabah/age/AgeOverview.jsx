@@ -70,7 +70,7 @@ export default function AgeOverview({ page }) {
         <div className="ago-head max-w-4xl">
           <p className="ds-eyebrow text-orange-ink">האימון</p>
           <h2 className="ds-section-title text-navy mt-4">{overview.heading}</h2>
-          <p className="font-heebo text-navy/60 mt-6 leading-[1.65] max-w-2xl" style={{ fontSize: 'clamp(1.15rem, 1.7vw, 1.6rem)' }}>
+          <p className="font-heebo text-navy/65 mt-6 leading-[1.65] max-w-2xl" style={{ fontSize: 'clamp(1.15rem, 1.7vw, 1.6rem)' }}>
             {overview.lead}
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function AgeOverview({ page }) {
                     {item.title}
                   </h3>
                   <p
-                    className="ago-row-el font-heebo text-navy/60 leading-[1.75] mt-3"
+                    className="ago-row-el font-heebo text-navy/65 leading-[1.75] mt-3"
                     style={{ fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}
                   >
                     {item.text}
@@ -124,7 +124,7 @@ export default function AgeOverview({ page }) {
                 <h4 className="font-heebo font-bold text-navy mt-5" style={{ fontSize: 'clamp(1.3rem, 1.6vw, 1.6rem)' }}>
                   {goal.title}
                 </h4>
-                <p className="font-heebo text-navy/60 leading-[1.75] mt-3" style={{ fontSize: 'clamp(1rem, 1.1vw, 1.12rem)' }}>
+                <p className="font-heebo text-navy/65 leading-[1.75] mt-3" style={{ fontSize: 'clamp(1rem, 1.1vw, 1.12rem)' }}>
                   {goal.text}
                 </p>
               </div>

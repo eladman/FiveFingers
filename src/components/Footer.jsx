@@ -20,7 +20,7 @@ const FOOTER_NAV = {
     { label: 'חזון', href: '/#manifesto' },
     { label: 'מה אנחנו', href: '/#who-we-are' },
   ],
-  הצטרף: [
+  הצטרפו: [
     { label: 'הרשמה', action: 'contact' },
     { label: 'יצירת קשר', action: 'contact' },
   ],
@@ -35,7 +35,7 @@ export default function Footer({ onContactOpen }) {
           {/* Brand column */}
           <div className="md:col-span-1">
             <img src={logo} alt="חמש אצבעות" className="h-12 w-auto mb-5" />
-            <p className="text-navy/55 text-sm leading-relaxed mb-7 max-w-xs">
+            <p className="text-navy/65 text-sm leading-relaxed mb-7 max-w-xs">
               מפתחים את הדור הבא של מנהיגי ישראל דרך מצוינות ערכית, חוויות אתגריות וקהילה תומכת, מאז 2014.
             </p>
           </div>
@@ -43,7 +43,7 @@ export default function Footer({ onContactOpen }) {
           {/* Link columns */}
           {Object.entries(FOOTER_NAV).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-orange-ink font-semibold text-sm mb-5 tracking-wide">{category}</h4>
+              <h2 className="text-orange-ink font-semibold text-sm mb-5 tracking-wide">{category}</h2>
               {/* .tap-safe already gives each row a 44px box, so the gap shrinks
                   to keep the column's rhythm close to its original density
                   instead of stacking 14px gaps on top of taller targets. */}
@@ -54,14 +54,14 @@ export default function Footer({ onContactOpen }) {
                       <button
                         type="button"
                         onClick={onContactOpen}
-                        className="tap-safe text-navy/55 hover:text-navy text-sm transition-colors duration-200 text-right"
+                        className="tap-safe text-navy/65 hover:text-navy text-sm transition-colors duration-200 text-right"
                       >
                         {link.label}
                       </button>
                     ) : (
                       <a
                         href={link.href}
-                        className="tap-safe text-navy/55 hover:text-navy text-sm transition-colors duration-200"
+                        className="tap-safe text-navy/65 hover:text-navy text-sm transition-colors duration-200"
                       >
                         {link.label}
                       </a>
@@ -76,8 +76,11 @@ export default function Footer({ onContactOpen }) {
         {/* Divider */}
         {/* NOTE: legal links (תנאי שימוש / מדיניות פרטיות) were removed until real
             pages exist — re-add here once those routes/pages are created. */}
-        <div className="border-t border-navy/10 pt-8 flex items-center justify-center">
-          <p className="text-navy/40 text-sm text-center">
+        <div className="border-t border-navy/10 pt-8 flex flex-col items-center gap-2">
+          <a href="/accessibility" className="tap-safe text-navy/65 hover:text-navy text-sm underline underline-offset-4 transition-colors duration-200">
+            הצהרת נגישות
+          </a>
+          <p className="text-navy/65 text-sm text-center">
             © {new Date().getFullYear()} תנועת חמש אצבעות · עמיר מנחם ויורם מנחם. כל הזכויות שמורות.
           </p>
         </div>

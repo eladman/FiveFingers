@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import useAccessibility from '../../hooks/useAccessibility'
-import AccessibilityStatement from './AccessibilityStatement'
 
 /* ── Inline SVG icons ─────────────────────────────────────────── */
 const AccessibilityIcon = ({ size = 28, color = 'white' }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill={color} xmlns="http://www.w3.org/2000/svg">
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={color} aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
     {/* Universal accessibility: person with outstretched arms in a circle */}
     <circle cx="12" cy="4.5" r="2" />
     <path d="M12 7.5c-1.5 0-4.5.5-5.5 1l.5 2c1-.4 3-.7 4-.7v3l-2.5 5.5 1.8.8L12 14.5l1.7 4.6 1.8-.8L13 12.8v-3c1 0 3 .3 4 .7l.5-2c-1-.5-4-1-5.5-1z" />
@@ -49,7 +48,10 @@ const SECTIONS = [
 function FeatureToggle({ icon, label, active, onClick }) {
   return (
     <button
+      type="button"
       onClick={onClick}
+      // Without this a screen reader only hears the label, never on/off.
+      aria-pressed={active}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -69,9 +71,9 @@ function FeatureToggle({ icon, label, active, onClick }) {
         transition: 'background-color 0.15s ease, color 0.15s ease',
       }}
     >
-      <span style={{ fontSize: '18px', width: '24px', textAlign: 'center', flexShrink: 0 }}>{icon}</span>
+      <span aria-hidden="true" style={{ fontSize: '18px', width: '24px', textAlign: 'center', flexShrink: 0 }}>{icon}</span>
       <span style={{ flex: 1 }}>{label}</span>
-      <span style={{
+      <span aria-hidden="true" style={{
         width: '36px',
         height: '20px',
         borderRadius: '10px',
@@ -99,7 +101,7 @@ function FeatureToggle({ icon, label, active, onClick }) {
 /* ── Font size selector ───────────────────────────────────────── */
 function FontSizeControl({ value, onChange }) {
   return (
-    <div style={{ padding: '10px 12px' }}>
+    <div role="group" aria-labelledby="a11y-font-size-label" style={{ padding: '10px 12px' }}>
       <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -109,14 +111,16 @@ function FontSizeControl({ value, onChange }) {
         fontFamily: "'Heebo', Arial, sans-serif",
         color: '#333',
       }}>
-        <span style={{ fontSize: '18px', width: '24px', textAlign: 'center' }}>א</span>
-        <span style={{ flex: 1 }}>הגדלת טקסט</span>
+        <span aria-hidden="true" style={{ fontSize: '18px', width: '24px', textAlign: 'center' }}>א</span>
+        <span id="a11y-font-size-label" style={{ flex: 1 }}>הגדלת טקסט</span>
       </div>
       <div style={{ display: 'flex', gap: '6px' }}>
         {FONT_SIZE_LABELS.map((label, i) => (
           <button
             key={i}
+            type="button"
             onClick={() => onChange(i)}
+            aria-pressed={value === i}
             style={{
               flex: 1,
               padding: '6px 4px',
@@ -146,9 +150,15 @@ function FontSizeControl({ value, onChange }) {
 export default function AccessibilityWidget() {
   const { settings, updateSetting, resetSettings } = useAccessibility()
   const [isOpen, setIsOpen] = useState(false)
-  const [statementOpen, setStatementOpen] = useState(false)
   const panelRef = useRef(null)
   const triggerRef = useRef(null)
+
+  // Closing from inside the panel (Esc, ✕, reset) hands focus back to the
+  // trigger; otherwise it would fall to <body> once the panel goes inert.
+  const close = useCallback((returnFocus = true) => {
+    setIsOpen(false)
+    if (returnFocus) triggerRef.current?.focus()
+  }, [])
 
   // Click outside to close
   useEffect(() => {
@@ -168,10 +178,10 @@ export default function AccessibilityWidget() {
   // Escape to close
   useEffect(() => {
     if (!isOpen) return
-    const handler = (e) => { if (e.key === 'Escape') setIsOpen(false) }
+    const handler = (e) => { if (e.key === 'Escape') close() }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [isOpen])
+  }, [isOpen, close])
 
   // Focus trap
   useEffect(() => {
@@ -214,9 +224,11 @@ export default function AccessibilityWidget() {
       {/* Trigger button */}
       <button
         ref={triggerRef}
+        type="button"
         onClick={toggle}
-        aria-label="פתח תפריט נגישות"
+        aria-label="תפריט נגישות"
         aria-expanded={isOpen}
+        aria-controls="a11y-panel"
         // .ds-fab supplies the safe-area-aware inset and the pointer-gated
         // hover (see index.css), replacing the inline mouseenter/mouseleave
         // pair that used to stay stuck after a touch tap.
@@ -245,10 +257,14 @@ export default function AccessibilityWidget() {
       {/* Panel */}
       <div
         ref={panelRef}
+        id="a11y-panel"
         dir="rtl"
         role="dialog"
         aria-label="תפריט נגישות"
         aria-modal="true"
+        // Closed = faded out but still mounted (for the transition). inert keeps
+        // its 19 controls out of the Tab order and the accessibility tree.
+        inert={!isOpen}
         style={{
           position: 'fixed',
           // Sits above the FAB, which itself now respects the bottom safe area.
@@ -285,12 +301,13 @@ export default function AccessibilityWidget() {
           borderBottom: '1px solid #eee',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <AccessibilityIcon size={22} color="#1565C0" />
+            <span aria-hidden="true" style={{ display: 'flex' }}><AccessibilityIcon size={22} color="#1565C0" /></span>
             <span style={{ fontSize: '17px', fontWeight: 700, color: '#1a1a1a' }}>אפשרויות נגישות</span>
           </div>
           <button
-            onClick={() => setIsOpen(false)}
-            aria-label="סגור תפריט נגישות"
+            type="button"
+            onClick={() => close()}
+            aria-label="סגירת תפריט הנגישות"
             style={{
               background: 'none',
               border: 'none',
@@ -352,7 +369,8 @@ export default function AccessibilityWidget() {
         {/* Footer */}
         <div style={{ padding: '12px 20px 16px', borderTop: '1px solid #eee', marginTop: '4px' }}>
           <button
-            onClick={() => { resetSettings(); setIsOpen(false) }}
+            type="button"
+            onClick={() => { resetSettings(); close() }}
             style={{
               width: '100%',
               padding: '10px',
@@ -372,30 +390,26 @@ export default function AccessibilityWidget() {
           >
             איפוס הגדרות
           </button>
-          <button
-            onClick={() => setStatementOpen(true)}
+          {/* A real page (/accessibility), not a modal — the regulation wants the
+              statement somewhere prominent, and the footer links there too. */}
+          <a
+            href="/accessibility"
+            onClick={() => close(false)}
             style={{
+              display: 'block',
               width: '100%',
               padding: '6px',
-              border: 'none',
-              background: 'none',
               color: '#1565C0',
               fontSize: '13px',
               fontFamily: "'Heebo', Arial, sans-serif",
-              cursor: 'pointer',
+              textAlign: 'center',
               textDecoration: 'underline',
             }}
           >
             הצהרת נגישות
-          </button>
+          </a>
         </div>
       </div>
-
-      {/* Accessibility Statement Modal */}
-      <AccessibilityStatement
-        isOpen={statementOpen}
-        onClose={() => setStatementOpen(false)}
-      />
     </>,
     document.body
   )

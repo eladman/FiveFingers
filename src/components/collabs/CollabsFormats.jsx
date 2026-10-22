@@ -84,11 +84,11 @@ export default function CollabsFormats({ onRegister }) {
                 </p>
 
                 <dl className="mt-6 grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-x-6 gap-y-3 max-w-2xl">
-                  <dt className="font-heebo font-semibold text-navy/45 text-sm" style={{ letterSpacing: '0.06em' }}>
+                  <dt className="font-heebo font-semibold text-navy/65 text-sm" style={{ letterSpacing: '0.06em' }}>
                     מיקום
                   </dt>
                   <dd className="font-heebo text-navy leading-snug">{f.location}</dd>
-                  <dt className="font-heebo font-semibold text-navy/45 text-sm" style={{ letterSpacing: '0.06em' }}>
+                  <dt className="font-heebo font-semibold text-navy/65 text-sm" style={{ letterSpacing: '0.06em' }}>
                     קהל יעד
                   </dt>
                   <dd className="font-heebo text-navy leading-snug">{f.audience}</dd>

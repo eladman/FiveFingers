@@ -86,7 +86,7 @@ export default function HeroCorporateSplit({ onRegister }) {
 
           {/* ── Trust strip ── */}
           <div className="mt-12 pt-8 border-t border-navy/10">
-            <p className="b-trust font-heebo font-semibold text-navy/55 mb-6"
+            <p className="b-trust font-heebo font-semibold text-navy/65 mb-6"
                style={{ fontSize: 'clamp(0.82rem, 1vw, 0.95rem)', letterSpacing: '0.16em' }}>
               כבר עובדים איתנו
             </p>

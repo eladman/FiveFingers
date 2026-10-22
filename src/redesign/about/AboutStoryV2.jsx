@@ -77,7 +77,7 @@ export default function AboutStoryV2() {
                   {mv.marker}
                 </span>
               )}
-              <span className="ds-eyebrow text-navy/40">{mv.label}</span>
+              <span className="ds-eyebrow text-navy/65">{mv.label}</span>
               <span aria-hidden="true" className="flex-1 h-px bg-navy/10" />
             </div>
 
@@ -115,10 +115,10 @@ export default function AboutStoryV2() {
                 {/* Copy */}
                 <div className="flex flex-1 flex-col justify-center p-6 md:p-7">
                   <span className="ds-eyebrow text-orange-ink">{mv.founder.eyebrow}</span>
-                  <h3 className="font-ragmarom text-navy leading-tight mt-2" style={{ fontSize: 'clamp(1.5rem, 2.4vw, 2rem)' }}>
+                  <h2 className="font-ragmarom text-navy leading-tight mt-2" style={{ fontSize: 'clamp(1.5rem, 2.4vw, 2rem)' }}>
                     {mv.founder.name}
-                  </h3>
-                  <p className="font-heebo text-navy/55 text-sm leading-relaxed mt-1.5">
+                  </h2>
+                  <p className="font-heebo text-navy/65 text-sm leading-relaxed mt-1.5">
                     {mv.founder.role}
                   </p>
                   <p className="font-heebo text-navy/75 leading-relaxed mt-3" style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.08rem)' }}>
@@ -148,7 +148,7 @@ export default function AboutStoryV2() {
                   style={{ objectPosition: 'center 40%' }}
                 />
               </div>
-              <figcaption className="font-heebo text-navy/45 text-sm mt-4">
+              <figcaption className="font-heebo text-navy/65 text-sm mt-4">
                 {PHOTOS[mv.photo].caption}
               </figcaption>
             </figure>

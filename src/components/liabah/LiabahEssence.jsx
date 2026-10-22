@@ -120,7 +120,7 @@ function StagesCarousel({ stages }) {
               {/* Description */}
               <p
                 className={`font-heebo leading-relaxed transition-colors duration-500 ${
-                  isActive ? 'text-navy/70' : 'text-navy/45'
+                  isActive ? 'text-navy/70' : 'text-navy/65'
                 }`}
                 style={{ fontSize: '0.9rem' }}
               >
@@ -233,7 +233,7 @@ export default function LiabahEssence() {
           >
             השיטה שלנו
           </h3>
-          <p className="font-heebo text-navy/55 mt-3" style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)' }}>
+          <p className="font-heebo text-navy/65 mt-3" style={{ fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)' }}>
             שלושה עמודי תווך שעובדים יחד
           </p>
         </div>

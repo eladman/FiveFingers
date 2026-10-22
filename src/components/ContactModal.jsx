@@ -92,9 +92,13 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
   const [pickerExpanded, setPickerExpanded] = useState(true)
   const overlayRef = useRef(null)
   const firstFieldRef = useRef(null)
+  // Whatever opened the modal gets focus back when it closes, so a keyboard /
+  // screen-reader user isn't dropped at the top of the page.
+  const openerRef = useRef(null)
 
   useEffect(() => {
     if (isOpen) {
+      openerRef.current = document.activeElement
       const product = normalizeType(defaultProduct)
       setForm({ ...INITIAL_FORM, productType: product })
       setStatus('idle')
@@ -113,6 +117,8 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
     }
     document.body.style.overflow = ''
     getLenis()?.start()
+    openerRef.current?.focus?.({ preventScroll: true })
+    openerRef.current = null
     return () => {
       document.body.style.overflow = ''
       getLenis()?.start()
@@ -120,7 +126,21 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
   }, [isOpen, defaultProduct])
 
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    // Esc closes; Tab / Shift+Tab wrap inside the dialog (it is aria-modal).
+    const onKey = (e) => {
+      if (e.key === 'Escape') { onClose(); return }
+      if (e.key !== 'Tab' || !overlayRef.current) return
+      const focusable = [...overlayRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )].filter((el) => el.offsetParent !== null)
+      if (!focusable.length) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      const active = document.activeElement
+      if (!overlayRef.current.contains(active)) { e.preventDefault(); first.focus() }
+      else if (e.shiftKey && active === first) { e.preventDefault(); last.focus() }
+      else if (!e.shiftKey && active === last) { e.preventDefault(); first.focus() }
+    }
     if (isOpen) window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [isOpen, onClose])
@@ -233,6 +253,9 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
       aria-modal="true"
       role="dialog"
       aria-label="יצירת קשר"
+      // Closed = faded out but still mounted (for the exit transition). inert
+      // takes it out of the Tab order and the accessibility tree meanwhile.
+      inert={!isOpen}
     >
       <div
         dir="rtl"

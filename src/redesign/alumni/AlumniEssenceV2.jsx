@@ -114,7 +114,7 @@ export default function AlumniEssenceV2() {
                     {s.plain ? s.value : s.value.toLocaleString('he-IL')}
                     {s.suffix}
                   </div>
-                  <div className="font-heebo text-navy/55 mt-1.5 leading-snug text-sm">
+                  <div className="font-heebo text-navy/65 mt-1.5 leading-snug text-sm">
                     {s.label}
                   </div>
                 </div>

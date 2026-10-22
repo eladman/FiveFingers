@@ -139,7 +139,7 @@ export default function FiveContent() {
             </div>
             {/* Embed fills remaining height */}
             <div className="flex-1 p-4 flex flex-col gap-3">
-              <p className="font-heebo text-navy/60 leading-relaxed text-sm">
+              <p className="font-heebo text-navy/65 leading-relaxed text-sm">
                 האזינו לפרק האחרון של הפודקאסט שלנו - שיחות מעמיקות על חינוך, מנהיגות ערכית ואנשים שנכנסים לזירה.
               </p>
               <iframe
@@ -182,7 +182,7 @@ export default function FiveContent() {
               >
                 כתבה ב-Ynet
               </h3>
-              <p className="font-heebo text-navy/60 leading-relaxed text-sm">
+              <p className="font-heebo text-navy/65 leading-relaxed text-sm">
                 קראו על תנועת חמש אצבעות וההשפעה שלנו על הנוער הישראלי.
               </p>
               <span className="mt-auto inline-block font-heebo font-bold text-white bg-orange px-5 py-2 rounded-xl text-sm self-start">

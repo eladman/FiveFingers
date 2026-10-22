@@ -66,7 +66,7 @@ function StatItem({ value, suffix, label }) {
       >
         {n.toLocaleString('he-IL')}{suffix}
       </div>
-      <div className="font-heebo text-navy/60 mt-3 text-sm md:text-base leading-snug">
+      <div className="font-heebo text-navy/65 mt-3 text-sm md:text-base leading-snug">
         {label}
       </div>
     </div>

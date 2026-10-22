@@ -92,7 +92,7 @@ export default function AlumniYoavV2() {
 
         {/* Lead — the one idea, blown up */}
         <div className="max-w-3xl">
-          <p className="ayv-lead ds-eyebrow text-orange">תוכנית הדגל של הבוגרים</p>
+          <p className="ayv-lead ds-eyebrow text-orange-ink">תוכנית הדגל של הבוגרים</p>
 
           <h2 className="ayv-lead ds-section-title text-navy mt-4">
             תוכנית יואב
@@ -109,7 +109,7 @@ export default function AlumniYoavV2() {
             </p>
           </div>
 
-          <p className="ayv-lead font-heebo text-navy/60 mt-6 leading-relaxed max-w-2xl" style={{ fontSize: 'clamp(0.98rem, 1.2vw, 1.15rem)' }}>
+          <p className="ayv-lead font-heebo text-navy/65 mt-6 leading-relaxed max-w-2xl" style={{ fontSize: 'clamp(0.98rem, 1.2vw, 1.15rem)' }}>
             {YOAV_INTRO}
           </p>
 
@@ -126,8 +126,8 @@ export default function AlumniYoavV2() {
 
         {/* The journey — three axes as milestones on one spine */}
         <div className="ayv-journey relative mt-20 md:mt-28 max-w-3xl">
-          <p className="ayv-step ds-eyebrow text-orange mb-2 pr-[3.5rem] md:pr-[5rem]">מטרות התוכנית</p>
-          <p className="ayv-step font-heebo text-navy/55 mb-10 md:mb-12 pr-[3.5rem] md:pr-[5rem]" style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.1rem)' }}>
+          <p className="ayv-step ds-eyebrow text-orange-ink mb-2 pr-[3.5rem] md:pr-[5rem]">מטרות התוכנית</p>
+          <p className="ayv-step font-heebo text-navy/65 mb-10 md:mb-12 pr-[3.5rem] md:pr-[5rem]" style={{ fontSize: 'clamp(0.98rem, 1.1vw, 1.1rem)' }}>
             שלושה צירים מרכזיים שמנחים את המסע שלנו.
           </p>
 
@@ -160,12 +160,12 @@ export default function AlumniYoavV2() {
                 {/* content — un-boxed, editorial */}
                 <div className="pt-1 md:pt-1.5">
                   <div className="flex items-baseline gap-3">
-                    <span className="font-mono text-orange/50 text-sm tracking-widest" dir="ltr">0{i + 1}</span>
+                    <span className="font-mono text-orange-ink text-sm tracking-widest" dir="ltr">0{i + 1}</span>
                     <h3 className="font-ragmarom text-navy leading-none" style={{ fontSize: 'clamp(1.9rem, 3vw, 2.7rem)' }}>
                       {a.title}
                     </h3>
                   </div>
-                  <p className="font-heebo font-semibold text-orange mt-2" style={{ fontSize: '0.98rem' }}>
+                  <p className="font-heebo font-semibold text-orange-ink mt-2" style={{ fontSize: '0.98rem' }}>
                     {a.subtitle}
                   </p>
                   <p className="font-heebo text-navy/65 leading-[1.85] mt-3.5 max-w-xl" style={{ fontSize: 'clamp(0.98rem, 1.05vw, 1.08rem)' }}>
@@ -183,9 +183,9 @@ export default function AlumniYoavV2() {
             {/* orange edge — a reverent hairline */}
             <span aria-hidden="true" className="absolute inset-y-0 right-0 w-1 bg-orange/70" />
 
-            <p className="ayv-foot font-heebo text-navy/50 text-sm tracking-wide mb-3">התוכנית קרויה על שמו של</p>
+            <p className="ayv-foot font-heebo text-navy/65 text-sm tracking-wide mb-3">התוכנית קרויה על שמו של</p>
             <p className="ayv-foot font-ragmarom text-navy leading-none" style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)' }}>
-              {YOAV_TRIBUTE.name} <span className="text-navy/35">{YOAV_TRIBUTE.honorific}</span>
+              {YOAV_TRIBUTE.name} <span className="text-navy/65">{YOAV_TRIBUTE.honorific}</span>
             </p>
 
             <p className="ayv-foot font-heebo text-navy/65 mt-5 leading-[1.85] max-w-2xl" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.12rem)' }}>
@@ -229,7 +229,7 @@ export default function AlumniYoavV2() {
             </a>
           </div>
 
-          <p className="ayv-foot font-heebo text-navy/45 text-sm mt-5">{YOAV_INTERVIEW}</p>
+          <p className="ayv-foot font-heebo text-navy/65 text-sm mt-5">{YOAV_INTERVIEW}</p>
         </div>
       </div>
     </section>

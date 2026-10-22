@@ -69,7 +69,7 @@ export default function AgeDetails({ page, locations, onRegister }) {
           <div className="lg:col-span-7 max-w-3xl">
             <p className="ds-eyebrow text-orange-ink">מיקומים וצוותים</p>
             <h2 className="ds-section-title text-navy mt-4">{details.heading}</h2>
-            <p className="font-heebo text-navy/60 mt-6 leading-[1.65]" style={{ fontSize: 'clamp(1.15rem, 1.6vw, 1.5rem)' }}>
+            <p className="font-heebo text-navy/65 mt-6 leading-[1.65]" style={{ fontSize: 'clamp(1.15rem, 1.6vw, 1.5rem)' }}>
               {details.lead}
             </p>
           </div>
@@ -78,14 +78,14 @@ export default function AgeDetails({ page, locations, onRegister }) {
               <span className="block font-ragmarom text-navy leading-none tabular-nums" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}>
                 {cityCount}
               </span>
-              <span className="block font-heebo text-navy/55 mt-2 text-base md:text-lg">יישובים</span>
+              <span className="block font-heebo text-navy/65 mt-2 text-base md:text-lg">יישובים</span>
             </div>
             <div className="w-px self-stretch bg-navy/12" aria-hidden="true" />
             <div>
               <span className="block font-ragmarom text-navy leading-none tabular-nums" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}>
                 {groupCount}
               </span>
-              <span className="block font-heebo text-navy/55 mt-2 text-base md:text-lg">קבוצות</span>
+              <span className="block font-heebo text-navy/65 mt-2 text-base md:text-lg">קבוצות</span>
             </div>
           </div>
         </div>
@@ -109,15 +109,15 @@ export default function AgeDetails({ page, locations, onRegister }) {
                       <h4 className="font-heebo font-bold text-navy" style={{ fontSize: 'clamp(1.2rem, 1.5vw, 1.45rem)' }}>
                         {loc.city}
                       </h4>
-                      <span className="font-heebo text-navy/40 text-sm tabular-nums shrink-0">
+                      <span className="font-heebo text-navy/65 text-sm tabular-nums shrink-0">
                         {loc.teams.length} קבוצות
                       </span>
                     </div>
-                    <p className="font-heebo text-navy/55 text-sm md:text-[0.95rem] mt-1.5">
+                    <p className="font-heebo text-navy/65 text-sm md:text-[0.95rem] mt-1.5">
                       {loc.venue ? `${loc.venue} · ` : ''}ימי {loc.days}
                     </p>
                     {loc.manager && (
-                      <p className="font-heebo text-navy/45 text-xs md:text-sm mt-0.5">
+                      <p className="font-heebo text-navy/65 text-xs md:text-sm mt-0.5">
                         מנהל/ת אזור · {loc.manager}
                       </p>
                     )}
@@ -126,10 +126,10 @@ export default function AgeDetails({ page, locations, onRegister }) {
                         <li key={team.name} className="font-heebo text-navy/70 text-[0.9rem] md:text-[0.95rem] flex items-center gap-2.5">
                           <span className="w-1.5 h-1.5 rounded-full bg-orange/70 shrink-0" aria-hidden="true" />
                           <span className="flex-1 min-w-0">{team.name}</span>
-                          <span className="shrink-0 flex items-center gap-2 text-navy/40 text-xs md:text-sm">
+                          <span className="shrink-0 flex items-center gap-2 text-navy/65 text-xs md:text-sm">
                             {team.venue && <span>{team.venue}</span>}
                             {team.hours && <span className="tabular-nums">{team.hours}</span>}
-                            {team.note && <span className="text-orange font-semibold">{team.note}</span>}
+                            {team.note && <span className="text-orange-ink font-semibold">{team.note}</span>}
                           </span>
                         </li>
                       ))}
@@ -147,7 +147,7 @@ export default function AgeDetails({ page, locations, onRegister }) {
             <h3 className="font-ragmarom text-navy leading-tight" style={{ fontSize: 'clamp(1.6rem, 2.6vw, 2.3rem)' }}>
               לא מצאתם קבוצה קרובה?
             </h3>
-            <p className="font-heebo text-navy/60 mt-3" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.15rem)' }}>
+            <p className="font-heebo text-navy/65 mt-3" style={{ fontSize: 'clamp(1rem, 1.15vw, 1.15rem)' }}>
               אנחנו גדלים כל שנה. השאירו פרטים ונעדכן אתכם/ן כשנפתחת קבוצה באזורכם.
             </p>
           </div>

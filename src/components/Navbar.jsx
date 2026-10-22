@@ -157,7 +157,7 @@ export default function Navbar({ onContactOpen, forceLifted = false }) {
                   onClick={() => setMenuOpen(false)}
                   aria-current={active ? 'page' : undefined}
                   className={`flex items-center gap-2.5 py-3.5 border-b border-line last:border-0 text-lg transition-colors ${
-                    active ? 'text-navy font-bold' : 'text-navy/60 hover:text-navy font-medium'
+                    active ? 'text-navy font-bold' : 'text-navy/65 hover:text-navy font-medium'
                   }`}
                 >
                   {active && (

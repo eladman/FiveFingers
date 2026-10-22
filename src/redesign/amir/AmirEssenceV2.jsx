@@ -111,7 +111,7 @@ export default function AmirEssenceV2() {
                   <div className="font-ragmarom text-navy leading-none" style={{ fontSize: 'clamp(2rem, 3.4vw, 2.8rem)' }}>
                     {s.value}
                   </div>
-                  <div className="font-heebo text-navy/55 mt-1.5 leading-snug text-sm">
+                  <div className="font-heebo text-navy/65 mt-1.5 leading-snug text-sm">
                     {s.label}
                   </div>
                 </div>

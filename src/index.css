@@ -10,7 +10,7 @@
   --orange: #ff8714;
   --orange-lift: #ffa347;    /* lit top of the CTA gradient */
   --orange-deep: #e56f00;    /* grounded bottom of the CTA gradient */
-  --orange-ink: #ff8714;     /* brand orange for accent text */
+  --orange-ink: #ad5100;     /* text-only orange: >=4.5:1 on every light surface (cream #fbefe1 is the worst case at 4.69). The legal bar is ת"י 5568 AA, and #ff8714 measures 2.1–2.4:1 as text on light backgrounds. Fills/buttons keep --orange. */
   --navy: #0d1b4b;           /* brand dark — text on light + primary dark surfaces */
   --navy-deep: #081028;      /* deepest — gradient anchors, vignettes, footer */
   --navy-light: #1e3578;     /* lifted — gradient tops, elevated dark panels */
@@ -237,6 +237,30 @@ a {
   font-size: clamp(1.45rem, 1.8vw, 1.9rem);
   line-height: 1.2;
 }
+
+/* ─── Skip link ────────────────────────────────────────────── */
+/* Off-screen until it receives keyboard focus (see SkipLink.jsx). */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 10002;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Heebo', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+  outline: 3px solid #FFD600;
+  outline-offset: 2px;
+}
+main:focus { outline: none; }
 
 /* ─── Accessibility Widget — Global Overrides ──────────────── */
 /* Scoped to #root so the portal-based widget stays unaffected  */

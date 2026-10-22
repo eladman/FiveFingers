@@ -233,9 +233,9 @@ export default function LiabahJourneyV2() {
               </div>
 
               <figcaption className="absolute inset-x-0 bottom-0 p-6 lg:p-8">
-                <h4 className="font-ragmarom text-white leading-none" style={{ fontSize: 'clamp(1.7rem, 2.4vw, 2.4rem)' }}>
+                <h3 className="font-ragmarom text-white leading-none" style={{ fontSize: 'clamp(1.7rem, 2.4vw, 2.4rem)' }}>
                   {p.title}
-                </h4>
+                </h3>
                 {/* orange hairline rule */}
                 <span aria-hidden="true" className="mt-4 block h-px w-10 origin-right bg-orange/70 transition-all duration-500 ease-out group-hover:w-16" />
                 <p className="font-heebo text-white/70 leading-relaxed mt-4 max-w-sm" style={{ fontSize: 'clamp(0.92rem, 1vw, 1.05rem)' }}>

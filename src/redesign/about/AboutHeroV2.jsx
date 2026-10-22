@@ -126,7 +126,7 @@ export default function AboutHeroV2() {
           className="abh-rule mx-auto mt-12 md:mt-16 h-px bg-navy/15 origin-center"
           style={{ maxWidth: '34rem' }}
         />
-        <div className="abh-meta mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-heebo text-navy/50 text-sm md:text-base">
+        <div className="abh-meta mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-heebo text-navy/65 text-sm md:text-base">
           {HERO_META.map((m, i) => (
             <span key={m} className="inline-flex items-center gap-x-6">
               {i > 0 && <span className="w-1 h-1 rounded-full bg-orange inline-block" aria-hidden="true" />}

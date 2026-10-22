@@ -62,7 +62,7 @@ export default function HeroEditorialLedger({ onRegister }) {
           <div className="flex flex-wrap gap-x-10 gap-y-3 py-4">
             {META.map((m) => (
               <div key={m.k} className="b-meta flex items-baseline gap-2">
-                <span className="font-heebo text-navy/45" style={{ fontSize: '0.72rem', letterSpacing: '0.14em' }}>{m.k}</span>
+                <span className="font-heebo text-navy/65" style={{ fontSize: '0.72rem', letterSpacing: '0.14em' }}>{m.k}</span>
                 <span className="font-heebo font-bold text-navy" style={{ fontSize: '0.95rem' }}>{m.v}</span>
               </div>
             ))}
@@ -116,10 +116,10 @@ export default function HeroEditorialLedger({ onRegister }) {
 
         {/* ── Foot rule ── */}
         <div className="b-foot flex items-center justify-between pt-5 border-t border-navy/15">
-          <span className="font-heebo text-navy/40" style={{ fontSize: '0.72rem', letterSpacing: '0.14em' }}>
+          <span className="font-heebo text-navy/65" style={{ fontSize: '0.72rem', letterSpacing: '0.14em' }}>
             קמפוס חמש אצבעות
           </span>
-          <span className="font-heebo text-navy/40" style={{ fontSize: '0.72rem', letterSpacing: '0.14em' }}>
+          <span className="font-heebo text-navy/65" style={{ fontSize: '0.72rem', letterSpacing: '0.14em' }}>
             תוכן · הכשרות · מדידה
           </span>
         </div>

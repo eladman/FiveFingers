@@ -218,7 +218,7 @@ export default function VisionV2() {
               >
                 <span
                   className={`vs-ringlabel block font-ragmarom leading-none bg-surface-2 px-3 py-[3px] whitespace-nowrap ${
-                    s.climax ? 'text-orange' : 'text-navy'
+                    s.climax ? 'text-orange-ink' : 'text-navy'
                   }`}
                   style={{ fontSize: RING_LABEL_SIZE[s.n] }}
                 >
@@ -262,13 +262,13 @@ export default function VisionV2() {
                 key={s.n}
                 className="vs-keyrow grid grid-cols-[auto_1fr] gap-4 items-baseline py-4 border-b border-navy/10 last:border-b-0"
               >
-                <span className="font-heebo font-extrabold text-navy/35 text-[0.68rem] tracking-[0.18em]">
+                <span className="font-heebo font-extrabold text-navy/65 text-[0.68rem] tracking-[0.18em]">
                   {s.n}
                 </span>
                 <div>
                   <b
                     className={`block font-ragmarom font-normal leading-none mb-1.5 ${
-                      s.climax ? 'text-orange' : 'text-navy'
+                      s.climax ? 'text-orange-ink' : 'text-navy'
                     }`}
                     style={{ fontSize: s.climax ? 'clamp(1.6rem, 2.3vw, 2rem)' : 'clamp(1.25rem, 1.7vw, 1.5rem)' }}
                   >

@@ -104,9 +104,9 @@ export default function AmirContentWorlds() {
                 </span>
                 <span className="flex-1 text-right">
                   <span className="block font-heebo font-bold text-navy" style={{ fontSize: '1.1rem' }}>{s.title}</span>
-                  <span className="block font-heebo text-navy/55" style={{ fontSize: '0.9rem' }}>{s.label}</span>
+                  <span className="block font-heebo text-navy/65" style={{ fontSize: '0.9rem' }}>{s.label}</span>
                 </span>
-                <ChevronLeft size={20} className="shrink-0 text-navy/30 transition-all duration-300 group-hover:text-orange group-hover:-translate-x-1" />
+                <ChevronLeft size={20} className="shrink-0 text-navy/65 transition-all duration-300 group-hover:text-orange group-hover:-translate-x-1" />
               </a>
             )
           })}

@@ -161,7 +161,7 @@ export default function LiabahPrograms({ onRegister }) {
                       ) : (
                         <div className="absolute inset-0 bg-surface border border-navy/10 flex flex-col items-center justify-center gap-3">
                           <ImageIcon size={32} className="text-navy/20" strokeWidth={1.5} />
-                          <span className="font-heebo text-navy/30 text-sm">תמונה בקרוב</span>
+                          <span className="font-heebo text-navy/65 text-sm">תמונה בקרוב</span>
                         </div>
                       )}
                     </div>

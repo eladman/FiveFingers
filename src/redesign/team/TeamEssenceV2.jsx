@@ -126,7 +126,7 @@ export default function TeamEssenceV2() {
             <div className="absolute inset-0 bg-orange/10 mix-blend-multiply pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/25 via-transparent to-transparent pointer-events-none" />
           </div>
-          <figcaption className="mt-4 font-heebo text-navy/55 text-sm md:text-base text-right">
+          <figcaption className="mt-4 font-heebo text-navy/65 text-sm md:text-base text-right">
             המאמנים, המדריכים ואנשי המטה שמניעים את חמש אצבעות - קבוצה אחת.
           </figcaption>
         </figure>
@@ -166,11 +166,11 @@ export default function TeamEssenceV2() {
                         {m.name}
                       </h3>
                       {m.instagram && (
-                        <Instagram size={17} strokeWidth={1.75} className="shrink-0 text-navy/35 transition-colors group-hover:text-orange" />
+                        <Instagram size={17} strokeWidth={1.75} className="shrink-0 text-navy/65 transition-colors group-hover:text-orange" />
                       )}
                     </div>
                     <p className="font-heebo text-orange-ink text-sm font-semibold mt-0.5">{m.title}</p>
-                    <p className="font-heebo text-navy/60 text-sm leading-relaxed mt-2">{m.bio}</p>
+                    <p className="font-heebo text-navy/65 text-sm leading-relaxed mt-2">{m.bio}</p>
                   </CardTag>
                 )
               })}

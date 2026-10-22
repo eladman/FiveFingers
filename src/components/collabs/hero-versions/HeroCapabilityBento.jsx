@@ -90,7 +90,7 @@ export default function HeroCapabilityBento({ onRegister }) {
                 <span className="inline-flex text-orange"><Icon size={26} strokeWidth={1.75} /></span>
                 <div>
                   <h3 className="font-heebo font-bold text-navy leading-tight" style={{ fontSize: 'clamp(1.05rem, 1.5vw, 1.35rem)' }}>{w.title}</h3>
-                  <p className="font-heebo text-navy/55 mt-1.5 leading-snug" style={{ fontSize: '0.85rem' }}>{w.note}</p>
+                  <p className="font-heebo text-navy/65 mt-1.5 leading-snug" style={{ fontSize: '0.85rem' }}>{w.note}</p>
                 </div>
               </div>
             )

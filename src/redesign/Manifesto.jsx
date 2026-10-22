@@ -29,7 +29,7 @@ const LINE_STYLES = [
   { size: 'clamp(2.6rem, 6vw, 6.4rem)', dim: 'text-navy' },
   { size: 'clamp(2rem, 4.4vw, 4.7rem)', dim: 'text-navy' },
   { size: 'clamp(1.7rem, 3.4vw, 3.6rem)', dim: 'text-navy/65' },
-  { size: 'clamp(1.35rem, 2.7vw, 2.9rem)', dim: 'text-navy/55' },
+  { size: 'clamp(1.35rem, 2.7vw, 2.9rem)', dim: 'text-navy/65' },
 ]
 
 export default function Manifesto() {

@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         orange: '#ff8714',
-        'orange-ink': '#ff8714', // brand orange for accent text
+        'orange-ink': '#ad5100', // text-only orange, AA on all light surfaces — see --orange-ink in index.css
         navy: '#0d1b4b',         // brand dark — text on light + primary dark surfaces
         'navy-deep': '#081028',  // deepest — gradient anchors, vignettes, footer
         'navy-light': '#1e3578', // lifted — gradient tops, elevated dark panels

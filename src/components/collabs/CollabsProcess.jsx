@@ -52,7 +52,7 @@ export default function CollabsProcess() {
               >
                 {s.title}
               </h3>
-              <p className="col-span-2 md:col-span-1 font-heebo text-navy/60 leading-relaxed">
+              <p className="col-span-2 md:col-span-1 font-heebo text-navy/65 leading-relaxed">
                 {s.text}
               </p>
             </div>

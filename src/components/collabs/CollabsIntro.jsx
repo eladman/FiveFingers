@@ -57,7 +57,7 @@ export default function CollabsIntro() {
                   {p.title}
                 </h3>
                 <div className="mt-4 h-1 w-10 rounded-full bg-orange" />
-                <p className="font-heebo text-navy/60 leading-relaxed mt-5">{p.text}</p>
+                <p className="font-heebo text-navy/65 leading-relaxed mt-5">{p.text}</p>
               </div>
             )
           })}

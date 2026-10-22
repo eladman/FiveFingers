@@ -34,6 +34,7 @@ const PATH_TO_VIEW = {
   '/about': 'about',
   '/team': 'team',
   '/memorial': 'memorial',
+  '/accessibility': 'accessibility',
   '/hero-concepts': 'concepts',
 }
 
