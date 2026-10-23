@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { supabase } from './supabaseClient.js'
 import { downloadCsv } from './csv.js'
 import Drawer from './Drawer.jsx'
+import { attributionLabel } from './constants.js'
 
 const startOfWeek = () => {
   const d = new Date()
@@ -128,6 +129,7 @@ export default function Submissions() {
                   <Th>טלפון</Th>
                   <Th>מייל</Th>
                   <Th>תחום</Th>
+                  <Th>קמפיין</Th>
                 </tr>
               </thead>
               <tbody>
@@ -142,6 +144,7 @@ export default function Submissions() {
                     <Td dir="ltr" className="text-navy/70">{r.phone}</Td>
                     <Td dir="ltr" className="text-navy/70">{r.email}</Td>
                     <Td className="text-navy/70">{r.product_type}</Td>
+                    <Td dir="ltr" className="text-navy/55 whitespace-nowrap text-right">{attributionLabel(r) || '—'}</Td>
                   </tr>
                 ))}
               </tbody>

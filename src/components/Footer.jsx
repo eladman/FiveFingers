@@ -1,4 +1,5 @@
 import logo from '../assets/logo.png'
+import { openConsentSettings } from '../lib/consent'
 
 // Each link resolves to a real destination: a dedicated page, a homepage
 // section anchor, or the contact modal (action: 'contact').
@@ -74,12 +75,24 @@ export default function Footer({ onContactOpen }) {
         </div>
 
         {/* Divider */}
-        {/* NOTE: legal links (תנאי שימוש / מדיניות פרטיות) were removed until real
-            pages exist — re-add here once those routes/pages are created. */}
+        {/* NOTE: a תנאי שימוש link was removed until a real page exists — re-add
+            here once that route/page is created. */}
         <div className="border-t border-navy/10 pt-8 flex flex-col items-center gap-2">
-          <a href="/accessibility" className="tap-safe text-navy/65 hover:text-navy text-sm underline underline-offset-4 transition-colors duration-200">
-            הצהרת נגישות
-          </a>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <a href="/accessibility" className="tap-safe text-navy/65 hover:text-navy text-sm underline underline-offset-4 transition-colors duration-200">
+              הצהרת נגישות
+            </a>
+            <a href="/privacy" className="tap-safe text-navy/65 hover:text-navy text-sm underline underline-offset-4 transition-colors duration-200">
+              מדיניות פרטיות
+            </a>
+            <button
+              type="button"
+              onClick={openConsentSettings}
+              className="tap-safe text-navy/65 hover:text-navy text-sm underline underline-offset-4 transition-colors duration-200"
+            >
+              הגדרות עוגיות
+            </button>
+          </div>
           <p className="text-navy/65 text-sm text-center">
             © {new Date().getFullYear()} תנועת חמש אצבעות · עמיר מנחם ויורם מנחם. כל הזכויות שמורות.
           </p>

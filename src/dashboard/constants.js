@@ -67,4 +67,35 @@ export const CSV_COLUMNS = [
   'notes',
   'source',
   'page_url',
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_content',
 ]
+
+// Campaign tags from the ad link that brought the lead (see supabase/attribution.sql).
+export const ATTRIBUTION_LABELS = {
+  utm_source: 'מקור קמפיין',
+  utm_medium: 'סוג פרסום',
+  utm_campaign: 'שם קמפיין',
+  utm_content: 'מודעה',
+  utm_term: 'מילת מפתח',
+  landing_page: 'עמוד נחיתה',
+}
+
+/**
+ * The lead's campaign tags, or null. Reads the dedicated `attribution` column,
+ * falling back to the full payload in `raw_payload` for rows Make stored before
+ * that column was mapped.
+ */
+export function getAttribution(row) {
+  const a = row?.attribution || row?.raw_payload?.attribution
+  return a && typeof a === 'object' ? a : null
+}
+
+/** Short label for the table: "facebook · academy_oct", or '' when untagged. */
+export function attributionLabel(row) {
+  const a = getAttribution(row)
+  if (!a) return ''
+  return [a.utm_source, a.utm_campaign].filter(Boolean).join(' · ') || (a.fbclid ? 'facebook' : a.gclid ? 'google' : '')
+}

@@ -6,6 +6,8 @@ import { locations } from '../../data/liabahData'
 import { GlowField, SelectField, DateField, SubmitButton } from '../contactFields'
 import { YOUTH_GROUP_FIELDS, YOUTH_GROUP_PRODUCT } from '../../data/youthGroupFields'
 import { submitToHubSpot } from '../../lib/hubspot'
+import { trackEvent } from '../../lib/consent'
+import { getAttribution, newLeadId } from '../../lib/attribution'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -113,6 +115,7 @@ function TeamInterestForm({ team, city, onBack }) {
     // no changes. Extra keys = the chosen team (readable in the drawer + raw).
     const extraValues = Object.fromEntries(YOUTH_GROUP_FIELDS.map((f) => [f.name, form[f.name] ?? '']))
     const details = Object.fromEntries(YOUTH_GROUP_FIELDS.map((f) => [f.label, form[f.name] ?? '']))
+    const leadId = newLeadId()
     const payload = {
       name: form.name,
       phone: form.phone,
@@ -133,6 +136,8 @@ function TeamInterestForm({ team, city, onBack }) {
       submittedAt: new Date().toISOString(),
       source: 'fivefingers-website',
       pageUrl: window.location.href,
+      leadId,
+      attribution: getAttribution(),
     }
 
     // Same second destination ContactModal uses — fire-and-forget, so a HubSpot
@@ -155,6 +160,8 @@ function TeamInterestForm({ team, city, onBack }) {
         await new Promise((r) => setTimeout(r, 800))
       }
       setSubmitted(true)
+      // Same GTM conversion trigger as ContactModal — no personal details.
+      trackEvent('lead_submitted', { lead_id: leadId, form_name: 'liabah_map', product_type: YOUTH_GROUP_PRODUCT })
     } catch (err) {
       console.error('Team interest submission failed:', err)
       setStatus('error')

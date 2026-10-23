@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from './supabaseClient.js'
-import { DETAIL_FIELDS, FIELD_LABELS } from './constants.js'
+import { DETAIL_FIELDS, FIELD_LABELS, ATTRIBUTION_LABELS, getAttribution } from './constants.js'
 
 export default function Drawer({ row, onClose, onSaved }) {
   const [notes, setNotes] = useState(row.staff_notes || '')
@@ -40,6 +40,10 @@ export default function Drawer({ row, onClose, onSaved }) {
   }
 
   const detailRows = DETAIL_FIELDS.filter((f) => row[f] != null && String(row[f]).trim() !== '')
+  const attribution = getAttribution(row)
+  const attributionRows = attribution
+    ? Object.keys(ATTRIBUTION_LABELS).filter((k) => String(attribution[k] ?? '').trim())
+    : []
 
   return (
     <div className="fixed inset-0 z-50 flex">
@@ -80,6 +84,16 @@ export default function Drawer({ row, onClose, onSaved }) {
             <section className="space-y-3 pt-2 border-t border-line">
               {detailRows.map((f) => (
                 <Row key={f} label={FIELD_LABELS[f] || f} value={row[f]} multiline />
+              ))}
+            </section>
+          )}
+
+          {/* Which ad brought them (UTM tags on the ad link) */}
+          {attributionRows.length > 0 && (
+            <section className="space-y-3 pt-2 border-t border-line">
+              <div className="text-xs font-semibold text-navy/55">הגיע/ה מקמפיין</div>
+              {attributionRows.map((k) => (
+                <Row key={k} label={ATTRIBUTION_LABELS[k]} value={attribution[k]} ltr />
               ))}
             </section>
           )}

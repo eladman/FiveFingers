@@ -1,4 +1,4 @@
-import { CSV_COLUMNS, FIELD_LABELS } from './constants.js'
+import { CSV_COLUMNS, FIELD_LABELS, ATTRIBUTION_LABELS, getAttribution } from './constants.js'
 
 export function escapeCell(value) {
   if (value == null) return ''
@@ -19,12 +19,12 @@ function formatDate(iso) {
 
 // Turn rows into a CSV string with a UTF-8 BOM so Hebrew opens correctly in Excel.
 export function rowsToCsv(rows) {
-  const header = CSV_COLUMNS.map((c) => escapeCell(FIELD_LABELS[c] || headerFallback(c)))
+  const header = CSV_COLUMNS.map((c) => escapeCell(FIELD_LABELS[c] || ATTRIBUTION_LABELS[c] || headerFallback(c)))
   const lines = [header.join(',')]
 
   for (const row of rows) {
     const cells = CSV_COLUMNS.map((c) => {
-      let v = row[c]
+      let v = c.startsWith('utm_') ? getAttribution(row)?.[c] : row[c]
       if (c === 'created_at' || c === 'submitted_at') v = formatDate(v)
       return escapeCell(v)
     })

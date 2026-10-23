@@ -53,6 +53,8 @@ The form POSTs camelCase keys; the table uses snake_case. Map them like this in 
 | `submittedAt`    | `submitted_at`    | ISO 8601 timestamp                           |
 | `source`         | `source`          | always `fivefingers-website`                 |
 | `pageUrl`        | `page_url`        |                                              |
+| `leadId`         | `lead_id`         | random id, also on the GTM `lead_submitted` event — needs [`attribution.sql`](./attribution.sql) |
+| `attribution`    | `attribution`     | ad-campaign UTM tags (object or null) — needs [`attribution.sql`](./attribution.sql) |
 | *(entire body)*  | `raw_payload`     | optional backstop — see below                |
 
 Only `name`, `phone`, `email`, `product_type` are `NOT NULL`. Leave the rest unmapped
@@ -77,6 +79,26 @@ and select the Webhook module's whole output (the top-level `{{1}}` item, not an
 
 > `product_type` is intentionally free text — deep links can send unmapped values such as `Boost`
 > (from `src/data/academyData.js`). That's why there's no CHECK/enum constraint.
+
+### Campaign attribution
+
+Ad links carry UTM tags (`?utm_source=facebook&utm_campaign=…`). The site keeps them for 30 days
+(`src/lib/attribution.js`) and sends them with the lead as `attribution`:
+
+```json
+{ "utm_source": "facebook", "utm_medium": "paid_social", "utm_campaign": "academy_oct",
+  "utm_content": "video_1", "fbclid": "…", "landing_page": "/academy", "captured_at": "2026-10-23T08:45:52Z" }
+```
+
+1. Run [`attribution.sql`](./attribution.sql) once in the SQL Editor (adds `lead_id` + `attribution`).
+2. In the Make scenario's Supabase **Create a Row** module, map `leadId` → `lead_id` and
+   `attribution` → `attribution` (pick the Webhook's whole `attribution` collection, not a sub-field).
+   Until the webhook module has seen a payload with these keys, use **Re-determine data structure**
+   on the Webhook module (or submit one test lead) so they appear in the mapping picker.
+
+The dashboard shows the campaign in the table, the drawer and the CSV. It reads `attribution`, and
+falls back to `raw_payload.attribution`, so if `raw_payload` is already mapped to the whole body,
+sources show up even before step 2.
 
 ## Smoke test
 

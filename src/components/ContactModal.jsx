@@ -3,6 +3,8 @@ import { X, Phone, Mail, Check, ChevronDown } from 'lucide-react'
 import { WHATSAPP_HREF, PHONE_HREF, EMAIL, EMAIL_HREF, PHONE_DISPLAY } from '../data/contact'
 import { getLenis } from '../lib/smoothScroll'
 import { submitToHubSpot } from '../lib/hubspot'
+import { trackEvent } from '../lib/consent'
+import { getAttribution, newLeadId } from '../lib/attribution'
 import { GlowField, DateField, SelectField, SubmitButton } from './contactFields'
 import { YOUTH_GROUP_FIELDS } from '../data/youthGroupFields'
 
@@ -197,6 +199,10 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
     const extraValues = Object.fromEntries(extraFields.map((f) => [f.name, form[f.name] ?? '']))
     const details = Object.fromEntries(extraFields.map((f) => [f.label, form[f.name] ?? '']))
 
+    // Shared by the payload and the `lead_submitted` event, so a future
+    // server-side copy of the event (Meta Conversions API) can be de-duplicated.
+    const leadId = newLeadId()
+
     // Payload sent to the Make.com webhook that fires the thank-you automation.
     const payload = {
       name: form.name,
@@ -208,6 +214,9 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
       submittedAt: new Date().toISOString(),
       source: 'fivefingers-website',
       pageUrl: window.location.href,
+      leadId,
+      // The ad campaign that brought this visitor, if any (UTM tags + click ids).
+      attribution: getAttribution(),
     }
 
     // Mirror the lead into HubSpot as a Contact Record. Deliberately outside the
@@ -231,6 +240,9 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
         await new Promise((r) => setTimeout(r, 900))
       }
       setStatus('success')
+      // GTM trigger for the campaign's "Lead" conversion. Only the interest
+      // chip goes along — never the visitor's name, phone or email.
+      trackEvent('lead_submitted', { lead_id: leadId, form_name: 'contact', product_type: form.productType })
     } catch (err) {
       console.error('Contact form submission failed:', err)
       setStatus('error')

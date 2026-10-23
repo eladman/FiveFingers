@@ -23,7 +23,9 @@ import TeamPage from './pages/TeamPage'
 import AboutPage from './pages/AboutPage'
 import MemorialPage from './pages/MemorialPage'
 import AccessibilityPage from './pages/AccessibilityPage'
+import PrivacyPage from './pages/PrivacyPage'
 import SkipLink from './components/Accessibility/SkipLink'
+import ConsentBanner from './components/ConsentBanner'
 import HeroConcepts from './HeroConcepts'
 import { WHATSAPP_HREF } from './data/contact'
 import { getLenis } from './lib/smoothScroll'
@@ -140,7 +142,7 @@ export default function App() {
   }, [introDone])
 
   // Dedicated pages render their own Navbar immediately (no Hero intro to gate it).
-  const isDedicatedPage = view.startsWith('liabah') || view === 'academy' || view === 'collabs' || view === 'amir' || view === 'alumni' || view === 'about' || view === 'team' || view === 'accessibility'
+  const isDedicatedPage = view.startsWith('liabah') || view === 'academy' || view === 'collabs' || view === 'amir' || view === 'alumni' || view === 'about' || view === 'team' || view === 'accessibility' || view === 'privacy'
   const navVisible = isDedicatedPage || navReady
 
   const openContact = (product = '') => {
@@ -168,6 +170,7 @@ export default function App() {
         />
         <MemorialPage onContactOpen={() => openContact('')} />
         <AccessibilityWidget />
+        <ConsentBanner />
       </div>
     )
   }
@@ -180,7 +183,7 @@ export default function App() {
             not a photo), so the nav must start in its lifted/navy style there —
             the default white-on-transparent treatment would be invisible on it. */}
         <Navbar
-          forceLifted={view === 'about' || view === 'accessibility'}
+          forceLifted={view === 'about' || view === 'accessibility' || view === 'privacy'}
           onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')}
         />
       </div>
@@ -214,6 +217,8 @@ export default function App() {
         <TeamPage onContactOpen={openContact} />
       ) : view === 'accessibility' ? (
         <AccessibilityPage />
+      ) : view === 'privacy' ? (
+        <PrivacyPage />
       ) : (
         <main>
           {!introDone && <Preloader onDone={() => setIntroDone(true)} />}
@@ -259,6 +264,7 @@ export default function App() {
       </a>
 
       <AccessibilityWidget />
+      <ConsentBanner />
     </div>
   )
 }
