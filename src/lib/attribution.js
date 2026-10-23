@@ -51,6 +51,16 @@ export function getAttribution() {
   }
 }
 
+/**
+ * The same, as a JSON string ('' when untagged). Make's Supabase module only
+ * takes text for a jsonb column, so this is the field it maps into
+ * contact_submissions.attribution.
+ */
+export function getAttributionJson() {
+  const a = getAttribution()
+  return a ? JSON.stringify(a) : ''
+}
+
 /** Random id shared by a lead's form payload and its `lead_submitted` event. */
 export function newLeadId() {
   try {

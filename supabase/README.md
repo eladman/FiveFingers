@@ -92,7 +92,7 @@ Ad links carry UTM tags (`?utm_source=facebook&utm_campaign=…`). The site keep
 
 1. Run [`attribution.sql`](./attribution.sql) once in the SQL Editor (adds `lead_id` + `attribution`).
 2. In the Make scenario's Supabase **Create a Row** module, map `leadId` → `lead_id` and
-   `attribution` → `attribution` (pick the Webhook's whole `attribution` collection, not a sub-field).
+   `attributionJson` → `attribution` (a JSON string — the module only takes text for jsonb).
    Until the webhook module has seen a payload with these keys, use **Re-determine data structure**
    on the Webhook module (or submit one test lead) so they appear in the mapping picker.
 

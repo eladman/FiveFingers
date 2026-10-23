@@ -7,7 +7,7 @@ import { GlowField, SelectField, DateField, SubmitButton } from '../contactField
 import { YOUTH_GROUP_FIELDS, YOUTH_GROUP_PRODUCT } from '../../data/youthGroupFields'
 import { submitToHubSpot } from '../../lib/hubspot'
 import { trackEvent } from '../../lib/consent'
-import { getAttribution, newLeadId } from '../../lib/attribution'
+import { getAttribution, getAttributionJson, newLeadId } from '../../lib/attribution'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -138,6 +138,7 @@ function TeamInterestForm({ team, city, onBack }) {
       pageUrl: window.location.href,
       leadId,
       attribution: getAttribution(),
+      attributionJson: getAttributionJson(),
     }
 
     // Same second destination ContactModal uses — fire-and-forget, so a HubSpot

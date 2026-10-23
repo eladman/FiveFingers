@@ -85,11 +85,19 @@ export const ATTRIBUTION_LABELS = {
 
 /**
  * The lead's campaign tags, or null. Reads the dedicated `attribution` column,
- * falling back to the full payload in `raw_payload` for rows Make stored before
- * that column was mapped.
+ * falling back to the full payload in `raw_payload`.
  */
 export function getAttribution(row) {
-  const a = row?.attribution || row?.raw_payload?.attribution
+  let a = row?.attribution || row?.raw_payload?.attribution
+  // Make writes the column from a JSON string, which can land as a jsonb
+  // string rather than an object — unwrap it.
+  if (typeof a === 'string') {
+    try {
+      a = JSON.parse(a)
+    } catch {
+      return null
+    }
+  }
   return a && typeof a === 'object' ? a : null
 }
 

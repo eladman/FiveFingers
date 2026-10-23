@@ -4,7 +4,7 @@ import { WHATSAPP_HREF, PHONE_HREF, EMAIL, EMAIL_HREF, PHONE_DISPLAY } from '../
 import { getLenis } from '../lib/smoothScroll'
 import { submitToHubSpot } from '../lib/hubspot'
 import { trackEvent } from '../lib/consent'
-import { getAttribution, newLeadId } from '../lib/attribution'
+import { getAttribution, getAttributionJson, newLeadId } from '../lib/attribution'
 import { GlowField, DateField, SelectField, SubmitButton } from './contactFields'
 import { YOUTH_GROUP_FIELDS } from '../data/youthGroupFields'
 
@@ -217,6 +217,7 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
       leadId,
       // The ad campaign that brought this visitor, if any (UTM tags + click ids).
       attribution: getAttribution(),
+      attributionJson: getAttributionJson(), // what Make writes to contact_submissions.attribution
     }
 
     // Mirror the lead into HubSpot as a Contact Record. Deliberately outside the
