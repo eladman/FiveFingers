@@ -65,7 +65,7 @@ export default function LectureDetail({ lecture, rows, onBack, onEdit, onToggleO
               </button>
             ) : (
               <div className="flex flex-wrap items-center gap-2 rounded-full bg-red-50 py-1 pl-1 pr-4 text-sm text-red-700" role="alert">
-                למחוק את ההרצאה{rows.length ? ` ואת ${rows.length} המשובים שלה` : ''}?
+                למחוק את ההרצאה{rows.length === 1 ? ' ואת המשוב שלה' : rows.length ? ` ואת ${rows.length} המשובים שלה` : ''}?
                 <button type="button" className="rounded-full bg-red-600 px-4 py-1.5 font-bold text-white" disabled={busy} onClick={() => run(onDelete)}>
                   מחיקה
                 </button>

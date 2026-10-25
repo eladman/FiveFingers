@@ -14,7 +14,7 @@ export const CATEGORIES = [
   { key: 'education', label: 'חינוך' },
   { key: 'entrepreneurship', label: 'יזמות ועשייה' },
   { key: 'personal_growth', label: 'התפתחות אישית ומצוינות' },
-  { key: 'israeli_society', label: 'חברה ישראלית וחברות חברתית' },
+  { key: 'israeli_society', label: 'חברה ישראלית ואחריות חברתית' },
 ]
 
 const byKey = (list) => Object.fromEntries(list.map((x) => [x.key, x.label]))

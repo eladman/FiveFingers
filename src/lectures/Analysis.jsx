@@ -34,7 +34,7 @@ export default function Analysis({ lectures, feedback, onOpen }) {
           <p className="ds-eyebrow text-orange-ink mb-2">ניתוח</p>
           <h1 className="text-3xl font-bold">איך הלך לכל קטגוריה וקהל</h1>
           <p className="mt-2 text-navy/60">
-            {inRange.length} הרצאות · {total.n} משובים · משמעותיות ממוצעת {fmt1(total.meaningful)}
+            {inRange.length === 1 ? 'הרצאה אחת' : `${inRange.length} הרצאות`} · {total.n === 1 ? 'משוב אחד' : `${total.n} משובים`} · משמעותיות ממוצעת {fmt1(total.meaningful)}
           </p>
         </div>
         <div className="flex flex-wrap items-end gap-2">

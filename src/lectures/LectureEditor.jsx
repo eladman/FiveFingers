@@ -10,7 +10,7 @@ import { questionsFor, AUDIENCE_QUESTIONS } from '../feedback/questions'
 export default function LectureEditor({ lecture, responseCount = 0, onSave, onCancel }) {
   const editing = Boolean(lecture)
   const [title, setTitle] = useState(lecture?.title || '')
-  const [date, setDate] = useState(lecture?.lecture_date || new Date().toISOString().slice(0, 10))
+  const [date, setDate] = useState(lecture?.lecture_date || localToday())
   const [audience, setAudience] = useState(lecture?.audience || '')
   const [category, setCategory] = useState(lecture?.category || '')
   const [saving, setSaving] = useState(false)
@@ -59,7 +59,7 @@ export default function LectureEditor({ lecture, responseCount = 0, onSave, onCa
 
         <Field
           label="קהל יעד"
-          hint={audienceLocked ? 'נעול — כבר התקבלו משובים לפי קהל היעד הזה' : audience ? `${questionsFor(audience).length} שאלות${extra ? ` (כולל ${extra} ייעודיות לקהל הזה)` : ''}` : null}
+          hint={audienceLocked ? 'נעול — כבר התקבלו משובים לפי קהל היעד הזה' : audience ? `${questionsFor(audience).length} שאלות${extra === 1 ? ' (כולל שאלה אחת ייעודית לקהל הזה)' : extra ? ` (כולל ${extra} ייעודיות לקהל הזה)` : ''}` : null}
         >
           <Picker options={AUDIENCES} value={audience} onChange={setAudience} disabled={audienceLocked} columns="grid-cols-2" />
         </Field>
@@ -79,6 +79,14 @@ export default function LectureEditor({ lecture, responseCount = 0, onSave, onCa
       </div>
     </form>
   )
+}
+
+// Today in the browser's timezone — toISOString() is UTC, which is still
+// "yesterday" in Israel until 02:00/03:00.
+function localToday() {
+  const d = new Date()
+  const pad = (n) => String(n).padStart(2, '0')
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
 }
 
 function Field({ label, hint, htmlFor, children }) {

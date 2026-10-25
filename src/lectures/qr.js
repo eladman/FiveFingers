@@ -33,9 +33,15 @@ export async function downloadPng(url, filename) {
   const canvas = document.createElement('canvas')
   await QRCode.toCanvas(canvas, url, { ...OPTS, margin: 3, width: 1200 })
   const ctx = canvas.getContext('2d')
+  // onload, not img.decode(): decode() waits for a rendered frame, so it can
+  // hang in a background tab and the download silently never happens.
+  const src = await logoDataUrl()
   const img = new Image()
-  img.src = await logoDataUrl()
-  await img.decode()
+  await new Promise((resolve, reject) => {
+    img.onload = resolve
+    img.onerror = reject
+    img.src = src
+  })
   const s = canvas.width * LOGO_RATIO
   const x = (canvas.width - s) / 2
   ctx.fillStyle = '#fff'

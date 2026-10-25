@@ -59,7 +59,8 @@ export default function FeedbackForm({ lecture, questions, onSubmit }) {
   }
 
   return (
-    <div className="fb-stage relative min-h-[100dvh] text-white overflow-hidden" dir="rtl">
+    // overflow-clip (not hidden) so the sticky footer below still pins to the viewport.
+    <div className="fb-stage relative min-h-[100dvh] text-white overflow-clip" dir="rtl">
       <div className="fb-glow" aria-hidden="true" />
 
       {step === -1 && <Welcome lecture={lecture} count={n} onStart={() => setStep(0)} />}
@@ -120,7 +121,8 @@ export default function FeedbackForm({ lecture, questions, onSubmit }) {
             </div>
           </main>
 
-          <footer>
+          {/* Pinned so "המשך" stays in thumb reach on long questions (topic has 8 options). */}
+          <footer className="sticky bottom-0 -mx-5 bg-gradient-to-t from-navy-deep from-70% to-transparent px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6 -mb-6">
             {sendError && (
               <p className="mb-3 rounded-2xl bg-white/[0.06] px-4 py-3 text-center text-sm text-white/80" role="alert">
                 השליחה לא הצליחה. בדקו את החיבור לאינטרנט ונסו שוב — התשובות נשמרו כאן.

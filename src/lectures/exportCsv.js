@@ -27,13 +27,19 @@ export function exportResponses(rows, lectures, filename) {
       AUDIENCE_LABEL[l.audience],
       CATEGORY_LABEL[l.category],
       ...ALL_QUESTIONS.flatMap((q) => [
-        cell(q, r[q.id]),
-        ...(q.otherId ? [r[q.otherId] || ''] : []),
-        ...(q.emailOnYes ? [r[q.emailId] || ''] : []),
+        noFormula(cell(q, r[q.id])),
+        ...(q.otherId ? [noFormula(r[q.otherId] || '')] : []),
+        ...(q.emailOnYes ? [noFormula(r[q.emailId] || '')] : []),
       ]),
     ]
   })
   downloadTable(header, body, filename)
+}
+
+// Answers come from anonymous listeners; a cell starting with = + - @ would run
+// as a formula when the CSV is opened in Excel. A leading ' keeps it as text.
+function noFormula(v) {
+  return typeof v === 'string' && /^[=+\-@\t\r]/.test(v) ? `'${v}` : v
 }
 
 function cell(q, v) {

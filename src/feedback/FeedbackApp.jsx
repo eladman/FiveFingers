@@ -44,6 +44,9 @@ export default function FeedbackApp() {
         onSubmit={async (answers) => {
           const res = await submitFeedback(lecture, answers)
           if (!res.error) markAnswered(lecture.id)
+          // Staff closed the lecture while this form was open — RLS rejects the
+          // insert. Say so, instead of the form's "check your connection".
+          else if (/row-level security/i.test(res.error)) setState({ status: 'closed', lecture })
           return res
         }}
       />
