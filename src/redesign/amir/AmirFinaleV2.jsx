@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Button from '../../components/ui/Button'
 import useMagnetic from '../useMagnetic'
 import { STUDIO } from '../../data/amirData'
-import { WHATSAPP_HREF, PHONE_HREF, PHONE_DISPLAY, EMAIL, EMAIL_HREF } from '../../data/contact'
+import { AMIR_WHATSAPP_HREF, AMIR_PHONE_HREF, AMIR_PHONE_DISPLAY, EMAIL, EMAIL_HREF } from '../../data/contact'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -89,7 +89,7 @@ export default function AmirFinaleV2({ onBook }) {
           <Button
             variant="ghost"
             size="lg"
-            href={WHATSAPP_HREF}
+            href={AMIR_WHATSAPP_HREF}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -102,8 +102,8 @@ export default function AmirFinaleV2({ onBook }) {
           className="afn-el mt-14 pt-6 border-t border-white/15 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-heebo text-sm md:text-base"
           style={{ textShadow: '0 1px 10px rgba(0,0,0,0.7)' }}
         >
-          <a href={PHONE_HREF} dir="ltr" className="tap-safe text-white/60 hover:text-white transition-colors">
-            {PHONE_DISPLAY}
+          <a href={AMIR_PHONE_HREF} dir="ltr" className="tap-safe text-white/60 hover:text-white transition-colors">
+            {AMIR_PHONE_DISPLAY}
           </a>
           <span className="w-1 h-1 rounded-full bg-orange inline-block" aria-hidden="true" />
           <a href={EMAIL_HREF} dir="ltr" className="tap-safe text-white/60 hover:text-white transition-colors">

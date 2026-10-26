@@ -1,12 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
 import { X, Phone, Mail, Check, ChevronDown } from 'lucide-react'
-import { WHATSAPP_HREF, PHONE_HREF, EMAIL, EMAIL_HREF, PHONE_DISPLAY } from '../data/contact'
+import {
+  WHATSAPP_HREF, PHONE_HREF, EMAIL, EMAIL_HREF, PHONE_DISPLAY,
+  AMIR_PRODUCT, AMIR_WHATSAPP_HREF, AMIR_PHONE_HREF, AMIR_PHONE_DISPLAY,
+} from '../data/contact'
 import { getLenis } from '../lib/smoothScroll'
 import { submitToHubSpot } from '../lib/hubspot'
 import { trackEvent } from '../lib/consent'
 import { getAttribution, getAttributionJson, newLeadId } from '../lib/attribution'
 import { GlowField, DateField, SelectField, SubmitButton } from './contactFields'
 import { YOUTH_GROUP_FIELDS } from '../data/youthGroupFields'
+import { AMIR_FIELDS } from '../data/amirFields'
 
 // Interest options grouped by life-stage / intent, so youth, pre-army young
 // adults, graduates, and organizations each see their own lane instead of one
@@ -71,6 +75,7 @@ const EXTRA_FIELDS = {
   'קבוצות הנוער': YOUTH_GROUP_FIELDS,
   'שיתוף פעולה': PARTNERSHIP_FIELDS,
   'יואב': ALUMNI_FIELDS,
+  [AMIR_PRODUCT]: AMIR_FIELDS,
 }
 
 const INITIAL_FORM = { name: '', phone: '', email: '', productType: '' }
@@ -84,7 +89,14 @@ const CONTACT_CHANNELS = [
   { Icon: Mail, label: 'מייל', value: EMAIL, href: EMAIL_HREF },
 ]
 
-export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
+// Reaching out to עמיר directly goes to his own line, not the movement's.
+const AMIR_CHANNELS = [
+  { Icon: WhatsAppIcon, label: 'וואטסאפ', value: 'שלחו הודעה', href: AMIR_WHATSAPP_HREF },
+  { Icon: Phone, label: 'טלפון', value: AMIR_PHONE_DISPLAY, href: AMIR_PHONE_HREF },
+  { Icon: Mail, label: 'מייל', value: EMAIL, href: EMAIL_HREF },
+]
+
+export default function ContactModal({ isOpen, onClose, defaultProduct = '', defaultValues = null }) {
   const [form, setForm] = useState(INITIAL_FORM)
   const [status, setStatus] = useState('idle') // idle | loading | success
   const [jobsOpen, setJobsOpen] = useState(false) // "משרות בתנועה" role sub-panel expanded?
@@ -102,7 +114,9 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
     if (isOpen) {
       openerRef.current = document.activeElement
       const product = normalizeType(defaultProduct)
-      setForm({ ...INITIAL_FORM, productType: product })
+      // A page CTA can also pre-answer one of the interest's own questions
+      // (e.g. עמיר's "הזמינו הרצאה" card arrives with amirTopic = 'הרצאות').
+      setForm({ ...INITIAL_FORM, ...defaultValues, productType: product })
       setStatus('idle')
       // If a page opened us tagged with a specific role, expand the jobs panel.
       setJobsOpen(JOB_ROLES.includes(product))
@@ -125,7 +139,7 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
       document.body.style.overflow = ''
       getLenis()?.start()
     }
-  }, [isOpen, defaultProduct])
+  }, [isOpen, defaultProduct, defaultValues])
 
   useEffect(() => {
     // Esc closes; Tab / Shift+Tab wrap inside the dialog (it is aria-modal).
@@ -426,7 +440,7 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
               </>
             )}
 
-            <ContactBar />
+            <ContactBar productType={form.productType} />
           </div>
         </div>
       </div>
@@ -460,14 +474,15 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '' }) {
 /* Quick contact channels — sits at the very bottom of the form for every
    screen size (replaces the old navy brand panel). Each channel shows its
    icon, label, and the actual value (number / address). */
-function ContactBar() {
+function ContactBar({ productType }) {
+  const channels = productType === AMIR_PRODUCT ? AMIR_CHANNELS : CONTACT_CHANNELS
   return (
     <div className="mt-7 pt-6" style={{ borderTop: '1px solid #eef0f3' }}>
       <p className="text-xs font-semibold mb-3" style={{ color: '#9aa0ad' }}>
         או דברו איתנו ישירות
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-        {CONTACT_CHANNELS.map(({ Icon, label, value, href }) => (
+        {channels.map(({ Icon, label, value, href }) => (
           <a
             key={label}
             href={href}

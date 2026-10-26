@@ -49,7 +49,8 @@ The form POSTs camelCase keys; the table uses snake_case. Map them like this in 
 | `orgName`        | `org_name`        | partnership                                  |
 | `orgRole`        | `org_role`        | partnership                                  |
 | `targetDate`     | `target_date`     | partnership — `DD/MM/YYYY` string            |
-| `inquiryDetails` | `inquiry_details` | alumni + partnership (shared)                |
+| `inquiryDetails` | `inquiry_details` | alumni + partnership + קשר עם עמיר (shared)  |
+| `amirTopic`      | `amir_topic`      | קשר עם עמיר — `הרצאות` / `סדנאות` / `ליווי אישי` — needs [`amir_topic.sql`](./amir_topic.sql) |
 | `submittedAt`    | `submitted_at`    | ISO 8601 timestamp                           |
 | `source`         | `source`          | always `fivefingers-website`                 |
 | `pageUrl`        | `page_url`        |                                              |
@@ -75,7 +76,8 @@ and select the Webhook module's whole output (the top-level `{{1}}` item, not an
 | Job roles — `מאמן/ת`, `הדרכה בהזנק`, `צוות מטה`, `הדרכה במכינה` | `residence`, `birth_date`, `experience`, `certificates`  |
 | Partnership — `שיתוף פעולה`                        | `org_name`, `org_role`, `inquiry_details`, `target_date` |
 | Alumni — `יואב`                                    | `inquiry_details`                                        |
-| `מכינה`, `הזנק`, `כרמל`, `קשר עם עמיר`             | *(core fields only)*                                     |
+| Amir — `קשר עם עמיר`                               | `amir_topic`, `inquiry_details`                          |
+| `מכינה`, `הזנק`, `כרמל`                            | *(core fields only)*                                     |
 
 > `product_type` is intentionally free text — deep links can send unmapped values such as `Boost`
 > (from `src/data/academyData.js`). That's why there's no CHECK/enum constraint.

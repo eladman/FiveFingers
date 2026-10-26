@@ -26,7 +26,8 @@ export const STATS = [
   { value: '+1,000', label: 'הרצאות ברחבי הארץ' },
 ]
 
-// "הזירות שלנו" — the three offerings. `contactLabel` tags the shared ContactModal;
+// "הזירות שלנו" — the three offerings. `contactLabel` tags the shared ContactModal
+// and `contactTopic` pre-selects its "במה מדובר?" category (see amirFields.js);
 // a zone with `href` instead links out (workshop 0→1 site — sent later).
 export const ZONES = [
   {
@@ -39,6 +40,7 @@ export const ZONES = [
     imagePosition: 'top',
     cta: 'הזמינו הרצאה',
     contactLabel: 'קשר עם עמיר',
+    contactTopic: 'הרצאות',
   },
   {
     icon: Rocket,
@@ -58,6 +60,7 @@ export const ZONES = [
     imageSrc: '/Amir_pics/amir-studio.webp',
     cta: 'לתיאום ליווי',
     contactLabel: 'קשר עם עמיר',
+    contactTopic: 'ליווי אישי',
   },
 ]
 

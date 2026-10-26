@@ -6,20 +6,19 @@
   of the Make "Send an Email" module.
 
   SUGGESTED SUBJECT (Make → Subject field):
-    🔥 פנייה חדשה לעמיר — {{name}} · {{phone}}
+    פנייה חדשה לקשר עם עמיר · {{ifempty(1.amirTopic; "כללי")}}
 
   MERGE TAGS — map these from the webhook body:
-    {{name}}        → name          (שם מלא)
-    {{phone}}       → phone         (טלפון, כפי שהוקלד)
-    {{email}}       → email
-    {{productType}} → productType   ("קשר עם עמיר")
-    {{submittedAt}} → submittedAt   (ISO — עדיף לעטוף ב-formatDate)
-    {{pageUrl}}     → pageUrl       (הדף שממנו נשלחה הפנייה)
-    {{waPhone}}     → phone מנוקה לפורמט בינלאומי, לכפתור הוואטסאפ.
-                      נוסחה ל-Make:
-                      "972" + substring(replace(replace(replace(1.phone; "-"; ""); " "; ""); "+"; ""); 1; 10)
-                      ...כשה-0 המוביל כבר הוסר. הדרך הבטוחה יותר:
-                      replace(replace(replace(1.phone; "-"; ""); " "; ""); "^0"; "972")   [Regex mode]
+    {{1.name}}        → name          (שם מלא)
+    {{1.phone}}       → phone         (טלפון, כפי שהוקלד)
+    {{1.email}}       → email
+    {{1.productType}} → productType   ("קשר עם עמיר")
+    {{1.submittedAt}} → submittedAt   (ISO — עדיף לעטוף ב-formatDate)
+    {{1.pageUrl}}     → pageUrl       (הדף שממנו נשלחה הפנייה)
+    {{1.amirTopic}}   → amirTopic     (במה מדובר? — הרצאות / סדנאות / ליווי אישי)
+    {{1.inquiryDetails}} → inquiryDetails (ספרו לנו עוד — לא חובה)
+    WhatsApp button  → phone מנוקה לפורמט בינלאומי (ספרות בלבד, 0 מוביל → 972):
+                      {{replace(replace(1.phone; "/[^0-9]/g"; ""); "/^0/"; "972")}}
 
   LOGO — email clients need an absolute URL. Replace LOGO_URL with the live file,
   e.g. https://fivefingers.co.il/logo.png
@@ -40,7 +39,7 @@
 
   <!-- Preheader (hidden preview text in the inbox list) -->
   <div style="display:none; max-height:0; overflow:hidden; opacity:0; font-size:1px; line-height:1px; color:#eef0f4;">
-    {{name}} · {{phone}} · ביקש/ה קשר ישיר עם עמיר
+    {{1.name}} · {{1.phone}} · {{ifempty(1.amirTopic; "ביקש/ה קשר ישיר עם עמיר")}}
   </div>
 
   <table dir="rtl" role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#eef0f4; direction:rtl;">
@@ -80,7 +79,7 @@
           <tr>
             <td dir="rtl" style="padding:30px 32px 4px 32px; font-family:Arial,Helvetica,sans-serif; text-align:right; direction:rtl;">
               <p style="margin:0 0 6px 0; font-size:12px; letter-spacing:1px; color:#9aa0ad; font-weight:700;">מי פנה/תה</p>
-              <p style="margin:0; font-size:30px; line-height:1.2; color:#0d1b4b; font-weight:800;">{{name}}</p>
+              <p style="margin:0; font-size:30px; line-height:1.2; color:#0d1b4b; font-weight:800;">{{1.name}}</p>
             </td>
           </tr>
 
@@ -90,19 +89,19 @@
               <table dir="rtl" role="presentation" cellpadding="0" cellspacing="0" border="0" style="direction:rtl;">
                 <tr>
                   <td style="border-radius:28px; background-color:#25D366;">
-                    <a href="https://wa.me/{{waPhone}}" target="_blank" style="display:inline-block; padding:12px 24px; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:700; color:#ffffff; text-decoration:none; border-radius:28px;">
+                    <a href="https://wa.me/{{replace(replace(1.phone; "/[^0-9]/g"; ""); "/^0/"; "972")}}" target="_blank" style="display:inline-block; padding:12px 24px; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:700; color:#ffffff; text-decoration:none; border-radius:28px;">
                       וואטסאפ 💬
                     </a>
                   </td>
                   <td style="width:9px; font-size:0; line-height:0;">&nbsp;</td>
                   <td style="border-radius:28px; background-color:#ff8714;">
-                    <a href="tel:{{phone}}" style="display:inline-block; padding:12px 24px; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:700; color:#ffffff; text-decoration:none; border-radius:28px;">
+                    <a href="tel:{{1.phone}}" style="display:inline-block; padding:12px 24px; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:700; color:#ffffff; text-decoration:none; border-radius:28px;">
                       חיוג 📞
                     </a>
                   </td>
                   <td style="width:9px; font-size:0; line-height:0;">&nbsp;</td>
                   <td style="border-radius:28px; background-color:#ffffff; border:1.5px solid #d9dde5;">
-                    <a href="mailto:{{email}}" style="display:inline-block; padding:11px 22px; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:700; color:#0d1b4b; text-decoration:none; border-radius:28px;">
+                    <a href="mailto:{{1.email}}" style="display:inline-block; padding:11px 22px; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:700; color:#0d1b4b; text-decoration:none; border-radius:28px;">
                       מייל ✉️
                     </a>
                   </td>
@@ -120,7 +119,7 @@
                 <tr>
                   <td dir="rtl" style="padding:15px 20px 13px 20px; font-family:Arial,Helvetica,sans-serif; text-align:right; border-bottom:1px solid #eef0f3;">
                     <span style="display:block; font-size:12px; color:#9aa0ad; margin-bottom:3px;">טלפון</span>
-                    <a href="tel:{{phone}}" dir="ltr" style="display:block; font-size:17px; font-weight:700; color:#0d1b4b; text-decoration:none; text-align:right;">{{phone}}</a>
+                    <a href="tel:{{1.phone}}" dir="ltr" style="display:block; font-size:17px; font-weight:700; color:#0d1b4b; text-decoration:none; text-align:right;">{{1.phone}}</a>
                   </td>
                 </tr>
 
@@ -128,15 +127,23 @@
                 <tr>
                   <td dir="rtl" style="padding:13px 20px; font-family:Arial,Helvetica,sans-serif; text-align:right; border-bottom:1px solid #eef0f3;">
                     <span style="display:block; font-size:12px; color:#9aa0ad; margin-bottom:3px;">מייל</span>
-                    <a href="mailto:{{email}}" dir="ltr" style="display:block; font-size:16px; font-weight:700; color:#0d1b4b; text-decoration:none; text-align:right; word-break:break-all;">{{email}}</a>
+                    <a href="mailto:{{1.email}}" dir="ltr" style="display:block; font-size:16px; font-weight:700; color:#0d1b4b; text-decoration:none; text-align:right; word-break:break-all;">{{1.email}}</a>
                   </td>
                 </tr>
 
-                <!-- Interest -->
+                <!-- Interest: the category picked in the form (הרצאות / סדנאות / ליווי אישי) -->
+                <tr>
+                  <td dir="rtl" style="padding:13px 20px 15px 20px; font-family:Arial,Helvetica,sans-serif; text-align:right; border-bottom:1px solid #eef0f3;">
+                    <span style="display:block; font-size:12px; color:#9aa0ad; margin-bottom:5px;">נושא הפנייה</span>
+                    <span style="display:inline-block; background-color:#fff3e6; border:1px solid #ffd9b0; border-radius:20px; padding:6px 14px; font-size:14px; font-weight:800; color:#ff8714;">{{ifempty(1.amirTopic; 1.productType)}}</span>
+                  </td>
+                </tr>
+
+                <!-- Details: optional free text ("ספרו לנו עוד") -->
                 <tr>
                   <td dir="rtl" style="padding:13px 20px 15px 20px; font-family:Arial,Helvetica,sans-serif; text-align:right;">
-                    <span style="display:block; font-size:12px; color:#9aa0ad; margin-bottom:5px;">נושא הפנייה</span>
-                    <span style="display:inline-block; background-color:#fff3e6; border:1px solid #ffd9b0; border-radius:20px; padding:6px 14px; font-size:14px; font-weight:800; color:#ff8714;">{{productType}}</span>
+                    <span style="display:block; font-size:12px; color:#9aa0ad; margin-bottom:5px;">פירוט</span>
+                    <span style="display:block; font-size:15px; line-height:1.6; color:#0d1b4b; white-space:pre-line;">{{ifempty(1.inquiryDetails; "—")}}</span>
                   </td>
                 </tr>
 
@@ -157,10 +164,10 @@
           <tr>
             <td dir="rtl" style="background-color:#f7f8fa; border-top:1px solid #eef0f3; padding:16px 32px; font-family:Arial,Helvetica,sans-serif; text-align:right; direction:rtl;">
               <p style="margin:0 0 4px 0; font-size:12px; line-height:1.7; color:#9aa0ad;">
-                נשלח: <strong style="color:#6b7180;">{{submittedAt}}</strong>
+                נשלח: <strong style="color:#6b7180;">{{1.submittedAt}}</strong>
               </p>
               <p style="margin:0; font-size:12px; line-height:1.7; color:#9aa0ad; word-break:break-all;">
-                מהדף: <a href="{{pageUrl}}" target="_blank" style="color:#9aa0ad; text-decoration:underline;">{{pageUrl}}</a>
+                מהדף: <a href="{{1.pageUrl}}" target="_blank" style="color:#9aa0ad; text-decoration:underline;">{{1.pageUrl}}</a>
               </p>
             </td>
           </tr>

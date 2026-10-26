@@ -15,11 +15,12 @@ import AmirFinaleV2 from '../redesign/amir/AmirFinaleV2'
  * tag it per zone ('קשר עם עמיר' matches the interest chip so it preselects).
  */
 export default function AmirPage({ onContactOpen }) {
-  const onBook = (label = 'קשר עם עמיר') => onContactOpen?.(label)
+  const onBook = (label = 'קשר עם עמיר', preset) => onContactOpen?.(label, preset)
 
   return (
     <main>
-      <AmirHeroV2 onBook={() => onBook()} />
+      {/* The hero's CTA is "הזמינו הרצאה", so it arrives with the topic picked. */}
+      <AmirHeroV2 onBook={() => onBook(undefined, { amirTopic: 'הרצאות' })} />
       <AmirEssenceV2 />
       <AmirZonesV2 onBook={onBook} />
       <AmirContentV2 />

@@ -35,7 +35,7 @@ function ZoneCta({ zone, onBook }) {
       {inner}
     </a>
   ) : (
-    <button type="button" onClick={() => onBook?.(zone.contactLabel)} className={cls}>
+    <button type="button" onClick={() => onBook?.(zone.contactLabel, zone.contactTopic && { amirTopic: zone.contactTopic })} className={cls}>
       {inner}
     </button>
   )

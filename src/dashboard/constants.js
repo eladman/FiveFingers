@@ -20,6 +20,7 @@ export const FIELD_LABELS = {
   org_name: 'ארגון',
   org_role: 'תפקיד בארגון',
   target_date: 'תאריך מבוקש',
+  amir_topic: 'נושא (עמיר)',
   inquiry_details: 'פירוט הפנייה',
   submitted_at: 'נשלח בתאריך',
   source: 'מקור',
@@ -40,6 +41,7 @@ export const DETAIL_FIELDS = [
   'org_name',
   'org_role',
   'target_date',
+  'amir_topic',
   'inquiry_details',
   'notes',
 ]
@@ -63,6 +65,7 @@ export const CSV_COLUMNS = [
   'org_name',
   'org_role',
   'target_date',
+  'amir_topic',
   'inquiry_details',
   'notes',
   'source',

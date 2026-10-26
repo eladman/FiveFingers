@@ -27,7 +27,7 @@ import PrivacyPage from './pages/PrivacyPage'
 import SkipLink from './components/Accessibility/SkipLink'
 import ConsentBanner from './components/ConsentBanner'
 import HeroConcepts from './HeroConcepts'
-import { WHATSAPP_HREF } from './data/contact'
+import { WHATSAPP_HREF, AMIR_WHATSAPP_HREF } from './data/contact'
 import { getLenis } from './lib/smoothScroll'
 import { resolveView, onRouteChange, installLinkInterception } from './lib/router'
 import { applyMeta } from './lib/seo'
@@ -55,6 +55,7 @@ export default function App() {
   const [introDone, setIntroDone] = useState(() => !shouldShowPreloader())
   const [contactOpen, setContactOpen] = useState(false)
   const [contactProduct, setContactProduct] = useState('')
+  const [contactPreset, setContactPreset] = useState(null)
   const [view, setView] = useState(() => resolveView())
 
   // #contact is a special case: not a page view, just a request to pop the
@@ -64,6 +65,7 @@ export default function App() {
   const openContactFromHash = () => {
     if (window.location.hash.startsWith('#contact')) {
       setContactProduct('')
+      setContactPreset(null)
       setContactOpen(true)
       history.replaceState(null, '', window.location.pathname + window.location.search)
       return true
@@ -145,8 +147,10 @@ export default function App() {
   const isDedicatedPage = view.startsWith('liabah') || view === 'academy' || view === 'collabs' || view === 'amir' || view === 'alumni' || view === 'about' || view === 'team' || view === 'accessibility' || view === 'privacy'
   const navVisible = isDedicatedPage || navReady
 
-  const openContact = (product = '') => {
+  // `preset` pre-fills the interest's own questions, e.g. { amirTopic: 'הרצאות' }.
+  const openContact = (product = '', preset = null) => {
     setContactProduct(product)
+    setContactPreset(preset)
     setContactOpen(true)
   }
 
@@ -167,6 +171,7 @@ export default function App() {
           isOpen={contactOpen}
           onClose={() => setContactOpen(false)}
           defaultProduct={contactProduct}
+          defaultValues={contactPreset}
         />
         <MemorialPage onContactOpen={() => openContact('')} />
         <AccessibilityWidget />
@@ -191,6 +196,7 @@ export default function App() {
         isOpen={contactOpen}
         onClose={() => setContactOpen(false)}
         defaultProduct={contactProduct}
+        defaultValues={contactPreset}
       />
 
       {view === 'liabah' ? (
@@ -234,9 +240,9 @@ export default function App() {
       )}
       <Footer onContactOpen={() => openContact(VIEW_TO_PRODUCT[view] || '')} />
 
-      {/* Floating WhatsApp button */}
+      {/* Floating WhatsApp button — on עמיר's page it goes to his own line */}
       <a
-        href={WHATSAPP_HREF}
+        href={view === 'amir' ? AMIR_WHATSAPP_HREF : WHATSAPP_HREF}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="שלחו לנו הודעה בוואטסאפ"
