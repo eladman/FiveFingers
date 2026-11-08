@@ -14,7 +14,7 @@ create table if not exists public.contact_submissions (
   -- core (always present)
   name          text        not null,
   phone         text        not null,
-  email         text        not null,
+  email         text,                           -- null for Facebook Instant Form leads (see facebook_leads.sql)
   product_type  text        not null,          -- chip or raw deep-link value (free text, e.g. "Boost")
 
   -- job-role extras (מאמן/ת, הדרכה בהזנק, צוות מטה, הדרכה במכינה)
