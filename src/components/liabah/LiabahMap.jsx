@@ -5,7 +5,6 @@ import { MapPin, Clock, X, ChevronLeft, ChevronRight, Check, Users } from 'lucid
 import { locations } from '../../data/liabahData'
 import { GlowField, SelectField, DateField, SubmitButton } from '../contactFields'
 import { YOUTH_GROUP_FIELDS, YOUTH_GROUP_PRODUCT } from '../../data/youthGroupFields'
-import { submitToHubSpot } from '../../lib/hubspot'
 import { trackEvent } from '../../lib/consent'
 import { getAttribution, getAttributionJson, newLeadId } from '../../lib/attribution'
 
@@ -140,10 +139,6 @@ function TeamInterestForm({ team, city, onBack }) {
       attribution: getAttribution(),
       attributionJson: getAttributionJson(),
     }
-
-    // Same second destination ContactModal uses — fire-and-forget, so a HubSpot
-    // failure never reaches the parent filling this in.
-    submitToHubSpot(payload)
 
     const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL
 

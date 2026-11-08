@@ -5,8 +5,8 @@ import { openConsentSettings } from '../lib/consent'
  * מדיניות פרטיות — /privacy, linked from every footer and from the consent banner.
  *
  * Written to describe what the site ACTUALLY does today (forms → Make.com →
- * Supabase + HubSpot, the cookieless page-view counter, HubSpot's tracking
- * cookie, and GTM / Meta Pixel behind the consent banner). When any of that
+ * Supabase, the cookieless page-view counter, and GTM / Meta Pixel behind the
+ * consent banner). When any of that
  * changes, change this page in the same commit. A policy that promises less
  * collection than really happens is worse than none.
  *
@@ -41,7 +41,6 @@ const USES = [
 const PROVIDERS = [
   ['Make.com', 'מעבירה את הפרטים מהטופס למערכות שלנו ושולחת את הודעת האישור.'],
   ['Supabase', 'מסד הנתונים שבו נשמרות הפניות.'],
-  ['HubSpot', 'מערכת ניהול הקשר עם פונים (CRM).'],
   ['Google ו־Meta', 'כלי מדידה ופרסום, רק אם אישרתם (פירוט בהמשך).'],
 ]
 
@@ -55,11 +54,6 @@ const COOKIES = [
     name: 'מקור קמפיין',
     when: 'תמיד',
     what: 'אם הגעתם מקישור במודעה, הדפדפן שלכם שומר עד 30 יום מאיזה קמפיין הגעתם. המידע נשלח אלינו רק יחד עם טופס שבחרתם לשלוח, ולא מועבר ל־Google או ל־Meta.',
-  },
-  {
-    name: 'HubSpot',
-    when: 'תמיד',
-    what: 'עוגייה שמקשרת בין הביקורים שלכם באתר לבין פנייה שתשלחו, כדי שנדע באילו עמודים ביקרתם לפני הפנייה.',
   },
   {
     name: 'Google Tag Manager ו־Meta Pixel',

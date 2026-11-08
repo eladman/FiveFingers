@@ -5,7 +5,6 @@ import {
   AMIR_PRODUCT, AMIR_WHATSAPP_HREF, AMIR_PHONE_HREF, AMIR_PHONE_DISPLAY,
 } from '../data/contact'
 import { getLenis } from '../lib/smoothScroll'
-import { submitToHubSpot } from '../lib/hubspot'
 import { trackEvent } from '../lib/consent'
 import { getAttribution, getAttributionJson, newLeadId } from '../lib/attribution'
 import { GlowField, DateField, SelectField, SubmitButton } from './contactFields'
@@ -233,11 +232,6 @@ export default function ContactModal({ isOpen, onClose, defaultProduct = '', def
       attribution: getAttribution(),
       attributionJson: getAttributionJson(), // what Make writes to contact_submissions.attribution
     }
-
-    // Mirror the lead into HubSpot as a Contact Record. Deliberately outside the
-    // try below and not awaited: the visitor's success/error state stays driven
-    // purely by Make.com, so HubSpot can never break the form.
-    submitToHubSpot(payload)
 
     const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL
 
