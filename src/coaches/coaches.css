@@ -1,0 +1,151 @@
+/* Standalone coaches-course page — its own Tailwind build, see
+   tailwind.coaches.config.js. Everything below the compat block is the
+   original page's stylesheet, unchanged. */
+@config "../../tailwind.coaches.config.js";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #1B2541;
+  --color-navy-light: #243052;
+  --color-navy-dark: #111a30;
+  --color-orange: #E8862A;
+  --color-orange-hover: #d4781f;
+  --color-orange-light: #f5a84d;
+  --color-cream: #FDF8F3;
+  --color-sand: #F5F0EB;
+  --color-charcoal: #2D2D2D;
+  --font-heebo: 'Heebo', sans-serif;
+  --font-frank: 'Heebo', sans-serif;
+}
+
+/* v4 line-height model — see tailwind.coaches.config.js */
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+
+/* v4 preflight differences the original was built against */
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    border-color: currentColor;
+  }
+  input::placeholder, textarea::placeholder {
+    color: color-mix(in oklab, currentColor 50%, transparent);
+  }
+}
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(232, 134, 42, 0.3) transparent;
+}
+
+body {
+  font-family: var(--font-heebo);
+  overflow-x: clip;
+  max-width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  overflow-x: clip;
+  max-width: 100%;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(232, 134, 42, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 134, 42, 0.6);
+}
+
+/* Display headings */
+.font-display {
+  font-family: var(--font-heebo);
+}
+
+/* FAQ accordion animation */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq-answer.open {
+  grid-template-rows: 1fr;
+}
+.faq-answer > div {
+  overflow: hidden;
+}
+
+/* Grain overlay */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated underline */
+.animated-underline {
+  position: relative;
+}
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-orange);
+  transition: width 0.3s ease;
+}
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Ken Burns drift */
+@keyframes ken-burns {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.08) translate(-1%, -0.5%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+.ken-burns {
+  animation: ken-burns 20s ease-in-out infinite;
+}
+
+/* Shimmer button */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.13) 50%, transparent 60%);
+  animation: shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}

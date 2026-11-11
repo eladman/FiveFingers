@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './dashboard.html', './feedback.html', './lectures.html', './src/**/*.{js,jsx,ts,tsx}'],
+  // src/coaches has its own palette + config (tailwind.coaches.config.js).
+  content: ['./index.html', './dashboard.html', './feedback.html', './lectures.html', './src/**/*.{js,jsx,ts,tsx}', '!./src/coaches/**'],
   theme: {
     extend: {
       colors: {
