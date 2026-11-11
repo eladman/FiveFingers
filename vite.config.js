@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 
 // Lecture-feedback links are /f/<code>; Vercel rewrites them to feedback.html
-// (vercel.json), and /lectures + /coaches-course to their standalone pages. Mirror that in dev + preview so the QR flow works locally.
+// (vercel.json), and /lectures, /coaches-course + /hazanek to their standalone pages. Mirror that in dev + preview so the QR flow works locally.
 const feedbackRewrite = {
   name: 'feedback-rewrite',
   configureServer(server) {
@@ -17,6 +17,7 @@ function rewrite(req, _res, next) {
   if (/^\/f\/[a-z0-9]+\/?(\?.*)?$/i.test(req.url)) req.url = '/feedback.html'
   else if (/^\/lectures\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/lectures\/?/, '/lectures.html')
   else if (/^\/coaches-course\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/coaches-course\/?/, '/coaches-course.html')
+  else if (/^\/hazanek\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/hazanek\/?/, '/hazanek.html')
   next()
 }
 
@@ -30,6 +31,7 @@ export default defineConfig({
         feedback: resolve(__dirname, 'feedback.html'),
         lectures: resolve(__dirname, 'lectures.html'),
         coaches: resolve(__dirname, 'coaches-course.html'),
+        hazanek: resolve(__dirname, 'hazanek.html'),
       },
       output: {
         // Shared chunks are named after a module inside them by default, which

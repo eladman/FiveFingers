@@ -7,6 +7,21 @@
       "permanent": true
     },
     {
+      "source": "/hazanek/",
+      "destination": "/hazanek",
+      "permanent": true
+    },
+    {
+      "source": "/boost",
+      "destination": "/hazanek",
+      "permanent": false
+    },
+    {
+      "source": "/boost/",
+      "destination": "/hazanek",
+      "permanent": false
+    },
+    {
       "source": "/about/",
       "destination": "/about",
       "permanent": true
@@ -1114,6 +1129,10 @@
     {
       "source": "/coaches-course",
       "destination": "/coaches-course.html"
+    },
+    {
+      "source": "/hazanek",
+      "destination": "/hazanek.html"
     }
   ],
   "headers": [

@@ -98,6 +98,9 @@ for (const entry of ROSTER) {
 // served at /coaches-course by a vercel.json rewrite — only needs listing here.
 urls.push({ loc: SITE_URL + '/coaches-course', priority: '0.8' })
 
+// ── Standalone מכינת הזנק landing page — same setup (hazanek.html) ──────────
+urls.push({ loc: SITE_URL + '/hazanek', priority: '0.8' })
+
 // ── Design preview — kept working, kept out of the index ────────────────────
 await emit('/hero-concepts', render(shell, {
   title: 'Hero concepts · חמש אצבעות',
