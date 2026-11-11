@@ -975,6 +975,10 @@ function sendToSheet(data) {
 
 // The website's lead pipeline — same webhook and payload shape as
 // src/components/ContactModal.jsx (column mapping in supabase/README.md).
+// Sent as the "מאמן/ת" job role on purpose: Make's "השארת פרטים אתר חדש"
+// scenario routes by exact productType, and that route writes the dashboard
+// row, emails HR, and sends the applicant a confirmation. pageUrl tells
+// course applicants apart from /team ones.
 async function sendToWebsitePipeline(data) {
   const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL
   if (!webhookUrl) {
@@ -988,7 +992,7 @@ async function sendToWebsitePipeline(data) {
       name: data.fullName,
       phone: data.phone,
       email: data.email,
-      productType: 'קורס מאמנים',
+      productType: 'מאמן/ת',
       residence: data.city,
       experience: data.sport,
       age: data.age,
