@@ -6,6 +6,10 @@
 // thing we do on load is copy them aside, and the contact forms attach them to
 // the lead they send to Make.com.
 //
+// First touch wins: the top-level utm_* keys are the campaign that first brought
+// the visitor in, kept for 30 days from that click (the CRM reads these). A later
+// tagged click doesn't replace them — it's kept alongside as `last_touch`.
+//
 // Independent of the consent banner on purpose: this stays on the visitor's own
 // device (localStorage, no cookie) and only travels with a form they chose to
 // submit to us — it never goes to Google or Meta. It's what lets us count leads
@@ -26,11 +30,24 @@ export function captureAttribution() {
     }
     if (!Object.keys(found).length) return
 
-    // Latest campaign wins: a newer ad click replaces an older one.
-    localStorage.setItem(
-      STORE_KEY,
-      JSON.stringify({ ...found, landing_page: window.location.pathname, captured_at: new Date().toISOString() }),
-    )
+    const touch = {
+      ...found,
+      landing_page: window.location.pathname,
+      landing_url: window.location.href.slice(0, 500), // with the query string — pageUrl is where the form was sent, which often has none
+      captured_at: new Date().toISOString(),
+    }
+
+    const first = getAttribution() // null when nothing stored or older than 30 days
+    if (!first) {
+      localStorage.setItem(STORE_KEY, JSON.stringify(touch))
+      return
+    }
+
+    // A reload of the same tagged link isn't a new click.
+    if (KEYS.every((key) => (first[key] || '') === (found[key] || ''))) return
+
+    // Keep the first campaign (and its 30-day clock); note the newer one beside it.
+    localStorage.setItem(STORE_KEY, JSON.stringify({ ...first, last_touch: touch }))
   } catch {
     // storage blocked or a malformed URL — the lead simply arrives without a source
   }

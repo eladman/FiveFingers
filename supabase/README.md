@@ -85,12 +85,22 @@ and select the Webhook module's whole output (the top-level `{{1}}` item, not an
 ### Campaign attribution
 
 Ad links carry UTM tags (`?utm_source=facebook&utm_campaign=…`). The site keeps them for 30 days
-(`src/lib/attribution.js`) and sends them with the lead as `attribution`:
+(`src/lib/attribution.js`) and sends them with the lead as `attribution`. First touch wins: the
+top-level keys are the campaign that first brought the visitor in (30 days from that click). A later
+tagged click is kept in `last_touch` and doesn't replace them. Tags that weren't in the URL are left
+out, not sent empty.
 
 ```json
-{ "utm_source": "facebook", "utm_medium": "paid_social", "utm_campaign": "academy_oct",
-  "utm_content": "video_1", "fbclid": "…", "landing_page": "/academy", "captured_at": "2026-10-23T08:45:52Z" }
+{ "utm_source": "facebook", "utm_medium": "paid", "utm_campaign": "academy_oct",
+  "utm_content": "video_1", "fbclid": "…", "landing_page": "/academy",
+  "landing_url": "https://…/academy?utm_source=facebook&utm_campaign=academy_oct&…",
+  "captured_at": "2026-10-23T08:45:52Z",
+  "last_touch": { "utm_source": "facebook", "utm_campaign": "liabah_nov", "landing_page": "/",
+                  "landing_url": "…", "captured_at": "2026-11-02T17:10:04Z" } }
 ```
+
+`pageUrl` / `page_url` is the page the form was **sent from**, so it only has a query string when the
+visitor filled the form on the tagged landing page. `landing_url` always has it.
 
 1. Run [`attribution.sql`](./attribution.sql) once in the SQL Editor (adds `lead_id` + `attribution`).
 2. In the Make scenario's Supabase **Create a Row** module, map `leadId` → `lead_id` and
