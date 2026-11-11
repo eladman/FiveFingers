@@ -5,7 +5,7 @@ import '../dashboard/dashboard.css'
 import '../feedback/feedback.css'
 import './lectures.css'
 import LecturesApp from './LecturesApp.jsx'
-import { markInternalVisitor } from '../lib/analytics.js'
+import { markInternalVisitor } from '../lib/visits.js'
 
 // Staff browser — exclude its own visits to the public site from traffic stats.
 markInternalVisitor()

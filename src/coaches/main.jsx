@@ -5,10 +5,9 @@ import CoachesCourseApp from './CoachesCourseApp.jsx'
 import { captureAttribution } from '../lib/attribution.js'
 
 // Same UTM capture + cookieless page-view counter as the main site. The counter
-// is loaded lazily: content blockers block files named "analytics", and a
-// static import would take the whole page down with it.
+// is loaded lazily, so a content blocker can only switch it off, never the page.
 captureAttribution()
-import('../lib/analytics.js').then((m) => m.initAnalytics()).catch(() => {})
+import('../lib/visits.js').then((m) => m.initAnalytics()).catch(() => {})
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

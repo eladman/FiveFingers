@@ -1,3 +1,7 @@
+// Named visits.js, not analytics.js, on purpose: content blockers block files
+// called "analytics", and since main.jsx imports this statically, a blocked
+// file would blank the whole site. Keep "analytics"/"tracking" out of the name.
+//
 // Cookieless page-view beacon → Supabase `page_views` table.
 // No cookies, no PII — logs only the in-site path, the referrer, and two
 // anonymous random IDs (a persistent visitor id + a per-session id) so the

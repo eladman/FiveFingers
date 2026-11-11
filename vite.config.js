@@ -31,6 +31,13 @@ export default defineConfig({
         lectures: resolve(__dirname, 'lectures.html'),
         coaches: resolve(__dirname, 'coaches-course.html'),
       },
+      output: {
+        // Shared chunks are named after a module inside them by default, which
+        // produced e.g. assets/analytics-*.js. Content blockers block names like
+        // that, and since the entries import these chunks statically, one
+        // blocked chunk blanked the whole page. Hash-only names can't match.
+        chunkFileNames: 'assets/c-[hash].js',
+      },
     },
   },
 })

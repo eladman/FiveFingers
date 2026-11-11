@@ -9,7 +9,7 @@
 // audience is under 18.
 //
 // The choice is kept in localStorage (no cookie of our own) and can be changed
-// later from the footer's "הגדרות עוגיות" link. Like analytics.js: never throws
+// later from the footer's "הגדרות עוגיות" link. Like visits.js: never throws
 // into the page.
 
 const GTM_ID = 'GTM-N2TKVV56'

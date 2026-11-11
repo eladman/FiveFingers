@@ -221,7 +221,7 @@ site traffic. Built as a separate Vite entry — not linked from the public site
 
 ## Traffic counter
 
-`src/lib/analytics.js` fires a cookieless beacon on each page/route view → `page_views`. It logs the
+`src/lib/visits.js` fires a cookieless beacon on each page/route view → `page_views`. It logs the
 path, the referrer, and two **anonymous random ids** (no PII, no cookies — they live in
 localStorage/sessionStorage): a persistent `visitor_id` (one per browser) and a per-session
 `session_id`. It's a no-op until the Supabase env vars are set.
