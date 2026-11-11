@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, useInView, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring, animate as motionAnimate } from 'framer-motion'
 import { useForm } from 'react-hook-form'
+import { getAttribution, getAttributionJson, newLeadId } from '../lib/attribution.js'
 
 /* ─── Animation helpers ─── */
 const fadeUp = {
@@ -951,6 +952,57 @@ function FAQ() {
 }
 
 /* ─── Registration Form ─── */
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzhfa7wRRs4zt1ZCJ2D84DnLPUZUb__2UYLjXaub9bX61jdzotFk5PtvTo3UlJ9bVcrOA/exec'
+
+// The course team's sheet ("קורס מאמנים"). no-cors: the response is opaque, so
+// only a network failure is detectable here.
+function sendToSheet(data) {
+  return fetch(GOOGLE_SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fullName: data.fullName,
+      email: data.email,
+      phone: data.phone,
+      sport: data.sport,
+      city: data.city,
+      age: data.age,
+      timestamp: new Date().toLocaleDateString('he-IL', { day: '2-digit', month: '2-digit', year: 'numeric' }),
+    }),
+  })
+}
+
+// The website's lead pipeline — same webhook and payload shape as
+// src/components/ContactModal.jsx (column mapping in supabase/README.md).
+async function sendToWebsitePipeline(data) {
+  const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL
+  if (!webhookUrl) {
+    console.warn('VITE_MAKE_WEBHOOK_URL not set — skipping Make webhook.')
+    return
+  }
+  const res = await fetch(webhookUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: data.fullName,
+      phone: data.phone,
+      email: data.email,
+      productType: 'קורס מאמנים',
+      residence: data.city,
+      experience: data.sport,
+      age: data.age,
+      details: { 'ספורט וקורסים': data.sport, 'מקום מגורים': data.city, 'גיל': data.age },
+      submittedAt: new Date().toISOString(),
+      source: 'fivefingers-website',
+      pageUrl: window.location.href,
+      leadId: newLeadId(),
+      attribution: getAttribution(),
+      attributionJson: getAttributionJson(),
+    }),
+  })
+  if (!res.ok) throw new Error(`Webhook responded ${res.status}`)
+}
 function RegistrationForm() {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const [submitted, setSubmitted] = useState(false)
@@ -961,28 +1013,15 @@ function RegistrationForm() {
   const onSubmit = async (data) => {
     setSubmitting(true)
     setSubmitError(false)
-    try {
-      const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzhfa7wRRs4zt1ZCJ2D84DnLPUZUb__2UYLjXaub9bX61jdzotFk5PtvTo3UlJ9bVcrOA/exec'
-      await fetch(GOOGLE_SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: data.fullName,
-          email: data.email,
-          phone: data.phone,
-          sport: data.sport,
-          city: data.city,
-          age: data.age,
-          timestamp: new Date().toLocaleDateString('he-IL', { day: '2-digit', month: '2-digit', year: 'numeric' }),
-        }),
-      })
-      setSubmitted(true)
-    } catch {
-      setSubmitError(true)
-    } finally {
-      setSubmitting(false)
-    }
+    // Two destinations: the course team's Google Sheet (as before), and the
+    // website's lead pipeline (Make.com → contact_submissions / dashboard) with
+    // the same payload shape as ContactModal. Only if both fail do we show an
+    // error — either one alone means the lead reached us.
+    const results = await Promise.allSettled([sendToSheet(data), sendToWebsitePipeline(data)])
+    results.forEach((r) => { if (r.status === 'rejected') console.error('Coaches form send failed:', r.reason) })
+    if (results.some((r) => r.status === 'fulfilled')) setSubmitted(true)
+    else setSubmitError(true)
+    setSubmitting(false)
   }
 
   const inputClass =
