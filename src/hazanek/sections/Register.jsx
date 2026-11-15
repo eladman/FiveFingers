@@ -107,6 +107,14 @@ export default function Register() {
                 </li>
               ))}
             </ul>
+
+            {/* After sending, the steps move into the success card instead */}
+            {status !== 'success' && (
+              <div className="rv mt-10 md:mt-12">
+                <p className="font-heebo font-bold text-white/70 text-sm mb-4">מה קורה אחרי ששולחים?</p>
+                <Steps />
+              </div>
+            )}
           </div>
 
           <div
@@ -120,6 +128,9 @@ export default function Register() {
                 </span>
                 <h3 className="mt-6 font-heebo font-extrabold text-2xl">{register.success.title}</h3>
                 <p className="mt-3 text-navy/70 leading-relaxed">{register.success.text}</p>
+                <div className="mt-8 text-right">
+                  <Steps done={1} light />
+                </div>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="flex flex-col gap-5" noValidate={false}>
@@ -147,5 +158,49 @@ export default function Register() {
         </div>
       </div>
     </section>
+  )
+}
+
+/**
+ * The road from form to day one (team feedback). `done` marks how many steps
+ * are complete; the next one is highlighted as "now".
+ */
+function Steps({ done = 0, light = false }) {
+  return (
+    <ol className="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-5">
+      {register.steps.map((label, i) => {
+        const isDone = i < done
+        const isNext = i === done
+        return (
+          <li key={label} className="relative flex flex-col items-start gap-2.5">
+            {/* connector to the next step (visual only) */}
+            {i < register.steps.length - 1 && (
+              <span
+                aria-hidden="true"
+                className={`hidden sm:block absolute top-[18px] right-[44px] -left-1 h-px ${
+                  light ? 'bg-navy/15' : 'bg-white/25'
+                }`}
+              />
+            )}
+            <span
+              className={`relative w-9 h-9 rounded-full flex items-center justify-center font-heebo font-extrabold text-sm ${
+                isDone
+                  ? 'bg-orange text-white'
+                  : isNext
+                    ? `ring-2 ring-orange ${light ? 'bg-white text-orange-ink' : 'bg-navy-deep/60 text-orange'}`
+                    : light ? 'bg-navy/[0.06] text-navy/60' : 'bg-white/10 text-white/80 border border-white/25'
+              }`}
+            >
+              {isDone ? <Check size={17} strokeWidth={3} aria-hidden="true" /> : i + 1}
+            </span>
+            <span className={`font-heebo font-semibold text-sm leading-snug ${light ? 'text-navy/80' : 'text-white'}`}>
+              {label}
+              {isDone && <span className="sr-only"> (הושלם)</span>}
+              {isNext && done > 0 && <span className="sr-only"> (השלב הבא)</span>}
+            </span>
+          </li>
+        )
+      })}
+    </ol>
   )
 }

@@ -23,12 +23,12 @@ export default function HazanekApp() {
       <main id="main">
         <Hero />
         <Hook />
+        <Voices />
         <About />
         <Includes />
         <Why />
         <Numbers />
         <Press />
-        <Voices />
         <Faq />
         <Register />
       </main>
@@ -40,8 +40,9 @@ export default function HazanekApp() {
 }
 
 /**
- * Mobile-only pill: appears once the hero has scrolled away, and steps aside
- * while the registration form itself is on screen.
+ * Floating register pill on every screen size (team feedback): appears once the
+ * hero has scrolled away, and steps aside while the form itself is on screen.
+ * Centered on phones, bottom-left corner from md up.
  */
 function StickyCta() {
   const [heroGone, setHeroGone] = useState(false)
@@ -62,7 +63,7 @@ function StickyCta() {
 
   return (
     <div
-      className={`md:hidden fixed inset-x-0 z-50 flex justify-center px-4 pointer-events-none transition-all duration-300 ease-brand ${
+      className={`fixed inset-x-0 z-50 flex justify-center md:justify-end px-4 md:px-8 pointer-events-none transition-all duration-300 ease-brand ${
         show ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
       style={{ bottom: 'max(16px, calc(env(safe-area-inset-bottom, 0px) + 10px))' }}
@@ -72,7 +73,7 @@ function StickyCta() {
         href="#register"
         onClick={goToRegister}
         tabIndex={show ? 0 : -1}
-        className={`btn-cta inline-flex items-center gap-2 rounded-full px-8 py-3.5 font-bold text-white ${show ? 'pointer-events-auto' : ''}`}
+        className={`btn-cta inline-flex items-center gap-2 rounded-full px-8 py-3.5 md:px-9 md:py-4 md:text-lg font-bold text-white shadow-[0_14px_40px_-10px_rgba(255,135,20,0.75)] ${show ? 'pointer-events-auto' : ''}`}
       >
         {hero.cta}
         <ArrowLeft size={18} aria-hidden="true" />

@@ -7,9 +7,9 @@ export default function Voices() {
   const ref = useReveal({ selector: '.rv', y: 48, stagger: 0.12 })
 
   return (
-    <section ref={ref} id="voices" dir="rtl" className="relative w-full overflow-hidden bg-surface">
+    <section ref={ref} id="voices" dir="rtl" className="relative w-full overflow-hidden bg-surface-2">
       <LightAtmosphere />
-      <div className="relative z-10 max-w-screen-xl mx-auto px-5 sm:px-8 md:px-12 pb-20 md:pb-32 pt-4 md:pt-8">
+      <div className="relative z-10 max-w-screen-xl mx-auto px-5 sm:px-8 md:px-12 py-20 md:py-32">
         <Heading kicker={voices.kicker} title={voices.title} />
 
         <ul className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
