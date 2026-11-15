@@ -32,6 +32,7 @@ export default function Includes() {
                 src={item.image}
                 alt={item.imageAlt}
                 loading="lazy"
+                style={item.imagePosition ? { objectPosition: item.imagePosition } : undefined}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-brand group-hover:scale-105"
               />
               <div aria-hidden="true" className="absolute inset-0 bg-orange/10 mix-blend-multiply" />

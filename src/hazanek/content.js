@@ -49,8 +49,9 @@ export const includes = {
       id: 'mental',
       title: 'הכנה מנטלית',
       text: 'כלים להתמודדות עם לחץ, אתגר ומסגרת צבאית.',
-      image: '/hazanek/bonfire.webp',
-      imageAlt: 'המשתתפים יושבים סביב מדורה בחולות בלילה',
+      image: '/hazanek/map-briefing.webp',
+      imageAlt: 'מדריך ומשתתף קוראים מפה יחד עם שחר, לפני יציאה לניווט',
+      imagePosition: '50% 62%',
     },
     {
       id: 'leadership',
