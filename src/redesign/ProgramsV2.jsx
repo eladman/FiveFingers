@@ -24,12 +24,13 @@ const PROGRAMS = [
   },
   {
     id: 'boost',
-    title: 'Boost',
+    title: 'מכינת הזנק',
     badge: 'כחלק מתוכנית הזנק של צה״ל',
     description:
       'תוכנית קדם-צבאית מרוכזת: מסיימי/ות י״א - שלושה שבועות בקיץ, ומסיימי/ות י״ב - שישה שבועות אחרי התיכון. הכנה פיזית-מנטלית, מנהיגות, ניווט וחוויית שטח - בליווי מדריכים ומומחים מהשורה הראשונה.',
     imageSrc: '/coachs/heznek2.webp',
-    ctaContact: true,
+    ctaHref: '/hazanek',
+    ctaLabel: 'לעמוד מכינת הזנק',
   },
   {
     id: 'academy',

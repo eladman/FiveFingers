@@ -10,7 +10,7 @@ const CLIP_ODD = 'polygon(0% 0%, 94% 0%, 100% 100%, 6% 100%)'
 
 /**
  * Program "tracks" as an institutional comparison selector: a segmented tablist
- * (מכינה / Boost / כרמל) that swaps a detail panel, plus a compact comparison row.
+ * (מכינה / הזנק / כרמל) that swaps a detail panel, plus a compact comparison row.
  * Keyboard-accessible (roving tabindex + arrow keys, RTL-aware).
  */
 export default function AcademyPrograms({ onRegister }) {
@@ -109,9 +109,16 @@ export default function AcademyPrograms({ onRegister }) {
                 ))}
               </ul>
               <div className="mt-9">
-                <PrimaryButton onClick={() => onRegister?.(prog.contactTag)} icon={ChevronLeft}>
-                  להגשת מועמדות
-                </PrimaryButton>
+                {/* A track with its own page (הזנק) links there; its form lives on that page */}
+                {prog.pageHref ? (
+                  <PrimaryButton href={prog.pageHref} icon={ChevronLeft}>
+                    {prog.pageLabel}
+                  </PrimaryButton>
+                ) : (
+                  <PrimaryButton onClick={() => onRegister?.(prog.contactTag)} icon={ChevronLeft}>
+                    להגשת מועמדות
+                  </PrimaryButton>
+                )}
               </div>
             </div>
 

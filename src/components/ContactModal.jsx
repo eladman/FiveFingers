@@ -23,6 +23,10 @@ const INTEREST_GROUPS = [
   { label: 'שותפויות וקשר', hint: '', items: ['שיתוף פעולה', 'קשר עם עמיר'] },
 ]
 
+// Chip text when it differs from the productType value sent to Make.
+const CHIP_LABELS = { Boost: 'הזנק' }
+const chipLabel = (t) => CHIP_LABELS[t] || t
+
 const JOBS_LABEL = 'משרות בתנועה'
 const JOB_ROLES = ['מאמן/ת', 'הדרכה בהזנק', 'צוות מטה', 'הדרכה במכינה']
 
@@ -552,7 +556,7 @@ function ChipGroup({ value, jobsOpen, expanded, onExpand, onSelectTop, onToggleJ
         </legend>
         <div className="flex flex-wrap items-center gap-3">
           <span style={{ display: 'inline-flex', animation: 'ff-settle 380ms cubic-bezier(0.22,1,0.36,1)' }}>
-            <Chip label={value} active onClick={onExpand} />
+            <Chip label={chipLabel(value)} active onClick={onExpand} />
           </span>
           <button
             type="button"
@@ -584,7 +588,7 @@ function ChipGroup({ value, jobsOpen, expanded, onExpand, onSelectTop, onToggleJ
               {group.items.map((type) => (
                 <Chip
                   key={type}
-                  label={type}
+                  label={chipLabel(type)}
                   active={value === type}
                   role="radio"
                   aria-checked={value === type}

@@ -82,6 +82,13 @@ export function navigate(to, { replace = false } = {}) {
   window.dispatchEvent(new CustomEvent(NAVIGATE_EVENT))
 }
 
+/** Paths served by separate HTML entries (hazanek.html, lectures.html, …). */
+const STANDALONE_PREFIXES = ['/hazanek', '/lectures', '/coaches-course', '/f/']
+export function isStandalonePage(pathname) {
+  const p = normalizePath(pathname)
+  return STANDALONE_PREFIXES.some((s) => (s.endsWith('/') ? p.startsWith(s) : p === s || p.startsWith(s + '/')))
+}
+
 let installed = false
 
 /**
@@ -111,6 +118,9 @@ export function installLinkInterception() {
     // a genuine page load, not a client-side view swap.
     const { pathname } = new URL(href, window.location.origin)
     if (/\.[a-z0-9]+$/i.test(pathname)) return
+    // Standalone pages are their own HTML entries (vercel.json rewrites), not
+    // views of this app; swapping in place would render home at their URL.
+    if (isStandalonePage(pathname)) return
 
     e.preventDefault()
     navigate(href)
