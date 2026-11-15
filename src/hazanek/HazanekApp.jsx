@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import ConsentBanner from '../components/ConsentBanner'
 import Hero from './sections/Hero'
+import Hook from './sections/Hook'
 import About from './sections/About'
 import Includes from './sections/Includes'
 import Why from './sections/Why'
@@ -21,6 +22,7 @@ export default function HazanekApp() {
       <a href="#main" className="skip-link">דילוג לתוכן</a>
       <main id="main">
         <Hero />
+        <Hook />
         <About />
         <Includes />
         <Why />

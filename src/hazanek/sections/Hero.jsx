@@ -69,7 +69,7 @@ export default function Hero() {
       {/* Statement */}
       <div className="relative z-10 h-full max-w-screen-xl mx-auto px-5 sm:px-8 md:px-12 flex flex-col justify-end pb-14 md:pb-20">
         <p className="hero-el ds-eyebrow text-orange mb-4 md:mb-5" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.9)' }}>
-          תנועת חמש אצבעות · הכנה לשירות משמעותי
+          {hero.eyebrow}
         </p>
         <h1
           className="hero-el font-ragmarom text-white leading-[0.9] tracking-tight"
