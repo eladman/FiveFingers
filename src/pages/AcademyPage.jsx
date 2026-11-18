@@ -26,10 +26,11 @@ export default function AcademyPage({ onContactOpen }) {
       <AcademyHero onRegister={onRegister} />
       {/* No seam divider here — like the homepage, AcademyManifesto floats up over the hero's dark base as a sheet */}
       <AcademyManifesto />
-      <SoftDivider fromColor="#fafaf8" toColor="#ffffff" />
+      <SoftDivider fromColor="#fafaf8" toColor="#f7f5f2" />
+      <AcademyPrograms onRegister={onRegister} />
+      <SoftDivider fromColor="#f7f5f2" toColor="#ffffff" />
       <AcademyAxes />
       <SoftDivider fromColor="#ffffff" toColor="#f7f5f2" />
-      <AcademyPrograms onRegister={onRegister} />
       <AcademyJourney />
       <SoftDivider fromColor="#f7f5f2" toColor="#ffffff" />
       <AcademyAdmissions onRegister={onRegister} />
