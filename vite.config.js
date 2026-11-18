@@ -1,23 +1,35 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 
 // Lecture-feedback links are /f/<code>; Vercel rewrites them to feedback.html
-// (vercel.json), and /lectures, /coaches-course + /hazanek to their standalone pages. Mirror that in dev + preview so the QR flow works locally.
+// (vercel.json), and /lectures, /coaches-course, /hazanek + /newslaterprep to their standalone pages. Mirror that in dev + preview so the QR flow works locally.
+// /newsletter/<slug> is a Vercel Function (api/newsletter.js); run the same handler here.
 const feedbackRewrite = {
   name: 'feedback-rewrite',
   configureServer(server) {
+    server.middlewares.use(newsletter)
     server.middlewares.use(rewrite)
   },
   configurePreviewServer(server) {
+    server.middlewares.use(newsletter)
     server.middlewares.use(rewrite)
   },
+}
+async function newsletter(req, res, next) {
+  const m = req.url.match(/^\/newsletter\/([^/?]+)\/?(\?.*)?$/)
+  if (!m) return next()
+  Object.assign(process.env, loadEnv('development', process.cwd(), 'VITE_'))
+  const { default: handler } = await import('./api/newsletter.js')
+  req.url = `/api/newsletter?slug=${m[1]}`
+  handler(req, res).catch(next)
 }
 function rewrite(req, _res, next) {
   if (/^\/f\/[a-z0-9]+\/?(\?.*)?$/i.test(req.url)) req.url = '/feedback.html'
   else if (/^\/lectures\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/lectures\/?/, '/lectures.html')
   else if (/^\/coaches-course\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/coaches-course\/?/, '/coaches-course.html')
   else if (/^\/hazanek\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/hazanek\/?/, '/hazanek.html')
+  else if (/^\/newslaterprep\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/newslaterprep\/?/, '/newsletter-prep.html')
   next()
 }
 
@@ -32,6 +44,7 @@ export default defineConfig({
         lectures: resolve(__dirname, 'lectures.html'),
         coaches: resolve(__dirname, 'coaches-course.html'),
         hazanek: resolve(__dirname, 'hazanek.html'),
+        newsletterPrep: resolve(__dirname, 'newsletter-prep.html'),
       },
       output: {
         // Shared chunks are named after a module inside them by default, which

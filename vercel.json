@@ -2,6 +2,21 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/newslaterprep/",
+      "destination": "/newslaterprep",
+      "permanent": true
+    },
+    {
+      "source": "/newsletterprep",
+      "destination": "/newslaterprep",
+      "permanent": false
+    },
+    {
+      "source": "/newsletter/:slug/",
+      "destination": "/newsletter/:slug",
+      "permanent": true
+    },
+    {
       "source": "/coaches-course/",
       "destination": "/coaches-course",
       "permanent": true
@@ -1133,6 +1148,14 @@
     {
       "source": "/hazanek",
       "destination": "/hazanek.html"
+    },
+    {
+      "source": "/newslaterprep",
+      "destination": "/newsletter-prep.html"
+    },
+    {
+      "source": "/newsletter/:slug",
+      "destination": "/api/newsletter?slug=:slug"
     }
   ],
   "headers": [
