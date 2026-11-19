@@ -17,11 +17,11 @@ const feedbackRewrite = {
   },
 }
 async function newsletter(req, res, next) {
-  const m = req.url.match(/^\/newsletter\/([^/?]+)\/?(\?.*)?$/)
+  const m = req.url.match(/^\/newsletter\/([^/?]+)(\/cover\.jpg)?\/?(\?.*)?$/)
   if (!m) return next()
   Object.assign(process.env, loadEnv('development', process.cwd(), 'VITE_'))
   const { default: handler } = await import('./api/newsletter.js')
-  req.url = `/api/newsletter?slug=${m[1]}`
+  req.url = `/api/newsletter?slug=${m[1]}${m[2] ? '&cover=1' : ''}`
   handler(req, res).catch(next)
 }
 function rewrite(req, _res, next) {

@@ -28,6 +28,13 @@ create table if not exists public.newsletters (
   views         integer     not null default 0
 );
 
+-- The picture in the WhatsApp / social link preview. A 1200×630 JPEG, cropped
+-- and compressed in the browser (≈300 KB, WhatsApp skips bigger images),
+-- stored as base64 and served at /newsletter/<slug>/cover.jpg. Null = the
+-- generic Five Fingers image.
+alter table public.newsletters
+  add column if not exists cover text check (cover is null or char_length(cover) <= 1500000);
+
 create index if not exists newsletters_created_idx on public.newsletters (created_at desc);
 
 alter table public.newsletters enable row level security;
@@ -46,7 +53,8 @@ returns trigger language plpgsql as $$
 begin
   if new.html is distinct from old.html
      or new.title is distinct from old.title
-     or new.description is distinct from old.description then
+     or new.description is distinct from old.description
+     or new.cover is distinct from old.cover then
     new.updated_at := now();
   end if;
   return new;
@@ -60,13 +68,25 @@ create trigger newsletters_touch before update on public.newsletters
 -- Public read path.
 -- newsletter_meta: title + description for the link preview. Called by the
 --   server (api/newsletter.js) when WhatsApp / a browser asks for the page.
+-- newsletter_cover: the preview picture (base64 JPEG), for the same crawlers.
 -- open_newsletter: the HTML itself. Called by the visitor's browser, and
 --   counts the open — link-preview crawlers don't run JS, so they don't count.
 -- ---------------------------------------------------------------------
-create or replace function public.newsletter_meta(p_slug text)
-returns table (title text, description text, updated_at timestamptz)
+-- Dropped first: an older version returned fewer columns, and Postgres can't
+-- change a function's return type in place.
+drop function if exists public.newsletter_meta(text);
+create function public.newsletter_meta(p_slug text)
+returns table (title text, description text, updated_at timestamptz, has_cover boolean)
 language sql stable security definer set search_path = public as $$
-  select n.title, n.description, n.updated_at
+  select n.title, n.description, n.updated_at, n.cover is not null
+  from public.newsletters n
+  where n.slug = p_slug and n.is_published
+$$;
+
+create or replace function public.newsletter_cover(p_slug text)
+returns text
+language sql stable security definer set search_path = public as $$
+  select n.cover
   from public.newsletters n
   where n.slug = p_slug and n.is_published
 $$;
@@ -81,6 +101,8 @@ language sql volatile security definer set search_path = public as $$
 $$;
 
 revoke all on function public.newsletter_meta(text) from public;
+revoke all on function public.newsletter_cover(text) from public;
 revoke all on function public.open_newsletter(text) from public;
 grant execute on function public.newsletter_meta(text) to anon, authenticated;
+grant execute on function public.newsletter_cover(text) to anon, authenticated;
 grant execute on function public.open_newsletter(text) to anon, authenticated;

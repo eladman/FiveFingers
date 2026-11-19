@@ -1154,6 +1154,10 @@
       "destination": "/newsletter-prep.html"
     },
     {
+      "source": "/newsletter/:slug/cover.jpg",
+      "destination": "/api/newsletter?slug=:slug&cover=1"
+    },
+    {
       "source": "/newsletter/:slug",
       "destination": "/api/newsletter?slug=:slug"
     }

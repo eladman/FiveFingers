@@ -1,6 +1,7 @@
 /**
  * Public newsletter page: /newsletter/<slug>  (rewritten here by vercel.json,
- * and by the dev middleware in vite.config.js).
+ * and by the dev middleware in vite.config.js). Also serves the link-preview
+ * picture at /newsletter/<slug>/cover.jpg (?cover=1).
  *
  * The response is a small shell, not the newsletter itself:
  *   - <head> carries the newsletter's own title/description, so a link pasted
@@ -30,8 +31,8 @@ const esc = (s) =>
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
 
-async function fetchMeta(slug) {
-  const r = await fetch(`${SUPABASE_URL}/rest/v1/rpc/newsletter_meta`, {
+async function rpc(name, slug) {
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${name}`, {
     method: 'POST',
     headers: {
       apikey: ANON_KEY,
@@ -40,9 +41,40 @@ async function fetchMeta(slug) {
     },
     body: JSON.stringify({ p_slug: slug }),
   })
-  if (!r.ok) throw new Error(`newsletter_meta ${r.status}`)
-  const rows = await r.json()
-  return rows[0] || null
+  if (!r.ok) throw new Error(`${name} ${r.status}`)
+  return r.json()
+}
+
+const fetchMeta = async (slug) => (await rpc('newsletter_meta', slug))[0] || null
+
+/**
+ * /newsletter/<slug>/cover.jpg — the picture staff chose for the link preview.
+ * The og:image URL carries ?v=<updated_at>, so a new cover is a new URL and
+ * this response can be cached for a long time.
+ */
+async function serveCover(slug, res, versioned) {
+  let b64 = null
+  try {
+    if (SLUG_RE.test(slug)) b64 = await rpc('newsletter_cover', slug)
+  } catch (err) {
+    console.error(err)
+    res.statusCode = 502
+    return res.end()
+  }
+  if (!b64) {
+    res.statusCode = 404
+    res.setHeader('Cache-Control', 'public, s-maxage=60')
+    return res.end()
+  }
+  const body = Buffer.from(b64, 'base64')
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'image/jpeg')
+  res.setHeader('Content-Length', body.length)
+  res.setHeader(
+    'Cache-Control',
+    versioned ? 'public, max-age=86400, s-maxage=31536000, immutable' : 'public, s-maxage=60, stale-while-revalidate=300',
+  )
+  res.end(body)
 }
 
 export default async function handler(req, res) {
@@ -50,14 +82,19 @@ export default async function handler(req, res) {
   const slug = String(req.query?.slug ?? url.searchParams.get('slug') ?? '').toLowerCase()
   const origin = `https://${req.headers['x-forwarded-host'] || req.headers.host}`
 
-  res.setHeader('Content-Type', 'text/html; charset=utf-8')
-  // Sent to families, not meant for search engines.
-  res.setHeader('X-Robots-Tag', 'noindex, nofollow')
-
   if (!SUPABASE_URL || !ANON_KEY) {
     res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html; charset=utf-8')
     return res.end(messagePage('הדף לא מוגדר', 'חסרים משתני הסביבה של Supabase.'))
   }
+
+  // Sent to families, not meant for search engines.
+  res.setHeader('X-Robots-Tag', 'noindex, nofollow')
+  if (String(req.query?.cover ?? url.searchParams.get('cover') ?? '')) {
+    return serveCover(slug, res, Boolean(req.query?.v ?? url.searchParams.get('v')))
+  }
+
+  res.setHeader('Content-Type', 'text/html; charset=utf-8')
 
   let meta = null
   if (SLUG_RE.test(slug)) {
@@ -82,7 +119,7 @@ export default async function handler(req, res) {
   res.end(shellPage({ slug, meta, origin }))
 }
 
-function head({ title, description, canonical, origin }) {
+function head({ title, description, canonical, image }) {
   return `<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="robots" content="noindex, nofollow" />
@@ -93,9 +130,12 @@ ${description ? `<meta name="description" content="${esc(description)}" />` : ''
 <meta property="og:title" content="${esc(title)}" />
 ${description ? `<meta property="og:description" content="${esc(description)}" />` : ''}
 ${canonical ? `<meta property="og:url" content="${esc(canonical)}" />` : ''}
-<meta property="og:image" content="${esc(origin)}/new_link_logo.jpg" />
-<meta property="og:image:width" content="1672" />
-<meta property="og:image:height" content="941" />
+<meta property="og:image" content="${esc(image.url)}" />
+<meta property="og:image:secure_url" content="${esc(image.url)}" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="${image.width}" />
+<meta property="og:image:height" content="${image.height}" />
+<meta name="twitter:image" content="${esc(image.url)}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#ffffff" />
 <link rel="icon" type="image/png" href="/logo.png" />`
@@ -122,9 +162,14 @@ function messagePage(title, body) {
 
 function shellPage({ slug, meta, origin }) {
   const canonical = `${origin}/newsletter/${slug}`
+  // Covers are cropped to 1200×630 in the editor (smaller sources stay smaller,
+  // same ratio); WhatsApp reads the size from these tags, so they're nominal.
+  const image = meta.has_cover
+    ? { url: `${canonical}/cover.jpg?v=${Date.parse(meta.updated_at) || 0}`, width: 1200, height: 630 }
+    : { url: `${origin}/new_link_logo.jpg`, width: 1672, height: 941 }
   const config = JSON.stringify({ url: SUPABASE_URL, key: ANON_KEY, slug }).replace(/</g, '\\u003c')
   return `<!doctype html><html lang="he" dir="rtl"><head>
-${head({ title: meta.title, description: meta.description, canonical, origin })}
+${head({ title: meta.title, description: meta.description, canonical, image })}
 <style>${BASE_CSS}
 #nl{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;background:#fff}
 </style></head>

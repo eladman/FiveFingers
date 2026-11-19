@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronRight, Upload, FileCode2, Smartphone, Monitor, Trash2 } from 'lucide-react'
-import { fetchHtml } from './data'
+import { fetchContent } from './data'
 import { withFrameHelpers } from './frame'
+import { coverDataUrl, renderCover } from './cover'
+import CoverPicker from './CoverPicker.jsx'
 
 const MAX_BYTES = 10 * 1024 * 1024
 const SLUG_RE = /^[a-z0-9][a-z0-9-]{1,58}[a-z0-9]$/
@@ -18,6 +20,9 @@ export default function NewsletterEditor({ newsletter, isTaken, onSave, onCancel
   const [slug, setSlug] = useState(newsletter?.slug || defaultSlug())
   const [published, setPublished] = useState(newsletter?.is_published ?? true)
   const [html, setHtml] = useState('')
+  // { src, fx, fy } or null. Only re-rendered and sent when it changed.
+  const [cover, setCover] = useState(null)
+  const [coverDirty, setCoverDirty] = useState(false)
   const [fileName, setFileName] = useState('')
   const [mode, setMode] = useState('file')
   const [htmlLoading, setHtmlLoading] = useState(editing)
@@ -28,9 +33,10 @@ export default function NewsletterEditor({ newsletter, isTaken, onSave, onCancel
 
   useEffect(() => {
     if (!editing) return
-    fetchHtml(newsletter.id).then(({ html, error }) => {
+    fetchContent(newsletter.id).then(({ html, cover, error }) => {
       if (error) setError('לא הצלחנו לטעון את התוכן: ' + error.message)
       setHtml(html)
+      if (cover) setCover({ src: coverDataUrl(cover), fx: 0.5, fy: 0.5 })
       setFileName('התוכן הנוכחי')
       setHtmlLoading(false)
     })
@@ -66,13 +72,22 @@ export default function NewsletterEditor({ newsletter, isTaken, onSave, onCancel
     if (new Blob([html]).size > MAX_BYTES) return setError('התוכן גדול מ-10MB.')
     setSaving(true)
     setError('')
-    const res = await onSave({
+    const fields = {
       title: title.trim(),
       description: description.trim() || null,
       slug,
       html,
       is_published: published,
-    })
+    }
+    if (coverDirty) {
+      try {
+        fields.cover = cover ? await renderCover(cover) : null
+      } catch {
+        setSaving(false)
+        return setError('לא הצלחנו לעבד את התמונה. נסו להעלות אותה שוב כקובץ JPG או PNG.')
+      }
+    }
+    const res = await onSave(fields)
     setSaving(false)
     if (res?.error) setError('השמירה לא הצליחה: ' + res.error.message)
   }
@@ -150,6 +165,19 @@ export default function NewsletterEditor({ newsletter, isTaken, onSave, onCancel
               onChange={(e) => setDescription(e.target.value)}
               maxLength={300}
               placeholder="מה עשינו החודש, מה מחכה לנו ומה חשוב לדעת"
+            />
+          </Field>
+
+          <Field label="תמונה בשיתוף (רשות)" hint="כך ייראה הקישור כששולחים אותו בוואטסאפ. בלי תמונה משלכם תופיע תמונת חמש אצבעות.">
+            <CoverPicker
+              value={cover}
+              onChange={(c) => {
+                setCover(c)
+                setCoverDirty(true)
+              }}
+              html={html}
+              title={title.trim()}
+              description={description.trim()}
             />
           </Field>
 
