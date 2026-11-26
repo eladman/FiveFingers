@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   // src/coaches has its own palette + config (tailwind.coaches.config.js).
-  content: ['./index.html', './dashboard.html', './feedback.html', './lectures.html', './hazanek.html', './src/**/*.{js,jsx,ts,tsx}', '!./src/coaches/**'],
+  content: ['./index.html', './dashboard.html', './feedback.html', './lectures.html', './hazanek.html', './reef.html', './src/**/*.{js,jsx,ts,tsx}', '!./src/coaches/**'],
   theme: {
     extend: {
       colors: {
@@ -13,6 +13,12 @@ export default {
         surface: '#fafaf8',      // warm off-white section background
         'surface-2': '#f7f5f2',
         line: 'rgba(13,27,75,0.08)', // standard hairline / border
+        // Jezreel Valley tones — used by /reef (דרך ריף) alongside navy, with orange as accent only.
+        valley: '#2f5d46',        // field green — text-safe on every light surface (7.5:1 on white)
+        'valley-soft': '#e9f0e8', // pale green wash
+        earth: '#8f5f33',         // soil / ochre — text-safe (5.4:1 on white)
+        'earth-soft': '#dcc39c',  // dry-field ochre fill
+        wheat: '#f6f1e6',         // warm section background
       },
       fontFamily: {
         sans: ['Heebo', 'Inter', 'sans-serif'],

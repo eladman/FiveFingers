@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 
 // Lecture-feedback links are /f/<code>; Vercel rewrites them to feedback.html
-// (vercel.json), and /lectures, /coaches-course, /hazanek + /newslaterprep to their standalone pages. Mirror that in dev + preview so the QR flow works locally.
+// (vercel.json), and /lectures, /coaches-course, /hazanek, /reef + /newslaterprep to their standalone pages. Mirror that in dev + preview so the QR flow works locally.
 // /newsletter/<slug> is a Vercel Function (api/newsletter.js); run the same handler here.
 const feedbackRewrite = {
   name: 'feedback-rewrite',
@@ -29,6 +29,7 @@ function rewrite(req, _res, next) {
   else if (/^\/lectures\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/lectures\/?/, '/lectures.html')
   else if (/^\/coaches-course\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/coaches-course\/?/, '/coaches-course.html')
   else if (/^\/hazanek\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/hazanek\/?/, '/hazanek.html')
+  else if (/^\/reef\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/reef\/?/, '/reef.html')
   else if (/^\/newslaterprep\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/newslaterprep\/?/, '/newsletter-prep.html')
   next()
 }
@@ -44,6 +45,7 @@ export default defineConfig({
         lectures: resolve(__dirname, 'lectures.html'),
         coaches: resolve(__dirname, 'coaches-course.html'),
         hazanek: resolve(__dirname, 'hazanek.html'),
+        reef: resolve(__dirname, 'reef.html'),
         newsletterPrep: resolve(__dirname, 'newsletter-prep.html'),
       },
       output: {

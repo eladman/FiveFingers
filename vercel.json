@@ -27,6 +27,11 @@
       "permanent": true
     },
     {
+      "source": "/reef/",
+      "destination": "/reef",
+      "permanent": true
+    },
+    {
       "source": "/boost",
       "destination": "/hazanek",
       "permanent": false
@@ -1148,6 +1153,10 @@
     {
       "source": "/hazanek",
       "destination": "/hazanek.html"
+    },
+    {
+      "source": "/reef",
+      "destination": "/reef.html"
     },
     {
       "source": "/newslaterprep",

@@ -101,6 +101,9 @@ urls.push({ loc: SITE_URL + '/coaches-course', priority: '0.8' })
 // ── Standalone מכינת הזנק landing page — same setup (hazanek.html) ──────────
 urls.push({ loc: SITE_URL + '/hazanek', priority: '0.8' })
 
+// ── Standalone דרך ריף landing page — same setup (reef.html) ────────────────
+urls.push({ loc: SITE_URL + '/reef', priority: '0.8' })
+
 // ── Design preview — kept working, kept out of the index ────────────────────
 await emit('/hero-concepts', render(shell, {
   title: 'Hero concepts · חמש אצבעות',

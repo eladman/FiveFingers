@@ -1,0 +1,106 @@
+/* /reef (דרך ריף) — page-scoped styles. Tokens and type classes come from
+   index.css + tailwind.config.js; only what this page adds lives here. */
+
+/* Long sentence-titles: one step under .ds-section-title so a nine-word
+   heading stays a heading and not a wall. Same family, tracking and colour rules. */
+.rf-title-long {
+  font-family: 'RagMarom', sans-serif;
+  font-size: clamp(2.3rem, 4vw, 4.25rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* The page's signature: "the way" — a short winding path used where the main
+   site uses its straight orange rule. Draws itself in when revealed. */
+.rf-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rf-path-draw {
+    stroke-dashoffset: 1;
+    animation: rfPathDraw 1.6s var(--ease-brand) 0.35s forwards;
+  }
+}
+@keyframes rfPathDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Rendering hotspots (section 06) */
+.rf-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+}
+.rf-pin-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  color: var(--navy);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1;
+  box-shadow: 0 6px 18px rgba(0, 0, 30, 0.28), 0 0 0 5px rgba(255, 255, 255, 0.28);
+  transition: background-color var(--t-base) var(--ease-brand), color var(--t-base) var(--ease-brand),
+    transform var(--t-base) var(--ease-brand), box-shadow var(--t-base) var(--ease-brand);
+}
+.rf-pin[aria-pressed='true'] .rf-pin-dot {
+  background: var(--orange);
+  color: var(--navy-deep);
+  transform: scale(1.12);
+  box-shadow: 0 8px 22px rgba(0, 0, 30, 0.3), 0 0 0 7px rgba(255, 135, 20, 0.28);
+}
+.rf-pin:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .rf-pin:hover .rf-pin-dot { transform: scale(1.12); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rf-pin[aria-pressed='false'] .rf-pin-dot { animation: rfPinPulse 2.8s ease-in-out infinite; }
+}
+@keyframes rfPinPulse {
+  0%, 100% { box-shadow: 0 6px 18px rgba(0, 0, 30, 0.28), 0 0 0 5px rgba(255, 255, 255, 0.28); }
+  50%      { box-shadow: 0 6px 18px rgba(0, 0, 30, 0.28), 0 0 0 11px rgba(255, 255, 255, 0); }
+}
+
+/* Day timeline (section 07): photo cross-fade in the sticky frame */
+.rf-day-photo {
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 700ms var(--ease-brand), transform 1400ms var(--ease-brand);
+}
+.rf-day-photo[data-on='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Quiet card lift, pointer-gated like .btn-lift */
+.rf-card {
+  transition: transform var(--t-base) var(--ease-brand), box-shadow var(--t-base) var(--ease-brand),
+    border-color var(--t-base) var(--ease-brand);
+}
+@media (hover: hover) and (pointer: fine) {
+  .rf-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(13, 27, 75, 0.14);
+  }
+}
+
+/* In-page links move focus to the section they scroll to (shared.jsx), so the
+   keyboard continues from there. The section is a landmark, not a control —
+   no ring around a whole screen of content. */
+#root section[tabindex='-1']:focus,
+#root main[tabindex='-1']:focus {
+  outline: none;
+}
