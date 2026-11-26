@@ -95,7 +95,8 @@ export function Title({ title, as: Tag = 'h2', size = 'lg', tone = 'navy', accen
       style={{ fontSize: sizes[size] || size }}
     >
       {lines.map((line, i) => (
-        <span key={i} className="block overflow-hidden pb-[0.08em] -mb-[0.08em]">
+        // Top padding keeps tall ascenders (ל) inside the reveal mask at the tight leading.
+        <span key={i} className="block overflow-hidden pt-[0.22em] -mt-[0.22em] pb-[0.08em] -mb-[0.08em]">
           <span
             className={`rf-line block ${accent && i === lines.length - 1 ? (tone === 'white' ? 'text-orange' : 'text-orange-ink') : ''}`}
           >
