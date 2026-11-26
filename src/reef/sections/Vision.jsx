@@ -1,54 +1,66 @@
 import { useLayoutEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import useReveal from '../../hooks/useReveal'
 import { vision } from '../content'
-import { WRAP } from '../shared'
-
-gsap.registerPlugin(ScrollTrigger)
+import { WRAP, reducedMotion, useSectionMotion } from '../shared'
 
 /**
- * The vision, as one sentence someone will say one day. Behind it the motif
- * from the movement's own materials: ridgelines, and the way drawn across
- * them in orange as the section scrolls in.
+ * The vision, as one sentence someone will say one day — written out letter
+ * by letter as you reach it. Under it the valley again, the bookend to the
+ * hero: the end of the way seen from above, the frame descending onto the
+ * place as you scroll.
  */
 export default function Vision() {
-  const ref = useReveal({ selector: '.rv', y: 44, stagger: 0.1 })
-  const artRef = useRef(null)
+  const ref = useRef(null)
+  useSectionMotion(ref)
 
   useLayoutEffect(() => {
-    const road = artRef.current?.querySelector('.vision-road')
-    if (!road) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const el = ref.current
+    if (!el || reducedMotion()) return
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        road,
-        { strokeDashoffset: 1 },
-        { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: artRef.current, start: 'top 85%', end: 'bottom 55%', scrub: 0.6 } }
+        '.vi-ch',
+        { opacity: 0.12 },
+        { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: '.vi-quote', start: 'top 80%', end: 'bottom 45%', scrub: 0.5 } }
       )
-    }, artRef)
+      // descend onto the place: the frame settles from high and wide to close
+      gsap.fromTo(
+        '.vi-land',
+        { scale: 1.28, yPercent: -6 },
+        { scale: 1, yPercent: 0, ease: 'none', scrollTrigger: { trigger: '.vi-art', start: 'top bottom', end: 'bottom bottom', scrub: true } }
+      )
+    }, el)
     return () => ctx.revert()
   }, [])
 
   return (
-    <section ref={ref} id="vision" dir="rtl" className="relative w-full overflow-hidden bg-wheat scroll-mt-16">
-      <div className={`${WRAP} relative z-10 pt-24 md:pt-40 text-center`}>
-        <p className="rv ds-eyebrow text-valley mb-6">{vision.kicker}</p>
+    <section ref={ref} id="vision" dir="rtl" aria-labelledby="vision-title" className="relative w-full overflow-hidden bg-wheat scroll-mt-16">
+      <div className={`${WRAP} relative z-10 pt-28 md:pt-44 text-center`}>
         <p className="rv font-heebo font-medium text-navy/80" style={{ fontSize: 'clamp(1.3rem, 2.2vw, 2.1rem)' }}>
           {vision.lead}
         </p>
         <h2
-          className="rv mt-3 md:mt-4 font-ragmarom text-navy leading-[0.9] tracking-tight"
+          id="vision-title"
+          aria-label={vision.quote}
+          className="vi-quote mt-3 md:mt-4 font-ragmarom text-navy leading-[0.9] tracking-[-0.02em]"
           style={{ fontSize: 'clamp(3.2rem, 10.5vw, 10.5rem)' }}
         >
-          {vision.quote}
+          <span aria-hidden="true">
+            {vision.quote.split(' ').map((word, wi, arr) => (
+              <span key={wi} className="inline-block whitespace-nowrap">
+                {[...word].map((ch, i) => (
+                  <span key={i} className="vi-ch">{ch}</span>
+                ))}
+                {wi < arr.length - 1 && <span className="vi-ch">&nbsp;</span>}
+              </span>
+            ))}
+          </span>
         </h2>
 
         <div className="mt-10 md:mt-14 mx-auto max-w-2xl space-y-3">
           {vision.lines.map((line, i) => (
             <p
               key={i}
-              className={`rv font-heebo leading-relaxed ${i === 0 ? 'font-bold text-navy' : 'text-navy/75'}`}
+              className={`rv font-heebo leading-relaxed ${i === 0 ? 'font-bold text-navy' : 'text-navy/80'}`}
               style={{ fontSize: i === 0 ? 'clamp(1.2rem, 1.6vw, 1.5rem)' : 'clamp(1.05rem, 1.25vw, 1.25rem)' }}
             >
               {line}
@@ -57,29 +69,20 @@ export default function Vision() {
         </div>
       </div>
 
-      {/* Ridgelines + the way */}
-      <svg
-        ref={artRef}
-        aria-hidden="true"
-        viewBox="0 0 1440 420"
-        preserveAspectRatio="none"
-        className="relative block w-full h-[200px] sm:h-[280px] md:h-[380px] mt-6 md:mt-0"
-        fill="none"
-      >
-        <path d="M0 250 C 180 190, 300 215, 470 175 S 760 120, 930 160 S 1230 215, 1440 150 L1440 420 L0 420 Z" fill="#eadfc6" />
-        <path d="M0 305 C 200 255, 380 300, 560 262 S 880 205, 1060 250 S 1320 290, 1440 240 L1440 420 L0 420 Z" fill="#d5dcc1" />
-        <path d="M0 360 C 220 322, 420 365, 640 334 S 980 290, 1180 332 S 1360 352, 1440 322 L1440 420 L0 420 Z" fill="#b4c7a6" />
-        <path
-          className="vision-road"
-          pathLength="1"
-          strokeDasharray="1"
-          d="M1470 395 C 1280 372, 1190 318, 1040 322 S 800 372, 660 318 S 520 232, 410 222 S 250 176, 160 128 S 40 84, -30 40"
-          stroke="#ff8714"
-          strokeWidth="5"
-          strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
+      {/* the bookend: the end of the way, seen from above — rendered from the same valley as the hero */}
+      <div aria-hidden="true" className="vi-art relative mt-10 md:mt-6 h-[52svh] min-h-[320px] w-full overflow-hidden">
+        <img
+          src="/reef/valley-arrival.webp"
+          alt=""
+          loading="lazy"
+          className="vi-land absolute inset-0 h-full w-full object-cover"
+          style={{
+            objectPosition: '50% 35%',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, #000 34%, #000 70%, transparent 100%)',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, #000 34%, #000 70%, transparent 100%)',
+          }}
         />
-      </svg>
+      </div>
     </section>
   )
 }

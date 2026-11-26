@@ -587,3 +587,107 @@ Sub-pages keep the original system above; these patterns are home-only.
 
 Motion defaults follow section 6; every scrub/pin/loop checks
 `prefers-reduced-motion` and `gsap.matchMedia` handles the desktop/mobile split.
+
+---
+
+## 12. /reef — דרך ריף: the valley world
+
+A standalone sub-surface (`reef.html` → `src/reef/`). It keeps the main site's
+brand primitives (navy, orange, RagMarom, Heebo, `Button`, `--ease-brand`) and
+replaces the main site's surfaces with the Jezreel Valley seen from the air.
+Everything below applies to `/reef` only; sections 1–11 stay the system for
+the rest of the site. Where this section and section 10 disagree, this
+section governs `/reef` (noted inline).
+
+### Overview
+
+**The Way Rule.** The page is a journey along "the way": one orange winding
+path that is drawn in the hero, underlines the turning phrase, bridges
+sections, and becomes the chapter navigator. The visitor travels it; the
+page never stacks label + title + paragraph blocks.
+
+Grounds are the valley's materials: wheat, field green, a pale sky, plain
+white. Navy is ink. Orange is the way, the actions, and one turning phrase.
+
+### Colors
+
+Grounds (section backgrounds, alternated down the page):
+
+- **Wheat** (`wheat`, `#f6f1e6`) — warm field ground: Offer, Place, Vision, Donate; also the chapter menu, scrollbar track and the rail's unvisited stops.
+- **White** (`#ffffff`) — the quiet ground: Story, Why, Day, Valley, Partners, Contact. *Divergence from section 10:* plain white is a ground here, as built.
+- **Field green** (`valley`, `#2f5d46`) — the one dark green ground (Values, white text on it); also the scrollbar thumb and the chosen-audience dot. Text-safe on light grounds.
+- **Navy-deep** (`#081028`) — the Partner band (white text). Navy (`#0d1b4b`) — the "build your day" panel in Offer.
+- **Morning horizon** (`#f1e4cb`) — the hero ground behind the canvas/poster, matching the scene's horizon colour. Hero sky in the scene runs from a pale sky blue (`#9fbfd4`) through haze (`#93a9bd`) to that horizon.
+- The Day section's ground is a static gradient from white to a morning-to-afternoon cream (`#f6ead2`), so it reads as the day warming without repainting on scroll.
+
+Plot fills (crops; used only inside the field-plot material, never as section grounds):
+ripe wheat `#d9b86b`, young green `#a9bf7c`, dry ochre (`earth-soft`, `#dcc39c`), plowed soil `#b98f63`,
+sage `#c9d3a3`, pale green (`valley-soft`, `#e9f0e8`), apricot `#ffb46b`, sown-apricot `#ffd9b0`.
+
+Ink and accent:
+
+- **Navy** — all display and body text on light grounds (body at 75–80% opacity, lead paragraphs at full).
+- **Orange** (`#ff8714`) — the way (every path stroke, rail fill, scroll cue, map marker), primary CTAs (the site `Button`), active pins/stops/dots, the crowning fifth value pillar, text selection/caret/accent-color.
+- **Orange-ink** (`--orange-ink`) — orange as *text* on light grounds: only the accented last line of a `Title` and the turning phrase of the Story statement. On dark grounds the same accented line is plain orange.
+
+**The One Turning Phrase Rule.** A statement gets at most one orange phrase, and it is the turn of the sentence. Orange never colours body copy, labels or decoration other than the way.
+
+### Typography
+
+- **Display — RagMarom.** Every heading, the hero name (`clamp(5rem, 14vw, 12.5rem)`, leading 0.82, tracking −0.02em), section titles via `Title` (`xl` 3–7rem, `lg` 2.6–5.25rem, `md` 2.2–3.9rem; leading 0.96, tracking −0.015em, balanced), long sentence-titles one step down (2.3–4.25rem, leading 1), fieldset legends, audience names, value names, chapter labels in the phone menu.
+- **Text — Heebo.** Body (1.02–1.15rem, relaxed leading; Story at leading 1.8), lead paragraphs (1.15–1.4rem, medium, full navy), UI labels and nav links (~0.95rem), offer item names (extrabold, 1.2–1.4rem).
+- **Mono — JetBrains Mono, clock times only.** The Day section's times (`tabular-nums`, `dir="ltr"`), nothing else.
+
+**The Clock-Only Mono Rule.** Monospace appears only where a clock time is shown.
+
+### Layout
+
+- Gutters and measure match the main site (`max-w-screen-xl`, `px-5 / sm:px-8 / md:px-12`). Section padding is generous (`py-24 md:py-36`, Story up to `pt-44`).
+- Every section is `dir="rtl"`, labelled by its title, and `scroll-mt-16` under the 64/72px top bar. In-page links scroll smoothly (instant under reduced motion), never change the URL hash, and move focus to the target section.
+- **Navigation by width:** below 1024px a "chapters" button opens the phone chapter menu; 1024px+ shows top-bar links; at 1360px+ the way rail appears in the left margin (hidden on the hero).
+
+### Elevation & Depth
+
+Flat, by material rather than shadow. Depth comes from the 3D valley, photo scrims (`navy-deep` at ~30%), and a soft wheat radial "whisper" behind the hero type. The only shadows are the diffuse halo on Place rendering pins (`0 6px 18px` navy at ~28% plus a translucent ring).
+
+### Shapes
+
+- **Field plots** are the texture: a plot colour overlaid with fine furrow stripes (2px navy-deep at 7% every 11px) at the plot's own angle. On dark grounds, a white furrow screen at 6% opacity.
+- Large photo and panel corners are gently rounded (1.75rem); value pillars round their tops (1.6rem) and stand square-ish at the base (0.5rem). Pills for buttons, chips, stop labels and controls (44px tap targets).
+- Dividers are hairlines (`navy` at 12–20%), never boxes.
+
+**The No-Card Rule.** Content sits on grounds, in rows divided by hairlines, or inside plots. No bordered/elevated cards, no icon tiles.
+
+### Components
+
+- **Valley hero (three.js).** A procedurally built Jezreel Valley at morning; the orange way draws from the foreground to a marker on the horizon, labelled with the place name. Scrolling pins the hero (110% wide / 85% narrow, scrub 0.5) and flies the camera along the way while the copy lifts away and an arrival line rises. The scene caps pixel ratio (1.5 / 1.25 lite) and renders every other frame while idle. Lite mode on phones and coarse pointers; renders only while on screen. **Fallbacks:** no WebGL (or scene failure) shows a still poster of the same valley with the marker placed on it; reduced motion renders one still frame, never pins.
+- **Way rail (≥1360px).** A winding path down the left margin with one stop per chapter; the orange fill tracks reading progress; stop names appear on hover/focus only, as navy pills.
+- **Phone chapter menu.** A full-screen native `<dialog>` on wheat, opening with a top-down clip wipe; chapters as RagMarom labels on a vertical way with orange visited/current stops.
+- **WayBridge.** The way crossing a section seam (Story → Why, Day → Offer), drawn by scroll, zero-height, never crossing text.
+- **PathRule.** A short winding orange stroke — this page's replacement for the main site's straight orange accent bar.
+- **Field-plot rows (What).** Each pillar is a row; on fine-pointer hover its plot sweeps in from the reading edge.
+- **Value pillars (Values).** Five pillars of rising height on the green ground, one crop each, the fifth in orange — the movement's mark. They grow by clip (never scale) on scroll.
+- **Place tour camera.** The architectural rendering as one camera: pins, a tour bar and a list of spaces all zoom it into a space; step back out to the whole compound. Pins are white numbered dots that turn orange when active.
+- **Day sun arc.** A sun crosses an orange arc as the visitor scrolls the day's moments; the mono clock reads the current moment; the sticky photograph cross-fades to it.
+- **Offer: build your day.** Formats and audience are pressable rows; choosing a row sows its plot (apricot for formats, sage for audience) sweeping in from the reading edge. The choices collect as chips on the navy furrowed panel, which composes the WhatsApp message to the contact person.
+- **Buttons.** Primary is the site's orange `Button`; secondary is a navy outline pill on light grounds that fills navy on hover.
+
+**The Way Draws Itself Rule.** Every path stroke (`pathLength="1"`, dash offset 1 → 0) is drawn by reveal or scroll; under reduced motion it is simply present.
+
+### Motion grammar
+
+- **Shared reveal (`useSectionMotion`):** title lines rise from their own masks (expo-out, ~1.15s, staggered); blocks ease up 34px into place; quiet fades are opacity-only (~1.8s). Content is visible in the markup; motion only runs when allowed.
+- **One scrub moment per section:** hero flight; the Story underline; WayBridges; What's closing verbs lighting one after another; Day's sun and clock; the Why photograph settling; the rail fill. Values grow once on entry (not scrubbed).
+- **Performance rules:** scroll progress never goes through React state (useChapter writes it to `[data-rf-progress]` elements); no backdrop-filter on fixed or sticky chrome; no filter, clip-path or background-color scrubs on large layers (transform, opacity and stroke only); the site-wide grain overlay is off on /reef; reveals are batched (`ScrollTrigger.batch`). The Why statement is deliberately gentle: no pin, no mask.
+- **Story is the still point:** slow fades only — no parallax, no distortion.
+- Easing is `--ease-brand` for state, expo-out for entrances; hover effects are gated to fine pointers.
+
+### Do's and Don'ts
+
+- **Do** take every word verbatim from `src/reef/content.js`; sections never hard-code copy.
+- **Do** render a complete page under reduced motion and without WebGL — no pins, no hidden content, every path already drawn.
+- **Do** keep section kickers in navigation and legends only: the rail, the phone menu, fieldset legends, the hero's map-marker label.
+- **Don't** set a small label above a title (no eyebrows or kickers in content).
+- **Don't** use cards, icon tiles, or hard shadows; use grounds, hairline rows and plots.
+- **Don't** use orange as text on light grounds (orange-ink only), or for more than one phrase in a statement.
+- **Don't** use mono outside clock times, or a third typeface.

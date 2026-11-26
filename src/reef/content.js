@@ -8,19 +8,18 @@ const IMG = '/reef'
 export const GUY = {
   name: 'גיא טרנטו',
   role: 'דרך ריף | חמש אצבעות',
-  whatsapp: '972523186137', // international format
-  phoneDisplay: '052-318-6137',
+  whatsapp: '972547677179', // international format
+  phoneDisplay: '054-767-7179',
   email: 'guytarnto@5fingers.org.il',
 }
 
 const wa = (text) => `https://wa.me/${GUY.whatsapp}?text=${encodeURIComponent(text)}`
 
 /**
- * JGive donation page. The team has not supplied the address yet — paste it
- * here and every "donate" button on the page picks it up. While it is empty
- * the buttons open a WhatsApp chat with גיא instead, so nothing is a dead end.
+ * JGive donation page. Every "donate" button on the page uses it. If it is
+ * ever emptied, the buttons fall back to a WhatsApp chat with גיא.
  */
-const JGIVE_URL = ''
+const JGIVE_URL = 'https://www.jgive.com/new/he/ils/donation-targets/176319'
 
 export const LINKS = {
   whatsapp: wa('היי גיא, הגעתי מהעמוד של דרך ריף ואשמח לדבר.'),

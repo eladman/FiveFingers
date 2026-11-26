@@ -1,19 +1,110 @@
 // Small pieces shared by the /reef sections.
+import { useLayoutEffect } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 /** Page gutters + max width, same measure as the rest of the site. */
 export const WRAP = 'max-w-screen-xl mx-auto px-5 sm:px-8 md:px-12'
+
+export const reducedMotion = () =>
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 /** Smooth-scroll to an in-page target without touching the URL hash (the
  *  visit counter logs hash changes as page views). Instant under reduced motion. */
 export function scrollToId(id) {
   const el = document.getElementById(id)
   if (!el) return false
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' })
+  // The hero is pinned: its id points at the top of the document, not the pin spacer.
+  const behavior = reducedMotion() ? 'auto' : 'smooth'
+  if (id === 'top') {
+    window.scrollTo({ top: 0, behavior })
+  } else {
+    el.scrollIntoView({ behavior, block: 'start' })
+    // On a first visit, lazy images and the pins' re-measure can shift the page
+    // mid-flight and strand a long smooth scroll short of its target. Check
+    // where we landed once the scroll settles, and finish the trip if needed.
+    const settle = () => {
+      clearTimeout(fallback)
+      window.removeEventListener('scrollend', settle)
+      const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0
+      if (Math.abs(el.getBoundingClientRect().top - margin) > 12) el.scrollIntoView({ behavior: 'auto', block: 'start' })
+    }
+    const fallback = setTimeout(settle, 2200)
+    window.addEventListener('scrollend', settle, { once: true })
+  }
   // Move keyboard focus with the scroll so Tab continues from the new section.
   if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1')
   el.focus({ preventScroll: true })
   return true
+}
+
+/**
+ * Section motion, shared grammar:
+ *  .rf-line  — a title line rising out of its mask
+ *  .rv       — a block easing up into place
+ *  .rf-fade  — opacity only, slow (the quiet register)
+ * Content is visible in the markup; motion only runs when it can.
+ */
+export function useSectionMotion(ref, { start = 'top 78%' } = {}) {
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el || reducedMotion()) return
+    const ctx = gsap.context(() => {
+      const trigger = { trigger: el, start, once: true }
+      const lines = el.querySelectorAll('.rf-line')
+      if (lines.length) {
+        gsap.fromTo(lines, { yPercent: 104 }, { yPercent: 0, duration: 1.15, stagger: 0.1, ease: 'expo.out', scrollTrigger: trigger })
+      }
+      const blocks = el.querySelectorAll('.rv')
+      if (blocks.length) {
+        gsap.set(blocks, { y: 34, opacity: 0 })
+        ScrollTrigger.batch(blocks, {
+          start: 'top 90%',
+          once: true,
+          onEnter: (batch) => gsap.to(batch, { y: 0, opacity: 1, duration: 1.1, ease: 'expo.out', stagger: 0.08, overwrite: true }),
+        })
+      }
+      const fades = el.querySelectorAll('.rf-fade')
+      if (fades.length) {
+        gsap.fromTo(fades, { opacity: 0 }, { opacity: 1, duration: 1.8, stagger: 0.22, ease: 'power1.out', scrollTrigger: trigger })
+      }
+    }, el)
+    return () => ctx.revert()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+}
+
+/**
+ * A section title whose lines rise out of their own masks.
+ * `title` may be a string or an array of lines; `accent` colours the last line.
+ */
+export function Title({ title, as: Tag = 'h2', size = 'lg', tone = 'navy', accent = false, className = '', id }) {
+  const lines = Array.isArray(title) ? title : [title]
+  const sizes = {
+    xl: 'clamp(3rem, 7.4vw, 7rem)',
+    lg: 'clamp(2.6rem, 5.2vw, 5.25rem)',
+    md: 'clamp(2.2rem, 3.9vw, 3.9rem)',
+  }
+  const color = tone === 'white' ? 'text-white' : tone === 'deep' ? 'text-navy-deep' : 'text-navy'
+  return (
+    <Tag
+      id={id}
+      className={`font-ragmarom leading-[0.96] tracking-[-0.015em] text-balance ${color} ${className}`}
+      style={{ fontSize: sizes[size] || size }}
+    >
+      {lines.map((line, i) => (
+        <span key={i} className="block overflow-hidden pb-[0.08em] -mb-[0.08em]">
+          <span
+            className={`rf-line block ${accent && i === lines.length - 1 ? (tone === 'white' ? 'text-orange' : 'text-orange-ink') : ''}`}
+          >
+            {line}
+          </span>
+        </span>
+      ))}
+    </Tag>
+  )
 }
 
 /**
@@ -42,44 +133,19 @@ export function PathRule({ className = '', draw = false, width = 96 }) {
   )
 }
 
-/**
- * Section heading: eyebrow in valley green, RagMarom title, the path rule.
- * `title` may be a string or an array of lines. `long` steps the size down
- * for sentence-length titles.
- */
-export function Head({ kicker, title, center = false, dark = false, long = false, cls = 'rv', as: Tag = 'h2', className = '' }) {
-  const lines = Array.isArray(title) ? title : [title]
-  return (
-    <div className={`${center ? 'text-center' : 'text-right'} ${className}`}>
-      {kicker && (
-        <p className={`${cls} ds-eyebrow mb-4 md:mb-5 ${dark ? 'text-orange' : 'text-valley'}`}>{kicker}</p>
-      )}
-      <Tag
-        className={`${cls} ${long ? 'rf-title-long' : 'ds-section-title'} ${dark ? 'text-white' : 'text-navy'} text-balance`}
-        style={dark ? { textShadow: '0 2px 24px rgba(0,0,0,0.45)' } : undefined}
-      >
-        {lines.map((line, i) => (
-          <span key={i} className="block">{line}</span>
-        ))}
-      </Tag>
-      <PathRule className={`${cls} mt-6 md:mt-7 ${center ? 'mx-auto' : ''}`} />
-    </div>
-  )
-}
-
 /** Body paragraph on a light surface. `lead` is the first, stronger one. */
-export function Para({ children, lead = false, className = '' }) {
+export function Para({ children, lead = false, className = '', fx = 'rv' }) {
   return (
     <p
-      className={`rv font-heebo leading-relaxed ${lead ? 'text-navy font-medium' : 'text-navy/70'} ${className}`}
-      style={{ fontSize: lead ? 'clamp(1.15rem, 1.5vw, 1.4rem)' : 'clamp(1rem, 1.15vw, 1.15rem)' }}
+      className={`${fx} font-heebo leading-relaxed ${lead ? 'text-navy font-medium' : 'text-navy/75'} ${className}`}
+      style={{ fontSize: lead ? 'clamp(1.15rem, 1.5vw, 1.4rem)' : 'clamp(1.02rem, 1.15vw, 1.15rem)' }}
     >
       {children}
     </p>
   )
 }
 
-const focusRing =
+export const focusRing =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2'
 
 /** Outline pill for light surfaces (the site's Button only has dark-surface secondaries). */
@@ -88,11 +154,11 @@ export function OutlineLink({ href, children, icon: Icon, external = false, clas
     <a
       href={href}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      className={`inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full border border-navy/20 bg-white/60 px-8 py-3.5 font-heebo text-base font-bold text-navy transition-colors duration-300 ease-brand hover:border-navy hover:bg-navy hover:text-white active:scale-[0.97] ${focusRing} ${className}`}
+      className={`rf-outline group inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full border border-navy/25 bg-white/60 px-8 py-3.5 font-heebo text-base font-bold text-navy transition-colors duration-300 ease-brand hover:border-navy hover:bg-navy hover:text-white active:scale-[0.97] ${focusRing} ${className}`}
       {...rest}
     >
       <span>{children}</span>
-      {Icon && <Icon size={18} className="shrink-0" aria-hidden="true" />}
+      {Icon && <Icon size={18} className="shrink-0 transition-transform duration-300 ease-brand group-hover:-translate-x-0.5" aria-hidden="true" />}
     </a>
   )
 }

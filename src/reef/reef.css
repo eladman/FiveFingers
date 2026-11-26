@@ -1,6 +1,33 @@
 /* /reef (דרך ריף) — page-scoped styles. Tokens and type classes come from
    index.css + tailwind.config.js; only what this page adds lives here. */
 
+/* ── Browser surfaces, in the valley's palette ─────────────────────────── */
+.rf-page ::selection { background: #ff8714; color: #081028; }
+.rf-page { caret-color: #ff8714; accent-color: #ff8714; }
+html:has(.rf-page) { scrollbar-color: #2f5d46 #f6f1e6; }
+html:has(.rf-page)::-webkit-scrollbar { width: 11px; }
+html:has(.rf-page)::-webkit-scrollbar-track { background: #f6f1e6; }
+html:has(.rf-page)::-webkit-scrollbar-thumb { background: #2f5d46; border-radius: 99px; border: 3px solid #f6f1e6; }
+
+/* The site-wide grain overlay is a fixed full-screen layer that has to be
+   recomposited on every scrolled frame; this page carries its own texture. */
+html:has(.rf-page) body::after { display: none; }
+
+/* ── 01 Hero: the valley ───────────────────────────────────────────────── */
+.rf-hero { background: #f1e4cb; }
+.rf-hero .hv-canvas { opacity: 0; transition: opacity 1.2s var(--ease-brand); }
+.rf-hero[data-mode='gl'] .hv-canvas { opacity: 1; }
+.rf-hero[data-mode='gl'] .hv-poster { visibility: hidden; transition: visibility 0s 1.2s; }
+.rf-hero[data-mode='poster'] .hv-canvas { display: none; }
+.rf-marker > * { opacity: 0; transform: translateY(8px) scale(0.92); transform-origin: 50% 100%;
+  transition: opacity 600ms var(--ease-brand), transform 700ms cubic-bezier(0.16, 1, 0.3, 1); }
+.rf-marker[data-on='true'] > * { opacity: 1; transform: none; }
+.rf-cue > span { animation: rfCue 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+@keyframes rfCue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
 /* Long sentence-titles: one step under .ds-section-title so a nine-word
    heading stays a heading and not a wall. Same family, tracking and colour rules. */
 .rf-title-long {
@@ -84,23 +111,110 @@
   transform: none;
 }
 
-/* Quiet card lift, pointer-gated like .btn-lift */
-.rf-card {
-  transition: transform var(--t-base) var(--ease-brand), box-shadow var(--t-base) var(--ease-brand),
-    border-color var(--t-base) var(--ease-brand);
-}
-@media (hover: hover) and (pointer: fine) {
-  .rf-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: rgba(13, 27, 75, 0.14);
-  }
-}
-
 /* In-page links move focus to the section they scroll to (shared.jsx), so the
    keyboard continues from there. The section is a landmark, not a control —
    no ring around a whole screen of content. */
 #root section[tabindex='-1']:focus,
 #root main[tabindex='-1']:focus {
   outline: none;
+}
+
+/* ── Field materials ───────────────────────────────────────────────────── */
+/* Furrows: fine parallel rows, at the plot's own angle (--ang). */
+.rf-furrows {
+  background-image: repeating-linear-gradient(-58deg, currentColor 0 1px, transparent 1px 14px);
+  color: #ffffff;
+}
+.rf-crop {
+  background-color: var(--plot);
+  background-image: repeating-linear-gradient(var(--ang, 0deg), rgba(8, 16, 40, 0.07) 0 2px, transparent 2px 11px);
+}
+
+/* What: each pillar row fills with its plot when you reach for it */
+.rf-plot-fill {
+  background-color: var(--plot);
+  background-image: repeating-linear-gradient(var(--ang, 0deg), rgba(8, 16, 40, 0.07) 0 2px, transparent 2px 11px);
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path 650ms cubic-bezier(0.7, 0, 0.2, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .rf-plot:hover .rf-plot-fill { clip-path: inset(0 0 0 0); }
+}
+
+/* ── Place: the tour camera ────────────────────────────────────────────── */
+.pl-world {
+  transform-origin: 50% 50%;
+  transition: transform 1150ms cubic-bezier(0.7, 0, 0.15, 1);
+  will-change: transform;
+}
+.pl-pin { transition: transform 1150ms cubic-bezier(0.7, 0, 0.15, 1); }
+.pl-world .pl-pin { transform: translate(-50%, -50%) scale(calc(1 / var(--s, 1))); }
+.pl-vignette {
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 55%, rgba(8, 16, 40, 0.35));
+  opacity: 0;
+  transition: opacity 900ms var(--ease-brand);
+}
+.pl-vignette[data-on='true'] { opacity: 1; }
+
+/* ── The way rail (wide screens only) ──────────────────────────────────── */
+.rf-rail { display: none; width: 32px; opacity: 0; pointer-events: none; transition: opacity 500ms var(--ease-brand); }
+@media (min-width: 1360px) { .rf-rail { display: block; } }
+.rf-rail[data-on='true'] { opacity: 1; pointer-events: auto; }
+.rf-stop:focus-visible > span:first-child { outline: 2px solid #0d1b4b; outline-offset: 4px; }
+.rf-stop-label {
+  opacity: 0;
+  transform: translate(-6px, -50%);
+  transition: opacity 260ms var(--ease-brand), transform 260ms var(--ease-brand);
+}
+
+.rf-stop:hover .rf-stop-label,
+.rf-stop:focus-visible .rf-stop-label { opacity: 1; transform: translate(0, -50%); }
+
+/* ── Chapter menu (phones + tablets) ───────────────────────────────────── */
+.rf-menu {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #f6f1e6;
+  color: #0d1b4b;
+}
+.rf-menu::backdrop { background: rgba(8, 16, 40, 0.4); }
+@media (prefers-reduced-motion: no-preference) {
+  .rf-menu[open] { animation: rfMenuIn 420ms cubic-bezier(0.16, 1, 0.3, 1); }
+}
+@keyframes rfMenuIn {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* top-bar links: the way underlines them */
+.rf-navlink::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 8px;
+  height: 2px;
+  border-radius: 2px;
+  background: #ff8714;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 350ms var(--ease-brand);
+}
+.rf-navlink:hover::after { transform: scaleX(1); }
+
+/* Offer: a chosen row is a sown plot — the furrowed fill sweeps in from the reading edge */
+.rf-sow {
+  background-color: var(--plot);
+  background-image: repeating-linear-gradient(var(--ang, 0deg), rgba(8, 16, 40, 0.07) 0 2px, transparent 2px 11px);
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path 600ms cubic-bezier(0.7, 0, 0.2, 1);
+}
+.rf-sow[data-on='true'] { clip-path: inset(0 0 0 0); }
+@media (hover: hover) and (pointer: fine) {
+  button:hover > .rf-sow[data-on='false'] { clip-path: inset(0 0 0 94%); }
 }

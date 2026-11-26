@@ -1,60 +1,62 @@
 import { useLayoutEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { MapPin } from 'lucide-react'
-import useReveal from '../../hooks/useReveal'
+import { ArrowUpLeft, MapPin } from 'lucide-react'
 import { LINKS, valley } from '../content'
-import { Head, OutlineLink, Para, WRAP } from '../shared'
+import { OutlineLink, Para, Title, WRAP, reducedMotion, useSectionMotion } from '../shared'
 
-gsap.registerPlugin(ScrollTrigger)
-
-/** The valley: one wide, quiet frame of the fields, then where the place stands. */
+/**
+ * The valley: the march with flags through the fields, full width, drifting
+ * a little slower than the page. Then where the place stands, and how to get there.
+ */
 export default function Valley() {
-  const ref = useReveal({ selector: '.rv', y: 40, stagger: 0.08 })
+  const ref = useRef(null)
   const frameRef = useRef(null)
+  useSectionMotion(ref)
 
   useLayoutEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const frame = frameRef.current
+    if (!frame || reducedMotion()) return
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        '.valley-drift',
+        '.va-img',
         { yPercent: -6 },
-        { yPercent: 6, ease: 'none', scrollTrigger: { trigger: frameRef.current, start: 'top bottom', end: 'bottom top', scrub: true } }
+        { yPercent: 6, ease: 'none', scrollTrigger: { trigger: frame, start: 'top bottom', end: 'bottom top', scrub: true } }
       )
-    }, frameRef)
+    }, ref)
     return () => ctx.revert()
   }, [])
 
   return (
-    <section ref={ref} id="valley" dir="rtl" className="relative w-full overflow-hidden bg-white scroll-mt-16">
-      <div className={`${WRAP} py-20 md:py-32`}>
-        <figure ref={frameRef} className="rv relative overflow-hidden rounded-[2rem] aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/10] bg-surface-2 ring-1 ring-black/5 shadow-[0_40px_100px_rgba(0,0,30,0.16)]">
-          <img
-            src={valley.image}
-            alt={valley.imageAlt}
-            loading="lazy"
-            className="valley-drift absolute inset-x-0 -top-[8%] w-full h-[116%] object-cover"
-            style={{ objectPosition: '50% 42%' }}
-          />
-          <figcaption className="absolute bottom-4 right-4 md:bottom-6 md:right-6 inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md px-4 py-2 text-xs md:text-sm font-semibold text-navy shadow-[0_8px_24px_rgba(0,0,30,0.12)]">
-            <MapPin size={15} className="text-valley" aria-hidden="true" />
-            {valley.place}
-          </figcaption>
-        </figure>
+    <section ref={ref} id="valley" dir="rtl" aria-labelledby="valley-title" className="relative w-full overflow-hidden bg-white scroll-mt-16">
+      <figure ref={frameRef} className="relative h-[78svh] min-h-[440px] w-full overflow-hidden bg-surface-2">
+        <img
+          src={valley.image}
+          alt={valley.imageAlt}
+          loading="lazy"
+          className="va-img absolute inset-x-0 -top-[8%] h-[116%] w-full object-cover will-change-transform"
+          style={{ objectPosition: '50% 22%' }}
+        />
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b from-white/60 via-white/20 to-transparent" />
+        <div className={`${WRAP} relative h-full pt-12 md:pt-16`}>
+          <Title id="valley-title" title={valley.title} size="lg" accent />
+        </div>
+        <figcaption className="absolute bottom-5 left-5 md:bottom-8 md:left-8 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 font-heebo text-sm font-bold text-navy shadow-[0_12px_30px_-10px_rgba(8,16,40,0.4)]">
+          <MapPin size={15} className="text-orange-ink" aria-hidden="true" />
+          {valley.place}
+        </figcaption>
+      </figure>
 
-        <div className="mt-12 md:mt-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24">
-          <Head kicker={valley.kicker} title={valley.title} />
-          <div className="max-w-xl lg:pt-12">
-            <div className="space-y-5">
-              {valley.paragraphs.map((p, i) => (
-                <Para key={i} lead={i === 0}>{p}</Para>
-              ))}
-            </div>
-            <div className="rv mt-9">
-              <OutlineLink href={LINKS.maps} external icon={MapPin}>
-                {valley.cta}
-              </OutlineLink>
-            </div>
+      <div className={`${WRAP} py-16 md:py-24`}>
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] gap-10 lg:gap-24 items-end">
+          <div className="space-y-5 max-w-2xl">
+            {valley.paragraphs.map((p, i) => (
+              <Para key={i} lead={i === 0}>{p}</Para>
+            ))}
+          </div>
+          <div className="rv lg:justify-self-end">
+            <OutlineLink href={LINKS.maps} external icon={ArrowUpLeft}>
+              {valley.cta}
+            </OutlineLink>
           </div>
         </div>
       </div>
